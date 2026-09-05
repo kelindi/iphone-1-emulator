@@ -1,5 +1,7 @@
 # Agent instructions
 
+> New agents should read `plans/README.md` first to understand the project, current status, and what has been implemented before writing any code.
+
 ## Documentation and project updates
 
 Whenever we hit a significant milestone, or whenever asked to summarize progress, create a new entry in the `tweets/` folder and keep `tweets/README.md` up to date.
@@ -19,3 +21,7 @@ Screen recordings are required for visual milestones (home screen, app launches,
 When asked to "backfill" updates, scan the git history, prior session messages, and existing recordings/PR comments, then create missing milestone files for all major achievements and update the index.
 
 Prefer reusing existing recordings if they already cover the milestone, but add a note if a dedicated recording would be clearer.
+
+## Project context
+
+For a full project overview, architecture, implemented systems, workarounds, and current blockers, see `plans/README.md`.
