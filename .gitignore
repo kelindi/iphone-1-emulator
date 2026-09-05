@@ -8,3 +8,6 @@ build/
 *.macho
 *.ppm
 __pycache__/
+/web/build/
+/web/dist/
+!/web/firmware/**

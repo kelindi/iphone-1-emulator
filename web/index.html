@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPhone 1 emulator</title>
+  <style>
+    body { background: #202124; color: #eee; font: 14px sans-serif; margin: 1rem; }
+    #screen { image-rendering: pixelated; width: 320px; height: 480px; border: 1px solid #888; }
+    #controls { align-items: center; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; max-width: 660px; }
+    button { font: inherit; padding: .45rem .7rem; }
+    #status { white-space: pre-wrap; margin-top: .7rem; min-height: 3em; }
+    @media (min-width: 700px) {
+      #screen { width: 640px; height: 960px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>iPhone 1 emulator</h1>
+  <canvas id="screen" width="320" height="480"></canvas>
+  <div id="controls">
+    <button data-button="1">Home</button>
+    <button data-button="0">Hold</button>
+    <button data-button="2">Volume +</button>
+    <button data-button="3">Volume −</button>
+    <span>Canvas: tap/drag · Escape/H: Home · P: Hold · +/-: volume</span>
+  </div>
+  <div id="status">Loading WebAssembly emulator…</div>
+  <script src="dist/emu.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

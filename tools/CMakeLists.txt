@@ -1,0 +1,6 @@
+foreach(t unlzss machoinfo img3dump)
+    add_executable(${t} ${t}.c)
+    target_link_libraries(${t} emucore)
+endforeach()
+add_executable(iphone1 iphone1.c)
+target_link_libraries(iphone1 emucore)
