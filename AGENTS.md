@@ -22,6 +22,10 @@ When asked to "backfill" updates, scan the git history, prior session messages, 
 
 Prefer reusing existing recordings if they already cover the milestone, but add a note if a dedicated recording would be clearer.
 
+## Subagent mode
+
+When spawning parallel child sessions for this repo, prefer `devin_mode: "swe"` if the API accepts it. If the API only allows `normal`/`fast`/`lite`/`ultra`/`fusion`, create them as `ultra` and immediately flip each session to **SWE-1.7 Lightning** in the Devin webapp UI before work begins.
+
 ## Project context
 
 For a full project overview, architecture, implemented systems, workarounds, and current blockers, see `plans/README.md`.
