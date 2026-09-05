@@ -94,13 +94,14 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 4. **Networking.** Emulate Marvell 88W8686 SDIO Wi-Fi (or a simpler device) bridged to the host.
 5. **SDL desktop window.** Native mouse/keyboard UI beyond the current browser harness.
 
-## Work still in flight
+## Work still in flight / per-task plans
 
-Parallel child sessions are tackling:
-- decoded-block interpreter speed engine
-- USB OTG/PHY timing
-- Marvell 88W8686 SDIO Wi-Fi
-- SDL2 desktop frontend
+Each parallel work stream has its own plan document under `plans/`:
+
+- <ref_file file="/home/ubuntu/repos/iphone-1/plans/speed.md" /> — decoded-block interpreter speed engine
+- <ref_file file="/home/ubuntu/repos/iphone-1/plans/usb.md" /> — remove the USB OTG `unmatch` workaround
+- <ref_file file="/home/ubuntu/repos/iphone-1/plans/wifi.md" /> — Marvell 88W8686 SDIO Wi-Fi + host bridging
+- <ref_file file="/home/ubuntu/repos/iphone-1/plans/sdl.md" /> — SDL2 desktop frontend
 
 ## How to run
 
