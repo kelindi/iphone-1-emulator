@@ -1,0 +1,57 @@
+{
+  "scope": "Frozen browser source only; no browser run started. One session 240s; warm Settings/Home15s each; no retries. Corrected hash only, same table/probe/guest caps.",
+  "files": [
+    {
+      "path": ".context/jit-fallback-census/browser.mjs",
+      "sha256": "4daf36c897ce9796bbdcd3b452859daf282d842659773d8a64486a25cd2a4937"
+    },
+    {
+      "path": ".context/jit-fallback-census/run-browser.py",
+      "sha256": "60bde06afdeed9264731ea0fb88e9c59019230e885177ec98174d409e7f1cc50"
+    },
+    {
+      "path": ".context/jit-fallback-census/browser-pins.json",
+      "sha256": "5d1058ef098ec10962f33658b0761a1ea081bffc1576a5007c8e133d40e60399"
+    },
+    {
+      "path": ".context/jit-fallback-census/frame-packet.mjs",
+      "sha256": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314"
+    },
+    {
+      "path": ".context/jit-fallback-census/frames.mjs",
+      "sha256": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c"
+    },
+    {
+      "path": ".context/jit-fallback-census/cache-server.mjs",
+      "sha256": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f"
+    },
+    {
+      "path": ".context/jit-fallback-census/replay.mjs",
+      "sha256": "a013cdcd163dfa6b89ac6cc5caab906d459cf492ea9802934846e65c781190a0"
+    },
+    {
+      "path": ".context/jit-fallback-census/build-report.json",
+      "sha256": "adb7b4c5f1b2841be3f03ad7efd7f7b938216dbbe2cfbd5cdc8e42eda270c845"
+    },
+    {
+      "path": ".context/jit-fallback-census/distribution-report.json",
+      "sha256": "95e49762e4b9338a42882ca378f49f3de64df5c151f9a664874dabad8a2719fa"
+    },
+    {
+      "path": "docs/traces/browser-first-use/cdp.mjs",
+      "sha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40"
+    },
+    {
+      "path": ".context/jit-fallback-census/correctness-100m.json",
+      "sha256": "a9f69fe3504d3a9f4a99ae94bcf605dc893b7b386cecd1e406f7583ead266cc7"
+    },
+    {
+      "path": ".context/jit-fallback-census/boundary-comparison-v3.json",
+      "sha256": "e13a43a040d93140553b2e70674cda846c3a69c641103b29c7ef58b80999ddf1"
+    },
+    {
+      "path": ".context/jit-fallback-census/successor-pins.json",
+      "sha256": "a95a305e30db07255331cc0013d3d6eba9eec94874d4756378319b1c18fcbc2f"
+    }
+  ]
+}

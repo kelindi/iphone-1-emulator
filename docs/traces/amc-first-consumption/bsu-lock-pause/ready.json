@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "probeSHA256": "fcff0c7afa6cd6fd74da36ff052b64900b99e81f8c2986606f274945de02e01d",
+  "reviewPinsSHA256": "8a9e05fb88eab2bf5d2c8c31c8cc24e578fca604199978f98762f5c69640260f",
+  "nativeTargets": 17,
+  "lockChecks": "PASS 483 lock/resource/partial-DMA/ledger/retirement checks; synthetic states only",
+  "auditorChecks": "PASS5 external lock-auditor checks; synthetic format only",
+  "guestRuns": 0,
+  "productionChanges": false
+}

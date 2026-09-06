@@ -1,0 +1,4 @@
+import {spawnSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+const source=`import {createInterface} from 'node:readline';import {requireOpenInput} from './.context/safari-default-mbx/recovery-finalize.mjs';const input=createInterface({input:process.stdin,terminal:false});let closed=false;input.once('close',()=>closed=true);await new Promise(r=>setTimeout(r,50));try{requireOpenInput(closed);process.exitCode=7;}catch(e){console.log(e.message);process.exitCode=8;}`;
+const r=spawnSync(process.execPath,['--input-type=module','-e',source],{input:'',timeout:3000,encoding:'utf8'});assert.equal(r.signal,null);assert.equal(r.status,8);assert.match(r.stdout,/INCOMPLETE: command input closed before navigation/);console.log('PASS real readline EOF before delayed iterator construction rejects without hanging');

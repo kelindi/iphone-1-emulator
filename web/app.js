@@ -39,6 +39,8 @@ function controls() {
   canvas.style.pointerEvents = ready && !paused ? '' : 'none';
 }
 function fail(error) {
+  ready = false;
+  $('boot-loader').hidden = false;
   $('boot-loader').dataset.state = 'error';
   setStatus(describeError(error));
   worker?.terminate();
@@ -48,7 +50,7 @@ function fail(error) {
   $('progress').hidden = true;
   $('retry').hidden = false; $('retry').disabled = false;
   $('recover').hidden = !savedRecord;
-  ready = false; controls();
+  controls();
 }
 function showRunning() {
   if (paused) setStatus('Paused. Your iPhone will wait here.');

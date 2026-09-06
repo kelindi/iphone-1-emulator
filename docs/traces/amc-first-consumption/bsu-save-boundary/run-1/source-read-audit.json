@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Narrower actual register/source-read evidence only. Complete save audit fails because destination observer exceeded4096-byte peek limit. No saved-destination, completed-power or restore proof.",
+  "actualSaveReads": 9,
+  "actualSRAMSourceReadBytes": 49152,
+  "actualSRAMReadRecords": 12288,
+  "sourceCoverageComplete": true,
+  "resourceBytesUnchanged": true,
+  "savedDestinationAvailable": false,
+  "stopBeforeForwarding": {
+    "pc": "c0411f3c",
+    "address": "39a0000c",
+    "value": 3,
+    "cycles": 9874735590
+  },
+  "completeSavePass": false,
+  "priorActualArtifactNegatives": 40
+}

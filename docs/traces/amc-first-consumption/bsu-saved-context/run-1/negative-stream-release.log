@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/stream-audit.py", line 104, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/stream-audit.py", line 62, in run
+    assert g['releaseStart']+1==g['releaseCallback']==g['releaseEnd'] and g['afterPC']==g['releasePC']+4 and g['afterCPSR']==g['releaseCPSR'] and g['releaseCPSR']&63==0x13,'generation retirement differs'
+AssertionError: generation retirement differs

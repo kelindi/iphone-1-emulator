@@ -1,0 +1,205 @@
+{
+  "passed": true,
+  "programName": "iphone1-photo-bootstrap",
+  "diagnosticLogging": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/import.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/photo-bootstrap/build-1/import.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/guest.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/photo-bootstrap/build-1/guest.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/cctools-src/cctools/ld64/src/ld/ld",
+        "-arch",
+        "armv6",
+        "-ios_version_min",
+        "1.0",
+        "-e",
+        "_start",
+        "-no_pie",
+        "-no_uuid",
+        "-no_compact_unwind",
+        "-no_version_load_command",
+        "-no_function_starts",
+        "-no_data_in_code_info",
+        "-no_encryption",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/photo-bootstrap/build-1/iphone1-photo-bootstrap",
+        "/home/vercel-sandbox/iphone-1/.context/photo-bootstrap/build-1/import.o",
+        "/home/vercel-sandbox/iphone-1/.context/photo-bootstrap/build-1/guest.o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sourceSHA256": {
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/import.c": "f152d76447f164897c2932126e5efa337c1d8020ad9d87b4c1e73bf389b5c7bb",
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/guest.c": "bbea6e1306ce650082cceaa6c7bf27ea2b618e6820944155c1697704e9acff58",
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/import.h": "b8fc786ea77ac4756bb8e2d5ce31b7883603b5f59bf8fab88720525e696b3968",
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/photo_bootstrap/assets.h": "5e89263f1a0d434d119ab8e059806033fd9de55239711f3260d2691fb10e7f67",
+    "build.py": "a5fc14ca994aa75210d8f6b77ba72250a2aec4bf42b4e230ffd58a4ceec444e2",
+    "macho_audit.py": "c37831e904a17c803264f1bc5ebb40bc8b161e89da1139c3de7de7c56837b1db"
+  },
+  "clangVersion": "clang version 15.0.7 (AWS 15.0.7-3.amzn2023.0.4)\nTarget: x86_64-amazon-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+  "audit": {
+    "passed": true,
+    "bytes": 50072,
+    "sha256": "37842801ccf9eb92f6940c81c4978b925b5191805afd7847a259659490a30987",
+    "entry": "0x230c",
+    "text": {
+      "name": "__text",
+      "segment": "__TEXT",
+      "address": 7580,
+      "size": 2060,
+      "fileOffset": 3484
+    },
+    "imports": [
+      {
+        "address": "0xc028",
+        "symbol": "___error",
+        "originalExportVA": "0x30001bb0"
+      },
+      {
+        "address": "0xc02c",
+        "symbol": "__exit",
+        "originalExportVA": "0x300099f0"
+      },
+      {
+        "address": "0xc00c",
+        "symbol": "_close",
+        "originalExportVA": "0x30009880"
+      },
+      {
+        "address": "0xc014",
+        "symbol": "_fchdir",
+        "originalExportVA": "0x3001fdd0"
+      },
+      {
+        "address": "0xc018",
+        "symbol": "_fsync",
+        "originalExportVA": "0x3002b210"
+      },
+      {
+        "address": "0xc024",
+        "symbol": "_getuid",
+        "originalExportVA": "0x300024f0"
+      },
+      {
+        "address": "0xc01c",
+        "symbol": "_link",
+        "originalExportVA": "0x3001f750"
+      },
+      {
+        "address": "0xc010",
+        "symbol": "_mkdir",
+        "originalExportVA": "0x300267b0"
+      },
+      {
+        "address": "0xc000",
+        "symbol": "_open",
+        "originalExportVA": "0x30001b60"
+      },
+      {
+        "address": "0xc004",
+        "symbol": "_read",
+        "originalExportVA": "0x300097e0"
+      },
+      {
+        "address": "0xc020",
+        "symbol": "_unlink",
+        "originalExportVA": "0x3000c500"
+      },
+      {
+        "address": "0xc008",
+        "symbol": "_write",
+        "originalExportVA": "0x30009860"
+      }
+    ],
+    "commands": [
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x2",
+      "0xb",
+      "0xe",
+      "0x5",
+      "0xc"
+    ],
+    "sourceLibrarySHA256": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+    "ownSymbols": {
+      "_enter": "0x20a8",
+      "_verify": "0x2148",
+      "_receipt": "0x2448",
+      "_line": "0x2504",
+      "_photo_assets": "0x2700",
+      "_photo_data_0": "0x2790",
+      "_photo_data_1": "0x73ac",
+      "_photo_data_2": "0x7b06",
+      "_photo_data_3": "0x9f0b",
+      "_photo_data_4": "0xa316",
+      "_api_open": "0xc000",
+      "_api_read": "0xc004",
+      "_api_write": "0xc008",
+      "_api_close": "0xc00c",
+      "_api_mkdir": "0xc010",
+      "_api_fchdir": "0xc014",
+      "_api_fsync": "0xc018",
+      "_api_link": "0xc01c",
+      "_api_unlink": "0xc020",
+      "_api_getuid": "0xc024",
+      "_api___error": "0xc028",
+      "_api__exit": "0xc02c",
+      "_photo_import": "0x1d9c",
+      "_start": "0x230c"
+    },
+    "scope": "Own program and eager original imports; this audit does not execute it."
+  },
+  "toolSHA256": {
+    "clang": "f75850dd02e3aa1b517522d0e9050c837bd652e6a762abbc2c1dadcc8d84102f",
+    "linker": "6aef3cf7d8cd6d65d44c1762b3f4af60f2521312601e2e8ed39dab3ada42c0af",
+    "originalLibrary": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2"
+  }
+}

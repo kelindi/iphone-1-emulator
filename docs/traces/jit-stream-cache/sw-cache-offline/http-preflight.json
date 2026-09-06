@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "name": "index.html",
+      "sha256": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "status": 200,
+      "bytes": 5450,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "5450",
+        "content-type": "text/html",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "app.js",
+      "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "status": 200,
+      "bytes": 18558,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "18558",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "phone.css",
+      "sha256": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "status": 200,
+      "bytes": 9067,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "9067",
+        "content-type": "text/css",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "manifest.json",
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "status": 200,
+      "bytes": 1222,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "1222",
+        "content-type": "application/json",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "seed-jit.js",
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "status": 200,
+      "bytes": 9613,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "9613",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "dist/emu.wasm",
+      "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "status": 200,
+      "bytes": 249414,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "249414",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "service-worker.js",
+      "sha256": "24d871728b2ea56926a86ff0eb9e3e3ae9d3b1822ff54a16eb623c3475894ca8",
+      "status": 200,
+      "bytes": 3228,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "3228",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "name": "jit/seed.wasm",
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "status": 200,
+      "bytes": 12341313,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "12341313",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 06:11:59 GMT",
+        "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+        "keep-alive": "timeout=5",
+        "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+        "x-content-type-options": "nosniff"
+      }
+    }
+  ]
+}

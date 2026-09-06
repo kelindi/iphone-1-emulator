@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "scope": "Actual saved-return/frame and mapped caller window match original MeCCA writeSamples memcpy call. Caller BL retirement was not separately traced.",
+  "originalSHA256": "15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec",
+  "function": "__ZN24AudioOutputBufferManager12writeSamplesEN24MainChannelBufferManager27MainChannelBufferDescriptorE",
+  "functionStart": "0x3122b188",
+  "savedReturn": "0x3122b2b8",
+  "window": "0x3122b2b4",
+  "windowSHA256": "b2cf2940489787cd95bcc68c478c545fffd7b5bcd45a4b78e4e9617fc9806b23",
+  "staticCallTarget": "0x312cdc04",
+  "indirectStubSymbol": "_memcpy",
+  "callerBLRetirementObserved": false,
+  "destinationVirtual": "0x387000",
+  "destinationPhysicalStart": "0x160e4000",
+  "authoritativeTTBR0": "0x15c8a000",
+  "authoritativeTTBR1": "0x147d8000"
+}

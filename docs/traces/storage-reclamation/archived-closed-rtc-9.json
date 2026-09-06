@@ -1,0 +1,23 @@
+{
+  "started": 1788695384.2742314,
+  "scope": "Lossless archival of closed completed RTC browser-test snapshots only. No firmware, current fixture, IndexedDB or Service Worker deletion. Original bytes recoverable by gzip decompression.",
+  "freeBefore": 6653919232,
+  "files": [
+    {
+      "originalPath": ".context/rtc-contract/browser-2/after-manual-change.snap",
+      "gzipPath": ".context/rtc-contract/browser-2/after-manual-change.snap.gz",
+      "rawBytes": 256274402,
+      "rawSha256": "70fed30a34f940819b732c3519c712faf035c3750ef248f42b7a60546c985ef8",
+      "gzipBytes": 109158025
+    },
+    {
+      "originalPath": ".context/rtc-write/browser-preview/run-1/before-picker.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/run-1/before-picker.snap.gz",
+      "rawBytes": 256020450,
+      "rawSha256": "e597c54d8ea675914424950257e44f342e6d38f85d2260abcbcd7924dfd83ad2",
+      "gzipBytes": 109035438
+    }
+  ],
+  "ended": 1788695398.2970238,
+  "freeAfter": 6691225600
+}

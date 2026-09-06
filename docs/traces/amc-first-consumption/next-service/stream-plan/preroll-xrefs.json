@@ -1,0 +1,38 @@
+[
+  {
+    "pc": "0x31227688",
+    "target": "0x3122b980",
+    "containing": "__ZN16MainMixerChannel7processEN24MainChannelBufferManager27MainChannelBufferDescriptorE",
+    "start": "0x31227628"
+  },
+  {
+    "pc": "0x3122818c",
+    "target": "0x31227e3c",
+    "containing": "__ZN5Mixer5startEv",
+    "start": "0x31228180"
+  },
+  {
+    "pc": "0x31228348",
+    "target": "0x31227e3c",
+    "containing": "__ZN5Mixer14setMainPlayingEb",
+    "start": "0x31228314"
+  },
+  {
+    "pc": "0x31228574",
+    "target": "0x31227e3c",
+    "containing": "__ZN5Mixer19acquireMixerChannelEv",
+    "start": "0x3122854c"
+  },
+  {
+    "pc": "0x31228bb4",
+    "target": "0x31227e3c",
+    "containing": "__ZN5Mixer15SetGlobalOutputERN12MixerChannel13ChannelFormatEbb",
+    "start": "0x31228ad4"
+  },
+  {
+    "pc": "0x3124dc4c",
+    "target": "0x31236650",
+    "containing": "__ZN38MeccaTelephonySupportedCoreAudioDevice7StartIOEv",
+    "start": "0x3124db54"
+  }
+]

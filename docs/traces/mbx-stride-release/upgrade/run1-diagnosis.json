@@ -1,0 +1,209 @@
+{
+  "originalOverallResult": "fail",
+  "originalFunctionalChecks": 30,
+  "notRetrospectivelyAccepted": true,
+  "exactCp1252ThenUtf8Rows": [
+    {
+      "phase": "online-A",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788696106682,
+      "path": "phone.css",
+      "bytes": 9400,
+      "sha256": "be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204",
+      "file": "served/be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204.bin"
+    },
+    {
+      "phase": "waiting-B",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788696134440,
+      "path": "phone.css",
+      "bytes": 9400,
+      "sha256": "be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204",
+      "file": "served/be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204.bin"
+    },
+    {
+      "phase": "corrupt-update-C",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788696163479,
+      "path": "phone.css",
+      "bytes": 9400,
+      "sha256": "be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204",
+      "file": "served/be0854c9c72a3e970c1818708381a2ed8206b675f056879950705a2bf88f8204.bin"
+    }
+  ],
+  "independentExactCssBodyReceipts": [
+    {
+      "phase": "online-A",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788696097376,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "online-A",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696107206,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "waiting-B",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696134375,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "waiting-B",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696137952,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "activate-B",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696144930,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "disconnected-B",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696150808,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "corrupt-seed-offline",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696155767,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "url": "http://localhost:8235/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696164126,
+      "path": "phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "file": "served/ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a.bin"
+    }
+  ],
+  "installedWorkerRawIntegritySource": [
+    {
+      "version": "A",
+      "actualReceivedSWsha256": "213d8b33e1fdd660a3934d56c53b5a3ea277da79c0a76141450609f2dbe1346c",
+      "declaredCssSha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "rawArrayBufferSHAcheckedBeforeCachePut": true
+    },
+    {
+      "version": "B",
+      "actualReceivedSWsha256": "f8ad7c6d1d8130878073bf77f3e42a3ddec74abda688e27cd46bdad97913d02b",
+      "declaredCssSha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "rawArrayBufferSHAcheckedBeforeCachePut": true
+    }
+  ],
+  "unavailableBodies": [
+    {
+      "phase": "corrupt-kernel-offline",
+      "url": "http://localhost:8235/jit/regions.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696165159,
+      "path": "jit/regions.json",
+      "error": "response.body: Target page, context or browser has been closed"
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "url": "http://localhost:8235/jit/abi.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696165160,
+      "path": "jit/abi.json",
+      "error": "response.body: Target page, context or browser has been closed"
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "url": "http://localhost:8235/manifest.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788696165463,
+      "path": "manifest.json",
+      "error": "response.body: Response body is unavailable"
+    }
+  ],
+  "serverSourceSha256": "3de11306b65d145e937f04bef097fcda5638ebe91d9b36373aea25ca4120aee2",
+  "serverHeadersFromFrozenSource": {
+    "Content-Type": "text/css",
+    "Content-Length": 9396,
+    "Content-Encoding": null
+  },
+  "headersLimitation": "Original run did not retain actual response headers or CDP base64Encoded bit. Server source explicitly emits these headers; transformation path is source-supported inference, exact transformed bytes are directly established.",
+  "playwrightBundleSha256": "549070af3acabb3efcc4f55bfe6210f9f7c2fcf633cf7eaa59bfe60719969171",
+  "playwrightSourceLines": [
+    36437,
+    36450
+  ],
+  "playwrightBehavior": "Network.getResponseBody body is re-encoded UTF8 when base64Encoded false; detached request throws Response body is unavailable.",
+  "originalSavedArtifactHash": "151b813a5dd8f026cf6b6fc69b195c53d4c314e3e577e343073df1468b492bff",
+  "sameSavedRecord": true,
+  "closure": {
+    "context": {
+      "closed": true
+    },
+    "browser": {
+      "closed": true
+    },
+    "origin": {
+      "closed": true,
+      "result": {
+        "listening": false,
+        "connectionsClosed": 0,
+        "refusal": {
+          "host": "127.0.0.1",
+          "port": 8235,
+          "code": "ECONNREFUSED",
+          "at": "2026-09-06T12:02:52.337Z"
+        }
+      }
+    }
+  }
+}

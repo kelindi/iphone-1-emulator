@@ -1,0 +1,15 @@
+{
+  "fullDecodeErrors": "",
+  "files": [
+    {
+      "path": "tweets/videos/mbx_stride_default_release.mp4",
+      "bytes": 943895,
+      "sha256": "9271d31dfd1a45da2cb299bde14b747cc266f8ed7589015484212d9aceff3943"
+    },
+    {
+      "path": "tweets/thumbnails/mbx_stride_default_release.jpg",
+      "bytes": 50855,
+      "sha256": "e930a0d42a643fad5014431fb8a7ed02fc4678c84a33d2d1b7c55644649a8180"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{"phase":"warmup-A","passed":true,"checkpoints":6}
+{"phase":"warmup-B","passed":true,"checkpoints":6}
+{"phase":"arm-1-A","runMs":22706.88873099994,"processCpuMs":22736.518999999993,"passed":true}
+{"phase":"arm-2-B","runMs":21467.946557999952,"processCpuMs":21480.879000000004,"passed":true}
+{"phase":"arm-3-B","runMs":21364.327194999947,"processCpuMs":21374.688999999973,"passed":true}
+{"phase":"arm-4-A","runMs":22756.71205599996,"processCpuMs":22762.181999999997,"passed":true}
+{"end":true,"passed":true}

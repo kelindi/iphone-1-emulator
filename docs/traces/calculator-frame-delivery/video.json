@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "Complete source video, no cuts or speed changes; one-thread H.264 encode, native dimensions/frame timing. Thumbnail actual 15.7-second frame manually reviewed.",
+  "files": {
+    ".context/input-delivery/run-1/page@95c0ee33573924a198ed6fe435081332.webm": {
+      "seconds": 78.72,
+      "bytes": 3795265,
+      "sha256": "ec5ca8bda5cf0b2a1371c3dc89d0289572ef1f772042cb0f9f7e1d06ad5f73c5"
+    },
+    "tweets/videos/calculator_frame_delivery.mp4": {
+      "seconds": 78.72,
+      "bytes": 1188073,
+      "sha256": "c8526494781bc5165b30523951468054d5905e3ab36b8738c3e6326da2123cf5"
+    }
+  },
+  "thumbnail": {
+    "path": "tweets/thumbnails/calculator_frame_delivery.jpg",
+    "seconds": 15.7,
+    "sha256": "7ab82865145a9c225e3862e1fce37c5c9d66b3dab965f4e15c6bbd6052e70aec"
+  }
+}

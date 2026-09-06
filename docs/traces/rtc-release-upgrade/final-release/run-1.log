@@ -1,0 +1,12 @@
+00-fresh-home
+01-actual-settings
+02-physical-home
+03-real-autosave
+04-autosave-reload
+05-offline-installed
+06-final-offline-running
+{
+  "passed": true,
+  "checks": 21,
+  "durationSeconds": 58.470814763
+}

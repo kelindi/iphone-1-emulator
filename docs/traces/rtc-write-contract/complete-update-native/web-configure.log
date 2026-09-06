@@ -1,0 +1,5 @@
+emcmake: cmake -S .context/rtc-write/web-source -B .context/rtc-write/web-build -DIPHONE1_WEB=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/vercel-sandbox/iphone-1/.context/emsdk/node/24.19.0_64bit/bin/node in directory /home/vercel-sandbox/iphone-1
+-- Found Python3: /usr/bin/python3.11 (found version "3.11.15") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/rtc-write/web-build

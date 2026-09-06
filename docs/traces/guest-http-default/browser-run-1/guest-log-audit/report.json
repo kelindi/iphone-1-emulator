@@ -1,0 +1,70 @@
+{
+  "snapshotSHA256": "c407b3734919c76dc0eae153b1bb70366969c4548e3fa2232716a1bc3395e693",
+  "ramdiskPhysicalBase": "085d0000",
+  "ramdiskBytes": 176160768,
+  "scope": "Original loader; catalog and file backing bytes only, no guest execution. Dirty filesystem buffers may not yet be reflected in backing bytes. Missing logs do not prove no event.",
+  "catalogFiles": 2596,
+  "selected": [
+    {
+      "path": "/System/Library/LaunchDaemons/com.iphone1.local-demo.http.plist",
+      "logicalBytes": 545,
+      "completeExtents": true,
+      "sha256": "a564e1005818ea3eef59304f6875f1e2b13a3392f305a96aa4aea08c944e6588",
+      "artifact": "0.bin"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/CrashReporterSupport.framework/CrashReporterSupport",
+      "logicalBytes": 11584,
+      "completeExtents": true,
+      "sha256": "5d59ac5c28f68107615a781b7bb0005fd7685f910be8604e3741bc9d87013d7f",
+      "artifact": "1.bin"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/CrashReporterSupport.framework/Info.plist",
+      "logicalBytes": 761,
+      "completeExtents": true,
+      "sha256": "197efbb31ac278fa2b10da0a615757ec2fe4337bae1369da66f8f3ba6b74f561",
+      "artifact": "2.bin"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/CrashReporterSupport.framework/English.lproj/Localizable.strings",
+      "logicalBytes": 2932,
+      "completeExtents": true,
+      "sha256": "73ee8606ea9efb3aead4206688b443f6c0e13834adba99bae3f0520f7c3f1fe1",
+      "artifact": "3.bin"
+    },
+    {
+      "path": "/private/var/log/lastlog",
+      "logicalBytes": 0,
+      "completeExtents": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact": "4.bin"
+    },
+    {
+      "path": "/private/var/log/wtmp",
+      "logicalBytes": 36,
+      "completeExtents": true,
+      "sha256": "30d0b54cc9baf41b1e2e1d77da503003fd346b1b9f0e3aca5a30e4041cc1843d",
+      "artifact": "5.bin"
+    },
+    {
+      "path": "/private/var/logs/CrashReporter/LatestCrash.plist",
+      "logicalBytes": 61,
+      "completeExtents": true,
+      "sha256": "559f856f063821c2b0465254fbd91f1ccd3c3035c6fd50df2c0b81901ded3887",
+      "artifact": "6.bin"
+    },
+    {
+      "path": "/private/var/logs/CrashReporter/crashdump-2009-12-31-161742.plist",
+      "logicalBytes": 1633,
+      "completeExtents": true,
+      "sha256": "5da3fe113966906cfffad6e774116238a49537c8c81e81eaf9df2039698f7d9c",
+      "artifact": "7.bin"
+    }
+  ],
+  "pins": {
+    ".context/guest-http-default/extract_failed_ramdisk.c": "1d8aabc66cfe48021589e6934d88f0cae1970c07378f45133de067d5e1c016e3",
+    ".context/guest-http-default/extract_failed_ramdisk": "033da076143ce09dbf9fb090b409bb28c4e967d3dc2a777f0d3ee339c7fc6d8d",
+    "/home/vercel-sandbox/iphone-1/.context/guest-http-default/inspect_failed_logs.py": "5cf4fc94634d7138f8fa0f2789b77aec2165b7fb1eb88c03162bc40da36e7bb4"
+  }
+}

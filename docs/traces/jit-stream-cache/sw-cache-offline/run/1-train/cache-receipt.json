@@ -1,0 +1,18 @@
+{
+  "accepted": false,
+  "analysis": {
+    "session": "startup",
+    "eventCounts": {
+      "v8.wasm.compileConsume": 3,
+      "v8.wasm.compileConsumeDone": 2,
+      "wasm.FinishAsyncCompile": 2,
+      "wasm.OnCompilationSucceeded": 2,
+      "v8.wasm.compiledModule": 15,
+      "v8.wasm.cachedModule": 15
+    },
+    "consumption": [],
+    "seedAccepted": [],
+    "unmatchedRelevantScopes": [],
+    "method": "Only a unique URL hit within the same complete compileConsume scope as digest and Deserialize containing FinishAsyncCompile/OnCompilationSucceeded can pass. Split callbacks remain unbound."
+  }
+}

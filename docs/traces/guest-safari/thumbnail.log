@@ -1,0 +1,19 @@
+Input #0, png_pipe, from '.context/guest-safari/browser-run-1/08-local-load.png':
+  Duration: N/A, bitrate: N/A
+  Stream #0:0: Video: png, rgb24(pc), 1280x1000, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> mjpeg (native))
+[swscaler @ 0x322ec100] deprecated pixel format used, make sure you did set range correctly
+    Last message repeated 3 times
+Output #0, image2, to 'tweets/thumbnails/091_safari_local_demo.jpg':
+  Metadata:
+    encoder         : Lavf60.3.100
+  Stream #0:0: Video: mjpeg, yuvj444p(pc, progressive), 1280x1000, q=2-31, 200 kb/s, 25 fps, 25 tbn
+    Metadata:
+      encoder         : Lavc60.3.100 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=2.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    [image2 @ 0x3228bc80] The specified filename 'tweets/thumbnails/091_safari_local_demo.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x3228bc80] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+frame=    1 fps=0.0 q=2.0 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
+video:61kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

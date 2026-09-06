@@ -1,0 +1,10 @@
+3000e8b0 0dc0a0e1   mov      ip, sp
+3000e8b4 30002de9   push     {r4, r5}
+3000e8b8 00409ce5   ldr      r4, [ip]
+3000e8bc 69c0a0e3   mov      ip, #0x69
+3000e8c0 800000ef   svc      #0x80
+3000e8c4 3000bde8   pop      {r4, r5}
+3000e8c8 1eff2f31   bxlo     lr
+3000e8cc 04c09fe5   ldr      ip, [pc, #4]
+3000e8d0 0cc09fe7   ldr      ip, [pc, ip]
+3000e8d4 000000ea   b        #0x3000e8dc

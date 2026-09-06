@@ -1,0 +1,328 @@
+{
+  "files": [
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/offline-upgrade.mjs",
+      "bytes": 30237,
+      "sha256": "c03e4ed12ef07905077443b7ddf8bad4dfc97a9212defea1ac92690f77c7084a"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/validate-assets.mjs",
+      "bytes": 3729,
+      "sha256": "855d8e44f4f05723a0cb2155d18ce99b295fe52fb5d781e2553b35444e994ced"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/run-upgrade.py",
+      "bytes": 3425,
+      "sha256": "de4787f12936b6d01d48ac2cde6ce4bbb8de7e80e379d2c50d28df0b6265ff4d"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/test-validator.mjs",
+      "bytes": 4476,
+      "sha256": "67f66460a4d1790e3f190987f550390f636d785f28f0a454753df7b48c9c1392"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/validator-tests.json",
+      "bytes": 1060,
+      "sha256": "ccaca0460bc1ead18840ec87c2642b0b09502f052fd7081838d7aa92ea4bb4c2"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/validator-tests.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/run-contract.md",
+      "bytes": 4797,
+      "sha256": "4782721acde4cb014944d9f8b847ffdbdfb60f9fd7a617a63b242327883ab343"
+    },
+    {
+      "path": ".context/mbx-stride-integration/upgrade-v2/harness.patch",
+      "bytes": 14163,
+      "sha256": "a314f369c020b4711b9a483b546370693bcbaeb5cfc90ea1a88e4b9bf62c6175"
+    },
+    {
+      "path": ".context/mbx-stride-integration/site-pins.json",
+      "bytes": 4410,
+      "sha256": "10cb43efb27ccc47f30ff972e8cdc639f69efea014cb08e2892a1b2c13f620c5"
+    },
+    {
+      "path": ".context/mbx-stride-integration/run1-diagnosis.json",
+      "bytes": 7388,
+      "sha256": "d65ef07d233d652f802881f780faaa55c6a2744d44f3fa88a0583222c2fcb1c5"
+    },
+    {
+      "path": ".context/mbx-stride-integration/prepare-upgrade-v2.py",
+      "bytes": 4403,
+      "sha256": "64f56630edf152cf0e15bb64a493d9039fab1850fa653140d6c1deb4c6df5c5b"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/index.html",
+      "bytes": 5521,
+      "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/icon.svg",
+      "bytes": 379,
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/app.js",
+      "bytes": 18595,
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/storage.js",
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/checkpoint-worker.js",
+      "bytes": 615,
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/assets.js",
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/emu-worker.js",
+      "bytes": 11426,
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/manifest.json",
+      "bytes": 1222,
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/seed-jit.js",
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/service-worker.template.js",
+      "bytes": 1970,
+      "sha256": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/service-worker.js",
+      "bytes": 3228,
+      "sha256": "dcd0acd35b8d24edbf32537248539604852666a52312402e51ee6d7cb7b42267"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/dist/emu.js",
+      "bytes": 17756,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/dist/emu.wasm",
+      "bytes": 250531,
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/jit/seed.wasm",
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/jit/regions.json",
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/jit/abi.json",
+      "bytes": 364,
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/devicetree_m68ap.bin",
+      "bytes": 36864,
+      "sha256": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/home_1A543a.snap.gz.part0",
+      "bytes": 50201156,
+      "sha256": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/home_1A543a.snap.gz.part1",
+      "bytes": 50201155,
+      "sha256": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/kernel_1A543a.macho",
+      "bytes": 5888896,
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/rootfs_1A543a_act.img.gz.part0",
+      "bytes": 40606822,
+      "sha256": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd"
+    },
+    {
+      "path": ".context/mbx-stride-integration/previous/firmware/rootfs_1A543a_act.img.gz.part1",
+      "bytes": 40606821,
+      "sha256": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/index.html",
+      "bytes": 5521,
+      "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/icon.svg",
+      "bytes": 379,
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/app.js",
+      "bytes": 18595,
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/storage.js",
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/checkpoint-worker.js",
+      "bytes": 615,
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/assets.js",
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/emu-worker.js",
+      "bytes": 11426,
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/manifest.json",
+      "bytes": 1222,
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/seed-jit.js",
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/service-worker.template.js",
+      "bytes": 1970,
+      "sha256": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/service-worker.js",
+      "bytes": 3228,
+      "sha256": "b90fffb2769ee9627a8154fea469dabb28768ad65015a5f4e1112b62d46789a0"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/smoke.mjs",
+      "bytes": 579,
+      "sha256": "78dd1bd8126e4e029826069ba21d54d7793dfb9c6f9e42e80d6ff37860dca854"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/dist/emu.js",
+      "bytes": 17756,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/dist/emu.wasm",
+      "bytes": 250531,
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/dist/package.json",
+      "bytes": 20,
+      "sha256": "dbf8353f77358bc12169b7bb7301e1978d5b503e002ee927229a8993672818fc"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/jit/seed.wasm",
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/jit/regions.json",
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/jit/abi.json",
+      "bytes": 364,
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/devicetree_m68ap.bin",
+      "bytes": 36864,
+      "sha256": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/home_1A543a.snap.gz.part0",
+      "bytes": 50201156,
+      "sha256": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/home_1A543a.snap.gz.part1",
+      "bytes": 50201155,
+      "sha256": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/kernel_1A543a.macho",
+      "bytes": 5888896,
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/rootfs_1A543a_act.img.gz.part0",
+      "bytes": 40606822,
+      "sha256": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd"
+    },
+    {
+      "path": ".context/mbx-stride-integration/candidate/firmware/rootfs_1A543a_act.img.gz.part1",
+      "bytes": 40606821,
+      "sha256": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f"
+    },
+    {
+      "path": ".context/jit-sw-cache-v4/physical-server.mjs",
+      "bytes": 1186,
+      "sha256": "ad6afee642e34ae8da5fc12a33a80819483fe417f78cfb7a4f6a8ccfb4939ce8"
+    },
+    {
+      "path": ".context/jit-fallback-census/frame-packet.mjs",
+      "bytes": 760,
+      "sha256": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314"
+    },
+    {
+      "path": "/usr/bin/google-chrome",
+      "bytes": 1034,
+      "sha256": "aea09d69ce7f24d5901f6bfb15dd44d0c856e793e0a498f8d8393ec7d2c308ec"
+    },
+    {
+      "path": "/opt/google/chrome/chrome",
+      "bytes": 290770248,
+      "sha256": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797"
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "bytes": 122502392,
+      "sha256": "bf9112eb83a827dc9f9c8d19bb7bddcbf00f7b2fedae18fdcaee05406981f20a"
+    }
+  ],
+  "scope": "One separately frozen UTF8+semantic-negative-observation upgrade; original overallFAIL preserved. NOT LAUNCHED",
+  "initialDiskFloorBytes": 6442450944,
+  "outerWallCapSeconds": 600,
+  "previousFailedPinsSha256": "1ff8410a96ec299e462d3d9ac1aaa6bd1c6c9f218aa3897a64441e866e39c3c8"
+}

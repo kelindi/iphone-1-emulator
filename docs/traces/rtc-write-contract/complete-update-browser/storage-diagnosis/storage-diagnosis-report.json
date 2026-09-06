@@ -1,0 +1,80 @@
+{
+  "passed": false,
+  "console": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8201/storage-only.html",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/storage.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/checkpoint-worker.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/emu-worker.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/storage.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/checkpoint-worker.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8201/storage.js",
+      "status": 200
+    }
+  ],
+  "failures": [],
+  "stages": [
+    {
+      "i": 0,
+      "passed": false,
+      "phase": "owned compression and IDB commit",
+      "error": "Failed to fetch",
+      "stack": "Error: Failed to fetch\n    at worker.onmessage (http://127.0.0.1:8201/storage.js:128:16)",
+      "estimate": {
+        "quota": 10737418240,
+        "usage": 0,
+        "usageDetails": {}
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "name": "app.js",
+      "status": 200,
+      "bytes": 18558,
+      "sha": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2"
+    },
+    {
+      "name": "storage.js",
+      "status": 200,
+      "bytes": 9079,
+      "sha": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "name": "checkpoint-worker.js",
+      "status": 200,
+      "bytes": 615,
+      "sha": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "name": "emu-worker.js",
+      "status": 200,
+      "bytes": 11426,
+      "sha": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+    }
+  ],
+  "durationMs": 1778
+}

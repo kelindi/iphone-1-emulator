@@ -1,0 +1,4 @@
+  File "/home/vercel-sandbox/iphone-1/.context/guest-safari/audit.py", line 54
+    channels=3 if kind==2 else4;stride=w*channels;data=zlib.decompress(payload);assert len(data)==h*(stride+1);out=bytearray();previous=bytearray(stride)
+                          ^
+SyntaxError: invalid syntax

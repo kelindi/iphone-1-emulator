@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "originalWorkerSha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+  "inverseExact": true,
+  "originalSeedLoaderUnchanged": true,
+  "originalRegionsExact": true,
+  "abiOnlyObserverModuleHashChanged": true,
+  "scope": "Source/site preparation only; no browser launched",
+  "actualWorkerSha256": "152640014c5305d89a15dd30e001606db1727547ade5b30f6ee295087d2e5e38",
+  "finalInverseExact": true,
+  "originalUnmodifiedClockScheduling": true
+}

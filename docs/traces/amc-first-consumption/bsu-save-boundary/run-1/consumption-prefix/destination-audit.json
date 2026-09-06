@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "scope": "Exact083, actual original-mapped user copy/frame/destination and retained-user-mapping revalidation. No downstream DMA or playback.",
+  "sourceVirtual": "0x569220",
+  "destinationVirtual": "0x387000",
+  "copiedBytes": 4096,
+  "pcmSHA256": "2ce90c8f574188134ae90dc6a79e045c8e75c99c05ed28a466669d381f7ec372",
+  "savedReturn": "0x3122b2b8",
+  "callerWindowAvailable": true,
+  "callerWindowAddress": "0x3122b2b4",
+  "callerImageIdentityEstablished": false,
+  "capturedUSRContext": {
+    "cpsr": 1610612752,
+    "sctlr": 12597261,
+    "ttbr0": 365469696,
+    "ttbr1": 343769088,
+    "ttbcr": 2,
+    "dacr": 1
+  },
+  "physicalMappings": [
+    [
+      370032640,
+      1024
+    ],
+    [
+      370033664,
+      1024
+    ],
+    [
+      370034688,
+      1024
+    ],
+    [
+      370035712,
+      1024
+    ]
+  ],
+  "captureCycles": 9873751123,
+  "finishCycles": 9873752634
+}

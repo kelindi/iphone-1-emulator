@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/ordering-audit.py", line 57, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/ordering-audit.py", line 47, in run
+    rows=records((out/'ordering.bin').read_bytes(),trace,originals)
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/ordering-audit.py", line 18, in records
+    else:assert flags==0x10000 and state==o0==o1==0, 'unavailable kernel fields fabricated' 
+AssertionError: unavailable kernel fields fabricated

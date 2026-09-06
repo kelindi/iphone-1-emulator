@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "totals": {
+    "calls": 26906160,
+    "ok": 26906160,
+    "fetched": 26903869,
+    "nofetch": 2291,
+    "nonok": 0,
+    "overflow": 0,
+    "mapOverflow": 0,
+    "epoch": 2,
+    "installs": 0,
+    "rows": 285763,
+    "enabled": 0
+  },
+  "generatedRetired": 73093840,
+  "scope": "Virtual PC/opcode completed-step footprint; conditional no-ops retire, interpreter exceptions/status remain; no side-effect or physical/routine identity claim.",
+  "distinctWorkKeys": 331509,
+  "generatedPositions": 58878,
+  "rawHashes": {
+    "rows": "7d82ca321ea4c0644cf88e08578699da2933342c1284f67c14fc639f09bbbf53",
+    "generated": "adb6c3302f6ec8dcd41e070ad87b3260419b55a6774566b7a1c5e21969695362",
+    "summary": "53469c488aed1fdb5afbf175cbab6c6563199988dfb77be62d79b3d44fa00bf3"
+  }
+}

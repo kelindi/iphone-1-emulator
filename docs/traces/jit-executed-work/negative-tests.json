@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "skipped-retirement",
+      "rejected": true,
+      "architectureUnchangedBeforeCountFailure": {
+        "passed": true,
+        "label": "cross-region-exact-budget",
+        "engine": 1,
+        "count": 1,
+        "stateSha256": "9df72d2e6e3e2a856ad6b2828a3fec792735005f55d6d36f5c9ff2ca035222b1"
+      },
+      "exitCode": 1
+    },
+    {
+      "name": "wrong-pc",
+      "rejected": true,
+      "architectureUnchangedBeforeCountFailure": {
+        "passed": true,
+        "label": "cross-region-exact-budget",
+        "engine": 1,
+        "count": 1,
+        "stateSha256": "9df72d2e6e3e2a856ad6b2828a3fec792735005f55d6d36f5c9ff2ca035222b1"
+      },
+      "exitCode": 1
+    },
+    {
+      "name": "whole-block-credit",
+      "rejected": true,
+      "architectureUnchangedBeforeCountFailure": {
+        "passed": true,
+        "label": "cross-region-exact-budget",
+        "engine": 1,
+        "count": 1,
+        "stateSha256": "9df72d2e6e3e2a856ad6b2828a3fec792735005f55d6d36f5c9ff2ca035222b1"
+      },
+      "exitCode": 1
+    }
+  ]
+}

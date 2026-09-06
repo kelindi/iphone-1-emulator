@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "started": 1788697269.9092886,
+  "capSeconds": 600,
+  "freeBefore": 6789304320,
+  "frozenSha256": "55438d8cc1767179292bc709c488ba54227d2ed3eea6af5f6b6b2ccb92cfd516",
+  "exitCode": 0,
+  "observed": [
+    {
+      "pid": 3919711,
+      "ppid": 3919706,
+      "startTicks": "6697352",
+      "state": "R"
+    },
+    {
+      "pid": 3919723,
+      "startTicks": "6697414",
+      "type": "browser"
+    },
+    {
+      "pid": 3919727,
+      "ppid": 3919723,
+      "startTicks": "6697415",
+      "state": "S"
+    },
+    {
+      "pid": 3919728,
+      "ppid": 3919723,
+      "startTicks": "6697415",
+      "state": "S"
+    },
+    {
+      "pid": 3919737,
+      "ppid": 3919723,
+      "startTicks": "6697423",
+      "state": "S"
+    },
+    {
+      "pid": 3919738,
+      "ppid": 3919723,
+      "startTicks": "6697423",
+      "state": "S"
+    },
+    {
+      "pid": 3919758,
+      "startTicks": "6697430",
+      "type": "GPU"
+    },
+    {
+      "pid": 3919761,
+      "startTicks": "6697431",
+      "type": "network.mojom.NetworkService"
+    },
+    {
+      "pid": 3919762,
+      "startTicks": "6697433",
+      "type": "storage.mojom.StorageService"
+    },
+    {
+      "pid": 3919805,
+      "startTicks": "6697439",
+      "type": "renderer"
+    },
+    {
+      "pid": 3919814,
+      "startTicks": "6697442",
+      "type": "renderer"
+    },
+    {
+      "pid": 3919816,
+      "startTicks": "6697442",
+      "type": "renderer"
+    },
+    {
+      "pid": 3919831,
+      "ppid": 3919711,
+      "startTicks": "6697444",
+      "state": "S"
+    },
+    {
+      "pid": 3919976,
+      "startTicks": "6701579",
+      "type": "renderer"
+    },
+    {
+      "pid": 3919985,
+      "ppid": 3919711,
+      "startTicks": "6701582",
+      "state": "S"
+    },
+    {
+      "pid": 3920048,
+      "startTicks": "6702272",
+      "type": "renderer"
+    },
+    {
+      "pid": 3920057,
+      "startTicks": "6702274",
+      "type": "renderer"
+    },
+    {
+      "pid": 3920069,
+      "ppid": 3919711,
+      "startTicks": "6702277",
+      "state": "R"
+    }
+  ],
+  "allClosed": true,
+  "forced": [],
+  "ended": 1788697348.3393962,
+  "freeAfter": 6650613760
+}

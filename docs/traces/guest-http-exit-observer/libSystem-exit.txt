@@ -1,0 +1,9 @@
+300099f0 01c0a0e3   mov      ip, #1
+300099f4 800000ef   svc      #0x80
+300099f8 0400003a   blo      #0x30009a10
+300099fc 04c09fe5   ldr      ip, [pc, #4]
+30009a00 0cc09fe7   ldr      ip, [pc, ip]
+30009a04 000000ea   b        #0x30009a0c
+30009a08 64ecff07   ldrbeq   lr, [pc, r4, ror #24]!
+30009a0c 1cff2fe1   bx       ip
+30009a10 1eff2fe1   bx       lr

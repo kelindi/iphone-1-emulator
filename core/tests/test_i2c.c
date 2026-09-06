@@ -417,8 +417,35 @@ static void test_unknown_pmu_registers_are_visible_and_bounded(void) {
 
     uint8_t rejected = 0x99u;
     drive_write(&bus, PCF50635_I2C_ADDR, PCF50635_RTCSC, &rejected, 1u);
+    CHECK(pmu.unknown_writes == 0u,
+          "pending RTC byte was rejected before the update pulse");
+    s5l_pcf50635_tick(&pmu, S5L8900_TB_HZ);
     CHECK(pmu.unknown_writes == 1u,
           "unsupported RTC write was not made visible");
+}
+
+static void test_original_rtc_update_over_i2c(void) {
+    s5l_i2c_t bus;
+    s5l_pcf50635_t pmu;
+    setup_pmu(&bus, &pmu);
+    const uint8_t original_date[7] = {0x25, 0x13, 0x00, 5, 1, 1, 0x10};
+    uint8_t before[7], during[7], after[7];
+    drive_read(&bus, PCF50635_I2C_ADDR, PCF50635_RTCSC, before, 7u);
+    drive_write(&bus, PCF50635_I2C_ADDR, PCF50635_RTCSC, original_date, 7u);
+    s5l_pcf50635_tick(&pmu, S5L8900_TB_HZ - 1u);
+    drive_read(&bus, PCF50635_I2C_ADDR, PCF50635_RTCSC, during, 7u);
+    CHECK(memcmp(before, during, sizeof before) == 0,
+          "date reads changed before the second pulse");
+    s5l_pcf50635_tick(&pmu, 1u);
+    drive_read(&bus, PCF50635_I2C_ADDR, PCF50635_RTCSC, after, 7u);
+    CHECK(memcmp(after, original_date, sizeof after) == 0 &&
+          pmu.seconds == 1262304805ull && pmu.unknown_writes == 0u,
+          "original seven-byte I2C update did not commit at the pulse");
+    uint8_t event;
+    drive_read(&bus, PCF50635_I2C_ADDR, PCF50635_INT1, &event, 1u);
+    CHECK((event & 0x80u) != 0u, "SECOND event missing after update");
+    drive_read(&bus, PCF50635_I2C_ADDR, PCF50635_INT1, &event, 1u);
+    CHECK((event & 0x80u) == 0u, "SECOND event did not clear on read");
 }
 
 static void test_machine_routes_widths_windows_and_irqs(void) {
@@ -612,6 +639,7 @@ int main(void) {
     test_pmu_rtc_and_tick_overflow();
     test_pmu_standby_wake_event_is_one_shot();
     test_unknown_pmu_registers_are_visible_and_bounded();
+    test_original_rtc_update_over_i2c();
     test_machine_routes_widths_windows_and_irqs();
     test_malformed_runtime_state_cannot_index_callbacks();
     test_snapshot_mid_transaction_rebinds_callbacks();

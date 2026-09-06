@@ -1,0 +1,26 @@
+{
+  "files": {
+    ".context/jit-mixed-coverage/run-browser.mjs": "f69b4a5199fe2dd029fcedb91c9b880de82ff6d5fa5b00a96b08cf014ad473fc",
+    ".context/jit-mixed-coverage/run-series.py": "0a023f1f5bd98429320aa137156639c52525b84708b3333d672b36039fd78a81",
+    ".context/jit-mixed-coverage/cache-server.mjs": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+    ".context/jit-mixed-coverage/frames.mjs": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+    ".context/jit-mixed-coverage/frame-packet.mjs": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+    ".context/jit-mixed-coverage/site-pins.json": "a8065685f672deef56a959dd3d3b10d8bd962040d87a313a4126d05d7a1685cf",
+    ".context/jit-mixed-coverage/analyze-compile.py": "f9be96176fa7b34d7cd972fc1e32a18feb87b74ecd12fdbf67c11eba9ee90f61",
+    ".context/jit-mixed-coverage/test-compile.py": "271e0f1f2e600762ed99a40b98e15bcd5c4eb910f8351d14364910fa19c65bc5",
+    ".context/jit-mixed-coverage/frames.test.mjs": "5eb8cbd3bdefffd04fe946fc4326a087b2665f54cd241ba569312617115cb551",
+    ".context/jit-mixed-coverage/frame-packet.test.mjs": "b324c8fd013ce57ddd6939bac201d8af292eb33dfe562776304a18861bb6335e",
+    ".context/jit-mixed-coverage/references/C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    ".context/jit-mixed-coverage/references/C0-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    ".context/jit-mixed-coverage/references/C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    ".context/jit-mixed-coverage/references/C0-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    ".context/jit-mixed-coverage/references/H1-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    ".context/jit-mixed-coverage/references/H1-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    ".context/jit-mixed-coverage/references/H1-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    ".context/jit-mixed-coverage/references/H1-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "docs/traces/browser-first-use/cdp.mjs": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40",
+    "/opt/google/chrome/chrome": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797"
+  },
+  "frozenAt": 1788681716.3661072,
+  "method": "4 fresh profiles ABBA,240seconds PER ARM,1040seconds series bound, no retry. Same frozen censusUI, normalImport/Save/clock; strict settled frames; foreground+background CPU interval union; all original bits retained. No native cache training. No Profiler or Debugger."
+}

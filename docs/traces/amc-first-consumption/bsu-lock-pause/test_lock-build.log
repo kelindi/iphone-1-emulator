@@ -1,0 +1,9 @@
+In file included from .context/amc-first/stage-v/source/lock-receipt.h:3,
+                 from .context/amc-first/stage-v/source/test_lock.c:2:
+.context/amc-first/stage-v/source/retirement.h:14:13: warning: ‘release_finish_valid’ defined but not used [-Wunused-function]
+   14 | static bool release_finish_valid(const guest_step*s,uint64_t callback,uint32_t pc,uint32_t cpsr,uint32_t opcode,
+      |             ^~~~~~~~~~~~~~~~~~~~
+In file included from .context/amc-first/stage-v/source/test_lock.c:1:
+.context/amc-first/stage-v/source/later.h:6:13: warning: ‘admit_later’ defined but not used [-Wunused-function]
+    6 | static bool admit_later(const amc_engine*s,const amc_physical_ram*r,unsigned number,
+      |             ^~~~~~~~~~~

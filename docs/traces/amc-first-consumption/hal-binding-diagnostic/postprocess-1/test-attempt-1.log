@@ -1,0 +1,7 @@
+PASS 12 synthetic independent binding-table/fault controls; no guest
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/test_binding_audit.py", line 19, in <module>
+    assert a.geometry_from_header(h)==(0x08000000,0x10000000)
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 6, in geometry_from_header
+    assert len(header)==64 and header.startswith(b'S5LBox SNAPSHOT') and struct.unpack_from('<I',header,20)[0]==40,'snapshot geometry header differs'
+AssertionError: snapshot geometry header differs

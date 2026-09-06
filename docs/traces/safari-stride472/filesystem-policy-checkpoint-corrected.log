@@ -1,0 +1,3 @@
+actual failed Safari snapshot RAM filesystem /System/Library/LaunchDaemons/com.apple.SpringBoard.plist {'LK_ENABLE_MBX2D': '1', 'LK_ENABLE_OGL': '0'}
+actual retained091 installed filesystem image /System/Library/LaunchDaemons/com.apple.SpringBoard.plist {'LK_ENABLE_MBX2D': '0', 'LK_ENABLE_OGL': '0'}
+actual091 imported listener checkpoint RAM filesystem /System/Library/LaunchDaemons/com.apple.SpringBoard.plist {'LK_ENABLE_MBX2D': '0', 'LK_ENABLE_OGL': '0'}

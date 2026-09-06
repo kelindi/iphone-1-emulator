@@ -1,0 +1,1 @@
+Initial preflight assumed /usr/bin/node, which is absent. No timing process or directory was created. Resolved actual Node executable from PATH and pinned its bytes before freezing.

@@ -90,6 +90,17 @@ The recordings and thumbnails live in `videos/` and `thumbnails/`.
 | 079 | [Original RTC interrupt reaches the real setter](079_original_rtc_interrupt.md) | [existing UI context](videos/manual_time_diagnostic.mp4) | [thumbnail](thumbnails/manual_time_diagnostic.jpg) |
 | 080 | [Faster returning Settings, still experimental](080_faster_returning_settings.md) | [recording](videos/seed_cache_return_settings.mp4) | [thumbnail](thumbnails/seed_cache_return_settings.jpg) |
 | 081 | [The browser phone loads from R2](081_r2_firmware_delivery.md) | [recording](videos/r2_firmware_delivery.mp4) | [thumbnail](thumbnails/r2_firmware_delivery.jpg) |
+| 082 | [Original time picker survives real autosave](082_manual_time_autosave.md) | [picker](videos/rtc_manual_time_autosave.mp4) · [final release](videos/rtc_final_release.mp4) | [picker thumb](thumbnails/rtc_manual_time_autosave.jpg) · [release thumb](thumbnails/rtc_final_release.jpg) |
+| 084 | [Compiled seed reuse survives a real offline return](084_offline_compiled_seed_reuse.md) | [return](videos/seed_cache_offline_return.mp4) · [training/autosave](videos/seed_cache_offline_training.mp4) · [final release](videos/rtc_final_release.mp4) | [return thumb](thumbnails/seed_cache_offline_return.jpg) · [training thumb](thumbnails/seed_cache_offline_training.jpg) |
+| 085 | [Visible recovery inside the phone](085_visible_recovery.md) | [recording](videos/visible_recovery.mp4) | [thumb](thumbnails/visible_recovery.jpg) |
+| 086 | [Our own program executes in original OS1](086_own_guest_program.md) | [Actual guest trace; nonvisual](../docs/traces/guest-hello/README.md) | Not applicable |
+| 087 | [Real guest loopback HTTP exchange](087_guest_loopback_http.md) | [Actual native/UART trace; nonvisual](../docs/traces/guest-loopback/README.md) | Not applicable |
+| 088 | [Mixed compiler coverage experiment](088_mixed_seed_coverage_diagnostic.md) | [recording](videos/mixed_seed_coverage_diagnostic.mp4) | [thumb](thumbnails/mixed_seed_coverage_diagnostic.jpg) |
+| 089 | [Calculator input observation](089_calculator_input_feedback.md) | [recording](videos/calculator_input_feedback.mp4) | [thumb](thumbnails/calculator_input_feedback.jpg) |
+| 090 | [Actual Calculator frame delivery](090_calculator_frame_delivery.md) | [recording](videos/calculator_frame_delivery.mp4) | [thumb](thumbnails/calculator_frame_delivery.jpg) |
+| 091 | [Original Safari local demo, form and persistent bookmark](091_safari_local_demo.md) | [Full recording](videos/091_safari_local_demo.mp4) | [thumb](thumbnails/091_safari_local_demo.jpg) |
+| 093 | [Default local demo qualification failure](093_default_local_demo_qualification_failure.md) | [Full recording](videos/default_local_demo_qualification_failure.mp4) | [Thumbnail](thumbnails/default_local_demo_qualification_failure.jpg) |
+| 094 | [Original Photos first workflow failure](094_photos_first_workflow_failure.md) | [Full recording](videos/photos_first_workflow_failure.mp4) | [Thumbnail](thumbnails/photos_first_workflow_failure.jpg) |
 
 Audio follow-up (2026-09-06): [isolated functional-engine contracts](../docs/traces/amc-functional-contracts/README.md) now exercise actual decoded buffers, physical DMA byte addresses, partial input, ownership, interrupts and reviewed rejection paths. The current adapter matches the full original raw corpus. This is native model verification only; no new guest playback or visual milestone is claimed.
 
@@ -163,3 +174,71 @@ Audio source investigation: [matching MeCCA startup path identified](../docs/tra
 
 
 Audio investigation: [successful kernel configuration return observed](../docs/traces/amc-consumption-probe/mecca-return/README.md), with every prior device-state byte unchanged. Userspace startup remains unobserved; no error or playback claim is inferred from absence.
+
+
+RTC follow-up to079: the [complete original date now reaches the active hardware clock](../docs/traces/rtc-write-contract/complete-update-native/README.md) at the next pulse in one isolated native run. Pending snapshot roundtrips and actual-trace negatives pass. The [browser check stopped on autosave](../docs/traces/rtc-write-contract/complete-update-browser/README.md); no completed persistence or production claim. [Full failure recording](../docs/traces/rtc-write-contract/complete-update-browser/rtc-autosave-failure.mp4) · [thumbnail](../docs/traces/rtc-write-contract/complete-update-browser/rtc-autosave-failure.jpg).
+
+
+Audio investigation: [real input backpressure reaches the userspace return address](../docs/traces/amc-consumption-probe/input-backpressure/README.md). The fifth transfer remains partial and uncompleted; a permission-related observer stop is preserved. No verified userspace return, PCM consumption or sound yet.
+
+
+Audio investigation: [original userspace starts AMC and reads its first PCM buffer](../docs/traces/amc-consumption-probe/user-start-reads/README.md). All4,096 returned bytes are verified; an ownership-retirement observer assumption preserves an earlier stop. Final handoff/sample timing/sound are still open.
+
+
+**083 — [Original audio buffer consumed](083_original_audio_buffer_consumed.md):** actual initialization/startup, driver notification, all4,096 returned PCM bytes and original ownership-return instruction verified. Eighteen actual artifact mutants reject. Nonvisual hardware milestone; no recording or audible playback claim. [Source, complete trace and audits](../docs/traces/amc-first-consumption/README.md). Continuous transport/timing and production integration remain open.
+
+Audio083 follow-up: [actual original software-buffer copy destination and caller](../docs/traces/amc-first-consumption/copy-destination/README.md) now verified with the same consumption boundary. This is nonvisual evidence, not a new playback recording.
+
+Audio083 follow-up: [actual software ring and transport-state census](../docs/traces/amc-first-consumption/transport-census/README.md) distinguishes completed PCM copy from I2S/DMA startup. Nonvisual, no playback claim.
+
+Audio083 follow-up: [the next genuine service request](../docs/traces/amc-first-consumption/next-service/README.md) reaches the diagnostic stream cap12 instructions after ownership return. Nonvisual; continuous transport and sound remain open.
+
+
+**Current CPU investigation — measurement, not a speed improvement:** a complete warm Settings/Home interpreter census now retains every observation and matches genuine guest screens. It identifies hot pages and following instructions missed by the older exit-only profile, motivating a bounded isolated coverage candidate. [Evidence and limitations](../docs/traces/jit-fallback-census/README.md) · [full actual recording](videos/warm_fallback_census_diagnostic.mp4) · [thumbnail](thumbnails/warm_fallback_census_diagnostic.jpg).
+
+
+Audio083 follow-up: [53 actual PCM buffers read,51 ownership returns](../docs/traces/amc-first-consumption/continuous-stream/README.md). Consecutive buffer reuse and exact bytes are verified in one isolated guest. The next BSU state-saving control remains unsupported; this is nonvisual evidence, with no audible playback claim.
+
+**088 — [Mixed seed coverage diagnostic](088_mixed_seed_coverage_diagnostic.md):** more genuine hot code compiles safely, with all raw checkpoints and 88 screens matching. Warm Settings improves modestly, but first launch is mixed and reverse Home tail latency regresses; the bigger seed stays parked. Includes the preserved disk stop and separately recorded fourth control. [Full actual recording](videos/mixed_seed_coverage_diagnostic.mp4) · [thumbnail](thumbnails/mixed_seed_coverage_diagnostic.jpg).
+
+
+Audio083 follow-up: [original BSU lock and partial-input pause](../docs/traces/amc-first-consumption/bsu-lock-pause/README.md). Real decoder/queue ownership is retained; the driver saves its actual remaining input. Nonvisual hardware evidence, stopping before unsupported saved-state registers; no sound claim.
+
+
+**089 — [Calculator input diagnostic](089_calculator_input_feedback.md):** all 60 real presses produce reviewed results. Sampled feedback p95 is 165–166 ms, but skipped canvas deliveries leave the 150 ms target unresolved. No production change. [Full recording](videos/calculator_input_feedback.mp4) · [thumbnail](thumbnails/calculator_input_feedback.jpg).
+
+Audio083 source update: [corrected FIFO layout and reset-before-restore contract](../docs/traces/amc-first-consumption/bsu-lock-pause/context-source/README.md). Nonvisual source analysis only; Stage V remains the latest actual guest boundary.
+
+**090 — [Actual Calculator frame delivery](090_calculator_frame_delivery.md):** all 60 presses pass independent raw-pixel checks. Canvas button-feedback p95 is 135.7/134.0 ms; the same-frame RAF observations arrive later. Calculator-only, with explicit observer overhead and no production speedup. [Full uncut recording](videos/calculator_frame_delivery.mp4) · [thumbnail](thumbnails/calculator_frame_delivery.jpg).
+
+Audio083 investigation: [actual BSU save reads and preserved destination-observer failure](../docs/traces/amc-first-consumption/bsu-save-boundary/README.md). All source bytes are verified, but complete save acceptance remains open; no replay, power transition or sound claim. Nonvisual trace evidence.
+
+Audio083 follow-up: [original saved context and both SRAM destinations verified](../docs/traces/amc-first-consumption/bsu-saved-context/README.md). Observer-only correction preserves the entire earlier guest trace;47 actual artifact negatives pass. Nonvisual evidence, with no power/reset/restore or sound claim.
+
+
+**Audio083 follow-up — real suspension:** one Stage Y guest retires all four original power/clock writes and the driver's actual state3→5 store. One retained decoder generation owns the unchanged180,224 SRAM bytes and65,534-byte queue; active allocations/service/DMA/IRQ are cleared. All21 native targets and57 actual artifact negatives pass across the original audits and a separately preserved artifact-only correction. The first auditor's synthetic service1 assumption and final-USR field assumption remain documented; no guest retry. Execution stops at an unaccepted observer binding at31236650, so no HAL/sound claim. [Actual transitions, limits and failed/corrected evidence](../docs/traces/amc-first-consumption/power-suspension/README.md). Reset/restore and production integration remain open.
+
+
+**092 — [Whole-core LTO navigation diagnostic](092_web_lto_navigation_diagnostic.md):** fixed-work CPU improves5.81%, but warm Settings median improves only~50ms and pooled Home p95 worsens49ms. All88 pixels pass; the original failed reporter/closure and truncated control recording remain explicit. Candidate parked, production unchanged. [Full uncut candidate recording](videos/web_lto_navigation_diagnostic.mp4) · [thumbnail](thumbnails/web_lto_navigation_diagnostic.jpg).
+
+
+**Audio083 follow-up — observer stopped before an unmapped page:** the single Stage Z diagnostic preserves every Stage Y guest/resource byte and stop cycle. Actual L1`15c8ac48=08511001` and L2`085110d8=0` explain all four cloned READ/FETCH fault7 results; no actual guest fetch or HAL call occurred. All22 native targets and65 actual artifact negatives pass across the original proofs and an artifact-only correction using actual snapshot RAM geometry. The original auditor's synthetic-aperture failure is retained; no guest retry. [Evidence and limits](../docs/traces/amc-first-consumption/hal-binding-diagnostic/README.md). Next is the original kernel's normal fetch-fault path, not a fabricated mapping or audio event.
+
+
+**Audio083 follow-up — original prefetch abort and mapped retry:** the single Stage AA run lets the unmodified CPU take the actual missing-code fault, then returns 1,636 core steps later to the same full user context with original MeCCA bytes mapped. It stops before the original StartIO entry instruction at `0x31236650`, not HALOutputProc. Exact fresh Z/083 prefixes, all retained SRAM/queue/ownership and suspension proofs pass; 23 native targets and 70 actual artifact negatives pass. No HAL, reset/restore or sound claim. [Evidence and bounds](../docs/traces/amc-first-consumption/original-prefetch-retry/README.md).
+
+
+**CPU measurement tooling follow-up:** an isolated executed-work census now counts each generated retirement alongside real interpreter steps.404 focused scenarios preserve guest state and policy counters, with per-PC count conservation and deliberate broken-observer rejection. The actual100M/warm-phone capture is still held; no new speed or hot-loop claim. [Source and focused evidence](../docs/traces/jit-executed-work/README.md).
+
+
+**094 — [Original Photos first populated workflow](094_photos_first_workflow_failure.md):** the guest importer creates verified images; original Photos finds two, excludes the invalid-name control and renders the first. Controls/Next then leave stale content and an image strip, so the workflow fails and persistence remains untested. Default unchanged. [Full first-run recording](videos/photos_first_workflow_failure.mp4) · [thumbnail](thumbnails/photos_first_workflow_failure.jpg).
+
+**093 graphics follow-up, candidate only:** actual failed-state packets reveal the bounded 472-pixel source-row issue; isolated native and WASM checks pass 2,847/2,847, with independent source-memory pixel validation. Prior091's actual filesystem selected software graphics. Browser recovery remains unqualified after the first launcher closed input before navigation; no production or HTTP success claim. [Evidence](../docs/traces/safari-stride472/README.md).
+
+
+Executed-work measurement update: the single100M count-only observer passes four complete original-state checkpoints and records every generated/interpreter completed step without overflow. The largest retained hash-shaped loop is already compiled; its count share is not a launch-time saving or a named routine claim. [Exact audit and bounded next question](../docs/traces/jit-executed-work/hotspot-note.md). No visual change or new recording is claimed.
+
+**095 — [Safari wider source-row rendering recovery](095_safari_wide_source_recovery.md):** the isolated 472-pixel BGRA8 source bound passes 2,847 native/WASM checks. Original Safari redraws from the failed state, types `glyph`, revisits and returns Home with 144,000 exact RGB pixels; no new graphics hang/restart through export. First launcher failure retained. HTTP/Photos and production promotion remain separate. [Full original-speed video](videos/safari_stride472_recovery.mp4) · [thumbnail](thumbnails/safari_stride472_recovery.jpg).
+
+
+**096 — [Graphics fix in the default local phone](096_graphics_fix_default_release.md):** actual saved-phone upgrade passes30 checks and final unmarked bundle passes21, including real autosave/offline restore. Previous audit failure retained. This fixes rendering, not app-launch speed. [Full recording](videos/mbx_stride_default_release.mp4) · [thumbnail](thumbnails/mbx_stride_default_release.jpg).

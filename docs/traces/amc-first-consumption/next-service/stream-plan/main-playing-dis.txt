@@ -1,0 +1,79 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+
+__ZN5Mixer14setMainPlayingEb
+31228314 push     {r4, r5, r6, r7, lr}
+31228318 add      r7, sp, #0xc
+3122831c sub      sp, sp, #4
+31228320 mov      r5, r0
+31228324 ldrb     r3, [r0, #0x32]
+31228328 uxtb     r4, r1
+3122832c cmp      r3, #0
+31228330 beq      #0x31228384
+31228334 cmp      r4, #0
+31228338 beq      #0x31228384
+3122833c mov      r3, #0
+31228340 strb     r3, [r0, #0x32]
+31228344 str      r3, [r0, #0x68]
+31228348 bl       #0x31227e3c ('__ZN5Mixer7startIOEv', 0)
+3122834c subs     r6, r0, #0
+31228350 beq      #0x31228388
+31228354 ldr      r3, [pc, #0x48] literal 312283a4=000975d4 
+31228358 ldr      r0, [pc, #0x48] literal 312283a8=0009740c 
+3122835c add      r3, pc, r3
+31228360 str      r3, [sp]
+31228364 ldr      r2, [pc, #0x40] literal 312283ac=00097580 
+31228368 ldr      r3, [pc, #0x40] literal 312283b0=00093244 
+3122836c add      r0, pc, r0
+31228370 mov      r1, #0x2a0
+31228374 add      r2, pc, r2
+31228378 add      r3, pc, r3
+3122837c bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+31228380 b        #0x31228398
+31228384 mov      r6, #0
+31228388 ldr      r0, [r5, #0x10]
+3122838c mov      r1, r4
+31228390 bl       #0x312275a8 ('__ZN16MainMixerChannel10setPlayingEb', 0)
+31228394 strb     r4, [r5, #0x72]
+31228398 mov      r0, r6
+3122839c sub      sp, r7, #0xc
+312283a0 pop      {r4, r5, r6, r7, pc}
+312283a4 ldrdeq   r7, r8, [sb], -r4
+312283a8 andeq    r7, sb, ip, lsl #8
+312283ac andeq    r7, sb, r0, lsl #11
+312283b0 andeq    r3, sb, r4, asr #4
+
+__ZN5Mixer4stopEv
+312283b4 push     {r4, r5, r7, lr}
+312283b8 mov      r5, #0
+312283bc add      r7, sp, #8
+312283c0 mov      r4, r0
+312283c4 str      r5, [r0, #0x68]
+312283c8 bl       #0x31227dd8 ('__ZN5Mixer6stopIOEv', 0)
+312283cc mov      r1, r5
+312283d0 mov      r0, r4
+312283d4 bl       #0x31228314 ('__ZN5Mixer14setMainPlayingEb', 0)
+312283d8 bl       #0x3122c0a0 ('__ZN24AudioOutputBufferManager11theInstanceEv', 0)
+312283dc mov      r4, r0
+312283e0 bl       #0x3122c0a0 ('__ZN24AudioOutputBufferManager11theInstanceEv', 0)
+312283e4 bl       #0x3122b8a0 ('__ZN24AudioOutputBufferManager16getElapsedTimeMSEv', 0)
+312283e8 mov      r1, r5
+312283ec mov      r2, r0
+312283f0 mov      r0, r4
+312283f4 bl       #0x3122c058 ('__ZN24AudioOutputBufferManager5resetEbj', 0)
+312283f8 pop      {r4, r5, r7, pc}
+
+__ZN5Mixer26AutoFadeMusicChannelVolumeEbjj
+312283fc tst      r1, #0xff
+31228400 push     {r7, lr}
+31228404 add      r7, sp, #0
+31228408 beq      #0x3122844c
+3122840c ldr      r1, [r0, #0x60]
+31228410 cmp      r1, #0
+31228414 bne      #0x31228440
+31228418 ldr      lr, [r0, #0x18]
+3122841c cmp      lr, r3
+31228420 beq      #0x31228430
+31228424 ldrb     ip, [r0, #0x70]
+31228428 cmp      ip, #0
+3122842c streq    lr, [r0, #0x64]
+31228430 str      r3, [r0, #0x5c]

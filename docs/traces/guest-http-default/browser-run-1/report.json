@@ -1,0 +1,2270 @@
+{
+  "startedUTC": "2026-09-06T10:44:32.291Z",
+  "capSeconds": 900,
+  "actions": [
+    {
+      "tap": [
+        160,
+        300
+      ],
+      "wait": 1500,
+      "shot": "02-clean-home",
+      "videoSeconds": 54.839
+    },
+    {
+      "tap": [
+        274,
+        250
+      ],
+      "wait": 5000,
+      "shot": "03-settings",
+      "videoSeconds": 56.834
+    },
+    {
+      "observe": "pristine-settings-rendered",
+      "frame": "03-settings-guest.png",
+      "videoSeconds": 82.686
+    },
+    {
+      "home": true,
+      "wait": 2000,
+      "videoSeconds": 82.688
+    },
+    {
+      "tap": [
+        43,
+        425
+      ],
+      "wait": 4000,
+      "shot": "04-phone",
+      "videoSeconds": 84.887
+    },
+    {
+      "tap": [
+        160,
+        454
+      ],
+      "wait": 3000,
+      "shot": "05-contacts",
+      "videoSeconds": 110.445
+    },
+    {
+      "observe": "pristine-contacts-rendered",
+      "frame": "05-contacts-guest.png",
+      "videoSeconds": 144.048
+    },
+    {
+      "home": true,
+      "wait": 2000,
+      "videoSeconds": 144.05
+    },
+    {
+      "tap": [
+        199,
+        430
+      ],
+      "wait": 6000,
+      "shot": "06-safari",
+      "videoSeconds": 146.247
+    },
+    {
+      "tap": [
+        290,
+        43
+      ],
+      "wait": 1200,
+      "videoSeconds": 199.333
+    },
+    {
+      "tap": [
+        157,
+        56
+      ],
+      "wait": 1800,
+      "shot": "07-address-keyboard",
+      "videoSeconds": 200.732
+    },
+    {
+      "tap": [
+        39,
+        458
+      ],
+      "wait": 1000,
+      "shot": "08-address-numbers",
+      "videoSeconds": 228.516
+    },
+    {
+      "taps": [
+        [
+          16,
+          295
+        ],
+        [
+          48,
+          295
+        ],
+        [
+          208,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          132,
+          404
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          16,
+          295
+        ]
+      ],
+      "interval": 650,
+      "wait": 800,
+      "shot": "09-address-entered",
+      "videoSeconds": 230.053
+    },
+    {
+      "wait": 3500,
+      "shot": "10-address-settled",
+      "videoSeconds": 291.681
+    },
+    {
+      "tap": [
+        282,
+        458
+      ],
+      "wait": 7000,
+      "shot": "11-local-home",
+      "videoSeconds": 326.74
+    },
+    {
+      "observe": "local-home-rendered",
+      "frame": "11-local-home-guest.png",
+      "videoSeconds": 359.721
+    },
+    {
+      "tap": [
+        62,
+        273
+      ],
+      "wait": 3500,
+      "shot": "12-local-next",
+      "videoSeconds": 359.723
+    },
+    {
+      "observe": "local-next-rendered",
+      "frame": "12-local-next-guest.png",
+      "videoSeconds": 413.713
+    },
+    {
+      "tap": [
+        55,
+        289
+      ],
+      "wait": 2500,
+      "videoSeconds": 413.717
+    },
+    {
+      "tap": [
+        110,
+        310
+      ],
+      "wait": 2000,
+      "shot": "13-form-keyboard",
+      "videoSeconds": 416.416
+    },
+    {
+      "taps": [
+        [
+          160,
+          350
+        ],
+        [
+          272,
+          295
+        ]
+      ],
+      "interval": 900,
+      "wait": 2200,
+      "shot": "14-form-go-entered",
+      "videoSeconds": 514.184
+    },
+    {
+      "tap": [
+        281,
+        458
+      ],
+      "wait": 5000,
+      "shot": "15-form-go-response",
+      "videoSeconds": 598.549
+    },
+    {
+      "wait": 2500,
+      "shot": "16-form-go-settled",
+      "videoSeconds": 636.402
+    },
+    {
+      "finalExport": true,
+      "captureBoundary": "failed-form-not-Home",
+      "shot": "17-failed-form-exported",
+      "videoSeconds": 737.646
+    },
+    {
+      "note": "STOP: failed original Safari form state, not Home. Native AppleMBX repeatedly reports Graphics hang with pending 2D blit, Free slots=100, IntStatus=00000000. final-home.snap is the generic diagnostic export filename for this failed form state. No software fallback or retry.",
+      "videoSeconds": 799.121
+    }
+  ],
+  "checks": [
+    {
+      "name": "fresh-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3503461,
+        "calls": 452436
+      }
+    },
+    {
+      "name": "listener-restore-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 18599361,
+        "calls": 1823447
+      }
+    },
+    {
+      "name": "pristine-settings-rendered",
+      "passed": true,
+      "scope": "Human review of this retained original framebuffer",
+      "frame": "03-settings-guest.png",
+      "frameSHA256": "45ef7c6a21b9c74c2698feb1becd3c6f401448d415b069dfa45ddf7d41f61b54",
+      "token": null
+    },
+    {
+      "name": "pristine-contacts-rendered",
+      "passed": true,
+      "scope": "Human review of this retained original framebuffer",
+      "frame": "05-contacts-guest.png",
+      "frameSHA256": "7ccdb3de35d1965d122287adb13ba1f59f608d9641c6fb49b752a217e77dc5e4",
+      "token": null
+    },
+    {
+      "name": "local-home-rendered",
+      "passed": true,
+      "scope": "Human review of this retained original framebuffer",
+      "frame": "11-local-home-guest.png",
+      "frameSHA256": "9700783a6fef9cd95e90e9401a29ff84e15e8b272009a097a44aaf9eb0ca1725",
+      "token": null
+    },
+    {
+      "name": "local-next-rendered",
+      "passed": true,
+      "scope": "Human review of this retained original framebuffer",
+      "frame": "12-local-next-guest.png",
+      "frameSHA256": "db1ead00851d452f6a2294d800f8246891c3f810c335e9516dbb83ea58750e98",
+      "token": null
+    },
+    {
+      "name": "diagnostic-final-export",
+      "passed": true,
+      "path": "/home/vercel-sandbox/iphone-1/.context/guest-http-default/browser-run-1/final-home.snap",
+      "bytes": 260767808,
+      "sha256": "c407b3734919c76dc0eae153b1bb70366969c4548e3fa2232716a1bc3395e693"
+    }
+  ],
+  "errors": [
+    "Error: Unfinished workflow gate: fresh-form-token-1\n    at file:///home/vercel-sandbox/iphone-1/.context/guest-http-default/browser.mjs:79:544"
+  ],
+  "console": [],
+  "requests": [
+    {
+      "seconds": 0.851,
+      "url": "http://127.0.0.1:8213/",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.873,
+      "url": "http://127.0.0.1:8213/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.873,
+      "url": "http://127.0.0.1:8213/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.902,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.921,
+      "url": "http://127.0.0.1:8213/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.947,
+      "url": "http://127.0.0.1:8213/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.958,
+      "url": "http://127.0.0.1:8213/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.965,
+      "url": "http://127.0.0.1:8213/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.975,
+      "url": "http://127.0.0.1:8213/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.975,
+      "url": "http://127.0.0.1:8213/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.975,
+      "url": "http://127.0.0.1:8213/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.975,
+      "url": "http://127.0.0.1:8213/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.995,
+      "url": "http://127.0.0.1:8213/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.021,
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.633,
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.745,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "method": "GET"
+    },
+    {
+      "seconds": 2.983,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "method": "GET"
+    },
+    {
+      "seconds": 5.912,
+      "url": "http://127.0.0.1:8213/dist/emu.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 11.916,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 11.927,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 21.39,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 21.399,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.793,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.804,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.709,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.717,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 92.095,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 92.105,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 121.767,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 121.777,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.813,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.822,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 181.708,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 181.719,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 212.078,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 212.091,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 272.375,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 272.385,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 302.314,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 302.329,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 331.877,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 331.885,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 392.069,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 392.079,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 422.328,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 422.341,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.967,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.975,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 482.137,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 482.146,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 512.242,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 512.255,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 542.129,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 542.136,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 572.386,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 572.395,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 602.504,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 602.515,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 631.688,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 631.697,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 661.694,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 661.702,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 691.752,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 691.761,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 721.912,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 721.925,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 751.648,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 751.658,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 781.8,
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 781.809,
+      "url": "http://127.0.0.1:8213/storage.js",
+      "method": "GET"
+    }
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8213/",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 5521,
+      "bodySHA256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883"
+    },
+    {
+      "url": "http://127.0.0.1:8213/phone.css",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9396,
+      "bodySHA256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "url": "http://127.0.0.1:8213/app.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 18595,
+      "bodySHA256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/icon.svg",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 379,
+      "bodySHA256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "url": "http://127.0.0.1:8213/emu-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 11426,
+      "bodySHA256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+    },
+    {
+      "url": "http://127.0.0.1:8213/dist/emu.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 17756,
+      "bodySHA256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/seed-jit.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9613,
+      "bodySHA256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "url": "http://127.0.0.1:8213/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 12341313,
+      "bodySHA256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "url": "http://127.0.0.1:8213/jit/regions.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 74901,
+      "bodySHA256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "url": "http://127.0.0.1:8213/jit/abi.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 364,
+      "bodySHA256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "url": "http://127.0.0.1:8213/assets.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 2397,
+      "bodySHA256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "url": "http://127.0.0.1:8213/manifest.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 1222,
+      "bodySHA256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8213/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 250531,
+      "bodySHA256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8213/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8213/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    }
+  ],
+  "requestFailures": [],
+  "serial": [
+    {
+      "seconds": 96.795,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 211.206,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 239.302,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 249.324,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 259.353,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 269.369,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 279.39,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 289.427,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 299.463,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 328.548,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 329.548,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 330.55,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 331.555,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 337.569,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 418.763,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 419.749,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 420.757,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 421.759,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 422.759,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 423.759,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 424.76,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 425.764,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 426.768,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 427.774,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 428.776,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 429.78,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 430.785,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 431.785,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 432.786,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 433.786,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 434.788,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 435.797,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 436.802,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 437.806,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 438.81,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 439.812,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 440.813,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 441.817,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 442.818,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 443.819,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 444.824,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 445.826,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 446.831,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 447.836,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 448.842,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 449.849,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 450.853,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 451.854,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 452.855,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 453.856,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 454.855,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 455.856,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 456.856,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 457.861,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 458.86,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 459.863,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 460.863,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 461.868,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 462.869,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 463.874,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 464.877,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 465.876,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 466.882,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 467.887,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 468.886,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 469.89,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 470.895,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 471.896,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 472.897,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 473.897,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 474.899,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 475.907,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 476.912,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 477.914,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 478.917,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 479.923,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 481.106,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 482.109,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 483.113,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 484.119,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 485.121,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 486.13,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 487.134,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 488.143,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 489.151,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 490.157,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 491.159,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 492.159,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 493.161,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 494.162,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 495.165,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 496.168,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 497.169,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 498.174,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 499.173,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 500.178,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 501.178,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 502.179,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 503.181,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 504.181,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 505.183,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 506.191,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 507.191,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 508.192,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 509.195,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 510.198,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 511.206,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 512.205,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 513.205,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 514.209,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 515.21,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 516.211,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 517.211,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 518.216,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 519.215,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 520.217,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 521.224,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 522.23,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 523.229,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 524.231,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 525.232,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 526.232,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 527.234,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 528.234,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 529.235,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 530.243,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 531.244,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 532.249,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 533.249,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 534.25,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 535.25,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 536.252,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 537.253,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 538.254,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 539.254,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 540.261,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 541.271,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 542.271,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 543.271,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 544.272,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 545.275,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 546.275,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 547.278,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 548.278,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 549.278,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 550.279,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 551.279,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 552.279,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 553.281,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 554.284,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 555.286,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 556.292,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 557.296,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 558.303,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 559.305,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 560.314,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 561.319,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 562.32,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 563.328,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 564.33,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 565.334,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 566.334,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 567.34,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 568.341,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 569.344,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 570.351,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 571.352,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 572.353,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 573.355,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 574.364,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 575.369,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 576.368,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 577.376,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 578.377,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 579.38,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 580.386,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 581.395,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 582.391,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 583.389,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 584.39,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 585.391,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 586.392,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 587.394,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 588.394,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 589.398,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 590.4,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 591.408,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 592.409,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 593.411,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 594.415,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 595.416,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 596.419,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 597.428,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 598.428,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 599.435,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 600.437,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 601.437,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 602.44,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\rAppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 609.463,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    }
+  ],
+  "scope": "Diagnostic snapshot import; all subsequent guest input uses original touchscreen. Real interval autosave. Final quiet binary: rendered fresh form/bookmark evidence, no raw HTTP wire capture, offline or speed claim.",
+  "initialAvailableBytes": 5525843968,
+  "fixture": {
+    "bytes": 106705084,
+    "sha256": "b9d40b5ed9942b7d21237ebb6e9ca5867bceb5c37cabe6529f8946d5fb37880f",
+    "rawSHA256": "2ee50f4e68b0e1afb523312ace3c45d894866f2e33b91051eabcc49d37317afa",
+    "rawBytes": 245071842,
+    "sourcePinsSHA256": "5e7f7218712eea1a3c77b8149d4b657889ac3e55874508bcde760690cb528ceb",
+    "processHealth": {
+      "passed": true,
+      "error": null,
+      "snapshotBytes": 245071842,
+      "cycles": 9197000000,
+      "capturedTTBR": "16e1b000",
+      "capturedCPSR": "20000013",
+      "loadedCPUUnchanged": true,
+      "completeList": true,
+      "processes": [
+        {
+          "address": "cbc69b54",
+          "pid": 75,
+          "name": "BlueTool",
+          "task": "cb893ab8",
+          "threads": 1
+        },
+        {
+          "address": "cbc69488",
+          "pid": 28,
+          "name": "MobilePhone",
+          "task": "cb893620",
+          "threads": 2
+        },
+        {
+          "address": "cc2e5910",
+          "pid": 23,
+          "name": "notifyd",
+          "task": "cc285310",
+          "threads": 2
+        },
+        {
+          "address": "cc2e5b54",
+          "pid": 22,
+          "name": "mediaserverd",
+          "task": "cc285498",
+          "threads": 14
+        },
+        {
+          "address": "cc2e5d98",
+          "pid": 21,
+          "name": "iphone1-local-ht",
+          "task": "cc285620",
+          "threads": 1
+        },
+        {
+          "address": "cc282000",
+          "pid": 20,
+          "name": "ptpd",
+          "task": "cc2857a8",
+          "threads": 2
+        },
+        {
+          "address": "cc282244",
+          "pid": 19,
+          "name": "update",
+          "task": "cc285930",
+          "threads": 1
+        },
+        {
+          "address": "cc282488",
+          "pid": 18,
+          "name": "syslogd",
+          "task": "cc285ab8",
+          "threads": 3
+        },
+        {
+          "address": "cc2826cc",
+          "pid": 17,
+          "name": "lockdownd",
+          "task": "cc285c40",
+          "threads": 3
+        },
+        {
+          "address": "cc282910",
+          "pid": 16,
+          "name": "mDNSResponder",
+          "task": "cc285dc8",
+          "threads": 2
+        },
+        {
+          "address": "cc282b54",
+          "pid": 15,
+          "name": "iapd",
+          "task": "cb893000",
+          "threads": 4
+        },
+        {
+          "address": "cc282d98",
+          "pid": 14,
+          "name": "crashreporterd",
+          "task": "cb893188",
+          "threads": 1
+        },
+        {
+          "address": "cbc69000",
+          "pid": 13,
+          "name": "configd",
+          "task": "cb893310",
+          "threads": 4
+        },
+        {
+          "address": "cbc69244",
+          "pid": 12,
+          "name": "SpringBoard",
+          "task": "cb893498",
+          "threads": 8
+        },
+        {
+          "address": "cbc696cc",
+          "pid": 10,
+          "name": "CommCenter",
+          "task": "cb8937a8",
+          "threads": 10
+        },
+        {
+          "address": "cbc69910",
+          "pid": 9,
+          "name": "BTServer",
+          "task": "cb893930",
+          "threads": 6
+        },
+        {
+          "address": "cbc69d98",
+          "pid": 1,
+          "name": "launchd",
+          "task": "cb893c40",
+          "threads": 3
+        },
+        {
+          "address": "c01e8400",
+          "pid": 0,
+          "name": "kernel_task",
+          "task": "cb893dc8",
+          "threads": 58
+        }
+      ],
+      "scope": "Read-only bounded process-list presence and thread counts; no scheduler or service-response proof."
+    }
+  },
+  "projection": {
+    "index.html": {
+      "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883",
+      "bytes": 5521
+    },
+    "phone.css": {
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "bytes": 9396
+    },
+    "app.js": {
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+      "bytes": 18595
+    },
+    "assets.js": {
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "bytes": 2397
+    },
+    "storage.js": {
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "bytes": 9079
+    },
+    "checkpoint-worker.js": {
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "bytes": 615
+    },
+    "emu-worker.js": {
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "bytes": 11426
+    },
+    "seed-jit.js": {
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "bytes": 9613
+    },
+    "manifest.json": {
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "bytes": 1222
+    },
+    "icon.svg": {
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "bytes": 379
+    },
+    "service-worker.js": {
+      "sha256": "dcd0acd35b8d24edbf32537248539604852666a52312402e51ee6d7cb7b42267",
+      "bytes": 3228
+    },
+    "dist/emu.js": {
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "bytes": 17756
+    },
+    "dist/emu.wasm": {
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "bytes": 250531
+    },
+    "jit/abi.json": {
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "bytes": 364
+    },
+    "jit/regions.json": {
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "bytes": 74901
+    },
+    "jit/seed.wasm": {
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313
+    }
+  },
+  "lastState": {
+    "savedAt": 1788692201319,
+    "paused": false,
+    "metrics": {
+      "type": "metrics",
+      "mips": 2.0886682639450687,
+      "fps": 2.994908655277103,
+      "guestRate": 1.0000074872686628,
+      "cycles": "15231525715",
+      "memory": 643039232,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 4351052505,
+        "calls": 544666733
+      },
+      "serial": "",
+      "captureMs": 96.70000000298023,
+      "captureChunkMs": 1.6000000014901161,
+      "finalizeMs": 995.6000000014901
+    },
+    "status": "Backup downloaded. Keep it somewhere safe."
+  },
+  "exportDiagnostic": {
+    "scope": "Hidden existing Export button, enabled wait, native DOM click; separate from real autosave",
+    "before": {
+      "disabled": false,
+      "status": "Saved at 10:56 AM",
+      "savedAt": 1788692201319,
+      "paused": false
+    },
+    "click": {
+      "disabled": false,
+      "status": "Saved at 10:56 AM",
+      "savedAt": 1788692201319
+    },
+    "suggestedFilename": "iphone-2026-09-06.snap",
+    "file": {
+      "path": "/home/vercel-sandbox/iphone-1/.context/guest-http-default/browser-run-1/final-home.snap",
+      "bytes": 260767808,
+      "sha256": "c407b3734919c76dc0eae153b1bb70366969c4548e3fa2232716a1bc3395e693"
+    }
+  },
+  "finalState": {
+    "ready": true,
+    "paused": false,
+    "savedAt": 1788692261095,
+    "metrics": {
+      "type": "metrics",
+      "mips": 10.14575379399009,
+      "fps": 2.9952076677494537,
+      "guestRate": 1.0000251264702749,
+      "cycles": "15625176212",
+      "memory": 643039232,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 4652489235,
+        "calls": 581308961
+      },
+      "serial": "",
+      "captureMs": 211.79999999701977,
+      "captureChunkMs": 4.299999997019768,
+      "finalizeMs": 674.8000000044703
+    },
+    "status": "Saved at 10:57 AM"
+  },
+  "responseAudit": {
+    "passed": true,
+    "requiredAssets": [
+      "index.html",
+      "phone.css",
+      "app.js",
+      "assets.js",
+      "storage.js",
+      "checkpoint-worker.js",
+      "emu-worker.js",
+      "seed-jit.js",
+      "manifest.json",
+      "icon.svg",
+      "dist/emu.js",
+      "dist/emu.wasm",
+      "jit/abi.json",
+      "jit/regions.json",
+      "jit/seed.wasm"
+    ],
+    "acceptedLocalResponses": 66,
+    "scope": "Actual received local response bodies match frozen source bytes; service-worker installation and offline transport are not claimed."
+  },
+  "video": "/home/vercel-sandbox/iphone-1/.context/guest-http-default/browser-run-1/page@2bc40125d694eed3f7eb307d73eeb83b.webm",
+  "projectionUnchanged": true,
+  "elapsedSeconds": 800.005,
+  "passed": false
+}

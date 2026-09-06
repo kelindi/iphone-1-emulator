@@ -1,0 +1,50 @@
+{
+  "passed": false,
+  "correctnessPassed": true,
+  "latencyPassed": false,
+  "summary": {
+    "9": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.90000000223517,
+        "p95Ms": 165.39999999850988,
+        "maxMs": 165.79999999701977
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 148.89999999850988,
+        "p95Ms": 165.79999999701977,
+        "maxMs": 165.79999999701977
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.05000000074506,
+        "p95Ms": 134.5,
+        "maxMs": 135
+      },
+      "missingButtonFeedback": 0
+    },
+    "C": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.69999999925494,
+        "p95Ms": 165.60000000149012,
+        "maxMs": 196.5
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 149.14999999850988,
+        "p95Ms": 165.80000000447035,
+        "maxMs": 196.5
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.19999999552965,
+        "p95Ms": 134.39999999850988,
+        "maxMs": 164.30000000447035
+      },
+      "missingButtonFeedback": 0
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "sourceAndMP4DurationSeconds": 676.76,
+  "fps": 25,
+  "resolution": [
+    1280,
+    1000
+  ],
+  "speed": "Unchanged source timing; no cut, speedup or slowdown. Single-thread H.264 transcode.",
+  "review": "Actual MP4 frame at245seconds and final thumbnail visually inspected: original Safari renders labeled local page inside physical phone frame.",
+  "artifacts": [
+    {
+      "path": ".context/guest-safari/browser-run-1/page@7b4749c52fead423ab4bef450dc63d91.webm",
+      "bytes": 28386713,
+      "sha256": "0da3f6eaa3cf3ea035627b8125c238505fdd8285c29a00d7f0735bdf88b82b9a"
+    },
+    {
+      "path": "tweets/videos/091_safari_local_demo.mp4",
+      "bytes": 4545879,
+      "sha256": "65991dddd029f6a93cf1d0990ce8ad72930014bfe1fb9d93761730016bb12290"
+    },
+    {
+      "path": "tweets/thumbnails/091_safari_local_demo.jpg",
+      "bytes": 62408,
+      "sha256": "7cacb395eeccc077159201d187d4e46d78a1016dfac815f80d318d8f0ed83fb2"
+    }
+  ]
+}

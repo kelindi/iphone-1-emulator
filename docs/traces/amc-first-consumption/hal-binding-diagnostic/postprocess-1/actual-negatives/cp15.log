@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 106, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 80, in run
+    assert int(log[1])==j['reason'] and [int(v,16) for v in log[8].split()]==j['cp15'],'actual binding CP15/reason differs'
+AssertionError: actual binding CP15/reason differs

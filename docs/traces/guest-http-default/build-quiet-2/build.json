@@ -1,0 +1,227 @@
+{
+  "passed": true,
+  "programName": "iphone1-local-http",
+  "diagnosticLogging": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/server.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-http-default/build-quiet-2/server.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/http.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-http-default/build-quiet-2/http.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/cctools-src/cctools/ld64/src/ld/ld",
+        "-arch",
+        "armv6",
+        "-ios_version_min",
+        "1.0",
+        "-e",
+        "_start",
+        "-no_pie",
+        "-no_uuid",
+        "-no_compact_unwind",
+        "-no_version_load_command",
+        "-no_function_starts",
+        "-no_data_in_code_info",
+        "-no_encryption",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-http-default/build-quiet-2/iphone1-local-http",
+        "/home/vercel-sandbox/iphone-1/.context/guest-http-default/build-quiet-2/server.o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-http-default/build-quiet-2/http.o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sourceSHA256": {
+    "server.c": "00d758289dc504ab7d2d5c5016b09748646bfeb8a636ba76733987fa6fb5f8bb",
+    "http.c": "a9610464d353187fa58bf4d482ce0323fe536850c0b15a2c59fa91d9801860ce",
+    "http.h": "76f80c9280b175897f4b3efa57717160f0f3d6ce774ab4f14d7863596f3e5e8e",
+    "build.py": "a5fc14ca994aa75210d8f6b77ba72250a2aec4bf42b4e230ffd58a4ceec444e2",
+    "macho_audit.py": "c37831e904a17c803264f1bc5ebb40bc8b161e89da1139c3de7de7c56837b1db"
+  },
+  "clangVersion": "clang version 15.0.7 (AWS 15.0.7-3.amzn2023.0.4)\nTarget: x86_64-amazon-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+  "audit": {
+    "passed": true,
+    "bytes": 17496,
+    "sha256": "bfcc524cae77250b3d3c8d754e7bdfe328734395a0d625fa9735f00ccdd1a19f",
+    "entry": "0x16c4",
+    "text": {
+      "name": "__text",
+      "segment": "__TEXT",
+      "address": 5828,
+      "size": 8492,
+      "fileOffset": 1732
+    },
+    "imports": [
+      {
+        "address": "0x4028",
+        "symbol": "___error",
+        "originalExportVA": "0x30001bb0"
+      },
+      {
+        "address": "0x4000",
+        "symbol": "__exit",
+        "originalExportVA": "0x300099f0"
+      },
+      {
+        "address": "0x401c",
+        "symbol": "_accept",
+        "originalExportVA": "0x30030520"
+      },
+      {
+        "address": "0x400c",
+        "symbol": "_bind",
+        "originalExportVA": "0x3000e8e0"
+      },
+      {
+        "address": "0x4020",
+        "symbol": "_close",
+        "originalExportVA": "0x30009880"
+      },
+      {
+        "address": "0x4034",
+        "symbol": "_fcntl",
+        "originalExportVA": "0x3000bad0"
+      },
+      {
+        "address": "0x4010",
+        "symbol": "_getsockname",
+        "originalExportVA": "0x3000e860"
+      },
+      {
+        "address": "0x402c",
+        "symbol": "_ioctl",
+        "originalExportVA": "0x30001d70"
+      },
+      {
+        "address": "0x4014",
+        "symbol": "_listen",
+        "originalExportVA": "0x30030500"
+      },
+      {
+        "address": "0x4018",
+        "symbol": "_poll",
+        "originalExportVA": "0x30067ae0"
+      },
+      {
+        "address": "0x403c",
+        "symbol": "_read",
+        "originalExportVA": "0x300097e0"
+      },
+      {
+        "address": "0x4038",
+        "symbol": "_setsockopt",
+        "originalExportVA": "0x3000e8b0"
+      },
+      {
+        "address": "0x4004",
+        "symbol": "_socket",
+        "originalExportVA": "0x3000c400"
+      },
+      {
+        "address": "0x4030",
+        "symbol": "_sysctl",
+        "originalExportVA": "0x30001450"
+      },
+      {
+        "address": "0x4008",
+        "symbol": "_usleep",
+        "originalExportVA": "0x300243a0"
+      },
+      {
+        "address": "0x4024",
+        "symbol": "_write",
+        "originalExportVA": "0x30009860"
+      }
+    ],
+    "commands": [
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x2",
+      "0xb",
+      "0xe",
+      "0x5",
+      "0xc"
+    ],
+    "sourceLibrarySHA256": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+    "ownSymbols": {
+      "_logline": "0x2138",
+      "_number": "0x2218",
+      "_routes": "0x22f8",
+      "_nonblock": "0x23b8",
+      "_waitfd": "0x24c4",
+      "_match": "0x3510",
+      "_lower_equal": "0x3594",
+      "_echo_value": "0x3640",
+      "_api__exit": "0x4000",
+      "_api_socket": "0x4004",
+      "_api_usleep": "0x4008",
+      "_api_bind": "0x400c",
+      "_api_getsockname": "0x4010",
+      "_api_listen": "0x4014",
+      "_api_poll": "0x4018",
+      "_api_accept": "0x401c",
+      "_api_close": "0x4020",
+      "_api_write": "0x4024",
+      "_api___error": "0x4028",
+      "_api_ioctl": "0x402c",
+      "_api_sysctl": "0x4030",
+      "_api_fcntl": "0x4034",
+      "_api_setsockopt": "0x4038",
+      "_api_read": "0x403c",
+      "_log_failures": "0x4040",
+      "_own_http_response": "0x25b8",
+      "_start": "0x16c4"
+    },
+    "scope": "Own program and eager original imports; this audit does not execute it."
+  },
+  "toolSHA256": {
+    "clang": "f75850dd02e3aa1b517522d0e9050c837bd652e6a762abbc2c1dadcc8d84102f",
+    "linker": "6aef3cf7d8cd6d65d44c1762b3f4af60f2521312601e2e8ed39dab3ada42c0af",
+    "originalLibrary": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2"
+  }
+}

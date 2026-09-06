@@ -1,0 +1,5 @@
+In file included from .context/amc-first/stage-v/source/stream.h:4,
+                 from .context/amc-first/stage-v/source/test_stream_observer.c:1:
+.context/amc-first/stage-v/source/retirement.h:14:13: warning: ‘release_finish_valid’ defined but not used [-Wunused-function]
+   14 | static bool release_finish_valid(const guest_step*s,uint64_t callback,uint32_t pc,uint32_t cpsr,uint32_t opcode,
+      |             ^~~~~~~~~~~~~~~~~~~~

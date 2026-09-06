@@ -1,0 +1,18 @@
+{
+  "durationSeconds": 117.84,
+  "source": "continuation/2-candidate/video/page@ee1a6ed561b69f8e64b8fdc7ad35980c.webm",
+  "fullUncut": true,
+  "speedUnchanged": true,
+  "thumbnailSeconds": 45,
+  "thumbnailHumanReviewed": true,
+  "files": {
+    "tweets/videos/web_lto_navigation_diagnostic.mp4": {
+      "bytes": 1777517,
+      "sha256": "6b6033a62255c9da044447b06f27b3e9d9701e7d27d040024f56e080200a6e23"
+    },
+    "tweets/thumbnails/web_lto_navigation_diagnostic.jpg": {
+      "bytes": 50831,
+      "sha256": "86d987e31ed713ce6c56296c2e7cd26b2fccdaa8fa5852bf4f96f6dcdf52564f"
+    }
+  }
+}

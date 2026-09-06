@@ -8,7 +8,7 @@ An experimental web iPhone now opens Settings about1.5seconds faster after you r
 
 [Complete actual returning-session recording](videos/seed_cache_return_settings.mp4) · [thumbnail](thumbnails/seed_cache_return_settings.jpg), **00:00–01:49.08**. First Settings is visible around00:27. The uncut recording contains the normal import, eleven Settings/Home cycles and ordinary automatic saving, at original speed. It is candidate arm2 from the frozen four-session comparison; the tested shell predates the latest separate UI update. [Source/output hashes and duration](../docs/traces/jit-stream-cache/return-visit-v3/recording.json).
 
-**Production remains unchanged. Actual service-worker/offline native-code reuse is not proven yet.**
+**Production remains unchanged. The later real service-worker/offline mechanism now passes [milestone 084](084_offline_compiled_seed_reuse.md); the combined runtime upgrade and fallback gates still precede promotion.**
 
 ## ELI5 technical explanation
 
@@ -31,4 +31,4 @@ The coordinated window has no unrelated browser/encoder/compiler in retained bou
 
 This removes a measurable part of returning Settings latency without modifying Apple's binaries or the generated CPU instructions. It does not improve a first-ever visit, prove every app faster, or meet the full-speed goal.
 
-The narrower Settings result justifies testing the real offline-cache path and latest UI's actual autosave flow. A product decision must retain the Home tail tradeoff and complete those functional gates before enabling the loader in production.
+The narrower Settings result justified the real offline-cache and current UI autosave tests, now passed in milestone 084. A product decision must retain the Home tail tradeoff and complete the combined runtime upgrade and fallback gates before enabling the loader in production.

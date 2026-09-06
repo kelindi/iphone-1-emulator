@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "positive",
+      "passed": true,
+      "writerReturncode": 0,
+      "error": null,
+      "receipt": {
+        "rawBytes": 17952673,
+        "rawSHA256": "ba4f664cd87f72b3436d0eab6bbdd51d6c60668abc5f8a510f3945ecfa571558",
+        "gzipBytes": 78747,
+        "gzipSHA256": "b7c5af885fb14640421dcd9d6a3e559d45873dd964f1ea4cea75ff2698106efc",
+        "headerHex": "53354c426f7820534e415053484f5400270000002800000071ef1101000000000000000000000000",
+        "snapshotTrailerHex": "822d62c1f14ba65d",
+        "gzipRoundtripExact": true
+      },
+      "writerStderr": "RAW bytes=17952673 digest=767e92d8215c57b7\n"
+    },
+    {
+      "case": "truncated_writer",
+      "passed": true,
+      "writerReturncode": 7,
+      "error": "truncated snapshot",
+      "receipt": null,
+      "writerStderr": "RAW bytes=17952673 digest=767e92d8215c57b7\n"
+    },
+    {
+      "case": "reader_failure",
+      "passed": true,
+      "writerReturncode": -13,
+      "error": "injected output failure",
+      "receipt": null,
+      "writerStderr": "RAW bytes=17952673 digest=767e92d8215c57b7\n"
+    },
+    {
+      "case": "no_writer",
+      "passed": true,
+      "writerReturncode": 7,
+      "error": "writer ended before any snapshot bytes",
+      "receipt": null,
+      "writerStderr": ""
+    }
+  ],
+  "scope": "Real standard M68 snapshot through FIFO/gzip and original native loader; no guest boot."
+}

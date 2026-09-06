@@ -1,0 +1,40 @@
+{
+  "originalSeriesPassed": false,
+  "uniqueScopedIdentities": 14,
+  "outerAllClosed": true,
+  "gracefulContextClosureRecorded": false,
+  "fullRecording": false,
+  "videoPackets": 2801,
+  "videoLastPacketSeconds": 112.0,
+  "videoWarning": "File ended prematurely",
+  "files": {
+    "browser-frozen.json": {
+      "bytes": 3626,
+      "sha256": "46c522577103b484c3d3e091fea9cb6277ea72b49df2c08af7bb5742c223f263"
+    },
+    "run-browser.mjs": {
+      "bytes": 16579,
+      "sha256": "6bd4c26982ca0af405b6e3332d813bfa3beb1ffeef0d6134768eb9c53116e212"
+    },
+    "measured/series.json": {
+      "bytes": 11511,
+      "sha256": "fd9bcaa26f4410b6f3fdd058fe89fa292b00d9c12b364466c2278dfa69b62c8a"
+    },
+    "measured/1-original/report-partial.json": {
+      "bytes": 101647,
+      "sha256": "7ed5e11ce10376130bdaa8e3986b1c78b89f6f5b5bc567e06952a49ff65f529d"
+    },
+    "measured/1-original/process-receipt.json": {
+      "bytes": 2588,
+      "sha256": "be38b40ce352a23f7de269585f7f7c9284bd44e69b717c77708984d9cedd88df"
+    },
+    "measured/1-original/trace.json": {
+      "bytes": 43554795,
+      "sha256": "88e2b2877022da8d5e9cffd2764c4e23a9621f495046347e4fc83a3e99313f57"
+    },
+    "measured/1-original/video/page@de6122d874bfc96cc26e657af15f8c02.webm": {
+      "bytes": 7864320,
+      "sha256": "121df824586961d636975e425f895ba6a2c84524c68c03d894e3436c9c2acd2d"
+    }
+  }
+}

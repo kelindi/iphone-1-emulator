@@ -1,0 +1,6 @@
+30030520 1ec0a0e3   mov      ip, #0x1e
+30030524 800000ef   svc      #0x80
+30030528 1eff2f31   bxlo     lr
+3003052c 04c09fe5   ldr      ip, [pc, #4]
+30030530 0cc09fe7   ldr      ip, [pc, ip]
+30030534 000000ea   b        #0x3003053c

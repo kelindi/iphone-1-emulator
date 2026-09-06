@@ -1,0 +1,56 @@
+00002138 f0402de9   push     {r4, r5, r6, r7, lr}
+0000213c 0c708de2   add      r7, sp, #0xc
+00002140 000d2de9   push     {r8, sl, fp}
+00002144 04d04de2   sub      sp, sp, #4
+00002148 0080a0e1   mov      r8, r0
+0000214c 0060e0e3   mvn      r6, #0
+00002150 060088e0   add      r0, r8, r6
+00002154 016086e2   add      r6, r6, #1
+00002158 0100d0e5   ldrb     r0, [r0, #1]
+0000215c 000050e3   cmp      r0, #0
+00002160 0100000a   beq      #0x216c
+00002164 010b56e3   cmp      r6, #0x400
+00002168 f8ffff3a   blo      #0x2150
+0000216c 0040a0e3   mov      r4, #0
+00002170 000056e3   cmp      r6, #0
+00002174 1c00000a   beq      #0x21ec
+00002178 8ca09fe5   ldr      sl, [pc, #0x8c]
+0000217c 8c009fe5   ldr      r0, [pc, #0x8c]
+00002180 00b0a0e3   mov      fp, #0
+00002184 00008de5   str      r0, [sp]
+00002188 00309ae5   ldr      r3, [sl]
+0000218c 045046e0   sub      r5, r6, r4
+00002190 041088e0   add      r1, r8, r4
+00002194 0100a0e3   mov      r0, #1
+00002198 0520a0e1   mov      r2, r5
+0000219c 33ff2fe1   blx      r3
+000021a0 010050e3   cmp      r0, #1
+000021a4 030000ba   blt      #0x21b8
+000021a8 050050e1   cmp      r0, r5
+000021ac 0100008a   bhi      #0x21b8
+000021b0 044080e0   add      r4, r0, r4
+000021b4 070000ea   b        #0x21d8
+000021b8 010070e3   cmn      r0, #1
+000021bc 0a0000ca   bgt      #0x21ec
+000021c0 00009de5   ldr      r0, [sp]
+000021c4 000090e5   ldr      r0, [r0]
+000021c8 30ff2fe1   blx      r0
+000021cc 000090e5   ldr      r0, [r0]
+000021d0 040050e3   cmp      r0, #4
+000021d4 0400001a   bne      #0x21ec
+000021d8 0e005be3   cmp      fp, #0xe
+000021dc 0200008a   bhi      #0x21ec
+000021e0 01b08be2   add      fp, fp, #1
+000021e4 040056e1   cmp      r6, r4
+000021e8 e6ffff8a   bhi      #0x2188
+000021ec 060054e1   cmp      r4, r6
+000021f0 1c009f15   ldrne    r0, [pc, #0x1c]
+000021f4 00109015   ldrne    r1, [r0]
+000021f8 01108112   addne    r1, r1, #1
+000021fc 00108015   strne    r1, [r0]
+00002200 18d047e2   sub      sp, r7, #0x18
+00002204 000dbde8   pop      {r8, sl, fp}
+00002208 f080bde8   pop      {r4, r5, r6, r7, pc}
+0000220c 24400000   andeq    r4, r0, r4, lsr #32
+00002210 28400000   andeq    r4, r0, r8, lsr #32
+00002214 40400000   andeq    r4, r0, r0, asr #32

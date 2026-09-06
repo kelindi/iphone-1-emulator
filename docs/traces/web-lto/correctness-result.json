@@ -1,0 +1,17 @@
+{
+  "relativePassed": true,
+  "vfpConformancePassed": false,
+  "rawCheckpoints": 8,
+  "rawFieldsIgnored": [],
+  "frameExactBoth": true,
+  "seededCountersExact": true,
+  "interpreterJitZero": true,
+  "finalRawSha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+  "finalFrameSha256": "4d9e9478b41ddb9e31108744025cc07a518043d43096ef78cd8d044b6565e69b",
+  "seededFinal": {
+    "generated": 73093840,
+    "calls": 9273308,
+    "regions": 509
+  },
+  "scope": "Candidate interpreter and original512seed each100M versus byte-identical released control. Baseline VFP12literal failures remain, no fullVFP claim. Original timer/device/CPU/MMU snapshot bytes all included."
+}

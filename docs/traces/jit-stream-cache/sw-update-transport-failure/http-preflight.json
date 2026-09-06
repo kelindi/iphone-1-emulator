@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "index.html",
+      "sha256": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "bytes": 5450,
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/html",
+        "Content-Length": "5450",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "app.js",
+      "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "bytes": 18558,
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/javascript",
+        "Content-Length": "18558",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "phone.css",
+      "sha256": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "bytes": 9067,
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/css",
+        "Content-Length": "9067",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "bytes": 1222,
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1222",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "seed-jit.js",
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "bytes": 9613,
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/javascript",
+        "Content-Length": "9613",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "dist/emu.wasm",
+      "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "bytes": 249414,
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/wasm",
+        "Content-Length": "249414",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "service-worker.js",
+      "sha256": "24d871728b2ea56926a86ff0eb9e3e3ae9d3b1822ff54a16eb623c3475894ca8",
+      "bytes": 3228,
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/javascript",
+        "Content-Length": "3228",
+        "Cache-Control": "no-cache",
+        "X-Content-Type-Options": "nosniff",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "jit/seed.wasm",
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313,
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/wasm",
+        "Cache-Control": "no-cache",
+        "ETag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+        "Last-Modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Length": "12341313",
+        "Date": "Sun, 06 Sep 2026 06:03:59 GMT",
+        "Connection": "close"
+      }
+    }
+  ]
+}

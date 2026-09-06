@@ -1,0 +1,5 @@
+{
+  "scope": "Documentation only: identify actual mapped entry as StartIO, distinct from HALOutputProc. No frozen source/report/pins or guest execution changed.",
+  "beforeREADMEsha256": "e81db5611bad0d48096b71f91a616801519ce78784b2fe936d4e66108a80853c",
+  "afterREADMEsha256": "0d1b3b8eeeb8aab02f036a2f92a117949a6a643ffc2e9603fc6a88e3828f99ea"
+}

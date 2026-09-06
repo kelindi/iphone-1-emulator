@@ -1,0 +1,1 @@
+PASS real readline EOF before delayed iterator construction rejects without hanging

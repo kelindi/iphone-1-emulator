@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 104, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 95, in run
+    submitted=b''.join(captures[i] for i in (1,2,3))+data;assert len(submitted)==cb and submitted[db:]==(p/'owned-queue.bin').read_bytes(),'final queue differs from actual copied bytes'
+AssertionError: final queue differs from actual copied bytes

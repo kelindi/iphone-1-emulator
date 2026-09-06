@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "fresh",
+      "exitCode": 0,
+      "stdout": "PASS fresh result=0 reads=94 writes=42 closes=23\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "short",
+      "exitCode": 0,
+      "stdout": "PASS short result=0 reads=604 writes=473 closes=23\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "eintr",
+      "exitCode": 0,
+      "stdout": "PASS eintr result=0 reads=118 writes=63 closes=23\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "uid",
+      "exitCode": 0,
+      "stdout": "PASS uid result=70 reads=0 writes=0 closes=0\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "dir-symlink",
+      "exitCode": 0,
+      "stdout": "PASS dir-symlink result=71 reads=0 writes=0 closes=1\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "dir-file",
+      "exitCode": 0,
+      "stdout": "PASS dir-file result=71 reads=0 writes=0 closes=2\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "foreign",
+      "exitCode": 0,
+      "stdout": "PASS foreign result=73 reads=1 writes=0 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "temp",
+      "exitCode": 0,
+      "stdout": "PASS temp result=73 reads=0 writes=0 closes=4\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "file-symlink",
+      "exitCode": 0,
+      "stdout": "PASS file-symlink result=73 reads=0 writes=0 closes=4\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "fifo",
+      "exitCode": 0,
+      "stdout": "PASS fifo result=73 reads=1 writes=0 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "extra-byte",
+      "exitCode": 0,
+      "stdout": "PASS extra-byte result=73 reads=21 writes=0 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "zero",
+      "exitCode": 0,
+      "stdout": "PASS zero result=73 reads=0 writes=1 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "sync",
+      "exitCode": 0,
+      "stdout": "PASS sync result=73 reads=0 writes=20 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "close",
+      "exitCode": 0,
+      "stdout": "PASS close result=73 reads=0 writes=20 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "race",
+      "exitCode": 0,
+      "stdout": "PASS race result=73 reads=1 writes=20 closes=6\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "same-race",
+      "exitCode": 0,
+      "stdout": "PASS same-race result=0 reads=94 writes=42 closes=23\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "unlink",
+      "exitCode": 0,
+      "stdout": "PASS unlink result=73 reads=0 writes=20 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "read",
+      "exitCode": 0,
+      "stdout": "PASS read result=73 reads=1 writes=20 closes=6\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    },
+    {
+      "case": "write",
+      "exitCode": 0,
+      "stdout": "PASS write result=73 reads=0 writes=1 closes=5\n",
+      "stderr": "",
+      "preservationChecksPassed": true
+    }
+  ],
+  "scope": "Own algorithm and real host filesystem only; no OS1 execution"
+}

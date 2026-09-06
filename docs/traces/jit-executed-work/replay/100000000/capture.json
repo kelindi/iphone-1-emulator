@@ -1,0 +1,48 @@
+{
+  "done": 100000000,
+  "attempted": 1000000,
+  "positionsPath": "/home/vercel-sandbox/iphone-1/.context/jit-executed-work/positions.json",
+  "positionsSha256": "bc109529e604ae39fc469fa662b0be6d21b503de15c882fdd842583ffc403bf5",
+  "interpreterCapacity": 524288,
+  "generatedCapacity": 262144,
+  "epochStart": "2",
+  "generatedOverflow": "0",
+  "retiredDelta": 100000000,
+  "jitRetiredDelta": 73093840,
+  "totals": {
+    "calls": "26906160",
+    "ok": "26906160",
+    "fetched": "26903869",
+    "nofetch": "2291",
+    "nonok": "0",
+    "overflow": "0",
+    "mapOverflow": "0",
+    "epoch": "2",
+    "installs": "0",
+    "generatedOverflow": "0"
+  },
+  "data": [
+    {
+      "name": "rows",
+      "rawBytes": 20971520,
+      "rawSha256": "7d82ca321ea4c0644cf88e08578699da2933342c1284f67c14fc639f09bbbf53",
+      "gzipBytes": 2893067,
+      "gzipSha256": "2f8e2eafc7793ab894b7f0d2343e84e071ad85f098987775460f1834f0d98d6d"
+    },
+    {
+      "name": "generated",
+      "rawBytes": 2097152,
+      "rawSha256": "adb6c3302f6ec8dcd41e070ad87b3260419b55a6774566b7a1c5e21969695362",
+      "gzipBytes": 55413,
+      "gzipSha256": "9f9b557e262d1eda5c1eb5c2a7589c8324bdb3bc3539f109254cc5fd614006fd"
+    },
+    {
+      "name": "summary",
+      "rawBytes": 80,
+      "rawSha256": "53469c488aed1fdb5afbf175cbab6c6563199988dfb77be62d79b3d44fa00bf3",
+      "gzipBytes": 46,
+      "gzipSha256": "5d57a2051e5eae61795a7432d1dc6ea8755ff46b4e7672b34cd211a833bbebec"
+    }
+  ],
+  "stopped": true
+}

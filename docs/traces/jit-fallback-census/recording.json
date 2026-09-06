@@ -1,0 +1,42 @@
+{
+  "source": "/home/vercel-sandbox/iphone-1/.context/jit-fallback-census/browser-1/video/page@b0e1c72abc0628d8188d254810aa9a11.webm",
+  "mp4": "tweets/videos/warm_fallback_census_diagnostic.mp4",
+  "thumbnail": "tweets/thumbnails/warm_fallback_census_diagnostic.jpg",
+  "thumbnailSeconds": 49,
+  "commands": [
+    [
+      "node_modules/ffmpeg-static/ffmpeg",
+      "-y",
+      "-threads",
+      "1",
+      "-filter_threads",
+      "1",
+      "-i",
+      "/home/vercel-sandbox/iphone-1/.context/jit-fallback-census/browser-1/video/page@b0e1c72abc0628d8188d254810aa9a11.webm",
+      "-c:v",
+      "libx264",
+      "-threads",
+      "1",
+      "-preset",
+      "veryfast",
+      "-crf",
+      "23",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart",
+      "-an",
+      "tweets/videos/warm_fallback_census_diagnostic.mp4"
+    ]
+  ],
+  "scope": "Entire original-speed diagnostic session; no cuts, no speed claim; prepared Home/Settings then actual warm census.",
+  "sha256": {
+    "/home/vercel-sandbox/iphone-1/.context/jit-fallback-census/browser-1/video/page@b0e1c72abc0628d8188d254810aa9a11.webm": "1fd12f87ada9b0794c3fe7e225d216f57a377db9e18296974eca7be8a683340b",
+    "tweets/videos/warm_fallback_census_diagnostic.mp4": "1978dbfcaa9169347f49b36f4d527d1298acd4abda17ebebd60e3ae6af94a3f3",
+    "tweets/thumbnails/warm_fallback_census_diagnostic.jpg": "ae5dae39c0f451ae54f277a15ee123e0d7058913862a79a0b885d33cbe53760d"
+  },
+  "sourceDurationSeconds": 56.4,
+  "mp4DurationSeconds": 56.4,
+  "durationDifferenceSeconds": 0.0,
+  "thumbnailManuallyReviewed": "Complete genuine Settings controls during actual warm census"
+}

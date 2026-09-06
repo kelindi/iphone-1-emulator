@@ -1,0 +1,96 @@
+{
+  "passed": false,
+  "homeAccepted": false,
+  "reason": "Separate4B\u219210B continuation. Manual Home acceptance recorded separately after actual frame review; no Photos browser run.",
+  "originalLoader": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "VERIFY status=0 bytes=245067746 digest=2be5eaf6081c0c6d\n"
+  },
+  "fullRAMSHA256": "beca7f73b93b95642716aafcab6518d96312f8c440bbd1a5f55035e8fca2fbd8",
+  "actualHardlinkNegatives": [
+    {
+      "case": "bad-type",
+      "rejected": true
+    },
+    {
+      "case": "bad-creator",
+      "rejected": true
+    },
+    {
+      "case": "zero-reference",
+      "rejected": true
+    },
+    {
+      "case": "missing-reference",
+      "rejected": true
+    },
+    {
+      "case": "wrong-target-mode",
+      "rejected": true
+    },
+    {
+      "case": "wrong-link-count",
+      "rejected": true
+    },
+    {
+      "case": "wrong-payload-hash",
+      "rejected": true
+    }
+  ],
+  "fileAuditPassed": true,
+  "files": [
+    {
+      "path": "/private/var/root/Media/DCIM/100APPLE/IMG_0001.JPG",
+      "target": "/\u0000\u0000\u0000\u0000HFS+ Private Data/iNode2944",
+      "linkReference": 2944,
+      "targetCNID": 2944,
+      "bytes": 19484,
+      "sha256": "d2c65cda764d893c536c94d7e6ae4899bc4b6ac9235252c750267a6119960a5c",
+      "mode": "0o100644"
+    },
+    {
+      "path": "/private/var/root/Media/DCIM/100APPLE/IMG_0001.THM",
+      "target": "/\u0000\u0000\u0000\u0000HFS+ Private Data/iNode2947",
+      "linkReference": 2947,
+      "targetCNID": 2947,
+      "bytes": 1882,
+      "sha256": "f32b6594ab69d49d92d45eafa334cb0647d1901f7f761cd94f9533fed0e0a121",
+      "mode": "0o100644"
+    },
+    {
+      "path": "/private/var/root/Media/DCIM/100APPLE/IMG_0002.JPG",
+      "target": "/\u0000\u0000\u0000\u0000HFS+ Private Data/iNode2950",
+      "linkReference": 2950,
+      "targetCNID": 2950,
+      "bytes": 9221,
+      "sha256": "20bc8e4b30563a1c75e2b4079f1ac4d84336b1c5801404e0917430f1c0f43699",
+      "mode": "0o100644"
+    },
+    {
+      "path": "/private/var/root/Media/DCIM/100APPLE/IMG_0002.THM",
+      "target": "/\u0000\u0000\u0000\u0000HFS+ Private Data/iNode2953",
+      "linkReference": 2953,
+      "targetCNID": 2953,
+      "bytes": 1035,
+      "sha256": "6999149555b12a48d4d899fad15f58e216cb5ec2ab6281d66b4a65a28aa8bbea",
+      "mode": "0o100644"
+    },
+    {
+      "path": "/private/var/root/Media/DCIM/100APPLE/BAD.JPG",
+      "target": "/\u0000\u0000\u0000\u0000HFS+ Private Data/iNode2956",
+      "linkReference": 2956,
+      "targetCNID": 2956,
+      "bytes": 7398,
+      "sha256": "f08fc7bab2ac9b3d172eb27efcc8524755a6e0f47e2182493655a68672c8c9db",
+      "mode": "0o100644"
+    }
+  ],
+  "diskOffset": 6094848,
+  "diskBytes": 176160768,
+  "diskSHA256": "667648fada1344dcd5eb8b00018447e36747ce1ded651b759716724bd66dba69",
+  "primaryFlags": "0x0",
+  "catalogLeaves": 263,
+  "snapshotSHA256": "25392f0370b925e0ef6759b66ff2cd95a0820cf56ec0772972fe4b3c81d0106b",
+  "scope": "Snapshot original-loader PASS and all256MiB RAM exact; five actual backing-file payloads independently exact. No Photos app acceptance; manual Home result separate."
+}
