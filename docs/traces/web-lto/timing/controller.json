@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "One prewarmed600M ABBA series, no retry;420s total process cap",
+  "startedUTC": "2026-09-06T09:35:21Z",
+  "freeBefore": 6470320128,
+  "pid": 3851697,
+  "exitCode": 0,
+  "endedUTC": "2026-09-06T09:38:23Z",
+  "processClosed": true,
+  "freeAfter": 6469574656
+}

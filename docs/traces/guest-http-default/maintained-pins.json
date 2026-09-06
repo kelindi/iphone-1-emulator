@@ -1,0 +1,22 @@
+{
+  "tools/legacy_services/guest_http/CMakeLists.txt": "646e8efab04eb6b4aad6350ee4a71eab68da53dccf3cb7765c85e1f4f0d17de5",
+  "tools/legacy_services/guest_http/README.md": "807917ad1490de4387539172502aaccc4bfc1a53078ff24691530b344c5269b5",
+  "tools/legacy_services/guest_http/build.py": "a5fc14ca994aa75210d8f6b77ba72250a2aec4bf42b4e230ffd58a4ceec444e2",
+  "tools/legacy_services/guest_http/com.iphone1.local-demo.http.plist": "a564e1005818ea3eef59304f6875f1e2b13a3392f305a96aa4aea08c944e6588",
+  "tools/legacy_services/guest_http/compare-logging.cmake": "2106c123361b54b2fd6918765e05fbfb93475864998e49fe49225981c2ea3c4a",
+  "tools/legacy_services/guest_http/http.c": "a9610464d353187fa58bf4d482ce0323fe536850c0b15a2c59fa91d9801860ce",
+  "tools/legacy_services/guest_http/http.h": "76f80c9280b175897f4b3efa57717160f0f3d6ce774ab4f14d7863596f3e5e8e",
+  "tools/legacy_services/guest_http/install.py": "ff368ef95da2cb2d98d4e0417956a80f7ca7dc752fb28e7f0197ab4ee1654f6a",
+  "tools/legacy_services/guest_http/macho_audit.py": "c37831e904a17c803264f1bc5ebb40bc8b161e89da1139c3de7de7c56837b1db",
+  "tools/legacy_services/guest_http/server.c": "00d758289dc504ab7d2d5c5016b09748646bfeb8a636ba76733987fa6fb5f8bb",
+  "tools/legacy_services/guest_http/test_http.c": "384226aaf0ba584c5990d6d5d8d58c9a7e62cf0fa76e9342a1dc83b93cfd3ccd",
+  "tools/legacy_services/guest_http/test_install.py": "2922a4fc6dceab228e89b7bafd2ec54a3c62839c089de9e103d09e8ea195e6ca",
+  "tools/legacy_services/guest_http/test_server.c": "18e9272996fc125fe6d09415e26262585fca248e6c04a2b4a48e126ca1b850f6",
+  "tools/firmware/rootfs_work.py": "38acdc99436ff7a786b466df852f8cd7b216e27da99b584e1670bfba1b59d377",
+  "tools/firmware/test_rootfs_work_permissions.py": "ca28c30d5fb8da1d5b3852df648ad3530622d7f6d14abd6dcafbc5dcd7ec38a7",
+  "tools/firmware/requirements.txt": "85b938d73ea6067437567f2cbee295f85c8ab8a0799126c688a2eef82d2e802b",
+  "tools/CMakeLists.txt": "b18ca8551710a7bbdb8992ed6aa31f0622b3b7461a15a2f6e2d432d713431026",
+  ".github/workflows/ci.yml": "2eccaea131384685b971421616c10adc7b3941319a12b25bbfcd5f44d0fe75b1",
+  ".context/guest-http-default/build-quiet-2/iphone1-local-http": "bfcc524cae77250b3d3c8d754e7bdfe328734395a0d625fa9735f00ccdd1a19f",
+  ".context/guest-http-default/build-quiet-2/build.json": "336d4286985c95c7b1d623ba42bf4b16b4be8a4368c6bc83a7b27d0ea0ae51aa"
+}

@@ -1,0 +1,130 @@
+{
+  "docs/traces/rtc-release-upgrade/final-release/report.json": {
+    "bytes": 39452,
+    "sha256": "d389837ed1c6d75de6501a298a4c8bbc7bf7c4b1c68ec3537ef4f48b02a039fe"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/independent-audit.json": {
+    "bytes": 956,
+    "sha256": "f0282e91290237c9d5b786bd75008f2965d0306811df18503f9ac98731d3e410"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/encode.log": {
+    "bytes": 10203,
+    "sha256": "0010f13e9d1f5ab6f1dc62b93fd94ff987e52beb31efd8655eb4c422f2e6668a"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/thumbnail.log": {
+    "bytes": 2589,
+    "sha256": "4eac325f908d5982d9af0c32800ba7331feac75f6916c4720b03e56669f38308"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/00-fresh-home.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/00-fresh-home-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/01-actual-settings.png": {
+    "bytes": 131781,
+    "sha256": "3c34e97602bb4c89530a7ed91956d625ef0d4c12f3a92fa2f253a198e354c62b"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/01-actual-settings-guest.png": {
+    "bytes": 32335,
+    "sha256": "fc27799ab0daa8f5f38fffe226a5e03408a921a2236cf0bdf94416c82b9ca9c2"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/02-physical-home.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/02-physical-home-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/03-real-autosave.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/03-real-autosave-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/04-autosave-reload.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/04-autosave-reload-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/05-offline-installed.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/05-offline-installed-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/06-final-offline-running.png": {
+    "bytes": 202091,
+    "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/06-final-offline-running-guest.png": {
+    "bytes": 98738,
+    "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/00-fresh-home.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/01-actual-settings.rgba": {
+    "bytes": 614400,
+    "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/02-physical-home.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/03-real-autosave.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/04-autosave-reload.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/05-offline-installed.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/06-final-offline-running.rgba": {
+    "bytes": 614400,
+    "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/source-pins.json": {
+    "bytes": 2556,
+    "sha256": "895a992af1ab1664efdb497566b083194a46b9fe83378e60dc1594f7803c8d63"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/smoke.mjs": {
+    "bytes": 9600,
+    "sha256": "fb077d5b0c79d397946d7340625db01dfbcbf38e1c1d9e38147e7a32b83a79c3"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/run-1.log": {
+    "bytes": 204,
+    "sha256": "5293c67490c8d867c8daf1dd5ef8a5f49e2a9e8e69d0535f870a542cac85899a"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/audit.py": {
+    "bytes": 2023,
+    "sha256": "0ac37ae87b1bd8a044399852baae160f18855cc822c3d95146a2314834e33f99"
+  },
+  "docs/traces/rtc-release-upgrade/final-release/README.md": {
+    "bytes": 3445,
+    "sha256": "8bc75b57108e12c08e085ecba89e43ea87f6d123f3b94908a9f1a3b4bf042ed6"
+  },
+  "tweets/videos/rtc_final_release.mp4": {
+    "bytes": 1016771,
+    "sha256": "b06dcea5c0de4068b9b8620c6e038f72fa454e41cbdb11984526878d27477552"
+  },
+  "tweets/thumbnails/rtc_final_release.jpg": {
+    "bytes": 79538,
+    "sha256": "492ee219a2aea710b3c6c1ce9cc8e4883aa6b42dc223453b7225d3a6a1462b68"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "artifactChecksPassed": true,
+  "qualificationPassed": false,
+  "boundary": "Guest-authored UART says exact loopback exchange succeeded; required native process/text/API/exit witnesses absent. Original report remains failure, no retry.",
+  "sourcePinsChecked": 21,
+  "readinessSamples": 1,
+  "interfaceRecords": [
+    {
+      "name": "lo0",
+      "sockaddrLength": 20,
+      "family": 18,
+      "addressBytes": "14120100180300006c6f30000000000000000000"
+    },
+    {
+      "name": "lo0",
+      "sockaddrLength": 16,
+      "family": 2,
+      "addressBytes": "100200007f0000010000000000000000"
+    }
+  ],
+  "interfaceFlags": [
+    "0x8049",
+    "0x8049"
+  ],
+  "routeBytes": 124,
+  "routeHex": "7c00050401000000050020000300000000000000000000000000000000000000000000000000000000400000000000000000000000c0000000c000000000000000000000000000000000000000000000000000000000000000000000100200007f0000010000000000000000100200007f0000010000000000000000",
+  "requestBytes": 54,
+  "requestSHA256": "609405391d5eb8188f85b1f8eb894328891d6b140738d64e1a2899893ead998e",
+  "responseBytes": 113,
+  "responseSHA256": "f004ef6bd72954be5fee8392e0d7579c2c758566c83bce762a48dd817b4c1442",
+  "rows": [
+    {
+      "label": "socket_server",
+      "value": 3,
+      "detail": 0
+    },
+    {
+      "label": "readiness_attempt",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "ifconf",
+      "value": 0,
+      "detail": 68
+    },
+    {
+      "label": "ifconf_bytes",
+      "value": 68,
+      "detail": 0
+    },
+    {
+      "label": "ifflags",
+      "value": 0,
+      "detail": 32841
+    },
+    {
+      "label": "ifname",
+      "value": 16,
+      "detail": 0
+    },
+    {
+      "label": "ifflags",
+      "value": 0,
+      "detail": 32841
+    },
+    {
+      "label": "ifname",
+      "value": 16,
+      "detail": 0
+    },
+    {
+      "label": "route_sysctl",
+      "value": 0,
+      "detail": 124
+    },
+    {
+      "label": "route_bytes",
+      "value": 124,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_get",
+      "value": 2,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_set",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "nosigpipe",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "bind",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "bound_name",
+      "value": 0,
+      "detail": 16
+    },
+    {
+      "label": "bound_address",
+      "value": 16,
+      "detail": 0
+    },
+    {
+      "label": "listen",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "socket_client",
+      "value": 4,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_get",
+      "value": 2,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_set",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "nosigpipe",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "connect",
+      "value": 4294967295,
+      "detail": 36
+    },
+    {
+      "label": "connect_status",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "accept",
+      "value": 5,
+      "detail": 16
+    },
+    {
+      "label": "peer_address",
+      "value": 16,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_get",
+      "value": 6,
+      "detail": 0
+    },
+    {
+      "label": "fcntl_set",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "nosigpipe",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "actual_request",
+      "value": 54,
+      "detail": 0
+    },
+    {
+      "label": "close_response",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "actual_response",
+      "value": 113,
+      "detail": 0
+    },
+    {
+      "label": "close_client",
+      "value": 0,
+      "detail": 0
+    },
+    {
+      "label": "close_server",
+      "value": 0,
+      "detail": 0
+    }
+  ],
+  "blobs": {
+    "ifconf_bytes": [
+      "6c6f300000000000000000000000000014120100180300006c6f300000000000000000006c6f3000000000000000000000000000100200007f0000010000000000000000"
+    ],
+    "ifname": [
+      "6c6f3000000000000000000000000000",
+      "6c6f3000000000000000000000000000"
+    ],
+    "route_bytes": [
+      "7c00050401000000050020000300000000000000000000000000000000000000000000000000000000400000000000000000000000c0000000c000000000000000000000000000000000000000000000000000000000000000000000100200007f0000010000000000000000100200007f0000010000000000000000"
+    ],
+    "bound_address": [
+      "100246a17f0000010000000000000000"
+    ],
+    "peer_address": [
+      "1002c0007f0000010000000000000000"
+    ],
+    "actual_request": [
+      "474554202f7175616c696669636174696f6e20485454502f312e300d0a486f73743a203132372e302e302e313a31383038310d0a0d0a"
+    ],
+    "actual_response": [
+      "485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a20746578742f706c61696e0d0a436f6e74656e742d4c656e6774683a2032390d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a4950484f4e45315f47554553545f4c4f4f504241434b5f56315f4f4b0a"
+    ]
+  },
+  "artifactSHA256": {
+    "stdout.log": "1d528dcd501933752f3d5798af67c4f83a97eff9d681f1eb83b867d037bc3c57",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "serial.log": "2720830dadec3028b75c13876192277a209ea757c3fff377984caa45f52d496b",
+    "early-stop.json": "18fca89dfc56e1e9066d0662d1807c5a56a9f9cc919c25b452e674a6f5f87c5d",
+    "report.json": "e7509d9a902c480a18d9f99887eb2f1aefe775f26f4ca6575caa8f4d6dd03a86",
+    "audit-uart-prefix-failure.log": "29bf2484792b0a7164cb75abc93125359410745d046c8d184eece840983e6b59"
+  }
+}

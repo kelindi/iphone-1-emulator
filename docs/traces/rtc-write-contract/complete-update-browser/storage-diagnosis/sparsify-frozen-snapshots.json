@@ -1,0 +1,617 @@
+{
+  "byteIdentityVerified": true,
+  "files": [
+    {
+      "path": ".context/clock/black/black.snap",
+      "bytes": 249810914,
+      "beforeAllocated": 249810944,
+      "afterAllocated": 233033728,
+      "sha256": "5e06facf3b2a813c92f875e6e6095b7f6c11e83d9c351ab9b71c7fd6fcaa98a3",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/home.snap",
+      "bytes": 245747682,
+      "beforeAllocated": 245747712,
+      "afterAllocated": 228966400,
+      "sha256": "094a6d53d0df60f435b04a6871e50842414d855e9fdeaf441a09a908083a8410",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/lifecycle-resumed.snap",
+      "bytes": 245448674,
+      "beforeAllocated": 245448704,
+      "afterAllocated": 228667392,
+      "sha256": "d9399c7b93c2e3df14363596fc2d82796d076b42c6c1a0cf9ef240870e369191",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/lifecycle.snap",
+      "bytes": 219250659,
+      "beforeAllocated": 219250688,
+      "afterAllocated": 202461184,
+      "sha256": "efd601d9b66b34dcb41d29e3823842b2a8dea15a3af7ac28caea215f82fe09e9",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-clean-control/final.snap",
+      "bytes": 249188322,
+      "beforeAllocated": 249188352,
+      "afterAllocated": 232411136,
+      "sha256": "b53e66b987ea7b0a7213f9fe771b0155df2e28d56f5934edc067b27eeb390021",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-clean-host/final.snap",
+      "bytes": 249167842,
+      "beforeAllocated": 249167872,
+      "afterAllocated": 232390656,
+      "sha256": "3cb22bfd5e98acb2bac415f56946db4b033e96861be0a9b31faf7f3bf3ce6f71",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-host-clock/black.snap",
+      "bytes": 249155554,
+      "beforeAllocated": 249155584,
+      "afterAllocated": 232378368,
+      "sha256": "db3bd63a03345b7d4ef71c3ff1bd9a600d2f0c866888178f4607ff3e477cf4de",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-host-clock/final.snap",
+      "bytes": 249171938,
+      "beforeAllocated": 249171968,
+      "afterAllocated": 232394752,
+      "sha256": "50c4e4e3a9fa72ce5ec093d0ae464e8050dcd4a599de7b0a0b193d7fc1970e7d",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-ready/black.snap",
+      "bytes": 249143266,
+      "beforeAllocated": 249143296,
+      "afterAllocated": 232366080,
+      "sha256": "3f9b25ca27eeef9d8542873a52f8f1ef2322abfaa9988edebbc097264160ce2b",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/clock/usb-ready/final.snap",
+      "bytes": 249155554,
+      "beforeAllocated": 249155584,
+      "afterAllocated": 232378368,
+      "sha256": "5fc8ddb387e0c70a71e434d7332dc7702cbb9b0382ede9588eb2c746b57d638d",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/api-dismiss.snap",
+      "bytes": 244838370,
+      "beforeAllocated": 244838400,
+      "afterAllocated": 228126720,
+      "sha256": "fee32f772eb7fc88422d219dd9a70ab10c17189428ded5a6279d1a6e00af20eb",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/api-settings.snap",
+      "bytes": 248954850,
+      "beforeAllocated": 248954880,
+      "afterAllocated": 232243200,
+      "sha256": "f79b0944799772b72ce7a0fb946662cb2d8b7f607ecd2e5501621f0123121e28",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/clipped-persistence/settings-backup.snap",
+      "bytes": 249245666,
+      "beforeAllocated": 249245696,
+      "afterAllocated": 232534016,
+      "sha256": "bd104d98ac93919f83f97803a21fb38b58e8470fd381e0db9521eb3e4dbba82d",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/clipped-persistence-verified/settings-backup.snap",
+      "bytes": 249212898,
+      "beforeAllocated": 249212928,
+      "afterAllocated": 232501248,
+      "sha256": "2e47f9e0befce523ede320bb37d1d7007bf99e7dda5f363a755935354844142d",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/cold.snap",
+      "bytes": 244842466,
+      "beforeAllocated": 244842496,
+      "afterAllocated": 228126720,
+      "sha256": "bd972549dab693aa9390032c2b3dc38e7fa4a9d1905dca972cce925aa3ff039f",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/dismiss.snap",
+      "bytes": 244887522,
+      "beforeAllocated": 244887552,
+      "afterAllocated": 228171776,
+      "sha256": "5dd7fb4ecd54d2d4a42307cdca87ae3197e105befd3ba5b2d54d4e5d323f95b7",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/fixed-dismiss.snap",
+      "bytes": 244887522,
+      "beforeAllocated": 244887552,
+      "afterAllocated": 228163584,
+      "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/fixed-home.snap",
+      "bytes": 244887522,
+      "beforeAllocated": 244887552,
+      "afterAllocated": 228151296,
+      "sha256": "6da9b9d24b4282776ec0facdbb11bd3537de21a58e70428439bc78c2f4c8c4b9",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/fixed-settings.snap",
+      "bytes": 248958946,
+      "beforeAllocated": 248958976,
+      "afterAllocated": 232247296,
+      "sha256": "dcb5bdf72363204942b85f16fe22f853db6218263ebb946136ad310b38092b52",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/home.snap",
+      "bytes": 244883426,
+      "beforeAllocated": 244883456,
+      "afterAllocated": 228167680,
+      "sha256": "bb8660d0c5a338e2f3b50fe11da0aed79353fec39701b112b0cf0fccac5190ac",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/persistence-mbx/settings-backup.snap",
+      "bytes": 249196514,
+      "beforeAllocated": 249196544,
+      "afterAllocated": 232484864,
+      "sha256": "f09f01b258dda83e911e66fae7f9684a832d8126af461b7f9269c996a639047e",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/safari-first-reject.snap",
+      "bytes": 247644714,
+      "beforeAllocated": 247648256,
+      "afterAllocated": 230928384,
+      "sha256": "c38b87ee6758addc6f8a4a36a73f34d02eb97e0e2c4df83ba217751e465eaadb",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/settings.snap",
+      "bytes": 244887522,
+      "beforeAllocated": 244887552,
+      "afterAllocated": 228171776,
+      "sha256": "4f0cc101af5bc4efb7cd57650eed90b62b1089d4e7a54c3f8df64b3ae1bba0c2",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/software-settings.snap",
+      "bytes": 248807394,
+      "beforeAllocated": 248807424,
+      "afterAllocated": 232026112,
+      "sha256": "6640efe6b86610539faf790b9eb703dfe5430065a918cd7a40cd5ed87004869e",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-speed/web-clipped-control/firmware/software-home.snap",
+      "bytes": 244932578,
+      "beforeAllocated": 244932608,
+      "afterAllocated": 228151296,
+      "sha256": "28591a3003b8677469b2e506185792e26ac128ba9383b7f110959f4f4fb0c82d",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/app-start.snap",
+      "bytes": 244863122,
+      "beforeAllocated": 244867072,
+      "afterAllocated": 228085760,
+      "sha256": "8dc08c6d1a7b64f6fc3d92f2496baccdaa56caf24f0803a696ede1741661b631",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/clean-ready-home.snap",
+      "bytes": 245747682,
+      "beforeAllocated": 245747712,
+      "afterAllocated": 228966400,
+      "sha256": "094a6d53d0df60f435b04a6871e50842414d855e9fdeaf441a09a908083a8410",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-ada-edit.snap",
+      "bytes": 256622574,
+      "beforeAllocated": 256622592,
+      "afterAllocated": 239841280,
+      "sha256": "906e5816229050b5f28d5773b791f65e9245b39379b301f1bbeb25f55438743f",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-ada.snap",
+      "bytes": 255815662,
+      "beforeAllocated": 255815680,
+      "afterAllocated": 239034368,
+      "sha256": "1fe42bac4b70ea5f2587b9ea121f88da569c1736852abcc6af0dde3715d83fda",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-contact-name.snap",
+      "bytes": 254660590,
+      "beforeAllocated": 254660608,
+      "afterAllocated": 237879296,
+      "sha256": "16b408fa3f5dcfc9f5736fd161c2845a9d37c16ed44ce81cfa896a294f2780b4",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-contact-new.snap",
+      "bytes": 249692130,
+      "beforeAllocated": 249692160,
+      "afterAllocated": 232910848,
+      "sha256": "d0beb5af41314244c4d08548d5e96a3edf0ff92217e5e430bc228274fecd12ca",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-home.snap",
+      "bytes": 245743586,
+      "beforeAllocated": 245743616,
+      "afterAllocated": 228962304,
+      "sha256": "cdc9a329e8d528ac32514cd9edb52dc06beadc9386c03cae3106a93874909719",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/compact-phone.snap",
+      "bytes": 246996962,
+      "beforeAllocated": 246996992,
+      "afterAllocated": 230215680,
+      "sha256": "e2154b8de9119c1986f50f8798fe99f23b886bed6b7cfa519416641d9ac00f16",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/organizer-debug/launching.snap",
+      "bytes": 244863122,
+      "beforeAllocated": 244867072,
+      "afterAllocated": 228085760,
+      "sha256": "3b9d9ec8c452ff84aeabcf9db71959ce78de719cc1a7ccf17e71c83f3be7f200",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-final/continuous/final-run/first-failure.snap",
+      "bytes": 262172642,
+      "beforeAllocated": 262172672,
+      "afterAllocated": 245460992,
+      "sha256": "106cdb864b3295d09e0ea5291eef7302edd1fa3b638f7f98bbd2d70d769da372",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-final/continuous/strict-run/first-failure.snap",
+      "bytes": 251260993,
+      "beforeAllocated": 251265024,
+      "afterAllocated": 234553344,
+      "sha256": "ea09c310fcb146c6188261bd52528891195e9948a77266a1f87bb0f6daf15eb4",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-final/continuous/verified-run/first-failure.snap",
+      "bytes": 251228229,
+      "beforeAllocated": 251232256,
+      "afterAllocated": 234520576,
+      "sha256": "82d9de6421ec31741e5ae91b1cb4234fb481fdece5f4e3521dd0b2ededd0eab3",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/graphics-final/default-preview/persistence/settings-backup.snap",
+      "bytes": 249761762,
+      "beforeAllocated": 249761792,
+      "afterAllocated": 233050112,
+      "sha256": "c14c572e3dad2b28bd220fcf95ff0fd224db47fab5fed276ab4a3a01a8d476ac",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/dynamic-0.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/dynamic-4.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/modern-baseline100.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "388c2515dacd1e224a0cda08bf199036b0b0c5ca016a746899ecb4dfbb98233e",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/repeat-0.snap",
+      "bytes": 244932578,
+      "beforeAllocated": 244932608,
+      "afterAllocated": 228151296,
+      "sha256": "d8f9d77699bbc2310063efab2d8cc11dba60cc57ae6b43dff266efed99ff9012",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/repeat-1.snap",
+      "bytes": 244932578,
+      "beforeAllocated": 244932608,
+      "afterAllocated": 228151296,
+      "sha256": "62194873c84252ba57102ff3eb79136512f9147ecacc7215042fadbdf0b5efd6",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/repeat-2.snap",
+      "bytes": 244932578,
+      "beforeAllocated": 244932608,
+      "afterAllocated": 228151296,
+      "sha256": "d8f9d77699bbc2310063efab2d8cc11dba60cc57ae6b43dff266efed99ff9012",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/result-0.snap",
+      "bytes": 245747682,
+      "beforeAllocated": 245747712,
+      "afterAllocated": 228966400,
+      "sha256": "cbc0d1950b271087424451b630dbabdc690bb64dff6af0dee35d5f40dd4fa004",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/result-3.snap",
+      "bytes": 245747682,
+      "beforeAllocated": 245747712,
+      "afterAllocated": 228966400,
+      "sha256": "cbc0d1950b271087424451b630dbabdc690bb64dff6af0dee35d5f40dd4fa004",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/seed-0.snap",
+      "bytes": 249163746,
+      "beforeAllocated": 249163776,
+      "afterAllocated": 232386560,
+      "sha256": "bfcde2adfff879343c437ef0d0b55fb689525a2178e080c16b95f7956c77c7f5",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v3/seed-3.snap",
+      "bytes": 249163746,
+      "beforeAllocated": 249163776,
+      "afterAllocated": 232386560,
+      "sha256": "bfcde2adfff879343c437ef0d0b55fb689525a2178e080c16b95f7956c77c7f5",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/baseline-0-100000000.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/baseline-1-100000000.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/baseline-normalized.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "ca93c4b52b486b836f28b838512b7d532c78e8129cd68781a0800ca6d20628c2",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/candidate-0-100000000.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "69c6b577f9589a16ef94bfdf95473fd4d9818cd5f855947a68a0b81cc7f5bc46",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/candidate-1-100000000.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "69c6b577f9589a16ef94bfdf95473fd4d9818cd5f855947a68a0b81cc7f5bc46",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-index/candidate-normalized.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "ca93c4b52b486b836f28b838512b7d532c78e8129cd68781a0800ca6d20628c2",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/fast-3.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/gated-0.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/gated-3.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/hook-0.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/original-0.snap",
+      "bytes": 245043170,
+      "beforeAllocated": 245043200,
+      "afterAllocated": 228261888,
+      "sha256": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-v4/warm-identity.snap",
+      "bytes": 244932578,
+      "beforeAllocated": 244932608,
+      "afterAllocated": 228151296,
+      "sha256": "543af08a6222b167deb596dd12744709c85676463183ed0cc6494474c92b73b5",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-experiment/original-wasm-400m.snap",
+      "bytes": 244445342,
+      "beforeAllocated": 244449280,
+      "afterAllocated": 227667968,
+      "sha256": "c7e9c3e9133ce5d624c4d4ef9c26242e251f1f738f7dab744302a238df2a4995",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-experiment/result-0.snap",
+      "bytes": 244445342,
+      "beforeAllocated": 244449280,
+      "afterAllocated": 227667968,
+      "sha256": "c7e9c3e9133ce5d624c4d4ef9c26242e251f1f738f7dab744302a238df2a4995",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-experiment/result-1.snap",
+      "bytes": 244437150,
+      "beforeAllocated": 244441088,
+      "afterAllocated": 227659776,
+      "sha256": "b40b55538375c2e53155c852f2ccabe1301fce033a75d40a214bd9916dc7b22a",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/jit-experiment/result-3.snap",
+      "bytes": 244445342,
+      "beforeAllocated": 244449280,
+      "afterAllocated": 227667968,
+      "sha256": "c7e9c3e9133ce5d624c4d4ef9c26242e251f1f738f7dab744302a238df2a4995",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/legacy-upgrade/browser/verified.snap",
+      "bytes": 247721960,
+      "beforeAllocated": 247721984,
+      "afterAllocated": 230940672,
+      "sha256": "b46910e790c28531ad2832155f77a589c6c0a1cb50f59c1990adc560609004b6",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/legacy-upgrade/hold/final.snap",
+      "bytes": 262062062,
+      "beforeAllocated": 262062080,
+      "afterAllocated": 245284864,
+      "sha256": "8fca8d09a198d0ad44632406f597a6d1ca10279b2e6ff9dbc387f2b6abe7a8d9",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/legacy-upgrade/reboot.snap",
+      "bytes": 245436386,
+      "beforeAllocated": 245436416,
+      "afterAllocated": 228655104,
+      "sha256": "4439a8b6a547f55af305fd197f6483b2918ab2827eb2b206c5746f9092420cc6",
+      "exitCode": 0,
+      "error": ""
+    },
+    {
+      "path": ".context/legacy-upgrade/shutdown/final.snap",
+      "bytes": 262111214,
+      "beforeAllocated": 262111232,
+      "afterAllocated": 245334016,
+      "sha256": "5230c4c588ed41dbd9c8ca6278d3f2fb4f541de5526b9b1a8058551f43fff609",
+      "exitCode": 0,
+      "error": ""
+    }
+  ]
+}

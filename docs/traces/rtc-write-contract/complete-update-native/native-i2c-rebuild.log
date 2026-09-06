@@ -1,0 +1,7 @@
+Consolidate compiler generated dependencies of target emucore
+[ 95%] Built target emucore
+Consolidate compiler generated dependencies of target test_i2c
+[ 97%] Building C object core/CMakeFiles/test_i2c.dir/tests/test_i2c.c.o
+[100%] Linking C executable test_i2c
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[100%] Built target test_i2c

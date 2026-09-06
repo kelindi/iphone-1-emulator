@@ -1,0 +1,30 @@
+{
+  "review": "Root independent comparison of retained control/observer receipts; not an additional replay",
+  "controlReportSha256": "80d184c145a54d9368e5e9f95154447fbfdb7e0daeb1eb2ddbceeceaeddc3f12",
+  "observerReportSha256": "287fcc20badbcafc4a9e7531898852608617a27fb4bce3a4d521d85740d367f3",
+  "pairedCheckpoints": 4,
+  "comparedFields": [
+    "done",
+    "rawSha256",
+    "bytes",
+    "generated",
+    "calls",
+    "regions"
+  ],
+  "fullFrameEqual": true,
+  "allCheckpointFieldsEqual": true,
+  "census": {
+    "calls": 26906160,
+    "ok": 26906160,
+    "fetched": 26903869,
+    "nofetch": 2291,
+    "nonok": 0,
+    "overflow": 0,
+    "mapOverflow": 0,
+    "epoch": 2,
+    "installs": 0,
+    "rows": 285763,
+    "enabled": 0
+  },
+  "admissionAndProvenanceConserveCalls": true
+}

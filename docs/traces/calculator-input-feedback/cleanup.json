@@ -1,0 +1,214 @@
+{
+  "at": 1788683485.257292,
+  "scope": "Completed fourth-control disposable HTTP and Code Cache only; no saved state, Service Worker, trace, video or source deletion.",
+  "paths": [
+    {
+      "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache",
+      "files": [
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/index",
+          "bytes": 24
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/5761d302839d26b6_0",
+          "bytes": 3785
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/ca4bfc412619d295_0",
+          "bytes": 5846
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/ee208bbb2da6a48e_0",
+          "bytes": 9472
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/c69536a306323aef_0",
+          "bytes": 18968
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/d29922ff389b9684_0",
+          "bytes": 317
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/dc56d70a3fa74c7f_0",
+          "bytes": 12091
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/b32d10fc51603476_0",
+          "bytes": 18171
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/290532d98c5fd9c0_0",
+          "bytes": 10024
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/7eacd5123737a8fb_0",
+          "bytes": 12341850
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/88c1fb19e600b6dd_0",
+          "bytes": 75321
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/3d48935b774fb64a_0",
+          "bytes": 776
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/b52b177fff78d7fa_0",
+          "bytes": 2806
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/28feee598a35fa46_0",
+          "bytes": 1639
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/a3dbd540f4ebf43a_0",
+          "bytes": 5891601
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/9681bb19c3cc30e1_0",
+          "bytes": 39594
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/995a041187c9a02d_0",
+          "bytes": 50203867
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/4adac90341c04704_0",
+          "bytes": 50203862
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/72dcd102c6ba0508_0",
+          "bytes": 250948
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/abf27ba34b19edc9_0",
+          "bytes": 1035
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/41b1f91f597963b2_0",
+          "bytes": 9489
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/Cache_Data/index-dir/the-real-index",
+          "bytes": 528
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/No_Vary_Search/snapshot.baf",
+          "bytes": 20
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Cache/No_Vary_Search/journal.baj",
+          "bytes": 4
+        }
+      ],
+      "bytes": 119102038
+    },
+    {
+      "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache",
+      "files": [
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/index",
+          "bytes": 24
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/706e874f73a40c99_0",
+          "bytes": 1144713
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/cf79c4743e7b0458_0",
+          "bytes": 238
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/fc24999f6de10cf6_0",
+          "bytes": 2418041
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/32fde2546183ca1b_0",
+          "bytes": 4315793
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/d2111268ff1fa480_0",
+          "bytes": 5445381
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/f28f677f2c3e91da_0",
+          "bytes": 6816762
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/7e6527a8e1204022_0",
+          "bytes": 8009669
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/41d14d14292480f5_0",
+          "bytes": 9229460
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/0ca4124099a3e43e_0",
+          "bytes": 10497378
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/996a19dd13f16980_0",
+          "bytes": 12070759
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/c1c97519c3ff8f8d_0",
+          "bytes": 13430869
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/bcb5ff8239707563_0",
+          "bytes": 14687801
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/76163cf3fc48dbef_0",
+          "bytes": 16417761
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/39fc1f7af09d3726_0",
+          "bytes": 17826944
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/be7c7b2729a3ae28_0",
+          "bytes": 19055347
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/512696a334153166_0",
+          "bytes": 20191279
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/268019bcf838f7bb_0",
+          "bytes": 21317555
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/wasm/index-dir/the-real-index",
+          "bytes": 456
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/js/index",
+          "bytes": 24
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/js/d805c27ea240f6a4_0",
+          "bytes": 195
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/js/33cbaa8488a0b9c3_0",
+          "bytes": 191
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/js/11f1faced156bda0_0",
+          "bytes": 194
+        },
+        {
+          "path": ".context/jit-mixed-coverage/fourth-continuation/4-original/profile/Default/Code Cache/js/index-dir/the-real-index",
+          "bytes": 120
+        }
+      ],
+      "bytes": 182876954
+    }
+  ],
+  "freeBefore": 4738412544,
+  "freeAfter": 4752965632,
+  "settledFreeAfter": 5040513024,
+  "settledAt": 1788683525.3004203
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scope": "Failed-state fresh Safari/Home/keyboard rendering only; no HTTP, Photos, timing or production acceptance",
+  "allGuestPNGsManuallyInspected": true,
+  "intendedText": "glyph",
+  "observedText": "glyph",
+  "homeCrop": [
+    0,
+    30,
+    320,
+    450
+  ],
+  "exactRGBPixels": 144000,
+  "fullCropRGBAAlsoExact": true,
+  "graphicsSerialFailures": 0,
+  "serialBytes": 441,
+  "servedWasm": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+  "finalExport": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/safari-default-mbx/recovery-run-2/final-render-diagnostic.snap",
+    "bytes": 259768584,
+    "sha256": "a4317f614172c7363e9ef10a7dcb136e3eab0849b1272360ec8c87d16e30186c",
+    "scope": "failed-state rendering continuation only"
+  },
+  "checks": 10,
+  "elapsedSeconds": 280.902,
+  "earlierLauncherIncompletePreserved": true,
+  "earlyTTYCommand": "First Home line sent before READY was ignored by readline; actual action log contains only two Home presses, retained without extra guest input."
+}

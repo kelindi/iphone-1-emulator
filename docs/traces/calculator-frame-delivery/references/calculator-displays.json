@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "crop": [
+    0,
+    20,
+    320,
+    88
+  ],
+  "pixelFormat": "RGBA8",
+  "hash": "SHA-256",
+  "review": "Each result was visually read from the genuine guest display PNG and agrees with independently expected arithmetic. This region excludes time, buttons and host UI.",
+  "sourceRun": ".context/calculator-discovery/report.json",
+  "displays": {
+    "0": {
+      "sha256": "d8e432b03fc0ec7ed92238ac9bf6f25535f2256d6407f6f6a849aceb000d3636",
+      "image": "calculator-displays/0.png"
+    },
+    "46": {
+      "sha256": "51d453ea9e22c90f6988732eba798e69ad6120b4bf5488bae0ed5271c408ffc8",
+      "image": "calculator-displays/46.png"
+    },
+    "-5": {
+      "sha256": "03dd5436e4c77a698f857c6af6e48c9256435a91a2654242f9484a340fc71935",
+      "image": "calculator-displays/minus-5.png"
+    },
+    "56": {
+      "sha256": "be59ff3aac549e80f5dd1f1dc8326d6d5bdaf438d693ea3c63de5c29c857dc12",
+      "image": "calculator-displays/56.png"
+    },
+    "9": {
+      "sha256": "62855f1a14720f6fdec9b7f1e004fb5801fd7b572db8c6e1942eb1e0e395954a",
+      "image": "calculator-displays/9.png"
+    },
+    "0.25": {
+      "sha256": "9af2ed9499cc74e43805f8e63b12798a1bbad4f334b5f21a5bb3ab959d741b6e",
+      "image": "calculator-displays/0point-25.png"
+    },
+    "3.75": {
+      "sha256": "12cca94f8d962a289c853d30b60ebe6c4fd592d5f9e0e4c22d3d6d2687eb4b13",
+      "image": "calculator-displays/3point-75.png"
+    },
+    "2.5": {
+      "sha256": "594eb6b414573f3e0ab69b5780d902e558b0d45f3d9e9d8b122df0370f0b2675",
+      "image": "calculator-displays/2point-5.png"
+    },
+    "3": {
+      "sha256": "248f368be5b606525201533f4dcbe082061fbd54a31f1a085ee1d55dda04a6d3",
+      "image": "calculator-displays/3.png"
+    },
+    "333": {
+      "sha256": "3d3975203a9017a2653809f0a81d3370aea5c3bd3ecb1a239b4bb9a323972364",
+      "image": "calculator-displays/333.png"
+    },
+    "20": {
+      "sha256": "8751aad18a831fe3b2e31871b8a834f585db3e4900216aa22f12850e26052005",
+      "image": "calculator-displays/20.png"
+    },
+    "42": {
+      "sha256": "ffd04785af8a71f8784b0e99f69d4c5d093e5f420052f5589439b5852b5795b6",
+      "image": "calculator-displays/42.png"
+    }
+  }
+}

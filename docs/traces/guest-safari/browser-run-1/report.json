@@ -1,0 +1,1450 @@
+{
+  "startedUTC": "2026-09-06T09:06:21.733Z",
+  "capSeconds": 900,
+  "actions": [
+    {
+      "tap": [
+        160,
+        300
+      ],
+      "wait": 3000,
+      "shot": "02-dismissed",
+      "videoSeconds": 49.249
+    },
+    {
+      "tap": [
+        198,
+        430
+      ],
+      "wait": 8000,
+      "shot": "03-safari",
+      "videoSeconds": 57.457
+    },
+    {
+      "tap": [
+        289,
+        43
+      ],
+      "wait": 2500,
+      "shot": "04-safari-page",
+      "videoSeconds": 86.589
+    },
+    {
+      "tap": [
+        160,
+        57
+      ],
+      "wait": 3000,
+      "shot": "05-url-keyboard",
+      "videoSeconds": 107.87
+    },
+    {
+      "tap": [
+        39,
+        458
+      ],
+      "wait": 1500,
+      "shot": "06-url-numbers",
+      "videoSeconds": 133.517
+    },
+    {
+      "taps": [
+        [
+          16,
+          295
+        ],
+        [
+          48,
+          295
+        ],
+        [
+          208,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          132,
+          404
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          16,
+          295
+        ]
+      ],
+      "interval": 1000,
+      "wait": 1500,
+      "shot": "07-numeric-url-entered",
+      "videoSeconds": 162.24
+    },
+    {
+      "tap": [
+        282,
+        458
+      ],
+      "wait": 12000,
+      "shot": "08-local-load",
+      "videoSeconds": 222.135
+    },
+    {
+      "requireRequest": "/",
+      "requireResponse": "HOME-1",
+      "observe": "original-local-home-rendered",
+      "frame": "08-local-load-guest.png",
+      "videoSeconds": 250.698
+    },
+    {
+      "tap": [
+        64,
+        273
+      ],
+      "wait": 6000,
+      "shot": "09-link-next",
+      "videoSeconds": 259.137
+    },
+    {
+      "requireRequest": "/next",
+      "requireResponse": "NEXT-1",
+      "observe": "original-link-rendered",
+      "frame": "09-link-next-guest.png",
+      "tap": [
+        58,
+        238
+      ],
+      "wait": 4000,
+      "shot": "10-home-form",
+      "videoSeconds": 293.366
+    },
+    {
+      "tap": [
+        110,
+        310
+      ],
+      "wait": 2500,
+      "shot": "11-form-keyboard",
+      "videoSeconds": 312.95
+    },
+    {
+      "taps": [
+        [
+          192,
+          350
+        ],
+        [
+          240,
+          295
+        ]
+      ],
+      "interval": 1000,
+      "wait": 1000,
+      "shot": "12-form-hi",
+      "videoSeconds": 340.671
+    },
+    {
+      "tap": [
+        268,
+        120
+      ],
+      "wait": 6000,
+      "shot": "13-form-response",
+      "videoSeconds": 364.616
+    },
+    {
+      "requireRequest": "/echo?message=hi",
+      "requireResponse": "ECHO-1",
+      "observe": "original-form-hi-rendered",
+      "frame": "13-form-response-guest.png",
+      "tap": [
+        21,
+        56
+      ],
+      "wait": 2500,
+      "shot": "14-bookmark-add",
+      "videoSeconds": 395.631
+    },
+    {
+      "tap": [
+        290,
+        43
+      ],
+      "wait": 4000,
+      "home": true,
+      "shot": "15-home-after-bookmark",
+      "videoSeconds": 417.6
+    },
+    {
+      "tap": [
+        200,
+        430
+      ],
+      "wait": 5000,
+      "shot": "16-safari-return",
+      "videoSeconds": 446.075
+    },
+    {
+      "tap": [
+        201,
+        457
+      ],
+      "wait": 2500,
+      "shot": "17-bookmark-list",
+      "videoSeconds": 464.264
+    },
+    {
+      "observe": "original-bookmark-created",
+      "frame": "17-bookmark-list-guest.png",
+      "tap": [
+        132,
+        138
+      ],
+      "wait": 5000,
+      "shot": "18-bookmark-revisit",
+      "videoSeconds": 493.385
+    },
+    {
+      "observe": "original-bookmark-revisited",
+      "frame": "18-bookmark-revisit-guest.png",
+      "autosaveReload": true,
+      "videoSeconds": 532.867
+    },
+    {
+      "tap": [
+        52,
+        238
+      ],
+      "wait": 5000,
+      "shot": "19-restored-new-home-request",
+      "requireNewRequest": "/",
+      "videoSeconds": 575.23
+    },
+    {
+      "tap": [
+        201,
+        457
+      ],
+      "wait": 2500,
+      "shot": "20-bookmark-after-reload",
+      "videoSeconds": 602.334
+    },
+    {
+      "observe": "original-bookmark-persisted-after-autosave-reload",
+      "frame": "20-bookmark-after-reload-guest.png",
+      "tap": [
+        132,
+        136
+      ],
+      "wait": 5000,
+      "shot": "21-final-bookmark-form",
+      "requireNewRequest": "/echo?message=hi",
+      "videoSeconds": 634.642
+    }
+  ],
+  "checks": [
+    {
+      "name": "fresh-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3643578,
+        "calls": 466342
+      }
+    },
+    {
+      "name": "listener-restore-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 36278923,
+        "calls": 4507065
+      }
+    },
+    {
+      "name": "original-local-home-rendered",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "08-local-load-guest.png"
+    },
+    {
+      "name": "guest-request-/",
+      "passed": true,
+      "requests": [
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+      ]
+    },
+    {
+      "name": "guest-response-HOME-1",
+      "passed": true
+    },
+    {
+      "name": "original-link-rendered",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "09-link-next-guest.png"
+    },
+    {
+      "name": "guest-request-/next",
+      "passed": true,
+      "requests": [
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET /next HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/next\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+      ]
+    },
+    {
+      "name": "guest-response-NEXT-1",
+      "passed": true
+    },
+    {
+      "name": "original-form-hi-rendered",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "13-form-response-guest.png"
+    },
+    {
+      "name": "guest-request-/echo?message=hi",
+      "passed": true,
+      "requests": [
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET /next HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/next\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET /echo?message=hi HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+      ]
+    },
+    {
+      "name": "guest-response-ECHO-1",
+      "passed": true
+    },
+    {
+      "name": "original-bookmark-created",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "17-bookmark-list-guest.png"
+    },
+    {
+      "name": "original-bookmark-revisited",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "18-bookmark-revisit-guest.png"
+    },
+    {
+      "name": "real-interval-autosave",
+      "passed": true,
+      "oldSavedAt": 1788686100191,
+      "savedAt": 1788686130268
+    },
+    {
+      "name": "actual-autosave-record-restored",
+      "passed": true,
+      "savedAt": 1788686130268
+    },
+    {
+      "name": "restored-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 2976182,
+        "calls": 375569
+      }
+    },
+    {
+      "name": "post-reload-guest-request",
+      "passed": true,
+      "requests": [
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/echo?message=hi\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+      ]
+    },
+    {
+      "name": "original-bookmark-persisted-after-autosave-reload",
+      "passed": true,
+      "scope": "Human review of original framebuffer",
+      "frame": "20-bookmark-after-reload-guest.png"
+    },
+    {
+      "name": "post-reload-guest-request",
+      "passed": true,
+      "requests": [
+        "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/echo?message=hi\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+        "GET /echo?message=hi HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+      ]
+    },
+    {
+      "name": "final-unpaused-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 626413356,
+        "calls": 77194319
+      }
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "requests": [
+    {
+      "seconds": 0.515,
+      "url": "http://127.0.0.1:8205/",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.534,
+      "url": "http://127.0.0.1:8205/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.534,
+      "url": "http://127.0.0.1:8205/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.542,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.563,
+      "url": "http://127.0.0.1:8205/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.583,
+      "url": "http://127.0.0.1:8205/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.591,
+      "url": "http://127.0.0.1:8205/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.596,
+      "url": "http://127.0.0.1:8205/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.604,
+      "url": "http://127.0.0.1:8205/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.604,
+      "url": "http://127.0.0.1:8205/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.604,
+      "url": "http://127.0.0.1:8205/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.605,
+      "url": "http://127.0.0.1:8205/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.614,
+      "url": "http://127.0.0.1:8205/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 0.754,
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.119,
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.217,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "method": "GET"
+    },
+    {
+      "seconds": 2.372,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "method": "GET"
+    },
+    {
+      "seconds": 5.133,
+      "url": "http://127.0.0.1:8205/dist/emu.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 10.963,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 10.97,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 20.074,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 20.081,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.382,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.389,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 62.623,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 62.643,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 92.033,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 92.041,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 121.828,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 121.836,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.515,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.524,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 211.485,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 211.496,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 241.354,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 241.363,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 271.371,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 271.381,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 301.241,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 301.249,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 331.395,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 331.403,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 361.807,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 361.817,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 391.412,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 391.421,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 423.653,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 423.661,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.472,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.486,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 481.575,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 481.583,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 511.464,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 511.474,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 541.495,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 541.504,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.492,
+      "url": "http://127.0.0.1:8205/",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.509,
+      "url": "http://127.0.0.1:8205/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.513,
+      "url": "http://127.0.0.1:8205/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.518,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.569,
+      "url": "http://127.0.0.1:8205/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.598,
+      "url": "http://127.0.0.1:8205/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.665,
+      "url": "http://127.0.0.1:8205/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.67,
+      "url": "http://127.0.0.1:8205/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.678,
+      "url": "http://127.0.0.1:8205/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.678,
+      "url": "http://127.0.0.1:8205/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 549.678,
+      "url": "http://127.0.0.1:8205/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 550.873,
+      "url": "http://127.0.0.1:8205/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 550.882,
+      "url": "http://127.0.0.1:8205/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 550.956,
+      "url": "http://127.0.0.1:8205/dist/emu.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 580.301,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 580.309,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 610.232,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 610.239,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 640.475,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 640.484,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 670.276,
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 670.283,
+      "url": "http://127.0.0.1:8205/storage.js",
+      "method": "GET"
+    }
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8205/",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/phone.css",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/app.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/icon.svg",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/emu-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/dist/emu.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/seed-jit.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/regions.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/abi.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/assets.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/manifest.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/phone.css",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/app.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/icon.svg",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/emu-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/dist/emu.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/seed-jit.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/regions.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/jit/abi.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/assets.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/manifest.json",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8205/storage.js",
+      "status": 200,
+      "fromSW": false
+    }
+  ],
+  "requestFailures": [],
+  "serial": [
+    {
+      "seconds": 118.473,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 144.554,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 172.723,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 182.762,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 192.796,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 202.812,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 212.849,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 222.871,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 223.873,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0007f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000001 00000004\r\r\n\rHTTP_REQUEST_BYTES 0000016b 00000000\r\r\n\rD 474554202f20485454502f312e310d0a4163636570742d4c616e67756167653a\r\r\n\rD 20656e0d0a4163636570742d456e636f64696e673a20677a69702c206465666c\r\r\n\rD 6174650d0a557365722d4167656e743a204d6f7a696c6c612f352e3020286950\r\r\n\rD 686f6e653b20553b20435055206c696b65204d6163204f5320583b20656e2920\r\r\n\rD 4170706c655765624b69742f3432302b20284b48544d4c2c206c696b65204765\r\r\n\rD 636b6f292056657273696f6e2f332e30204d6f62696c652f3141353433612053\r\r\n\rD 61666172692f3431392e330d0a4163636570743a20746578742f786d6c2c6170\r\r\n\rD 706c69636174696f6e2f786d6c2c6170706c69636174696f6e2f7868746d6c2b\r\r\n\rD 786d6c2c746578742f68746d6c3b713d302e392c746578742f706c61696e3b71\r\r\n\rD 3d302e382c696d6167652f706e672c2a2f2a3b713d302e350d0a436f6e6e6563\r\r\n\rD 74696f6e3a206b6565702d616c6976650d0a486f73743a203132372e302e302e\r\r\n\rD 313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000001\r\r\n\rhome\r\r\n\rHTTP_RESPONSE_BYTES 00000256 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203437340d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e6950686f6e6520\r\r\n\rD 4c6f63616c2044656d6f3c2f7469746c653e3c2f686561643e3c626f64793e3c\r\r\n\rD 68313e4c6f63616c2064656d6f3c2f68313e3c703e5468697320706167652069\r\r\n\rD 732073657276656420696e73696465207468697320656d756c61746564207068\r\r\n\rD 6f6e652e2049742069732066697865642064656d6f20636f6e74656e742c206e\r\r\n\rD 6f7420616e20696e7465726e657420736572766963652e3c2f703e3c703e5061\r\r\n\rD 67653a20484f4d452d313c2f703e3c703e3c6120687265663d222f6e65787422\r\r\n\rD 3e4f70656e206e65787420706167653c2f613e3c2f703e3c666f726d20616374\r\r\n\rD 696f6e3d222f6563686f22206d6574686f643d22676574223e3c6c6162656c3e\r\r\n\rD 4d657373616765203c696e707574206e616d653d226d65737361676522206d61\r\r\n\rD 786c656e6774683d223332222073697a653d223132223e3c2f6c6162656c3e3c\r\r\n\rD 696e70757420747970653d227375626d6974222076616c75653d2253656e6422\r\r\n\rD 3e3c2f666f726d3e3c2f626f64793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000001 00000256\r\r\n\rHTTP_CLOSED 00000001 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 232.9,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 242.92,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 259.959,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0017f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000002 00000004\r\r\n\rHTTP_REQUEST_BYTES 00000191 00000000\r\r\n\rD 474554202f6e65787420485454502f312e310d0a4163636570742d4c616e6775\r\r\n\rD 6167653a20656e0d0a4163636570742d456e636f64696e673a20677a69702c20\r\r\n\rD 6465666c6174650d0a526566657265723a20687474703a2f2f3132372e302e30\r\r\n\rD 2e313a31383038312f0d0a557365722d4167656e743a204d6f7a696c6c612f35\r\r\n\rD 2e3020286950686f6e653b20553b20435055206c696b65204d6163204f532058\r\r\n\rD 3b20656e29204170706c655765624b69742f3432302b20284b48544d4c2c206c\r\r\n\rD 696b65204765636b6f292056657273696f6e2f332e30204d6f62696c652f3141\r\r\n\rD 35343361205361666172692f3431392e330d0a4163636570743a20746578742f\r\r\n\rD 786d6c2c6170706c69636174696f6e2f786d6c2c6170706c69636174696f6e2f\r\r\n\rD 7868746d6c2b786d6c2c746578742f68746d6c3b713d302e392c746578742f70\r\r\n\rD 6c61696e3b713d302e382c696d6167652f706e672c2a2f2a3b713d302e350d0a\r\r\n\rD 436f6e6e656374696f6e3a206b6565702d616c6976650d0a486f73743a203132\r\r\n\rD 372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000002\r\r\n\rnext\r\r\n\rHTTP_RESPONSE_BYTES 00000180 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203236300d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e4c6f63616c2044\r\r\n\rD 656d6f204e6578743c2f7469746c653e3c2f686561643e3c626f64793e3c6831\r\r\n\rD 3e4e65787420706167653c2f68313e3c703e506167653a204e4558542d313c2f\r\r\n\rD 703e3c703e4f726967696e616c2053616661726920666f6c6c6f776564206120\r\r\n\rD 6c6f63616c206c696e6b2e3c2f703e3c703e3c6120687265663d222f223e4261\r\r\n\rD 636b20746f2064656d6f3c2f613e3c2f703e3c2f626f64793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000002 00000180\r\r\n\rHTTP_CLOSED 00000002 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 294.048,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0027f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000003 00000004\r\r\n\rHTTP_REQUEST_BYTES 00000191 00000000\r\r\n\rD 474554202f20485454502f312e310d0a4163636570742d4c616e67756167653a\r\r\n\rD 20656e0d0a4163636570742d456e636f64696e673a20677a69702c206465666c\r\r\n\rD 6174650d0a526566657265723a20687474703a2f2f3132372e302e302e313a31\r\r\n\rD 383038312f6e6578740d0a557365722d4167656e743a204d6f7a696c6c612f35\r\r\n\rD 2e3020286950686f6e653b20553b20435055206c696b65204d6163204f532058\r\r\n\rD 3b20656e29204170706c655765624b69742f3432302b20284b48544d4c2c206c\r\r\n\rD 696b65204765636b6f292056657273696f6e2f332e30204d6f62696c652f3141\r\r\n\rD 35343361205361666172692f3431392e330d0a4163636570743a20746578742f\r\r\n\rD 786d6c2c6170706c69636174696f6e2f786d6c2c6170706c69636174696f6e2f\r\r\n\rD 7868746d6c2b786d6c2c746578742f68746d6c3b713d302e392c746578742f70\r\r\n\rD 6c61696e3b713d302e382c696d6167652f706e672c2a2f2a3b713d302e350d0a\r\r\n\rD 436f6e6e656374696f6e3a206b6565702d616c6976650d0a486f73743a203132\r\r\n\rD 372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000003\r\r\n\rhome\r\r\n\rHTTP_RESPONSE_BYTES 00000256 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203437340d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e6950686f6e6520\r\r\n\rD 4c6f63616c2044656d6f3c2f7469746c653e3c2f686561643e3c626f64793e3c\r\r\n\rD 68313e4c6f63616c2064656d6f3c2f68313e3c703e5468697320706167652069\r\r\n\rD 732073657276656420696e73696465207468697320656d756c61746564207068\r\r\n\rD 6f6e652e2049742069732066697865642064656d6f20636f6e74656e742c206e\r\r\n\rD 6f7420616e20696e7465726e657420736572766963652e3c2f703e3c703e5061\r\r\n\rD 67653a20484f4d452d313c2f703e3c703e3c6120687265663d222f6e65787422\r\r\n\rD 3e4f70656e206e65787420706167653c2f613e3c2f703e3c666f726d20616374\r\r\n\rD 696f6e3d222f6563686f22206d6574686f643d22676574223e3c6c6162656c3e\r\r\n\rD 4d657373616765203c696e707574206e616d653d226d65737361676522206d61\r\r\n\rD 786c656e6774683d223332222073697a653d223132223e3c2f6c6162656c3e3c\r\r\n\rD 696e70757420747970653d227375626d6974222076616c75653d2253656e6422\r\r\n\rD 3e3c2f666f726d3e3c2f626f64793e3c2f68746d6c3e\r\r\n\r"
+    },
+    {
+      "seconds": 295.05,
+      "text": "HTTP_RESPONSE_SENT 00000003 00000256\r\r\n\rHTTP_CLOSED 00000003 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 351.244,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 361.28,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 367.299,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0037f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000004 00000004\r\r\n\rHTTP_REQUEST_BYTES 0000019c 00000000\r\r\n\rD 474554202f6563686f3f6d6573736167653d686920485454502f312e310d0a41\r\r\n\rD 63636570742d4c616e67756167653a20656e0d0a4163636570742d456e636f64\r\r\n\rD 696e673a20677a69702c206465666c6174650d0a526566657265723a20687474\r\r\n\rD 703a2f2f3132372e302e302e313a31383038312f0d0a557365722d4167656e74\r\r\n\rD 3a204d6f7a696c6c612f352e3020286950686f6e653b20553b20435055206c69\r\r\n\rD 6b65204d6163204f5320583b20656e29204170706c655765624b69742f343230\r\r\n\rD 2b20284b48544d4c2c206c696b65204765636b6f292056657273696f6e2f332e\r\r\n\rD 30204d6f62696c652f314135343361205361666172692f3431392e330d0a4163\r\r\n\rD 636570743a20746578742f786d6c2c6170706c69636174696f6e2f786d6c2c61\r\r\n\rD 70706c69636174696f6e2f7868746d6c2b786d6c2c746578742f68746d6c3b71\r\r\n\rD 3d302e392c746578742f706c61696e3b713d302e382c696d6167652f706e672c\r\r\n\rD 2a2f2a3b713d302e350d0a436f6e6e656374696f6e3a206b6565702d616c6976\r\r\n\rD 650d0a486f73743a203132372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000004\r\r\n\recho\r\r\n\rHTTP_RESPONSE_BYTES 00000169 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203233370d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e4c6f63616c2044\r\r\n\rD 656d6f20466f726d3c2f7469746c653e3c2f686561643e3c626f64793e3c6831\r\r\n\rD 3e466f726d2072656365697665643c2f68313e3c703e506167653a204543484f\r\r\n\rD 2d313c2f703e3c703e4d6573736167653a2068693c2f703e3c703e3c61206872\r\r\n\rD 65663d222f223e4261636b20746f2064656d6f3c2f613e3c2f703e3c2f626f64\r\r\n\rD 793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000004 00000169\r\r\n\rHTTP_CLOSED 00000004 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 457.527,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 494.721,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0047f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000005 00000004\r\r\n\rHTTP_REQUEST_BYTES 0000017a 00000000\r\r\n\rD 474554202f6563686f3f6d6573736167653d686920485454502f312e310d0a41\r\r\n\rD 63636570742d4c616e67756167653a20656e0d0a4163636570742d456e636f64\r\r\n\rD 696e673a20677a69702c206465666c6174650d0a557365722d4167656e743a20\r\r\n\rD 4d6f7a696c6c612f352e3020286950686f6e653b20553b20435055206c696b65\r\r\n\rD 204d6163204f5320583b20656e29204170706c655765624b69742f3432302b20\r\r\n\rD 284b48544d4c2c206c696b65204765636b6f292056657273696f6e2f332e3020\r\r\n\rD 4d6f62696c652f314135343361205361666172692f3431392e330d0a41636365\r\r\n\rD 70743a20746578742f786d6c2c6170706c69636174696f6e2f786d6c2c617070\r\r\n\rD 6c69636174696f6e2f7868746d6c2b786d6c2c746578742f68746d6c3b713d30\r\r\n\rD 2e392c746578742f706c61696e3b713d302e382c696d6167652f706e672c2a2f\r\r\n\rD 2a3b713d302e350d0a436f6e6e656374696f6e3a206b6565702d616c6976650d\r\r\n\rD 0a486f73743a203132372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000005\r\r\n\recho\r\r\n\rHTTP_RESPONSE_BYTES 00000169 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203233370d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e4c6f63616c2044\r\r\n\rD 656d6f20466f726d3c2f7469746c653e3c2f686561643e3c626f64793e3c6831\r\r\n\rD 3e466f726d2072656365697665643c2f68313e3c703e506167653a204543484f\r\r\n\rD 2d313c2f703e3c703e4d6573736167653a2068693c2f703e3c703e3c61206872\r\r\n\rD 65663d222f223e4261636b20746f2064656d6f3c2f613e3c2f703e3c2f626f64\r\r\n\rD 793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000005 00000169\r\r\n\rHTTP_CLOSED 00000005 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 576.721,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0057f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000006 00000004\r\r\n\rHTTP_REQUEST_BYTES 0000019c 00000000\r\r\n\rD 474554202f20485454502f312e310d0a4163636570742d4c616e67756167653a\r\r\n\rD 20656e0d0a4163636570742d456e636f64696e673a20677a69702c206465666c\r\r\n\rD 6174650d0a526566657265723a20687474703a2f2f3132372e302e302e313a31\r\r\n\rD 383038312f6563686f3f6d6573736167653d68690d0a557365722d4167656e74\r\r\n\rD 3a204d6f7a696c6c612f352e3020286950686f6e653b20553b20435055206c69\r\r\n\rD 6b65204d6163204f5320583b20656e29204170706c655765624b69742f343230\r\r\n\rD 2b20284b48544d4c2c206c696b65204765636b6f292056657273696f6e2f332e\r\r\n\rD 30204d6f62696c652f314135343361205361666172692f3431392e330d0a4163\r\r\n\rD 636570743a20746578742f786d6c2c6170706c69636174696f6e2f786d6c2c61\r\r\n\rD 70706c69636174696f6e2f7868746d6c2b786d6c2c746578742f68746d6c3b71\r\r\n\rD 3d302e392c746578742f706c61696e3b713d302e382c696d6167652f706e672c\r\r\n\rD 2a2f2a3b713d302e350d0a436f6e6e656374696f6e3a206b6565702d616c6976\r\r\n\rD 650d0a486f73743a203132372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000006\r\r\n\rhome\r\r\n\rHTTP_RESPONSE_BYTES 00000256 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203437340d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e6950686f6e6520\r\r\n\rD 4c6f63616c2044656d6f3c2f7469746c653e3c2f686561643e3c626f64793e3c\r\r\n\rD 68313e4c6f63616c2064656d6f3c2f68313e3c703e5468697320706167652069\r\r\n\rD 732073657276656420696e73696465207468697320656d756c61746564207068\r\r\n\rD 6f6e652e2049742069732066697865642064656d6f20636f6e74656e742c206e\r\r\n\rD 6f7420616e20696e7465726e657420736572766963652e3c2f703e3c703e5061\r\r\n\rD 67653a20484f4d452d313c2f703e3c703e3c6120687265663d222f6e65787422\r\r\n\rD 3e4f70656e206e65787420706167653c2f613e3c2f703e3c666f726d20616374\r\r\n\rD 696f6e3d222f6563686f22206d6574686f643d22676574223e3c6c6162656c3e\r\r\n\rD 4d657373616765203c696e707574206e616d653d226d65737361676522206d61\r\r\n\rD 786c656e6774683d223332222073697a653d223132223e3c2f6c6162656c3e3c\r\r\n\rD 696e70757420747970653d227375626d6974222076616c75653d2253656e6422\r\r\n\rD 3e3c2f666f726d3e3c2f626f64793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000006 00000256\r\r\n\rHTTP_CLOSED 00000006 00000000\r\r\n\r"
+    },
+    {
+      "seconds": 636.872,
+      "text": "http_accept 00000004 00000000\r\r\n\rHTTP_PEER 00000010 00000000\r\r\n\rD 1002c0067f0000010000000000000000\r\r\n\rfcntl_get 00000006 00000000\r\r\n\rfcntl_set 00000000 00000000\r\r\n\rnosigpipe 00000000 00000000\r\r\n\rHTTP_REQUEST_BEGIN 00000007 00000004\r\r\n\rHTTP_REQUEST_BYTES 0000017a 00000000\r\r\n\rD 474554202f6563686f3f6d6573736167653d686920485454502f312e310d0a41\r\r\n\rD 63636570742d4c616e67756167653a20656e0d0a4163636570742d456e636f64\r\r\n\rD 696e673a20677a69702c206465666c6174650d0a557365722d4167656e743a20\r\r\n\rD 4d6f7a696c6c612f352e3020286950686f6e653b20553b20435055206c696b65\r\r\n\rD 204d6163204f5320583b20656e29204170706c655765624b69742f3432302b20\r\r\n\rD 284b48544d4c2c206c696b65204765636b6f292056657273696f6e2f332e3020\r\r\n\rD 4d6f62696c652f314135343361205361666172692f3431392e330d0a41636365\r\r\n\rD 70743a20746578742f786d6c2c6170706c69636174696f6e2f786d6c2c617070\r\r\n\rD 6c69636174696f6e2f7868746d6c2b786d6c2c746578742f68746d6c3b713d30\r\r\n\rD 2e392c746578742f706c61696e3b713d302e382c696d6167652f706e672c2a2f\r\r\n\rD 2a3b713d302e350d0a436f6e6e656374696f6e3a206b6565702d616c6976650d\r\r\n\rD 0a486f73743a203132372e302e302e313a31383038310d0a0d0a\r\r\n\rHTTP_STATUS 000000c8 00000007\r\r\n\recho\r\r\n\rHTTP_RESPONSE_BYTES 00000169 00000000\r\r\n\rD 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074\r\r\n\rD 6578742f68746d6c3b20636861727365743d7574662d380d0a436f6e74656e74\r\r\n\rD 2d4c656e6774683a203233370d0a436f6e6e656374696f6e3a20636c6f73650d\r\r\n\rD 0a43616368652d436f6e74726f6c3a206e6f2d73746f72650d0a0d0a3c21444f\r\r\n\rD 43545950452068746d6c3e3c68746d6c3e3c686561643e3c6d657461206e616d\r\r\n\rD 653d2276696577706f72742220636f6e74656e743d2277696474683d3332302c\r\r\n\rD 20696e697469616c2d7363616c653d31223e3c7469746c653e4c6f63616c2044\r\r\n\rD 656d6f20466f726d3c2f7469746c653e3c2f686561643e3c626f64793e3c6831\r\r\n\rD 3e466f726d2072656365697665643c2f68313e3c703e506167653a204543484f\r\r\n\rD 2d313c2f703e3c703e4d6573736167653a2068693c2f703e3c703e3c61206872\r\r\n\rD 65663d222f223e4261636b20746f2064656d6f3c2f613e3c2f703e3c2f626f64\r\r\n\rD 793e3c2f68746d6c3e\r\r\n\rHTTP_RESPONSE_SENT 00000007 00000169\r\r\n\rHTTP_CLOSED 00000007 00000000\r\r\n\r"
+    }
+  ],
+  "scope": "Diagnostic snapshot import; all subsequent guest input uses original touchscreen. Real interval autosave. No offline or speed claim.",
+  "initialAvailableBytes": 5848821760,
+  "projection": {
+    "index.html": {
+      "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883",
+      "bytes": 5521
+    },
+    "phone.css": {
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "bytes": 9396
+    },
+    "app.js": {
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+      "bytes": 18595
+    },
+    "assets.js": {
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "bytes": 2397
+    },
+    "storage.js": {
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "bytes": 9079
+    },
+    "checkpoint-worker.js": {
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "bytes": 615
+    },
+    "emu-worker.js": {
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "bytes": 11426
+    },
+    "seed-jit.js": {
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "bytes": 9613
+    },
+    "manifest.json": {
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "bytes": 1222
+    },
+    "icon.svg": {
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "bytes": 379
+    },
+    "service-worker.js": {
+      "sha256": "dcd0acd35b8d24edbf32537248539604852666a52312402e51ee6d7cb7b42267",
+      "bytes": 3228
+    },
+    "dist/emu.js": {
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "bytes": 17756
+    },
+    "dist/emu.wasm": {
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "bytes": 250531
+    },
+    "jit/abi.json": {
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "bytes": 364
+    },
+    "jit/regions.json": {
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "bytes": 74901
+    },
+    "jit/seed.wasm": {
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313
+    }
+  },
+  "lastState": {
+    "savedAt": 1788686198971,
+    "paused": false,
+    "metrics": {
+      "type": "metrics",
+      "mips": 6.319344131202009,
+      "fps": 0,
+      "guestRate": 0.9999148503677299,
+      "cycles": "8729172390",
+      "memory": 644284416,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 472995107,
+        "calls": 59167730
+      },
+      "serial": "",
+      "captureMs": 89.5,
+      "captureChunkMs": 3.100000001490116,
+      "finalizeMs": 577.8999999985099
+    },
+    "status": "Saved at 09:16 AM"
+  },
+  "autoSaveWait": {
+    "oldSavedAt": 1788686100191,
+    "startedUTC": "2026-09-06T09:15:14.603Z"
+  },
+  "preReloadRequestCount": 5,
+  "finished": true,
+  "guestRequests": [
+    "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET /next HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/next\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET /echo?message=hi HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET /echo?message=hi HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET / HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nReferer: http://127.0.0.1:18081/echo?message=hi\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n",
+    "GET /echo?message=hi HTTP/1.1\r\nAccept-Language: en\r\nAccept-Encoding: gzip, deflate\r\nUser-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3\r\nAccept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\nConnection: keep-alive\r\nHost: 127.0.0.1:18081\r\n\r\n"
+  ],
+  "guestResponses": [
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 474\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>iPhone Local Demo</title></head><body><h1>Local demo</h1><p>This page is served inside this emulated phone. It is fixed demo content, not an internet service.</p><p>Page: HOME-1</p><p><a href=\"/next\">Open next page</a></p><form action=\"/echo\" method=\"get\"><label>Message <input name=\"message\" maxlength=\"32\" size=\"12\"></label><input type=\"submit\" value=\"Send\"></form></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 260\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>Local Demo Next</title></head><body><h1>Next page</h1><p>Page: NEXT-1</p><p>Original Safari followed a local link.</p><p><a href=\"/\">Back to demo</a></p></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 474\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>iPhone Local Demo</title></head><body><h1>Local demo</h1><p>This page is served inside this emulated phone. It is fixed demo content, not an internet service.</p><p>Page: HOME-1</p><p><a href=\"/next\">Open next page</a></p><form action=\"/echo\" method=\"get\"><label>Message <input name=\"message\" maxlength=\"32\" size=\"12\"></label><input type=\"submit\" value=\"Send\"></form></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 237\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>Local Demo Form</title></head><body><h1>Form received</h1><p>Page: ECHO-1</p><p>Message: hi</p><p><a href=\"/\">Back to demo</a></p></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 237\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>Local Demo Form</title></head><body><h1>Form received</h1><p>Page: ECHO-1</p><p>Message: hi</p><p><a href=\"/\">Back to demo</a></p></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 474\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>iPhone Local Demo</title></head><body><h1>Local demo</h1><p>This page is served inside this emulated phone. It is fixed demo content, not an internet service.</p><p>Page: HOME-1</p><p><a href=\"/next\">Open next page</a></p><form action=\"/echo\" method=\"get\"><label>Message <input name=\"message\" maxlength=\"32\" size=\"12\"></label><input type=\"submit\" value=\"Send\"></form></body></html>",
+    "HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 237\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=320, initial-scale=1\"><title>Local Demo Form</title></head><body><h1>Form received</h1><p>Page: ECHO-1</p><p>Message: hi</p><p><a href=\"/\">Back to demo</a></p></body></html>"
+  ],
+  "finalState": {
+    "ready": true,
+    "paused": false,
+    "savedAt": 1788686229227,
+    "metrics": {
+      "type": "metrics",
+      "mips": 1.601343253968254,
+      "fps": 0,
+      "guestRate": 1.0001058201058202,
+      "cycles": "8926306470",
+      "memory": 644284416,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 626413356,
+        "calls": 77194319
+      },
+      "serial": "",
+      "captureMs": 94,
+      "captureChunkMs": 1.6000000014901161,
+      "finalizeMs": 616
+    },
+    "status": "Saved at 09:17 AM"
+  },
+  "video": "/home/vercel-sandbox/iphone-1/.context/guest-safari/browser-run-1/page@7b4749c52fead423ab4bef450dc63d91.webm",
+  "projectionUnchanged": true,
+  "elapsedSeconds": 681.902,
+  "passed": true
+}

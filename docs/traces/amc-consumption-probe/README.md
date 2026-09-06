@@ -43,3 +43,9 @@ The [third-input admission](third-admitted/README.md) verifies the next actual 1
 
 
 The [MeCCA-return observation](mecca-return/README.md) confirms a successful original kernel configuration return with exact unchanged state. Selected userspace returns were not observed; their actual mapping/execution remains unresolved. No user error, startup or consumption is inferred from absence.
+
+
+The [input-backpressure continuation](input-backpressure/README.md) naturally fills the bounded queue and reaches the proposed userspace scalar-return PC. An observer permission check stops before validated retirement; all actual copied bytes and prior state remain audited. No PCM consumption.
+
+
+The [permission-corrected observer](user-start-reads/README.md) verifies successful real userspace returns/startup and every first-output PCM byte read. A later owner-store cycle assumption stops the probe; full handoff is not yet accepted. All device/admission behavior remains unchanged.

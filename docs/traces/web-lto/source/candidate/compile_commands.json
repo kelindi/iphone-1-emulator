@@ -1,0 +1,242 @@
+[
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emu.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -O3 -std=gnu11 -o CMakeFiles/emu.dir/web/emu_api.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/web/emu_api.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/web/emu_api.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emu.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -O3 -std=gnu11 -o CMakeFiles/emu.dir/web/jit-runtime.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/web/jit-runtime.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/web/jit-runtime.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/arm/arm_interp.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/arm_interp.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/arm_interp.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -ffp-contract=off -o CMakeFiles/emucore.dir/src/arm/vfp.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/vfp.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/vfp.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/arm/a64_static_engine.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/a64_static_engine.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/arm/a64_static_engine.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/mmu.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/mmu.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/mmu.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/snapshot.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/snapshot.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/snapshot.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/vm_source.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/vm_source.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/vm_source.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/vm_block.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/vm_block.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/vm_block.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/md_bridge.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/md_bridge.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/md_bridge.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/md_raw_bridge.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/md_raw_bridge.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/md_raw_bridge.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/uart.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/uart.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/uart.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/vic.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/vic.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/vic.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/timer.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/timer.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/timer.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/mbx.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mbx.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mbx.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/power.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/power.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/power.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/clcd.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/clcd.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/clcd.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/tvout.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/tvout.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/tvout.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/i2c.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/i2c.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/i2c.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/pcf50635.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/pcf50635.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/pcf50635.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/wm8991.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/wm8991.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/wm8991.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/wm8758.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/wm8758.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/wm8758.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/i2s.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/i2s.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/i2s.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/spi.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/spi.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/spi.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/gpioic.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/gpioic.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/gpioic.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/buttons.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/buttons.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/buttons.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/mtz2.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mtz2.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mtz2.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/mt_common.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mt_common.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mt_common.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/mtz1.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mtz1.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/mtz1.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/usbotg.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/usbotg.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/usbotg.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/pl080.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/pl080.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/pl080.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/nor.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/nor.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/nor.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/nand.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/nand.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/nand.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/storage.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/storage.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/storage.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/soc/machine.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/machine.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/soc/machine.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/board/board.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/board.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/board.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/board/m68.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/m68.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/m68.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/board/n82.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/n82.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/board/n82.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/img3.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/img3.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/img3.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/aes.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/aes.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/aes.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/loader.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/loader.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/loader.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/devicetree.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/devicetree.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/devicetree.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/lzss.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/lzss.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/lzss.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/macho.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/macho.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/macho.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/firmware/ksyms.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/ksyms.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/firmware/ksyms.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/boot/bringup.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/bringup.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/bringup.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/boot/dt_patch.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/dt_patch.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/dt_patch.c"
+},
+{
+  "directory": "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build/core",
+  "command": "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc -DS5LBOX_WASM_JIT=1 @CMakeFiles/emucore.dir/includes_C.rsp -flto=full -O3 -DNDEBUG -Wall -Wextra -std=gnu11 -o CMakeFiles/emucore.dir/src/boot/bringup_os1.c.o -c /home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/bringup_os1.c",
+  "file": "/home/vercel-sandbox/iphone-1/.context/web-lto/source/core/src/boot/bringup_os1.c"
+}
+]

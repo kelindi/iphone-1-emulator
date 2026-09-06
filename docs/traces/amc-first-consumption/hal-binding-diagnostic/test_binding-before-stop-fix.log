@@ -1,0 +1,1 @@
+PASS 48 binding actual-window/permission/fetch/cached-vs-fresh/atomic-output/live-immutability checks; synthetic only

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "scenarios": 404,
+  "cases": 1212,
+  "rawArchitectureRamPolicyCountersExact": true,
+  "perPcOpcodeFootprintExact": true,
+  "controlReport": ".context/jit-fallback-census/boundaries-control/focused-report.json",
+  "scope": "Actual interpreter and emitted original-policy functions. Complete literal timer snapshots included in corresponding state hashes. Actual deterministic100M machine loop not run."
+}

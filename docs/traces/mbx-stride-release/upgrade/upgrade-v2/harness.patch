@@ -1,0 +1,111 @@
+--- ../offline-upgrade.mjs
++++ offline-upgrade.mjs
+@@ -7,19 +7,19 @@
+ import {resolve, dirname, join} from 'node:path';
+ import {createHash} from 'node:crypto';
+ import {gzipSync} from 'node:zlib';
+-import {validateAssets} from './validate-assets.mjs';
+-import {encodeBytes,decodeFrame} from '../jit-fallback-census/frame-packet.mjs';
++import {validateAssets,responseMime} from './validate-assets.mjs';
++import {encodeBytes,decodeFrame} from '../../jit-fallback-census/frame-packet.mjs';
+ import {createServer} from 'node:http';
+ import {createReadStream} from 'node:fs';
+-import {trackSockets, stopServer} from '../jit-sw-cache-v4/physical-server.mjs';
+-
+-const directory = resolve('.context/mbx-stride-integration/run-1');
++import {trackSockets, stopServer} from '../../jit-sw-cache-v4/physical-server.mjs';
++
++const directory = resolve('.context/mbx-stride-integration/upgrade-v2/run-1');
+ const root = join(directory, 'web');
+ const sourceRoot = resolve('.context/mbx-stride-integration/candidate');
+ const previousRoot = resolve('.context/mbx-stride-integration/previous');
+ assert.notEqual(root,sourceRoot,'Upgrade test must use an isolated web root');
+ assert.notEqual(root,previousRoot,'Upgrade test must preserve its previous firmware source');
+-const port = 8235;
++const port = 8236;
+ const url = `http://localhost:${port}/`;
+ const files = ['index.html','phone.css','icon.svg','app.js','storage.js','assets.js',
+   'checkpoint-worker.js','emu-worker.js','manifest.json','dist/emu.js','dist/emu.wasm',
+@@ -37,7 +37,8 @@
+   await fs.rm(target,{force:true});
+   await fs.link(source,target);
+ }
+-let phase='prepare';const servedAssets=[],bodyTasks=[];const originRequests=[];const browserRequests=[];const browserResponses=[];const requestFailures=[];const consoleMessages=[];const barriers=[];const actions=[];
++let phase='prepare';const servedAssets=[],bodyTasks=[],workerEvents=[];let requestSequence=0,pageSequence=0;const requestIds=new WeakMap(),pageIds=new WeakMap();
++function requestMeta(request){if(!requestIds.has(request))requestIds.set(request,++requestSequence);let pageId=null;try{pageId=pageIds.get(request.frame().page())??null;}catch{}return {requestId:requestIds.get(request),pageId};}const originRequests=[];const browserRequests=[];const browserResponses=[];const requestFailures=[];const consoleMessages=[];const barriers=[];const actions=[];
+ const source = Object.fromEntries(await Promise.all(files.map(async name => [name, await fs.readFile(join(sourceRoot,name))])));
+ const previousSource=Object.fromEntries(await Promise.all(files.map(async name=>[name,await fs.readFile(join(previousRoot,name))])));
+ const previousManifest=previousSource['manifest.json'];
+@@ -83,7 +84,7 @@
+ await publish('A');
+ let server,sockets;
+ async function startOrigin(){
+- server=createServer(async(req,res)=>{originRequests.push({phase,url:req.url,method:req.method,at:Date.now()});try{const pathname=decodeURIComponent(new URL(req.url,url).pathname);const file=await fs.realpath(resolve(root,`.${pathname.endsWith('/')?pathname+'index.html':pathname}`));if(!file.startsWith(root+'/')){res.writeHead(403);res.end();return;}const stat=await fs.stat(file);if(!stat.isFile())throw Error('not file');const type=file.endsWith('.wasm')?'application/wasm':file.endsWith('.js')?'text/javascript':file.endsWith('.json')?'application/json':file.endsWith('.html')?'text/html':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':'application/octet-stream';res.writeHead(200,{'Content-Type':type,'Content-Length':stat.size,'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});createReadStream(file).on('error',()=>res.destroy()).pipe(res);}catch{res.writeHead(404);res.end('Not found')}});
++ server=createServer(async(req,res)=>{originRequests.push({phase,url:req.url,method:req.method,at:Date.now()});try{const pathname=decodeURIComponent(new URL(req.url,url).pathname);const file=await fs.realpath(resolve(root,`.${pathname.endsWith('/')?pathname+'index.html':pathname}`));if(!file.startsWith(root+'/')){res.writeHead(403);res.end();return;}const stat=await fs.stat(file);if(!stat.isFile())throw Error('not file');const type=file.endsWith('.wasm')?'application/wasm':file.endsWith('.js')?'text/javascript':file.endsWith('.json')?'application/json':file.endsWith('.html')?'text/html':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':'application/octet-stream';res.writeHead(200,{'Content-Type':responseMime(type),'Content-Length':stat.size,'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});createReadStream(file).on('error',()=>res.destroy()).pipe(res);}catch{res.writeHead(404);res.end('Not found')}});
+  sockets=trackSockets(server);await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve)});
+ }
+ await startOrigin();
+@@ -91,19 +92,20 @@
+ const context=await browser.newContext({viewport:{width:1280,height:1050},
+   ...(process.argv.includes('--record') ? {recordVideo:{dir:directory,size:{width:1280,height:1050}}}: {})});
+ await context.addInitScript({content:'window.packDiagnosticFrame='+encodeBytes.toString()});
+-context.on('request',r=>browserRequests.push({phase,url:r.url(),method:r.method(),at:Date.now()}));
++context.on('page',p=>{const pageId=++pageSequence;pageIds.set(p,pageId);p.on('worker',w=>{const row={pageId,url:w.url(),created:Date.now(),createdPhase:phase};workerEvents.push(row);w.on('close',()=>{row.closed=Date.now();row.closedPhase=phase;});});});
++context.on('request',r=>browserRequests.push({...requestMeta(r),phase,url:r.url(),method:r.method(),at:Date.now()}));
+ context.on('response',r=>{
+- const row={phase,url:r.url(),status:r.status(),fromServiceWorker:r.fromServiceWorker(),at:Date.now()};browserResponses.push(row);
++ const row={...requestMeta(r.request()),phase,url:r.url(),status:r.status(),fromServiceWorker:r.fromServiceWorker(),headers:r.headers(),at:Date.now()};browserResponses.push(row);
+  const u=new URL(row.url),path=u.pathname.replace(/^\//,'')||'index.html';
+  if(u.origin===new URL(url).origin&&[...files,'service-worker.js'].includes(path))bodyTasks.push((async()=>{
+   const item={...row,path};servedAssets.push(item);
+-  try{const bytes=await r.body();item.bytes=bytes.length;item.sha256=sha(bytes);await fs.mkdir(join(directory,'served'),{recursive:true});item.file='served/'+item.sha256+'.bin';await fs.writeFile(join(directory,item.file),bytes,{flag:'wx'}).catch(e=>{if(e.code!=='EEXIST')throw e;});}catch(e){item.error=e.message;}
++  try{const bytes=await r.body();item.bytes=bytes.length;item.sha256=sha(bytes);await fs.mkdir(join(directory,'served'),{recursive:true});item.file='served/'+item.sha256+'.bin';await fs.writeFile(join(directory,item.file),bytes,{flag:'wx'}).catch(e=>{if(e.code!=='EEXIST')throw e;});}catch(e){item.error=e.message;item.errorAt=Date.now();}
+  })());
+ });
+-context.on('requestfailed',r=>requestFailures.push({phase,url:r.url(),failure:r.failure(),at:Date.now()}));
++context.on('requestfailed',r=>requestFailures.push({...requestMeta(r),phase,url:r.url(),failure:r.failure(),at:Date.now()}));
+ context.on('console',m=>consoleMessages.push({phase,type:m.type(),text:m.text(),at:Date.now()}));
+ let page=await context.newPage();
+-const report={processReceipts:[],startedAt:new Date().toISOString(),sourceRoot,previousRoot,checks:[],errors:[],servedAssets,variants,originRequests,browserRequests,browserResponses,requestFailures,consoleMessages,barriers,actions};
++const report={processReceipts:[],startedAt:new Date().toISOString(),sourceRoot,previousRoot,checks:[],errors:[],servedAssets,workerEvents,variants,originRequests,browserRequests,browserResponses,requestFailures,consoleMessages,barriers,actions};
+ let reportWrite=Promise.resolve();const persist=()=>{reportWrite=reportWrite.then(()=>fs.writeFile(join(directory,'report.json'),json(report)+'\n'));return reportWrite;};
+ await persist();
+ const browserCDP=await browser.newBrowserCDPSession();
+@@ -178,9 +180,13 @@
+  check('failed update deletes its incomplete shell cache',!await page.evaluate(async name=>(await caches.keys()).includes(name),'iphone-1-shell-'+variants.C.generation));
+  const afterBad=await bundle();check('corrupt update retains matching active B shell and actual MBX stride-fixed runtime',afterBad.shell==='B'&&afterBad.wasm===variants.B.hashes['dist/emu.wasm']);check('failed update preserves original saved phone',JSON.stringify(await saved())===JSON.stringify(original));
+  await publish('B');await goOffline('corrupt-kernel-offline');
+- await page.evaluate(async()=>{const manifest=await(await fetch('manifest.json')).json();await(await caches.open('iphone-1-assets-1a543a-v1')).put(new URL(manifest.kernel,location.href),new Response('corrupted test entry'))});
++ const corruption=await page.evaluate(async()=>{const manifest=await(await fetch('manifest.json')).json(),kernelURL=new URL(manifest.kernel,location.href).href,cache=await caches.open('iphone-1-assets-1a543a-v1');await cache.put(kernelURL,new Response('corrupted test entry'));const bytes=await(await cache.match(kernelURL)).arrayBuffer();return {kernelURL,bytes:bytes.byteLength,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('')};});
++ report.negativeStartup={phase,corruption,pageId:pageIds.get(page),started:Date.now(),physicalBarrier:barriers.at(-1)};
+  await page.reload();await page.waitForFunction(()=>!document.querySelector('#retry').hidden&&!document.querySelector('#retry').disabled,{}, {timeout:30000});
+  check('corrupt offline firmware stops the guest and enables recovery',!await page.evaluate(()=>iphone.ready));check('corrupt cache entry was removed',await page.evaluate(async()=>{const m=await(await fetch('manifest.json')).json();return !(await(await caches.open('iphone-1-assets-1a543a-v1')).match(new URL(m.kernel,location.href)))}));await screen(join(directory,'corrupt-offline.png'));
++ report.negativeStartup.observed=await page.evaluate(async()=>{const m=await(await fetch('manifest.json')).json();return {ready:iphone.ready,retryEnabled:!document.querySelector('#retry').hidden&&!document.querySelector('#retry').disabled,kernelURL:new URL(m.kernel,location.href).href,kernelCacheRemoved:!(await(await caches.open('iphone-1-assets-1a543a-v1')).match(new URL(m.kernel,location.href))),status:document.querySelector('#status').textContent};});
++ await page.waitForTimeout(50);report.negativeStartup.ended=Date.now();report.negativeStartup.workerClosures=workerEvents.filter(w=>w.pageId===report.negativeStartup.pageId&&w.createdPhase===phase&&w.closedPhase===phase&&w.closed>=report.negativeStartup.started);report.negativeStartup.kernelRequestDenied=requestFailures.some(r=>r.phase===phase&&r.url===report.negativeStartup.observed.kernelURL&&r.failure?.errorText==='net::ERR_INTERNET_DISCONNECTED');
++
+  await goOnline('verified-recovery');await diagnosticClick('retry');await ready();report.recoveredEngine=await installedEngine();await pause();check('retry downloads verified firmware and restores guest',await page.evaluate(()=>iphone.ready));check('verified recovery keeps the original saved phone',JSON.stringify(await saved())===JSON.stringify(original));check('recovered candidate executes its verified seeded engine',report.recoveredEngine.enabled&&report.recoveredEngine.retired>0);await screen(join(directory,'recovered.png'));
+  // Every local response received in offline phases must be service-worker supplied.
+  const offlineResponses=browserResponses.filter(r=>r.phase==='disconnected-B'||r.phase==='corrupt-seed-offline'||r.phase==='corrupt-kernel-offline');assert(offlineResponses.every(r=>r.url.startsWith('blob:')||r.fromServiceWorker),'Offline response escaped verified SW cache');report.offlineResponses=offlineResponses;
+@@ -209,7 +215,7 @@
+   const download=await downloadPromise;await download.saveAs(join(directory,'saved-before.checkpoint'));const savedBytes=await fs.readFile(join(directory,'saved-before.checkpoint'));assert.equal(savedBytes.length,original.storedBytes);assert.equal(sha(savedBytes),original.hash);report.savedBeforeArtifact={file:'saved-before.checkpoint',bytes:savedBytes.length,sha256:sha(savedBytes),scope:'Already encoded current IDB Blob; no extra guest capture'};
+ 
+   check('real guest checkpoint is durably stored before upgrade',original.size>100*1048576);
+-  await publish('B');phase='waiting-B';
++  phase='waiting-B';await publish('B');
+   // Reload remains controlled by A, whose startup check discovers B.
+   await page.reload(); await ready(); await pause();
+   await page.waitForFunction(()=>!document.querySelector('#update-notice').hidden,{}, {timeout:60000}); // Companion stays hidden; inspect intended notice state.
+@@ -249,11 +255,11 @@
+ 
+   await extraGates(original);
+   check('no uncaught page errors',report.errors.length===0,report.errors);
+-  await Promise.all(bodyTasks);report.assetValidation=validateAssets(servedAssets,variants,url);
++  await Promise.all(bodyTasks);report.assetValidation=validateAssets(servedAssets,variants,url,{negativeStartup:report.negativeStartup});
+   report.result='pass';
+ } catch(error) { report.result='fail'; report.error=error.stack;report.failureState=await page.evaluate(()=>({status:document.querySelector('#status')?.textContent,ready:window.iphone?.ready,paused:window.iphone?.paused,savedAt:window.iphone?.savedAt})).catch(e=>({error:e.message})); await screen(join(directory,'failure.png')).catch(()=>{}); throw error; }
+ finally {
+-  await Promise.allSettled(bodyTasks);await reportWrite.catch(e=>{report.persistenceError=e.message;report.result='fail';});
++  await Promise.allSettled(bodyTasks);if(report.result==='pass'){try{report.assetValidation=validateAssets(servedAssets,variants,url,{negativeStartup:report.negativeStartup});}catch(e){report.result='fail';report.error=e.stack;}}await reportWrite.catch(e=>{report.persistenceError=e.message;report.result='fail';});
+   await fs.writeFile(join(directory,'report.json'),json(report)+'\n');
+   try{await processes('before-close');}catch(e){report.processReceiptError=e.message;report.result='fail';}
+   clearTimeout(outer);const closure={};

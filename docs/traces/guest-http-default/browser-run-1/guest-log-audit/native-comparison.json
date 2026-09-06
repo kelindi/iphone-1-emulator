@@ -1,0 +1,14 @@
+{
+  "scope": "Artifact-only native Home comparison, original loader; no guest instructions",
+  "nativeReport": [
+    {
+      "path": "/private/var/logs/CrashReporter/LatestCrash.plist",
+      "present": false
+    },
+    {
+      "path": "/private/var/logs/CrashReporter/crashdump-2009-12-31-161742.plist",
+      "present": false
+    }
+  ],
+  "pristineExactCrashReportPresent": false
+}

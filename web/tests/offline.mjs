@@ -1,6 +1,6 @@
 // Real-browser acceptance: install a verified bundle, disconnect, reload, then
 // corrupt a firmware cache entry and exercise recovery after reconnect. The
-// minimalist production shell keeps the recovery controls out of sight.
+// minimalist shell exposes recovery in the phone while setup remains hidden.
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
@@ -49,7 +49,7 @@ try {
   }));
   await page.screenshot({path:`${directory}/corrupt-offline.png`});
   await context.setOffline(false);
-  await page.locator('#retry').evaluate(button => button.click()); await ready();
+  await page.locator('#retry').click(); await ready();
   check('retry downloads verified firmware and restores guest', true);
   await page.screenshot({path:`${directory}/recovered.png`});
   await page.waitForTimeout(2000);

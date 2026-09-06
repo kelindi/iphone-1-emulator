@@ -1,0 +1,566 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+
+__ZN24AudioOutputBufferManager11readSamplesEPjRjyb
+3122c174 sub      sp, sp, #4
+3122c178 push     {r4, r5, r6, r7, lr}
+3122c17c add      r7, sp, #0xc
+3122c180 push     {r8, sl, fp}
+3122c184 sub      sp, sp, #0x30
+3122c188 mov      r5, r0
+3122c18c str      r1, [sp, #0x20]
+3122c190 str      r2, [sp, #0x1c]
+3122c194 str      r3, [sp, #0x50]
+3122c198 ldr      r3, [r2]
+3122c19c ldr      r1, [r5, #8]
+3122c1a0 str      r3, [r5, #0x3c]
+3122c1a4 ldr      r2, [r2]
+3122c1a8 ldrb     r0, [sp, #0x58]
+3122c1ac lsl      fp, r2, #2
+3122c1b0 ldr      r2, [r5, #0x10]
+3122c1b4 cmp      r2, r1
+3122c1b8 rsbhi    r4, r1, r2
+3122c1bc bhi      #0x3122c1d0
+3122c1c0 ldrne    r3, [r5, #0x20]
+3122c1c4 rsbne    r2, r2, r1
+3122c1c8 moveq    r4, #0
+3122c1cc rsbne    r4, r2, r3
+3122c1d0 ldr      r2, [pc, #0x7d8] literal 3122c9b0=0000167c 
+3122c1d4 ldr      r3, [r5, #0x1c]
+3122c1d8 cmp      r3, r4, lsr #2
+3122c1dc ldr      r3, [r5, r2]
+3122c1e0 movhs    r4, #0
+3122c1e4 cmp      r3, #0
+3122c1e8 beq      #0x3122c1fc
+3122c1ec sub      r3, r3, #1
+3122c1f0 cmp      r3, #0
+3122c1f4 str      r3, [r5, r2]
+3122c1f8 bne      #0x3122c208
+3122c1fc add      r3, r5, #0x1680
+3122c200 mov      r2, #0
+3122c204 strb     r2, [r3]
+3122c208 cmp      r4, fp
+3122c20c blo      #0x3122c4ec
+3122c210 ldr      r3, [r5]
+3122c214 ldr      r2, [pc, #0x798] literal 3122c9b4=00001674 
+3122c218 rsb      r3, r3, r1
+3122c21c cmp      r0, #0
+3122c220 lsr      r6, r3, #0xc
+3122c224 lsl      r8, r6, #4
+3122c228 lsl      sl, r6, #2
+3122c22c sub      r3, r8, r6, lsl #2
+3122c230 rsb      r3, r6, r3
+3122c234 add      r3, r5, r3, lsl #2
+3122c238 ldr      r3, [r3, #0x50]
+3122c23c str      r3, [r5, r2]
+3122c240 beq      #0x3122c274
+3122c244 mov      r3, r5
+3122c248 mov      r1, #0
+3122c24c ldr      r2, [r3, #0x40]
+3122c250 cmp      r2, #0
+3122c254 beq      #0x3122c290
+3122c258 lsl      r3, r1, #4
+3122c25c sub      r3, r3, r1, lsl #2
+3122c260 rsb      r3, r1, r3
+3122c264 add      r2, r5, r3, lsl #2
+3122c268 ldr      r3, [r2, #0x40]
+3122c26c orr      r3, r3, #1
+3122c270 str      r3, [r2, #0x40]
+3122c274 rsb      r3, sl, r8
+3122c278 rsb      r3, r6, r3
+3122c27c add      r3, r5, r3, lsl #2
+3122c280 ldr      r3, [r3, #0x40]
+3122c284 cmp      r3, #0
+3122c288 beq      #0x3122c434
+3122c28c b        #0x3122c2ac
+3122c290 add      r1, r1, #1
+3122c294 cmp      r1, #0x40
+3122c298 add      r3, r3, #0x2c
+3122c29c bne      #0x3122c24c
+3122c2a0 rsb      r3, sl, r8
+3122c2a4 rsb      r3, r6, r3
+3122c2a8 b        #0x3122c264
+3122c2ac rsb      r3, sl, r8
+3122c2b0 rsb      r3, r6, r3
+3122c2b4 add      r3, r5, r3, lsl #2
+3122c2b8 add      r2, r3, #0x54
+3122c2bc ldr      r3, [r3, #0x54]
+3122c2c0 cmn      r3, #1
+3122c2c4 bne      #0x3122c2d4
+3122c2c8 ldr      r3, [r2, #4]
+3122c2cc cmn      r3, #1
+3122c2d0 beq      #0x3122c434
+3122c2d4 ldr      r3, [pc, #0x6dc] literal 3122c9b8=0000166c 
+3122c2d8 ldr      r2, [r5, r3]
+3122c2dc add      r3, r3, #4
+3122c2e0 ldr      r3, [r5, r3]
+3122c2e4 cmp      r2, r3
+3122c2e8 rsblt    r3, r3, r2
+3122c2ec rsbge    r3, r3, r2
+3122c2f0 addlt    r3, r3, #0x80
+3122c2f4 cmp      r3, #0x3f
+3122c2f8 ble      #0x3122c328
+3122c2fc ldr      r3, [pc, #0x6b8] literal 3122c9bc=00093814 
+3122c300 ldr      r0, [pc, #0x6b8] literal 3122c9c0=000937a4 
+3122c304 add      r3, pc, r3
+3122c308 str      r3, [sp]
+3122c30c ldr      r2, [pc, #0x6b0] literal 3122c9c4=00093734 
+3122c310 ldr      r3, [pc, #0x6b0] literal 3122c9c8=0008f34c 
+3122c314 add      r0, pc, r0
+3122c318 mov      r1, #0x28c
+3122c31c add      r2, pc, r2
+3122c320 add      r3, pc, r3
+3122c324 b        #0x3122c430
+3122c328 ldr      r2, [pc, #0x69c] literal 3122c9cc=0802be94 
+3122c32c add      r2, pc, r2
+3122c330 mov      r0, r2
+3122c334 str      r2, [sp, #0x18]
+3122c338 bl       #0x31230ccc ('__Z21MeCCA_Engine_Try_LockP23_opaque_pthread_mutex_t', 0)
+3122c33c cmp      r0, #0
+3122c340 str      r0, [sp, #0x24]
+3122c344 bne      #0x3122c408
+3122c348 ldr      r3, [pc, #0x668] literal 3122c9b8=0000166c 
+3122c34c ldr      r1, [r5, r3]
+3122c350 asr      r3, r1, #0x1f
+3122c354 lsr      r2, r3, #0x1a
+3122c358 add      r3, r1, r2
+3122c35c and      r3, r3, #0x3f
+3122c360 rsb      r3, r2, r3
+3122c364 lsl      r2, r3, #4
+3122c368 sub      r2, r2, r3, lsl #2
+3122c36c rsb      r3, r3, r2
+3122c370 add      r3, r5, r3, lsl #2
+3122c374 str      r3, [sp, #0x14]
+3122c378 add      r4, r3, #0xb60
+3122c37c rsb      r3, sl, r8
+3122c380 rsb      r3, r6, r3
+3122c384 add      r4, r4, #0xc
+3122c388 add      r0, r5, r3, lsl #2
+3122c38c add      r0, r0, #0x40
+3122c390 mov      lr, r0
+3122c394 mov      ip, r4
+3122c398 ldm      lr!, {r0, r1, r2, r3}
+3122c39c stm      ip!, {r0, r1, r2, r3}
+3122c3a0 ldm      lr!, {r0, r1, r2, r3}
+3122c3a4 stm      ip!, {r0, r1, r2, r3}
+3122c3a8 ldm      lr, {r0, r1, r2}
+3122c3ac stm      ip, {r0, r1, r2}
+3122c3b0 add      r1, sp, #0x50
+3122c3b4 ldm      r1, {r1, r2}
+3122c3b8 ldr      r3, [sp, #0x14]
+3122c3bc ldr      r0, [pc, #0x60c] literal 3122c9d0=0802be20 
+3122c3c0 str      r1, [r3, #0xb88]
+3122c3c4 str      r2, [r3, #0xb8c]
+3122c3c8 ldr      r1, [pc, #0x5e8] literal 3122c9b8=0000166c 
+3122c3cc add      r0, pc, r0
+3122c3d0 ldr      r3, [r5, r1]
+3122c3d4 add      r2, r3, #1
+3122c3d8 asr      r3, r2, #0x1f
+3122c3dc lsr      r1, r3, #0x19
+3122c3e0 add      r3, r2, r1
+3122c3e4 ldr      r2, [pc, #0x5cc] literal 3122c9b8=0000166c 
+3122c3e8 and      r3, r3, #0x7f
+3122c3ec rsb      r3, r1, r3
+3122c3f0 ldr      r1, [sp, #0x24]
+3122c3f4 str      r3, [r5, r2]
+3122c3f8 bl       #0x31230d3c ('__Z27MeCCA_Engine_Post_SemaphorePj18MeCCAEngineContext', 0)
+3122c3fc ldr      r0, [sp, #0x18]
+3122c400 bl       #0x31230cf0 ('__Z25MeCCA_Engine_Release_LockP23_opaque_pthread_mutex_t', 0)
+3122c404 b        #0x3122c434
+3122c408 ldr      r3, [pc, #0x5c4] literal 3122c9d4=00093720 
+3122c40c ldr      r0, [pc, #0x5c4] literal 3122c9d8=00093694 
+3122c410 add      r3, pc, r3
+3122c414 str      r3, [sp]
+3122c418 ldr      r2, [pc, #0x5bc] literal 3122c9dc=00093628 
+3122c41c ldr      r3, [pc, #0x5bc] literal 3122c9e0=0008f240 
+3122c420 ldr      r1, [pc, #0x5bc] literal 3122c9e4=00000297 
+3122c424 add      r0, pc, r0
+3122c428 add      r2, pc, r2
+3122c42c add      r3, pc, r3
+3122c430 bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+3122c434 rsb      r3, sl, r8
+3122c438 rsb      r3, r6, r3
+3122c43c mov      r2, #0
+3122c440 add      r3, r5, r3, lsl #2
+3122c444 str      r2, [r3, #0x40]
+3122c448 ldr      r1, [r5, #8]
+3122c44c ldr      r2, [r5, #4]
+3122c450 add      r3, fp, r1
+3122c454 cmp      r3, r2
+3122c458 bhi      #0x3122c48c
+3122c45c mov      r2, fp
+3122c460 ldr      r0, [sp, #0x20]
+3122c464 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c468 ldr      r0, [r5, #8]
+3122c46c ldr      r1, [r5, #4]
+3122c470 add      r3, fp, r0
+3122c474 cmp      r3, r1
+3122c478 ldrne    r3, [sp, #0x1c]
+3122c47c ldreq    r1, [r5]
+3122c480 ldrne    r2, [r3]
+3122c484 addne    r1, r0, r2, lsl #2
+3122c488 b        #0x3122c4c4
+3122c48c rsb      r4, r1, r2
+3122c490 mov      r2, r4
+3122c494 ldr      r0, [sp, #0x20]
+3122c498 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c49c ldr      r1, [sp, #0x20]
+3122c4a0 rsb      r6, r4, fp
+3122c4a4 bic      r2, r4, #3
+3122c4a8 add      r0, r1, r2
+3122c4ac ldr      r1, [r5]
+3122c4b0 mov      r2, r6
+3122c4b4 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c4b8 ldr      r3, [r5]
+3122c4bc bic      r2, r6, #3
+3122c4c0 add      r1, r2, r3
+3122c4c4 ldr      r3, [r5, #0x14]
+3122c4c8 add      r0, r5, #0x1680
+3122c4cc str      r1, [r5, #8]
+3122c4d0 rsb      r2, fp, r3
+3122c4d4 add      r0, r0, #0xc
+3122c4d8 mov      r1, #0
+3122c4dc str      r2, [r5, #0x14]
+3122c4e0 bl       #0x31230d88 ('__Z25MeCCA_Engine_Broadcast_CVP22_opaque_pthread_cond_t18MeCCAEngineContext', 0)
+3122c4e4 mov      r0, #0
+3122c4e8 b        #0x3122c99c
+3122c4ec cmp      r4, #0
+3122c4f0 beq      #0x3122c75c
+3122c4f4 ldr      r2, [sp, #0x1c]
+3122c4f8 lsr      r3, r4, #2
+3122c4fc str      r3, [r2]
+3122c500 ldr      r2, [r5, #8]
+3122c504 ldr      r3, [r5]
+3122c508 rsb      r3, r3, r2
+3122c50c lsr      r8, r3, #0xc
+3122c510 lsl      r1, r8, #4
+3122c514 lsl      r3, r8, #2
+3122c518 str      r3, [sp, #0xc]
+3122c51c sub      r3, r1, r8, lsl #2
+3122c520 rsb      r3, r8, r3
+3122c524 str      r1, [sp, #4]
+3122c528 add      r3, r5, r3, lsl #2
+3122c52c ldr      r2, [r3, #0x40]
+3122c530 cmp      r2, #0
+3122c534 beq      #0x3122c6b0
+3122c538 add      r2, r3, #0x54
+3122c53c ldr      r3, [r3, #0x54]
+3122c540 cmn      r3, #1
+3122c544 bne      #0x3122c554
+3122c548 ldr      r3, [r2, #4]
+3122c54c cmn      r3, #1
+3122c550 beq      #0x3122c6b0
+3122c554 ldr      r3, [pc, #0x45c] literal 3122c9b8=0000166c 
+3122c558 ldr      r2, [r5, r3]
+3122c55c add      r3, r3, #4
+3122c560 ldr      r3, [r5, r3]
+3122c564 cmp      r2, r3
+3122c568 rsblt    r3, r3, r2
+3122c56c rsbge    r3, r3, r2
+3122c570 addlt    r3, r3, #0x80
+3122c574 cmp      r3, #0x3f
+3122c578 ble      #0x3122c5a8
+3122c57c ldr      r3, [pc, #0x464] literal 3122c9e8=00093594 
+3122c580 ldr      r0, [pc, #0x464] literal 3122c9ec=00093524 
+3122c584 add      r3, pc, r3
+3122c588 str      r3, [sp]
+3122c58c ldr      r2, [pc, #0x45c] literal 3122c9f0=000934b4 
+3122c590 ldr      r3, [pc, #0x45c] literal 3122c9f4=0008f0cc 
+3122c594 add      r0, pc, r0
+3122c598 mov      r1, #0x308
+3122c59c add      r2, pc, r2
+3122c5a0 add      r3, pc, r3
+3122c5a4 b        #0x3122c6ac
+3122c5a8 ldr      fp, [pc, #0x448] literal 3122c9f8=0802bc14 
+3122c5ac add      fp, pc, fp
+3122c5b0 mov      r0, fp
+3122c5b4 bl       #0x31230ccc ('__Z21MeCCA_Engine_Try_LockP23_opaque_pthread_mutex_t', 0)
+3122c5b8 cmp      r0, #0
+3122c5bc str      r0, [sp, #0x28]
+3122c5c0 bne      #0x3122c684
+3122c5c4 ldr      r2, [pc, #0x3ec] literal 3122c9b8=0000166c 
+3122c5c8 ldr      r1, [r5, r2]
+3122c5cc asr      r3, r1, #0x1f
+3122c5d0 lsr      r2, r3, #0x1a
+3122c5d4 add      r3, r1, r2
+3122c5d8 and      r3, r3, #0x3f
+3122c5dc rsb      r3, r2, r3
+3122c5e0 ldr      r1, [sp, #4]
+3122c5e4 lsl      r2, r3, #4
+3122c5e8 sub      r2, r2, r3, lsl #2
+3122c5ec rsb      r3, r3, r2
+3122c5f0 ldr      r2, [sp, #0xc]
+3122c5f4 add      sl, r5, r3, lsl #2
+3122c5f8 rsb      r3, r2, r1
+3122c5fc rsb      r3, r8, r3
+3122c600 add      r6, sl, #0xb60
+3122c604 add      r0, r5, r3, lsl #2
+3122c608 add      r0, r0, #0x40
+3122c60c mov      lr, r0
+3122c610 add      r6, r6, #0xc
+3122c614 ldm      lr!, {r0, r1, r2, r3}
+3122c618 mov      ip, r6
+3122c61c stm      ip!, {r0, r1, r2, r3}
+3122c620 ldm      lr!, {r0, r1, r2, r3}
+3122c624 stm      ip!, {r0, r1, r2, r3}
+3122c628 ldm      lr, {r0, r1, r2}
+3122c62c stm      ip, {r0, r1, r2}
+3122c630 add      r1, sp, #0x50
+3122c634 ldm      r1, {r1, r2}
+3122c638 ldr      r0, [pc, #0x3bc] literal 3122c9fc=0802bba4 
+3122c63c str      r1, [sl, #0xb88]
+3122c640 str      r2, [sl, #0xb8c]
+3122c644 ldr      r2, [pc, #0x36c] literal 3122c9b8=0000166c 
+3122c648 add      r0, pc, r0
+3122c64c ldr      r3, [r5, r2]
+3122c650 add      r2, r3, #1
+3122c654 asr      r3, r2, #0x1f
+3122c658 lsr      r1, r3, #0x19
+3122c65c add      r3, r2, r1
+3122c660 and      r3, r3, #0x7f
+3122c664 rsb      r3, r1, r3
+3122c668 ldr      r1, [pc, #0x348] literal 3122c9b8=0000166c 
+3122c66c str      r3, [r5, r1]
+3122c670 ldr      r1, [sp, #0x28]
+3122c674 bl       #0x31230d3c ('__Z27MeCCA_Engine_Post_SemaphorePj18MeCCAEngineContext', 0)
+3122c678 mov      r0, fp
+3122c67c bl       #0x31230cf0 ('__Z25MeCCA_Engine_Release_LockP23_opaque_pthread_mutex_t', 0)
+3122c680 b        #0x3122c6b0
+3122c684 ldr      r3, [pc, #0x374] literal 3122ca00=000934a4 
+3122c688 ldr      r0, [pc, #0x374] literal 3122ca04=00093418 
+3122c68c add      r3, pc, r3
+3122c690 str      r3, [sp]
+3122c694 ldr      r2, [pc, #0x36c] literal 3122ca08=000933ac 
+3122c698 ldr      r3, [pc, #0x36c] literal 3122ca0c=0008efc4 
+3122c69c ldr      r1, [pc, #0x36c] literal 3122ca10=00000313 
+3122c6a0 add      r0, pc, r0
+3122c6a4 add      r2, pc, r2
+3122c6a8 add      r3, pc, r3
+3122c6ac bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+3122c6b0 ldr      r2, [sp, #4]
+3122c6b4 ldr      r1, [sp, #0xc]
+3122c6b8 rsb      r3, r1, r2
+3122c6bc rsb      r3, r8, r3
+3122c6c0 mov      r2, #0
+3122c6c4 add      r3, r5, r3, lsl #2
+3122c6c8 str      r2, [r3, #0x40]
+3122c6cc ldr      r1, [r5, #8]
+3122c6d0 ldr      r2, [r5, #4]
+3122c6d4 add      r3, r4, r1
+3122c6d8 cmp      r3, r2
+3122c6dc bhi      #0x3122c710
+3122c6e0 mov      r2, r4
+3122c6e4 ldr      r0, [sp, #0x20]
+3122c6e8 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c6ec ldr      r0, [r5, #8]
+3122c6f0 ldr      r1, [r5, #4]
+3122c6f4 add      r3, r4, r0
+3122c6f8 cmp      r3, r1
+3122c6fc ldrne    r3, [sp, #0x1c]
+3122c700 ldreq    r1, [r5]
+3122c704 ldrne    r2, [r3]
+3122c708 addne    r1, r0, r2, lsl #2
+3122c70c b        #0x3122c748
+3122c710 rsb      r6, r1, r2
+3122c714 mov      r2, r6
+3122c718 ldr      r0, [sp, #0x20]
+3122c71c bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c720 ldr      r1, [sp, #0x20]
+3122c724 rsb      r8, r6, r4
+3122c728 bic      r2, r6, #3
+3122c72c add      r0, r1, r2
+3122c730 ldr      r1, [r5]
+3122c734 mov      r2, r8
+3122c738 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c73c ldr      r3, [r5]
+3122c740 bic      r2, r8, #3
+3122c744 add      r1, r2, r3
+3122c748 ldr      r3, [r5, #0x14]
+3122c74c str      r1, [r5, #8]
+3122c750 rsb      r2, r4, r3
+3122c754 str      r2, [r5, #0x14]
+3122c758 b        #0x3122c988
+3122c75c ldr      r2, [r5]
+3122c760 rsb      r2, r2, r1
+3122c764 lsr      r6, r2, #0xc
+3122c768 lsl      r3, r6, #4
+3122c76c str      r3, [sp, #8]
+3122c770 sub      r3, r3, r6, lsl #2
+3122c774 rsb      r3, r6, r3
+3122c778 lsl      r2, r6, #2
+3122c77c add      r3, r5, r3, lsl #2
+3122c780 str      r2, [sp, #0x10]
+3122c784 ldr      r2, [r3, #0x40]
+3122c788 cmp      r2, #0
+3122c78c beq      #0x3122c908
+3122c790 add      r2, r3, #0x54
+3122c794 ldr      r3, [r3, #0x54]
+3122c798 cmn      r3, #1
+3122c79c bne      #0x3122c7ac
+3122c7a0 ldr      r3, [r2, #4]
+3122c7a4 cmn      r3, #1
+3122c7a8 beq      #0x3122c908
+3122c7ac ldr      r3, [pc, #0x204] literal 3122c9b8=0000166c 
+3122c7b0 ldr      r2, [r5, r3]
+3122c7b4 add      r3, r3, #4
+3122c7b8 ldr      r3, [r5, r3]
+3122c7bc cmp      r2, r3
+3122c7c0 rsblt    r3, r3, r2
+3122c7c4 rsbge    r3, r3, r2
+3122c7c8 addlt    r3, r3, #0x80
+3122c7cc cmp      r3, #0x3f
+3122c7d0 ble      #0x3122c800
+3122c7d4 ldr      r3, [pc, #0x238] literal 3122ca14=0009333c 
+3122c7d8 ldr      r0, [pc, #0x238] literal 3122ca18=000932cc 
+3122c7dc add      r3, pc, r3
+3122c7e0 str      r3, [sp]
+3122c7e4 ldr      r2, [pc, #0x230] literal 3122ca1c=0009325c 
+3122c7e8 ldr      r3, [pc, #0x230] literal 3122ca20=0008ee74 
+3122c7ec add      r0, pc, r0
+3122c7f0 mov      r1, #0x344
+3122c7f4 add      r2, pc, r2
+3122c7f8 add      r3, pc, r3
+3122c7fc b        #0x3122c904
+3122c800 ldr      sl, [pc, #0x21c] literal 3122ca24=0802b9bc 
+3122c804 add      sl, pc, sl
+3122c808 mov      r0, sl
+3122c80c bl       #0x31230ccc ('__Z21MeCCA_Engine_Try_LockP23_opaque_pthread_mutex_t', 0)
+3122c810 cmp      r0, #0
+3122c814 str      r0, [sp, #0x2c]
+3122c818 bne      #0x3122c8dc
+3122c81c ldr      r2, [pc, #0x194] literal 3122c9b8=0000166c 
+3122c820 ldr      r1, [r5, r2]
+3122c824 asr      r3, r1, #0x1f
+3122c828 lsr      r2, r3, #0x1a
+3122c82c add      r3, r1, r2
+3122c830 and      r3, r3, #0x3f
+3122c834 rsb      r3, r2, r3
+3122c838 ldr      r1, [sp, #8]
+3122c83c lsl      r2, r3, #4
+3122c840 sub      r2, r2, r3, lsl #2
+3122c844 rsb      r3, r3, r2
+3122c848 ldr      r2, [sp, #0x10]
+3122c84c add      r8, r5, r3, lsl #2
+3122c850 rsb      r3, r2, r1
+3122c854 rsb      r3, r6, r3
+3122c858 add      r4, r8, #0xb60
+3122c85c add      r0, r5, r3, lsl #2
+3122c860 add      r0, r0, #0x40
+3122c864 mov      lr, r0
+3122c868 add      r4, r4, #0xc
+3122c86c ldm      lr!, {r0, r1, r2, r3}
+3122c870 mov      ip, r4
+3122c874 stm      ip!, {r0, r1, r2, r3}
+3122c878 ldm      lr!, {r0, r1, r2, r3}
+3122c87c stm      ip!, {r0, r1, r2, r3}
+3122c880 ldm      lr, {r0, r1, r2}
+3122c884 stm      ip, {r0, r1, r2}
+3122c888 add      r1, sp, #0x50
+3122c88c ldm      r1, {r1, r2}
+3122c890 ldr      r0, [pc, #0x190] literal 3122ca28=0802b94c 
+3122c894 str      r1, [r8, #0xb88]
+3122c898 str      r2, [r8, #0xb8c]
+3122c89c ldr      r2, [pc, #0x114] literal 3122c9b8=0000166c 
+3122c8a0 add      r0, pc, r0
+3122c8a4 ldr      r3, [r5, r2]
+3122c8a8 add      r2, r3, #1
+3122c8ac asr      r3, r2, #0x1f
+3122c8b0 lsr      r1, r3, #0x19
+3122c8b4 add      r3, r2, r1
+3122c8b8 and      r3, r3, #0x7f
+3122c8bc rsb      r3, r1, r3
+3122c8c0 ldr      r1, [pc, #0xf0] literal 3122c9b8=0000166c 
+3122c8c4 str      r3, [r5, r1]
+3122c8c8 ldr      r1, [sp, #0x2c]
+3122c8cc bl       #0x31230d3c ('__Z27MeCCA_Engine_Post_SemaphorePj18MeCCAEngineContext', 0)
+3122c8d0 mov      r0, sl
+3122c8d4 bl       #0x31230cf0 ('__Z25MeCCA_Engine_Release_LockP23_opaque_pthread_mutex_t', 0)
+3122c8d8 b        #0x3122c908
+3122c8dc ldr      r3, [pc, #0x148] literal 3122ca2c=0009324c 
+3122c8e0 ldr      r0, [pc, #0x148] literal 3122ca30=000931c0 
+3122c8e4 add      r3, pc, r3
+3122c8e8 str      r3, [sp]
+3122c8ec ldr      r2, [pc, #0x140] literal 3122ca34=00093154 
+3122c8f0 ldr      r3, [pc, #0x140] literal 3122ca38=0008ed6c 
+3122c8f4 ldr      r1, [pc, #0x140] literal 3122ca3c=0000034f 
+3122c8f8 add      r0, pc, r0
+3122c8fc add      r2, pc, r2
+3122c900 add      r3, pc, r3
+3122c904 bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+3122c908 ldr      r2, [sp, #8]
+3122c90c ldr      r1, [sp, #0x10]
+3122c910 rsb      r3, r1, r2
+3122c914 rsb      r2, r6, r3
+3122c918 mov      r1, #0
+3122c91c add      r2, r5, r2, lsl #2
+3122c920 str      r1, [r2, #0x40]
+3122c924 ldr      r0, [sp, #0x20]
+3122c928 mov      r2, fp
+3122c92c bl       #0x312cdba4 ('_memset [stub]', 0)
+3122c930 ldr      r3, [pc, #0x108] literal 3122ca40=07fd9719 
+3122c934 add      r3, pc, r3
+3122c938 ldrb     r3, [r3]
+3122c93c cmp      r3, #0
+3122c940 bne      #0x3122c988
+3122c944 ldr      r3, [r5, #0x30]
+3122c948 add      r3, r3, #1
+3122c94c str      r3, [r5, #0x30]
+3122c950 ldr      r3, [sp, #0x1c]
+3122c954 ldr      r2, [r3]
+3122c958 ldr      r3, [r5, #0x2c]
+3122c95c vmov     s13, r2
+3122c960 vcvt.f32.u32 s14, s13
+3122c964 vmov     s13, r3
+3122c968 ldr      r3, [r5, #0x34]
+3122c96c add      r3, r3, #1
+3122c970 vcvt.f32.u32 s15, s13
+3122c974 str      r3, [r5, #0x34]
+3122c978 vdiv.f32 s15, s14, s15
+3122c97c vldr     s14, [r5, #0x38]
+3122c980 vadd.f32 s15, s15, s14
+3122c984 vstr     s15, [r5, #0x38]
+3122c988 add      r0, r5, #0x1680
+3122c98c add      r0, r0, #0xc
+3122c990 mov      r1, #0
+3122c994 bl       #0x31230d88 ('__Z25MeCCA_Engine_Broadcast_CVP22_opaque_pthread_cond_t18MeCCAEngineContext', 0)
+3122c998 mvn      r0, #1
+3122c99c sub      sp, r7, #0x18
+3122c9a0 pop      {r8, sl, fp}
+3122c9a4 pop      {r4, r5, r6, r7, lr}
+3122c9a8 add      sp, sp, #4
+3122c9ac bx       lr
+3122c9b0 andeq    r1, r0, ip, ror r6
+3122c9b4 andeq    r1, r0, r4, ror r6
+3122c9b8 andeq    r1, r0, ip, ror #12
+3122c9bc andeq    r3, sb, r4, lsl r8
+3122c9c0 andeq    r3, sb, r4, lsr #15
+3122c9c4 andeq    r3, sb, r4, lsr r7
+3122c9c8 andeq    pc, r8, ip, asr #6
+3122c9cc stmdaeq  r2, {r2, r4, r7, sb, sl, fp, ip, sp, pc}
+3122c9d0 stmdaeq  r2, {r5, sb, sl, fp, ip, sp, pc}
+3122c9d4 andeq    r3, sb, r0, lsr #14
+3122c9d8 muleq    sb, r4, r6
+3122c9dc andeq    r3, sb, r8, lsr #12
+3122c9e0 andeq    pc, r8, r0, asr #4
+3122c9e4 muleq    r0, r7, r2
+3122c9e8 muleq    sb, r4, r5
+3122c9ec andeq    r3, sb, r4, lsr #10
+3122c9f0 strheq   r3, [sb], -r4
+3122c9f4 andeq    pc, r8, ip, asr #1
+3122c9f8 stmdaeq  r2, {r2, r4, sl, fp, ip, sp, pc}
+3122c9fc stmdaeq  r2, {r2, r5, r7, r8, sb, fp, ip, sp, pc}
+3122ca00 andeq    r3, sb, r4, lsr #9
+3122ca04 andeq    r3, sb, r8, lsl r4
+3122ca08 andeq    r3, sb, ip, lsr #7
+3122ca0c andeq    lr, r8, r4, asr #31
+3122ca10 andeq    r0, r0, r3, lsl r3
+3122ca14 andeq    r3, sb, ip, lsr r3
+3122ca18 andeq    r3, sb, ip, asr #5
+3122ca1c andeq    r3, sb, ip, asr r2
+3122ca20 andeq    lr, r8, r4, ror lr
+3122ca24 stmdaeq  r2, {r2, r3, r4, r5, r7, r8, fp, ip, sp, pc}
+3122ca28 stmdaeq  r2, {r2, r3, r6, r8, fp, ip, sp, pc}
+3122ca2c andeq    r3, sb, ip, asr #4
+3122ca30 andeq    r3, sb, r0, asr #3
+3122ca34 andeq    r3, sb, r4, asr r1
+3122ca38 andeq    lr, r8, ip, ror #26
+3122ca3c andeq    r0, r0, pc, asr #6

@@ -1,0 +1,62 @@
+{
+  "scope": "Original pre-ringtone checkpoint only; not a new guest trace or proof of provider-pointer lifetime after V.",
+  "snapshotBytes": 245096418,
+  "ramBase": 134217728,
+  "ramSize": 268435456,
+  "sctlr": 12597261,
+  "ttbr1": 343769088,
+  "ttbcr": 2,
+  "dacr": 1,
+  "driver": 3433704448,
+  "driverVtable": 3223854456,
+  "provider": 3432970752,
+  "providerVtable": 3222919724,
+  "method4b8": 3222648797,
+  "method4bc": 3222648845,
+  "method4c4": 3222647797,
+  "providerFirst32": "2cda19c00700030000000000c09194cc009294cc0000000000b099cc3a030000",
+  "vtableMethods": "45b415c06db415c093b415c0b1b415c0ddb715c00db815c0cdb415c0f5b315c0",
+  "parent": {
+    "object": "0xcc99b000",
+    "vtable": "0xc0414804",
+    "clockTarget": "0xc040b53c",
+    "powerTarget": "0xc040b5d0",
+    "clockIDs": [
+      3,
+      4
+    ],
+    "powerIDs": [
+      65540
+    ]
+  },
+  "platformClients": {
+    "0x78": {
+      "object": "0xcc98a0a0",
+      "vtable": "0xc0416fa4",
+      "target98": "0xc0410870",
+      "owner": "0xcc995400",
+      "ownerVtable": "0xc0416a5c",
+      "actual4a4": "0xc0410270"
+    },
+    "0x7c": {
+      "object": "0xccb756c0",
+      "vtable": "0xc041783c",
+      "target98": "0xc0412170",
+      "owner": "0xcc9d7300",
+      "ownerVtable": "0xc0417310",
+      "actual4a4": "0xc0411c50"
+    }
+  },
+  "driverRegionPhysical": {
+    "0x1cc": "0x22000000",
+    "0x1d0": "0x22028000",
+    "0x1d4": "0x22014000"
+  },
+  "driverRegions": {
+    "0x1c4": "0x0",
+    "0x1c8": "0x0",
+    "0x1cc": "0xedc22000",
+    "0x1d0": "0xedc4a000",
+    "0x1d4": "0xedc36000"
+  }
+}

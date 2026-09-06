@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-r/run-1/destination-audit.py", line 45, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-r/run-1/destination-audit.py", line 37, in run
+    pcm=(out/'first/first-pcm.bin').read_bytes();actual=(out/'destination.bin').read_bytes();assert actual==pcm,'actual copied destination differs'
+AssertionError: actual copied destination differs

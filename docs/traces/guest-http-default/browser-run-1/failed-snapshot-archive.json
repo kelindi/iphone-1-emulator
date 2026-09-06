@@ -1,0 +1,13 @@
+{
+  "state": "FAILED SAFARI FORM, NOT HOME; generic original filename retained",
+  "rawPath": ".context/guest-http-default/browser-run-1/final-home.snap",
+  "rawBytes": 260767808,
+  "rawSHA256": "c407b3734919c76dc0eae153b1bb70366969c4548e3fa2232716a1bc3395e693",
+  "gzipPath": ".context/guest-http-default/browser-run-1/final-home.snap.gz",
+  "gzipBytes": 110705014,
+  "gzipSHA256": "0ef7ce9571618490380bc48a2046608430caab2d044efbce317c93d574be38d9",
+  "roundtripExact": true,
+  "readersReleasedBy": "graphics_acceleration and root; all our readers closed",
+  "elapsedSeconds": 7.786005605994433,
+  "rawRemoved": true
+}

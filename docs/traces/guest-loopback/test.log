@@ -1,0 +1,1 @@
+PASS 1180 assertions; 13 mocked workflows including partial/EINTR/EAGAIN, early readiness, errors, truncation, byte corruption, extra data and finite budgets. Not guest networking proof.

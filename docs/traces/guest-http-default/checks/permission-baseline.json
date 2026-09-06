@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "originalToolSHA256": "2c7b5445b254ec46cbe5476c1358255ef011852f6d4c4aecebff40c7080a08d1",
+  "syntheticDefaultImageSHA256": "93359f6244f95d0a91fd9a1089ca3e82ae42934631b4f7a4988be082fe4f85cb",
+  "method": "Independent frozen pre-permission tool writes synthetic fixture; final new tool must match this full-image golden hash."
+}

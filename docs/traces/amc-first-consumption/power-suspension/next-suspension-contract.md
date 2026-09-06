@@ -1,0 +1,45 @@
+# Proposed next bounded gate: actual power suspension with one retained generation
+
+Root-reviewed isolated contract after Stage X. Implementation and one bounded run were authorized after focused tests and frozen pins. Reset/ungate/restore remain excluded. The accepted X save and first failed W remain frozen.
+
+## Source and actual boundary
+
+X has all seven actual saved words, all49,152 destination bytes and complete source-read coverage. Its pending write is original `c0411f3c` (`str r2,[r3,r1]`), LR`c0411de4`, physical`39a0000c=3`. The earlier term “selector” is wrong: existing `core/include/soc.h`/`core/src/soc/power.c` name+0c ONCTRL, write-one-to-ungate. Actual X `power.state=12ec`, bits0/1 already clear, so this particular request is idempotent under the existing controller. It is not the AMC power-down request.
+
+Original `c0411dcc..1e38` then requests OFFCTRL+10 with bit4 and polls STATE+14 until bit4 is set. Original power ID`0x10004` contains a client ownership mask; the issuing branch, not the provider label alone, establishes that this path requests gating. Existing core's OFFCTRL coupling derives STATE from the write; no ready bit needs to be added.
+
+After the power method succeeds, original AMC driver `c02725e4..25ec` disables clocks. Its provider maps actual IDs3/4. `c0410270` sets the corresponding bits in the clock-gate shadow and writes+48. X actual CLOCK+48 is`4fffe267`; the expected same-other-bits sequence is`4fffe26f`, then`4fffe27f`. These are source-derived predictions, not future observations. Original `c02725f4..2644` then stores decoding state5 and exits without the normal owner-release STRHs. It is therefore correct to retain two fully read but still owner0 PCM buffers at suspension; do not manufacture two releases.
+
+Source references: `../stage-d/apple-amc-all-dis.txt`, `../stage-w/power-hardware-dis.txt`, `../stage-w/clock-hardware-dis.txt`, `../stage-w/fixture-provider.json`, actual `../stage-x/run-1/transport-stop.json` and`trace.log`. The saved SRAM spans are+28000/16KiB and+14000/32KiB, independently established by original driver initialization and X actual copies.
+
+## Proposed resource ownership, without pretending active hardware survived
+
+Introduce one explicit suspended-generation owner separate from active hardware control. At most one exists. It owns the **actual** already allocated decoder and compressed queue, the completed frame-boundary state, saved BSU generation/counters, actual pending DMA address/count/progress, output data/ownership and the old masks/events as historical state. No host pointer is exposed in the guest token; no registry, serialization or restore to another process exists.
+
+Before accepting the actual AMC dependency loss, require X's completed transaction, owned-generation identity, adapter boundary, full SRAM/queue/header invariants, locked decoder and paused transport, and no extra progress since that save. Preflight every condition before touching the power controller or transferring ownership. The save record initially observes the live owner; at actual OFFCTRL bit4 it becomes the sole resource owner. The active engine must relinquish its decoder/queue pointers and initialized/configured/service/DMA/IRQ control, so ordinary reset or active cleanup cannot silently resume or double-free the saved resource.
+
+The actual SRAM bytes are retained by an explicit functional retention policy while gated; this is not a silicon retention claim. The saved generation's invariant view must use its own retained idle/control snapshot rather than dereference the now-reset active idle flags. Historical events remain in the suspended record only. Active IRQ level drops because active hardware is inactive; no new completion, ownership release, readiness event or PCM is generated. The pending input transfer remains unfinished in the retained record; no additional byte is copied.
+
+Any new access to AMC registers/SRAM while the domain is gated remains unsupported in this first extension and stops before mutation. Status of the already implemented power/clock controller is still its genuine model state. No CPU work is skipped: the device reports no runnable active engine while suspended, and the normal guest instructions/other devices keep running.
+
+Machine teardown, probe exit and an abandoned saved generation must close/free this unique owner exactly once. Keep active and retained cleanup paths explicit. A second save, stale identity, changed resource, incompatible program, input restart, decoder call, FIFO pop, or extra owner publication rejects. Reset/ungating are **not** an exemption: stop before forwarding the first unsupported restore/restart request. The future reset-before-restore sequence may create bounded fresh active resources and later rebind the saved generation, but that needs a separate concrete admission contract; it is not implemented here.
+
+## Bounded original transitions proposed for admission
+
+1. The exact observed ONCTRL+0c=3 may pass through the unchanged power controller only with the completed X save and actual prestate bits0/1 clear. Verify no AMC/state/counter change. Unknown width/value/order stops before forwarding.
+2. The source-derived OFFCTRL+10=0x10 may transfer ownership atomically as described and pass through the existing controller. Require all other power bits unchanged, bit4 becoming set, exact saved-resource conservation, and the original subsequent STATE poll seeing the genuine controller result.
+3. Clock+48 may set bit3 then bit4, preserving all unrelated bits. Active engine remains inactive; retained generation unchanged. Accept no other clock/power/reset write on the strength of this proposal. If original clock callbacks issue an unexpected intermediate operation, preserve that earliest request and stop before it instead of extending automatically.
+4. Observe the original driver's successful state5 store with mapped opcode, full CPSR, actual register value, pre-step/after-step successor and returned `emu_run`. Preserve IRQ diversion as unretired; do not infer success from simply arriving at the PC. Do not force return0 from any provider method.
+5. Continue normal guest instructions, under existing total/post-prefix caps, toward the existing code-bound HAL/FIFO gate. Stop before any reset/ungate, unsupported AMC access, input admission, publication/ownership condition, or I2S FIFO operation. A naturally reached HAL call/return is evidence; lack of one within the budget is a narrower result. No new guest inputs, artificial timers or direct PCM playback.
+
+The observer should retain both the full X boundary artifact set before admission and a separate final active-versus-suspended view. Existing stream/read/copy audits must read the actual suspended owner when it owns resources; their conservation requirements do not disappear merely because active control is cleared. Keep the original53 publications/51 releases and all copied/decoded/queue values explicit at the transition. Do not substitute the old files for current resource captures.
+
+## Required tests and one-run evidence
+
+Focused tests: rejected pre-save/wrong-order/wrong-width/value transitions leave active/suspended/controller/IRQ/SRAM/queue states unchanged; idempotent ONCTRL does not transfer ownership; valid actual OFFCTRL transfers each allocation once, preserves all input/output bytes/counters and produces no active work; repeated clock/status accesses do not decode or copy; only exact clock bits change; stale/mismatched/second generation rejects; reset/ungate and new AMC accesses reject before mutation; teardown frees once; existing raw AAC corpus and source/destination/ownership contracts remain intact.
+
+Freeze original opcodes and test source before one guest. Retain existing64-publication/eight-input,155.3M total and5M continuation caps,240s wall/180s CPU/1GiB memory/8MiB file limits. No retry or extra admissions after a failure. External auditor must compare the entire fresh X prefix, actual power/clock requests and readback state, actual retired stores, active IRQ/control state, and full retained decoder-input/PCM/ownership bytes. Mutated power value, unrelated gate bit, missing transfer owner, altered queue, fabricated owner release and unretired driver state store must reject through the frozen auditor.
+
+## Deliberately unresolved for a later full resume
+
+Original resume calls core/DE resets and task-manager restart before BSU restore. Need to bind actual selected program/session identity after that restart and bound temporary initialization allocations. HLE header/output storage is outside the driver's two saved SRAM spans; restoring its old owner/count/data view must be a deliberate engine-owned write with its own mask, not an assumption that original SRAM copies cover it. Restaged input must begin at the actual saved BYTE address and avoid duplicating346 already copied words. Actual driver then writes both owners1 and issues+4; only those real operations may make output slots reusable. None of this is covered by a constant-ready response or preservation of active hardware through reset.

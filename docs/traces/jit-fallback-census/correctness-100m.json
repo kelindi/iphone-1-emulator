@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "pairedRawCheckpoints": 4,
+  "instructions": 100000000,
+  "rawSha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+  "frame": {
+    "width": 320,
+    "height": 480,
+    "sha256": "4d9e9478b41ddb9e31108744025cc07a518043d43096ef78cd8d044b6565e69b"
+  },
+  "generated": 73093840,
+  "generatedCalls": 9273308,
+  "interpreterSteps": 26906160,
+  "actualFetched": 26903869,
+  "noFetch": 2291,
+  "rows": 285763,
+  "overflow": 0,
+  "admission": {
+    "outsideBase": 13245881,
+    "otherMode": 58329,
+    "missingBit": 7722911,
+    "invalidated": 5584,
+    "admitted": 5873455
+  },
+  "provenance": {
+    "noAttempt": 2233,
+    "disabled": 0,
+    "noRegion": 13036968,
+    "noBit": 3865210,
+    "runtimeGuard": 1792015,
+    "generatedZeroUnknown": 302276,
+    "afterPositivePrefix": 7907455,
+    "actualStaleZero": 3,
+    "mismatch": 0
+  },
+  "scope": "Exact production s5l8900_run and original seed. Four complete raw snapshots, generated calls/retirements/regions and final entire RGBA match. All snapshot-serialized TLB/read/device counters are included. This fixed initial100M work is not the requested warm browser window."
+}

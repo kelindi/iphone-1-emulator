@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": 8,
+  "negativeCases": [
+    "non-string URL",
+    "malformed URL",
+    "wrong bytes",
+    "body failure",
+    "unexpected path",
+    "bad status",
+    "missing required asset"
+  ],
+  "scope": "Pure response validator; no browser or guest"
+}

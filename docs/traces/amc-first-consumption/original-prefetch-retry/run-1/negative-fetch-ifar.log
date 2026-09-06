@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 43, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 23, in run
+    assert (r['kind'],r['end'],r['afterPC'],r['afterCPSR'],r['afterIFSR'],r['afterIFAR'],r['afterLR'],r['afterSPSR'],r['returned'])==(kind,r['start']+1,vector,cpsr,ifsr,ifar,r['pc']+4,r['cpsr'],1),'actual exception receipt differs'
+AssertionError: actual exception receipt differs

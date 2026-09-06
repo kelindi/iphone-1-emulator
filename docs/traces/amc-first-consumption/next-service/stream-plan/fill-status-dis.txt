@@ -1,0 +1,31 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+
+__ZN24AudioOutputBufferManager23getFillStatusAfterWriteEj
+3122b980 ldr      r2, [r0, #0xc]
+3122b984 ldr      r3, [r0, #8]
+3122b988 cmp      r2, r3
+3122b98c rsbhi    r3, r3, r2
+3122b990 ldrhi    r2, [r0, #0x20]
+3122b994 rsbhi    r3, r3, r2
+3122b998 bhi      #0x3122b9ac
+3122b99c ldrhs    r2, [r0, #0x20]
+3122b9a0 rsblo    r3, r2, r3
+3122b9a4 ldrlo    r2, [r0, #0x20]
+3122b9a8 movhs    r3, r2
+3122b9ac rsb      r3, r3, r2
+3122b9b0 add      r1, r3, r1
+3122b9b4 cmp      r2, r1
+3122b9b8 movls    r0, #1
+3122b9bc bxls     lr
+3122b9c0 ldr      r3, [r0, #0x28]
+3122b9c4 cmp      r1, r3
+3122b9c8 movhs    r0, #2
+3122b9cc bxhs     lr
+3122b9d0 ldr      r0, [r0, #0x24]
+3122b9d4 cmp      r1, r0
+3122b9d8 movhs    r0, #4
+3122b9dc bxhs     lr
+3122b9e0 cmp      r1, #0
+3122b9e4 movne    r0, #3
+3122b9e8 moveq    r0, #0
+3122b9ec bx       lr

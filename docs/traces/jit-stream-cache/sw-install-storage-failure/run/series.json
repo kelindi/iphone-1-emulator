@@ -1,0 +1,321 @@
+{
+  "passed": false,
+  "scope": "Two fresh Chrome processes, one profile, true offline CacheStorage and real autosave. Functional only; no speed claim or automatic retry.",
+  "sourcePins": {
+    "runner.mjs": "5b1ecc90cd13bfc46b8fae585da8c86f734024952ba38c0f8447ad5aed11bcad",
+    "run-pair.py": "6142342a8b2ce1e595f8370706332ad5a32d3ced281de835d4cb3de0deedc2bf",
+    "site-pins.json": "b426049a2f18fd0975001702a81a30e1ac2b4315efc8e1fe16823792bdab74f1",
+    "cache-server.mjs": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+    "frame-packet.mjs": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+    "frames.mjs": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+    "check-receipt.py": "ff7cc550ef142d97ffbe932302477b25071c020cabc72bc4770a920fa5907d8e",
+    "analyze-cache.py": "a099c8b3a8c8f5c41705c221e677636813f459940abbcda3eb3a5c2b2318f909",
+    "candidate/web/setup.html": "0382430e61ad7dad30bf72e495ba68ad41b94e93978cb0d5da20a037bba66019"
+  },
+  "referencePins": {
+    "C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    "C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+  },
+  "sitePins": {
+    "origin": "http://127.0.0.1:8193",
+    "productionSource": {
+      "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+      "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+      "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6",
+      "firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+      "firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+      "firmware/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+      "firmware/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+      "firmware/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+      "firmware/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+    },
+    "sites": {
+      "original": {
+        "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+        "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+        "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6",
+        "firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+        "firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+        "firmware/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+        "firmware/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+        "firmware/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+        "firmware/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6",
+        "service-worker.js": "ed3b9053f31462abb044f4449ca68ccaf7a2761390c717a987273214f7d17f55"
+      },
+      "candidate": {
+        "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+        "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+        "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6",
+        "firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+        "firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+        "firmware/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+        "firmware/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+        "firmware/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+        "firmware/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6",
+        "service-worker.js": "b55481d8d354eabce0e8e7b50f49ce09e2f406124dd0da4bac31e8d1a4f1265a"
+      }
+    },
+    "generatorSha256": "2f67787c6959d2e580c283f9e19cd37a2866e8c91793000d335971e899fb23c5",
+    "candidateLoaderSha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+    "sourceScope": "Current production app/index/CSS/worker copied byte-exact; only seed loader and generated SW bundle differ. No production mutation."
+  },
+  "helperSha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40",
+  "chromeSha256": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797",
+  "runs": [
+    {
+      "index": 1,
+      "phase": "train",
+      "exitCode": -9,
+      "elapsedSeconds": 240.52248334884644,
+      "scopedProcessesClosed": [
+        {
+          "pid": 3620954,
+          "ppid": 3620910,
+          "startTicks": "4290943",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3620958,
+          "ppid": 3620954,
+          "startTicks": "4290944",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3620959,
+          "ppid": 3620954,
+          "startTicks": "4290944",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3620968,
+          "ppid": 3620954,
+          "startTicks": "4290952",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3620969,
+          "ppid": 3620954,
+          "startTicks": "4290953",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3620990,
+          "ppid": 3620968,
+          "startTicks": "4290960",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3620993,
+          "ppid": 3620954,
+          "startTicks": "4290960",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3620996,
+          "ppid": 3620969,
+          "startTicks": "4290963",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3621033,
+          "ppid": 3620969,
+          "startTicks": "4290967",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3621051,
+          "ppid": 3620969,
+          "startTicks": "4290969",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3621053,
+          "ppid": 3620969,
+          "startTicks": "4290970",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    }
+  ],
+  "start": 1788673201.9429302,
+  "timeoutCleanup": [
+    {
+      "pid": 3620954,
+      "ppid": 3620910,
+      "startTicks": "4290943",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620958,
+      "ppid": 3620954,
+      "startTicks": "4290944",
+      "exe": "/usr/bin/coreutils"
+    },
+    {
+      "pid": 3620959,
+      "ppid": 3620954,
+      "startTicks": "4290944",
+      "exe": "/usr/bin/coreutils"
+    },
+    {
+      "pid": 3620968,
+      "ppid": 3620954,
+      "startTicks": "4290952",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620969,
+      "ppid": 3620954,
+      "startTicks": "4290953",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620990,
+      "ppid": 3620968,
+      "startTicks": "4290960",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620993,
+      "ppid": 3620954,
+      "startTicks": "4290960",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620996,
+      "ppid": 3620969,
+      "startTicks": "4290963",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621033,
+      "ppid": 3620969,
+      "startTicks": "4290967",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621051,
+      "ppid": 3620969,
+      "startTicks": "4290969",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621053,
+      "ppid": 3620969,
+      "startTicks": "4290970",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620954,
+      "ppid": 3620910,
+      "startTicks": "4290943",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620958,
+      "ppid": 3620954,
+      "startTicks": "4290944",
+      "exe": "/usr/bin/coreutils"
+    },
+    {
+      "pid": 3620959,
+      "ppid": 3620954,
+      "startTicks": "4290944",
+      "exe": "/usr/bin/coreutils"
+    },
+    {
+      "pid": 3620968,
+      "ppid": 3620954,
+      "startTicks": "4290952",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620969,
+      "ppid": 3620954,
+      "startTicks": "4290953",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620990,
+      "ppid": 3620968,
+      "startTicks": "4290960",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620993,
+      "ppid": 3620954,
+      "startTicks": "4290960",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3620996,
+      "ppid": 3620969,
+      "startTicks": "4290963",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621033,
+      "ppid": 3620969,
+      "startTicks": "4290967",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621051,
+      "ppid": 3620969,
+      "startTicks": "4290969",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621053,
+      "ppid": 3620969,
+      "startTicks": "4290970",
+      "exe": "/opt/google/chrome/chrome"
+    },
+    {
+      "pid": 3621087,
+      "ppid": 3620910,
+      "startTicks": "4290974",
+      "exe": "/home/vercel-sandbox/.cache/ms-playwright/ffmpeg-1011/ffmpeg-linux"
+    }
+  ],
+  "failure": "240-second process cap"
+}

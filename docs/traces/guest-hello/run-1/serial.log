@@ -1,0 +1,110 @@
+160979 Darwin Kernel Version 9.0.0d1: Tue May 22 21:15:55 PDT 2007; root:xnu-933.0.0.178.obj~3/RELEASE_ARM_S5L8900XRB
+200436 standard timeslicing quantum is 10000 us
+209418 vm_page_bootstrap: 18309 free pages and 47227 wired pages
+5204591 mig_table_max_displ = 79
+5470236 iBoot version: 
+8407930 70 prelinked modules
+54568796 AppleS5L8900XIO::start: chip-revision: EVT0
+63755268 AppleARMPL192VIC::start: _vicBaseAddress = 0xee4d2000
+70788048 AppleS5L8900XEdgeIC::start: _edgeicBaseAddress: 0xee4d4000
+72082636 AppleS5L8900XGPIOIC::start: gpioBaseAddress: 0xee4d5000  gpioicBaseAddress: 0xee4d6000
+73092179 AppleS5L8900XPowerController::start: _pcBaseAddress: 0xee4d7000
+74414500 AppleS5L8900XClockController::start: _ccBaseAddress: 0xee4d8000 _miuBaseAddress: 0xee4d9000
+75535655 AppleS5L8900XClockController: Dynamic Performance State Management Enabled with max state 3
+75558689 AppleARMPL080DMAC::start: dmac0: _dmacBaseAddress: 0xee4da000
+76912772 AppleARMPL080DMAC::start: dmac1: _dmacBaseAddress: 0xee4db000
+77871394 AppleS5L8900XUSBWrangler::start starting
+80128925 AppleS5L8900XUSBWrangler::start registers at 0xee4dd000, 0x38400000 physical
+80153026 AppleS5L8900XADM::start: mapped I/O registers at 0xee558000/0x38800000
+84784493 + AppleMPVDDriver[0xcb937000]::init(properties 0xcbab9800)
+93817529 + AppleMPVDDriver[0xcb937000]::start(provider 0xcb996600)
+93849595 AppleS5L8900XSPIController::start: spi0: _spiBaseAddress = 0xef57b000
+101314918 AppleS5L8900XUSBPhy::start called
+102262360 AppleS5L8900XUSBPhy::start registers at 0xef57c000
+102279628 AppleS5L8900XI2CController::start: i2c0 _i2cBaseAddress: 0xef57d000
+103289498 AppleS5L8900XWatchDogTimer::start: _wdtBaseAddress: 0xef57e000
+105206758 AppleS5L8900XI2CController::start: i2c1 _i2cBaseAddress: 0xef57f000
+106256179 AppleS5L8900XI2SController::start: i2s0 i2sBaseAddress: 0xef580000
+107312317 AppleS5L8900XI2SController::start: i2s1 i2sBaseAddress: 0xef582000
+114555586 AppleS5L8900XSPIController::start: spi1: _spiBaseAddress = 0xef583000
+115874410 AppleS5L8900XSPIController::start: spi2: _spiBaseAddress = 0xef584000
+118955436 AppleMBXDevice(0xcbc08800): Init
+122928074 AppleMBX: Disabling auto clock gating because this is a EVT0/EVT1AppleMBX: Enabling auto clock-gating: 0
+123091150 AppleImage2NORAccess::probe(raw-device)
+126784776 AppleImage2NORAccess::start(raw-device) <1>
+126800003 AppleSimpleNORAccess::start imageVersion: 0
+126812932 AppleImage2NORAccessUserClient::probe(AppleImage2NORAccess)
+127541353 AppleImage2NORAccessUserClient::start(AppleImage2NORAccess) <1>
+127560164 AppleS5L8900XUSBWrangler::setPowerState state = 1
+128131084 
+128131298 AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart1 at 0x3cc04000(0xef697000)
+131318787 AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart3 at 0x3cc0c000(0xef698000)
+132176771 AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13b1d000, bufLA: 0xef699000
+132531909 AppleS5L8900XFMC::start: _fmcBaseAddress:      0xee559000
+132582565 AppleS5L8900XFMC::start: _rseccBaseAddress:    0xee55b000
+132588320 AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13bc3000, bufLA: 0xef69e000
+132696741 AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13bc6000, bufLA: 0xef69f000
+132817428 AppleARMPL080DMAC::_initDMAChannel: index: 7, bufPA: 0x13bc7000, bufLA: 0xef6a0000
+132914632 AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart0 at 0x3cc00000(0xef6a1000)
+132968707 AppleARMPL080DMAC::_initDMAChannel: index: 2, bufPA: 0x13bcc000, bufLA: 0xef6a2000
+133170684 AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart4 at 0x3cc10000(0xef6a3000)
+133230539 IOCoreSurfaceDeviceMemoryRegion: edram was powered on at boot
+133534060 AppleSerialKDP::start registering as KDP debugger
+133565812 AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13af5000, bufLA: 0xef7e4000
+133625053 AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13af6000, bufLA: 0xef7e5000
+133734083 AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13af7000, bufLA: 0xef7e6000
+135178661 ApplePCF50635PMU::start: pmu _pmuIICNub: 0xcbbae400
+137247519 AppleMicron2020::start()
+138052576 Registering IOCameraSensor service.
+138058601 AppleWM875xAudio::start: cbbc2800, audio0 _wmIICNub: 0xcb8f2d80, _wmIISNub: 0xcbbc4f80
+141047792 AppleMultitouchSPI: successfully starting non-DMA version of driver
+144803137 AppleMultitouchSPI: Logging is ENABLED
+144805918 AppleS5L8900XFMC::newDeviceWithRegistryEntry: no NAND flash banks are ready
+145367795 AppleS5L8900XUSBWrangler::phyRegistered PHY 0xcbb5eb80 notified us of availability
+149957875 AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb80
+149993553 AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb00
+150027356 + AppleMPVDDriver[0xcb937000]::setPowerStateGated()
+151242779 
+151242993 AppleMBX: Detected mbx,s5l8900x.  SupportsWriteCombining: true
+153626067 AppleMBXDevice(0xcbc08800)::setPowerState(1)
+156028250 AppleMBXDevice(0xcbc08800)::changePowerStateGated(1)
+156045337 BSD root: md0, major 2, minor 0
+157194283 AppleMerlotLCD: _lcdPanelID: 0x000000
+159993873 Jettisoning kernel linker.
+165288358 IOIpodUSBDevice::start
+166970615 IOIpodUSBDevice - Configuration: PTP
+167691490 IOIpodUSBDevice          Interface: PTP
+167699452 IOIpodUSBDevice - Configuration: HID
+167712932 IOIpodUSBDevice          Interface: IapOverUsbHid
+167722750 IOIpodUSBDevice - Configuration: PTP + Apple Mobile Device
+167740811 IOIpodUSBDevice          Interface: PTP
+167748787 IOIpodUSBDevice          Interface: AppleUSBMux
+167758454 IOAccessoryPortUSB::start
+168648676 virtual bool AppleUSBDeviceMux::start(IOService*) build: May 22 2007 21:27:52
+169632532 init_waste
+169687073 AppleMicron2020: Sensor not present
+170244695 AppleS5L8900XSDIO: registers @ vaddr 0xf190b000, paddr 0x38d00000
+170821913 IOReturn AppleS5L8900XSDIO::setPowerStateGated(long unsigned int, IOService*)
+170910357 AppleBaseband::start(0xcbaed400): baseband
+171001396 AppleMBX: Added swap device: AppleH1CLCD  id: cb937200
+175930003 AppleMBX: Using AppleH1CLCD as legacy swap device
+175938732 AppleH1CameraInterface: EVT0 no longer supported
+175988257 /dev/md0 on / (hfs, local, noatime)
+195378363 launchctl: Couldn't stat("/etc/mach_init.d"): No such file or directory
+199735425 Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stdout", ...): No such file or directory
+203839904 Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stderr", ...): No such file or directory
+203903643 IOAccessoryPortSerial::start: could not set up serial port: device is offline
+207297890 Timeout waiting for CMDRDY! (cmd 5, cmdReg 0x00040045, arg 0x00000000)
+216393838 Failed to perform base SDIO init sequence.
+216401003 Unable to setup and scan the SDIO bus.
+216407510 AppleS5L8900XSDIO::setPowerState took 110 ms
+216417734 AppleS5L8900XSDIO: Command line options and current values used by driver
+216434389 AppleS5L8900XSDIO:     sdio-crc-panic=0
+216441421 AppleMultitouchSPI: downloaded 44752 bytes of firmware data ("0x0086") in 1ms (0ms stage 1, 1ms stage 2).
+234671850 ApplePCF50635PMUPowerSource: mbcs1-3 00 00 00
+248490017 ApplePCF50635PMUPowerSource: _powerSupplyType 1, _usbConnectType 1
+248497632 ApplePCF50635PMUPowerSource: enabling idle sleep
+248528374 ApplePCF50635PMUPowerSource: cap 75, ext 0, chrgCap 0, chrg 0 (0 mA, cyc 0, kind 0), warn 0, crit 0
+248545991 ApplePCF50635PMUPowerSource: AppleUSBCableDetect 0
+248567746 IPHONE1_OWN_PROGRAM_V1 pid=0000000021
+261034401 

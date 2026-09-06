@@ -1,0 +1,6 @@
+{
+  "phase": "before any archive bytes written",
+  "error": "Python hashlib.file_digest unavailable",
+  "fix": "chunked SHA256 helper; same compression and roundtrip requirements",
+  "sourceOrGuestMutation": false
+}

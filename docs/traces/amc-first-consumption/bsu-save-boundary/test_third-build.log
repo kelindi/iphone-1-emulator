@@ -1,0 +1,4 @@
+In file included from .context/amc-first/stage-w/source/test_third.c:1:
+.context/amc-first/stage-w/source/admission.h:5:13: warning: ‘admit_second’ defined but not used [-Wunused-function]
+    5 | static bool admit_second(const amc_engine*s,uint64_t cycles,uint64_t first,uint32_t pc,uint32_t lr,uint32_t cpsr){
+      |             ^~~~~~~~~~~~

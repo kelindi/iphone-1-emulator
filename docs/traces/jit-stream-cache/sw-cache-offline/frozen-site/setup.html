@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><title>Isolated offline mechanism setup</title>
+<p>Installing verified offline files before the phone or WebAssembly engine starts.</p>
+<script type="module">
+import {assetBytes} from './assets.js';
+import {awaitInstalled} from './install-wait.mjs';
+window.installOffline = async () => {
+ const manifest = await (await fetch('manifest.json',{cache:'no-cache'})).json();
+ for(const paths of [manifest.kernel,manifest.devicetree,manifest.snapshot||manifest.rootfs])
+  await assetBytes(paths,()=>{},manifest.assetSha256||{});
+ const registration=await navigator.serviceWorker.register('./service-worker.js');
+ const installation=await awaitInstalled(registration);
+ if(!registration.active)throw Error('No active offline worker');
+ return {installation,storage:await navigator.storage.estimate(),scope:registration.scope,scriptURL:registration.active.scriptURL,caches:await caches.keys()};
+};
+</script>

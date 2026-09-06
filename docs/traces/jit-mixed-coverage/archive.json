@@ -1,0 +1,29 @@
+{
+  "sourcePins": {
+    "source/build-oracle.py": "91701b6798435f95f3b2d636a702d5ec49ff9edf3ccf0ed3c571925906252335",
+    "source/build.py": "24d228e731e04ab4ecfe7b69e377b3c854ad3886d2d171e614f5c28b46712b20",
+    "source/candidate/jit-runtime.c": "9c3ca37804b0fe6f42dbd5311256b52a2453155c817d1380af0a58516e9bfa37",
+    "source/candidate/jit-runtime.h": "a0fbaf1577433b85833b9c63a393d7860e9a8ea4c49392065b59baf17de47661",
+    "source/candidate/oracle.c": "42dbc775ff235d2fc12745687e5b9e158e8cfe884b6538c7c5afaa6507ef8dbc",
+    "source/candidate/seed-input.json.gz": "49e41960c3d49155bdce73a067620c1bb843cfafaebc27e04d7b2d2db79b0a9d",
+    "source/candidate/seed-jit.js": "630b7e9d319560ead52833047855d4e7051546d86fa3046a01655279491ed8ba",
+    "source/candidate/tests/jit-lifecycle.test.mjs": "ee9152acdc6026c015622a533da7381749d6b06cc841e78ae705c0008e955aa6",
+    "source/candidate/tests/jit-loader.test.mjs": "6251b367e7defa8c007e2d2a4c41fd18c350cd564140458a0aee7b0e39460e1d",
+    "source/capacity.cjs": "3cec4c77a4f9a44e9c9a5e6c2e9a60efe72452ed82654725d0f0ea27611e4928",
+    "source/generate.mjs": "fe40b99b3b872a861491053ddf8679be3a69e6a5afdb8fe9437027a709eb8127",
+    "source/original/compiler.cjs": "b68ddff5c7b0a5aa52b87ba1ba8ae3b72457ec74e2b1cfe9dc4d33ae3f22c170",
+    "source/original/seed-input.json.gz": "971739196aecb8b08107d57e468fb099e464a7d32f47bbcc87e8d0b2e018fdaa",
+    "source/prepare-replay.py": "d2295b51c40b6eecfc574868e6fff9e4acfc290a6f4f14d2e404ac325137772a",
+    "source/prepare-tests.py": "7e44ef7f367c5d804873ca4afa347f50482634668e6fbebbd70b5ac69138a53d",
+    "source/prepare.py": "5eb183cf2c62fd411b15cf31e5f71cf1a42494b5b034662d61cb4c08a59c709f",
+    "source/replay.mjs": "f0070e8bcb373ca6ed9ea968feeb1c3c4fb32e0783919c14b459606892c96bd2",
+    "source/test-boundaries.cjs": "1be4f96d705f00855a92ef0badef1a772b48cefd65ba0eda351ba09556d5cd5d"
+  },
+  "retainedRawSnapshots": {
+    ".context/jit-mixed-coverage/candidate-raw-25000000.snap.gz": "d34ea98ee78e033a54d2386152fca61b5ff76f136e063cf0dd963c2c970e4104",
+    ".context/jit-mixed-coverage/candidate-raw-50000000.snap.gz": "9d3db448850165da8ea1e4b724c64263dfc2c97694b81e7c8df6ed45f12369a1",
+    ".context/jit-mixed-coverage/candidate-raw-75000000.snap.gz": "a1e82e827e249c17c4082232096ae652c6f2a81e45432f944866d52516259049",
+    ".context/jit-mixed-coverage/candidate-raw-100000000.snap.gz": "0dc0def4cd12f19823bb8beb05795d650eead677c3195a112820e78501739240"
+  },
+  "noProductionMutation": true
+}

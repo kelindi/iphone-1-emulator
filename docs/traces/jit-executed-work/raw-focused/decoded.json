@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "totals": {
+    "calls": 0,
+    "ok": 0,
+    "fetched": 0,
+    "nofetch": 0,
+    "nonok": 0,
+    "overflow": 0,
+    "mapOverflow": 0,
+    "epoch": 20,
+    "installs": 0,
+    "rows": 0,
+    "enabled": 0
+  },
+  "generatedRetired": 1,
+  "interpreted": [],
+  "generated": [
+    {
+      "slot": 0,
+      "pc": 0,
+      "opcode": 3800039425,
+      "thumb": false,
+      "physicalMapping": "unknown; virtual/opcode identity only",
+      "routine": "unknown until independently bound",
+      "count": 1
+    }
+  ],
+  "work": [
+    {
+      "pc": 0,
+      "opcode": 3800039425,
+      "thumb": false,
+      "events": 1,
+      "status": 0,
+      "count": 1
+    }
+  ],
+  "scope": "Virtual PC/opcode completed-step footprint; conditional no-ops retire, interpreter exceptions/status remain; no side-effect or physical/routine identity claim."
+}

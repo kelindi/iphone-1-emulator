@@ -1,0 +1,177 @@
+{
+  "scope": "Source-only native diagnostic stages, no acceptance of later form result. Actual scanout gates before and after input.",
+  "holdTicksAt6MHz": 1080000,
+  "gapTicksAt6MHz": 3900000,
+  "perStageInstructionCap": 1500000000,
+  "perStageTickCap": 180000000,
+  "referenceMAELimit": 2.0,
+  "stableCaptures": 2,
+  "scanIntervalInstructions": 2000000,
+  "stages": [
+    {
+      "name": "dismiss",
+      "before": "alert",
+      "taps": [
+        [
+          160,
+          300
+        ]
+      ],
+      "after": "home"
+    },
+    {
+      "name": "launch-safari",
+      "before": "home",
+      "taps": [
+        [
+          199,
+          430
+        ]
+      ],
+      "after": "bookmarks"
+    },
+    {
+      "name": "open-address",
+      "before": "bookmarks",
+      "taps": [
+        [
+          290,
+          43
+        ],
+        [
+          157,
+          56
+        ]
+      ],
+      "after": "address"
+    },
+    {
+      "name": "numeric-keyboard",
+      "before": "address",
+      "taps": [
+        [
+          39,
+          458
+        ]
+      ],
+      "after": "numbers"
+    },
+    {
+      "name": "enter-url",
+      "before": "numbers",
+      "taps": [
+        [
+          16,
+          295
+        ],
+        [
+          48,
+          295
+        ],
+        [
+          208,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          132,
+          404
+        ],
+        [
+          16,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          240,
+          295
+        ],
+        [
+          16,
+          295
+        ]
+      ],
+      "after": "url"
+    },
+    {
+      "name": "load-local",
+      "before": "url",
+      "taps": [
+        [
+          282,
+          458
+        ]
+      ],
+      "after": "landing"
+    },
+    {
+      "name": "follow-next",
+      "before": "landing",
+      "taps": [
+        [
+          62,
+          273
+        ]
+      ],
+      "after": "next"
+    },
+    {
+      "name": "return-landing",
+      "before": "next",
+      "taps": [
+        [
+          55,
+          289
+        ]
+      ],
+      "after": "landing"
+    }
+  ],
+  "finalAction": {
+    "name": "focus-form",
+    "before": "landing",
+    "taps": [
+      [
+        110,
+        310
+      ]
+    ],
+    "stop": "first graphics failure/daemon exit-status witness or finite diagnostic tail",
+    "instructionCap": 1000000000,
+    "tickCap": 180000000
+  },
+  "totalAdditionalInstructionCap": 8000000000,
+  "wallCapSeconds": 450,
+  "serializationCapSeconds": 120,
+  "noAutomaticRetry": true
+}

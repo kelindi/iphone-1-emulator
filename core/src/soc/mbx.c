@@ -677,8 +677,15 @@ static bool mbx_stage_simple_copy(s5l_mbx_t *m, const arm_bus_t *bus,
     uint32_t dst_y1 = w[control + 4u] & 0x1fffu;
     uint32_t source_stride = w[2] & 0x7fffu;
     const uint32_t source_pixel_bytes = source_bgra8 ? 4u : 2u;
+    /* OS1 Safari's retained glyph-copy packets use BGRA8 pitch0x760
+     * (472 pixels). The original packer at30b3ac94..acb0 writes the
+     * independent source pitch masked by0x7fff; it is not the display width.
+     * Admit only this observed upper bound. Destination pitch/320x480,
+     * ARGB1555 bounds and every row/alias/atomicity check remain unchanged. */
+    const uint32_t source_stride_limit = source_bgra8
+        ? 0x760u : MBX_2D_WIDTH * source_pixel_bytes;
     if (!source_stride || source_stride % source_pixel_bytes != 0u ||
-        source_stride > MBX_2D_WIDTH * source_pixel_bytes) {
+        source_stride > source_stride_limit) {
         if (why)
             *why = "copy source stride is not aligned and bounded for its decoded format";
         return false;

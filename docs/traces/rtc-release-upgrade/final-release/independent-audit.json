@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "browserChecks": 21,
+  "all28ServedAndCurrentProductionFilesMatch": true,
+  "sourcePinsSHA256": "895a992af1ab1664efdb497566b083194a46b9fe83378e60dc1594f7803c8d63",
+  "executedHarnessSHA256": "fb077d5b0c79d397946d7340625db01dfbcbf38e1c1d9e38147e7a32b83a79c3",
+  "offlineHTTPResponsesFromSW": 16,
+  "offlineNetworkResponses": 0,
+  "localAndRemoteNonceActualNetworkErrorsVerified": true,
+  "sameActualAutosaveAcrossBothReloads": true,
+  "screenComparisons": [
+    {
+      "stage": "04-autosave-reload",
+      "RGBpixelsCompared": 147200,
+      "differingChannels": 0
+    },
+    {
+      "stage": "06-final-offline-running",
+      "RGBpixelsCompared": 147200,
+      "differingChannels": 0
+    }
+  ],
+  "scope": "Exact unmarked release, no diagnostic bundle markers; hidden offline installation is explicit test instrumentation. Actual Settings and Home PNGs manually reviewed. Status row excluded from RGB equality; no speed benchmark."
+}

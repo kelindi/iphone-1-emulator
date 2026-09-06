@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "count": 8,
+  "screens": [
+    "A1 C0 Settings",
+    "A1 C0 Home",
+    "B2 C0 Settings",
+    "B2 C0 Home",
+    "B3 C0 Settings",
+    "B3 C0 Home",
+    "A4 C0 Settings",
+    "A4 C0 Home"
+  ],
+  "findings": "All eight show genuine complete matching Settings rows and all sixteen Home icons; no missing rendering or errors. Status bar is outside fixed numerical comparison crop. This does not recover missing first-arm video."
+}

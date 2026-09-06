@@ -1,0 +1,12 @@
+✔ activation waits through installed state and returns actual worker (2.013833ms)
+✔ failed installer rejects immediately with retained states (0.726136ms)
+✔ stalled installer rejects at separate bound (4.964932ms)
+✔ already active works and missing worker rejects (0.491016ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 82.603077

@@ -1,0 +1,1 @@
+FAIL 30 !memcmp(&old,&a,sizeof a) reason=svc-before-binding phase=3

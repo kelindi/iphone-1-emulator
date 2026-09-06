@@ -1,0 +1,137 @@
+original SHA256 42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9
+c0410870 ldr      r0, [r0, #0x18]
+c0410874 ldr      r3, [r0]
+c0410878 ldr      r3, [r3, #0x4a4]
+c041087c bx       r3
+c0410880 push     {r4, r7, lr}
+c0410884 add      r7, sp, #4
+c0410888 sub      sp, sp, #4
+c041088c ldr      ip, [sp, #0x10]
+c0410890 mov      r4, r0
+c0410894 str      ip, [sp]
+c0410898 ldr      ip, [pc, #0x30] literal c04108d0=c019ba90 ('__ZTV16AppleARMFunction', 0)
+c041089c mov      lr, pc
+c04108a0 ldr      pc, [ip, #0x94]
+c04108a4 cmp      r0, #0
+c04108a8 beq      #0xc04108c8
+c04108ac ldr      r1, [pc, #0x20] literal c04108d4=c041730c 
+c04108b0 ldr      r0, [r4, #8]
+c04108b4 ldr      r3, [pc, #0x1c] literal c04108d8=c0120cf7 
+c04108b8 ldr      r1, [r1]
+c04108bc blx      r3
+c04108c0 str      r0, [r4, #0x18]
+c04108c4 mov      r0, #1
+c04108c8 sub      sp, r7, #4
+c04108cc pop      {r4, r7, pc}
+c04108d0 mulsgt   sb, r0, sl
+c04108d4 subgt    r7, r1, ip, lsl #6
+c04108d8 ldrshgt  r0, [r2], -r7
+c04108dc ldr      r2, [pc, #0x28] literal c041090c=c04172f8 
+c04108e0 push     {r4, r7, lr}
+c04108e4 mov      r3, #0x20
+c04108e8 add      r7, sp, #4
+c04108ec ldr      r1, [pc, #0x1c] literal c0410910=c0414484 
+c04108f0 ldr      r2, [r2]
+c04108f4 ldr      ip, [pc, #0x18] literal c0410914=c0120d73 
+c04108f8 mov      r4, r0
+c04108fc blx      ip
+c0410900 ldr      r3, [pc, #0x10] literal c0410918=c041715c 
+c0410904 str      r3, [r4]
+c0410908 pop      {r4, r7, pc}
+c041090c strdgt   r7, r8, [r1], #-0x28
+c0410910 subgt    r4, r1, r4, lsl #9
+c0410914 andsgt   r0, r2, r3, ror sp
+c0410918 subgt    r7, r1, ip, asr r1
+c041091c push     {r4, r5, r7, lr}
+c0410920 add      r7, sp, #8
+c0410924 ldr      r5, [pc, #0x24] literal c0410950=c04182bc 
+c0410928 ldr      r3, [pc, #0x24] literal c0410954=c01596b1 
+c041092c mov      r1, r5
+c0410930 mov      r4, r0
+c0410934 blx      r3
+c0410938 ldr      r3, [pc, #0x18] literal c0410958=c04170b8 
+c041093c mov      r0, r5
+c0410940 str      r3, [r4]
+c0410944 ldr      r3, [pc, #0x10] literal c041095c=c012116d 
+c0410948 blx      r3
+c041094c pop      {r4, r5, r7, pc}
+c0410950 strhgt   r8, [r1], #-0x2c
+c0410954 ldrhgt   sb, [r5], -r1
+c0410958 strhgt   r7, [r1], #-8
+c041095c andsgt   r1, r2, sp, ror #2
+c0410960 push     {r4, r7, lr}
+c0410964 add      r7, sp, #4
+c0410968 ldr      r3, [pc, #0x10] literal c0410980=c01596b1 
+c041096c mov      r4, r0
+c0410970 blx      r3
+c0410974 ldr      r3, [pc, #8] literal c0410984=c04170b8 
+c0410978 str      r3, [r4]
+c041097c pop      {r4, r7, pc}
+c0410980 ldrhgt   sb, [r5], -r1
+c0410984 strhgt   r7, [r1], #-8
+c0410988 push     {r4, r7, lr}
+c041098c add      r7, sp, #4
+c0410990 ldr      r3, [pc, #0x10] literal c04109a8=c01596b1 
+c0410994 mov      r4, r0
+c0410998 blx      r3
+c041099c ldr      r3, [pc, #8] literal c04109ac=c04170b8 
+c04109a0 str      r3, [r4]
+c04109a4 pop      {r4, r7, pc}
+c04109a8 ldrhgt   sb, [r5], -r1
+c04109ac strhgt   r7, [r1], #-8
+c04109b0 ldr      r3, [pc, #0x14] literal c04109cc=c04170b8 
+c04109b4 push     {r7, lr}
+c04109b8 add      r7, sp, #0
+c04109bc str      r3, [r0]
+c04109c0 ldr      r3, [pc, #8] literal c04109d0=c01596d9 
+c04109c4 blx      r3
+c04109c8 pop      {r7, pc}
+c04109cc strhgt   r7, [r1], #-8
+c04109d0 ldrsbgt  sb, [r5], -sb
+c04109d4 ldr      r3, [pc, #0x14] literal c04109f0=c04170b8 
+c04109d8 push     {r7, lr}
+c04109dc add      r7, sp, #0
+c04109e0 str      r3, [r0]
+c04109e4 ldr      r3, [pc, #8] literal c04109f4=c01596d9 
+c04109e8 blx      r3
+c04109ec pop      {r7, pc}
+c04109f0 strhgt   r7, [r1], #-8
+c04109f4 ldrsbgt  sb, [r5], -sb
+c04109f8 ldr      r3, [pc, #0x28] literal c0410a28=c04170b8 
+c04109fc push     {r4, r7, lr}
+c0410a00 mov      r4, r0
+c0410a04 add      r7, sp, #4
+c0410a08 str      r3, [r0]
+c0410a0c ldr      r3, [pc, #0x18] literal c0410a2c=c01596d9 
+c0410a10 blx      r3
+c0410a14 mov      r0, r4
+c0410a18 mov      r1, #0x20
+c0410a1c ldr      r3, [pc, #0xc] literal c0410a30=c0121ebd 
+c0410a20 blx      r3
+c0410a24 pop      {r4, r7, pc}
+c0410a28 strhgt   r7, [r1], #-8
+c0410a2c ldrsbgt  sb, [r5], -sb
+c0410a30 ldrhgt   r1, [r2], -sp
+c0410a34 ldr      r0, [pc] literal c0410a3c=c04182bc 
+c0410a38 bx       lr
+c0410a3c strhgt   r8, [r1], #-0x2c
+c0410a40 ldr      r2, [pc, #0x28] literal c0410a70=c04172f8 
+c0410a44 push     {r4, r7, lr}
+c0410a48 mov      r3, #0x20
+c0410a4c add      r7, sp, #4
+c0410a50 ldr      r1, [pc, #0x1c] literal c0410a74=c0414484 
+c0410a54 ldr      r2, [r2]
+c0410a58 ldr      ip, [pc, #0x18] literal c0410a78=c0120d73 
+c0410a5c mov      r4, r0
+c0410a60 blx      ip
+c0410a64 ldr      r3, [pc, #0x10] literal c0410a7c=c041715c 
+c0410a68 str      r3, [r4]
+c0410a6c pop      {r4, r7, pc}
+c0410a70 strdgt   r7, r8, [r1], #-0x28
+c0410a74 subgt    r4, r1, r4, lsl #9
+c0410a78 andsgt   r0, r2, r3, ror sp
+c0410a7c subgt    r7, r1, ip, asr r1
+c0410a80 push     {r4, r5, r7, lr}
+c0410a84 add      r7, sp, #8
+c0410a88 ldr      r5, [pc, #0x24] literal c0410ab4=c04182bc 
+c0410a8c ldr      r3, [pc, #0x24] literal c0410ab8=c01596b1 

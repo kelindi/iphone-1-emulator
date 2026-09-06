@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "controlByteIdentical": true,
+  "candidateRelinkByteIdentical": true,
+  "compileUnits": 48,
+  "candidateFlagOnly": "-flto=full for all compile units and emu link; original -O3 and VFP -ffp-contract=off preserved",
+  "targetOnly": "emu",
+  "artifacts": {
+    "control": {
+      "wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "wasmBytes": 250531
+    },
+    "candidate": {
+      "wasm": "7a528805814b7cf8ad061a1f5d2fb70aeb316c8a12585dfb25d6d08752dca740",
+      "js": "f99be828cce8eb0d53fc57591be3ee6a7bf23a0a9aacba732be98508340be47a",
+      "wasmBytes": 259019
+    }
+  },
+  "productionUnchanged": true
+}

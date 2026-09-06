@@ -1,0 +1,16 @@
+{
+  "guestRuns": 1,
+  "guestProbeElapsedSeconds": 6.4490343690049485,
+  "nativeDiagnosticExit": 10,
+  "allAuditsPass": true,
+  "actualArtifactNegatives": 70,
+  "guestReexecuted": false,
+  "productionChanged": false,
+  "sha256": {
+    "probe": "7f6fd3d0a12772930e2f78a570c705691fa4b2b1c11a92f6c17287cf532df5f9",
+    "review-pins.json": "0fb1cf19876599af6d999fd9f62672187703d54c04a6a1f1b63cd061191c8182",
+    "run-1/prefetch-audit.py": "aa059bc9177ee95b2a853424c14d6b487dc0484938e2f7c177335054e97472ec",
+    "run-1/binding-audit.py": "209b5ef8d9cb9f65c86e3bb16fbce35da855c1f2aeadf9ebe6b03fd8e50b1187",
+    "run-1/prefetch-negatives.py": "9e057f2c860f64956b4e576d67e1ebafe1379b7552a069e550b51c82bf572b58"
+  }
+}

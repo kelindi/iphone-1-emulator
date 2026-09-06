@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "guestReexecuted": false,
+  "auditorSHA256": "54c6069da44bcc88a04aab9a763ef5da59d7d5b48b1384ea0546e683cf8e9e99",
+  "originalBindingSHA256": "b62464b35fc69ef5a83a604e2044f13452da80a5f500e0f465dc97ec92f3d19d",
+  "artifactNegatives": [
+    {
+      "name": "fetch",
+      "expected": "prefetch observation falsely retired",
+      "exit": 1,
+      "mutatedSHA256": "42bbad2ecb5e66d72ed1a1c7dba9e71293b4a0856c36e366a0f2c32a360cc353",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/fetch"
+      ]
+    },
+    {
+      "name": "cp15",
+      "expected": "actual binding CP15/reason differs",
+      "exit": 1,
+      "mutatedSHA256": "520dac98888f4ebe37862f5176a3d36dc9e84d601c9b38182a5548c4ec29037f",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/cp15"
+      ]
+    },
+    {
+      "name": "availability",
+      "expected": "complete code availability differs",
+      "exit": 1,
+      "mutatedSHA256": "7bba2396ecc3728f362d87ec42e20e6c5b8853696e9b834148e0afde2214b314",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/availability"
+      ]
+    },
+    {
+      "name": "unavailable-bytes",
+      "expected": "unavailable code fabricated",
+      "exit": 1,
+      "mutatedSHA256": "022fd624e5cba48d2392b72f2b7096607333e25d5168b674f4b6cad199db2808",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/unavailable-bytes"
+      ]
+    },
+    {
+      "name": "fault-2",
+      "expected": "cloned fault kind differs",
+      "exit": 1,
+      "mutatedSHA256": "890a0a2bb127a9eb24a8c34ffac4c5617abda374c7d5804dee6a41b6896b8b54",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/fault-2"
+      ]
+    },
+    {
+      "name": "table-address-2",
+      "expected": "actual cloned page-table provenance differs",
+      "exit": 1,
+      "mutatedSHA256": "c4ca5fa7cf1022c4538e50cabff980405c6cf968cbcdb7bb1fa10ecb09ebec2e",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/table-address-2"
+      ]
+    },
+    {
+      "name": "table-value-2",
+      "expected": "cloned fault kind differs",
+      "exit": 1,
+      "mutatedSHA256": "36d68579283f4a5b2b1d557cb2c393a8cda62a478ebb0c97907ba830997f4a75",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/table-value-2"
+      ]
+    },
+    {
+      "name": "fault-3",
+      "expected": "cloned fault kind differs",
+      "exit": 1,
+      "mutatedSHA256": "9f46407be7b414fe6910d6e1e0b7e2e743898b8bcd7dbfbbe68ec7c848089f88",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/fault-3"
+      ]
+    },
+    {
+      "name": "table-address-3",
+      "expected": "actual cloned page-table provenance differs",
+      "exit": 1,
+      "mutatedSHA256": "f9d382916653a1de91958c53c86c78033fe0d1856ad08c7b99d8d8d13ab83fb9",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/table-address-3"
+      ]
+    },
+    {
+      "name": "table-value-3",
+      "expected": "cloned fault kind differs",
+      "exit": 1,
+      "mutatedSHA256": "020a342229f35aa35e557f04ccb4f5de8024c6085e79d016854693a0b7ac33aa",
+      "command": [
+        "/usr/bin/python3",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py",
+        "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/actual-negatives/table-value-3"
+      ]
+    }
+  ]
+}

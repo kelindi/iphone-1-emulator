@@ -1,0 +1,25 @@
+{
+  "result": "pass",
+  "checks": 30,
+  "closure": {
+    "context": {
+      "closed": true
+    },
+    "browser": {
+      "closed": true
+    },
+    "origin": {
+      "closed": true,
+      "result": {
+        "listening": false,
+        "connectionsClosed": 0,
+        "refusal": {
+          "host": "127.0.0.1",
+          "port": 8236,
+          "code": "ECONNREFUSED",
+          "at": "2026-09-06T12:22:27.696Z"
+        }
+      }
+    }
+  }
+}

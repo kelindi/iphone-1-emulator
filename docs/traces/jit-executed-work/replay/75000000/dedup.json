@@ -1,0 +1,9 @@
+{
+  "new": "/home/vercel-sandbox/iphone-1/.context/jit-executed-work/replay/75000000/raw.snap.gz",
+  "retained": "/home/vercel-sandbox/iphone-1/.context/jit-mixed-coverage/candidate-raw-75000000.snap.gz",
+  "beforeSha256": "a1e82e827e249c17c4082232096ae652c6f2a81e45432f944866d52516259049",
+  "afterSha256": "a1e82e827e249c17c4082232096ae652c6f2a81e45432f944866d52516259049",
+  "gzipBytes": 103236507,
+  "sameInode": true,
+  "scope": "Only new complete matched output atomically linked; retained control bytes/path untouched."
+}

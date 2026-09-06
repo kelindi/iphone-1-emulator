@@ -35,6 +35,10 @@
           <div id="boot-loader" class="boot-loader" role="status" aria-live="polite">
             <span class="boot-spinner" aria-hidden="true"></span>
             <span id="boot-label">Downloading iPhone OS…</span>
+            <div class="boot-recovery">
+              <button id="retry" class="text-button" hidden disabled>Try again</button>
+              <button id="recover" class="text-button" hidden disabled>Restore previous save</button>
+            </div>
           </div>
         </div>
         <button class="physical home" data-button="1" aria-label="Home" title="Home (Escape or H)" disabled>
@@ -47,8 +51,6 @@
       <div class="loading-state">
         <p id="status" role="status" aria-live="polite">Preparing your iPhone…</p>
         <progress id="progress" aria-label="Loading iPhone"></progress>
-        <button id="retry" class="text-button" hidden disabled>Try again</button>
-        <button id="recover" class="text-button" hidden disabled>Restore previous save</button>
       </div>
       <div id="controls" class="session-controls" aria-label="Saved phone controls">
         <button id="pause" class="text-button" disabled>Pause</button>

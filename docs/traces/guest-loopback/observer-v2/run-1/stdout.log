@@ -1,0 +1,333 @@
+using raw file, bytes=5888896
+using raw file, bytes=36864
+using raw file, bytes=176160768
+layout virt_base=0xc0000000 phys_base=0x08000000 ram_size=0x10000000
+kernel_begin_pa=0x08000000 kernel_end_pa=0x085c4b80 entry_pa=0x0805f7f0 entry_va=0xc005f7f0
+devicetree_pa=0x085c5000 devicetree_va=0xc05c5000 devicetree_size=0x00009000
+boot_args_pa=0x085ce000 ramdisk_pa=0x085d0000 ramdisk_va=0xc05d0000 ramdisk_size=0x0a800000
+framebuffer_pa=0x12dd0000 vram_bytes=0x00960000 top_of_kernel_data_pa=0x13730000 cmdline="debug=0x8 serial=3 rd=md0 -v"
+Darwin Kernel Version 9.0.0d1: Tue May 22 21:15:55 PDT 2007; root:xnu-933.0.0.178.obj~3/RELEASE_ARM_S5L8900XRB
+standard timeslicing quantum is 10000 us
+vm_page_bootstrap: 18309 free pages and 47227 wired pages
+mig_table_max_displ = 79
+iBoot version: 
+70 prelinked modules
+AppleS5L8900XIO::start: chip-revision: EVT0
+AppleARMPL192VIC::start: _vicBaseAddress = 0xee4d2000
+AppleS5L8900XEdgeIC::start: _edgeicBaseAddress: 0xee4d4000
+AppleS5L8900XGPIOIC::start: gpioBaseAddress: 0xee4d5000  gpioicBaseAddress: 0xee4d6000
+AppleS5L8900XPowerController::start: _pcBaseAddress: 0xee4d7000
+AppleS5L8900XClockController::start: _ccBaseAddress: 0xee4d8000 _miuBaseAddress: 0xee4d9000
+AppleS5L8900XClockController: Dynamic Performance State Management Enabled with max state 3
+AppleARMPL080DMAC::start: dmac0: _dmacBaseAddress: 0xee4da000
+AppleARMPL080DMAC::start: dmac1: _dmacBaseAddress: 0xee4db000
+AppleS5L8900XUSBWrangler::start starting
+AppleS5L8900XUSBWrangler::start registers at 0xee4dd000, 0x38400000 physical
+AppleS5L8900XADM::start: mapped I/O registers at 0xee558000/0x38800000
++ AppleMPVDDriver[0xcb937000]::init(properties 0xcbab9800)
++ AppleMPVDDriver[0xcb937000]::start(provider 0xcb996600)
+AppleS5L8900XSPIController::start: spi0: _spiBaseAddress = 0xef57b000
+AppleS5L8900XUSBPhy::start called
+AppleS5L8900XUSBPhy::start registers at 0xef57c000
+AppleS5L8900XI2CController::start: i2c0 _i2cBaseAddress: 0xef57d000
+AppleS5L8900XWatchDogTimer::start: _wdtBaseAddress: 0xef57e000
+AppleS5L8900XI2CController::start: i2c1 _i2cBaseAddress: 0xef57f000
+AppleS5L8900XI2SController::start: i2s0 i2sBaseAddress: 0xef580000
+AppleS5L8900XI2SController::start: i2s1 i2sBaseAddress: 0xef582000
+AppleS5L8900XSPIController::start: spi1: _spiBaseAddress = 0xef583000
+AppleS5L8900XSPIController::start: spi2: _spiBaseAddress = 0xef584000
+AppleMBXDevice(0xcbc08800): Init
+AppleMBX: Disabling auto clock gating because this is a EVT0/EVT1AppleMBX: Enabling auto clock-gating: 0
+AppleImage2NORAccess::probe(raw-device)
+AppleImage2NORAccess::start(raw-device) <1>
+AppleSimpleNORAccess::start imageVersion: 0
+AppleImage2NORAccessUserClient::probe(AppleImage2NORAccess)
+AppleImage2NORAccessUserClient::start(AppleImage2NORAccess) <1>
+AppleS5L8900XUSBWrangler::setPowerState state = 1
+
+AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart1 at 0x3cc04000(0xef697000)
+AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart3 at 0x3cc0c000(0xef698000)
+AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13b1d000, bufLA: 0xef699000
+AppleS5L8900XFMC::start: _fmcBaseAddress:      0xee559000
+AppleS5L8900XFMC::start: _rseccBaseAddress:    0xee55b000
+AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13bc3000, bufLA: 0xef69e000
+AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13bc6000, bufLA: 0xef69f000
+AppleARMPL080DMAC::_initDMAChannel: index: 7, bufPA: 0x13bc7000, bufLA: 0xef6a0000
+AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart0 at 0x3cc00000(0xef6a1000)
+AppleARMPL080DMAC::_initDMAChannel: index: 2, bufPA: 0x13bcc000, bufLA: 0xef6a2000
+AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart4 at 0x3cc10000(0xef6a3000)
+IOCoreSurfaceDeviceMemoryRegion: edram was powered on at boot
+AppleSerialKDP::start registering as KDP debugger
+AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13af5000, bufLA: 0xef7e4000
+AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13af6000, bufLA: 0xef7e5000
+AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13af7000, bufLA: 0xef7e6000
+ApplePCF50635PMU::start: pmu _pmuIICNub: 0xcbbae400
+AppleMicron2020::start()
+Registering IOCameraSensor service.
+AppleWM875xAudio::start: cbbc2800, audio0 _wmIICNub: 0xcb8f2d80, _wmIISNub: 0xcbbc4f80
+AppleMultitouchSPI: successfully starting non-DMA version of driver
+AppleMultitouchSPI: Logging is ENABLED
+AppleS5L8900XFMC::newDeviceWithRegistryEntry: no NAND flash banks are ready
+AppleS5L8900XUSBWrangler::phyRegistered PHY 0xcbb5eb80 notified us of availability
+AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb80
+AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb00
++ AppleMPVDDriver[0xcb937000]::setPowerStateGated()
+
+AppleMBX: Detected mbx,s5l8900x.  SupportsWriteCombining: true
+AppleMBXDevice(0xcbc08800)::setPowerState(1)
+AppleMBXDevice(0xcbc08800)::changePowerStateGated(1)
+BSD root: md0, major 2, minor 0
+AppleMerlotLCD: _lcdPanelID: 0x000000
+Jettisoning kernel linker.
+IOIpodUSBDevice::start
+IOIpodUSBDevice - Configuration: PTP
+IOIpodUSBDevice          Interface: PTP
+IOIpodUSBDevice - Configuration: HID
+IOIpodUSBDevice          Interface: IapOverUsbHid
+IOIpodUSBDevice - Configuration: PTP + Apple Mobile Device
+IOIpodUSBDevice          Interface: PTP
+IOIpodUSBDevice          Interface: AppleUSBMux
+IOAccessoryPortUSB::start
+virtual bool AppleUSBDeviceMux::start(IOService*) build: May 22 2007 21:27:52
+init_waste
+AppleMicron2020: Sensor not present
+AppleS5L8900XSDIO: registers @ vaddr 0xf190b000, paddr 0x38d00000
+IOReturn AppleS5L8900XSDIO::setPowerStateGated(long unsigned int, IOService*)
+AppleBaseband::start(0xcbaed400): baseband
+AppleMBX: Added swap device: AppleH1CLCD  id: cb937200
+AppleMBX: Using AppleH1CLCD as legacy swap device
+AppleH1CameraInterface: EVT0 no longer supported
+/dev/md0 on / (hfs, local, noatime)
+launchctl: Couldn't stat("/etc/mach_init.d"): No such file or directory
+Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stdout", ...): No such file or directory
+Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stderr", ...): No such file or directory
+IOAccessoryPortSerial::start: could not set up serial port: device is offline
+Timeout waiting for CMDRDY! (cmd 5, cmdReg 0x00040045, arg 0x00000000)
+Failed to perform base SDIO init sequence.
+Unable to setup and scan the SDIO bus.
+AppleS5L8900XSDIO::setPowerState took 110 ms
+AppleS5L8900XSDIO: Command line options and current values used by driver
+AppleS5L8900XSDIO:     sdio-crc-panic=0
+AppleMultitouchSPI: downloaded 44752 bytes of firmware data ("0x0086") in 1ms (0ms stage 1, 1ms stage 2).
+ApplePCF50635PMUPowerSource: mbcs1-3 00 00 00
+ApplePCF50635PMUPowerSource: _powerSupplyType 1, _usbConnectType 1
+ApplePCF50635PMUPowerSource: enabling idle sleep
+ApplePCF50635PMUPowerSource: cap 75, ext 0, chrgCap 0, chrg 0 (0 mA, cyc 0, kind 0), warn 0, crit 0
+ApplePCF50635PMUPowerSource: AppleUSBCableDetect 0
+OWN entry cycle=260281755 pc=00001a60 cpsr=40000010 ttbr=14a03000 exact_entry_text=64
+OWN witness cycle=260281755 pc=00001a60 r0=00001a60 r1=00000000 r2=2fe58f98 r3=00000001 lr=2fe2d504
+OWN witness cycle=260295828 pc=30009860 r0=00000001 r1=00002e28 r2=00000012 r3=30009860 lr=00002588
+LOOPBACK_BEGIN_V1
+OWN witness cycle=260299839 pc=3000c400 r0=00000002 r1=00000001 r2=00000000 r3=3000c400 lr=00001ab4
+OWN witness cycle=260307121 pc=00002600 r0=00002e3b r1=00000003 r2=00000000 r3=3000c400 lr=00001ad4
+OWN result label=socket_server value=00000003 error_or_detail=00000000
+OWN witness cycle=260307661 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000020 r3=30009860 lr=00002588
+socket_server 00000003 00000000
+OWN witness cycle=260312926 pc=00002600 r0=00002e49 r1=00000000 r2=00000000 r3=30009860 lr=00001b34
+OWN result label=readiness_attempt value=00000000 error_or_detail=00000000
+OWN witness cycle=260313542 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000024 r3=30009860 lr=00002588
+readiness_attempt 00000000 00000000
+OWN witness cycle=260319161 pc=30001d70 r0=00000003 r1=c0086924 r2=2ffff680 r3=30001d70 lr=00001b54
+OWN witness cycle=260321273 pc=00002600 r0=00002f6c r1=00000000 r2=00000044 r3=30001d70 lr=00001b80
+OWN result label=ifconf value=00000000 error_or_detail=00000044
+OWN witness cycle=260321680 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000019 r3=30009860 lr=00002588
+ifconf 00000000 00000044
+OWN witness cycle=260326318 pc=000028ec r0=00002f73 r1=2ffff6c8 r2=00000044 r3=30009860 lr=00001bac
+OWN bytes label=ifconf_bytes length=68 hex=6c6f300000000000000000000000000014120100180300006c6f300000000000000000006c6f3000000000000000000000000000100200007f0000010000000000000000
+OWN witness cycle=260326328 pc=00002600 r0=00002f73 r1=00000044 r2=00000000 r3=30009860 lr=00002914
+OWN result label=ifconf_bytes value=00000044 error_or_detail=00000000
+OWN witness cycle=260326849 pc=30009860 r0=00000001 r1=2ffff550 r2=0000001f r3=30009860 lr=00002588
+ifconf_bytes 00000044 00000000
+OWN witness cycle=260333014 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 6c6f300000000000000000000000000014120100180300006c6f300000000000
+OWN witness cycle=260342358 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 000000006c6f3000000000000000000000000000100200007f00000100000000
+OWN witness cycle=260350893 pc=30009860 r0=00000001 r1=2ffff5c4 r2=0000000b r3=30009860 lr=00002588
+D 00000000
+OWN witness cycle=260354388 pc=30001d70 r0=00000003 r1=c0206911 r2=2ffff6a8 r3=30001d70 lr=00001c3c
+OWN witness cycle=260355660 pc=00002600 r0=00002f80 r1=00000000 r2=00008049 r3=30001d70 lr=00001c6c
+OWN result label=ifflags value=00000000 error_or_detail=00008049
+OWN witness cycle=260356086 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001a r3=30009860 lr=00002588
+ifflags 00000000 00008049
+OWN witness cycle=260360804 pc=000028ec r0=00002f88 r1=2ffff6c8 r2=00000010 r3=30009860 lr=00001c7c
+OWN bytes label=ifname length=16 hex=6c6f3000000000000000000000000000
+OWN witness cycle=260360814 pc=00002600 r0=00002f88 r1=00000010 r2=00000000 r3=30009860 lr=00002914
+OWN result label=ifname value=00000010 error_or_detail=00000000
+OWN witness cycle=260361221 pc=30009860 r0=00000001 r1=2ffff550 r2=00000019 r3=30009860 lr=00002588
+ifname 00000010 00000000
+OWN witness cycle=260366382 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000023 r3=30009860 lr=00002588
+D 6c6f3000000000000000000000000000
+OWN witness cycle=260372027 pc=30001d70 r0=00000003 r1=c0206911 r2=2ffff6a8 r3=30001d70 lr=00001c3c
+OWN witness cycle=260373299 pc=00002600 r0=00002f80 r1=00000000 r2=00008049 r3=30001d70 lr=00001c6c
+OWN result label=ifflags value=00000000 error_or_detail=00008049
+OWN witness cycle=260373725 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001a r3=30009860 lr=00002588
+ifflags 00000000 00008049
+OWN witness cycle=260378443 pc=000028ec r0=00002f88 r1=2ffff6ec r2=00000010 r3=30009860 lr=00001c7c
+OWN bytes label=ifname length=16 hex=6c6f3000000000000000000000000000
+OWN witness cycle=260378453 pc=00002600 r0=00002f88 r1=00000010 r2=00000000 r3=30009860 lr=00002914
+OWN result label=ifname value=00000010 error_or_detail=00000000
+OWN witness cycle=260378860 pc=30009860 r0=00000001 r1=2ffff550 r2=00000019 r3=30009860 lr=00002588
+ifname 00000010 00000000
+OWN witness cycle=260384021 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000023 r3=30009860 lr=00002588
+D 6c6f3000000000000000000000000000
+OWN witness cycle=260396357 pc=00002600 r0=00002f8f r1=00000000 r2=0000007c r3=2fffe62c lr=00002768
+OWN result label=route_sysctl value=00000000 error_or_detail=0000007c
+OWN witness cycle=260396878 pc=30009860 r0=00000001 r1=2fffe598 r2=0000001f r3=30009860 lr=00002588
+route_sysctl 00000000 0000007c
+OWN witness cycle=260402056 pc=000028ec r0=00002f9c r1=2fffe630 r2=0000007c r3=30009860 lr=00002788
+OWN bytes label=route_bytes length=124 hex=7c00050401000000050020000300000000000000000000000000000000000000000000000000000000400000000000000000000000c0000000c000000000000000000000000000000000000000000000000000000000000000000000100200007f0000010000000000000000100200007f0000010000000000000000
+OWN witness cycle=260402066 pc=00002600 r0=00002f9c r1=0000007c r2=00000000 r3=30009860 lr=00002914
+OWN result label=route_bytes value=0000007c error_or_detail=00000000
+OWN witness cycle=260402568 pc=30009860 r0=00000001 r1=2fffe510 r2=0000001e r3=30009860 lr=00002588
+route_bytes 0000007c 00000000
+OWN witness cycle=260408637 pc=30009860 r0=00000001 r1=2fffe584 r2=00000043 r3=30009860 lr=00002588
+D 7c00050401000000050020000300000000000000000000000000000000000000
+OWN witness cycle=260417981 pc=30009860 r0=00000001 r1=2fffe584 r2=00000043 r3=30009860 lr=00002588
+D 000000000000000000400000000000000000000000c0000000c0000000000000
+OWN witness cycle=260427325 pc=30009860 r0=00000001 r1=2fffe584 r2=00000043 r3=30009860 lr=00002588
+D 0000000000000000000000000000000000000000000000000000000010020000
+OWN witness cycle=260436556 pc=30009860 r0=00000001 r1=2fffe584 r2=0000003b r3=30009860 lr=00002588
+D 7f0000010000000000000000100200007f0000010000000000000000
+OWN witness cycle=260444898 pc=00002600 r0=00002fa8 r1=00000002 r2=00000000 r3=30009860 lr=000027f4
+OWN result label=fcntl_get value=00000002 error_or_detail=00000000
+OWN witness cycle=260445362 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_get 00000002 00000000
+OWN witness cycle=260451194 pc=00002600 r0=00002fb2 r1=00000000 r2=00000000 r3=3000bad0 lr=00002828
+OWN result label=fcntl_set value=00000000 error_or_detail=00000000
+OWN witness cycle=260451658 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_set 00000000 00000000
+OWN witness cycle=260457316 pc=00002600 r0=00002fbc r1=00000000 r2=00000000 r3=2ffff628 lr=00002884
+OWN result label=nosigpipe value=00000000 error_or_detail=00000000
+OWN witness cycle=260457780 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+nosigpipe 00000000 00000000
+OWN witness cycle=260462690 pc=3000e8e0 r0=00000003 r1=2ffff698 r2=00000010 r3=3000e8e0 lr=00001ec0
+OWN witness cycle=260464371 pc=00002600 r0=00002e82 r1=00000000 r2=00000000 r3=3000e8e0 lr=00001ee0
+OWN result label=bind value=00000000 error_or_detail=00000000
+OWN witness cycle=260464740 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000017 r3=30009860 lr=00002588
+bind 00000000 00000000
+OWN witness cycle=260469213 pc=3000e860 r0=00000003 r1=2ffff6a8 r2=2ffff694 r3=3000e860 lr=00001f14
+OWN witness cycle=260470263 pc=00002600 r0=00002e87 r1=00000000 r2=00000010 r3=3000e860 lr=00001f40
+OWN result label=bound_name value=00000000 error_or_detail=00000010
+OWN witness cycle=260470746 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001d r3=30009860 lr=00002588
+bound_name 00000000 00000010
+OWN witness cycle=260475752 pc=000028ec r0=00002e92 r1=2ffff6a8 r2=00000010 r3=30009860 lr=00001f54
+OWN bytes label=bound_address length=16 hex=100246a17f0000010000000000000000
+OWN witness cycle=260475762 pc=00002600 r0=00002e92 r1=00000010 r2=00000000 r3=30009860 lr=00002914
+OWN result label=bound_address value=00000010 error_or_detail=00000000
+OWN witness cycle=260476302 pc=30009860 r0=00000001 r1=2ffff550 r2=00000020 r3=30009860 lr=00002588
+bound_address 00000010 00000000
+OWN witness cycle=260482077 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000023 r3=30009860 lr=00002588
+D 100246a17f0000010000000000000000
+OWN witness cycle=260487670 pc=30030500 r0=00000003 r1=00000001 r2=30030500 r3=30009860 lr=00001fb8
+OWN witness cycle=260488352 pc=00002600 r0=00002ea0 r1=00000000 r2=00000000 r3=30009860 lr=00001fd4
+OWN result label=listen value=00000000 error_or_detail=00000000
+OWN witness cycle=260488759 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000019 r3=30009860 lr=00002588
+listen 00000000 00000000
+OWN witness cycle=260493392 pc=3000c400 r0=00000002 r1=00000001 r2=00000000 r3=3000c400 lr=00001fec
+OWN witness cycle=260496369 pc=00002600 r0=00002ea7 r1=00000004 r2=00000000 r3=3000c400 lr=0000200c
+OWN result label=socket_client value=00000004 error_or_detail=00000000
+OWN witness cycle=260496909 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000020 r3=30009860 lr=00002588
+socket_client 00000004 00000000
+OWN witness cycle=260502473 pc=00002600 r0=00002fa8 r1=00000002 r2=00000000 r3=30009860 lr=000027f4
+OWN result label=fcntl_get value=00000002 error_or_detail=00000000
+OWN witness cycle=260502937 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_get 00000002 00000000
+OWN witness cycle=260508769 pc=00002600 r0=00002fb2 r1=00000000 r2=00000000 r3=3000bad0 lr=00002828
+OWN result label=fcntl_set value=00000000 error_or_detail=00000000
+OWN witness cycle=260509233 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_set 00000000 00000000
+OWN witness cycle=260514891 pc=00002600 r0=00002fbc r1=00000000 r2=00000000 r3=2ffff628 lr=00002884
+OWN result label=nosigpipe value=00000000 error_or_detail=00000000
+OWN witness cycle=260515355 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+nosigpipe 00000000 00000000
+OWN witness cycle=260520264 pc=3000d2b0 r0=00000004 r1=2ffff698 r2=00000010 r3=3000d2b0 lr=00002038
+OWN witness cycle=260556575 pc=00002600 r0=00002eb5 r1=ffffffff r2=00000024 r3=54485244 lr=00002184
+OWN result label=connect value=ffffffff error_or_detail=00000024
+OWN witness cycle=260557001 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001a r3=30009860 lr=00002588
+connect ffffffff 00000024
+OWN witness cycle=260567380 pc=3000e880 r0=00000004 r1=0000ffff r2=00001007 r3=2ffff6c8 lr=000021dc
+OWN witness cycle=260568140 pc=00002600 r0=00002ebd r1=00000000 r2=00000000 r3=2ffff6c8 lr=0000220c
+OWN result label=connect_status value=00000000 error_or_detail=00000000
+OWN witness cycle=260568699 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000021 r3=30009860 lr=00002588
+connect_status 00000000 00000000
+OWN witness cycle=260579328 pc=30030520 r0=00000003 r1=2ffff680 r2=2ffff694 r3=30030520 lr=000020a8
+OWN witness cycle=260581522 pc=00002600 r0=00002ecc r1=00000005 r2=00000010 r3=30030520 lr=000020d4
+OWN result label=accept value=00000005 error_or_detail=00000010
+OWN witness cycle=260581929 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000019 r3=30009860 lr=00002588
+accept 00000005 00000010
+OWN witness cycle=260586575 pc=000028ec r0=00002ed3 r1=2ffff680 r2=00000010 r3=30009860 lr=000020e8
+OWN bytes label=peer_address length=16 hex=1002c0007f0000010000000000000000
+OWN witness cycle=260586585 pc=00002600 r0=00002ed3 r1=00000010 r2=00000000 r3=30009860 lr=00002914
+OWN result label=peer_address value=00000010 error_or_detail=00000000
+OWN witness cycle=260587106 pc=30009860 r0=00000001 r1=2ffff550 r2=0000001f r3=30009860 lr=00002588
+peer_address 00000010 00000000
+OWN witness cycle=260592796 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000023 r3=30009860 lr=00002588
+D 1002c0007f0000010000000000000000
+OWN witness cycle=260598682 pc=00002600 r0=00002fa8 r1=00000006 r2=00000000 r3=2ffff698 lr=000027f4
+OWN result label=fcntl_get value=00000006 error_or_detail=00000000
+OWN witness cycle=260599146 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_get 00000006 00000000
+OWN witness cycle=260604978 pc=00002600 r0=00002fb2 r1=00000000 r2=00000000 r3=3000bad0 lr=00002828
+OWN result label=fcntl_set value=00000000 error_or_detail=00000000
+OWN witness cycle=260605442 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+fcntl_set 00000000 00000000
+OWN witness cycle=260611100 pc=00002600 r0=00002fbc r1=00000000 r2=00000000 r3=2ffff628 lr=00002884
+OWN result label=nosigpipe value=00000000 error_or_detail=00000000
+OWN witness cycle=260611564 pc=30009860 r0=00000001 r1=2ffff5b4 r2=0000001c r3=30009860 lr=00002588
+nosigpipe 00000000 00000000
+OWN witness cycle=260616494 pc=30009860 r0=00000004 r1=00002d60 r2=00000036 r3=30009860 lr=00002b1c
+OWN witness cycle=260631754 pc=300097e0 r0=00000005 r1=2ffff6c8 r2=00000036 r3=300097e0 lr=00002c6c
+OWN witness cycle=260634189 pc=000028ec r0=00002ee0 r1=2ffff6c8 r2=00000036 r3=300097e0 lr=0000230c
+OWN bytes label=actual_request length=54 hex=474554202f7175616c696669636174696f6e20485454502f312e300d0a486f73743a203132372e302e302e313a31383038310d0a0d0a
+OWN witness cycle=260634199 pc=00002600 r0=00002ee0 r1=00000036 r2=00000000 r3=300097e0 lr=00002914
+OWN result label=actual_request value=00000036 error_or_detail=00000000
+OWN witness cycle=260634758 pc=30009860 r0=00000001 r1=2ffff550 r2=00000021 r3=30009860 lr=00002588
+actual_request 00000036 00000000
+OWN witness cycle=260641081 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 474554202f7175616c696669636174696f6e20485454502f312e300d0a486f73
+OWN witness cycle=260650138 pc=30009860 r0=00000001 r1=2ffff5c4 r2=0000002f r3=30009860 lr=00002588
+D 743a203132372e302e302e313a31383038310d0a0d0a
+OWN witness cycle=260656749 pc=30009860 r0=00000005 r1=00002d97 r2=00000071 r3=30009860 lr=00002b1c
+OWN witness cycle=260687983 pc=00002600 r0=00002eef r1=00000000 r2=00000000 r3=30009860 lr=00002354
+OWN result label=close_response value=00000000 error_or_detail=00000000
+OWN witness cycle=260688542 pc=30009860 r0=00000001 r1=2ffff5d8 r2=00000021 r3=30009860 lr=00002588
+close_response 00000000 00000000
+OWN witness cycle=260693900 pc=300097e0 r0=00000004 r1=2ffff6c8 r2=00000071 r3=300097e0 lr=00002c6c
+OWN witness cycle=260695994 pc=300097e0 r0=00000004 r1=2ffff627 r2=00000001 r3=300097e0 lr=00002c6c
+OWN witness cycle=260697568 pc=000028ec r0=00002efe r1=2ffff6c8 r2=00000071 r3=300097e0 lr=000023c0
+OWN bytes label=actual_response length=113 hex=485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a20746578742f706c61696e0d0a436f6e74656e742d4c656e6774683a2032390d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a4950484f4e45315f47554553545f4c4f4f504241434b5f56315f4f4b0a
+OWN witness cycle=260697578 pc=00002600 r0=00002efe r1=00000071 r2=00000000 r3=300097e0 lr=00002914
+OWN result label=actual_response value=00000071 error_or_detail=00000000
+OWN witness cycle=260698156 pc=30009860 r0=00000001 r1=2ffff550 r2=00000022 r3=30009860 lr=00002588
+actual_response 00000071 00000000
+OWN witness cycle=260704596 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074
+OWN witness cycle=260713940 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 6578742f706c61696e0d0a436f6e74656e742d4c656e6774683a2032390d0a43
+OWN witness cycle=260723284 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000043 r3=30009860 lr=00002588
+D 6f6e6e656374696f6e3a20636c6f73650d0a0d0a4950484f4e45315f47554553
+OWN witness cycle=260732196 pc=30009860 r0=00000001 r1=2ffff5c4 r2=00000025 r3=30009860 lr=00002588
+D 545f4c4f4f504241434b5f56315f4f4b0a
+OWN witness cycle=260755219 pc=00002600 r0=00002f1d r1=00000000 r2=00000000 r3=30009860 lr=0000212c
+OWN result label=close_client value=00000000 error_or_detail=00000000
+OWN witness cycle=260755740 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001f r3=30009860 lr=00002588
+close_client 00000000 00000000
+OWN witness cycle=260763558 pc=00002600 r0=00002f2a r1=00000000 r2=00000000 r3=30009860 lr=00001e1c
+OWN result label=close_server value=00000000 error_or_detail=00000000
+OWN witness cycle=260764079 pc=30009860 r0=00000001 r1=2ffff5d8 r2=0000001f r3=30009860 lr=00002588
+close_server 00000000 00000000
+OWN witness cycle=260769388 pc=30009860 r0=00000001 r1=00002f37 r2=00000011 r3=30009860 lr=00002588
+LOOPBACK_PASS_V1
+OWN witness cycle=260773327 pc=300099f0 r0=00000000 r1=300099f0 r2=00000011 r3=30009860 lr=00001e74
+OWN full_text bytes=4848 exact=1
+OWN exit_entry status=0
+
+reason=own-loopback-qualified instructions=261000000 pc=0x2fe16a14 cpsr=0x20000010
+r0=0x2fe3eff0 r1=0x2fe3efd0 r2=0x00000054 r3=0x2fe3cea4
+r4=0x2fe3efd8 r5=0x2ffff4bc r6=0x2fe3ef64 r7=0x2fffc028
+r8=0x2fe33900 r9=0x2fe59398 r10=0x2fe3c78c r11=0x2fe00614
+r12=0x00000000 r13=0x2fffc004 r14=0x2fe16a08 r15=0x2fe16a14
+ttbr0=0x1416e000 sctlr=0x00c0380d M=1 unmapped_reads=100028 unmapped_writes=84
+unmapped-pages: 0x3c400000 0x3cc04000 0x3cc0c000 0x38a00000 0x38c00000 0x38d00000
+last-pcs: 0x2fe02598 0xc0061508 0xc012072c 0xc00d313a 0x2fe18818 0xc0059422 0xc0150898 0xc004ab46 0xc00214dc 0xc0060728 0xc003a80a 0xc005a4b4 0xc0012824 0xc003dbba 0xc0059066 0xc004cfca 0xc00204d0 0x2fe0db68 0x2fe03eac 0xc0120728 0xc003a31e 0x2fe0a3dc 0xc00d18d0 0x2fe0e2c4 0x2fe18814 0x30e94e48 0x30002278 0xc001394c 0x30e95160 0x30e91830 0xc00f8c3c 0x2fe16a14
+OWN final seen=1 entries=1 pass_written=1 serial_pass=1 exit_seen=1 exit_status=0 failed=0 full_text=1 ttbr=14a03000

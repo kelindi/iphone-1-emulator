@@ -1,0 +1,811 @@
+
+dcimPath
+32758da8 90402de9 push     {r4, r7, lr}                        
+32758dac 04708de2 add      r7, sp, #4                          
+32758db0 38409fe5 ldr      r4, [pc, #0x38]                     literal 0x7fe5bb8
+32758db4 04408fe0 add      r4, pc, r4                          0x3a73e974 
+32758db8 000094e5 ldr      r0, [r4]                            
+32758dbc 000050e3 cmp      r0, #0                              
+32758dc0 9080bd18 popne    {r4, r7, pc}                        
+32758dc4 f67600eb bl       #0x327769a4                         
+32758dc8 24109fe5 ldr      r1, [pc, #0x24]                     literal 0x7fe64f8
+32758dcc 24209fe5 ldr      r2, [pc, #0x24]                     literal 0x7fe4e60
+32758dd0 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+32758dd4 02208fe0 add      r2, pc, r2                          0x3a73dc3c CFString 'DCIM'
+32758dd8 697500eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'; r2 CFString 'DCIM'
+32758ddc 18109fe5 ldr      r1, [pc, #0x18]                     literal 0x7fe6304
+32758de0 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f0ec]=846648548 'retain'
+32758de4 667500eb bl       #0x32776384                         r1 'retain'
+32758de8 000084e5 str      r0, [r4]                            
+32758dec 9080bde8 pop      {r4, r7, pc}                        
+32758df0 b85bfe07 .byte    0xb8, 0x5b, 0xfe, 0x07              
+32758df4 f864fe07 .byte    0xf8, 0x64, 0xfe, 0x07              
+32758df8 604efe07 ldrbeq   r4, [lr, r0, ror #28]!              
+32758dfc 0463fe07 ldrbeq   r6, [lr, r4, lsl #6]!               
+
+file paths
+3275ab28 38109fe5 ldr      r1, [pc, #0x38]                     literal 0x7fe50e4
+3275ab2c 90402de9 push     {r4, r7, lr}                        
+3275ab30 0040a0e1 mov      r4, r0                              
+3275ab34 04708de2 add      r7, sp, #4                          
+3275ab38 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc24]=846672112 'fullPath'
+3275ab3c 100090e5 ldr      r0, [r0, #0x10]                     
+3275ab40 0f6e00eb bl       #0x32776384                         r1 'fullPath'
+3275ab44 20109fe5 ldr      r1, [pc, #0x20]                     literal 0x7fe477c
+3275ab48 042094e5 ldr      r2, [r4, #4]                        
+3275ab4c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+3275ab50 0b6e00eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'
+3275ab54 14109fe5 ldr      r1, [pc, #0x14]                     literal 0x7fe5110
+3275ab58 1c2094e5 ldr      r2, [r4, #0x1c]                     
+3275ab5c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc74]=846673140 'stringByAppendingPathExtension:'
+3275ab60 076e00eb bl       #0x32776384                         r1 'stringByAppendingPathExtension:'
+3275ab64 9080bde8 pop      {r4, r7, pc}                        
+3275ab68 e450fe07 ldrbeq   r5, [lr, r4, ror #1]!               
+3275ab6c 7c47fe07 .byte    0x7c, 0x47, 0xfe, 0x07              
+3275ab70 1051fe07 .byte    0x10, 0x51, 0xfe, 0x07              
+3275ab74 3c109fe5 ldr      r1, [pc, #0x3c]                     literal 0x7fe5098
+3275ab78 90402de9 push     {r4, r7, lr}                        
+3275ab7c 0040a0e1 mov      r4, r0                              
+3275ab80 04708de2 add      r7, sp, #4                          
+3275ab84 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc24]=846672112 'fullPath'
+3275ab88 100090e5 ldr      r0, [r0, #0x10]                     
+3275ab8c fc6d00eb bl       #0x32776384                         r1 'fullPath'
+3275ab90 24109fe5 ldr      r1, [pc, #0x24]                     literal 0x7fe4730
+3275ab94 042094e5 ldr      r2, [r4, #4]                        
+3275ab98 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+3275ab9c f86d00eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'
+3275aba0 18109fe5 ldr      r1, [pc, #0x18]                     literal 0x7fe50c4
+3275aba4 18209fe5 ldr      r2, [pc, #0x18]                     literal 0x7fe3168
+3275aba8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc74]=846673140 'stringByAppendingPathExtension:'
+3275abac 02208fe0 add      r2, pc, r2                          0x3a73dd1c CFString 'THM'
+3275abb0 f36d00eb bl       #0x32776384                         r1 'stringByAppendingPathExtension:'; r2 CFString 'THM'
+3275abb4 9080bde8 pop      {r4, r7, pc}                        
+3275abb8 9850fe07 .byte    0x98, 0x50, 0xfe, 0x07              
+3275abbc 3047fe07 .byte    0x30, 0x47, 0xfe, 0x07              
+3275abc0 c450fe07 ldrbeq   r5, [lr, r4, asr #1]!               
+3275abc4 6831fe07 ldrbeq   r3, [lr, r8, ror #2]!               
+3275abc8 3c109fe5 ldr      r1, [pc, #0x3c]                     literal 0x7fe5044
+3275abcc 90402de9 push     {r4, r7, lr}                        
+3275abd0 0040a0e1 mov      r4, r0                              
+3275abd4 04708de2 add      r7, sp, #4                          
+3275abd8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc24]=846672112 'fullPath'
+3275abdc 100090e5 ldr      r0, [r0, #0x10]                     
+3275abe0 e76d00eb bl       #0x32776384                         r1 'fullPath'
+3275abe4 24109fe5 ldr      r1, [pc, #0x24]                     literal 0x7fe46dc
+3275abe8 042094e5 ldr      r2, [r4, #4]                        
+3275abec 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+3275abf0 e36d00eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'
+3275abf4 18109fe5 ldr      r1, [pc, #0x18]                     literal 0x7fe5070
+3275abf8 18209fe5 ldr      r2, [pc, #0x18]                     literal 0x7fe3124
+3275abfc 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc74]=846673140 'stringByAppendingPathExtension:'
+3275ac00 02208fe0 add      r2, pc, r2                          0x3a73dd2c CFString 'LRZ'
+3275ac04 de6d00eb bl       #0x32776384                         r1 'stringByAppendingPathExtension:'; r2 CFString 'LRZ'
+3275ac08 9080bde8 pop      {r4, r7, pc}                        
+3275ac0c 4450fe07 ldrbeq   r5, [lr, r4, asr #32]!              
+3275ac10 dc46fe07 ubfxeq   r4, ip, #0xd, #0x1f                 
+3275ac14 7050fe07 .byte    0x70, 0x50, 0xfe, 0x07              
+3275ac18 2431fe07 ldrbeq   r3, [lr, r4, lsr #2]!               
+
+thumbnailImage
+32755d14 f0402de9 push     {r4, r5, r6, r7, lr}                
+32755d18 0060a0e1 mov      r6, r0                              
+32755d1c 4c109fe5 ldr      r1, [pc, #0x4c]                     literal 0x7fe9438
+32755d20 4c009fe5 ldr      r0, [pc, #0x4c]                     literal 0x7fea354
+32755d24 0c708de2 add      r7, sp, #0xc                        
+32755d28 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+32755d2c 00009fe7 ldr      r0, [pc, r0]                        [0x3a740088]=846654204 'UIImage'
+32755d30 938100eb bl       #0x32776384                         r0 'UIImage'; r1 'alloc'
+32755d34 3c109fe5 ldr      r1, [pc, #0x3c]                     literal 0x7fe9df4
+32755d38 01409fe7 ldr      r4, [pc, r1]                        [0x3a73fb34]=846670248 'initWithContentsOfFile:'
+32755d3c 38109fe5 ldr      r1, [pc, #0x38]                     literal 0x7fe9dd4
+32755d40 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fb1c]=846669384 'pathForThumbnailFile'
+32755d44 0050a0e1 mov      r5, r0                              
+32755d48 080096e5 ldr      r0, [r6, #8]                        
+32755d4c 8c8100eb bl       #0x32776384                         r1 'pathForThumbnailFile'
+32755d50 0410a0e1 mov      r1, r4                              
+32755d54 0020a0e1 mov      r2, r0                              
+32755d58 0500a0e1 mov      r0, r5                              
+32755d5c 888100eb bl       #0x32776384                         
+32755d60 18109fe5 ldr      r1, [pc, #0x18]                     literal 0x7fe9430
+32755d64 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f19c]=846648172 'autorelease'
+32755d68 858100eb bl       #0x32776384                         r1 'autorelease'
+32755d6c f080bde8 pop      {r4, r5, r6, r7, pc}                
+32755d70 3894fe07 .byte    0x38, 0x94, 0xfe, 0x07              
+32755d74 54a3fe07 ubfxeq   sl, r4, #6, #0x1f                   
+32755d78 f49dfe07 .byte    0xf4, 0x9d, 0xfe, 0x07              
+32755d7c d49dfe07 ubfxeq   sb, r4, #0x1b, #0x1f                
+32755d80 3094fe07 .byte    0x30, 0x94, 0xfe, 0x07              
+
+fileGroups
+32759458 f0402de9 push     {r4, r5, r6, r7, lr}                
+3275945c 0c708de2 add      r7, sp, #0xc                        
+32759460 000d2de9 push     {r8, sl, fp}                        
+32759464 5cd04de2 sub      sp, sp, #0x5c                       
+32759468 30d007e5 str      sp, [r7, #-0x30]                    
+3275946c 0c5090e5 ldr      r5, [r0, #0xc]                      
+32759470 0080a0e1 mov      r8, r0                              
+32759474 000055e3 cmp      r5, #0                              
+32759478 b600001a bne      #0x32759758                         
+3275947c 80039fe5 ldr      r0, [pc, #0x380]                    literal 0x7fe6c98
+32759480 80139fe5 ldr      r1, [pc, #0x380]                    literal 0x7fe6764
+32759484 00009fe7 ldr      r0, [pc, r0]                        [0x3a740124]=846669724 'DCFDirectory'
+32759488 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fbf4]=846672076 'dcimPath'
+3275948c bc7300eb bl       #0x32776384                         r0 'DCFDirectory'; r1 'dcimPath'
+32759490 74139fe5 ldr      r1, [pc, #0x374]                    literal 0x7fe5e30
+32759494 042098e5 ldr      r2, [r8, #4]                        
+32759498 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+3275949c b87300eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'
+327594a0 68139fe5 ldr      r1, [pc, #0x368]                    literal 0x7fe6660
+327594a4 05b0a0e1 mov      fp, r5                              
+327594a8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fb10]=846669448 'defaultManager'
+327594ac 2c0007e5 str      r0, [r7, #-0x2c]                    
+327594b0 5c039fe5 ldr      r0, [pc, #0x35c]                    literal 0x7fe6c64
+327594b4 00009fe7 ldr      r0, [pc, r0]                        [0x3a740120]=846669740 'NSFileManager'
+327594b8 b17300eb bl       #0x32776384                         r0 'NSFileManager'; r1 'defaultManager'
+327594bc 54139fe5 ldr      r1, [pc, #0x354]                    literal 0x7fe6734
+327594c0 2c2017e5 ldr      r2, [r7, #-0x2c]                    
+327594c4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc00]=846672552 'directoryContentsAtPath:'
+327594c8 480007e5 str      r0, [r7, #-0x48]                    
+327594cc ac7300eb bl       #0x32776384                         r1 'directoryContentsAtPath:'
+327594d0 44139fe5 ldr      r1, [pc, #0x344]                    literal 0x7fe5e14
+327594d4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2f0]=846653920 'count'
+327594d8 440007e5 str      r0, [r7, #-0x44]                    
+327594dc a87300eb bl       #0x32776384                         r1 'count'
+327594e0 38139fe5 ldr      r1, [pc, #0x338]                    literal 0x7fe5c7c
+327594e4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+327594e8 200007e5 str      r0, [r7, #-0x20]                    
+327594ec 30039fe5 ldr      r0, [pc, #0x330]                    literal 0x7fe6c40
+327594f0 00009fe7 ldr      r0, [pc, r0]                        [0x3a740138]=846672632 'NSMutableSet'
+327594f4 a27300eb bl       #0x32776384                         r0 'NSMutableSet'; r1 'alloc'
+327594f8 28139fe5 ldr      r1, [pc, #0x328]                    literal 0x7fe6638
+327594fc 202017e5 ldr      r2, [r7, #-0x20]                    
+32759500 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fb40]=846670180 'initWithCapacity:'
+32759504 9e7300eb bl       #0x32776384                         r1 'initWithCapacity:'
+32759508 1c339fe5 ldr      r3, [pc, #0x31c]                    literal 0x7fe5340
+3275950c 0510a0e1 mov      r1, r5                              
+32759510 03309fe7 ldr      r3, [pc, r3]                        [0x3a73e858]=943623256 
+32759514 0520a0e1 mov      r2, r5                              
+32759518 340007e5 str      r0, [r7, #-0x34]                    
+3275951c 0500a0e1 mov      r0, r5                              
+32759520 b37400eb bl       #0x327767f4                         
+32759524 04339fe5 ldr      r3, [pc, #0x304]                    literal 0x7fe5efc
+32759528 03308fe0 add      r3, pc, r3                          0x3a73f42c 
+3275952c 4c3007e5 str      r3, [r7, #-0x4c]                    
+32759530 fc329fe5 ldr      r3, [pc, #0x2fc]                    literal 0x7fe6bf8
+32759534 03308fe0 add      r3, pc, r3                          0x3a740134 
+32759538 503007e5 str      r3, [r7, #-0x50]                    
+3275953c f4329fe5 ldr      r3, [pc, #0x2f4]                    literal 0x7fe4754
+32759540 03308fe0 add      r3, pc, r3                          0x3a73dc9c CFString ''
+32759544 5c3007e5 str      r3, [r7, #-0x5c]                    
+32759548 ec329fe5 ldr      r3, [pc, #0x2ec]                    literal 0x7fe5378
+3275954c 03308fe0 add      r3, pc, r3                          0x3a73e8cc 
+32759550 643007e5 str      r3, [r7, #-0x64]                    
+32759554 e4329fe5 ldr      r3, [pc, #0x2e4]                    literal 0x7fe66a4
+32759558 03308fe0 add      r3, pc, r3                          0x3a73fc04 
+3275955c 543007e5 str      r3, [r7, #-0x54]                    
+32759560 dc329fe5 ldr      r3, [pc, #0x2dc]                    literal 0x7fe66bc
+32759564 03308fe0 add      r3, pc, r3                          0x3a73fc28 
+32759568 583007e5 str      r3, [r7, #-0x58]                    
+3275956c d4329fe5 ldr      r3, [pc, #0x2d4]                    literal 0x7fe5d84
+32759570 03308fe0 add      r3, pc, r3                          0x3a73f2fc 
+32759574 603007e5 str      r3, [r7, #-0x60]                    
+32759578 0c0088e5 str      r0, [r8, #0xc]                      
+3275957c 6d0000ea b        #0x32759738                         
+32759580 184047e2 sub      r4, r7, #0x18                       
+32759584 0030a0e3 mov      r3, #0                              
+32759588 043024e5 str      r3, [r4, #-4]!                      
+3275958c 4c3017e5 ldr      r3, [r7, #-0x4c]                    
+32759590 0b20a0e1 mov      r2, fp                              
+32759594 440017e5 ldr      r0, [r7, #-0x44]                    
+32759598 001093e5 ldr      r1, [r3]                            
+3275959c 787300eb bl       #0x32776384                         
+327595a0 503017e5 ldr      r3, [r7, #-0x50]                    
+327595a4 0460a0e3 mov      r6, #4                              
+327595a8 0650a0e1 mov      r5, r6                              
+327595ac 00a0a0e1 mov      sl, r0                              
+327595b0 000093e5 ldr      r0, [r3]                            
+327595b4 543017e5 ldr      r3, [r7, #-0x54]                    
+327595b8 0a20a0e1 mov      r2, sl                              
+327595bc 001093e5 ldr      r1, [r3]                            
+327595c0 0830a0e3 mov      r3, #8                              
+327595c4 00308de5 str      r3, [sp]                            
+327595c8 063083e0 add      r3, r3, r6                          
+327595cc 04408de5 str      r4, [sp, #4]                        
+327595d0 08508de5 str      r5, [sp, #8]                        
+327595d4 0c608de5 str      r6, [sp, #0xc]                      
+327595d8 697300eb bl       #0x32776384                         
+327595dc 583017e5 ldr      r3, [r7, #-0x58]                    
+327595e0 001093e5 ldr      r1, [r3]                            
+327595e4 0040a0e1 mov      r4, r0                              
+327595e8 657300eb bl       #0x32776384                         
+327595ec 000054e3 cmp      r4, #0                              
+327595f0 00005013 cmpne    r0, #0                              
+327595f4 280007e5 str      r0, [r7, #-0x28]                    
+327595f8 4d00000a beq      #0x32759734                         
+327595fc 603017e5 ldr      r3, [r7, #-0x60]                    
+32759600 5c2017e5 ldr      r2, [r7, #-0x5c]                    
+32759604 001093e5 ldr      r1, [r3]                            
+32759608 5d7300eb bl       #0x32776384                         
+3275960c ff0010e3 tst      r0, #0xff                           
+32759610 4700001a bne      #0x32759734                         
+32759614 0c0098e5 ldr      r0, [r8, #0xc]                      
+32759618 1c1017e5 ldr      r1, [r7, #-0x1c]                    
+3275961c 107400eb bl       #0x32776664                         
+32759620 000050e3 cmp      r0, #0                              
+32759624 240007e5 str      r0, [r7, #-0x24]                    
+32759628 3c00001a bne      #0x32759720                         
+3275962c 18129fe5 ldr      r1, [pc, #0x218]                    literal 0x7fe65f0
+32759630 0a20a0e1 mov      r2, sl                              
+32759634 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc2c]=846672308 'fileAttributesAtPath:traverseLink:'
+32759638 401007e5 str      r1, [r7, #-0x40]                    
+3275963c 0c129fe5 ldr      r1, [pc, #0x20c]                    literal 0x7fe5c84
+32759640 2c0017e5 ldr      r0, [r7, #-0x2c]                    
+32759644 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2d0]=846654088 'stringByAppendingPathComponent:'
+32759648 4d7300eb bl       #0x32776384                         r1 'stringByAppendingPathComponent:'
+3275964c 401017e5 ldr      r1, [r7, #-0x40]                    
+32759650 243017e5 ldr      r3, [r7, #-0x24]                    
+32759654 0020a0e1 mov      r2, r0                              
+32759658 480017e5 ldr      r0, [r7, #-0x48]                    
+3275965c 487300eb bl       #0x32776384                         
+32759660 643017e5 ldr      r3, [r7, #-0x64]                    
+32759664 e8119fe5 ldr      r1, [pc, #0x1e8]                    literal 0x7fe5b60
+32759668 002093e5 ldr      r2, [r3]                            
+3275966c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f1d4]=846647936 'objectForKey:'
+32759670 002092e5 ldr      r2, [r2]                            
+32759674 427300eb bl       #0x32776384                         r1 'objectForKey:'
+32759678 d8119fe5 ldr      r1, [pc, #0x1d8]                    literal 0x7fe5ae4
+3275967c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+32759680 3c0007e5 str      r0, [r7, #-0x3c]                    
+32759684 d0019fe5 ldr      r0, [pc, #0x1d0]                    literal 0x7fe6aa0
+32759688 00009fe7 ldr      r0, [pc, r0]                        [0x3a740130]=846672648 'DCFFileGroup'
+3275968c 3c7300eb bl       #0x32776384                         r0 'DCFFileGroup'; r1 'alloc'
+32759690 c8119fe5 ldr      r1, [pc, #0x1c8]                    literal 0x7fe6598
+32759694 01a09fe7 ldr      sl, [pc, r1]                        
+32759698 c4119fe5 ldr      r1, [pc, #0x1c4]                    literal 0x7fe658c
+3275969c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc30]=846672276 'stringByDeletingPathExtension'
+327596a0 380007e5 str      r0, [r7, #-0x38]                    
+327596a4 0400a0e1 mov      r0, r4                              
+327596a8 357300eb bl       #0x32776384                         r1 'stringByDeletingPathExtension'
+327596ac 1c3017e5 ldr      r3, [r7, #-0x1c]                    
+327596b0 00808de5 str      r8, [sp]                            
+327596b4 0a10a0e1 mov      r1, sl                              
+327596b8 0020a0e1 mov      r2, r0                              
+327596bc 380017e5 ldr      r0, [r7, #-0x38]                    
+327596c0 2f7300eb bl       #0x32776384                         
+327596c4 9c119fe5 ldr      r1, [pc, #0x19c]                    literal 0x7fe6564
+327596c8 3c2017e5 ldr      r2, [r7, #-0x3c]                    
+327596cc 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc38]=846672232 'setDate:'
+327596d0 240007e5 str      r0, [r7, #-0x24]                    
+327596d4 2a7300eb bl       #0x32776384                         r1 'setDate:'
+327596d8 0c0098e5 ldr      r0, [r8, #0xc]                      
+327596dc 1c1017e5 ldr      r1, [r7, #-0x1c]                    
+327596e0 242017e5 ldr      r2, [r7, #-0x24]                    
+327596e4 5e7400eb bl       #0x32776864                         
+327596e8 102098e5 ldr      r2, [r8, #0x10]                     
+327596ec 1c3017e5 ldr      r3, [r7, #-0x1c]                    
+327596f0 74119fe5 ldr      r1, [pc, #0x174]                    literal 0x7fe5c28
+327596f4 030052e1 cmp      r2, r3                              
+327596f8 102088a5 strge    r2, [r8, #0x10]                     
+327596fc 103088b5 strlt    r3, [r8, #0x10]                     
+32759700 340017e5 ldr      r0, [r7, #-0x34]                    
+32759704 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f334]=846653724 'addObject:'
+32759708 242017e5 ldr      r2, [r7, #-0x24]                    
+3275970c 1c7300eb bl       #0x32776384                         r1 'addObject:'
+32759710 58119fe5 ldr      r1, [pc, #0x158]                    literal 0x7fe59d0
+32759714 240017e5 ldr      r0, [r7, #-0x24]                    
+32759718 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f0f0]=846648540 'release'
+3275971c 187300eb bl       #0x32776384                         r1 'release'
+32759720 4c119fe5 ldr      r1, [pc, #0x14c]                    literal 0x7fe650c
+32759724 240017e5 ldr      r0, [r7, #-0x24]                    
+32759728 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc3c]=846672216 'addExtension:'
+3275972c 282017e5 ldr      r2, [r7, #-0x28]                    
+32759730 137300eb bl       #0x32776384                         r1 'addExtension:'
+32759734 01b08be2 add      fp, fp, #1                          
+32759738 203017e5 ldr      r3, [r7, #-0x20]                    
+3275973c 03005be1 cmp      fp, r3                              
+32759740 8effffba blt      #0x32759580                         
+32759744 2c119fe5 ldr      r1, [pc, #0x12c]                    literal 0x7fe599c
+32759748 340017e5 ldr      r0, [r7, #-0x34]                    
+3275974c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f0f0]=846648540 'release'
+32759750 0b7300eb bl       #0x32776384                         r1 'release'
+32759754 0c5098e5 ldr      r5, [r8, #0xc]                      
+32759758 0500a0e1 mov      r0, r5                              
+3275975c e87300eb bl       #0x32776704                         
+32759760 4b0f50e3 cmp      r0, #0x12c                          
+32759764 0060a0a3 movge    r6, #0                              
+32759768 0160a0b3 movlt    r6, #1                              
+3275976c 000056e3 cmp      r6, #0                              
+32759770 0630a001 moveq    r3, r6                              
+32759774 0030a011 movne    r3, r0                              
+32759778 0040a0e1 mov      r4, r0                              
+3275977c 0331a0e1 lsl      r3, r3, #2                          
+32759780 043083e2 add      r3, r3, #4                          
+32759784 0dd063e0 rsb      sp, r3, sp                          
+32759788 10008de2 add      r0, sp, #0x10                       
+3275978c 0100001a bne      #0x32759798                         
+32759790 0401a0e1 lsl      r0, r4, #2                          
+32759794 7a7400eb bl       #0x32776984                         
+32759798 0050a0e1 mov      r5, r0                              
+3275979c 0010a0e3 mov      r1, #0                              
+327597a0 0c0098e5 ldr      r0, [r8, #0xc]                      
+327597a4 0520a0e1 mov      r2, r5                              
+327597a8 297400eb bl       #0x32776854                         
+327597ac c8009fe5 ldr      r0, [pc, #0xc8]                     literal 0x7fe68a4
+327597b0 c8109fe5 ldr      r1, [pc, #0xc8]                     literal 0x7fe6480
+327597b4 0430a0e1 mov      r3, r4                              
+327597b8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc40]=846672192 'arrayWithObjects:count:'
+327597bc 0520a0e1 mov      r2, r5                              
+327597c0 00009fe7 ldr      r0, [pc, r0]                        [0x3a74006c]=846654308 'NSMutableArray'
+327597c4 ee7200eb bl       #0x32776384                         r0 'NSMutableArray'; r1 'arrayWithObjects:count:'
+327597c8 b4109fe5 ldr      r1, [pc, #0xb4]                     literal 0x7fe631c
+327597cc b4209fe5 ldr      r2, [pc, #0xb4]                     literal 0x7fe6314
+327597d0 01109fe7 ldr      r1, [pc, r1]                        [0x3a73faf4]=846669620 'sortUsingSelector:'
+327597d4 02209fe7 ldr      r2, [pc, r2]                        [0x3a73faf0]=846669640 'compare:'
+327597d8 0040a0e1 mov      r4, r0                              
+327597dc e87200eb bl       #0x32776384                         r1 'sortUsingSelector:'; r2 'compare:'
+327597e0 000056e3 cmp      r6, #0                              
+327597e4 0100001a bne      #0x327597f0                         
+327597e8 0500a0e1 mov      r0, r5                              
+327597ec 707400eb bl       #0x327769b4                         
+327597f0 0400a0e1 mov      r0, r4                              
+327597f4 30d017e5 ldr      sp, [r7, #-0x30]                    
+327597f8 18d047e2 sub      sp, r7, #0x18                       
+327597fc 000dbde8 pop      {r8, sl, fp}                        
+32759800 f080bde8 pop      {r4, r5, r6, r7, pc}                
+32759804 986cfe07 .byte    0x98, 0x6c, 0xfe, 0x07              
+32759808 6467fe07 ldrbeq   r6, [lr, r4, ror #14]!              
+3275980c 305efe07 .byte    0x30, 0x5e, 0xfe, 0x07              
+32759810 6066fe07 ldrbeq   r6, [lr, r0, ror #12]!              
+32759814 646cfe07 ldrbeq   r6, [lr, r4, ror #24]!              
+32759818 3467fe07 .byte    0x34, 0x67, 0xfe, 0x07              
+3275981c 145efe07 .byte    0x14, 0x5e, 0xfe, 0x07              
+32759820 7c5cfe07 .byte    0x7c, 0x5c, 0xfe, 0x07              
+32759824 406cfe07 ldrbeq   r6, [lr, r0, asr #24]!              
+32759828 3866fe07 .byte    0x38, 0x66, 0xfe, 0x07              
+3275982c 4053fe07 ldrbeq   r5, [lr, r0, asr #6]!               
+32759830 fc5efe07 .byte    0xfc, 0x5e, 0xfe, 0x07              
+32759834 f86bfe07 .byte    0xf8, 0x6b, 0xfe, 0x07              
+32759838 5447fe07 ubfxeq   r4, r4, #0xe, #0x1f                 
+3275983c 7853fe07 .byte    0x78, 0x53, 0xfe, 0x07              
+32759840 a466fe07 ldrbeq   r6, [lr, r4, lsr #13]!              
+32759844 bc66fe07 .byte    0xbc, 0x66, 0xfe, 0x07              
+32759848 845dfe07 ldrbeq   r5, [lr, r4, lsl #27]!              
+3275984c f065fe07 .byte    0xf0, 0x65, 0xfe, 0x07              
+32759850 845cfe07 ldrbeq   r5, [lr, r4, lsl #25]!              
+32759854 605bfe07 ldrbeq   r5, [lr, r0, ror #22]!              
+32759858 e45afe07 ldrbeq   r5, [lr, r4, ror #21]!              
+3275985c a06afe07 ldrbeq   r6, [lr, r0, lsr #21]!              
+32759860 9865fe07 .byte    0x98, 0x65, 0xfe, 0x07              
+32759864 8c65fe07 ldrbeq   r6, [lr, ip, lsl #11]!              
+32759868 6465fe07 ldrbeq   r6, [lr, r4, ror #10]!              
+3275986c 285cfe07 ldrbeq   r5, [lr, r8, lsr #24]!              
+32759870 d059fe07 ubfxeq   r5, r0, #0x13, #0x1f                
+32759874 0c65fe07 ldrbeq   r6, [lr, ip, lsl #10]!              
+32759878 9c59fe07 .byte    0x9c, 0x59, 0xfe, 0x07              
+3275987c a468fe07 ldrbeq   r6, [lr, r4, lsr #17]!              
+32759880 8064fe07 ldrbeq   r6, [lr, r0, lsl #9]!               
+32759884 1c63fe07 .byte    0x1c, 0x63, 0xfe, 0x07              
+32759888 1463fe07 .byte    0x14, 0x63, 0xfe, 0x07              
+
+dcfDirectories
+32759b28 f0402de9 push     {r4, r5, r6, r7, lr}                
+32759b2c 0c708de2 add      r7, sp, #0xc                        
+32759b30 000d2de9 push     {r8, sl, fp}                        
+32759b34 48d04de2 sub      sp, sp, #0x48                       
+32759b38 38008de5 str      r0, [sp, #0x38]                     
+32759b3c b0039fe5 ldr      r0, [pc, #0x3b0]                    literal 0x7fe4e40
+32759b40 00b09fe7 ldr      fp, [pc, r0]                        
+32759b44 00005be3 cmp      fp, #0                              
+32759b48 e400001a bne      #0x32759ee0                         
+32759b4c a4039fe5 ldr      r0, [pc, #0x3a4]                    literal 0x7fe65c4
+32759b50 a4139fe5 ldr      r1, [pc, #0x3a4]                    literal 0x7fe5fb0
+32759b54 00009fe7 ldr      r0, [pc, r0]                        [0x3a740120]=846669740 'NSFileManager'
+32759b58 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fb10]=846669448 'defaultManager'
+32759b5c 087200eb bl       #0x32776384                         r0 'NSFileManager'; r1 'defaultManager'
+32759b60 98139fe5 ldr      r1, [pc, #0x398]                    literal 0x7fe6090
+32759b64 0b60a0e1 mov      r6, fp                              
+32759b68 01409fe7 ldr      r4, [pc, r1]                        [0x3a73fc00]=846672552 'directoryContentsAtPath:'
+32759b6c 90139fe5 ldr      r1, [pc, #0x390]                    literal 0x7fe607c
+32759b70 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fbf4]=846672076 'dcimPath'
+32759b74 0050a0e1 mov      r5, r0                              
+32759b78 88039fe5 ldr      r0, [pc, #0x388]                    literal 0x7fe65a0
+32759b7c 00009fe7 ldr      r0, [pc, r0]                        [0x3a740124]=846669724 'DCFDirectory'
+32759b80 ff7100eb bl       #0x32776384                         r0 'DCFDirectory'; r1 'dcimPath'
+32759b84 0410a0e1 mov      r1, r4                              
+32759b88 0020a0e1 mov      r2, r0                              
+32759b8c 0500a0e1 mov      r0, r5                              
+32759b90 fb7100eb bl       #0x32776384                         
+32759b94 70139fe5 ldr      r1, [pc, #0x370]                    literal 0x7fe5750
+32759b98 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2f0]=846653920 'count'
+32759b9c 3c008de5 str      r0, [sp, #0x3c]                     
+32759ba0 f77100eb bl       #0x32776384                         r1 'count'
+32759ba4 64139fe5 ldr      r1, [pc, #0x364]                    literal 0x7fe55b8
+32759ba8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+32759bac 40008de5 str      r0, [sp, #0x40]                     
+32759bb0 5c039fe5 ldr      r0, [pc, #0x35c]                    literal 0x7fe6478
+32759bb4 00009fe7 ldr      r0, [pc, r0]                        [0x3a740034]=846648764 'NSMutableDictionary'
+32759bb8 f17100eb bl       #0x32776384                         r0 'NSMutableDictionary'; r1 'alloc'
+32759bbc 54139fe5 ldr      r1, [pc, #0x354]                    literal 0x7fe5f74
+32759bc0 40209de5 ldr      r2, [sp, #0x40]                     
+32759bc4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fb40]=846670180 'initWithCapacity:'
+32759bc8 ed7100eb bl       #0x32776384                         r1 'initWithCapacity:'
+32759bcc 48339fe5 ldr      r3, [pc, #0x348]                    literal 0x7fe4c78
+32759bd0 0b10a0e1 mov      r1, fp                              
+32759bd4 0b20a0e1 mov      r2, fp                              
+32759bd8 03309fe7 ldr      r3, [pc, r3]                        [0x3a73e858]=943623256 
+32759bdc 0080a0e1 mov      r8, r0                              
+32759be0 0b00a0e1 mov      r0, fp                              
+32759be4 027300eb bl       #0x327767f4                         
+32759be8 30339fe5 ldr      r3, [pc, #0x330]                    literal 0x7fe4d88
+32759bec 0b10a0e1 mov      r1, fp                              
+32759bf0 0b20a0e1 mov      r2, fp                              
+32759bf4 03008fe7 str      r0, [pc, r3]                        
+32759bf8 0b00a0e1 mov      r0, fp                              
+32759bfc 647300eb bl       #0x32776994                         
+32759c00 1c339fe5 ldr      r3, [pc, #0x31c]                    literal 0x7fe4d74
+32759c04 03008fe7 str      r0, [pc, r3]                        
+32759c08 18339fe5 ldr      r3, [pc, #0x318]                    literal 0x7fe5818
+32759c0c 03308fe0 add      r3, pc, r3                          0x3a73f42c 
+32759c10 34308de5 str      r3, [sp, #0x34]                     
+32759c14 10339fe5 ldr      r3, [pc, #0x310]                    literal 0x7fe57e4
+32759c18 03308fe0 add      r3, pc, r3                          0x3a73f404 
+32759c1c 30308de5 str      r3, [sp, #0x30]                     
+32759c20 08339fe5 ldr      r3, [pc, #0x308]                    literal 0x7fe5fd8
+32759c24 03308fe0 add      r3, pc, r3                          0x3a73fc04 
+32759c28 2c308de5 str      r3, [sp, #0x2c]                     
+32759c2c 00339fe5 ldr      r3, [pc, #0x300]                    literal 0x7fe4d4c
+32759c30 03308fe0 add      r3, pc, r3                          0x3a73e984 
+32759c34 10308de5 str      r3, [sp, #0x10]                     
+32759c38 f8329fe5 ldr      r3, [pc, #0x2f8]                    literal 0x7fe5fc4
+32759c3c 03308fe0 add      r3, pc, r3                          0x3a73fc08 
+32759c40 28308de5 str      r3, [sp, #0x28]                     
+32759c44 f0329fe5 ldr      r3, [pc, #0x2f0]                    literal 0x7fe4d30
+32759c48 03308fe0 add      r3, pc, r3                          0x3a73e980 
+32759c4c 24308de5 str      r3, [sp, #0x24]                     
+32759c50 e8329fe5 ldr      r3, [pc, #0x2e8]                    literal 0x7fe5fb0
+32759c54 03308fe0 add      r3, pc, r3                          0x3a73fc0c 
+32759c58 20308de5 str      r3, [sp, #0x20]                     
+32759c5c e0329fe5 ldr      r3, [pc, #0x2e0]                    literal 0x7fe4d1c
+32759c60 03308fe0 add      r3, pc, r3                          0x3a73e984 
+32759c64 1c308de5 str      r3, [sp, #0x1c]                     
+32759c68 d8329fe5 ldr      r3, [pc, #0x2d8]                    literal 0x7fe4d0c
+32759c6c 03308fe0 add      r3, pc, r3                          0x3a73e980 
+32759c70 18308de5 str      r3, [sp, #0x18]                     
+32759c74 d0329fe5 ldr      r3, [pc, #0x2d0]                    literal 0x7fe64a4
+32759c78 03308fe0 add      r3, pc, r3                          0x3a740124 
+32759c7c 14308de5 str      r3, [sp, #0x14]                     
+32759c80 550000ea b        #0x32759ddc                         
+32759c84 48408de2 add      r4, sp, #0x48                       
+32759c88 0030a0e3 mov      r3, #0                              
+32759c8c 043024e5 str      r3, [r4, #-4]!                      
+32759c90 34309de5 ldr      r3, [sp, #0x34]                     
+32759c94 0620a0e1 mov      r2, r6                              
+32759c98 3c009de5 ldr      r0, [sp, #0x3c]                     
+32759c9c 001093e5 ldr      r1, [r3]                            
+32759ca0 b77100eb bl       #0x32776384                         
+32759ca4 30309de5 ldr      r3, [sp, #0x30]                     
+32759ca8 03b0a0e3 mov      fp, #3                              
+32759cac 00a0a0e3 mov      sl, #0                              
+32759cb0 001093e5 ldr      r1, [r3]                            
+32759cb4 0050a0e1 mov      r5, r0                              
+32759cb8 38009de5 ldr      r0, [sp, #0x38]                     
+32759cbc b07100eb bl       #0x32776384                         
+32759cc0 2c309de5 ldr      r3, [sp, #0x2c]                     
+32759cc4 0520a0e1 mov      r2, r5                              
+32759cc8 001093e5 ldr      r1, [r3]                            
+32759ccc 0830a0e3 mov      r3, #8                              
+32759cd0 18008de8 stm      sp, {r3, r4}                        
+32759cd4 08a08de5 str      sl, [sp, #8]                        
+32759cd8 0cb08de5 str      fp, [sp, #0xc]                      
+32759cdc a87100eb bl       #0x32776384                         
+32759ce0 005050e2 subs     r5, r0, #0                          
+32759ce4 3b00000a beq      #0x32759dd8                         
+32759ce8 10309de5 ldr      r3, [sp, #0x10]                     
+32759cec 44109de5 ldr      r1, [sp, #0x44]                     
+32759cf0 000093e5 ldr      r0, [r3]                            
+32759cf4 5a7200eb bl       #0x32776664                         
+32759cf8 28309de5 ldr      r3, [sp, #0x28]                     
+32759cfc 0520a0e1 mov      r2, r5                              
+32759d00 001093e5 ldr      r1, [r3]                            
+32759d04 0040a0e1 mov      r4, r0                              
+32759d08 0800a0e1 mov      r0, r8                              
+32759d0c 9c7100eb bl       #0x32776384                         
+32759d10 0a0050e1 cmp      r0, sl                              
+32759d14 0700001a bne      #0x32759d38                         
+32759d18 0a0054e1 cmp      r4, sl                              
+32759d1c 0500001a bne      #0x32759d38                         
+32759d20 24309de5 ldr      r3, [sp, #0x24]                     
+32759d24 44109de5 ldr      r1, [sp, #0x44]                     
+32759d28 000093e5 ldr      r0, [r3]                            
+32759d2c 247300eb bl       #0x327769c4                         
+32759d30 0a0050e1 cmp      r0, sl                              
+32759d34 0d00000a beq      #0x32759d70                         
+32759d38 20309de5 ldr      r3, [sp, #0x20]                     
+32759d3c 0800a0e1 mov      r0, r8                              
+32759d40 0520a0e1 mov      r2, r5                              
+32759d44 001093e5 ldr      r1, [r3]                            
+32759d48 8d7100eb bl       #0x32776384                         
+32759d4c 1c309de5 ldr      r3, [sp, #0x1c]                     
+32759d50 44109de5 ldr      r1, [sp, #0x44]                     
+32759d54 000093e5 ldr      r0, [r3]                            
+32759d58 7d7200eb bl       #0x32776754                         
+32759d5c 18309de5 ldr      r3, [sp, #0x18]                     
+32759d60 44109de5 ldr      r1, [sp, #0x44]                     
+32759d64 000093e5 ldr      r0, [r3]                            
+32759d68 197300eb bl       #0x327769d4                         
+32759d6c 190000ea b        #0x32759dd8                         
+32759d70 14309de5 ldr      r3, [sp, #0x14]                     
+32759d74 d4119fe5 ldr      r1, [pc, #0x1d4]                    literal 0x7fe53e4
+32759d78 000093e5 ldr      r0, [r3]                            
+32759d7c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+32759d80 7f7100eb bl       #0x32776384                         r1 'alloc'
+32759d84 c8119fe5 ldr      r1, [pc, #0x1c8]                    literal 0x7fe5e7c
+32759d88 0520a0e1 mov      r2, r5                              
+32759d8c 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc10]=846672424 'initWithName:number:'
+32759d90 44309de5 ldr      r3, [sp, #0x44]                     
+32759d94 7a7100eb bl       #0x32776384                         r1 'initWithName:number:'
+32759d98 10309de5 ldr      r3, [sp, #0x10]                     
+32759d9c 44109de5 ldr      r1, [sp, #0x44]                     
+32759da0 0040a0e1 mov      r4, r0                              
+32759da4 0420a0e1 mov      r2, r4                              
+32759da8 000093e5 ldr      r0, [r3]                            
+32759dac ac7200eb bl       #0x32776864                         
+32759db0 a0119fe5 ldr      r1, [pc, #0x1a0]                    literal 0x7fe5330
+32759db4 0400a0e1 mov      r0, r4                              
+32759db8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f0f0]=846648540 'release'
+32759dbc 707100eb bl       #0x32776384                         r1 'release'
+32759dc0 94119fe5 ldr      r1, [pc, #0x194]                    literal 0x7fe55d4
+32759dc4 0800a0e1 mov      r0, r8                              
+32759dc8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f3a4]=846653300 'setObject:forKey:'
+32759dcc 0420a0e1 mov      r2, r4                              
+32759dd0 0530a0e1 mov      r3, r5                              
+32759dd4 6a7100eb bl       #0x32776384                         r1 'setObject:forKey:'
+32759dd8 016086e2 add      r6, r6, #1                          
+32759ddc 40309de5 ldr      r3, [sp, #0x40]                     
+32759de0 030056e1 cmp      r6, r3                              
+32759de4 a6ffffba blt      #0x32759c84                         
+32759de8 70019fe5 ldr      r0, [pc, #0x170]                    literal 0x7fe6274
+32759dec 70119fe5 ldr      r1, [pc, #0x170]                    literal 0x7fe536c
+32759df0 00009fe7 ldr      r0, [pc, r0]                        [0x3a74006c]=846654308 'NSMutableArray'
+32759df4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+32759df8 617100eb bl       #0x32776384                         r0 'NSMutableArray'; r1 'alloc'
+32759dfc 64119fe5 ldr      r1, [pc, #0x164]                    literal 0x7fe56cc
+32759e00 01409fe7 ldr      r4, [pc, r1]                        [0x3a73f4d4]=846652148 'initWithArray:'
+32759e04 60119fe5 ldr      r1, [pc, #0x160]                    literal 0x7fe5e04
+32759e08 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc14]=846672412 'allValues'
+32759e0c 0050a0e1 mov      r5, r0                              
+32759e10 0800a0e1 mov      r0, r8                              
+32759e14 5a7100eb bl       #0x32776384                         r1 'allValues'
+32759e18 0410a0e1 mov      r1, r4                              
+32759e1c 4c419fe5 ldr      r4, [pc, #0x14c]                    literal 0x7fe53ac
+32759e20 04408fe0 add      r4, pc, r4                          0x3a73f1d4 
+32759e24 0020a0e1 mov      r2, r0                              
+32759e28 0500a0e1 mov      r0, r5                              
+32759e2c 547100eb bl       #0x32776384                         
+32759e30 3c119fe5 ldr      r1, [pc, #0x13c]                    literal 0x7fe5dd0
+32759e34 3c219fe5 ldr      r2, [pc, #0x13c]                    literal 0x7fe5cac
+32759e38 3c319fe5 ldr      r3, [pc, #0x13c]                    literal 0x7fe4b3c
+32759e3c 02209fe7 ldr      r2, [pc, r2]                        [0x3a73faf0]=846669640 'compare:'
+32759e40 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc18]=846672384 'sortedArrayUsingSelector:'
+32759e44 03008fe7 str      r0, [pc, r3]                        
+32759e48 4d7100eb bl       #0x32776384                         r1 'sortedArrayUsingSelector:'; r2 'compare:'
+32759e4c 2c119fe5 ldr      r1, [pc, #0x12c]                    literal 0x7fe5294
+32759e50 0800a0e1 mov      r0, r8                              
+32759e54 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f0f0]=846648540 'release'
+32759e58 497100eb bl       #0x32776384                         r1 'release'
+32759e5c 20019fe5 ldr      r0, [pc, #0x120]                    literal 0x7fe62d0
+32759e60 20119fe5 ldr      r1, [pc, #0x120]                    literal 0x7fe5dac
+32759e64 00009fe7 ldr      r0, [pc, r0]                        [0x3a74013c]=846672616 'NSUserDefaults'
+32759e68 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fc1c]=846672360 'standardUserDefaults'
+32759e6c 447100eb bl       #0x32776384                         r0 'NSUserDefaults'; r1 'standardUserDefaults'
+32759e70 14219fe5 ldr      r2, [pc, #0x114]                    literal 0x7fe3dfc
+32759e74 001094e5 ldr      r1, [r4]                            
+32759e78 02208fe0 add      r2, pc, r2                          0x3a73dc7c CFString 'DCFLastDirectoryNumber'
+32759e7c 0050a0e1 mov      r5, r0                              
+32759e80 3f7100eb bl       #0x32776384                         r2 CFString 'DCFLastDirectoryNumber'
+32759e84 04219fe5 ldr      r2, [pc, #0x104]                    literal 0x7fe3df8
+32759e88 001094e5 ldr      r1, [r4]                            
+32759e8c 02208fe0 add      r2, pc, r2                          0x3a73dc8c CFString 'DCFLastFileGroupNumber'
+32759e90 fc409fe5 ldr      r4, [pc, #0xfc]                     literal 0x7fe56d0
+32759e94 04408fe0 add      r4, pc, r4                          0x3a73f56c 
+32759e98 0060a0e1 mov      r6, r0                              
+32759e9c 0500a0e1 mov      r0, r5                              
+32759ea0 377100eb bl       #0x32776384                         r2 CFString 'DCFLastFileGroupNumber'
+32759ea4 001094e5 ldr      r1, [r4]                            
+32759ea8 0050a0e1 mov      r5, r0                              
+32759eac 0600a0e1 mov      r0, r6                              
+32759eb0 337100eb bl       #0x32776384                         
+32759eb4 dc309fe5 ldr      r3, [pc, #0xdc]                     literal 0x7fe3168
+32759eb8 001094e5 ldr      r1, [r4]                            
+32759ebc 640050e3 cmp      r0, #0x64                           
+32759ec0 6400a0b3 movlt    r0, #0x64                           
+32759ec4 03008fe7 str      r0, [pc, r3]                        
+32759ec8 0500a0e1 mov      r0, r5                              
+32759ecc 2c7100eb bl       #0x32776384                         
+32759ed0 c4309fe5 ldr      r3, [pc, #0xc4]                     literal 0x7fe4a8c
+32759ed4 000050e3 cmp      r0, #0                              
+32759ed8 0000a0b3 movlt    r0, #0                              
+32759edc 03008fe7 str      r0, [pc, r3]                        
+32759ee0 b8009fe5 ldr      r0, [pc, #0xb8]                     literal 0x7fe4a9c
+32759ee4 00009fe7 ldr      r0, [pc, r0]                        [0x3a73e988]=0 
+32759ee8 18d047e2 sub      sp, r7, #0x18                       
+32759eec 000dbde8 pop      {r8, sl, fp}                        
+32759ef0 f080bde8 pop      {r4, r5, r6, r7, pc}                
+32759ef4 404efe07 ldrbeq   r4, [lr, r0, asr #28]!              
+32759ef8 c465fe07 ldrbeq   r6, [lr, r4, asr #11]!              
+32759efc b05ffe07 .byte    0xb0, 0x5f, 0xfe, 0x07              
+32759f00 9060fe07 .byte    0x90, 0x60, 0xfe, 0x07              
+32759f04 7c60fe07 .byte    0x7c, 0x60, 0xfe, 0x07              
+32759f08 a065fe07 ldrbeq   r6, [lr, r0, lsr #11]!              
+32759f0c 5057fe07 ubfxeq   r5, r0, #0xe, #0x1f                 
+32759f10 b855fe07 .byte    0xb8, 0x55, 0xfe, 0x07              
+32759f14 7864fe07 .byte    0x78, 0x64, 0xfe, 0x07              
+32759f18 745ffe07 .byte    0x74, 0x5f, 0xfe, 0x07              
+32759f1c 784cfe07 .byte    0x78, 0x4c, 0xfe, 0x07              
+32759f20 884dfe07 ldrbeq   r4, [lr, r8, lsl #27]!              
+32759f24 744dfe07 .byte    0x74, 0x4d, 0xfe, 0x07              
+32759f28 1858fe07 .byte    0x18, 0x58, 0xfe, 0x07              
+32759f2c e457fe07 ldrbeq   r5, [lr, r4, ror #15]!              
+32759f30 d85ffe07 ubfxeq   r5, r8, #0x1f, #0x1f                
+32759f34 4c4dfe07 ldrbeq   r4, [lr, ip, asr #26]!              
+32759f38 c45ffe07 ldrbeq   r5, [lr, r4, asr #31]!              
+32759f3c 304dfe07 .byte    0x30, 0x4d, 0xfe, 0x07              
+32759f40 b05ffe07 .byte    0xb0, 0x5f, 0xfe, 0x07              
+32759f44 1c4dfe07 .byte    0x1c, 0x4d, 0xfe, 0x07              
+32759f48 0c4dfe07 ldrbeq   r4, [lr, ip, lsl #26]!              
+32759f4c a464fe07 ldrbeq   r6, [lr, r4, lsr #9]!               
+32759f50 e453fe07 ldrbeq   r5, [lr, r4, ror #7]!               
+32759f54 7c5efe07 .byte    0x7c, 0x5e, 0xfe, 0x07              
+32759f58 3053fe07 .byte    0x30, 0x53, 0xfe, 0x07              
+32759f5c d455fe07 ubfxeq   r5, r4, #0xb, #0x1f                 
+32759f60 7462fe07 .byte    0x74, 0x62, 0xfe, 0x07              
+32759f64 6c53fe07 ldrbeq   r5, [lr, ip, ror #6]!               
+32759f68 cc56fe07 ldrbeq   r5, [lr, ip, asr #13]!              
+32759f6c 045efe07 ldrbeq   r5, [lr, r4, lsl #28]!              
+32759f70 ac53fe07 ldrbeq   r5, [lr, ip, lsr #7]!               
+32759f74 d05dfe07 ubfxeq   r5, r0, #0x1b, #0x1f                
+32759f78 ac5cfe07 ldrbeq   r5, [lr, ip, lsr #25]!              
+32759f7c 3c4bfe07 .byte    0x3c, 0x4b, 0xfe, 0x07              
+32759f80 9452fe07 .byte    0x94, 0x52, 0xfe, 0x07              
+32759f84 d062fe07 ubfxeq   r6, r0, #5, #0x1f                   
+32759f88 ac5dfe07 ldrbeq   r5, [lr, ip, lsr #27]!              
+32759f8c fc3dfe07 .byte    0xfc, 0x3d, 0xfe, 0x07              
+32759f90 f83dfe07 .byte    0xf8, 0x3d, 0xfe, 0x07              
+32759f94 d056fe07 ubfxeq   r5, r0, #0xd, #0x1f                 
+32759f98 6831fe07 ldrbeq   r3, [lr, r8, ror #2]!               
+32759f9c 8c4afe07 ldrbeq   r4, [lr, ip, lsl #21]!              
+32759fa0 9c4afe07 .byte    0x9c, 0x4a, 0xfe, 0x07              
+
+CameraAlbum images
+32755298 f0402de9 push     {r4, r5, r6, r7, lr}                
+3275529c 0c708de2 add      r7, sp, #0xc                        
+327552a0 000d2de9 push     {r8, sl, fp}                        
+327552a4 2cd04de2 sub      sp, sp, #0x2c                       
+327552a8 00a0a0e1 mov      sl, r0                              
+327552ac 0c4090e5 ldr      r4, [r0, #0xc]                      
+327552b0 000054e3 cmp      r4, #0                              
+327552b4 6600001a bne      #0x32755454                         
+327552b8 a4019fe5 ldr      r0, [pc, #0x1a4]                    literal 0x7feae5c
+327552bc a4119fe5 ldr      r1, [pc, #0x1a4]                    literal 0x7fea818
+327552c0 00009fe7 ldr      r0, [pc, r0]                        [0x3a740124]=846669724 'DCFDirectory'
+327552c4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73fae4]=846669688 'dcfDirectories'
+327552c8 2d8400eb bl       #0x32776384                         r0 'DCFDirectory'; r1 'dcfDirectories'
+327552cc 98119fe5 ldr      r1, [pc, #0x198]                    literal 0x7fea014
+327552d0 98b19fe5 ldr      fp, [pc, #0x198]                    
+327552d4 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f2f0]=846653920 'count'
+327552d8 0bb08fe0 add      fp, pc, fp                          
+327552dc 20008de5 str      r0, [sp, #0x20]                     
+327552e0 278400eb bl       #0x32776384                         r1 'count'
+327552e4 88119fe5 ldr      r1, [pc, #0x188]                    literal 0x7fe9e78
+327552e8 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f168]=846648304 'alloc'
+327552ec 28008de5 str      r0, [sp, #0x28]                     
+327552f0 80019fe5 ldr      r0, [pc, #0x180]                    literal 0x7fead70
+327552f4 00009fe7 ldr      r0, [pc, r0]                        [0x3a74006c]=846654308 'NSMutableArray'
+327552f8 218400eb bl       #0x32776384                         r0 'NSMutableArray'; r1 'alloc'
+327552fc 78119fe5 ldr      r1, [pc, #0x178]                    literal 0x7fe9e64
+32755300 01109fe7 ldr      r1, [pc, r1]                        [0x3a73f16c]=846648296 'init'
+32755304 1e8400eb bl       #0x32776384                         r1 'init'
+32755308 70219fe5 ldr      r2, [pc, #0x170]                    literal 0x7fea114
+3275530c 70319fe5 ldr      r3, [pc, #0x170]                    literal 0x7fea7cc
+32755310 02208fe0 add      r2, pc, r2                          0x3a73f42c 
+32755314 03308fe0 add      r3, pc, r3                          0x3a73fae8 
+32755318 1c208de5 str      r2, [sp, #0x1c]                     
+3275531c 18308de5 str      r3, [sp, #0x18]                     
+32755320 60219fe5 ldr      r2, [pc, #0x160]                    literal 0x7fe9fc0
+32755324 60319fe5 ldr      r3, [pc, #0x160]                    literal 0x7fea0f8
+32755328 02208fe0 add      r2, pc, r2                          0x3a73f2f0 
+3275532c 03308fe0 add      r3, pc, r3                          0x3a73f42c 
+32755330 14208de5 str      r2, [sp, #0x14]                     
+32755334 10308de5 str      r3, [sp, #0x10]                     
+32755338 50219fe5 ldr      r2, [pc, #0x150]                    literal 0x7feadd4
+3275533c 50319fe5 ldr      r3, [pc, #0x150]                    literal 0x7fe9e1c
+32755340 02208fe0 add      r2, pc, r2                          0x3a74011c 
+32755344 03308fe0 add      r3, pc, r3                          0x3a73f168 
+32755348 0c208de5 str      r2, [sp, #0xc]                      
+3275534c 08308de5 str      r3, [sp, #8]                        
+32755350 40219fe5 ldr      r2, [pc, #0x140]                    literal 0x7fea78c
+32755354 40319fe5 ldr      r3, [pc, #0x140]                    literal 0x7fe9fd0
+32755358 02208fe0 add      r2, pc, r2                          0x3a73faec 
+3275535c 03308fe0 add      r3, pc, r3                          0x3a73f334 
+32755360 24408de5 str      r4, [sp, #0x24]                     
+32755364 04208de5 str      r2, [sp, #4]                        
+32755368 00308de5 str      r3, [sp]                            
+3275536c 0c008ae5 str      r0, [sl, #0xc]                      
+32755370 2c0000ea b        #0x32755428                         
+32755374 1c209de5 ldr      r2, [sp, #0x1c]                     
+32755378 20009de5 ldr      r0, [sp, #0x20]                     
+3275537c 0050a0e3 mov      r5, #0                              
+32755380 001092e5 ldr      r1, [r2]                            
+32755384 24209de5 ldr      r2, [sp, #0x24]                     
+32755388 fd8300eb bl       #0x32776384                         
+3275538c 18309de5 ldr      r3, [sp, #0x18]                     
+32755390 001093e5 ldr      r1, [r3]                            
+32755394 fa8300eb bl       #0x32776384                         
+32755398 14209de5 ldr      r2, [sp, #0x14]                     
+3275539c 001092e5 ldr      r1, [r2]                            
+327553a0 0080a0e1 mov      r8, r0                              
+327553a4 f68300eb bl       #0x32776384                         
+327553a8 0060a0e1 mov      r6, r0                              
+327553ac 180000ea b        #0x32755414                         
+327553b0 10309de5 ldr      r3, [sp, #0x10]                     
+327553b4 0520a0e1 mov      r2, r5                              
+327553b8 0800a0e1 mov      r0, r8                              
+327553bc 001093e5 ldr      r1, [r3]                            
+327553c0 ef8300eb bl       #0x32776384                         
+327553c4 08309de5 ldr      r3, [sp, #8]                        
+327553c8 0c209de5 ldr      r2, [sp, #0xc]                      
+327553cc 015085e2 add      r5, r5, #1                          
+327553d0 001093e5 ldr      r1, [r3]                            
+327553d4 0040a0e1 mov      r4, r0                              
+327553d8 000092e5 ldr      r0, [r2]                            
+327553dc e88300eb bl       #0x32776384                         
+327553e0 04209de5 ldr      r2, [sp, #4]                        
+327553e4 001092e5 ldr      r1, [r2]                            
+327553e8 0420a0e1 mov      r2, r4                              
+327553ec e48300eb bl       #0x32776384                         
+327553f0 00309de5 ldr      r3, [sp]                            
+327553f4 001093e5 ldr      r1, [r3]                            
+327553f8 0040a0e1 mov      r4, r0                              
+327553fc 0420a0e1 mov      r2, r4                              
+32755400 0c009ae5 ldr      r0, [sl, #0xc]                      
+32755404 de8300eb bl       #0x32776384                         
+32755408 0400a0e1 mov      r0, r4                              
+3275540c 00109be5 ldr      r1, [fp]                            
+32755410 db8300eb bl       #0x32776384                         
+32755414 060055e1 cmp      r5, r6                              
+32755418 e4ffffba blt      #0x327553b0                         
+3275541c 24209de5 ldr      r2, [sp, #0x24]                     
+32755420 012082e2 add      r2, r2, #1                          
+32755424 24208de5 str      r2, [sp, #0x24]                     
+32755428 24309de5 ldr      r3, [sp, #0x24]                     
+3275542c 28209de5 ldr      r2, [sp, #0x28]                     
+32755430 020053e1 cmp      r3, r2                              
+32755434 ceffffba blt      #0x32755374                         
+32755438 60109fe5 ldr      r1, [pc, #0x60]                     literal 0x7fea6a8
+3275543c 60209fe5 ldr      r2, [pc, #0x60]                     literal 0x7fea6a0
+32755440 0c009ae5 ldr      r0, [sl, #0xc]                      
+32755444 01109fe7 ldr      r1, [pc, r1]                        [0x3a73faf4]=846669620 'sortUsingSelector:'
+32755448 02209fe7 ldr      r2, [pc, r2]                        [0x3a73faf0]=846669640 'compare:'
+3275544c cc8300eb bl       #0x32776384                         r1 'sortUsingSelector:'; r2 'compare:'
+32755450 0c409ae5 ldr      r4, [sl, #0xc]                      
+32755454 0400a0e1 mov      r0, r4                              
+32755458 18d047e2 sub      sp, r7, #0x18                       
+3275545c 000dbde8 pop      {r8, sl, fp}                        
+32755460 f080bde8 pop      {r4, r5, r6, r7, pc}                
+32755464 5caefe07 ubfxeq   sl, ip, #0x1c, #0x1f                
+32755468 18a8fe07 .byte    0x18, 0xa8, 0xfe, 0x07              
+3275546c 14a0fe07 .byte    0x14, 0xa0, 0xfe, 0x07              
+32755470 109efe07 .byte    0x10, 0x9e, 0xfe, 0x07              
+32755474 789efe07 .byte    0x78, 0x9e, 0xfe, 0x07              
+32755478 70adfe07 .byte    0x70, 0xad, 0xfe, 0x07              
+3275547c 649efe07 ldrbeq   sb, [lr, r4, ror #28]!              
+32755480 14a1fe07 .byte    0x14, 0xa1, 0xfe, 0x07              
+32755484 cca7fe07 ldrbeq   sl, [lr, ip, asr #15]!              
+32755488 c09ffe07 ldrbeq   sb, [lr, r0, asr #31]!              
+3275548c f8a0fe07 .byte    0xf8, 0xa0, 0xfe, 0x07              
+32755490 d4adfe07 ubfxeq   sl, r4, #0x1b, #0x1f                
+32755494 1c9efe07 .byte    0x1c, 0x9e, 0xfe, 0x07              
+32755498 8ca7fe07 ldrbeq   sl, [lr, ip, lsl #15]!              
+3275549c d09ffe07 ubfxeq   sb, r0, #0x1f, #0x1f                
+327554a0 a8a6fe07 ldrbeq   sl, [lr, r8, lsr #13]!              
+327554a4 a0a6fe07 ldrbeq   sl, [lr, r0, lsr #13]!              

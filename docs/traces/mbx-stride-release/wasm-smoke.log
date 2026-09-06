@@ -1,0 +1,1 @@
+WASM smoke passed: emu_init=-1; error=kernel and devicetree are required

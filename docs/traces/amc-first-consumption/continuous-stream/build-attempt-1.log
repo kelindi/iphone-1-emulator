@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/build.py", line 18, in <module>
+    with (base/(target+'.log')).open('w') as log:subprocess.run([str(base/target)],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=10)
+  File "/usr/lib64/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['.context/amc-first/stage-u/test_later']' died with <Signals.SIGABRT: 6>.
