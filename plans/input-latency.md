@@ -106,3 +106,14 @@ This establishes an unfinished launch frame, not a demonstrated persistent graph
 
 
 Final production acceptance passes 26 native suites, 34 JavaScript tests, 59 browser lifecycle/update checks and all twelve Calculator cases with positive compiled execution. The initial readiness test now polls independently reviewed pixels with a 30-second deadline and unchanged immediate 50 ms input. The original references remain; independent review justifies a strict maximum two-level RGB difference with exact alpha, and all 132 other-answer comparisons fail it. Both earlier test failures remain preserved. [The final production reports](../docs/traces/short-tap/production/verification.json) and [milestone 063 recording](../tweets/063_short_tap_contact_report.md#rebuilt-production-acceptance) distinguish functional input recovery from the still-unmet app-launch speed target.
+
+
+## Current Calculator observation (2026-09-06)
+
+[Milestone 089](../tweets/089_calculator_input_feedback.md) records 60 correct real keypad presses. RAF-observed button p95 is 165.4/165.6 ms, but actual canvas sequences are skipped by the sampler. This does not establish a guest-side 150 ms failure; precise delivery timing remains open. The maintained `npm run test:input-feedback` returns nonzero for the literal observed threshold, and its report distinguishes that from passing correctness. [Evidence and sampling limitations](../docs/traces/calculator-input-feedback/README.md).
+
+### Direct frame delivery follow-up
+
+[Milestone 090](../tweets/090_calculator_frame_delivery.md) completes one separate 60-press diagnostic on unchanged production. Independent raw/source crops verify every 9/C result and frame association. Button canvas-completion p95 is 135.7/134.0 ms, meeting the 150 ms threshold for this observed Calculator workload; same-run RAF p95 is 148.6/148.9 ms. Correct-result canvas p95 from release is 138.8/129.3 ms, while down-to-result remains 171.4/161.1 ms. No physical-paint, other-app or production speedup claim follows.
+
+Early page receipt to canvas completion is at most 0.5 ms. Observer post-draw work costs median 2.4/p95 4.1 ms and additional crop transport extends input spacing; these costs are retained, not subtracted. All measured saves remain absent under the ordinary idle guard. The earlier 089 dataset is unchanged and is not an uninstrumented paired control. [Evidence and remaining worker/guest attribution boundary](../docs/traces/calculator-frame-delivery/README.md) explain why no scheduling optimization is justified from these results alone.

@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "started": 1788697378.043041,
+  "capSeconds": 360,
+  "freeBefore": 6650855424,
+  "frozenSha256": "c28e514c3274fb42bcf297065ed33597516973066a39eb4774edb6f5ac48ada6",
+  "exitCode": 0,
+  "observed": [
+    {
+      "pid": 3920201,
+      "ppid": 3920199,
+      "startTicks": "6708165",
+      "state": "S"
+    },
+    {
+      "pid": 3920213,
+      "ppid": 3920201,
+      "startTicks": "6708218",
+      "state": "S"
+    },
+    {
+      "pid": 3920217,
+      "ppid": 3920213,
+      "startTicks": "6708219",
+      "state": "S"
+    },
+    {
+      "pid": 3920218,
+      "ppid": 3920213,
+      "startTicks": "6708219",
+      "state": "S"
+    },
+    {
+      "pid": 3920227,
+      "ppid": 3920213,
+      "startTicks": "6708231",
+      "state": "S"
+    },
+    {
+      "pid": 3920228,
+      "ppid": 3920213,
+      "startTicks": "6708231",
+      "state": "S"
+    },
+    {
+      "pid": 3920249,
+      "ppid": 3920227,
+      "startTicks": "6708241",
+      "state": "S"
+    },
+    {
+      "pid": 3920252,
+      "ppid": 3920213,
+      "startTicks": "6708241",
+      "state": "S"
+    },
+    {
+      "pid": 3920255,
+      "ppid": 3920228,
+      "startTicks": "6708244",
+      "state": "S"
+    },
+    {
+      "pid": 3920287,
+      "ppid": 3920228,
+      "startTicks": "6708248",
+      "state": "S"
+    },
+    {
+      "pid": 3920304,
+      "ppid": 3920228,
+      "startTicks": "6708250",
+      "state": "S"
+    },
+    {
+      "pid": 3920306,
+      "ppid": 3920228,
+      "startTicks": "6708251",
+      "state": "S"
+    },
+    {
+      "pid": 3920328,
+      "ppid": 3920201,
+      "startTicks": "6708255",
+      "state": "S"
+    }
+  ],
+  "allClosed": true,
+  "forced": [],
+  "ended": 1788697435.431937,
+  "freeAfter": 6094397440,
+  "postPinsExact": true
+}

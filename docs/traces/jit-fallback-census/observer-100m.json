@@ -1,0 +1,133 @@
+{
+  "kind": "observer",
+  "fixturePath": ".context/graphics-speed/fixed-dismiss.snap",
+  "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "moduleSha256": "c8d213d084eebb85a68c28f86171b46edaac8b8edcf3177afc9276e9ba18d89f",
+  "seedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "definitionCount": 512,
+  "initialActive": 512,
+  "instructions": 100000000,
+  "checkpoints": [
+    {
+      "done": 25000000,
+      "rawSha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+      "bytes": 244965346,
+      "generated": 17508815,
+      "calls": 2625228,
+      "regions": 510,
+      "census": {
+        "calls": 7491185,
+        "ok": 7491185,
+        "fetched": 7490038,
+        "nofetch": 1147,
+        "nonok": 0,
+        "overflow": 0,
+        "mapOverflow": 0,
+        "epoch": 2,
+        "installs": 0,
+        "rows": 134115,
+        "enabled": 1
+      }
+    },
+    {
+      "done": 50000000,
+      "rawSha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+      "bytes": 245731298,
+      "generated": 35745609,
+      "calls": 5073162,
+      "regions": 510,
+      "census": {
+        "calls": 14254391,
+        "ok": 14254391,
+        "fetched": 14252264,
+        "nofetch": 2127,
+        "nonok": 0,
+        "overflow": 0,
+        "mapOverflow": 0,
+        "epoch": 2,
+        "installs": 0,
+        "rows": 165558,
+        "enabled": 1
+      }
+    },
+    {
+      "done": 75000000,
+      "rawSha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+      "bytes": 246837218,
+      "generated": 54992020,
+      "calls": 7228006,
+      "regions": 510,
+      "census": {
+        "calls": 20007980,
+        "ok": 20007980,
+        "fetched": 20005781,
+        "nofetch": 2199,
+        "nonok": 0,
+        "overflow": 0,
+        "mapOverflow": 0,
+        "epoch": 2,
+        "installs": 0,
+        "rows": 248385,
+        "enabled": 1
+      }
+    },
+    {
+      "done": 100000000,
+      "rawSha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+      "bytes": 248274914,
+      "generated": 73093840,
+      "calls": 9273308,
+      "regions": 509,
+      "census": {
+        "calls": 26906160,
+        "ok": 26906160,
+        "fetched": 26903869,
+        "nofetch": 2291,
+        "nonok": 0,
+        "overflow": 0,
+        "mapOverflow": 0,
+        "epoch": 2,
+        "installs": 0,
+        "rows": 285763,
+        "enabled": 1
+      }
+    }
+  ],
+  "frame": {
+    "width": 320,
+    "height": 480,
+    "sha256": "4d9e9478b41ddb9e31108744025cc07a518043d43096ef78cd8d044b6565e69b"
+  },
+  "census": {
+    "calls": 26906160,
+    "ok": 26906160,
+    "fetched": 26903869,
+    "nofetch": 2291,
+    "nonok": 0,
+    "overflow": 0,
+    "mapOverflow": 0,
+    "epoch": 2,
+    "installs": 0,
+    "rows": 285763,
+    "enabled": 0
+  },
+  "admission": [
+    13245881,
+    58329,
+    7722911,
+    5584,
+    5873455
+  ],
+  "provenance": [
+    2233,
+    0,
+    13036968,
+    3865210,
+    1792015,
+    302276,
+    7907455,
+    3,
+    0
+  ],
+  "passed": true
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 104, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 86, in run
+    assert data[off:off+size]==captures[request][4*wb:4*wa],'actual copied bytes differ from capture'
+AssertionError: actual copied bytes differ from capture

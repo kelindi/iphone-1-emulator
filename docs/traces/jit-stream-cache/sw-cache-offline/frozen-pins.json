@@ -1,0 +1,30 @@
+{
+  "sources": {
+    "runner.mjs": "78d0503fb916774ee7aae678ca1bf7dfb0d227a52195a33781ada7f7eea33ba4",
+    "run-pair.py": "1f74df78f0fb9906d77c602bb07439198c4e1bdba21949743886756ea786deac",
+    "prepare.py": "f1df00b4d4bfb6ac30a54967731350de38e3bad8194797a24a551e07ca3afeaa",
+    "site-pins.json": "3f1408d48a26abd31d65233c74f7cfa0ab43b9545fb32a88d206bc973919d3a5",
+    "cache-server.mjs": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+    "frame-packet.mjs": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+    "frames.mjs": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+    "check-receipt.py": "ff7cc550ef142d97ffbe932302477b25071c020cabc72bc4770a920fa5907d8e",
+    "analyze-cache.py": "a099c8b3a8c8f5c41705c221e677636813f459940abbcda3eb3a5c2b2318f909",
+    "install-wait.mjs": "5961a0cc1417ffaf023d598422ebbd8897b219ebb1d03219cb086b86b0608c3d",
+    "install-wait.test.mjs": "ef42adbe34be95e8006ecc0c035721975c982565588d97284612ade1645ad274",
+    "candidate/web/setup.html": "d8c16b6f3606aeedf98144044f098ba1f740dbe7586ea012909221986b3fe589",
+    "candidate/web/install-wait.mjs": "5961a0cc1417ffaf023d598422ebbd8897b219ebb1d03219cb086b86b0608c3d",
+    "physical-server.mjs": "ad6afee642e34ae8da5fc12a33a80819483fe417f78cfb7a4f6a8ccfb4939ce8",
+    "stopped-server-smoke.mjs": "cda025a0d3d77972ea655abdcf2455609ce2890487614689f06ab92eebb0998b",
+    "http-preflight.mjs": "55ac553dd37527a36c5f41245712a8582ba8f47928c841bf9b88561da5ba5003"
+  },
+  "profileAbsent": true,
+  "references": {
+    ".context/jit-return-visit-v3/references/C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    ".context/jit-return-visit-v3/references/C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    ".context/jit-return-visit-v3/references/H1-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    ".context/jit-return-visit-v3/references/H1-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+  },
+  "helperSha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40",
+  "chromeSha256": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797",
+  "scope": "Fresh full functional offline pair, same240s cap/no retry. Unchanged UI/SW/remote firmware. Own origin listener physically stops and all connections close after verified setup; TCP ECONNREFUSED before guest and remains stopped in fresh return process. Exact SW-only Debugger source before guest, disabled/detached. Three nonce fetch denials require actual ERR_INTERNET_DISCONNECTED or ERR_CONNECTION_REFUSED and zero actual HTTP requests. Same unmodified guest/fullframe/autosave/nativecache gates. >=5GiB free per process. No timing claim."
+}

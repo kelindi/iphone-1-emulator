@@ -1,0 +1,157 @@
+[  0%] Building C object core/CMakeFiles/emucore.dir/src/arm/arm_interp.c.o
+[  1%] Building C object core/CMakeFiles/emucore.dir/src/arm/vfp.c.o
+[  2%] Building C object core/CMakeFiles/emucore.dir/src/arm/a64_static_engine.c.o
+[  3%] Building C object core/CMakeFiles/emucore.dir/src/mmu.c.o
+[  5%] Building C object core/CMakeFiles/emucore.dir/src/snapshot.c.o
+[  5%] Building C object core/CMakeFiles/emucore.dir/src/vm_source.c.o
+[  6%] Building C object core/CMakeFiles/emucore.dir/src/vm_block.c.o
+[  7%] Building C object core/CMakeFiles/emucore.dir/src/md_bridge.c.o
+[  8%] Building C object core/CMakeFiles/emucore.dir/src/md_raw_bridge.c.o
+[  9%] Building C object core/CMakeFiles/emucore.dir/src/soc/uart.c.o
+[ 10%] Building C object core/CMakeFiles/emucore.dir/src/soc/vic.c.o
+[ 11%] Building C object core/CMakeFiles/emucore.dir/src/soc/timer.c.o
+[ 12%] Building C object core/CMakeFiles/emucore.dir/src/soc/mbx.c.o
+[ 13%] Building C object core/CMakeFiles/emucore.dir/src/soc/power.c.o
+[ 14%] Building C object core/CMakeFiles/emucore.dir/src/soc/clcd.c.o
+[ 14%] Building C object core/CMakeFiles/emucore.dir/src/soc/tvout.c.o
+[ 15%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2c.c.o
+[ 16%] Building C object core/CMakeFiles/emucore.dir/src/soc/pcf50635.c.o
+[ 17%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8991.c.o
+[ 18%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8758.c.o
+[ 19%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2s.c.o
+[ 20%] Building C object core/CMakeFiles/emucore.dir/src/soc/spi.c.o
+[ 21%] Building C object core/CMakeFiles/emucore.dir/src/soc/gpioic.c.o
+[ 22%] Building C object core/CMakeFiles/emucore.dir/src/soc/buttons.c.o
+[ 23%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz2.c.o
+[ 24%] Building C object core/CMakeFiles/emucore.dir/src/soc/mt_common.c.o
+[ 25%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz1.c.o
+[ 26%] Building C object core/CMakeFiles/emucore.dir/src/soc/usbotg.c.o
+[ 27%] Building C object core/CMakeFiles/emucore.dir/src/soc/pl080.c.o
+[ 28%] Building C object core/CMakeFiles/emucore.dir/src/soc/nor.c.o
+[ 28%] Building C object core/CMakeFiles/emucore.dir/src/soc/nand.c.o
+[ 29%] Building C object core/CMakeFiles/emucore.dir/src/soc/storage.c.o
+[ 30%] Building C object core/CMakeFiles/emucore.dir/src/soc/machine.c.o
+[ 31%] Building C object core/CMakeFiles/emucore.dir/src/board/board.c.o
+[ 32%] Building C object core/CMakeFiles/emucore.dir/src/board/m68.c.o
+[ 33%] Building C object core/CMakeFiles/emucore.dir/src/board/n82.c.o
+[ 34%] Building C object core/CMakeFiles/emucore.dir/src/firmware/img3.c.o
+[ 35%] Building C object core/CMakeFiles/emucore.dir/src/firmware/aes.c.o
+[ 36%] Building C object core/CMakeFiles/emucore.dir/src/firmware/loader.c.o
+[ 37%] Building C object core/CMakeFiles/emucore.dir/src/firmware/devicetree.c.o
+[ 38%] Building C object core/CMakeFiles/emucore.dir/src/firmware/lzss.c.o
+[ 39%] Building C object core/CMakeFiles/emucore.dir/src/firmware/macho.c.o
+[ 40%] Building C object core/CMakeFiles/emucore.dir/src/firmware/ksyms.c.o
+[ 41%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup.c.o
+[ 42%] Building C object core/CMakeFiles/emucore.dir/src/boot/dt_patch.c.o
+[ 42%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup_os1.c.o
+[ 43%] Linking C static library libemucore.a
+[ 43%] Built target emucore
+[ 44%] Building C object core/CMakeFiles/test_soc.dir/tests/test_soc.c.o
+[ 45%] Building C object core/CMakeFiles/test_arm.dir/tests/test_arm.c.o
+[ 46%] Linking C executable test_soc
+[ 47%] Linking C executable test_arm
+lto-wrapper: warning: using serial compilation of 4 LTRANS jobs
+lto-wrapper: warning: using serial compilation of 7 LTRANS jobs
+[ 47%] Built target test_arm
+[ 48%] Building C object core/CMakeFiles/test_devicetree.dir/tests/test_devicetree.c.o
+[ 49%] Linking C executable test_devicetree
+[ 49%] Built target test_devicetree
+[ 50%] Building C object core/CMakeFiles/test_macho.dir/tests/test_macho.c.o
+[ 51%] Linking C executable test_macho
+[ 51%] Built target test_macho
+[ 52%] Building C object core/CMakeFiles/test_lzss.dir/tests/test_lzss.c.o
+[ 53%] Linking C executable test_lzss
+[ 53%] Built target test_lzss
+[ 54%] Building C object core/CMakeFiles/test_loader.dir/tests/test_loader.c.o
+[ 55%] Linking C executable test_loader
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 55%] Built target test_soc
+[ 56%] Building C object core/CMakeFiles/test_vfp.dir/tests/test_vfp.c.o
+[ 57%] Linking C executable test_vfp
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+[ 57%] Built target test_vfp
+[ 58%] Building C object core/CMakeFiles/test_spi.dir/tests/test_spi.c.o
+[ 59%] Linking C executable test_spi
+[ 59%] Built target test_loader
+[ 60%] Building C object core/CMakeFiles/test_i2c.dir/tests/test_i2c.c.o
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 61%] Linking C executable test_i2c
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 61%] Built target test_i2c
+[ 62%] Building C object core/CMakeFiles/test_gpioic.dir/tests/test_gpioic.c.o
+[ 62%] Built target test_spi
+[ 62%] Building C object core/CMakeFiles/test_buttons.dir/tests/test_buttons.c.o
+[ 63%] Linking C executable test_gpioic
+[ 64%] Linking C executable test_buttons
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 64%] Built target test_gpioic
+[ 65%] Building C object core/CMakeFiles/test_mtz2.dir/tests/test_mtz2.c.o
+[ 65%] Built target test_buttons
+[ 66%] Linking C executable test_mtz2
+[ 67%] Building C object core/CMakeFiles/test_mtz1.dir/tests/test_mtz1.c.o
+[ 68%] Linking C executable test_mtz1
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 68%] Built target test_mtz1
+[ 68%] Building C object core/CMakeFiles/test_pl080.dir/tests/test_pl080.c.o
+[ 69%] Linking C executable test_pl080
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 69%] Built target test_mtz2
+[ 70%] Building C object core/CMakeFiles/test_mbx.dir/tests/test_mbx.c.o
+[ 70%] Built target test_pl080
+[ 71%] Building C object core/CMakeFiles/test_nand.dir/tests/test_nand.c.o
+[ 72%] Linking C executable test_nand
+[ 73%] Linking C executable test_mbx
+lto-wrapper: warning: using serial compilation of 6 LTRANS jobs
+[ 73%] Built target test_nand
+[ 74%] Building C object core/CMakeFiles/test_snapshot.dir/tests/test_snapshot.c.o
+[ 75%] Linking C executable test_snapshot
+lto-wrapper: warning: using serial compilation of 4 LTRANS jobs
+[ 75%] Built target test_mbx
+[ 76%] Building C object core/CMakeFiles/test_ksyms.dir/tests/test_ksyms.c.o
+[ 76%] Linking C executable test_ksyms
+[ 76%] Built target test_ksyms
+[ 77%] Building C object core/CMakeFiles/test_img3.dir/tests/test_img3.c.o
+[ 78%] Linking C executable test_img3
+[ 78%] Built target test_snapshot
+[ 78%] Built target test_img3
+[ 79%] Building C object core/CMakeFiles/test_aes.dir/tests/test_aes.c.o
+[ 80%] Building C object core/CMakeFiles/test_board.dir/tests/test_board.c.o
+[ 81%] Linking C executable test_aes
+[ 82%] Linking C executable test_board
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 82%] Built target test_aes
+[ 83%] Building C object core/CMakeFiles/test_bringup_os1.dir/tests/test_bringup_os1.c.o
+[ 84%] Linking C executable test_bringup_os1
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+[ 84%] Built target test_bringup_os1
+[ 85%] Building C object core/CMakeFiles/test_wm8758.dir/tests/test_wm8758.c.o
+[ 86%] Linking C executable test_wm8758
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+[ 86%] Built target test_board
+[ 87%] Building C object core/CMakeFiles/test_clock_carry.dir/tests/test_clock_carry.c.o
+[ 88%] Linking C executable test_clock_carry
+lto-wrapper: warning: using serial compilation of 4 LTRANS jobs
+[ 88%] Built target test_wm8758
+[ 89%] Building C object core/CMakeFiles/test_web_api.dir/__/web/tests/native_api.c.o
+[ 90%] Linking C executable test_web_api
+lto-wrapper: warning: using serial compilation of 5 LTRANS jobs
+[ 90%] Built target test_clock_carry
+[ 91%] Building C object tools/CMakeFiles/unlzss.dir/unlzss.c.o
+[ 92%] Linking C executable unlzss
+[ 92%] Built target unlzss
+[ 93%] Building C object tools/CMakeFiles/machoinfo.dir/machoinfo.c.o
+[ 94%] Linking C executable machoinfo
+[ 94%] Built target machoinfo
+[ 95%] Building C object tools/CMakeFiles/img3dump.dir/img3dump.c.o
+[ 96%] Linking C executable img3dump
+[ 96%] Built target img3dump
+[ 97%] Building C object tools/CMakeFiles/iphone1.dir/iphone1.c.o
+[ 98%] Linking C executable iphone1
+lto-wrapper: warning: using serial compilation of 4 LTRANS jobs
+[ 98%] Built target test_web_api
+[ 99%] Building C object tools/CMakeFiles/test_iphone1_input.dir/tests/input.c.o
+[100%] Linking C executable test_iphone1_input
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+[100%] Built target iphone1
+[100%] Built target test_iphone1_input

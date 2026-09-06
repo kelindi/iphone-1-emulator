@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": ".context/photo-bootstrap/browser-run-1/page@94798ae29451854dc14c0047621feda1.webm",
+      "bytes": 11773670,
+      "sha256": "5b27081af5ef7c40532bc2b654f34016c184bb992da60f150e3c0e0c25760b20"
+    },
+    {
+      "path": "tweets/videos/photos_first_workflow_failure.mp4",
+      "bytes": 2178593,
+      "sha256": "64a13d3a01005867bf0eda7ca19bc9e0b3829e165859e873b602d91fccb18f3b"
+    },
+    {
+      "path": "tweets/thumbnails/photos_first_workflow_failure.jpg",
+      "bytes": 34130,
+      "sha256": "f7dbd661875adddda3f9286a212aef222eb104372d497c88ff565fe5b714f902"
+    }
+  ],
+  "duration": "00:05:07.04",
+  "fullDecodeExit": 0,
+  "encoding": "FFmpeg x264 CRF23, original timing, no cuts, single decode/encode thread; thumbnail at110seconds"
+}

@@ -1,0 +1,244 @@
+{
+  "receipts": [
+    {
+      "label": "before-navigation",
+      "utc": "2026-09-06T06:13:59.386Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3803489,
+          "cpuTime": 0.4
+        },
+        {
+          "type": "renderer",
+          "id": 3803582,
+          "cpuTime": 0.01
+        },
+        {
+          "type": "renderer",
+          "id": 3803584,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "renderer",
+          "id": 3803564,
+          "cpuTime": 0.21
+        },
+        {
+          "type": "GPU",
+          "id": 3803523,
+          "cpuTime": 0.09
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3803526,
+          "cpuTime": 0.08
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3803527,
+          "cpuTime": 0.01
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3803489,
+          "ppid": 3803477,
+          "startTicks": "4494260",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803493,
+          "ppid": 3803489,
+          "startTicks": "4494261",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803494,
+          "ppid": 3803489,
+          "startTicks": "4494261",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803503,
+          "ppid": 3803489,
+          "startTicks": "4494269",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803504,
+          "ppid": 3803489,
+          "startTicks": "4494269",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803523,
+          "ppid": 3803503,
+          "startTicks": "4494277",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803526,
+          "ppid": 3803489,
+          "startTicks": "4494278",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803527,
+          "ppid": 3803504,
+          "startTicks": "4494280",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803564,
+          "ppid": 3803504,
+          "startTicks": "4494283",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803582,
+          "ppid": 3803504,
+          "startTicks": "4494286",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803584,
+          "ppid": 3803504,
+          "startTicks": "4494286",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    },
+    {
+      "label": "before-close",
+      "utc": "2026-09-06T06:14:13.398Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3803489,
+          "cpuTime": 3.1
+        },
+        {
+          "type": "renderer",
+          "id": 3803612,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "renderer",
+          "id": 3803582,
+          "cpuTime": 0.06
+        },
+        {
+          "type": "renderer",
+          "id": 3803584,
+          "cpuTime": 12.93
+        },
+        {
+          "type": "renderer",
+          "id": 3803564,
+          "cpuTime": 0.78
+        },
+        {
+          "type": "GPU",
+          "id": 3803523,
+          "cpuTime": 4.86
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3803526,
+          "cpuTime": 0.11
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3803527,
+          "cpuTime": 0.01
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 3803623,
+          "cpuTime": 0.38
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3803489,
+          "ppid": 3803477,
+          "startTicks": "4494260",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803493,
+          "ppid": 3803489,
+          "startTicks": "4494261",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803494,
+          "ppid": 3803489,
+          "startTicks": "4494261",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803503,
+          "ppid": 3803489,
+          "startTicks": "4494269",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803504,
+          "ppid": 3803489,
+          "startTicks": "4494269",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803523,
+          "ppid": 3803503,
+          "startTicks": "4494277",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803526,
+          "ppid": 3803489,
+          "startTicks": "4494278",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803527,
+          "ppid": 3803504,
+          "startTicks": "4494280",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803564,
+          "ppid": 3803504,
+          "startTicks": "4494283",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803582,
+          "ppid": 3803504,
+          "startTicks": "4494286",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803584,
+          "ppid": 3803504,
+          "startTicks": "4494286",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803612,
+          "ppid": 3803504,
+          "startTicks": "4494300",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803623,
+          "ppid": 3803504,
+          "startTicks": "4494307",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+--- stage-r/source/continuation.inc
++++ stage-s/source/continuation.inc
+@@ -46,6 +46,7 @@
+  if(r==CONSUME_ACCEPT){
+   if(consumed.reads==1){
+    if(address!=CONSUME_BASE||width!=4||!destination_begin(&destination,&machine.cpu,machine.ram,machine.ram_base,machine.ram_size))stop("first PCM destination observer rejected",address,value,width);
++   if(!transport_export(&machine,&destination,output,"copy",false))stop("transport copy export failed",0,0,0);
+    destination_export();printf("DESTINATION BEGIN cycles%llu source%08x destination%08x readerPC%08x cpsr%08x savedLR%08x callerWindowAvailable%u ttbr0%08x ttbr1%08x ttbcr%08x dacr%08x\n",(unsigned long long)destination.cycles,destination.regs[1],destination.regs[0],destination.regs[15],destination.cpsr,destination.regs[14],destination.caller_available,destination.ttbr0,destination.ttbr1,destination.ttbcr,destination.dacr);
+   }
+   read_record*record=&read_ledger[consumed.reads-1];*record=(read_record){address,width,value,machine.cpu.r[15],machine.cpu.cpsr,owner,machine.cpu.cycles};
+@@ -89,6 +90,7 @@
+     (release_pc!=0xc0272690&&release_pc!=0xc02726a8&&release_pc!=0xc02726c4))stop("release without complete handoff evidence",release_pc,consumed.covered,0);
+  if(memcmp(sram.bytes+AMC_OUTPUT0,consumed.expected,CONSUME_BYTES)||first_owner()!=1)stop("released PCM changed",0,0,0);
+  if(!destination_finish(&destination,machine.ram,machine.ram_base,machine.ram_size,consumed.expected,machine.cpu.cycles))stop("destination copy bytes/addressspace differ",destination.regs[0],0,4096);
++ if(!transport_export(&machine,&destination,output,"release",true))stop("transport release export failed",0,0,0);
+  destination_export();printf("DESTINATION VERIFIED source%08x destination%08x bytes4096 captureCycles%llu finishCycles%llu retainedUserContext1\n",destination.regs[1],destination.regs[0],(unsigned long long)destination.cycles,(unsigned long long)destination.finished_cycles);
+  printf("PASS first PCM read and ownership returned cycles%llu releaseStoreCycles%llu pc%08x reads%u covered%u ipc%u copy%u published%llu; no next guest instruction or service\n",(unsigned long long)machine.cpu.cycles,(unsigned long long)release_cycles,release_pc,consumed.reads,consumed.covered,ipc_complete,copy_complete,(unsigned long long)engine.published_frames);result=6;
+ }
+--- stage-r/source/probe.c
++++ stage-s/source/probe.c
+@@ -16,6 +16,7 @@
+ #include "later.h"
+ #include "retirement.h"
+ #include "destination.h"
++#include "transport.h"
+ #include <setjmp.h>
+ static arm_bus_t original;
+ static amc_sram_t sram, expected;
+@@ -381,6 +382,7 @@
+   }
+   printf("PASS first PCM publication after retired instruction cycles%llu ticks%llu decodedFrames%llu decodedBytes%llu sampleUnits%llu buffer%u events%08x mask%08x inputPending%u irqWouldAssert%u serviceCalls%llu; no next guest instruction or output IRQ refresh\n",
+    (unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,(unsigned long long)engine.decoded_frames,(unsigned long long)engine.decoded_bytes,(unsigned long long)engine.sample_units,before,engine.events,engine.mask,engine.input_pending,amc_engine_irq(&engine),(unsigned long long)service_calls);
++  if(!transport_export(&machine,NULL,output,"first-pcm",false))stop("transport export failed",0,0,0);
+   first_boundary();irq_level(true);return;
+  }
+  irq_level(true);
+@@ -390,6 +392,7 @@
+  if(!load_exact(argv[4],policy_sram,sizeof policy_sram)||!load_exact(argv[5],policy_written,sizeof policy_written))return 8;
+  amc_engine_init(&engine);amc_idle_init(&idle);amc_sram_init(&sram);amc_sram_init(&expected);
+  machine_ready=s5l_board_init(s5l_board_find("m68"),&machine,256u<<20);if(!machine_ready||snapshot_load(&machine,argv[1]))return 3;
++ if(!transport_export(&machine,NULL,output,"fixture",false))return 11;
+  if(amc_sram_ram_conflict(machine.ram_base,machine.ram_size))return 4;
+  physical=(amc_physical_ram){machine.ram,machine.ram_base,machine.ram_size};
+  machine.mtz1.uptime_ms=machine.timer.ticks/6000;machine.mtz1.uptime_tick_acc=machine.timer.ticks%6000;
+--- stage-r/source/test_service.c
++++ stage-s/source/test_service.c
+@@ -1,11 +1,14 @@
+ /* This retained retirement-wrapper unit stubs the new destination gate,
+  * which has its own real-MMU positive/negative test. No guest evidence. */
++#define transport_export synthetic_transport_export
+ #define destination_finish synthetic_destination_finish
+ #define main isolated_guest_main
+ #include "probe.c"
+ #undef main
++#undef transport_export
+ #undef destination_finish
+ bool synthetic_destination_finish(destination_observer*o,const uint8_t*r,uint32_t b,uint32_t n,const uint8_t*e,uint64_t c){(void)o;(void)r;(void)b;(void)n;(void)e;(void)c;return true;}
++bool synthetic_transport_export(const s5l8900_t*m,const destination_observer*d,const char*p,const char*s,bool f){(void)m;(void)d;(void)p;(void)s;(void)f;return true;}
+ static unsigned checks;
+ static uint32_t fake_clock(void*ctx,uint32_t address){(void)ctx;(void)address;return 0;}
+ #define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"service:%u %s\n",__LINE__,#x);exit(1);}}while(0)
+@@ -13,7 +16,7 @@
+ static void reject_boundary(const char*why){(void)why;before_engine=engine;before_sram=sram;result=0;
+  if(!setjmp(finish)){service_boundary();CHECK(false);}CHECK(result==1);CHECK(!memcmp(&engine,&before_engine,sizeof engine));CHECK(!memcmp(&sram,&before_sram,sizeof sram));}
+ int main(void){
+- output=".context/amc-first/stage-r/service-artifacts";
++ output=".context/amc-first/stage-s/service-artifacts";
+  uint8_t pcm[CONSUME_BYTES];for(unsigned i=0;i<sizeof pcm;i++)pcm[i]=(uint8_t)i;
+  consume_begin(&consumed,pcm);engine_started=first_saved=true;engine.sram=&sram;engine.idle=&idle;
+  engine.published_frames=2;engine.next_output=0;engine.service=true;engine.queue_used=10;
+--- stage-r/source/test_transport.c
++++ stage-s/source/test_transport.c
+@@ -0,0 +1,29 @@
++#include "transport.h"
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks,callbacks;
++#define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"transport:%u %s\n",__LINE__,#x);exit(1);}}while(0)
++static uint32_t forbidden(void*c,uint32_t a){(void)c;(void)a;callbacks++;return 0;}
++static void put(uint8_t*r,uint32_t a,uint32_t v){memcpy(r+a,&v,4);}
++int main(void){
++ s5l8900_t*m=calloc(1,sizeof*m),*before=malloc(sizeof*m);uint8_t*ram=calloc(1,0x400000),*saved=malloc(0x400000);transport_values*v=malloc(sizeof*v);CHECK(m&&before&&ram&&saved&&v);
++ m->ram=ram;m->ram_base=0x10000000;m->ram_size=0x400000;m->bus.read32=forbidden;m->cpu.bus=&m->bus;m->cpu.cpsr=0x60000010;m->cpu.cp15.sctlr=1;m->cpu.cp15.ttbr0=0x10000000;m->cpu.cp15.dacr=1;
++ put(ram,0x392*4,0x10100c02);put(ram,0x312*4,0x10200c02);
++ FILE*f=fopen(".context/amc-first/stage-r/run-1/destination-caller.bin","rb");CHECK(f&&fread(ram+0x22b2b4,1,32,f)==32);fclose(f);
++ for(unsigned i=0;i<64;i++)ram[0x154d38+i]=(uint8_t)(i+7);
++ destination_observer d={.captured=true,.context=&m->cpu,.caller_available=true,.caller_address=0x3122b2b4,.cpsr=0x60000010};d.regs[14]=0x3122b2b8;d.regs[5]=0x39254d38;memcpy(d.caller,ram+0x22b2b4,32);
++ uint8_t out[64],zero[64]={0};*before=*m;memcpy(saved,ram,0x400000);CHECK(transport_manager(&d,ram,m->ram_base,m->ram_size,out));CHECK(!memcmp(out,ram+0x154d38,64));CHECK(!memcmp(m,before,sizeof*m)&&!memcmp(ram,saved,0x400000)&&!callbacks);
++ #define FAIL() do{memset(out,0,64);CHECK(!transport_manager(&d,ram,m->ram_base,m->ram_size,out));CHECK(!memcmp(out,zero,64));}while(0)
++ d.regs[5]^=4;FAIL();d.regs[5]^=4;d.regs[14]^=4;FAIL();d.regs[14]^=4;d.caller[3]^=1;FAIL();d.caller[3]^=1;d.cpsr^=32;FAIL();d.cpsr^=32;m->cpu.cpsr=0x60000013;FAIL();m->cpu.cpsr=0x60000010;
++ put(ram,0x392*4,0x10100402);FAIL();put(ram,0x392*4,0x10100c02);m->cpu.cp15.ttbr0+=0x4000;FAIL();m->cpu.cp15.ttbr0-=0x4000;ram[0x22b2b4]^=1;FAIL();ram[0x22b2b4]^=1;
++ CHECK(transport_collect(m,v));CHECK(v->count==467);CHECK(!memcmp(m,before,sizeof*m)&&!memcmp(ram,saved,0x400000)&&!callbacks);
++ m->dmac[0].config=1;m->dmac[0].ch[0].cfg=1;m->dmac[0].ch[0].lli=0x10000043;
++ CHECK(transport_lli(m,0,0,out));CHECK(!memcmp(out,ram+0x40,16));m->dmac[0].ch[0].lli=0x103ffff5;CHECK(!transport_lli(m,0,0,out));m->dmac[0].ch[0].lli=0xfffffff3;CHECK(!transport_lli(m,0,0,out));m->dmac[0].ch[0].lli=0;CHECK(!transport_lli(m,0,0,out));
++ m->dmac[0].ch[0].lli=0x10000040;m->dmac[0].ch[0].cfg|=PL080_CFG_HALT;CHECK(!transport_lli(m,0,0,out));m->dmac[0].ch[0].cfg=0;CHECK(!transport_lli(m,0,0,out));m->dmac[0].ch[0].cfg=1;m->dmac[0].config=0;CHECK(!transport_lli(m,0,0,out));CHECK(!transport_lli(m,2,0,out));CHECK(!transport_lli(m,0,8,out));
++ *before=*m;CHECK(transport_export(m,&d,".context/amc-first/stage-s/service-artifacts","synthetic",true));CHECK(!memcmp(m,before,sizeof*m)&&!memcmp(ram,saved,0x400000)&&!callbacks);
++ uint32_t clock[1024],oldclock[1024];for(unsigned i=0;i<1024;i++)clock[i]=i*17;memcpy(oldclock,clock,sizeof clock);
++ m->stub_count=1;m->stubs[0].base=S5L8900_CLOCK_BASE;m->stubs[0].nregs=1024;m->stubs[0].size=4096;m->stubs[0].regs=clock;*before=*m;
++ CHECK(transport_collect(m,v));CHECK(v->count==1497);CHECK(!memcmp(clock,oldclock,sizeof clock)&&!memcmp(m,before,sizeof*m)&&!callbacks);
++ m->stub_count=S5L_STUB_MAX+1;CHECK(!transport_collect(m,v));m->stub_count=1;m->stubs[0].base=S5L8900_CLOCK_BASE;m->stubs[0].nregs=1025;CHECK(!transport_collect(m,v));
++ printf("transport observation %u PASS; synthetic only\n",checks);free(v);free(saved);free(ram);free(before);free(m);
++}
+--- stage-r/source/transport.c
++++ stage-s/source/transport.c
+@@ -0,0 +1,40 @@
++#include "transport.h"
++#include <string.h>
++#include <stdlib.h>
++static const uint8_t expected_caller[32]={82,138,2,235,0,48,149,229,12,32,149,229,8,16,157,229,2,32,99,224,2,48,138,224,1,48,67,226,34,230,160,225};
++bool transport_manager(const destination_observer*d,const uint8_t*ram,uint32_t base,uint32_t size,uint8_t out[64]){
++ if(!d||!d->captured||!d->context||!d->caller_available||d->caller_address!=0x3122b2b4||d->regs[14]!=0x3122b2b8||d->regs[5]!=0x39254d38||(d->cpsr&63)!=16||(d->context->cpsr&63)!=16||memcmp(d->caller,expected_caller,32))return false;
++ uint8_t bytes[64],code[32];
++ if(!amc_peek_ram(d->context,ram,base,size,d->caller_address,code,32)||memcmp(code,expected_caller,32)||!amc_peek_ram(d->context,ram,base,size,d->regs[5],bytes,64))return false;
++ memcpy(out,bytes,64);return true;
++}
++bool transport_lli(const s5l8900_t*m,unsigned d,unsigned c,uint8_t out[16]){
++ if(!m||!m->ram||d>=2||c>=8)return false;
++ const s5l_pl080_t*p=&m->dmac[d];const s5l_pl080_chan_t*x=&p->ch[c];uint32_t a=x->lli&~3u;
++ /* Existing runnable enable, not the always-zero model Active bit. No chain walk. */
++ if(!(p->config&1)||!(x->cfg&1)||(x->cfg&PL080_CFG_HALT)||!a||a<m->ram_base||(uint64_t)a+16>(uint64_t)m->ram_base+m->ram_size)return false;
++ memcpy(out,m->ram+(a-m->ram_base),16);return true;
++}
++static bool add(transport_values*v,const char*n,uint64_t x){if(v->count>=TRANSPORT_VALUES)return false;v->names[v->count]=n;v->values[v->count++]=x;return true;}
++#define V(n,x) do{if(!add(v,n,(x)))return false;}while(0)
++bool transport_collect(const s5l8900_t*m,transport_values*v){
++ if(!m||!v||m->stub_count>S5L_STUB_MAX)return false;memset(v,0,sizeof *v);
++ V("cycles",m->cpu.cycles);V("timerTicks",m->timer.ticks);
++ for(unsigned i=0;i<2;i++){const s5l_i2s_t*x=&m->i2s[i];V("i2s.index",i);for(unsigned j=0;j<7;j++)V("i2s.reg",x->regs[j]);V("i2s.reads",x->reads);V("i2s.writes",x->writes);V("i2s.unknownReads",x->unknown_reads);V("i2s.unknownWrites",x->unknown_writes);V("i2s.unknownCount",x->unknown_off_count);for(unsigned j=0;j<S5L_I2S_UNKNOWN_OFF;j++)V("i2s.unknownOffset",x->unknown_off[j]);}
++ for(unsigned i=0;i<2;i++){const s5l_pl080_t*x=&m->dmac[i];V("dmac.index",i);V("dmac.config",x->config);V("dmac.sync",x->sync);V("dmac.rawTc",x->raw_tc);V("dmac.rawErr",x->raw_err);
++ V("dmac.reads",x->reads);V("dmac.writes",x->writes);V("dmac.unknownReads",x->unknown_reads);V("dmac.unknownWrites",x->unknown_writes);V("dmac.items",x->items);V("dmac.transfers",x->transfers);V("dmac.bytes",x->bytes_moved);V("dmac.completions",x->completions);V("dmac.configWrites",x->config_writes);V("dmac.configFirst",x->config_first);
++ for(unsigned j=0;j<8;j++){const s5l_pl080_chan_t*c=&x->ch[j];V("channel.index",j);V("channel.src",c->src);V("channel.dst",c->dst);V("channel.lli",c->lli);V("channel.ctrl",c->ctrl);V("channel.cfg",c->cfg);V("channel.runs",c->runs);V("channel.bytes",c->bytes);}}
++ V("power.state",m->power.state);V("power.cfg0",m->power.cfg0);V("power.cfg1",m->power.cfg1);V("power.sram",m->power.sram);V("power.cfg24",m->power.cfg24);V("power.cfg28",m->power.cfg28);
++ for(unsigned j=0;j<WM8991_NREG;j++){V("wm8758.reg",m->codec.regs[j]);V("wm8758.written",m->codec.written[j]);}V("wm8758.reads",m->codec.reg_reads);V("wm8758.writes",m->codec.reg_writes);
++ unsigned found=0;for(unsigned i=0;i<m->stub_count;i++){const s5l_stub_t*x=&m->stubs[i];if(x->base!=S5L8900_CLOCK_BASE)continue;if(found++||!x->regs||x->nregs>1024)return false;V("clock.base",x->base);V("clock.size",x->size);V("clock.count",x->nregs);V("clock.reads",x->reads);V("clock.writes",x->writes);V("clock.oob",x->oob);for(unsigned j=0;j<x->nregs;j++)V("clock.reg",x->regs[j]);}V("clock.available",found);
++ return true;
++}
++static bool filebytes(const char*dir,const char*stage,const char*suffix,const void*b,size_t n){char p[1024];if(snprintf(p,sizeof p,"%s/transport-%s-%s",dir,stage,suffix)>=(int)sizeof p)return false;FILE*f=fopen(p,"wb");if(!f)return false;bool ok=fwrite(b,1,n,f)==n;return fclose(f)==0&&ok;}
++bool transport_export(const s5l8900_t*m,const destination_observer*d,const char*dir,const char*stage,bool final){
++ transport_values*v=malloc(sizeof*v);if(!v)return false;if(!transport_collect(m,v)){free(v);return false;}uint8_t manager[64]={0},llis[256]={0};bool available=transport_manager(d,m->ram,m->ram_base,m->ram_size,manager);unsigned mask=0;
++ if(final)for(unsigned i=0;i<16;i++)if(transport_lli(m,i/8,i%8,llis+i*16))mask|=1u<<i;
++ char p[1024];if(snprintf(p,sizeof p,"%s/transport-%s.json",dir,stage)>=(int)sizeof p){free(v);return false;}FILE*f=fopen(p,"w");if(!f){free(v);return false;}
++ fprintf(f,"{\"stage\":\"%s\",\"managerAvailable\":%s,\"managerAddress\":%u,\"lliAvailableMask\":%u,\"values\":[",stage,available?"true":"false",d&&d->captured?d->regs[5]:0,mask);
++ for(unsigned i=0;i<v->count;i++)fprintf(f,"%s[\"%s\",%llu]",i?",":"",v->names[i],(unsigned long long)v->values[i]);fputs("]}\n",f);bool ok=fclose(f)==0;
++ ok=filebytes(dir,stage,"values.bin",v->values,v->count*8)&&ok;ok=filebytes(dir,stage,"manager.bin",manager,64)&&ok;ok=filebytes(dir,stage,"lli.bin",llis,256)&&ok;free(v);return ok;
++}
+--- stage-r/source/transport.h
++++ stage-s/source/transport.h
+@@ -0,0 +1,13 @@
++#ifndef AMC_TRANSPORT_OBSERVER_H
++#define AMC_TRANSPORT_OBSERVER_H
++#include "soc.h"
++#include "destination.h"
++#include <stdio.h>
++#define TRANSPORT_VALUES 4096
++/* Observer-owned scalar ledger; never serialized as emulated machine state. */
++typedef struct { const char *names[TRANSPORT_VALUES]; uint64_t values[TRANSPORT_VALUES]; unsigned count; } transport_values;
++bool transport_manager(const destination_observer*,const uint8_t*,uint32_t,uint32_t,uint8_t[64]);
++bool transport_lli(const s5l8900_t*,unsigned,unsigned,uint8_t[16]);
++bool transport_collect(const s5l8900_t*,transport_values*);
++bool transport_export(const s5l8900_t*,const destination_observer*,const char*,const char*,bool);
++#endif

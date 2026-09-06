@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 104, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/stream-audit.py", line 50, in run
+    i=address-base;assert actual[address-a]==pcm[i],'observed generation bytes differ';seen[n-1][i]=actual[address-a];cover[n-1][i]=1
+AssertionError: observed generation bytes differ

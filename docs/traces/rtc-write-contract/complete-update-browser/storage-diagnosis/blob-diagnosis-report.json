@@ -1,0 +1,14 @@
+{
+  "before": "No available blob data.",
+  "direct": {
+    "passed": false,
+    "error": "Failed to fetch",
+    "stack": "TypeError: Failed to fetch"
+  },
+  "afterDirect": "e83676b8-4dfb-47d0-a7bf-9d05f6e81da9\nRefcount: 1\nStatus: BlobStatus::DONE: Blob built with no errors.\nContent Type: application/vnd.snap\nType: file\nPath: /home/vercel-sandbox/iphone-1/.context/rtc-contract/browser-2/before-manual-change.snap\nModification Time: Sunday, September 6, 2026 at 3:18:50â€¯AM",
+  "stream": {
+    "passed": true,
+    "bytes": 105327978,
+    "chunks": 6551
+  }
+}

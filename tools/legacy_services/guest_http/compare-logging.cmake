@@ -1,0 +1,17 @@
+foreach(mode QUIET DIAGNOSTIC)
+    execute_process(COMMAND "${${mode}}"
+        RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors
+        TIMEOUT 30)
+    if(NOT result EQUAL 0)
+        message(FATAL_ERROR "${mode} contracts failed: ${result}\n${output}\n${errors}")
+    endif()
+    string(REGEX MATCH "WIRE [0-9a-f]+" digest "${output}")
+    if(NOT digest)
+        message(FATAL_ERROR "${mode} omitted its complete socket-write digest")
+    endif()
+    set(${mode}_digest "${digest}")
+    message(STATUS "${mode}: ${output}")
+endforeach()
+if(NOT QUIET_digest STREQUAL DIAGNOSTIC_digest)
+    message(FATAL_ERROR "Diagnostic logging changed actual response bytes")
+endif()

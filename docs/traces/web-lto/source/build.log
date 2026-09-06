@@ -1,0 +1,135 @@
+emcmake: cmake -S /home/vercel-sandbox/iphone-1/.context/web-lto/source -B /home/vercel-sandbox/iphone-1/.context/web-lto/control-build -DIPHONE1_WEB=ON -DIPHONE1_WASM_JIT=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DIPHONE1_WEB_DIST=/home/vercel-sandbox/iphone-1/.context/web-lto/control -DCMAKE_TOOLCHAIN_FILE=/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/vercel-sandbox/iphone-1/.context/emsdk/node/24.19.0_64bit/bin/node in directory /home/vercel-sandbox/iphone-1
+-- Found Python3: /usr/bin/python3.11 (found version "3.11.15") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/web-lto/control-build
+[  2%] Building C object core/CMakeFiles/emucore.dir/src/arm/arm_interp.c.o
+[  4%] Building C object core/CMakeFiles/emucore.dir/src/arm/vfp.c.o
+[  6%] Building C object core/CMakeFiles/emucore.dir/src/arm/a64_static_engine.c.o
+[  8%] Building C object core/CMakeFiles/emucore.dir/src/mmu.c.o
+[ 10%] Building C object core/CMakeFiles/emucore.dir/src/snapshot.c.o
+[ 12%] Building C object core/CMakeFiles/emucore.dir/src/vm_source.c.o
+[ 14%] Building C object core/CMakeFiles/emucore.dir/src/vm_block.c.o
+[ 16%] Building C object core/CMakeFiles/emucore.dir/src/md_bridge.c.o
+[ 18%] Building C object core/CMakeFiles/emucore.dir/src/md_raw_bridge.c.o
+[ 20%] Building C object core/CMakeFiles/emucore.dir/src/soc/uart.c.o
+[ 22%] Building C object core/CMakeFiles/emucore.dir/src/soc/vic.c.o
+[ 24%] Building C object core/CMakeFiles/emucore.dir/src/soc/timer.c.o
+[ 26%] Building C object core/CMakeFiles/emucore.dir/src/soc/mbx.c.o
+[ 28%] Building C object core/CMakeFiles/emucore.dir/src/soc/power.c.o
+[ 30%] Building C object core/CMakeFiles/emucore.dir/src/soc/clcd.c.o
+[ 32%] Building C object core/CMakeFiles/emucore.dir/src/soc/tvout.c.o
+[ 34%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2c.c.o
+[ 36%] Building C object core/CMakeFiles/emucore.dir/src/soc/pcf50635.c.o
+[ 38%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8991.c.o
+[ 40%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8758.c.o
+[ 42%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2s.c.o
+[ 44%] Building C object core/CMakeFiles/emucore.dir/src/soc/spi.c.o
+[ 46%] Building C object core/CMakeFiles/emucore.dir/src/soc/gpioic.c.o
+[ 48%] Building C object core/CMakeFiles/emucore.dir/src/soc/buttons.c.o
+[ 50%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz2.c.o
+[ 52%] Building C object core/CMakeFiles/emucore.dir/src/soc/mt_common.c.o
+[ 54%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz1.c.o
+[ 56%] Building C object core/CMakeFiles/emucore.dir/src/soc/usbotg.c.o
+[ 58%] Building C object core/CMakeFiles/emucore.dir/src/soc/pl080.c.o
+[ 60%] Building C object core/CMakeFiles/emucore.dir/src/soc/nor.c.o
+[ 62%] Building C object core/CMakeFiles/emucore.dir/src/soc/nand.c.o
+[ 64%] Building C object core/CMakeFiles/emucore.dir/src/soc/storage.c.o
+[ 66%] Building C object core/CMakeFiles/emucore.dir/src/soc/machine.c.o
+[ 68%] Building C object core/CMakeFiles/emucore.dir/src/board/board.c.o
+[ 70%] Building C object core/CMakeFiles/emucore.dir/src/board/m68.c.o
+[ 72%] Building C object core/CMakeFiles/emucore.dir/src/board/n82.c.o
+[ 74%] Building C object core/CMakeFiles/emucore.dir/src/firmware/img3.c.o
+[ 76%] Building C object core/CMakeFiles/emucore.dir/src/firmware/aes.c.o
+[ 78%] Building C object core/CMakeFiles/emucore.dir/src/firmware/loader.c.o
+[ 80%] Building C object core/CMakeFiles/emucore.dir/src/firmware/devicetree.c.o
+[ 82%] Building C object core/CMakeFiles/emucore.dir/src/firmware/lzss.c.o
+[ 84%] Building C object core/CMakeFiles/emucore.dir/src/firmware/macho.c.o
+[ 86%] Building C object core/CMakeFiles/emucore.dir/src/firmware/ksyms.c.o
+[ 88%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup.c.o
+[ 90%] Building C object core/CMakeFiles/emucore.dir/src/boot/dt_patch.c.o
+[ 92%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup_os1.c.o
+[ 94%] Linking C static library libemucore.a
+[ 94%] Built target emucore
+[ 96%] Building C object CMakeFiles/emu.dir/web/emu_api.c.o
+[ 98%] Building C object CMakeFiles/emu.dir/web/jit-runtime.c.o
+[100%] Linking C executable /home/vercel-sandbox/iphone-1/.context/web-lto/control/emu.js
+[100%] Built target emu
+emcmake: cmake -S /home/vercel-sandbox/iphone-1/.context/web-lto/source -B /home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build -DIPHONE1_WEB=ON -DIPHONE1_WASM_JIT=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DIPHONE1_WEB_DIST=/home/vercel-sandbox/iphone-1/.context/web-lto/candidate -DCMAKE_C_FLAGS=-flto=full -DCMAKE_TOOLCHAIN_FILE=/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/vercel-sandbox/iphone-1/.context/emsdk/node/24.19.0_64bit/bin/node in directory /home/vercel-sandbox/iphone-1
+-- Found Python3: /usr/bin/python3.11 (found version "3.11.15") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/web-lto/candidate-build
+[  2%] Building C object core/CMakeFiles/emucore.dir/src/arm/arm_interp.c.o
+[  4%] Building C object core/CMakeFiles/emucore.dir/src/arm/vfp.c.o
+[  6%] Building C object core/CMakeFiles/emucore.dir/src/arm/a64_static_engine.c.o
+[  8%] Building C object core/CMakeFiles/emucore.dir/src/mmu.c.o
+[ 10%] Building C object core/CMakeFiles/emucore.dir/src/snapshot.c.o
+[ 12%] Building C object core/CMakeFiles/emucore.dir/src/vm_source.c.o
+[ 14%] Building C object core/CMakeFiles/emucore.dir/src/vm_block.c.o
+[ 16%] Building C object core/CMakeFiles/emucore.dir/src/md_bridge.c.o
+[ 18%] Building C object core/CMakeFiles/emucore.dir/src/md_raw_bridge.c.o
+[ 20%] Building C object core/CMakeFiles/emucore.dir/src/soc/uart.c.o
+[ 22%] Building C object core/CMakeFiles/emucore.dir/src/soc/vic.c.o
+[ 24%] Building C object core/CMakeFiles/emucore.dir/src/soc/timer.c.o
+[ 26%] Building C object core/CMakeFiles/emucore.dir/src/soc/mbx.c.o
+[ 28%] Building C object core/CMakeFiles/emucore.dir/src/soc/power.c.o
+[ 30%] Building C object core/CMakeFiles/emucore.dir/src/soc/clcd.c.o
+[ 32%] Building C object core/CMakeFiles/emucore.dir/src/soc/tvout.c.o
+[ 34%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2c.c.o
+[ 36%] Building C object core/CMakeFiles/emucore.dir/src/soc/pcf50635.c.o
+[ 38%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8991.c.o
+[ 40%] Building C object core/CMakeFiles/emucore.dir/src/soc/wm8758.c.o
+[ 42%] Building C object core/CMakeFiles/emucore.dir/src/soc/i2s.c.o
+[ 44%] Building C object core/CMakeFiles/emucore.dir/src/soc/spi.c.o
+[ 46%] Building C object core/CMakeFiles/emucore.dir/src/soc/gpioic.c.o
+[ 48%] Building C object core/CMakeFiles/emucore.dir/src/soc/buttons.c.o
+[ 50%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz2.c.o
+[ 52%] Building C object core/CMakeFiles/emucore.dir/src/soc/mt_common.c.o
+[ 54%] Building C object core/CMakeFiles/emucore.dir/src/soc/mtz1.c.o
+[ 56%] Building C object core/CMakeFiles/emucore.dir/src/soc/usbotg.c.o
+[ 58%] Building C object core/CMakeFiles/emucore.dir/src/soc/pl080.c.o
+[ 60%] Building C object core/CMakeFiles/emucore.dir/src/soc/nor.c.o
+[ 62%] Building C object core/CMakeFiles/emucore.dir/src/soc/nand.c.o
+[ 64%] Building C object core/CMakeFiles/emucore.dir/src/soc/storage.c.o
+[ 66%] Building C object core/CMakeFiles/emucore.dir/src/soc/machine.c.o
+[ 68%] Building C object core/CMakeFiles/emucore.dir/src/board/board.c.o
+[ 70%] Building C object core/CMakeFiles/emucore.dir/src/board/m68.c.o
+[ 72%] Building C object core/CMakeFiles/emucore.dir/src/board/n82.c.o
+[ 74%] Building C object core/CMakeFiles/emucore.dir/src/firmware/img3.c.o
+[ 76%] Building C object core/CMakeFiles/emucore.dir/src/firmware/aes.c.o
+[ 78%] Building C object core/CMakeFiles/emucore.dir/src/firmware/loader.c.o
+[ 80%] Building C object core/CMakeFiles/emucore.dir/src/firmware/devicetree.c.o
+[ 82%] Building C object core/CMakeFiles/emucore.dir/src/firmware/lzss.c.o
+[ 84%] Building C object core/CMakeFiles/emucore.dir/src/firmware/macho.c.o
+[ 86%] Building C object core/CMakeFiles/emucore.dir/src/firmware/ksyms.c.o
+[ 88%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup.c.o
+[ 90%] Building C object core/CMakeFiles/emucore.dir/src/boot/dt_patch.c.o
+[ 92%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup_os1.c.o
+[ 94%] Linking C static library libemucore.a
+[ 94%] Built target emucore
+[ 96%] Building C object CMakeFiles/emu.dir/web/emu_api.c.o
+[ 98%] Building C object CMakeFiles/emu.dir/web/jit-runtime.c.o
+[100%] Linking C executable /home/vercel-sandbox/iphone-1/.context/web-lto/candidate/emu.js
+[100%] Built target emu
+{
+  "passed": true,
+  "controlByteIdentical": true,
+  "candidateRelinkByteIdentical": true,
+  "compileUnits": 48,
+  "candidateFlagOnly": "-flto=full for all compile units and emu link; original -O3 and VFP -ffp-contract=off preserved",
+  "targetOnly": "emu",
+  "artifacts": {
+    "control": {
+      "wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "wasmBytes": 250531
+    },
+    "candidate": {
+      "wasm": "7a528805814b7cf8ad061a1f5d2fb70aeb316c8a12585dfb25d6d08752dca740",
+      "js": "f99be828cce8eb0d53fc57591be3ee6a7bf23a0a9aacba732be98508340be47a",
+      "wasmBytes": 259019
+    }
+  },
+  "productionUnchanged": true
+}

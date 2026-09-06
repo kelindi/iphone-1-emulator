@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc",
+    "-O3",
+    "-DNDEBUG",
+    "-DS5LBOX_WASM_JIT=1",
+    "-I/home/vercel-sandbox/iphone-1/core/include",
+    "-I/home/vercel-sandbox/iphone-1/.context/jit-mixed-coverage/candidate",
+    "/home/vercel-sandbox/iphone-1/.context/jit-mixed-coverage/candidate/oracle.c",
+    "/home/vercel-sandbox/iphone-1/.context/jit-fallback-census/base-libemucore.a",
+    "-lm",
+    "-sINITIAL_MEMORY=536870912",
+    "-sALLOW_MEMORY_GROWTH=1",
+    "-sALLOW_TABLE_GROWTH=1",
+    "-sMODULARIZE=1",
+    "-sEXPORT_NAME=createOracle",
+    "-sENVIRONMENT=node",
+    "-sEXPORTED_RUNTIME_METHODS=[\"addFunction\",\"removeFunction\",\"HEAPU8\",\"HEAPU32\"]",
+    "-sEXPORTED_FUNCTIONS=[\"_malloc\",\"_free\"]",
+    "-o",
+    "/home/vercel-sandbox/iphone-1/.context/jit-mixed-coverage/candidate-oracle.cjs"
+  ]
+}

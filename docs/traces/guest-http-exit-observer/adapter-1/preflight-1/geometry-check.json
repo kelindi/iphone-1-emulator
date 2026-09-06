@@ -1,0 +1,20 @@
+[
+  {
+    "fixedRowOffset": 0,
+    "mae": 15.032564705882352
+  },
+  {
+    "fixedRowOffset": 1,
+    "mae": 0.0
+  },
+  {
+    "nativeFrame": 17,
+    "exact": false,
+    "mae": 0.0065234375
+  },
+  {
+    "nativeFrame": 18,
+    "exact": false,
+    "mae": 0.021373697916666667
+  }
+]

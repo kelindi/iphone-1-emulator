@@ -1,0 +1,6 @@
+{
+  "core/tests/test_pcf50635_update.c": "d92770621ce37fd9062e1732ef6426d89680d4b0262d5b58b1ad6eeeff8f2ee3",
+  "core/tests/test_pcf50635_pending_snapshot.c": "db298113b2dd9fd99e585a38811de89b5f57f6692116ea6be533c2543d168854",
+  "core/tests/test_i2c.c": "c1d230f749d2a5659b00d93cd6e704aaf811c8a592c77617aa513f71fd0e4d30",
+  "core/CMakeLists.txt": "671ef4607bffed46b5a7c213fca6c2d2c4bf089dc7f2b7288b32c72eb1f61ac3"
+}

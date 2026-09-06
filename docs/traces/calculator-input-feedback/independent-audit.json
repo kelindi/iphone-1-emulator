@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "run2ReportSha256": "e9e77b2b0301cec798aa80277803f9e6662be228432e0dc498879f3822dc0150",
+  "sourceMatchesPin": true,
+  "requiredAssets": 6,
+  "presses": 60,
+  "perKey": {
+    "9": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.90000000223517,
+        "p95Ms": 165.39999999850988,
+        "maxMs": 165.79999999701977
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 148.89999999850988,
+        "p95Ms": 165.79999999701977,
+        "maxMs": 165.79999999701977
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.05000000074506,
+        "p95Ms": 134.5,
+        "maxMs": 135
+      }
+    },
+    "C": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.69999999925494,
+        "p95Ms": 165.60000000149012,
+        "maxMs": 196.5
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 149.14999999850988,
+        "p95Ms": 165.80000000447035,
+        "maxMs": 196.5
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.19999999552965,
+        "p95Ms": 134.39999999850988,
+        "maxMs": 164.30000000447035
+      }
+    }
+  },
+  "negativeControls": [
+    {
+      "name": "wrongExpected",
+      "rejected": true
+    },
+    {
+      "name": "highRGBFalsePass",
+      "rejected": true
+    },
+    {
+      "name": "missingAlpha",
+      "rejected": true
+    },
+    {
+      "name": "droppedPress",
+      "rejected": true
+    },
+    {
+      "name": "wrongReleaseLatency",
+      "rejected": true
+    },
+    {
+      "name": "falseEarlierHighlight",
+      "rejected": true
+    },
+    {
+      "name": "badAssetHash",
+      "rejected": true
+    },
+    {
+      "name": "wrongPercentile",
+      "rejected": true
+    }
+  ],
+  "cadence": {
+    "betweenNewFrameSamplesMs": {
+      "count": 210,
+      "medianMs": 42.80000000074506,
+      "p95Ms": 83.29999999701977,
+      "maxMs": 100.20000000298023
+    },
+    "sequenceGaps": {
+      "1": 48,
+      "2": 121,
+      "3": 40,
+      "4": 1
+    },
+    "intervalsSkippingAtLeastOneFrame": 162,
+    "firstButtonIsFirstObservedFrame": 60,
+    "firstButtonEqualsFirstResult": 22,
+    "pulseMs": {
+      "count": 60,
+      "medianMs": 31.899999998509884,
+      "p95Ms": 32.29999999701977,
+      "maxMs": 33
+    },
+    "savedAtValues": [
+      0
+    ]
+  },
+  "scope": "Independent source/log-derived result and percentile audit.60 per-press comparison records pass strict<=2RGB/exactalpha; individual rawpixel crops were not retained, so this cannot independently recompute all60 pixel comparisons. Original independently hashed references are verified by browser source. RAF observation delays are included; no hardware/guest-vs-host attribution or retroactive threshold change."
+}

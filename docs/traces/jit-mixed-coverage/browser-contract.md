@@ -1,0 +1,21 @@
+# Frozen actual-phone comparison
+
+One separately coordinated quiet original→candidate→candidate→original series, four empty profiles. Each arm has a **240-second wall cap**; the series has a 1,040-second bound and no automatic retry. An error, loader fallback, failed full-content screen, trace loss, missing compilation CPU fields or exceeded compilation budget stops acceptance. Each arm records its complete screen and scoped browser process receipts, and the launcher confirms all recorded process identities have closed. System process snapshots at arm boundaries retain possible external workload observations; they cannot prove absence of every short background task.
+
+Both sites copy the exact previous census UI, before the separate visible-recovery change. Neither site changes app/clock/input/autosave policy. Both have the same read-only instruction-counter worker seam, with inverse source projection to the original worker. Candidate changes only derived runtime capacity, loader capacity/size bound and the measured seed expansion. The current production UI is preserved.
+
+Both use the genuine fixed-dismiss snapshot through the same diagnostic paused normal Import. The exact loaded guest ticks/cycles must match. All 512 original or 576 candidate regions must be installed before resume, followed by a fixed one-second delay. This is not an ordinary first-ever product visit; it is a controlled original-app workload. The required region count applies after paused Import, not initial default startup.
+
+Each arm makes 11 Settings/Home rounds. First observations are reported separately; the remaining ten yield 20 warm observations per action/configuration across the pair. The established release→readiness predicate is unchanged. After its 500 ms confirmation, each screenshot uses the existing fixed one-second idle plus a 50 ms raw frame pair, compact byte-exact transport, RGB tolerance at most two below raw row30, alpha exact, and no scrollbar exclusion. All 88 frames must be stable and match the independent frozen original settled references; eight first Settings/Home reference views receive manual review. Failed previous scrollbar gates remain unchanged. Normal 30-second autosave stays enabled. Validation overhead is excluded from navigation latency but advances real browser/guest time equally by method, not necessarily identical instruction counts.
+
+The promoted streaming loader is used in both arms, but all profiles start empty: this tests seed coverage and fresh compilation cost, not return-visit native code caching. Actual served core, seed, loader, worker, definitions and ABI hashes must match the frozen site. No request interception, CpuProfiler or Debugger is enabled.
+
+Compilation trace collection spans navigation-start through fixed-work-end in every arm. It includes all observed relevant WASM compilation scopes and all foreground/background PID/TIDs. Thread CPU intervals are unioned per PID/TID so nested scopes are not counted twice. Contained scopes provide a lower bound; full crossing scopes provide a conservative upper bound. Missing CPU timestamps, missing scope evidence or data loss fail this gate. Unknown module attribution is retained; this is total observed WASM compilation scope, not a claimed exact generated-seed-only time. In each forward/reverse pair, **candidate upper bound ≤ original lower bound ×1.25 +100ms** is required. Seven synthetic accounting checks cover nesting, other threads/processes, boundary overlap and missing evidence. This instrumentation may affect both arms; no uninstrumented latency claim is implied.
+
+Frozen receipt: `.context/jit-mixed-coverage/browser-frozen.json` (`e1bac331f0c972ce159bf4c3eb509764f28307e1aac66c19923e3188b866935b`). Entry command, only after root's quiet START:
+
+```
+python3 .context/jit-mixed-coverage/run-series.py
+```
+
+The launcher requires more than6GiB free before the first browser and more than4.5GiB before each subsequent arm, preserving headroom over Chrome's documented Blob disk reserve. An explicitly authorized cleanup removed only completed diagnostic HTTP/Code Cache directories; actual IndexedDB, CacheStorage proofs, traces and raw snapshots were preserved. The modified old profiles cannot be reused for a future native-cache timing comparison.

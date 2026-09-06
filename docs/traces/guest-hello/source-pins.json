@@ -1,0 +1,18 @@
+{
+  ".context/guest-hello/hello.c": "05eedf6179a3e9d897552f717c6070b938cb09158c97794d847e30ccaf1843df",
+  ".context/guest-hello/hello.o": "6b7df01b46ce918f8ca519cd6174535ba0c51b2c895d51810f2ade46949ac5b2",
+  ".context/guest-hello/iphone1-own-program": "5de86fdf8b2a9a22aac87ce891a7216eeb677d98d91e9829db85d865a8a88bfb",
+  ".context/guest-hello/probe.c": "8a61f21209c082853621c632cdb3322fab212d14593f0b4b6b090e757b5d7b50",
+  ".context/guest-hello/probe": "8d6a5958879a2cd4bd1acb8d3865de8621fd524c7aba5c8864846313ec470ddc",
+  ".context/guest-hello/prepare_probe.py": "ed155da38fe918532dbb3185809f891c9c72474ff17957f23f6fec858db8d0f6",
+  ".context/guest-hello/prepare_image.py": "da7457e8f5c72fc8ba75e2666aec9a3774da76d66dc43f57a609d77b012c8412",
+  ".context/guest-hello/rootfs_work.py": "38acdc99436ff7a786b466df852f8cd7b216e27da99b584e1670bfba1b59d377",
+  ".context/guest-hello/org.iphone1.qualification.hello.plist": "281509a212daa44a5b776fa4c08440ca95952ce28bb6c06d036c654243747b7f",
+  ".context/guest-hello/run_once.py": "85603910c97bfb6e54aaf5306bf233da4f2f7141492d634ae76a4fd8e5e4d193",
+  ".context/guest-hello/installed/hello.img": "4a6261b4043b9acd8a1db368b93862d503b1d312915f94ffcf9a18f9854f888a",
+  "tools/iphone1.c": "a61e68200247015d17480449bd13a2fb223d204c7a25ac36be0abf848a4e21ad",
+  "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+  "web/firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+  ".context/build-rtc-release/core/libemucore.a": "0ff5d8769671915486d609135394fa5b5ccb9e03b40717adb9e643676ddd75ec",
+  ".context/legacy-upgrade/shutdown/disk.img": "87271faa21af0830e2c8d174759f525d25e62adc31bceccaae9acb5230a82e12"
+}

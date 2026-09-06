@@ -1,0 +1,44 @@
+{
+  "started": 1788689306.742886,
+  "scope": "Lossless archival of closed completed RTC browser-test snapshots only. No firmware, current fixture, IndexedDB or Service Worker deletion. Original bytes recoverable by gzip decompression.",
+  "freeBefore": 5671014400,
+  "files": [
+    {
+      "originalPath": ".context/rtc-write/browser-preview/instrumented-run-1/before-picker.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/instrumented-run-1/before-picker.snap.gz",
+      "rawBytes": 256024546,
+      "rawSha256": "32593893da1cbf8b06186e85f5160808590a25fc2ea7096d4cd2abff7ed6eb87",
+      "gzipBytes": 109035596
+    },
+    {
+      "originalPath": ".context/rtc-write/browser-preview/instrumented-run-1/post-edit-1.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/instrumented-run-1/post-edit-1.snap.gz",
+      "rawBytes": 256184290,
+      "rawSha256": "5c6c13db7a76c771823feed3da5231c0018529a718864368ac13366876ae51d4",
+      "gzipBytes": 109154861
+    },
+    {
+      "originalPath": ".context/rtc-write/browser-preview/instrumented-run-1/post-edit-2.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/instrumented-run-1/post-edit-2.snap.gz",
+      "rawBytes": 256245730,
+      "rawSha256": "52fdd225d079adc3fdd8fddf46f3772404587a2e282e7cde47cb6b84907f1bb3",
+      "gzipBytes": 109160430
+    },
+    {
+      "originalPath": ".context/rtc-write/browser-preview/instrumented-run-1/after-reload-1.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/instrumented-run-1/after-reload-1.snap.gz",
+      "rawBytes": 256237538,
+      "rawSha256": "1f7321c24f2a8d4fd54b163854a9a0b161aa732a9af2d444b2cb257213a13bfc",
+      "gzipBytes": 109160561
+    },
+    {
+      "originalPath": ".context/rtc-write/browser-preview/instrumented-run-1/after-reload-2.snap",
+      "gzipPath": ".context/rtc-write/browser-preview/instrumented-run-1/after-reload-2.snap.gz",
+      "rawBytes": 256286690,
+      "rawSha256": "a8599045c464cc5b4829878145351a6f30fa9d3e898617b341b464c53ca839ee",
+      "gzipBytes": 109167176
+    }
+  ],
+  "ended": 1788689343.524158,
+  "freeAfter": 6149529600
+}

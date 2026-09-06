@@ -1,0 +1,112 @@
+{
+  "observations": {
+    "_number": "0x20a8",
+    "_bytes": "0x2394"
+  },
+  "passed": true,
+  "bytes": 17516,
+  "sha256": "18aff252b132a390881f5d676b44810e979dff8c8384625ae2d62142bf2e5eed",
+  "entry": "0x1400",
+  "text": {
+    "name": "__text",
+    "segment": "__TEXT",
+    "address": 5120,
+    "size": 9120,
+    "fileOffset": 1024
+  },
+  "imports": [
+    {
+      "address": "0x4028",
+      "symbol": "___error",
+      "originalExportVA": "0x30001bb0"
+    },
+    {
+      "address": "0x4000",
+      "symbol": "__exit",
+      "originalExportVA": "0x300099f0"
+    },
+    {
+      "address": "0x401c",
+      "symbol": "_accept",
+      "originalExportVA": "0x30030520"
+    },
+    {
+      "address": "0x400c",
+      "symbol": "_bind",
+      "originalExportVA": "0x3000e8e0"
+    },
+    {
+      "address": "0x4020",
+      "symbol": "_close",
+      "originalExportVA": "0x30009880"
+    },
+    {
+      "address": "0x4034",
+      "symbol": "_fcntl",
+      "originalExportVA": "0x3000bad0"
+    },
+    {
+      "address": "0x4010",
+      "symbol": "_getsockname",
+      "originalExportVA": "0x3000e860"
+    },
+    {
+      "address": "0x402c",
+      "symbol": "_ioctl",
+      "originalExportVA": "0x30001d70"
+    },
+    {
+      "address": "0x4014",
+      "symbol": "_listen",
+      "originalExportVA": "0x30030500"
+    },
+    {
+      "address": "0x4018",
+      "symbol": "_poll",
+      "originalExportVA": "0x30067ae0"
+    },
+    {
+      "address": "0x403c",
+      "symbol": "_read",
+      "originalExportVA": "0x300097e0"
+    },
+    {
+      "address": "0x4038",
+      "symbol": "_setsockopt",
+      "originalExportVA": "0x3000e8b0"
+    },
+    {
+      "address": "0x4004",
+      "symbol": "_socket",
+      "originalExportVA": "0x3000c400"
+    },
+    {
+      "address": "0x4030",
+      "symbol": "_sysctl",
+      "originalExportVA": "0x30001450"
+    },
+    {
+      "address": "0x4008",
+      "symbol": "_usleep",
+      "originalExportVA": "0x300243a0"
+    },
+    {
+      "address": "0x4024",
+      "symbol": "_write",
+      "originalExportVA": "0x30009860"
+    }
+  ],
+  "commands": [
+    "0x1",
+    "0x1",
+    "0x1",
+    "0x1",
+    "0x2",
+    "0xb",
+    "0xe",
+    "0x5",
+    "0xc"
+  ],
+  "sourceLibrarySHA256": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+  "scope": "Own ARMv6 code,16 eager original-library imports; actual Safari server execution remains unproven."
+}

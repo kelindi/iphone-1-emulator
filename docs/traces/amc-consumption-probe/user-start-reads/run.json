@@ -1,0 +1,141 @@
+{
+  "command": [
+    ".context/amc-first/stage-p/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-p/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin",
+    ".context/amc-first/stage-g/run-1"
+  ],
+  "returncode": 10,
+  "timedOut": false,
+  "wallSeconds": 5.1358002240012866,
+  "guestPass": false,
+  "firstBoundaryAuditPass": true,
+  "secondRequestAuditPass": true,
+  "thirdRequestAuditPass": true,
+  "laterAuditPass": true,
+  "queueAuditPass": true,
+  "orderingAuditPass": true,
+  "consumptionAuditPass": false,
+  "frozenScripts": {
+    "audit.py": "eb20785818faccb54035c731d1ca11261aee0280012b70c1b95e99de2084af98",
+    "second-audit.py": "6bb317c1615a49f904acfc5db431d9b4bf4917797051af4bd3cd79dcfd93af54",
+    "third-audit.py": "03c7c7964719433a8e79e6746167c9950e610eeefded3879b915020c524cd348",
+    "later-audit.py": "72ef1575f0806489d66fd85c21e3fc25b1b323db65ed4047035c19da8bc39bf4",
+    "queue-audit.py": "b8664bad17733259d202483eb9a49d8357daef4aaf6c0554d3f7e9be0c706ef4",
+    "ordering-audit.py": "047395142634d7ed55635d83f2361631de4717ae1d7074445d1d6ac81b132c67",
+    "original-context-oracle.py": "cf336784660c1c12e032d93663ed0d87918537f480baa67130fb419a3cbbb332",
+    "mp4_oracle.py": "93d25ab33f7a343d61b9a2990524f861e3200f2d4bfe5169422400d173e27f09",
+    "commands.py": "b5d12ac6f7c5dadd99976c23a001abea68c17359570002a134baa14ce2fea9db",
+    "launch.py": "fa460a476eb56be07ada792b10acd3fe0bcb7cbe0c3b8b6a37eaf94bec3c6f78",
+    "first-audit.py": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+    "kernel-oracle.py": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9"
+  },
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructions": 5000000,
+    "postInputInstructions": 5000000,
+    "postPublicationInstructions": 5000000,
+    "maximumPublications": 2,
+    "maximumAdmittedInputs": 5,
+    "unchangedEngine": true
+  },
+  "artifactNegatives": [
+    {
+      "label": "third-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/third-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-third-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual third input lacks unique original provenance"
+    },
+    {
+      "label": "fourth-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/later-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-fourth-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual later input lacks unique original provenance"
+    },
+    {
+      "label": "fifth-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/later-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-fifth-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual later input lacks unique original provenance"
+    },
+    {
+      "label": "dma-bytes",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/later-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-dma-bytes"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual copied bytes differ from capture"
+    },
+    {
+      "label": "dma-state",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/later-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-dma-state"
+      ],
+      "returncode": 1,
+      "expectedFailure": "DMA final current/ownership differs"
+    },
+    {
+      "label": "queue",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/queue-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-queue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "owned queue differs from actual copied inputs"
+    },
+    {
+      "label": "record",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/ordering-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-record"
+      ],
+      "returncode": 1,
+      "expectedFailure": "record/log bytes differ"
+    },
+    {
+      "label": "mapped-code",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/ordering-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-mapped-code"
+      ],
+      "returncode": 1,
+      "expectedFailure": "original mapped code differs"
+    },
+    {
+      "label": "kernel-unavailable",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-p/run-1/ordering-audit.py",
+        ".context/amc-first/stage-p/run-1/negative-kernel-unavailable"
+      ],
+      "returncode": 1,
+      "expectedFailure": "unavailable kernel fields fabricated"
+    }
+  ]
+}

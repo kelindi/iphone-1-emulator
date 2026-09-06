@@ -1,0 +1,25 @@
+{
+  "scope": "Full original-speed recording, no cuts/retry; failure snapshot archived separately",
+  "media": [
+    {
+      "path": ".context/guest-http-default/browser-run-1/page@2bc40125d694eed3f7eb307d73eeb83b.webm",
+      "bytes": 37437781,
+      "sha256": "cf739afdbb3a4e4a464f060e170a35e85d425615fe1124f0cd09452251f6f47e"
+    },
+    {
+      "path": "tweets/videos/default_local_demo_qualification_failure.mp4",
+      "bytes": 6294989,
+      "sha256": "f21e829ffca5d36ad35c95724be5c86064dd83914c06291c12fcba31c2b52e3b"
+    },
+    {
+      "path": "tweets/thumbnails/default_local_demo_qualification_failure.jpg",
+      "bytes": 83752,
+      "sha256": "9b04d0a0e15204ee5a99fef499b55bbaa07c6aa5db5f17fe6aa376e4c942dfe8"
+    }
+  ],
+  "durationSeconds": 799.36,
+  "frames": 19984,
+  "framesPerSecond": 25,
+  "fullDecodeExitCode": 0,
+  "decodeLimitation": "The trailing -threads option was ignored by FFmpeg during the final artifact-only decode; encode used threads1. No speed measurement overlaps this check."
+}

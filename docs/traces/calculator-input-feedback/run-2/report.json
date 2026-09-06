@@ -1,0 +1,5550 @@
+{
+  "date": "2026-09-06T08:34:57.221Z",
+  "url": "http://localhost:8206",
+  "host": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+    "cpus": 8,
+    "memory": 17452048384,
+    "platform": "linux",
+    "release": "6.18.40"
+  },
+  "method": "30 real presses per key;30ms requested pulse; actual page pointer events; new guest frame sampled in requestAnimationFrame.40x40 key crop changes>=16pixels by>12RGB. Full320x88 result matches independently reviewed reference within2RGB/exactalpha, confirmed100ms later.650ms post-result spacing. Normal guest clock/autosave. Canvas observation, not physical display timing.",
+  "samples": [
+    {
+      "round": 1,
+      "videoSeconds": 15.642014769000001,
+      "key": "9",
+      "expected": "9",
+      "down": 15280,
+      "up": 15311,
+      "firstButton": 15362,
+      "firstResult": 15445.30000000447,
+      "downToButtonMs": 82,
+      "downToResultMs": 165.30000000447035,
+      "releaseToResultMs": 134.30000000447035,
+      "pulseMs": 31,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 15362,
+          "frame": "38",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 15445.30000000447,
+          "frame": "39",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 15487.80000000447,
+          "frame": "41",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 15533.5,
+          "frame": "43",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 15578.70000000298,
+          "frame": "45",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.6524317841079466,
+        "fps": 13.993003498250875,
+        "guestRate": 1.0000074962518741,
+        "cycles": "11336279448",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 93239061,
+          "calls": 12296726
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 1,
+      "videoSeconds": 16.782710685,
+      "key": "C",
+      "expected": "0",
+      "down": 16429.39999999851,
+      "up": 16461.39999999851,
+      "firstButton": 16528.60000000149,
+      "firstResult": 16595.20000000298,
+      "downToButtonMs": 99.20000000298023,
+      "downToResultMs": 165.80000000447035,
+      "releaseToResultMs": 133.80000000447035,
+      "pulseMs": 32,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 16528.60000000149,
+          "frame": "51",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 16595.20000000298,
+          "frame": "52",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 16638,
+          "frame": "54",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 16679.30000000447,
+          "frame": "56",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 16719.89999999851,
+          "frame": "58",
+          "changed": 1470,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 4.519396113602391,
+        "fps": 8.968609865470851,
+        "guestRate": 1.0000088025244975,
+        "cycles": "11340814662",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 96040776,
+          "calls": 12619779
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 2,
+      "videoSeconds": 17.747656511000002,
+      "key": "9",
+      "expected": "9",
+      "down": 17396.10000000149,
+      "up": 17427.80000000447,
+      "firstButton": 17561.89999999851,
+      "firstResult": 17561.89999999851,
+      "downToButtonMs": 165.79999999701977,
+      "downToResultMs": 165.79999999701977,
+      "releaseToResultMs": 134.09999999403954,
+      "pulseMs": 31.700000002980232,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 17561.89999999851,
+          "frame": "63",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 17602.70000000298,
+          "frame": "65",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 17642.80000000447,
+          "frame": "67",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 17684.60000000149,
+          "frame": "69",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.34991036746901,
+        "fps": 10.955084154948388,
+        "guestRate": 1.000004481623852,
+        "cycles": "11357231607",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 106256254,
+          "calls": 13982490
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 2,
+      "videoSeconds": 18.698830253,
+      "key": "C",
+      "expected": "0",
+      "down": 18362.89999999851,
+      "up": 18394.80000000447,
+      "firstButton": 18511.70000000298,
+      "firstResult": 18511.70000000298,
+      "downToButtonMs": 148.80000000447035,
+      "downToResultMs": 148.80000000447035,
+      "releaseToResultMs": 116.89999999850988,
+      "pulseMs": 31.900000005960464,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 18511.70000000298,
+          "frame": "76",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 18553.30000000447,
+          "frame": "78",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 18594.80000000447,
+          "frame": "80",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 18635.5,
+          "frame": "82",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.23504666406449,
+        "fps": 14.89277204136872,
+        "guestRate": 1.0000119142220714,
+        "cycles": "11367540346",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 112626815,
+          "calls": 14885375
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 3,
+      "videoSeconds": 19.664004016,
+      "key": "9",
+      "expected": "9",
+      "down": 19313.30000000447,
+      "up": 19345.39999999851,
+      "firstButton": 19378.39999999851,
+      "firstResult": 19461.70000000298,
+      "downToButtonMs": 65.09999999403954,
+      "downToResultMs": 148.39999999850988,
+      "releaseToResultMs": 116.30000000447035,
+      "pulseMs": 32.099999994039536,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 19378.39999999851,
+          "frame": "88",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 19461.70000000298,
+          "frame": "89",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 19515.70000000298,
+          "frame": "91",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 19558.80000000447,
+          "frame": "94",
+          "changed": 1445,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 19601.39999999851,
+          "frame": "96",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.370512129349198,
+        "fps": 14.974543276385516,
+        "guestRate": 0.999914312332721,
+        "cycles": "11377928488",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 119317794,
+          "calls": 15819849
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 3,
+      "videoSeconds": 20.631977510000002,
+      "key": "C",
+      "expected": "0",
+      "down": 20280,
+      "up": 20312.10000000149,
+      "firstButton": 20445,
+      "firstResult": 20445,
+      "downToButtonMs": 165,
+      "downToResultMs": 165,
+      "releaseToResultMs": 132.89999999850988,
+      "pulseMs": 32.100000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 20445,
+          "frame": "101",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 20486.60000000149,
+          "frame": "104",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 20528,
+          "frame": "106",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 20569.5,
+          "frame": "108",
+          "changed": 1196,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.747106578732298,
+        "fps": 13.997200559950583,
+        "guestRate": 1.000114310475709,
+        "cycles": "11388677744",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 126257967,
+          "calls": 16790356
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 4,
+      "videoSeconds": 21.600705898,
+      "key": "9",
+      "expected": "9",
+      "down": 21246.20000000298,
+      "up": 21278.30000000447,
+      "firstButton": 21345,
+      "firstResult": 21411.60000000149,
+      "downToButtonMs": 98.79999999701977,
+      "downToResultMs": 165.39999999850988,
+      "releaseToResultMs": 133.29999999701977,
+      "pulseMs": 32.100000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 21345,
+          "frame": "113",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 21411.60000000149,
+          "frame": "114",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 21453.70000000298,
+          "frame": "116",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 21495.80000000447,
+          "frame": "118",
+          "changed": 1446,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 21538,
+          "frame": "121",
+          "changed": 1294,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.199757388163738,
+        "fps": 14.976038338635865,
+        "guestRate": 1.000012313630035,
+        "cycles": "11398893821",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 132818618,
+          "calls": 17708292
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 4,
+      "videoSeconds": 22.549032318000002,
+      "key": "C",
+      "expected": "0",
+      "down": 22213.10000000149,
+      "up": 22245,
+      "firstButton": 22278.20000000298,
+      "firstResult": 22361.80000000447,
+      "downToButtonMs": 65.10000000149012,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 116.80000000447035,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 22278.20000000298,
+          "frame": "126",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 22361.80000000447,
+          "frame": "127",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 22404.20000000298,
+          "frame": "129",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 22445.5,
+          "frame": "131",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 22486.30000000447,
+          "frame": "133",
+          "changed": 1493,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.199757388163738,
+        "fps": 14.976038338635865,
+        "guestRate": 1.000012313630035,
+        "cycles": "11398893821",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 132818618,
+          "calls": 17708292
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 5,
+      "videoSeconds": 23.45744327,
+      "key": "9",
+      "expected": "9",
+      "down": 23162.89999999851,
+      "up": 23194.80000000447,
+      "firstButton": 23244.89999999851,
+      "firstResult": 23294.30000000447,
+      "downToButtonMs": 82,
+      "downToResultMs": 131.40000000596046,
+      "releaseToResultMs": 99.5,
+      "pulseMs": 31.900000005960464,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 23244.89999999851,
+          "frame": "140",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 23294.30000000447,
+          "frame": "141",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 23343.80000000447,
+          "frame": "142",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 23394.30000000447,
+          "frame": "145",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.368373926885255,
+        "fps": 14.973048512610365,
+        "guestRate": 1.0000131430047876,
+        "cycles": "11409280858",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 139510916,
+          "calls": 18646409
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 5,
+      "videoSeconds": 24.384205349,
+      "key": "C",
+      "expected": "0",
+      "down": 24062.89999999851,
+      "up": 24095.10000000149,
+      "firstButton": 24128.20000000298,
+      "firstResult": 24211.70000000298,
+      "downToButtonMs": 65.30000000447035,
+      "downToResultMs": 148.80000000447035,
+      "releaseToResultMs": 116.60000000149012,
+      "pulseMs": 32.20000000298023,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 24128.20000000298,
+          "frame": "154",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 24211.70000000298,
+          "frame": "155",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 24268.5,
+          "frame": "158",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 24321.5,
+          "frame": "161",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.317614294301007,
+        "fps": 16.96945498108462,
+        "guestRate": 1.0000126439106078,
+        "cycles": "11419617044",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 146035858,
+          "calls": 19558553
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 6,
+      "videoSeconds": 25.369041358,
+      "key": "9",
+      "expected": "9",
+      "down": 24996.39999999851,
+      "up": 25028.60000000149,
+      "firstButton": 25161.5,
+      "firstResult": 25161.5,
+      "downToButtonMs": 165.10000000149012,
+      "downToResultMs": 165.10000000149012,
+      "releaseToResultMs": 132.89999999850988,
+      "pulseMs": 32.20000000298023,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 25161.5,
+          "frame": "168",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 25210.80000000447,
+          "frame": "171",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 25255.39999999851,
+          "frame": "174",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 25306.20000000298,
+          "frame": "176",
+          "changed": 1014,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.405956851746893,
+        "fps": 13.983220135795374,
+        "guestRate": 1.0000139832171593,
+        "cycles": "11430035488",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 152775075,
+          "calls": 20497250
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 6,
+      "videoSeconds": 26.323225101,
+      "key": "C",
+      "expected": "0",
+      "down": 25979.39999999851,
+      "up": 26011.60000000149,
+      "firstButton": 26128.20000000298,
+      "firstResult": 26128.20000000298,
+      "downToButtonMs": 148.80000000447035,
+      "downToResultMs": 148.80000000447035,
+      "releaseToResultMs": 116.60000000149012,
+      "pulseMs": 32.20000000298023,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 26128.20000000298,
+          "frame": "180",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 26173.80000000447,
+          "frame": "181",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 26220.39999999851,
+          "frame": "184",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 26260.5,
+          "frame": "186",
+          "changed": 1489,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.911010574635643,
+        "fps": 11.971268954526975,
+        "guestRate": 1.000013301411436,
+        "cycles": "11439970285",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 159162207,
+          "calls": 21383710
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 7,
+      "videoSeconds": 27.264876771,
+      "key": "9",
+      "expected": "9",
+      "down": 26929.10000000149,
+      "up": 26961.5,
+      "firstButton": 26994.80000000447,
+      "firstResult": 27078.10000000149,
+      "downToButtonMs": 65.70000000298023,
+      "downToResultMs": 149,
+      "releaseToResultMs": 116.60000000149012,
+      "pulseMs": 32.399999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 26994.80000000447,
+          "frame": "192",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 27078.10000000149,
+          "frame": "193",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 27119.80000000447,
+          "frame": "195",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 27161.20000000298,
+          "frame": "197",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 27202.20000000298,
+          "frame": "199",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 7.987768133317176,
+        "fps": 11.972463334366639,
+        "guestRate": 1.0000079816451963,
+        "cycles": "11447976425",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 163949105,
+          "calls": 22017527
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 7,
+      "videoSeconds": 28.230540906999998,
+      "key": "C",
+      "expected": "0",
+      "down": 27879.20000000298,
+      "up": 27911.10000000149,
+      "firstButton": 28044.60000000149,
+      "firstResult": 28044.60000000149,
+      "downToButtonMs": 165.39999999850988,
+      "downToResultMs": 165.39999999850988,
+      "releaseToResultMs": 133.5,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 28044.60000000149,
+          "frame": "205",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 28085.80000000447,
+          "frame": "207",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 28126.30000000447,
+          "frame": "210",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 28168,
+          "frame": "212",
+          "changed": 1196,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 13.813249129786175,
+        "fps": 12.928891098955743,
+        "guestRate": 1.0000071274656057,
+        "cycles": "11461865647",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 172670370,
+          "calls": 23167180
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 8,
+      "videoSeconds": 29.204101733999998,
+      "key": "9",
+      "expected": "9",
+      "down": 28846,
+      "up": 28876.89999999851,
+      "firstButton": 28944.80000000447,
+      "firstResult": 29011.39999999851,
+      "downToButtonMs": 98.80000000447035,
+      "downToResultMs": 165.39999999850988,
+      "releaseToResultMs": 134.5,
+      "pulseMs": 30.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 28944.80000000447,
+          "frame": "216",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 29011.39999999851,
+          "frame": "217",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 29054.20000000298,
+          "frame": "219",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 29099.20000000298,
+          "frame": "221",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 29141.39999999851,
+          "frame": "224",
+          "changed": 1273,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.459353646353646,
+        "fps": 10.98901098901099,
+        "guestRate": 1.0000101565101567,
+        "cycles": "11472335460",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 179137702,
+          "calls": 24056114
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 8,
+      "videoSeconds": 30.168728384,
+      "key": "C",
+      "expected": "0",
+      "down": 29812.5,
+      "up": 29844.10000000149,
+      "firstButton": 29894.80000000447,
+      "firstResult": 29978,
+      "downToButtonMs": 82.30000000447035,
+      "downToResultMs": 165.5,
+      "releaseToResultMs": 133.89999999850988,
+      "pulseMs": 31.600000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 29894.80000000447,
+          "frame": "228",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 29978,
+          "frame": "229",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 30021.30000000447,
+          "frame": "232",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 30064,
+          "frame": "234",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 30106,
+          "frame": "236",
+          "changed": 1463,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.531829693903374,
+        "fps": 11.96530062819606,
+        "guestRate": 1.0000137933341544,
+        "cycles": "11482897832",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 185960039,
+          "calls": 25000059
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 9,
+      "videoSeconds": 31.134556316999998,
+      "key": "9",
+      "expected": "9",
+      "down": 30778.80000000447,
+      "up": 30810.70000000298,
+      "firstButton": 30878.10000000149,
+      "firstResult": 30944.5,
+      "downToButtonMs": 99.29999999701977,
+      "downToResultMs": 165.69999999552965,
+      "releaseToResultMs": 133.79999999701977,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 30878.10000000149,
+          "frame": "242",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 30944.5,
+          "frame": "243",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 30987.30000000447,
+          "frame": "245",
+          "changed": 1448,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 31029.80000000447,
+          "frame": "247",
+          "changed": 1445,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 31071.80000000447,
+          "frame": "249",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.099274507814432,
+        "fps": 13.990206855159695,
+        "guestRate": 1.000013657103714,
+        "cycles": "11493004176",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 192571567,
+          "calls": 25916894
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 9,
+      "videoSeconds": 32.082534609999996,
+      "key": "C",
+      "expected": "0",
+      "down": 31745.80000000447,
+      "up": 31778,
+      "firstButton": 31894.60000000149,
+      "firstResult": 31894.60000000149,
+      "downToButtonMs": 148.79999999701977,
+      "downToResultMs": 148.79999999701977,
+      "releaseToResultMs": 116.60000000149012,
+      "pulseMs": 32.19999999552965,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 31894.60000000149,
+          "frame": "255",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 31936.5,
+          "frame": "257",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 31978,
+          "frame": "259",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 32019.80000000447,
+          "frame": "261",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.546038488399354,
+        "fps": 12.962409013879064,
+        "guestRate": 0.9999140824955861,
+        "cycles": "11503580798",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 199399843,
+          "calls": 26863369
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 10,
+      "videoSeconds": 33.030242208999994,
+      "key": "9",
+      "expected": "9",
+      "down": 32695.80000000447,
+      "up": 32727.70000000298,
+      "firstButton": 32777.80000000447,
+      "firstResult": 32844.5,
+      "downToButtonMs": 82,
+      "downToResultMs": 148.69999999552965,
+      "releaseToResultMs": 116.79999999701977,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 32777.80000000447,
+          "frame": "267",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 32844.5,
+          "frame": "268",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 32886.20000000298,
+          "frame": "270",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 32926.39999999851,
+          "frame": "272",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 32966.80000000447,
+          "frame": "274",
+          "changed": 1443,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.537950403332125,
+        "fps": 11.951000896307331,
+        "guestRate": 1.0001125385902896,
+        "cycles": "11513157854",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 205638299,
+          "calls": 27730680
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 10,
+      "videoSeconds": 33.986682212,
+      "key": "C",
+      "expected": "0",
+      "down": 33645.70000000298,
+      "up": 33678,
+      "firstButton": 33794.5,
+      "firstResult": 33794.5,
+      "downToButtonMs": 148.79999999701977,
+      "downToResultMs": 148.79999999701977,
+      "releaseToResultMs": 116.5,
+      "pulseMs": 32.29999999701977,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 33794.5,
+          "frame": "281",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 33838,
+          "frame": "284",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 33881.5,
+          "frame": "286",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 33924.10000000149,
+          "frame": "289",
+          "changed": 1320,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.307718,
+        "fps": 14,
+        "guestRate": 1.0000121666666666,
+        "cycles": "11523465572",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 212202195,
+          "calls": 28649726
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 11,
+      "videoSeconds": 34.914654926999994,
+      "key": "9",
+      "expected": "9",
+      "down": 34595.89999999851,
+      "up": 34628,
+      "firstButton": 34744.39999999851,
+      "firstResult": 34744.39999999851,
+      "downToButtonMs": 148.5,
+      "downToResultMs": 148.5,
+      "releaseToResultMs": 116.39999999850988,
+      "pulseMs": 32.100000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 34744.39999999851,
+          "frame": "295",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 34799.89999999851,
+          "frame": "297",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 34851.89999999851,
+          "frame": "300",
+          "changed": 1446,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.336940223925835,
+        "fps": 13.994402239125204,
+        "guestRate": 1.0000146608038354,
+        "cycles": "11533806647",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 219001024,
+          "calls": 29593698
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 11,
+      "videoSeconds": 35.883306669999996,
+      "key": "C",
+      "expected": "0",
+      "down": 35528.70000000298,
+      "up": 35560.5,
+      "firstButton": 35611.20000000298,
+      "firstResult": 35694.30000000447,
+      "downToButtonMs": 82.5,
+      "downToResultMs": 165.60000000149012,
+      "releaseToResultMs": 133.80000000447035,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 35611.20000000298,
+          "frame": "308",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 35694.30000000447,
+          "frame": "309",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 35736.20000000298,
+          "frame": "311",
+          "changed": 1498,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 35778.20000000298,
+          "frame": "313",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 35820.5,
+          "frame": "315",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.18616174706269,
+        "fps": 12.963701635363032,
+        "guestRate": 1.0000127974958744,
+        "cycles": "11544021330",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 225508277,
+          "calls": 30502867
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 12,
+      "videoSeconds": 36.863952673,
+      "key": "9",
+      "expected": "9",
+      "down": 36512.20000000298,
+      "up": 36544.10000000149,
+      "firstButton": 36677.60000000149,
+      "firstResult": 36677.60000000149,
+      "downToButtonMs": 165.39999999850988,
+      "downToResultMs": 165.39999999850988,
+      "releaseToResultMs": 133.5,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 36677.60000000149,
+          "frame": "320",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 36719.30000000447,
+          "frame": "322",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 36758.89999999851,
+          "frame": "324",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 36801.30000000447,
+          "frame": "326",
+          "changed": 1265,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.804692476140763,
+        "fps": 11.94267515927109,
+        "guestRate": 1.000007795915917,
+        "cycles": "11552868285",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 230800134,
+          "calls": 31216941
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 12,
+      "videoSeconds": 37.814756474999996,
+      "key": "C",
+      "expected": "0",
+      "down": 37478.60000000149,
+      "up": 37510.30000000447,
+      "firstButton": 37560.89999999851,
+      "firstResult": 37627.70000000298,
+      "downToButtonMs": 82.29999999701977,
+      "downToResultMs": 149.10000000149012,
+      "releaseToResultMs": 117.39999999850988,
+      "pulseMs": 31.700000002980232,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 37560.89999999851,
+          "frame": "331",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 37627.70000000298,
+          "frame": "332",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 37669.39999999851,
+          "frame": "334",
+          "changed": 1498,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 37710.70000000298,
+          "frame": "336",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 37752,
+          "frame": "338",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.614816183816184,
+        "fps": 11.988011988011989,
+        "guestRate": 0.9999082584082585,
+        "cycles": "11559489716",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 234501512,
+          "calls": 31686070
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 13,
+      "videoSeconds": 38.763777557,
+      "key": "9",
+      "expected": "9",
+      "down": 38428.60000000149,
+      "up": 38460.30000000447,
+      "firstButton": 38577.5,
+      "firstResult": 38577.5,
+      "downToButtonMs": 148.89999999850988,
+      "downToResultMs": 148.89999999850988,
+      "releaseToResultMs": 117.19999999552965,
+      "pulseMs": 31.700000002980232,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 38577.5,
+          "frame": "343",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 38619.30000000447,
+          "frame": "345",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 38660.10000000149,
+          "frame": "348",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 38701.30000000447,
+          "frame": "349",
+          "changed": 1436,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.904777400729067,
+        "fps": 11.97843881017738,
+        "guestRate": 1.0001038131393296,
+        "cycles": "11576424922",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 244946613,
+          "calls": 33099877
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 13,
+      "videoSeconds": 39.734264308,
+      "key": "C",
+      "expected": "0",
+      "down": 39378.60000000149,
+      "up": 39410.5,
+      "firstButton": 39544.20000000298,
+      "firstResult": 39544.20000000298,
+      "downToButtonMs": 165.60000000149012,
+      "downToResultMs": 165.60000000149012,
+      "releaseToResultMs": 133.70000000298023,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 39544.20000000298,
+          "frame": "355",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 39586.30000000447,
+          "frame": "358",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 39628.39999999851,
+          "frame": "360",
+          "changed": 1493,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 39671.5,
+          "frame": "363",
+          "changed": 770,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.405587273206441,
+        "fps": 13.876499157416285,
+        "guestRate": 1.0000128853147383,
+        "cycles": "11586923119",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 251645078,
+          "calls": 34040769
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 14,
+      "videoSeconds": 40.641422901,
+      "key": "9",
+      "expected": "9",
+      "down": 40345.5,
+      "up": 40377.39999999851,
+      "firstButton": 40477.5,
+      "firstResult": 40477.5,
+      "downToButtonMs": 132,
+      "downToResultMs": 132,
+      "releaseToResultMs": 100.10000000149012,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 40477.5,
+          "frame": "367",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 40534.80000000447,
+          "frame": "369",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 40578.80000000447,
+          "frame": "372",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.405587273206441,
+        "fps": 13.876499157416285,
+        "guestRate": 1.0000128853147383,
+        "cycles": "11586923119",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 251645078,
+          "calls": 34040769
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 14,
+      "videoSeconds": 41.58193905299999,
+      "key": "C",
+      "expected": "0",
+      "down": 41244.80000000447,
+      "up": 41276.60000000149,
+      "firstButton": 41394.20000000298,
+      "firstResult": 41394.20000000298,
+      "downToButtonMs": 149.39999999850988,
+      "downToResultMs": 149.39999999850988,
+      "releaseToResultMs": 117.60000000149012,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 41394.20000000298,
+          "frame": "380",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 41436.10000000149,
+          "frame": "382",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 41478.30000000447,
+          "frame": "384",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 41519.30000000447,
+          "frame": "386",
+          "changed": 1401,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.490847491567589,
+        "fps": 14.991005396851241,
+        "guestRate": 1.0000128256439074,
+        "cycles": "11597420261",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 258438958,
+          "calls": 34988969
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 15,
+      "videoSeconds": 42.533146742,
+      "key": "9",
+      "expected": "9",
+      "down": 42195.39999999851,
+      "up": 42227.39999999851,
+      "firstButton": 42260.70000000298,
+      "firstResult": 42344.10000000149,
+      "downToButtonMs": 65.30000000447035,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 116.70000000298023,
+      "pulseMs": 32,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 42260.70000000298,
+          "frame": "391",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 42344.10000000149,
+          "frame": "392",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 42387.20000000298,
+          "frame": "394",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 42429,
+          "frame": "396",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 42470.60000000149,
+          "frame": "398",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.560585414585415,
+        "fps": 17.982017982017982,
+        "guestRate": 1.0000126540126542,
+        "cycles": "11607991407",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 265138572,
+          "calls": 35935811
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 15,
+      "videoSeconds": 43.508152081999995,
+      "key": "C",
+      "expected": "0",
+      "down": 43145.39999999851,
+      "up": 43177.30000000447,
+      "firstButton": 43244.10000000149,
+      "firstResult": 43310.80000000447,
+      "downToButtonMs": 98.70000000298023,
+      "downToResultMs": 165.40000000596046,
+      "releaseToResultMs": 133.5,
+      "pulseMs": 31.900000005960464,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 43244.10000000149,
+          "frame": "405",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 43310.80000000447,
+          "frame": "406",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 43355.80000000447,
+          "frame": "409",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 43399.70000000298,
+          "frame": "410",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 43445.20000000298,
+          "frame": "413",
+          "changed": 1159,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.619127523470095,
+        "fps": 13.991605036956978,
+        "guestRate": 1.0000136584700945,
+        "cycles": "11618616906",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 271906508,
+          "calls": 36885043
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 16,
+      "videoSeconds": 44.449968211,
+      "key": "9",
+      "expected": "9",
+      "down": 44111.60000000149,
+      "up": 44143.30000000447,
+      "firstButton": 44260.80000000447,
+      "firstResult": 44260.80000000447,
+      "downToButtonMs": 149.20000000298023,
+      "downToResultMs": 149.20000000298023,
+      "releaseToResultMs": 117.5,
+      "pulseMs": 31.700000002980232,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 44260.80000000447,
+          "frame": "417",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 44302.60000000149,
+          "frame": "419",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 44345.30000000447,
+          "frame": "421",
+          "changed": 1445,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 44387.39999999851,
+          "frame": "423",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.196228855721394,
+        "fps": 11.940298507462687,
+        "guestRate": 1.0000135986733003,
+        "cycles": "11628864116",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 278618501,
+          "calls": 37823873
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 16,
+      "videoSeconds": 45.404582614,
+      "key": "C",
+      "expected": "0",
+      "down": 45061.89999999851,
+      "up": 45093.60000000149,
+      "firstButton": 45210.60000000149,
+      "firstResult": 45210.60000000149,
+      "downToButtonMs": 148.70000000298023,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 117,
+      "pulseMs": 31.700000002980232,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 45210.60000000149,
+          "frame": "428",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 45254.80000000447,
+          "frame": "430",
+          "changed": 1498,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 45300.30000000447,
+          "frame": "432",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 45342.10000000149,
+          "frame": "435",
+          "changed": 1119,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.585535803408249,
+        "fps": 10.985718565815331,
+        "guestRate": 1.0000131495677582,
+        "cycles": "11639463413",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 285432554,
+          "calls": 38777095
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 17,
+      "videoSeconds": 46.364519533999996,
+      "key": "9",
+      "expected": "9",
+      "down": 46011.60000000149,
+      "up": 46043.39999999851,
+      "firstButton": 46094,
+      "firstResult": 46177.20000000298,
+      "downToButtonMs": 82.39999999850988,
+      "downToResultMs": 165.60000000149012,
+      "releaseToResultMs": 133.80000000447035,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 46094,
+          "frame": "440",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 46177.20000000298,
+          "frame": "441",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 46220.10000000149,
+          "frame": "443",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 46262.30000000447,
+          "frame": "445",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 46301.89999999851,
+          "frame": "447",
+          "changed": 1435,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.402918660333437,
+        "fps": 11.96172248809158,
+        "guestRate": 1.0000127924021172,
+        "cycles": "11649899621",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 292243262,
+          "calls": 39727290
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 17,
+      "videoSeconds": 47.316853576999996,
+      "key": "C",
+      "expected": "0",
+      "down": 46978.60000000149,
+      "up": 47010.5,
+      "firstButton": 47060.60000000149,
+      "firstResult": 47127.30000000447,
+      "downToButtonMs": 82,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 116.80000000447035,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 47060.60000000149,
+          "frame": "453",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 47127.30000000447,
+          "frame": "454",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 47169.80000000447,
+          "frame": "456",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 47211.39999999851,
+          "frame": "458",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 47254.20000000298,
+          "frame": "460",
+          "changed": 1475,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.767112816440147,
+        "fps": 12.95594977079859,
+        "guestRate": 1.0000114610339745,
+        "cycles": "11660703342",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 298985496,
+          "calls": 40672193
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 18,
+      "videoSeconds": 48.261406556999994,
+      "key": "9",
+      "expected": "9",
+      "down": 47928.5,
+      "up": 47960.80000000447,
+      "firstButton": 48077.20000000298,
+      "firstResult": 48077.20000000298,
+      "downToButtonMs": 148.70000000298023,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 116.39999999850988,
+      "pulseMs": 32.30000000447035,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 48077.20000000298,
+          "frame": "466",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 48118.20000000298,
+          "frame": "468",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 48158.39999999851,
+          "frame": "470",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 48198.60000000149,
+          "frame": "471",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.028565752853645,
+        "fps": 12.912197059934721,
+        "guestRate": 1.0000071182580417,
+        "cycles": "11666772902",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 302533611,
+          "calls": 41121615
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 18,
+      "videoSeconds": 49.229362159999994,
+      "key": "C",
+      "expected": "0",
+      "down": 48878.39999999851,
+      "up": 48910.30000000447,
+      "firstButton": 48960.60000000149,
+      "firstResult": 49027.10000000149,
+      "downToButtonMs": 82.20000000298023,
+      "downToResultMs": 148.70000000298023,
+      "releaseToResultMs": 116.79999999701977,
+      "pulseMs": 31.900000005960464,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 48960.60000000149,
+          "frame": "477",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 49027.10000000149,
+          "frame": "478",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 49097.70000000298,
+          "frame": "481",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 49166.80000000447,
+          "frame": "485",
+          "changed": 1467,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.162291854072965,
+        "fps": 10.994502748625688,
+        "guestRate": 1.0000034982508745,
+        "cycles": "11682943275",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 312567582,
+          "calls": 42470478
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 19,
+      "videoSeconds": 50.17427013,
+      "key": "9",
+      "expected": "9",
+      "down": 49844.80000000447,
+      "up": 49876.70000000298,
+      "firstButton": 49943.89999999851,
+      "firstResult": 49985.60000000149,
+      "downToButtonMs": 99.09999999403954,
+      "downToResultMs": 140.79999999701977,
+      "releaseToResultMs": 108.89999999850988,
+      "pulseMs": 31.899999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 49943.89999999851,
+          "frame": "490",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 49985.60000000149,
+          "frame": "491",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 50026.5,
+          "frame": "492",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 50069.20000000298,
+          "frame": "495",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 50111.80000000447,
+          "frame": "497",
+          "changed": 1443,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.478900319654318,
+        "fps": 12.9844186976209,
+        "guestRate": 1.0000113197540987,
+        "cycles": "11691432350",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 317958376,
+          "calls": 43203900
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 19,
+      "videoSeconds": 51.13108971,
+      "key": "C",
+      "expected": "0",
+      "down": 50795.30000000447,
+      "up": 50827.10000000149,
+      "firstButton": 50877.10000000149,
+      "firstResult": 50943.80000000447,
+      "downToButtonMs": 81.79999999701977,
+      "downToResultMs": 148.5,
+      "releaseToResultMs": 116.70000000298023,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 50877.10000000149,
+          "frame": "504",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 50943.80000000447,
+          "frame": "505",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 50986.5,
+          "frame": "507",
+          "changed": 1498,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 51027.39999999851,
+          "frame": "509",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 51068.5,
+          "frame": "511",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.600138916634224,
+        "fps": 13.991605036956978,
+        "guestRate": 1.0000139916035478,
+        "cycles": "11702038849",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 324759070,
+          "calls": 44153587
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 20,
+      "videoSeconds": 52.063101381,
+      "key": "9",
+      "expected": "9",
+      "down": 51744.70000000298,
+      "up": 51776.30000000447,
+      "firstButton": 51877.20000000298,
+      "firstResult": 51877.20000000298,
+      "downToButtonMs": 132.5,
+      "downToResultMs": 132.5,
+      "releaseToResultMs": 100.89999999850988,
+      "pulseMs": 31.600000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 51877.20000000298,
+          "frame": "518",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 51918.20000000298,
+          "frame": "520",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 51959.60000000149,
+          "frame": "522",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 52000.30000000447,
+          "frame": "524",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.546999700283969,
+        "fps": 13.987411329823999,
+        "guestRate": 1.0000113231439938,
+        "cycles": "11711594441",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 330931680,
+          "calls": 45020133
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 20,
+      "videoSeconds": 53.019736875999996,
+      "key": "C",
+      "expected": "0",
+      "down": 52678.30000000447,
+      "up": 52710.39999999851,
+      "firstButton": 52777,
+      "firstResult": 52827,
+      "downToButtonMs": 98.69999999552965,
+      "downToResultMs": 148.69999999552965,
+      "releaseToResultMs": 116.60000000149012,
+      "pulseMs": 32.099999994039536,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 52777,
+          "frame": "532",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 52827,
+          "frame": "533",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 52868.30000000447,
+          "frame": "534",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 52912.60000000149,
+          "frame": "536",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 52956.80000000447,
+          "frame": "538",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.01727109150369,
+        "fps": 13.994402239020978,
+        "guestRate": 1.000012494996041,
+        "cycles": "11721615719",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 337328174,
+          "calls": 45915171
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 21,
+      "videoSeconds": 53.987185401,
+      "key": "9",
+      "expected": "9",
+      "down": 53628.20000000298,
+      "up": 53658.70000000298,
+      "firstButton": 53727,
+      "firstResult": 53793.70000000298,
+      "downToButtonMs": 98.79999999701977,
+      "downToResultMs": 165.5,
+      "releaseToResultMs": 135,
+      "pulseMs": 30.5,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 53727,
+          "frame": "544",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 53793.70000000298,
+          "frame": "545",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 53836.70000000298,
+          "frame": "548",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 53881.20000000298,
+          "frame": "550",
+          "changed": 1446,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 53924.70000000298,
+          "frame": "553",
+          "changed": 1406,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.24118343788326,
+        "fps": 11.943863840005367,
+        "guestRate": 1.0000119438682895,
+        "cycles": "11730900336",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 343288137,
+          "calls": 46752732
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 21,
+      "videoSeconds": 54.952101682999995,
+      "key": "C",
+      "expected": "0",
+      "down": 54594.89999999851,
+      "up": 54626.20000000298,
+      "firstButton": 54693.70000000298,
+      "firstResult": 54741.20000000298,
+      "downToButtonMs": 98.80000000447035,
+      "downToResultMs": 146.30000000447035,
+      "releaseToResultMs": 115,
+      "pulseMs": 31.30000000447035,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 54693.70000000298,
+          "frame": "557",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 54741.20000000298,
+          "frame": "558",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 54789.30000000447,
+          "frame": "560",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 54839.20000000298,
+          "frame": "563",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 54889.10000000149,
+          "frame": "565",
+          "changed": 1401,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.669019686187873,
+        "fps": 12.990906365505431,
+        "guestRate": 1.0000148229542851,
+        "cycles": "11741576824",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 350119279,
+          "calls": 47709525
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 22,
+      "videoSeconds": 55.89014310099999,
+      "key": "9",
+      "expected": "9",
+      "down": 55561.70000000298,
+      "up": 55594.70000000298,
+      "firstButton": 55660.30000000447,
+      "firstResult": 55708.89999999851,
+      "downToButtonMs": 98.60000000149012,
+      "downToResultMs": 147.19999999552965,
+      "releaseToResultMs": 114.19999999552965,
+      "pulseMs": 33,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 55660.30000000447,
+          "frame": "570",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 55708.89999999851,
+          "frame": "571",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 55777.20000000298,
+          "frame": "574",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 55825.30000000447,
+          "frame": "577",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.42465620626071,
+        "fps": 12.992204677174335,
+        "guestRate": 1.0000136584700945,
+        "cycles": "11752007735",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 356907098,
+          "calls": 48665147
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 22,
+      "videoSeconds": 56.85219874799999,
+      "key": "C",
+      "expected": "0",
+      "down": 56494.30000000447,
+      "up": 56526.30000000447,
+      "firstButton": 56643.5,
+      "firstResult": 56643.5,
+      "downToButtonMs": 149.19999999552965,
+      "downToResultMs": 149.19999999552965,
+      "releaseToResultMs": 117.19999999552965,
+      "pulseMs": 32,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 56643.5,
+          "frame": "584",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 56693.30000000447,
+          "frame": "586",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 56741.30000000447,
+          "frame": "589",
+          "changed": 1490,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 56788.89999999851,
+          "frame": "591",
+          "changed": 186,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.696105894105894,
+        "fps": 13.986013986013987,
+        "guestRate": 1.0000101565101567,
+        "cycles": "11762714537",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 363361810,
+          "calls": 49592545
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 23,
+      "videoSeconds": 57.831578362,
+      "key": "9",
+      "expected": "9",
+      "down": 57461.20000000298,
+      "up": 57493.5,
+      "firstButton": 57560.20000000298,
+      "firstResult": 57626.89999999851,
+      "downToButtonMs": 99,
+      "downToResultMs": 165.69999999552965,
+      "releaseToResultMs": 133.39999999850988,
+      "pulseMs": 32.29999999701977,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 57560.20000000298,
+          "frame": "595",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 57626.89999999851,
+          "frame": "596",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 57676.60000000149,
+          "frame": "599",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 57724.39999999851,
+          "frame": "601",
+          "changed": 1440,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 57768.70000000298,
+          "frame": "603",
+          "changed": 1126,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.64424965081579,
+        "fps": 12.971462781937726,
+        "guestRate": 1.0000109758575837,
+        "cycles": "11773382204",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 370023031,
+          "calls": 50516711
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 23,
+      "videoSeconds": 58.802880249999994,
+      "key": "C",
+      "expected": "0",
+      "down": 58444.60000000149,
+      "up": 58476.20000000298,
+      "firstButton": 58526.70000000298,
+      "firstResult": 58610.20000000298,
+      "downToButtonMs": 82.10000000149012,
+      "downToResultMs": 165.60000000149012,
+      "releaseToResultMs": 134,
+      "pulseMs": 31.600000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 58526.70000000298,
+          "frame": "608",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 58610.20000000298,
+          "frame": "609",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 58653.70000000298,
+          "frame": "611",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 58695.5,
+          "frame": "613",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 58740.30000000447,
+          "frame": "615",
+          "changed": 1136,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.803861910432298,
+        "fps": 12.9896083132913,
+        "guestRate": 1.00000632826625,
+        "cycles": "11782193109",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 375234635,
+          "calls": 51235692
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 24,
+      "videoSeconds": 59.748973881,
+      "key": "9",
+      "expected": "9",
+      "down": 59411.10000000149,
+      "up": 59443.10000000149,
+      "firstButton": 59476.80000000447,
+      "firstResult": 59560,
+      "downToButtonMs": 65.70000000298023,
+      "downToResultMs": 148.89999999850988,
+      "releaseToResultMs": 116.89999999850988,
+      "pulseMs": 32,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 59476.80000000447,
+          "frame": "619",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 59560,
+          "frame": "620",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 59602.80000000447,
+          "frame": "622",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 59644.39999999851,
+          "frame": "624",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 59686.5,
+          "frame": "626",
+          "changed": 1439,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 14.442224555153532,
+        "fps": 13.997200559950583,
+        "guestRate": 1.0000039992046297,
+        "cycles": "11796638222",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 384098118,
+          "calls": 52406865
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 24,
+      "videoSeconds": 60.720425563999996,
+      "key": "C",
+      "expected": "0",
+      "down": 60366.5,
+      "up": 60397.89999999851,
+      "firstButton": 60426.60000000149,
+      "firstResult": 60526.80000000447,
+      "downToButtonMs": 60.100000001490116,
+      "downToResultMs": 160.30000000447035,
+      "releaseToResultMs": 128.90000000596046,
+      "pulseMs": 31.399999998509884,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 60426.60000000149,
+          "frame": "632",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 60526.80000000447,
+          "frame": "633",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 60570.10000000149,
+          "frame": "634",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 60613.70000000298,
+          "frame": "637",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 60657.30000000447,
+          "frame": "639",
+          "changed": 1483,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.969456977391657,
+        "fps": 13.97484527843634,
+        "guestRate": 1.0000154721456673,
+        "cycles": "11807627424",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 391206426,
+          "calls": 53403795
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 25,
+      "videoSeconds": 61.68674286699999,
+      "key": "9",
+      "expected": "9",
+      "down": 61327.60000000149,
+      "up": 61359.39999999851,
+      "firstButton": 61410.10000000149,
+      "firstResult": 61493.39999999851,
+      "downToButtonMs": 82.5,
+      "downToResultMs": 165.79999999701977,
+      "releaseToResultMs": 134,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 61410.10000000149,
+          "frame": "645",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 61493.39999999851,
+          "frame": "646",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 61539.10000000149,
+          "frame": "648",
+          "changed": 1449,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 61581.89999999851,
+          "frame": "650",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 61623.80000000447,
+          "frame": "653",
+          "changed": 1329,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.686281833648104,
+        "fps": 15.979227004941198,
+        "guestRate": 1.0000133160254805,
+        "cycles": "11818327598",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 398019699,
+          "calls": 54365271
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 25,
+      "videoSeconds": 62.61495658999999,
+      "key": "C",
+      "expected": "0",
+      "down": 62294,
+      "up": 62324.80000000447,
+      "firstButton": 62360,
+      "firstResult": 62426.60000000149,
+      "downToButtonMs": 66,
+      "downToResultMs": 132.60000000149012,
+      "releaseToResultMs": 101.79999999701977,
+      "pulseMs": 30.80000000447035,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 62360,
+          "frame": "658",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 62426.60000000149,
+          "frame": "659",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 62469.60000000149,
+          "frame": "661",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 62511.10000000149,
+          "frame": "663",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 62552.5,
+          "frame": "665",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.686281833648104,
+        "fps": 15.979227004941198,
+        "guestRate": 1.0000133160254805,
+        "cycles": "11818327598",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 398019699,
+          "calls": 54365271
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 26,
+      "videoSeconds": 63.569552093,
+      "key": "9",
+      "expected": "9",
+      "down": 63227.5,
+      "up": 63259.10000000149,
+      "firstButton": 63326.60000000149,
+      "firstResult": 63376.5,
+      "downToButtonMs": 99.10000000149012,
+      "downToResultMs": 149,
+      "releaseToResultMs": 117.39999999850988,
+      "pulseMs": 31.600000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 63326.60000000149,
+          "frame": "671",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 63376.5,
+          "frame": "672",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 63419.39999999851,
+          "frame": "674",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 63464.10000000149,
+          "frame": "676",
+          "changed": 1446,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 63506.80000000447,
+          "frame": "679",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.489109712261449,
+        "fps": 15.987210231862155,
+        "guestRate": 1.000012823077851,
+        "cycles": "11828825099",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 404746839,
+          "calls": 55314735
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 26,
+      "videoSeconds": 64.538275511,
+      "key": "C",
+      "expected": "0",
+      "down": 64177.5,
+      "up": 64209.30000000447,
+      "firstButton": 64243.20000000298,
+      "firstResult": 64343.20000000298,
+      "downToButtonMs": 65.70000000298023,
+      "downToResultMs": 165.70000000298023,
+      "releaseToResultMs": 133.89999999850988,
+      "pulseMs": 31.80000000447035,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 64243.20000000298,
+          "frame": "684",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 64343.20000000298,
+          "frame": "685",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 64391.39999999851,
+          "frame": "688",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 64433.80000000447,
+          "frame": "690",
+          "changed": 1496,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 64475.70000000298,
+          "frame": "692",
+          "changed": 1477,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.251076892295494,
+        "fps": 13.998600139965143,
+        "guestRate": 1.000011498848625,
+        "cycles": "11839077201",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 411179142,
+          "calls": 56223106
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 27,
+      "videoSeconds": 65.467939844,
+      "key": "9",
+      "expected": "9",
+      "down": 65144.70000000298,
+      "up": 65176.39999999851,
+      "firstButton": 65276.5,
+      "firstResult": 65276.5,
+      "downToButtonMs": 131.79999999701977,
+      "downToResultMs": 131.79999999701977,
+      "releaseToResultMs": 100.10000000149012,
+      "pulseMs": 31.69999999552965,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 65276.5,
+          "frame": "697",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 65319.89999999851,
+          "frame": "699",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 65363.80000000447,
+          "frame": "701",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 65405.10000000149,
+          "frame": "703",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.449739364904703,
+        "fps": 12.981825444397188,
+        "guestRate": 1.0000144797298685,
+        "cycles": "11849541570",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 418025092,
+          "calls": 57182249
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 27,
+      "videoSeconds": 66.412557237,
+      "key": "C",
+      "expected": "0",
+      "down": 66077.80000000447,
+      "up": 66109.5,
+      "firstButton": 66143.20000000298,
+      "firstResult": 66226.60000000149,
+      "downToButtonMs": 65.39999999850988,
+      "downToResultMs": 148.79999999701977,
+      "releaseToResultMs": 117.10000000149012,
+      "pulseMs": 31.69999999552965,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 66143.20000000298,
+          "frame": "709",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 66226.60000000149,
+          "frame": "710",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 66269,
+          "frame": "712",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 66309.30000000447,
+          "frame": "714",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 66349.80000000447,
+          "frame": "716",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.92848990604158,
+        "fps": 11.992804317391695,
+        "guestRate": 1.0000128256364613,
+        "cycles": "11859476017",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 424422382,
+          "calls": 58076346
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 28,
+      "videoSeconds": 67.364951647,
+      "key": "9",
+      "expected": "9",
+      "down": 67027.60000000149,
+      "up": 67059.39999999851,
+      "firstButton": 67176.39999999851,
+      "firstResult": 67176.39999999851,
+      "downToButtonMs": 148.79999999701977,
+      "downToResultMs": 148.79999999701977,
+      "releaseToResultMs": 117,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 67176.39999999851,
+          "frame": "722",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 67217.20000000298,
+          "frame": "724",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 67258.89999999851,
+          "frame": "726",
+          "changed": 1444,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 67302.39999999851,
+          "frame": "728",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.977171787724329,
+        "fps": 12.968874700737556,
+        "guestRate": 1.0000129688761874,
+        "cycles": "11869477134",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 430947180,
+          "calls": 58991144
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 28,
+      "videoSeconds": 68.301451171,
+      "key": "C",
+      "expected": "0",
+      "down": 67977.30000000447,
+      "up": 68009.30000000447,
+      "firstButton": 68043,
+      "firstResult": 68126.5,
+      "downToButtonMs": 65.69999999552965,
+      "downToResultMs": 149.19999999552965,
+      "releaseToResultMs": 117.19999999552965,
+      "pulseMs": 32,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 68043,
+          "frame": "733",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 68126.5,
+          "frame": "734",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 68196.80000000447,
+          "frame": "736",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 68238.5,
+          "frame": "739",
+          "changed": 1491,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.665461991793135,
+        "fps": 10.987913295358734,
+        "guestRate": 1.0000119868130157,
+        "cycles": "11880154328",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 437630576,
+          "calls": 59919450
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 29,
+      "videoSeconds": 69.24669804,
+      "key": "9",
+      "expected": "9",
+      "down": 68910.70000000298,
+      "up": 68942.5,
+      "firstButton": 68993.10000000149,
+      "firstResult": 69059.60000000149,
+      "downToButtonMs": 82.39999999850988,
+      "downToResultMs": 148.89999999850988,
+      "releaseToResultMs": 117.10000000149012,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 68993.10000000149,
+          "frame": "745",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 69059.60000000149,
+          "frame": "746",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 69101.10000000149,
+          "frame": "747",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 69142.70000000298,
+          "frame": "750",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 69183.89999999851,
+          "frame": "752",
+          "changed": 1437,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.076222753042591,
+        "fps": 11.943863839916796,
+        "guestRate": 1.000007133137938,
+        "cycles": "11886259109",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 441225005,
+          "calls": 60375136
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 29,
+      "videoSeconds": 70.227856404,
+      "key": "C",
+      "expected": "0",
+      "down": 69863.30000000447,
+      "up": 69895.5,
+      "firstButton": 70059.80000000447,
+      "firstResult": 70059.80000000447,
+      "downToButtonMs": 196.5,
+      "downToResultMs": 196.5,
+      "releaseToResultMs": 164.30000000447035,
+      "pulseMs": 32.19999999552965,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 70059.80000000447,
+          "frame": "757",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 70118.10000000149,
+          "frame": "760",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 70165.20000000298,
+          "frame": "762",
+          "changed": 1492,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.49154491017964,
+        "fps": 11.976047904191617,
+        "guestRate": 1.000003493013972,
+        "cycles": "11902783637",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 451463765,
+          "calls": 61759671
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 30,
+      "videoSeconds": 71.177722633,
+      "key": "9",
+      "expected": "9",
+      "down": 70844.10000000149,
+      "up": 70875.89999999851,
+      "firstButton": 70942.89999999851,
+      "firstResult": 70985.39999999851,
+      "downToButtonMs": 98.79999999701977,
+      "downToResultMs": 141.29999999701977,
+      "releaseToResultMs": 109.5,
+      "pulseMs": 31.799999997019768,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 70942.89999999851,
+          "frame": "769",
+          "changed": 1451,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 170,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 70985.39999999851,
+          "frame": "770",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 71028.30000000447,
+          "frame": "771",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 71072.39999999851,
+          "frame": "774",
+          "changed": 1447,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 71115,
+          "frame": "776",
+          "changed": 1442,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.360998201463746,
+        "fps": 11.990407673896616,
+        "guestRate": 1.0000094924090528,
+        "cycles": "11911151324",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 456781264,
+          "calls": 62497741
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 30,
+      "videoSeconds": 72.147712501,
+      "key": "C",
+      "expected": "0",
+      "down": 71794,
+      "up": 71825.30000000447,
+      "firstButton": 71897.20000000298,
+      "firstResult": 71959.70000000298,
+      "downToButtonMs": 103.20000000298023,
+      "downToResultMs": 165.70000000298023,
+      "releaseToResultMs": 134.39999999850988,
+      "pulseMs": 31.30000000447035,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 71897.20000000298,
+          "frame": "782",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 71959.70000000298,
+          "frame": "783",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 72001.89999999851,
+          "frame": "785",
+          "changed": 1499,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 72042.60000000149,
+          "frame": "787",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 72085.10000000149,
+          "frame": "790",
+          "changed": 1327,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.124822102931649,
+        "fps": 12.919896640788606,
+        "guestRate": 1.0000140793715826,
+        "cycles": "11921338920",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 463320402,
+          "calls": 63410613
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    }
+  ],
+  "warmup": [
+    {
+      "round": 0,
+      "videoSeconds": 13.7174748,
+      "key": "9",
+      "expected": "9",
+      "down": 13330.20000000298,
+      "up": 13362.30000000447,
+      "firstButton": 13528.80000000447,
+      "firstResult": 13528.80000000447,
+      "downToButtonMs": 198.60000000149012,
+      "downToResultMs": 198.60000000149012,
+      "releaseToResultMs": 166.5,
+      "pulseMs": 32.100000001490116,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 2,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 13528.80000000447,
+          "frame": "14",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 13611.80000000447,
+          "frame": "15",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 13654.20000000298,
+          "frame": "17",
+          "changed": 1451,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 2,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 4.639347999196782,
+        "fps": 0.995421063108219,
+        "guestRate": 1.000008129270532,
+        "cycles": "11321119305",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 84552598,
+          "calls": 11095235
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "round": 0,
+      "videoSeconds": 14.66184144,
+      "key": "C",
+      "expected": "0",
+      "down": 14329.70000000298,
+      "up": 14362.5,
+      "firstButton": 14412,
+      "firstResult": 14495.30000000447,
+      "downToButtonMs": 82.29999999701977,
+      "downToResultMs": 165.60000000149012,
+      "releaseToResultMs": 132.80000000447035,
+      "pulseMs": 32.79999999701977,
+      "confirmation": {
+        "passed": true,
+        "maxRGBDelta": 1,
+        "alphaExact": true
+      },
+      "timedOut": false,
+      "samples": [
+        {
+          "at": 14412,
+          "frame": "26",
+          "changed": 1500,
+          "comparison": {
+            "passed": false,
+            "maxRGBDelta": 169,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 14495.30000000447,
+          "frame": "27",
+          "changed": 1500,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 14549.70000000298,
+          "frame": "29",
+          "changed": 1498,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        },
+        {
+          "at": 14598.89999999851,
+          "frame": "31",
+          "changed": 1497,
+          "comparison": {
+            "passed": true,
+            "maxRGBDelta": 1,
+            "alphaExact": true
+          }
+        }
+      ],
+      "savedAt": 0,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.473034771320862,
+        "fps": 13.948390953430735,
+        "guestRate": 1.000006642087961,
+        "cycles": "11329623690",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 89417003,
+          "calls": 11806094
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    }
+  ],
+  "assets": [
+    {
+      "url": "http://localhost:8206/app.js",
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+      "bytes": 18595
+    },
+    {
+      "url": "http://localhost:8206/emu-worker.js",
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "bytes": 11426
+    },
+    {
+      "url": "http://localhost:8206/seed-jit.js",
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "bytes": 9613
+    },
+    {
+      "url": "http://localhost:8206/manifest.json",
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "bytes": 1222
+    },
+    {
+      "url": "http://localhost:8206/jit/seed.wasm",
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313
+    },
+    {
+      "url": "http://localhost:8206/dist/emu.wasm",
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "bytes": 250531
+    }
+  ],
+  "errors": [],
+  "browser": "152.0.7977.82",
+  "expectedAssets": {
+    "emu.wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+    "seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "app.js": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+    "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+    "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+    "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+  },
+  "summary": {
+    "9": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.90000000223517,
+        "p95Ms": 165.39999999850988,
+        "maxMs": 165.79999999701977
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 148.89999999850988,
+        "p95Ms": 165.79999999701977,
+        "maxMs": 165.79999999701977
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.05000000074506,
+        "p95Ms": 134.5,
+        "maxMs": 135
+      },
+      "missingButtonFeedback": 0
+    },
+    "C": {
+      "button": {
+        "count": 30,
+        "medianMs": 98.69999999925494,
+        "p95Ms": 165.60000000149012,
+        "maxMs": 196.5
+      },
+      "result": {
+        "count": 30,
+        "medianMs": 149.14999999850988,
+        "p95Ms": 165.80000000447035,
+        "maxMs": 196.5
+      },
+      "releaseResult": {
+        "count": 30,
+        "medianMs": 117.19999999552965,
+        "p95Ms": 134.39999999850988,
+        "maxMs": 164.30000000447035
+      },
+      "missingButtonFeedback": 0
+    }
+  },
+  "correctnessPassed": true,
+  "latencyPassed": false,
+  "jit": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 510,
+    "bytes": 12341313,
+    "retired": 469673501,
+    "calls": 64299468
+  },
+  "passed": false,
+  "video": "/home/vercel-sandbox/iphone-1/.context/input-feedback/run-2/page@9da9bb356c0f1bf6f3de2416c4f28e6a.webm"
+}

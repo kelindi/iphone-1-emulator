@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "scope": "Re-read actual raw pairs and frozen references independently of in-run passed flag; same full-frame RGB<=2/alpha exact below raw row30.",
+  "rows": [
+    {
+      "phase": "train",
+      "name": "initial-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "phase": "train",
+      "name": "cycle0-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "phase": "train",
+      "name": "cycle0-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "phase": "train",
+      "name": "cycle1-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "phase": "train",
+      "name": "cycle1-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "phase": "train",
+      "name": "autosave-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "phase": "train",
+      "name": "saved-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "phase": "return",
+      "name": "restored-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "phase": "return",
+      "name": "returned-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "phase": "return",
+      "name": "returned-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "match": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "originalSha256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+  "profileRuntimeSha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+  "allNonCodeSectionsByteIdentical": true,
+  "definedFunctions": 223,
+  "imports": 8,
+  "changedFunctionBodies": [
+    154
+  ],
+  "changedFunctionName": "snap_ram",
+  "rule": "Every other complete function body is byte-identical at the same index to the previously proven symbol map. Changed154(snap_ram) is left changed/unattributed here. No relink or guest run."
+}

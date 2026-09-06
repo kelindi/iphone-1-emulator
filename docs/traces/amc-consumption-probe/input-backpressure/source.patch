@@ -1,0 +1,209 @@
+--- stage-n/source/later.h
++++ stage-o/source/later.h
+@@ -0,0 +1,49 @@
++#ifndef AMC_LATER_H
++#define AMC_LATER_H
++#include "capture.h"
++#include <string.h>
++/* Probe bounds only; the unchanged engine owns all actual DMA semantics. */
++static bool admit_later(const amc_engine*s,const amc_physical_ram*r,unsigned number,
++ uint64_t cycles,uint64_t first,uint32_t pc,uint32_t lr,uint32_t cpsr){
++ size_t offset,bytes;
++ if(!s||(number!=4&&number!=5)||first!=9873234585ull||pc!=0xc0278130||lr!=0xc0274874||
++ (cpsr&0x3f)!=0x13||!s->initialized||!s->configured||s->fault||s->dma_active||s->input_pending||
++ s->input_phase!=5||!s->transport_enabled||s->staged_words!=4096||s->dma_words!=4096||s->copied_words!=4096||
++ s->copied_bytes!=16384ull*(number-1)||s->decoded_bytes>s->copied_bytes||s->queue_used!=s->copied_bytes-s->decoded_bytes||
++ s->queue_used>AMC_QUEUE_BYTES||s->published_frames<1||s->published_frames>2||
++ !capture_span(r,s->staged_address,s->staged_words,&offset,&bytes)||bytes!=16384)return false;
++ if(number==5)return cycles>9873476740ull;
++ return cycles==9873476740ull&&s->staged_address==0x14a8b000&&s->dma_start==0x14ae1000&&
++ s->queue_used==48804&&s->decoded_bytes==348&&s->decoded_frames==2&&s->published_frames==1&&s->events==0x600&&s->mask==0x2000;
++}
++typedef struct {uint64_t cycles,copied_before,decoded_before,decoded_after;uint32_t request,address,bytes,offset,words_before,words_after,queue_before,queue_after,pending,active;} dma_record;
++_Static_assert(sizeof(dma_record)==72,"fixed copy observer record");
++typedef struct {dma_record records[10];unsigned count,used;uint8_t bytes[32768],scratch[65536];} dma_observer;
++static bool copy_prepare(dma_observer*o,const amc_engine*s,const amc_physical_ram*r,unsigned request,
++ const uint8_t*capture,uint64_t cycles,dma_record*out){
++ memset(out,0,sizeof *out);
++ if(!s->dma_active)return true;
++ if(!s->initialized||!s->idle||!s->idle->enabled||!s->idle->de_complete||s->fault||
++ s->queue_used>AMC_QUEUE_BYTES||s->copied_words>s->dma_words||s->dma_words!=4096||request<4||request>5)return false;
++ size_t words=(AMC_QUEUE_BYTES-s->queue_used)/4;
++ if(words>1024)words=1024;if(words>s->dma_words-s->copied_words)words=s->dma_words-s->copied_words;
++ if(!words)return true;
++ size_t offset,bytes;uint64_t address=(uint64_t)s->dma_start+4ull*s->copied_words;
++ if(address>UINT32_MAX||!capture_span(r,(uint32_t)address,words,&offset,&bytes)||o->count>=10||bytes>sizeof o->bytes-o->used||
++ !capture||memcmp(r->bytes+offset,capture+4*s->copied_words,bytes))return false;
++ memcpy(o->scratch,s->queue,s->queue_used);memcpy(o->scratch+s->queue_used,r->bytes+offset,bytes);
++ *out=(dma_record){.cycles=cycles,.copied_before=s->copied_bytes,.decoded_before=s->decoded_bytes,
++ .request=request,.address=(uint32_t)address,.bytes=bytes,.offset=o->used,.words_before=s->copied_words,.queue_before=s->queue_used};
++ return true;
++}
++static bool copy_finish(dma_observer*o,const amc_engine*s,dma_record*row){
++ if(!row->bytes)return true;
++ if(s->copied_bytes!=row->copied_before+row->bytes||s->copied_words!=row->words_before+row->bytes/4||
++ s->decoded_bytes<row->decoded_before)return false;
++ uint64_t consumed=s->decoded_bytes-row->decoded_before,total=row->queue_before+row->bytes;
++ if(consumed>total||s->queue_used!=total-consumed||memcmp(s->queue,o->scratch+consumed,s->queue_used))return false;
++ row->decoded_after=s->decoded_bytes;row->words_after=s->copied_words;row->queue_after=s->queue_used;
++ row->pending=s->input_pending;row->active=s->dma_active;
++ memcpy(o->bytes+o->used,o->scratch+row->queue_before,row->bytes);o->used+=row->bytes;o->records[o->count++]=*row;return true;
++}
++#endif
+--- stage-n/source/probe.c
++++ stage-o/source/probe.c
+@@ -13,6 +13,7 @@
+ #include "capture.h"
+ #include "admission.h"
+ #include "ordering.h"
++#include "later.h"
+ #include <setjmp.h>
+ static arm_bus_t original;
+ static amc_sram_t sram, expected;
+@@ -35,6 +36,10 @@
+ static uint32_t release_pc,release_cpsr,release_index,release_driver,copy_dst,copy_src,copy_count,copy_cpsr;
+ static const char *reference;
+ static order_log ordering;
++static unsigned later_requests;
++static uint8_t later_inputs[2][16384];
++static dma_observer dma_observed;
++static void later_boundary(unsigned);
+ static void first_boundary(void);
+ static void continuation_read(uint32_t,unsigned,uint32_t);
+ static bool continuation_hook(void*);
+@@ -92,9 +97,20 @@
+   dependencies(c);
+   if(engine_started){
+    bool starting=a==0x3850100c&&w==4&&v==1;
+-   if(starting&&third_input_cycles)stop("fourth input request cap",a,v,w);
++   bool later=starting&&third_input_cycles;
++   if(later&&later_requests>=2)stop("sixth input request cap",a,v,w);
++   if(later){
++    unsigned number=4+later_requests;
++    if(!admit_later(&engine,&physical,number,machine.cpu.cycles,first_publication_cycles,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr))stop("later input admission differs",a,v,w);
++    if(number==4&&machine.timer.ticks!=1756773987ull)stop("fourth timer prefix differs",a,v,w);
++    later_boundary(number);
++    size_t offset=0,bytes=0;if(!capture_span(&physical,engine.staged_address,engine.staged_words,&offset,&bytes)||bytes!=16384)stop("later input capture bounds",a,v,w);
++    memcpy(later_inputs[number-4],physical.bytes+offset,bytes);
++    dumpfile(number==4?"fourth-input.bin":"fifth-input.bin",later_inputs[number-4],bytes);
++    printf("CAPTURE later request%u address%08x words%u cycles%llu ticks%llu pc%08x lr%08x cpsr%08x copiedBytes%llu queueBytes%zu decodedBytes%llu pending%u active%u events%08x mask%08x phase%u\n",number,engine.staged_address,engine.staged_words,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr,(unsigned long long)engine.copied_bytes,engine.queue_used,(unsigned long long)engine.decoded_bytes,engine.input_pending,engine.dma_active,engine.events,engine.mask,engine.input_phase);
++   }
+    bool third=starting&&second_input_cycles&&!third_input_cycles;
+-   if(starting&&first_saved&&!third){
++   if(starting&&first_saved&&!third&&!later){
+     if(!admit_second(&engine,machine.cpu.cycles,first_publication_cycles,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr))stop("second input admission witness differs",a,v,w);
+     /* Observation only. No MMIO read, engine admission, or guest mutation. */
+     size_t offset=0,bytes=0;
+@@ -118,7 +134,7 @@
+     dumpfile("third-request/read-coverage.bin",consumed.coverage,CONSUME_BYTES);dumpfile("third-request/read-bytes.bin",consumed.seen,CONSUME_BYTES);dumpfile("third-request/read-ledger.bin",read_ledger,consumed.reads*sizeof(read_record));
+    }
+    if(starting&&!first_saved&&(!input_seen||first_input_cycles||engine.staged_address!=input_address||engine.staged_words!=input_words))stop("unexpected first DMA request",a,v,w);
+-   if(starting&&first_saved&&!third){
++   if(starting&&first_saved&&!third&&!later){
+     /* Preserve the observed Stage I pre-admission bytes without a guest read. */
+     dumpfile("second-request/sram.bin",sram.bytes,AMC_SRAM_SIZE);dumpfile("second-request/written.bin",written,AMC_SRAM_SIZE);
+     dumpfile("second-request/init-written.bin",engine.init_writes,AMC_SRAM_SIZE);dumpfile("second-request/pcm-written.bin",engine.pcm_writes,AMC_SRAM_SIZE);dumpfile("second-request/host-written.bin",engine.host_writes,AMC_SRAM_SIZE);
+@@ -130,8 +146,9 @@
+    if(starting&&!first_saved)dumpfile("input-final.bin",physical.bytes+input_address-physical.base,4u*input_words);
+    bool acknowledged=first_saved&&a==0x38500b04&&w==4&&(v&engine.events&0x400u);
+    if(amc_engine_write(&engine,&physical,a-0x38500000,w,v)!=AMC_ENGINE_OK)stop("unsupported engine write",a,v,w);
++   if(later){later_requests++;printf("ACCEPT later request%u address%08x words%u cycles%llu; actual live RAM DMA only\n",3+later_requests,engine.staged_address,engine.staged_words,(unsigned long long)machine.cpu.cycles);}
+    if(third){third_input_cycles=machine.cpu.cycles;printf("ACCEPT third request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)third_input_cycles);}
+-   if(starting&&first_saved&&!third){second_input_cycles=machine.cpu.cycles;printf("ACCEPT second request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)second_input_cycles);}
++   if(starting&&first_saved&&!third&&!later){second_input_cycles=machine.cpu.cycles;printf("ACCEPT second request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)second_input_cycles);}
+    if(starting&&!first_saved){first_input_cycles=machine.cpu.cycles;printf("ACCEPT input request physical%08x bytes%u words%u cycles%llu ticks%llu pc%08x\n",input_address,input_bytes,input_words,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15]);}
+    if(acknowledged)output_ack=true;
+    if(first_saved&&a==0x38500b0c&&(engine.mask&0x400u))output_enabled=true;
+@@ -309,13 +326,26 @@
+ }
+ static bool load_exact(const char *name,void *data,size_t n){FILE*f=fopen(name,"rb");if(!f)return false;bool ok=fread(data,1,n,f)==n&&fgetc(f)==EOF;return fclose(f)==0&&ok;}
+ #include "continuation.inc"
++static void later_boundary(unsigned number){
++ const char*dir=number==4?"fourth-request":"fifth-request";char path[128];
++ #define SAVE_LATER(name,data,size) do{snprintf(path,sizeof path,"%s/%s",dir,name);dumpfile(path,data,size);}while(0)
++ SAVE_LATER("sram.bin",sram.bytes,AMC_SRAM_SIZE);SAVE_LATER("expected.bin",expected.bytes,AMC_SRAM_SIZE);SAVE_LATER("predicted.bin",predicted,AMC_SRAM_SIZE);SAVE_LATER("written.bin",written,AMC_SRAM_SIZE);
++ SAVE_LATER("init-written.bin",engine.init_writes,AMC_SRAM_SIZE);SAVE_LATER("pcm-written.bin",engine.pcm_writes,AMC_SRAM_SIZE);SAVE_LATER("host-written.bin",engine.host_writes,AMC_SRAM_SIZE);
++ SAVE_LATER("registers.bin",machine.cpu.r,sizeof machine.cpu.r);SAVE_LATER("owned-queue.bin",engine.queue,engine.queue_used);SAVE_LATER("first-pcm.bin",consumed.expected,CONSUME_BYTES);
++ SAVE_LATER("read-coverage.bin",consumed.coverage,CONSUME_BYTES);SAVE_LATER("read-bytes.bin",consumed.seen,CONSUME_BYTES);SAVE_LATER("read-ledger.bin",read_ledger,consumed.reads*sizeof(read_record));SAVE_LATER("ordering.bin",ordering.records,ordering.count*sizeof(order_record));
++ #undef SAVE_LATER
++}
+ static void service_boundary(void){
+  if(!engine_started)return;
+  if(release_pending){continuation_done();return;}
+  unsigned owner=sram.bytes[AMC_HEADER+8+2*engine.next_output]|(unsigned)sram.bytes[AMC_HEADER+9+2*engine.next_output]<<8;
+  if(first_saved&&engine.published_frames>=2&&engine.service&&!(engine.events&0x400)&&engine.queue_used&&owner)stop("third publication work cap",0,0,0);
+  unsigned before=engine.next_output;
++ dma_record observed={0};
++ if(later_requests&&!copy_prepare(&dma_observed,&engine,&physical,3+later_requests,later_inputs[later_requests-1],machine.cpu.cycles,&observed))stop("actual DMA copy observation bounds/changed bytes",0,0,0);
+  amc_engine_result r=amc_engine_step(&engine,&physical);service_calls++;
++ if(later_requests&&!copy_finish(&dma_observed,&engine,&observed))stop("actual DMA copy accounting differs",0,0,0);
++ if(observed.bytes)printf("DMA COPY request%u address%08x bytes%u offset%u cycles%llu copiedBefore%llu decodedBefore%llu decodedAfter%llu wordsBefore%u wordsAfter%u queueBefore%u queueAfter%u pending%u active%u\n",observed.request,observed.address,observed.bytes,observed.offset,(unsigned long long)observed.cycles,(unsigned long long)observed.copied_before,(unsigned long long)observed.decoded_before,(unsigned long long)observed.decoded_after,observed.words_before,observed.words_after,observed.queue_before,observed.queue_after,observed.pending,observed.active);
+  if(r==AMC_ENGINE_FATAL||r==AMC_ENGINE_REJECT)stop("engine service failure at retired boundary",0,0,0);
+  if(r==AMC_ENGINE_PUBLISHED){
+   publication_buffer=before;
+@@ -386,5 +416,7 @@
+  printf("CONSUMPTION result%u covered%u reads%u ipc%u copy%u acknowledged%u enabled%u service%u releasePending%u releaseCycles%llu retiredCycles%llu releasePC%08x releaseCPSR%08x index%u driver%08x published%llu\n",result,consumed.covered,consumed.reads,ipc_complete,copy_complete,output_ack,output_enabled,service_requested,release_pending,(unsigned long long)release_cycles,(unsigned long long)machine.cpu.cycles,release_pc,release_cpsr,release_index,release_driver,(unsigned long long)engine.published_frames);
+  dumpfile("ordering.bin",ordering.records,ordering.count*sizeof(order_record));
+  printf("ORDER summary records%u cap%u\n",ordering.count,ORDER_CAP);
++ dumpfile("dma-copies.bin",dma_observed.records,dma_observed.count*sizeof(dma_record));dumpfile("dma-bytes.bin",dma_observed.bytes,dma_observed.used);
++ printf("DMA FINAL accepted%u start%08x words%u copiedWords%u current%08x copiedBytes%llu queueBytes%zu decodedBytes%llu pending%u active%u ledgerRecords%u ledgerBytes%u\n",3+later_requests,engine.dma_start,engine.dma_words,engine.copied_words,engine.dma_start+4u*engine.copied_words,(unsigned long long)engine.copied_bytes,engine.queue_used,(unsigned long long)engine.decoded_bytes,engine.input_pending,engine.dma_active,dma_observed.count,dma_observed.used);
+  amc_engine_destroy(&engine);machine.bus=original;release_machine();return result==6?0:10;
+ }
+--- stage-n/source/test_later.c
++++ stage-o/source/test_later.c
+@@ -0,0 +1,55 @@
++#include "later.h"
++#include <assert.h>
++#include <stdio.h>
++static unsigned checks;
++#define CHECK(x) do{checks++;assert(x);}while(0)
++static amc_engine e,saved;static amc_idle_t idle;static amc_sram_t sram;
++static dma_observer o;static uint8_t ram_bytes[32768],queue[65536];
++static const int16_t pcm[2048]={0};
++static bool probe(const uint8_t*b,size_t n,unsigned r,amc_decoded*d){(void)b;(void)r;if(n<4096)return false;*d=(amc_decoded){4096,2048,pcm};return true;}
++static bool decode(void*c,const uint8_t*b,size_t n,amc_decoded*d){(void)c;(void)b;CHECK(n==4096);*d=(amc_decoded){4096,2048,pcm};return true;}
++static const amc_codec_ops codec={.probe=probe,.decode=decode};
++static amc_physical_ram ram={ram_bytes,0x14a8b000,sizeof ram_bytes};
++#define ADMIT(n) admit_later(&e,&ram,n,(n)==4?9873476740ull:9873476800ull,9873234585ull,0xc0278130,0xc0274874,0x13)
++int main(void){
++ idle.enabled=idle.de_complete=true;e.idle=&idle;e.sram=&sram;e.queue=queue;e.codec=&codec;
++ e.initialized=e.configured=e.transport_enabled=true;e.input_phase=5;e.staged_address=ram.base;e.staged_words=4096;e.dma_start=0x14ae1000;e.dma_words=e.copied_words=4096;e.copied_bytes=49152;e.queue_used=48804;e.decoded_bytes=348;e.decoded_frames=2;e.published_frames=1;e.events=0x600;e.mask=0x2000;e.setup_phase=4;
++ CHECK(ADMIT(4));saved=e;
++ #define NEG(field,value) do{e.field=value;CHECK(!ADMIT(4));e=saved;}while(0)
++ NEG(dma_active,true);NEG(input_pending,true);NEG(input_phase,6);NEG(staged_address,ram.base+4);NEG(staged_words,4095);NEG(queue_used,48808);NEG(decoded_bytes,347);NEG(copied_bytes,49148);NEG(published_frames,2);NEG(events,0x200);NEG(mask,0x2400);NEG(fault,true);NEG(initialized,false);NEG(configured,false);NEG(transport_enabled,false);NEG(dma_words,0);NEG(copied_words,4095);NEG(dma_start,ram.base);
++ for(unsigned mode=0;mode<64;mode++)if(mode!=0x13)CHECK(!admit_later(&e,&ram,4,9873476740ull,9873234585ull,0xc0278130,0xc0274874,mode));
++ CHECK(!admit_later(&e,&ram,4,9873476741ull,9873234585ull,0xc0278130,0xc0274874,0x13));CHECK(!admit_later(&e,&ram,4,9873476740ull,9873234585ull,0xc0278134,0xc0274874,0x13));CHECK(!admit_later(&e,&ram,4,9873476740ull,9873234585ull,0xc0278130,0xc0274878,0x13));CHECK(!ADMIT(6));CHECK(!memcmp(&e,&saved,sizeof e));
++ for(unsigned i=0;i<sizeof ram_bytes;i++)ram_bytes[i]=(uint8_t)(i*17+3);memset(queue,0x20,e.queue_used);sram.bytes[AMC_HEADER+10]=1;sram.bytes[AMC_HEADER+16]=0x10;sram.bytes[AMC_HEADER+18]=0x10;sram.bytes[AMC_HEADER+19]=0x10;
++ CHECK(amc_engine_write(&e,&ram,0x100c,4,1)==AMC_ENGINE_OK);
++ dma_record row;
++ for(unsigned i=0;i<4;i++){CHECK(copy_prepare(&o,&e,&ram,4,ram_bytes,100+i,&row));CHECK(row.bytes==4096);CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(copy_finish(&o,&e,&row));}
++ CHECK(e.queue_used==65188&&e.copied_bytes==65536&&!e.dma_active&&e.input_pending);CHECK(o.count==4&&o.used==16384&&!memcmp(o.bytes,ram_bytes,16384));
++ CHECK(amc_engine_write(&e,&ram,0x101c,4,1)==AMC_ENGINE_OK);e.input_phase=5;e.staged_address=ram.base+16384;CHECK(ADMIT(5));
++ saved=e;e.mask=0x2400;e.events=0x200;CHECK(ADMIT(5));e=saved;
++ e.input_pending=true;CHECK(!ADMIT(5));e=saved;e.dma_active=true;CHECK(!ADMIT(5));e=saved;e.staged_address=0xfffffff0;CHECK(!ADMIT(5));e=saved;e.staged_words=0;CHECK(!ADMIT(5));e=saved;
++ CHECK(amc_engine_write(&e,&ram,0x100c,4,1)==AMC_ENGINE_OK);CHECK(copy_prepare(&o,&e,&ram,5,ram_bytes+16384,200,&row));CHECK(row.bytes==348);CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(copy_finish(&o,&e,&row));
++ CHECK(e.queue_used==65536&&e.copied_bytes==65884&&e.copied_words==87&&e.dma_active&&!e.input_pending);uint32_t current;CHECK(amc_engine_read(&e,0x1010,4,&current)==AMC_ENGINE_OK&&current==e.dma_start+348);saved=e;
++ for(unsigned i=0;i<20;i++){CHECK(copy_prepare(&o,&e,&ram,5,ram_bytes+16384,201+i,&row)&&!row.bytes);CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(copy_finish(&o,&e,&row));CHECK(!memcmp(&e,&saved,sizeof e));}
++ CHECK(o.count==5&&o.used==16732);
++ /* Real unchanged engine decode frees space; no manual queue adjustment. */
++ CHECK(amc_engine_write(&e,&ram,0xb04,4,0x400)==AMC_ENGINE_OK);CHECK(amc_engine_write(&e,&ram,4,4,1)==AMC_ENGINE_OK);e.next_output=1;
++ CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_PUBLISHED);CHECK(e.queue_used==61440&&e.decoded_bytes==4444&&e.published_frames==2);
++ uint8_t capture[16384];memcpy(capture,ram_bytes+16384,sizeof capture);capture[348]^=1;saved=e;CHECK(!copy_prepare(&o,&e,&ram,5,capture,230,&row));CHECK(!memcmp(&e,&saved,sizeof e));
++ unsigned prior=o.count;o.count=10;CHECK(!copy_prepare(&o,&e,&ram,5,ram_bytes+16384,230,&row));o.count=prior;
++ unsigned used=o.used;o.used=32768;CHECK(!copy_prepare(&o,&e,&ram,5,ram_bytes+16384,230,&row));o.used=used;
++ CHECK(copy_prepare(&o,&e,&ram,5,ram_bytes+16384,230,&row)&&row.bytes==4096);CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(copy_finish(&o,&e,&row));CHECK(e.copied_words==1111&&e.queue_used==65536&&e.dma_active&&!e.input_pending);
++ CHECK(o.count==6&&o.used==20828);CHECK(!memcmp(o.bytes,ram_bytes,20828));
++ /* Standalone lifecycle check may publish extra synthetic frames; the guest
++  * wrapper still stops before its third publication work. */
++ while(e.dma_active){
++  CHECK(amc_engine_sram_write(&e,AMC_HEADER+8+2*e.next_output,2,1)==AMC_ENGINE_OK);
++  CHECK(amc_engine_write(&e,&ram,0xb04,4,0x400)==AMC_ENGINE_OK);CHECK(amc_engine_write(&e,&ram,4,4,1)==AMC_ENGINE_OK);
++  CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_PUBLISHED);
++  CHECK(copy_prepare(&o,&e,&ram,5,ram_bytes+16384,240+o.count,&row)&&row.bytes);
++  CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(copy_finish(&o,&e,&row));
++ }
++ CHECK(e.copied_words==4096&&e.copied_bytes==81920&&e.input_pending);CHECK(o.used==32768&&o.count==9);CHECK(!memcmp(o.bytes,ram_bytes,32768));
++ CHECK(amc_engine_write(&e,&ram,0x101c,4,1)==AMC_ENGINE_OK&&!e.input_pending);saved=e;
++ CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(!memcmp(&e,&saved,sizeof e));
++ printf("later admission/backpressure/copy contracts: %u PASS; synthetic RAM/codec, no guest\n",checks);
++}

@@ -1,0 +1,11 @@
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+response.body: Target page, context or browser has been closed
+    at /home/vercel-sandbox/iphone-1/.context/jit-sw-cache/response-preflight.mjs:11:366
+    at _BrowserContext.<anonymous> (/home/vercel-sandbox/iphone-1/.context/jit-sw-cache/response-preflight.mjs:11:376) {
+  log: []
+}
+
+Node.js v24.14.1

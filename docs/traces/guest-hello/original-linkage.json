@@ -1,0 +1,490 @@
+{
+  "usr__lib__libSystem.B.dylib": {
+    "machHeader": [
+      4277009102,
+      12,
+      6,
+      6,
+      9,
+      1668,
+      181
+    ],
+    "commands": [
+      {
+        "cmd": "0x1",
+        "size": 736
+      },
+      {
+        "cmd": "0x1",
+        "size": 668
+      },
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0xd",
+        "size": 52,
+        "path": "/usr/lib/libSystem.B.dylib",
+        "current": 6160384,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0x2",
+        "size": 24
+      },
+      {
+        "cmd": "0xb",
+        "size": 80
+      },
+      {
+        "cmd": "0x16",
+        "size": 16
+      },
+      {
+        "cmd": "0x17",
+        "size": 12
+      },
+      {
+        "cmd": "0x1b",
+        "size": 24
+      }
+    ],
+    "selectedSymbols": {
+      "_listen": {
+        "value": "0x30030500",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_bind": {
+        "value": "0x3000e8e0",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_accept": {
+        "value": "0x30030520",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "__exit": {
+        "value": "0x300099f0",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_socket": {
+        "value": "0x3000c400",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_ioctl": {
+        "value": "0x30001d70",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_getpid": {
+        "value": "0x30003fc0",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_write": {
+        "value": "0x30009860",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_getaddrinfo": {
+        "value": "0x30033f28",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      },
+      "_getifaddrs": {
+        "value": "0x30012d40",
+        "type": "0xf",
+        "section": 1,
+        "description": 0
+      }
+    }
+  },
+  "usr__lib__dyld": {
+    "machHeader": [
+      4277009102,
+      12,
+      6,
+      7,
+      10,
+      1796,
+      149
+    ],
+    "commands": [
+      {
+        "cmd": "0x1",
+        "size": 804
+      },
+      {
+        "cmd": "0x1",
+        "size": 668
+      },
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0xf",
+        "size": 28
+      },
+      {
+        "cmd": "0x2",
+        "size": 24
+      },
+      {
+        "cmd": "0xb",
+        "size": 80
+      },
+      {
+        "cmd": "0x16",
+        "size": 16
+      },
+      {
+        "cmd": "0x17",
+        "size": 12
+      },
+      {
+        "cmd": "0x1b",
+        "size": 24
+      },
+      {
+        "cmd": "0x4",
+        "size": 84
+      }
+    ],
+    "selectedSymbols": {
+      "_ioctl": {
+        "value": "0x2fe21b20",
+        "type": "0x1e",
+        "section": 1,
+        "description": 0
+      },
+      "_write": {
+        "value": "0x2fe25280",
+        "type": "0x1e",
+        "section": 1,
+        "description": 0
+      },
+      "__exit": {
+        "value": "0x2fe2aaa0",
+        "type": "0x1e",
+        "section": 1,
+        "description": 0
+      },
+      "_getpid": {
+        "value": "0x2fe2c760",
+        "type": "0x1e",
+        "section": 1,
+        "description": 0
+      }
+    }
+  },
+  "sbin__launchd": {
+    "machHeader": [
+      4277009102,
+      12,
+      6,
+      2,
+      17,
+      1896,
+      149
+    ],
+    "commands": [
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0x1",
+        "size": 532
+      },
+      {
+        "cmd": "0x1",
+        "size": 464
+      },
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0xe",
+        "size": 28
+      },
+      {
+        "cmd": "0xc",
+        "size": 48,
+        "path": "/usr/lib/libbsm.dylib",
+        "current": 65536,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0xc",
+        "size": 56,
+        "path": "/usr/lib/libgcc_s_v6.1.dylib",
+        "current": 65536,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0xc",
+        "size": 52,
+        "path": "/usr/lib/libSystem.B.dylib",
+        "current": 6160384,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0x10",
+        "size": 52
+      },
+      {
+        "cmd": "0x10",
+        "size": 60
+      },
+      {
+        "cmd": "0x10",
+        "size": 252
+      },
+      {
+        "cmd": "0x2",
+        "size": 24
+      },
+      {
+        "cmd": "0xb",
+        "size": 80
+      },
+      {
+        "cmd": "0x16",
+        "size": 16
+      },
+      {
+        "cmd": "0x17",
+        "size": 12
+      },
+      {
+        "cmd": "0x1b",
+        "size": 24
+      },
+      {
+        "cmd": "0x5",
+        "size": 84
+      }
+    ],
+    "selectedSymbols": {
+      "_accept": {
+        "value": "0x30030520",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_bind": {
+        "value": "0x3000e8e0",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_getifaddrs": {
+        "value": "0x30012d40",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_getpid": {
+        "value": "0x30003fc0",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_ioctl": {
+        "value": "0x30001d70",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_listen": {
+        "value": "0x30030500",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_socket": {
+        "value": "0x3000c400",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      },
+      "_write": {
+        "value": "0x30009860",
+        "type": "0xd",
+        "section": 0,
+        "description": 769
+      }
+    }
+  },
+  "bin__launchctl": {
+    "machHeader": [
+      4277009102,
+      12,
+      6,
+      2,
+      23,
+      2320,
+      149
+    ],
+    "commands": [
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0x1",
+        "size": 464
+      },
+      {
+        "cmd": "0x1",
+        "size": 532
+      },
+      {
+        "cmd": "0x1",
+        "size": 56
+      },
+      {
+        "cmd": "0xe",
+        "size": 28
+      },
+      {
+        "cmd": "0xc",
+        "size": 92,
+        "path": "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "current": 26869760,
+        "compatibility": 9830400
+      },
+      {
+        "cmd": "0x80000018",
+        "size": 52,
+        "path": "/usr/lib/libedit.2.dylib",
+        "current": 131072,
+        "compatibility": 131072
+      },
+      {
+        "cmd": "0xc",
+        "size": 56,
+        "path": "/usr/lib/libgcc_s_v6.1.dylib",
+        "current": 65536,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0xc",
+        "size": 52,
+        "path": "/usr/lib/libSystem.B.dylib",
+        "current": 6160384,
+        "compatibility": 65536
+      },
+      {
+        "cmd": "0x10",
+        "size": 96
+      },
+      {
+        "cmd": "0x10",
+        "size": 56
+      },
+      {
+        "cmd": "0x10",
+        "size": 60
+      },
+      {
+        "cmd": "0x10",
+        "size": 252
+      },
+      {
+        "cmd": "0x2",
+        "size": 24
+      },
+      {
+        "cmd": "0xb",
+        "size": 80
+      },
+      {
+        "cmd": "0x16",
+        "size": 16
+      },
+      {
+        "cmd": "0x17",
+        "size": 12
+      },
+      {
+        "cmd": "0x1b",
+        "size": 24
+      },
+      {
+        "cmd": "0x5",
+        "size": 84
+      },
+      {
+        "cmd": "0x10",
+        "size": 56
+      },
+      {
+        "cmd": "0x10",
+        "size": 56
+      },
+      {
+        "cmd": "0x10",
+        "size": 60
+      },
+      {
+        "cmd": "0x10",
+        "size": 56
+      }
+    ],
+    "selectedSymbols": {
+      "__exit": {
+        "value": "0x300099f0",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      },
+      "_bind": {
+        "value": "0x3000e8e0",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      },
+      "_getaddrinfo": {
+        "value": "0x30033f28",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      },
+      "_ioctl": {
+        "value": "0x30001d70",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      },
+      "_listen": {
+        "value": "0x30030500",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      },
+      "_socket": {
+        "value": "0x3000c400",
+        "type": "0xd",
+        "section": 0,
+        "description": 1025
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "wallCapSeconds": 180,
+  "guestInstructionCap": 100000000,
+  "started": 1788694149.4299848,
+  "freeBefore": 6089150464,
+  "exitCode": 0,
+  "processes": [
+    {
+      "pid": 3877067,
+      "ppid": 3877021,
+      "start": "6385305",
+      "exe": "/usr/local/bin/node"
+    },
+    {
+      "pid": 3877101,
+      "ppid": 3877067,
+      "start": "6386840",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877102,
+      "ppid": 3877067,
+      "start": "6387016",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877168,
+      "ppid": 3877067,
+      "start": "6388280",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877187,
+      "ppid": 3877067,
+      "start": "6388485",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877223,
+      "ppid": 3877067,
+      "start": "6389741",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877224,
+      "ppid": 3877067,
+      "start": "6390013",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877261,
+      "ppid": 3877067,
+      "start": "6391325",
+      "exe": "/usr/bin/python3.9"
+    },
+    {
+      "pid": 3877262,
+      "ppid": 3877067,
+      "start": "6391626",
+      "exe": "/usr/bin/python3.9"
+    }
+  ],
+  "allClosed": true,
+  "ended": 1788694214.5976143,
+  "freeAfter": 6079922176
+}

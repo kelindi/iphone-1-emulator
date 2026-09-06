@@ -1,0 +1,1 @@
+[LinkError: WebAssembly.instantiate(): Import #0 "env" "memory": memory import must be a WebAssembly.Memory object]

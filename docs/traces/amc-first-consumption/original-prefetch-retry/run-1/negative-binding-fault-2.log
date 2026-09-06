@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 113, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 106, in run
+    if i>=2 and w['reason'] in (0,4):fresh_walk(j,w)
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 52, in fresh_walk
+    assert fault==expected_fault,'cloned fault kind differs from actual tables'
+AssertionError: cloned fault kind differs from actual tables

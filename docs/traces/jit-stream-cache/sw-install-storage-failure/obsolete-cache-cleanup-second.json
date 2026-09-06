@@ -1,0 +1,164 @@
+{
+  "at": "2026-09-06T05:52:51.321501+00:00",
+  "authorization": "Root explicitly authorized completed V1/V2/V3/076 plus named old experiment HTTP/code/Service Worker derived caches; preserve all IndexedDB and evidence. Modified profiles invalid for cache-reuse reruns.",
+  "noLiveScopedChrome": true,
+  "before": {
+    "total": 68652367872,
+    "used": 63108096000,
+    "free": 5544271872
+  },
+  "directories": [
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit/profiles/original/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit/profiles/candidate/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v2/profiles/original/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v2/profiles/candidate/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/original/Default/Cache",
+      "bytes": 119090274,
+      "allocatedBytes": 119193600,
+      "files": 24,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/candidate/Default/Cache",
+      "bytes": 119092996,
+      "allocatedBytes": 119197696,
+      "files": 24,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/original/Default/Code Cache",
+      "bytes": 796,
+      "allocatedBytes": 28672,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/candidate/Default/Code Cache",
+      "bytes": 165327682,
+      "allocatedBytes": 165392384,
+      "files": 23,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/original/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/profiles/candidate/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-stream-cache/persistent-profile/Default/Service Worker",
+      "bytes": 106329284,
+      "allocatedBytes": 106360832,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/clock-natural-profile/Default/Cache",
+      "bytes": 107151886,
+      "allocatedBytes": 107241472,
+      "files": 21,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/clock-natural-profile/Default/Code Cache",
+      "bytes": 1118,
+      "allocatedBytes": 32768,
+      "files": 8,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/clock-natural-profile/Default/Service Worker",
+      "bytes": 106872134,
+      "allocatedBytes": 106934272,
+      "files": 19,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/calendar-report/profile-ZABZuu/Default/Cache",
+      "bytes": 105477229,
+      "allocatedBytes": 105562112,
+      "files": 19,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/calendar-report/profile-ZABZuu/Default/Code Cache",
+      "bytes": 796,
+      "allocatedBytes": 28672,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/calendar-report/profile-ZABZuu/Default/Service Worker",
+      "bytes": 105163809,
+      "allocatedBytes": 105193472,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/clipped-persistence/chrome-profile-7uRV6L/Default/Cache",
+      "bytes": 6245928,
+      "allocatedBytes": 6291456,
+      "files": 17,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/clipped-persistence/chrome-profile-7uRV6L/Default/Code Cache",
+      "bytes": 796,
+      "allocatedBytes": 28672,
+      "files": 7,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/clipped-persistence/chrome-profile-7uRV6L/Default/Service Worker",
+      "bytes": 250814240,
+      "allocatedBytes": 250843136,
+      "files": 6,
+      "removed": true
+    }
+  ],
+  "bytes": 1829544672,
+  "immediateAfter": {
+    "total": 68652367872,
+    "used": 62368927744,
+    "free": 6283440128
+  },
+  "settledAfter": {
+    "at": "2026-09-06T05:55:55.517783+00:00",
+    "total": 68652367872,
+    "used": 62817955840,
+    "free": 5834412032
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "started": 1788691119.6706285,
+  "scope": "Lossless archival of completed new Photos native artifacts only; preserve exact snapshots, RAM and installed own-image bytes. No firmware, current fixture, IndexedDB or Service Worker deletion. Original bytes recoverable by gzip decompression.",
+  "freeBefore": 4872482816,
+  "files": [
+    {
+      "originalPath": ".context/photo-bootstrap/installed/photos.img",
+      "gzipPath": ".context/photo-bootstrap/installed/photos.img.gz",
+      "rawBytes": 176160768,
+      "rawSha256": "b978ba952c953811840aaeb977c2db2a30d660e470d8cd7938afb64497d3a381",
+      "gzipBytes": 85917198
+    },
+    {
+      "originalPath": ".context/photo-bootstrap/native-run-1/home.snap",
+      "gzipPath": ".context/photo-bootstrap/native-run-1/home.snap.gz",
+      "rawBytes": 219889635,
+      "rawSha256": "c99cb631ab827a9f4582b70a490c44d9ec0aaeea8c49dfe75481ddfa3c42b00c",
+      "gzipBytes": 100440291
+    },
+    {
+      "originalPath": ".context/photo-bootstrap/native-run-1/ram.bin",
+      "gzipPath": ".context/photo-bootstrap/native-run-1/ram.bin.gz",
+      "rawBytes": 268435456,
+      "rawSha256": "d64c93d88e0b0ed81b3b7b86d7c37d83fd7abf625d6b94226521e8af519e5784",
+      "gzipBytes": 100594116
+    },
+    {
+      "originalPath": ".context/photo-bootstrap/native-continuation-1/home.snap",
+      "gzipPath": ".context/photo-bootstrap/native-continuation-1/home.snap.gz",
+      "rawBytes": 245067746,
+      "rawSha256": "25392f0370b925e0ef6759b66ff2cd95a0820cf56ec0772972fe4b3c81d0106b",
+      "gzipBytes": 106766293
+    },
+    {
+      "originalPath": ".context/photo-bootstrap/native-continuation-1/ram.bin",
+      "gzipPath": ".context/photo-bootstrap/native-continuation-1/ram.bin.gz",
+      "rawBytes": 268435456,
+      "rawSha256": "beca7f73b93b95642716aafcab6518d96312f8c440bbd1a5f55035e8fca2fbd8",
+      "gzipBytes": 106794416
+    }
+  ],
+  "ended": 1788691153.3114002,
+  "freeAfter": 5279277056
+}

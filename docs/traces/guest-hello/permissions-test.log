@@ -1,0 +1,10 @@
+test_admitted_extremes_and_independent_ownership (__main__.Tests) ... ok
+test_bounds_before_any_directory_or_allocation_changes (__main__.Tests) ... ok
+test_default_exact_original_tool (__main__.Tests) ... ok
+test_existing_file_still_rejected_without_mutation (__main__.Tests) ... ok
+test_only_explicit_catalog_permission_fields_differ (__main__.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.970s
+
+OK

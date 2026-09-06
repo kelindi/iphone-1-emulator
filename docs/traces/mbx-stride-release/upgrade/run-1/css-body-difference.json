@@ -1,0 +1,36 @@
+{
+  "changes": [
+    {
+      "op": "insert",
+      "originalOffsets": [
+        8749,
+        8749
+      ],
+      "receiptOffsets": [
+        8749,
+        8753
+      ],
+      "originalHex": "",
+      "receiptHex": "c3a2cb86",
+      "originalContext": "b':before { content: \"\\xe2\\x88\\x92 \"; }\\n#diagnostic'",
+      "receiptContext": "b':before { content: \"\\xc3\\xa2\\xcb\\x86\\xe2\\x80\\x99 \"; }\\n#diagnostic'"
+    },
+    {
+      "op": "replace",
+      "originalOffsets": [
+        8750,
+        8752
+      ],
+      "receiptOffsets": [
+        8754,
+        8756
+      ],
+      "originalHex": "8892",
+      "receiptHex": "8099",
+      "originalContext": "b'before { content: \"\\xe2\\x88\\x92 \"; }\\n#diagnostics {'",
+      "receiptContext": "b're { content: \"\\xc3\\xa2\\xcb\\x86\\xe2\\x80\\x99 \"; }\\n#diagnostics {'"
+    }
+  ],
+  "latin1Reencoded": false,
+  "cp1252Reencoded": true
+}

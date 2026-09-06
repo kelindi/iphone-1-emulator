@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/rtc-write/audit.py", line 7, in <module>
+    assert text.split('PENDING ')[0]==prior.split('END retired')[0], 'original079 instruction/write prefix changed'
+AssertionError: original079 instruction/write prefix changed

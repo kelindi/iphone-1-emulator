@@ -1,0 +1,26 @@
+{
+  "result": "fail",
+  "checks": 30,
+  "error": "AssertionError [ERR_ASSERTION]: Unexpected served phone.css during online-A\n    at validateAssets (file:///home/vercel-sandbox/iphone-1/.context/mbx-stride-integration/validate-assets.mjs:18:3)\n    at file:///home/vercel-sandbox/iphone-1/.context/mbx-stride-integration/offline-upgrade.mjs:252:55",
+  "closure": {
+    "context": {
+      "closed": true
+    },
+    "browser": {
+      "closed": true
+    },
+    "origin": {
+      "closed": true,
+      "result": {
+        "listening": false,
+        "connectionsClosed": 0,
+        "refusal": {
+          "host": "127.0.0.1",
+          "port": 8235,
+          "code": "ECONNREFUSED",
+          "at": "2026-09-06T12:02:52.337Z"
+        }
+      }
+    }
+  }
+}

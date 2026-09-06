@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "actualSource": ".context/jit-mbx-profile/unsupported-mnemonics.json",
+  "actualSourceSha256": "e07ff41c48f3a7c5a8e858fc1672875ebe6af9e2d18f0312d128afc303346df4",
+  "actualKeys": 226,
+  "scope": "Retained actual unsupported-exit PC/opcode/mode examples, not a recovered failed-census table. Admission/provenance are intentionally NONE/outside here. First overflow process did not persist rows; exact triggering keys and stop instruction count are unavailable. Synthetic high-PC-bit sequence proves old clustering without a guest rerun. Current repair uses explicitly authorized524288rows; probe/capture caps unchanged.",
+  "results": [
+    {
+      "version": "old",
+      "counts": {
+        "actual": {
+          "calls": 226,
+          "overflow": 0
+        },
+        "synthetic": {
+          "calls": 2048,
+          "overflow": 1984
+        }
+      }
+    },
+    {
+      "version": "new",
+      "counts": {
+        "actual": {
+          "calls": 226,
+          "overflow": 0
+        },
+        "synthetic": {
+          "calls": 2048,
+          "overflow": 0
+        }
+      }
+    }
+  ]
+}

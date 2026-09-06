@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "phase": "train",
+  "checks": 43,
+  "frames": 7,
+  "errors": [
+    "Error: zero actual HTTP server requests after disconnect\n    at check (file:///home/vercel-sandbox/iphone-1/.context/jit-sw-cache-v3/runner.mjs:15:169)\n    at file:///home/vercel-sandbox/iphone-1/.context/jit-sw-cache-v3/runner.mjs:103:227"
+  ]
+}

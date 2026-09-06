@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "review": "All five actual images manually inspected: complete original Home icons/dock in three Home frames, genuine Settings rows/controls in two Settings frames; no black/malformed/missing content. Status clock excluded only by predeclared raw rule.",
+  "files": {
+    "initial-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "prepare-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "prepare-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "warm-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "warm-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c"
+  }
+}

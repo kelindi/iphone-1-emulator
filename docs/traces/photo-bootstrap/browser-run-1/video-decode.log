@@ -1,0 +1,28 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'tweets/videos/photos_first_workflow_failure.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.3.100
+  Duration: 00:05:07.04, start: 0.000000, bitrate: 56 kb/s
+  Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], 54 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.3.100
+  Stream #0:0(eng): Video: wrapped_avframe, yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], q=2-31, 200 kb/s, 25 fps, 25 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 wrapped_avframe
+frame=    0 fps=0.0 q=-0.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    frame=  314 fps=0.0 q=-0.0 size=N/A time=00:00:12.56 bitrate=N/A speed=24.8x    frame=  645 fps=640 q=-0.0 size=N/A time=00:00:25.80 bitrate=N/A speed=25.6x    frame=  972 fps=645 q=-0.0 size=N/A time=00:00:38.88 bitrate=N/A speed=25.8x    frame= 1304 fps=649 q=-0.0 size=N/A time=00:00:52.16 bitrate=N/A speed=  26x    frame= 1637 fps=652 q=-0.0 size=N/A time=00:01:05.48 bitrate=N/A speed=26.1x    frame= 1972 fps=655 q=-0.0 size=N/A time=00:01:18.88 bitrate=N/A speed=26.2x    frame= 2315 fps=659 q=-0.0 size=N/A time=00:01:32.60 bitrate=N/A speed=26.4x    frame= 2664 fps=664 q=-0.0 size=N/A time=00:01:46.56 bitrate=N/A speed=26.6x    frame= 3017 fps=669 q=-0.0 size=N/A time=00:02:00.68 bitrate=N/A speed=26.7x    frame= 3337 fps=666 q=-0.0 size=N/A time=00:02:13.48 bitrate=N/A speed=26.6x    frame= 3665 fps=665 q=-0.0 size=N/A time=00:02:26.60 bitrate=N/A speed=26.6x    frame= 4010 fps=667 q=-0.0 size=N/A time=00:02:40.40 bitrate=N/A speed=26.7x    frame= 4355 fps=668 q=-0.0 size=N/A time=00:02:54.20 bitrate=N/A speed=26.7x    frame= 4709 fps=671 q=-0.0 size=N/A time=00:03:08.36 bitrate=N/A speed=26.8x    frame= 5061 fps=673 q=-0.0 size=N/A time=00:03:22.44 bitrate=N/A speed=26.9x    frame= 5416 fps=676 q=-0.0 size=N/A time=00:03:36.64 bitrate=N/A speed=  27x    frame= 5780 fps=679 q=-0.0 size=N/A time=00:03:51.20 bitrate=N/A speed=27.1x    frame= 6135 fps=680 q=-0.0 size=N/A time=00:04:05.40 bitrate=N/A speed=27.2x    frame= 6493 fps=682 q=-0.0 size=N/A time=00:04:19.72 bitrate=N/A speed=27.3x    frame= 6835 fps=682 q=-0.0 size=N/A time=00:04:33.40 bitrate=N/A speed=27.3x    frame= 7193 fps=684 q=-0.0 size=N/A time=00:04:47.72 bitrate=N/A speed=27.3x    frame= 7551 fps=685 q=-0.0 size=N/A time=00:05:02.04 bitrate=N/A speed=27.4x    frame= 7676 fps=686 q=-0.0 Lsize=N/A time=00:05:07.00 bitrate=N/A speed=27.4x    
+video:3598kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

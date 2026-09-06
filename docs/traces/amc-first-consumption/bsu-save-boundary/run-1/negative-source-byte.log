@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/source-read-audit.py", line 20, in <module>
+    assert value.to_bytes(4,'little')[:width]==sram[off:off+width],'source bytes differ'
+AssertionError: source bytes differ

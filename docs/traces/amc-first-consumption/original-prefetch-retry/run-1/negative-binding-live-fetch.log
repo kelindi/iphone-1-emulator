@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 113, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 75, in run
+    assert j['actualFetchExecuted'] is False and j['step']=={'cycles':9874747384,'pc':0x31236650,'cpsr':0x60000010,'active':1,'returned':0,'inGuest':1},'prefetch observation falsely retired'
+AssertionError: prefetch observation falsely retired

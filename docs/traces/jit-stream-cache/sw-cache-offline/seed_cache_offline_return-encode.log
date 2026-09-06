@@ -1,0 +1,57 @@
+ffmpeg version 6.0-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 8 (Debian 8.3.0-6)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gmp --enable-libgme --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libdav1d --enable-libxvid --enable-libzvbi --enable-libzimg
+  libavutil      58.  2.100 / 58.  2.100
+  libavcodec     60.  3.100 / 60.  3.100
+  libavformat    60.  3.100 / 60.  3.100
+  libavdevice    60.  1.100 / 60.  1.100
+  libavfilter     9.  3.100 /  9.  3.100
+  libswscale      7.  1.100 /  7.  1.100
+  libswresample   4. 10.100 /  4. 10.100
+  libpostproc    57.  1.100 / 57.  1.100
+Input #0, matroska,webm, from '.context/jit-sw-cache-v4/run/2-return/video/page@d83bdfc3ff002b8dbb5218d14febb9e1.webm':
+  Metadata:
+    creation_time   : 2026-09-06T06:13:59.295000Z
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:15.28, start: 0.000000, bitrate: 460 kb/s
+  Stream #0:0(eng): Video: vp8, yuv420p(progressive), 1280x1000, SAR 1:1 DAR 32:25, 25 fps, 25 tbr, 1k tbn (default)
+    Metadata:
+      ENCODER         : Lavc61.3.100 libvpx
+      DURATION        : 00:00:15.280000000
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x1a17c580] using SAR=1/1
+[libx264 @ 0x1a17c580] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x1a17c580] profile High, level 3.2, 4:2:0, 8-bit
+[libx264 @ 0x1a17c580] 264 - core 164 r3106 eaa68fa - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=1 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'tweets/videos/seed_cache_offline_return.mp4':
+  Metadata:
+    encoder         : Lavf60.3.100
+  Stream #0:0(eng): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], q=2-31, 25 fps, 12800 tbn (default)
+    Metadata:
+      DURATION        : 00:00:15.280000000
+      encoder         : Lavc60.3.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=-577014:32:22.77 bitrate=  -0.0kbits/s speed=N/A    frame=    8 fps=0.0 q=28.0 size=       0kB time=00:00:00.24 bitrate=   1.6kbits/s speed=0.476x    frame=   32 fps= 32 q=28.0 size=       0kB time=00:00:01.20 bitrate=   0.3kbits/s speed=1.18x    frame=   60 fps= 39 q=28.0 size=       0kB time=00:00:02.32 bitrate=   0.2kbits/s speed=1.53x    frame=   88 fps= 43 q=28.0 size=       0kB time=00:00:03.44 bitrate=   0.1kbits/s speed=1.69x    frame=  117 fps= 46 q=28.0 size=       0kB time=00:00:04.60 bitrate=   0.1kbits/s speed=1.81x    frame=  141 fps= 46 q=28.0 size=       0kB time=00:00:05.56 bitrate=   0.1kbits/s speed=1.81x    frame=  161 fps= 45 q=28.0 size=       0kB time=00:00:06.36 bitrate=   0.1kbits/s speed=1.78x    frame=  188 fps= 46 q=28.0 size=       0kB time=00:00:07.44 bitrate=   0.1kbits/s speed=1.82x    frame=  215 fps= 47 q=28.0 size=       0kB time=00:00:08.52 bitrate=   0.0kbits/s speed=1.85x    frame=  241 fps= 47 q=28.0 size=       0kB time=00:00:09.56 bitrate=   0.0kbits/s speed=1.87x    frame=  264 fps= 47 q=28.0 size=       0kB time=00:00:10.48 bitrate=   0.0kbits/s speed=1.87x    frame=  291 fps= 48 q=28.0 size=       0kB time=00:00:11.56 bitrate=   0.0kbits/s speed=1.89x    frame=  320 fps= 48 q=28.0 size=       0kB time=00:00:12.72 bitrate=   0.0kbits/s speed=1.92x    frame=  349 fps= 49 q=28.0 size=       0kB time=00:00:13.88 bitrate=   0.0kbits/s speed=1.95x    [mp4 @ 0x1a1731c0] Starting second pass: moving the moov atom to the beginning of the file
+frame=  382 fps= 51 q=28.0 Lsize=     223kB time=00:00:15.16 bitrate= 120.7kbits/s speed=2.01x    
+video:218kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 2.383798%
+[libx264 @ 0x1a17c580] frame I:4     Avg QP:12.93  size: 10041
+[libx264 @ 0x1a17c580] frame P:109   Avg QP:16.51  size:  1299
+[libx264 @ 0x1a17c580] frame B:269   Avg QP:15.20  size:   152
+[libx264 @ 0x1a17c580] consecutive B-frames:  4.5%  3.1%  5.5% 86.9%
+[libx264 @ 0x1a17c580] mb I  I16..4: 66.4% 30.3%  3.2%
+[libx264 @ 0x1a17c580] mb P  I16..4:  1.8%  2.5%  0.3%  P16..4:  2.7%  0.2%  0.1%  0.0%  0.0%    skip:92.4%
+[libx264 @ 0x1a17c580] mb B  I16..4:  0.4%  0.0%  0.0%  B16..8:  0.5%  0.0%  0.0%  direct: 0.3%  skip:98.7%  L0:47.6% L1:51.2% BI: 1.2%
+[libx264 @ 0x1a17c580] 8x8 transform intra:39.9% inter:52.4%
+[libx264 @ 0x1a17c580] coded y,uvDC,uvAC intra: 6.0% 3.4% 1.7% inter: 0.1% 0.4% 0.0%
+[libx264 @ 0x1a17c580] i16 v,h,dc,p: 84% 11%  4%  1%
+[libx264 @ 0x1a17c580] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37%  8% 54%  0%  0%  0%  0%  0%  0%
+[libx264 @ 0x1a17c580] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 37% 13%  2%  2%  2%  3%  2%  3%
+[libx264 @ 0x1a17c580] i8c dc,h,v,p: 90%  6%  4%  0%
+[libx264 @ 0x1a17c580] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x1a17c580] ref P L0: 41.6% 58.4%
+[libx264 @ 0x1a17c580] ref B L0: 78.8% 21.2%
+[libx264 @ 0x1a17c580] ref B L1: 94.5%  5.5%
+[libx264 @ 0x1a17c580] kb/s:116.59

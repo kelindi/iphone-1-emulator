@@ -1,0 +1,15 @@
+# First-arm reporter failure and proposed successor
+
+The original frozen ABBA series failed after its first original/control arm. No candidate ran. Both post-run asset loops incorrectly invoked the stored URL string as `a.url()`. The Playwright response callback correctly invokes `r.url()` and must remain unchanged. The failed runner, manifest, series, profile and samples remain untouched.
+
+Artifact-only validation recovers all 22 completed strict stages and positive generated progress, 22 actual response-body hashes covering all 13 required asset kinds, and a complete compilation trace with no loss or missing thread fields. Compilation CPU lower/upper bounds are both 18,004.879 ms over the 112,714.23 ms navigation-through-fixed-work scope. These checks do not turn the failed run into a successful series.
+
+The finalizer crashed before its before-close CDP receipt and `context.close()`. The outer controller closed all 14 unique PID/start identities it observed. The retained WebM is truncated: ffmpeg reports `File ended prematurely` after 2,801 packets through 112.00 seconds. There is no complete recording or graceful browser-close receipt. Do not infer complete visual coverage from the final timestamp. All 44 raw frames and 22 PNGs remain available.
+
+`validate-assets.mjs` provides a pure stored-row validator returning errors instead of throwing on malformed input. `test-assets.mjs` passes 39 checks on the actual retained rows: all required missing-kind controls, all pinned-file mismatch controls, method-shaped/malformed/relative/foreign URLs, missing/malformed digest, response-body error and invalid row/container shapes. A malformed-row cleanup control confirms validation does not skip the following finalizer.
+
+The first artifact-recovery attempt invoked the inherited compilation analyzer as a CLI. That CLI still targets the old mixed-coverage folder and failed on a non-directory before writing anything. Its error is retained in `incorrect-main-analyzer-path.log`. The successful current analysis imports its pure `analyze` function and writes only `first-arm-compilation.json`.
+
+Proposed successor, awaiting parent decision: run only the three unstarted candidate/candidate/original arms in a separately frozen continuation. Preserve the recovered first original observations, failed closure and truncated recording alongside the interruption. Use unchanged site/reference/fixture/browser/action/compilation gates and 240-second per-arm limits. Require full new candidate recording and normal scoped closure. Do not claim an uninterrupted successful series. The runner finalizer should record validator errors and still attempt closure and final report; no input or timing-method change.
+
+Current free disk was 5,680,885,760 bytes. This exceeds the original 5 GiB per-arm floor but falls short of the original 5.8 GiB four-arm start gate. With roughly 280 MB retained per successful arm, the third successor arm may encounter the unchanged floor. Obtain approximately 0.5 GB more safe headroom before starting; preserve the entire failed profile. No guest retry or cache deletion has occurred during this diagnosis.

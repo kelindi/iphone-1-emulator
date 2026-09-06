@@ -1,0 +1,18 @@
+{
+  "web/tests/input-feedback.mjs": true,
+  ".context/input-feedback/contract.md": true,
+  "web/index.html": true,
+  "web/phone.css": true,
+  "web/app.js": true,
+  "web/dist/emu.js": true,
+  "web/dist/emu.wasm": true,
+  "web/seed-jit.js": true,
+  "web/emu-worker.js": true,
+  "web/manifest.json": true,
+  "web/jit/seed.wasm": true,
+  "web/jit/regions.json": true,
+  "web/jit/abi.json": true,
+  "web/tests/include/calculator-displays.json": true,
+  "web/tests/include/calculator-displays/0.png": true,
+  "web/tests/include/calculator-displays/9.png": true
+}

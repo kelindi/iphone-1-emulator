@@ -1,0 +1,18 @@
+{
+  "web/tests/input-feedback.mjs": "0c9574fac5a0836f5fee32ab3a05c56b4595a5bf47744e731945fbc6489b328b",
+  ".context/input-feedback/contract.md": "3decde850d362d833a6ed06ab9356e8cb89f26b693010d0e372c230eecd76ec5",
+  "web/index.html": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883",
+  "web/phone.css": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+  "web/app.js": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+  "web/dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+  "web/dist/emu.wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+  "web/seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+  "web/emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+  "web/manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+  "web/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "web/jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+  "web/jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+  "web/tests/include/calculator-displays.json": "beea942ffc2e19dfff8ad0a793b87a5132d04754b9629c9fbcbf6f84acfb7ec1",
+  "web/tests/include/calculator-displays/0.png": "b68df253e9b0cc85a926c2ffac9986ce04ea156abe60c99e56cdc460fb6d6139",
+  "web/tests/include/calculator-displays/9.png": "9ab89e31ccc18f93e30c4f88d1a3723c97d0a27db7628f97d6c86065f80eb165"
+}

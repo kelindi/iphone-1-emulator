@@ -1,0 +1,13 @@
+{
+  "source": "/home/vercel-sandbox/iphone-1/.context/jit-mixed-coverage/measured/3-candidate/video/page@fd4d43b46db9d0d4bde7329968006d9e.webm",
+  "sourceSha256": "6c5fe69c5061c1ec6fe1d0021a3ba3ca3c30419db68ea99bebe948efd84507a2",
+  "video": "tweets/videos/mixed_seed_coverage_diagnostic.mp4",
+  "videoSha256": "8c36bb1d67b1be9f9022e76d7b44c81865917da184c5c0362651d43892a065bc",
+  "thumbnail": "tweets/thumbnails/mixed_seed_coverage_diagnostic.jpg",
+  "thumbnailSha256": "cd84c67c608e695a46452ff5126e48ffe19a1085583ace666b9497768067567e",
+  "thumbnailSeconds": 46,
+  "scope": "Entire actual candidate arm3; no cuts or playback-speed changes. Failedoriginalseries plus separatelyrecordedarm4 documented. Fresh-profile comparison, no promoted gain.",
+  "sourceDurationSeconds": 117.28,
+  "outputDurationSeconds": 117.28,
+  "thumbnailManuallyReviewed": true
+}

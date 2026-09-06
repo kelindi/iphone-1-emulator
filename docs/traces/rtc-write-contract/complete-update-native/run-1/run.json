@@ -1,0 +1,15 @@
+{
+  "command": [
+    ".context/rtc-write/probe",
+    ".context/rtc-contract/browser-2/before-manual-change.snap"
+  ],
+  "instructionLimit": 400000000,
+  "wallLimit": 60,
+  "cpuLimit": 50,
+  "traceByteLimit": 4194304,
+  "automaticRetry": false,
+  "exitCode": 0,
+  "timedOut": false,
+  "wallSeconds": 5.131569138000486,
+  "launcherSHA256": "599bb3536ea0e95c769c28883ab32748fab9e5ffb098be0fa9a51d3ac0277d34"
+}

@@ -1,0 +1,15 @@
+{
+  "mp4": {
+    "path": "tweets/videos/safari_stride472_recovery.mp4",
+    "sha256": "0aec915a941b5f410aefea8ae1adcabbfe3995f8c857fc090653cfb411b445db",
+    "durationSeconds": 273.4,
+    "speedChanged": false,
+    "fullDecodePassed": true
+  },
+  "thumbnail": {
+    "path": "tweets/thumbnails/safari_stride472_recovery.jpg",
+    "sha256": "a66f95b61880a39c63610820f8d6b9262ca3b691c37ae258ddc3e6f0d7c9ed23",
+    "seconds": 200,
+    "manuallyViewed": true
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "files": [
+    {
+      "path": ".context/jit-executed-work/warm-browser/worker-hook.txt",
+      "bytes": 1518,
+      "sha256": "7f658c8de334508bc44d8bcd43f7b96fdcc6e9d80ad9e9654235b8c6a5dfa2d1"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/worker-watch.txt",
+      "bytes": 605,
+      "sha256": "4a43780c253c029c5b2cfb210b4aa53776301b09346e3c3439ee04845732eea7"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/frame-packet.mjs",
+      "bytes": 760,
+      "sha256": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/frames.mjs",
+      "bytes": 660,
+      "sha256": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/cache-server.mjs",
+      "bytes": 3201,
+      "sha256": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/pins.json",
+      "bytes": 2284,
+      "sha256": "15fe86fb30a1201474ec296782c5f99134a276a44c1a4d40822b0c62d97be366"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/source-projection.json",
+      "bytes": 484,
+      "sha256": "44f13392bc0c3e3ba94465ff773319895779c0f3725cec8a4b178737455d08be"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/browser.mjs",
+      "bytes": 12130,
+      "sha256": "21ce55af6e5e8ad499f260746da09c5510f32cc69ff7de6b502b8ed6405ffa33"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/run-browser.py",
+      "bytes": 3030,
+      "sha256": "1cfcf88567cdb4613adbc6a641b8e542992c10c50b0568befb06127ab7b8bb3d"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/test-worker-hook.mjs",
+      "bytes": 3297,
+      "sha256": "0fd4a3aea0e8b9ef9ec15d41740cfb76c97433a320fbd49c97fdeed7980eedf8"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/worker-tests.json",
+      "bytes": 357,
+      "sha256": "af01a42c5c5d8acede6b9d51bbfee0b4f7ccea8092e96133fc2f82f7ddcdd392"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/test-worker-hook-first-failure.mjs",
+      "bytes": 3105,
+      "sha256": "190db4067cd6b12300755c65c7274932388a869eb7728fba043c3f6e44afa178"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/worker-test-first-failure.json",
+      "bytes": 177,
+      "sha256": "74246f146b024dae645a56d9b390d4b8c37f0be8730943466b3ffb15280d83da"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/worker-tests.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/contract.md",
+      "bytes": 7047,
+      "sha256": "3260362745ed341a6ffdc29ea2be9e0ed0d5a0fbb62a0ea9fc0d62e68c671df8"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/index.html",
+      "bytes": 5450,
+      "sha256": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/app.js",
+      "bytes": 18558,
+      "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/phone.css",
+      "bytes": 9067,
+      "sha256": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/emu-worker.js",
+      "bytes": 13603,
+      "sha256": "152640014c5305d89a15dd30e001606db1727547ade5b30f6ee295087d2e5e38"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/seed-jit.js",
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/storage.js",
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/checkpoint-worker.js",
+      "bytes": 615,
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/manifest.json",
+      "bytes": 1222,
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/assets.js",
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/jit/seed.wasm",
+      "bytes": 17267069,
+      "sha256": "667e6cf9747668699ef0a5bfc9496eadf17c16c1d5cff73b13bfa5a83c65fcfb"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/jit/regions.json",
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/jit/abi.json",
+      "bytes": 364,
+      "sha256": "d45e775771a3399f7a8265bfb0aaa4a6e05b4f15716986bf275f1853e2976763"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/dist/emu.js",
+      "bytes": 18510,
+      "sha256": "86e866d8b43aa9deef0185d86bef98ec07cf27bc10c939ab34a2a66b43f970b6"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/site/dist/emu.wasm",
+      "bytes": 253567,
+      "sha256": "a45f4698e3d46549492e2f4c811fef960ed037aac3a451ad5b2e233bf1b2590b"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/references/C0-settings.rgba",
+      "bytes": 614400,
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "path": ".context/jit-executed-work/warm-browser/references/C0-home.rgba",
+      "bytes": 614400,
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "path": ".context/jit-executed-work/prepare-warm-browser.py",
+      "bytes": 4547,
+      "sha256": "a23d069fcbea4eb33d79f3df67a999d345daf8169e9452844faa71f3726a145f"
+    },
+    {
+      "path": ".context/jit-executed-work/prepare-warm-runner.py",
+      "bytes": 5276,
+      "sha256": "f9d2a743a6a891dca231aef5f7bbac4379872d9aa6fddc61201711ca151c6e40"
+    },
+    {
+      "path": ".context/jit-executed-work/positions.json",
+      "bytes": 13284440,
+      "sha256": "bc109529e604ae39fc469fa662b0be6d21b503de15c882fdd842583ffc403bf5"
+    },
+    {
+      "path": ".context/jit-executed-work/seed-report.json",
+      "bytes": 102383,
+      "sha256": "3c121a2002fc802512b455a159057f5d671aade2a54dba1f4479331e59bd276d"
+    },
+    {
+      "path": ".context/jit-executed-work/decode.py",
+      "bytes": 3442,
+      "sha256": "103fa3870754de010e62857b74852d715dfdd3d71793d20800a234bceae0421f"
+    },
+    {
+      "path": ".context/jit-executed-work/check-capture.py",
+      "bytes": 945,
+      "sha256": "063d6fb89c09192f873f0a75c99295e7d1d50e8d73bba40c30088ec3094582fd"
+    },
+    {
+      "path": ".context/jit-executed-work/replay-audit.json",
+      "bytes": 2160,
+      "sha256": "af2d344c843ad1a54611802d1c317d0559a8a7a71deb29d65228edc2e60dd49a"
+    },
+    {
+      "path": "docs/traces/browser-first-use/cdp.mjs",
+      "bytes": 6363,
+      "sha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40"
+    },
+    {
+      "path": "/usr/bin/google-chrome",
+      "bytes": 1034,
+      "sha256": "aea09d69ce7f24d5901f6bfb15dd44d0c856e793e0a498f8d8393ec7d2c308ec"
+    },
+    {
+      "path": ".context/graphics-speed/fixed-dismiss.snap",
+      "bytes": 244887522,
+      "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244"
+    },
+    {
+      "path": "/opt/google/chrome/chrome",
+      "bytes": 290770248,
+      "sha256": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797"
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "bytes": 122502392,
+      "sha256": "bf9112eb83a827dc9f9c8d19bb7bddcbf00f7b2fedae18fdcaee05406981f20a"
+    }
+  ],
+  "scope": "Prepared one warm Settings/Home executed-work browser; NOT LAUNCHED",
+  "initialDiskFloorBytes": 5905580032,
+  "outerWallCapSeconds": 240
+}

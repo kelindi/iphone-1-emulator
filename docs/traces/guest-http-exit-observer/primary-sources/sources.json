@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/kern/kern_exit.c",
+    "file": "kern_exit.c",
+    "sha256": "edb791b52f7b295311d6441bb60571a2b060a10f133fef30fcdca1b78e19f98d",
+    "scope": "Public historical2007 XNU reference; exact OS1 execution semantics must be confirmed against retained original binary"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/kern/kern_sig.c",
+    "file": "kern_sig.c",
+    "sha256": "e274549986ae82b4aaa799e57fe472295c881fcc2a9a0d25f73eeee2dd4cbfd1",
+    "scope": "Public historical2007 XNU reference; exact OS1 execution semantics must be confirmed against retained original binary"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/kern/uipc_socket.c",
+    "file": "uipc_socket.c",
+    "sha256": "d1603bb0f171bec5d87ec1e0f8f67b464fff98e485904b31d61d13ecf375de95",
+    "scope": "Public historical2007 XNU reference; exact OS1 execution semantics must be confirmed against retained original binary"
+  }
+]

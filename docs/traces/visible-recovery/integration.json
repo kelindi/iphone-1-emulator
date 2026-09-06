@@ -1,0 +1,18 @@
+{
+  "index.html": {
+    "bytes": 5521,
+    "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883"
+  },
+  "app.js": {
+    "bytes": 18595,
+    "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+  },
+  "phone.css": {
+    "bytes": 9396,
+    "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+  },
+  "service-worker.js": {
+    "bytes": 3228,
+    "sha256": "dcd0acd35b8d24edbf32537248539604852666a52312402e51ee6d7cb7b42267"
+  }
+}

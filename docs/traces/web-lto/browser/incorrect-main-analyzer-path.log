@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/web-lto/browser/analyze-compile.py", line 21, in <module>
+    r=json.loads((folder/'report.json').read_text());assert r['traceComplete']['dataLossOccurred']is False
+  File "/usr/lib64/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib64/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/usr/lib64/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+NotADirectoryError: [Errno 20] Not a directory: '.context/jit-mixed-coverage/measured/1-after-system.txt/report.json'

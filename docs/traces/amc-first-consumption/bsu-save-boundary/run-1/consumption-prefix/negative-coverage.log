@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/consumption-prefix/audit.py", line 135, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/consumption-prefix/audit.py", line 80, in run
+    count=audit_reads((out/'read-ledger.bin').read_bytes(),(out/'read-coverage.bin').read_bytes(),(out/'read-bytes.bin').read_bytes(),pcm,9873234585,release)
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/consumption-prefix/audit.py", line 20, in audit_reads
+    assert coverage==seen==bytes([1])*4096, 'missing actual read coverage'
+AssertionError: missing actual read coverage

@@ -1,0 +1,1660 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "unmarked current UI ready",
+      "passed": true,
+      "seconds": 7.395796018
+    },
+    {
+      "name": "fresh exact release generated execution",
+      "passed": true,
+      "seconds": 10.496834875000001,
+      "before": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3466315,
+        "calls": 443952
+      },
+      "after": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 14105330,
+        "calls": 1803085
+      }
+    },
+    {
+      "name": "ordinary first visit does not install offline worker",
+      "passed": true,
+      "seconds": 10.498374995
+    },
+    {
+      "name": "dist/emu.wasm",
+      "passed": true,
+      "seconds": 10.510868958000001,
+      "status": 200,
+      "bytes": 250531,
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "name": "seed-jit.js",
+      "passed": true,
+      "seconds": 10.510890082,
+      "status": 200,
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "name": "service-worker.js",
+      "passed": true,
+      "seconds": 10.510896354,
+      "status": 200,
+      "bytes": 3228,
+      "sha256": "60b00dc89d60f5d5f7babdc0e4fb3a88b5d5228eacf50241e3a73dd58ebd8abd"
+    },
+    {
+      "name": "real natural autosave commits",
+      "passed": true,
+      "seconds": 39.682230200999996,
+      "baseline": {
+        "savedAt": 0,
+        "now": 1788676768781
+      },
+      "saved": {
+        "savedAt": 1788676786357,
+        "size": 249053154,
+        "storedBytes": 103849559,
+        "encoding": "gzip",
+        "hash": "e2a89b449411c9b2245457b42afd6bc42e65a3236a8bc944e24ca5e053845a6a"
+      }
+    },
+    {
+      "name": "unmarked current UI ready",
+      "passed": true,
+      "seconds": 43.036746812
+    },
+    {
+      "name": "autosave reload generated execution",
+      "passed": true,
+      "seconds": 46.102960139000004,
+      "before": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3009199,
+        "calls": 388047
+      },
+      "after": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 15883158,
+        "calls": 2044962
+      }
+    },
+    {
+      "name": "real autosave bytes and metadata survive reload",
+      "passed": true,
+      "seconds": 46.606769975000006
+    },
+    {
+      "name": "explicit diagnostic offline install controls page",
+      "passed": true,
+      "seconds": 49.983545927
+    },
+    {
+      "name": "service-worker.js",
+      "passed": true,
+      "seconds": 49.989774761,
+      "status": 200,
+      "bytes": 3228,
+      "sha256": "60b00dc89d60f5d5f7babdc0e4fb3a88b5d5228eacf50241e3a73dd58ebd8abd"
+    },
+    {
+      "name": "unmarked current UI ready",
+      "passed": true,
+      "seconds": 53.460722290999996
+    },
+    {
+      "name": "physically disconnected exact release generated execution",
+      "passed": true,
+      "seconds": 56.544132055,
+      "before": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3375820,
+        "calls": 432052
+      },
+      "after": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 13536637,
+        "calls": 1738004
+      }
+    },
+    {
+      "name": "dist/emu.wasm",
+      "passed": true,
+      "seconds": 56.550559008,
+      "status": 200,
+      "bytes": 250531,
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "name": "seed-jit.js",
+      "passed": true,
+      "seconds": 56.550565292,
+      "status": 200,
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "name": "offline reload retains the same real autosave",
+      "passed": true,
+      "seconds": 56.987938953
+    },
+    {
+      "name": "local and remote actual offline probes fail",
+      "passed": true,
+      "seconds": 56.993332921000004
+    },
+    {
+      "name": "closed origin received no requests",
+      "passed": true,
+      "seconds": 56.993338117
+    },
+    {
+      "name": "offline HTTP responses came only from service worker",
+      "passed": true,
+      "seconds": 56.993518364
+    },
+    {
+      "name": "no uncaught errors",
+      "passed": true,
+      "seconds": 57.375544647000005
+    }
+  ],
+  "stages": [
+    {
+      "name": "00-fresh-home",
+      "seconds": 10.851292468,
+      "status": "Ready. Your iPhone, just as you left it.",
+      "savedAt": 0,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.590005990405531,
+        "fps": 0,
+        "guestRate": 1.0000159744394068,
+        "cycles": "11222857965",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 14105330,
+          "calls": 1803085
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "01-actual-settings",
+      "seconds": 17.347231400000002,
+      "status": "Ready. Your iPhone, just as you left it.",
+      "savedAt": 0,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 4.128320175895328,
+        "fps": 13.990206855263855,
+        "guestRate": 1.0000078278583027,
+        "cycles": "11330457023",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 91911791,
+          "calls": 11151466
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "02-physical-home",
+      "seconds": 21.403059304,
+      "status": "Ready. Your iPhone, just as you left it.",
+      "savedAt": 0,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 9.421297480951464,
+        "fps": 0,
+        "guestRate": 1.000024656797987,
+        "cycles": "11380580019",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 126913223,
+          "calls": 15720622
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "03-real-autosave",
+      "seconds": 40.00513087,
+      "status": "Saved at 06:39 AM",
+      "savedAt": 1788676786357,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 5.395519848763268,
+        "fps": 0,
+        "guestRate": 1.0000137631398303,
+        "cycles": "11489460046",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 210783517,
+          "calls": 25968934
+        },
+        "serial": "",
+        "captureMs": 163.20000000298023,
+        "captureChunkMs": 5.699999995529652,
+        "finalizeMs": 720.1000000014901
+      }
+    },
+    {
+      "name": "04-autosave-reload",
+      "seconds": 47.028657278,
+      "status": "Saved at 06:39 AM",
+      "savedAt": 1788676786357,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.119496031746031,
+        "fps": 0,
+        "guestRate": 1.0001114417989416,
+        "cycles": "11467938701",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 20649750,
+          "calls": 2663168
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "05-offline-installed",
+      "seconds": 50.513735782000005,
+      "status": "Your phone is available offline. Save to keep your latest changes.",
+      "savedAt": 1788676786357,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 1.5152474257654966,
+        "fps": 0,
+        "guestRate": 1.0001063014384308,
+        "cycles": "11473457865",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 25342308,
+          "calls": 3010826
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "06-final-offline-running",
+      "seconds": 57.339093777,
+      "status": "Saved at 06:39 AM",
+      "savedAt": 1788676786357,
+      "paused": false,
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.57360765171803,
+        "fps": 0,
+        "guestRate": 1.000014280499954,
+        "cycles": "11458768454",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 13536637,
+          "calls": 1738004
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    }
+  ],
+  "requests": [
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/",
+      "at": 1788676748488
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "at": 1788676748512
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "at": 1788676748512
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "at": 1788676748532
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "at": 1788676748555
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "at": 1788676748579
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "at": 1788676748590
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676748595
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "at": 1788676748603
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "at": 1788676748603
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "at": 1788676748603
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "at": 1788676748604
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "at": 1788676748628
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "at": 1788676748637
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "at": 1788676749035
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "at": 1788676749136
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "at": 1788676750391
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676753236
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676757874
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676757874
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "at": 1788676757874
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/checkpoint-worker.js",
+      "at": 1788676779434
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "at": 1788676779446
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/",
+      "at": 1788676787387
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "at": 1788676787411
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "at": 1788676787412
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "at": 1788676787450
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "at": 1788676787460
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "at": 1788676787461
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "at": 1788676788491
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676788497
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "at": 1788676788507
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "at": 1788676788507
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "at": 1788676788507
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "at": 1788676788507
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "at": 1788676788519
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676788735
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "at": 1788676794487
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "at": 1788676794509
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "at": 1788676797012
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/index.html",
+      "at": 1788676797023
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "at": 1788676797029
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "at": 1788676797034
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "at": 1788676797038
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "at": 1788676797043
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/checkpoint-worker.js",
+      "at": 1788676797048
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "at": 1788676797053
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "at": 1788676797057
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "at": 1788676797065
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "at": 1788676797069
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676797080
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676797089
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "at": 1788676797097
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "at": 1788676797332
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "at": 1788676797338
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "at": 1788676797358
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/",
+      "at": 1788676797898
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "at": 1788676797964
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/app.js",
+      "at": 1788676797964
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "at": 1788676798000
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "at": 1788676798029
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "at": 1788676798048
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "at": 1788676799113
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676799117
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "at": 1788676799122
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "at": 1788676799122
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "at": 1788676799122
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "at": 1788676799124
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "at": 1788676799265
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676799338
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "at": 1788676803918
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "at": 1788676803918
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/final-offline-1788676804360",
+      "at": 1788676804362
+    },
+    {
+      "phase": "offline",
+      "url": "https://iphone.files.garden/final-offline-1788676804360",
+      "at": 1788676804365
+    }
+  ],
+  "responses": [
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748499
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748518
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748532
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748543
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748564
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748587
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748594
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748602
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748619
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748620
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748620
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748622
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748632
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676748886
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676749131
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676749219
+    },
+    {
+      "phase": "online",
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676750467
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676753283
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676757877
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676757877
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676757878
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/checkpoint-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676779445
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676779448
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676787392
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676787412
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676787449
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676787455
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676787466
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788489
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788497
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788507
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788510
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788514
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788519
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788527
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788531
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676788738
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676794508
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676794517
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797020
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/index.html",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797025
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797030
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797035
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/app.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797039
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797045
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/checkpoint-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797050
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797054
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797059
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797067
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797071
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797082
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797091
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797112
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797334
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797339
+    },
+    {
+      "phase": "online",
+      "url": "http://127.0.0.1:8204/service-worker.js",
+      "status": 200,
+      "fromServiceWorker": false,
+      "at": 1788676797361
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676797919
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/phone.css",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676797975
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/app.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676798000
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/storage.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676798015
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/icon.svg",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676798047
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/emu-worker.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799112
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799117
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799122
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/regions.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799126
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/seed.wasm",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799126
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/jit/abi.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799126
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/assets.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799158
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/manifest.json",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799267
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676799339
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/dist/emu.wasm",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676803920
+    },
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/seed-jit.js",
+      "status": 200,
+      "fromServiceWorker": true,
+      "at": 1788676803920
+    }
+  ],
+  "failures": [
+    {
+      "phase": "offline",
+      "url": "http://127.0.0.1:8204/final-offline-1788676804360",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788676804364
+    },
+    {
+      "phase": "offline",
+      "url": "https://iphone.files.garden/final-offline-1788676804360",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788676804365
+    }
+  ],
+  "console": [
+    {
+      "phase": "online",
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "phase": "online",
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "phase": "offline",
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "phase": "offline",
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+    }
+  ],
+  "errors": [],
+  "originRequests": [
+    {
+      "phase": "online",
+      "url": "/",
+      "at": 1788676748490
+    },
+    {
+      "phase": "online",
+      "url": "/phone.css",
+      "at": 1788676748513
+    },
+    {
+      "phase": "online",
+      "url": "/app.js",
+      "at": 1788676748514
+    },
+    {
+      "phase": "online",
+      "url": "/storage.js",
+      "at": 1788676748532
+    },
+    {
+      "phase": "online",
+      "url": "/icon.svg",
+      "at": 1788676748554
+    },
+    {
+      "phase": "online",
+      "url": "/emu-worker.js",
+      "at": 1788676748580
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.js",
+      "at": 1788676748590
+    },
+    {
+      "phase": "online",
+      "url": "/seed-jit.js",
+      "at": 1788676748595
+    },
+    {
+      "phase": "online",
+      "url": "/jit/seed.wasm",
+      "at": 1788676748604
+    },
+    {
+      "phase": "online",
+      "url": "/jit/regions.json",
+      "at": 1788676748605
+    },
+    {
+      "phase": "online",
+      "url": "/jit/abi.json",
+      "at": 1788676748605
+    },
+    {
+      "phase": "online",
+      "url": "/assets.js",
+      "at": 1788676748606
+    },
+    {
+      "phase": "online",
+      "url": "/manifest.json",
+      "at": 1788676748628
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.wasm",
+      "at": 1788676753235
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.wasm",
+      "at": 1788676757873
+    },
+    {
+      "phase": "online",
+      "url": "/seed-jit.js",
+      "at": 1788676757875
+    },
+    {
+      "phase": "online",
+      "url": "/service-worker.js",
+      "at": 1788676757875
+    },
+    {
+      "phase": "online",
+      "url": "/checkpoint-worker.js",
+      "at": 1788676779435
+    },
+    {
+      "phase": "online",
+      "url": "/storage.js",
+      "at": 1788676779446
+    },
+    {
+      "phase": "online",
+      "url": "/",
+      "at": 1788676787388
+    },
+    {
+      "phase": "online",
+      "url": "/phone.css",
+      "at": 1788676787402
+    },
+    {
+      "phase": "online",
+      "url": "/app.js",
+      "at": 1788676787403
+    },
+    {
+      "phase": "online",
+      "url": "/storage.js",
+      "at": 1788676787450
+    },
+    {
+      "phase": "online",
+      "url": "/icon.svg",
+      "at": 1788676787460
+    },
+    {
+      "phase": "online",
+      "url": "/emu-worker.js",
+      "at": 1788676787463
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.js",
+      "at": 1788676788492
+    },
+    {
+      "phase": "online",
+      "url": "/seed-jit.js",
+      "at": 1788676788497
+    },
+    {
+      "phase": "online",
+      "url": "/jit/seed.wasm",
+      "at": 1788676788504
+    },
+    {
+      "phase": "online",
+      "url": "/jit/regions.json",
+      "at": 1788676788504
+    },
+    {
+      "phase": "online",
+      "url": "/jit/abi.json",
+      "at": 1788676788504
+    },
+    {
+      "phase": "online",
+      "url": "/assets.js",
+      "at": 1788676788506
+    },
+    {
+      "phase": "online",
+      "url": "/manifest.json",
+      "at": 1788676788519
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.wasm",
+      "at": 1788676788735
+    },
+    {
+      "phase": "online",
+      "url": "/manifest.json",
+      "at": 1788676794493
+    },
+    {
+      "phase": "online",
+      "url": "/assets.js",
+      "at": 1788676794514
+    },
+    {
+      "phase": "online",
+      "url": "/service-worker.js",
+      "at": 1788676797012
+    },
+    {
+      "phase": "online",
+      "url": "/index.html",
+      "at": 1788676797023
+    },
+    {
+      "phase": "online",
+      "url": "/phone.css",
+      "at": 1788676797029
+    },
+    {
+      "phase": "online",
+      "url": "/icon.svg",
+      "at": 1788676797034
+    },
+    {
+      "phase": "online",
+      "url": "/app.js",
+      "at": 1788676797038
+    },
+    {
+      "phase": "online",
+      "url": "/storage.js",
+      "at": 1788676797043
+    },
+    {
+      "phase": "online",
+      "url": "/checkpoint-worker.js",
+      "at": 1788676797048
+    },
+    {
+      "phase": "online",
+      "url": "/assets.js",
+      "at": 1788676797053
+    },
+    {
+      "phase": "online",
+      "url": "/emu-worker.js",
+      "at": 1788676797057
+    },
+    {
+      "phase": "online",
+      "url": "/manifest.json",
+      "at": 1788676797065
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.js",
+      "at": 1788676797070
+    },
+    {
+      "phase": "online",
+      "url": "/dist/emu.wasm",
+      "at": 1788676797080
+    },
+    {
+      "phase": "online",
+      "url": "/seed-jit.js",
+      "at": 1788676797090
+    },
+    {
+      "phase": "online",
+      "url": "/jit/seed.wasm",
+      "at": 1788676797098
+    },
+    {
+      "phase": "online",
+      "url": "/jit/regions.json",
+      "at": 1788676797331
+    },
+    {
+      "phase": "online",
+      "url": "/jit/abi.json",
+      "at": 1788676797338
+    },
+    {
+      "phase": "online",
+      "url": "/service-worker.js",
+      "at": 1788676797359
+    }
+  ],
+  "controls": [
+    {
+      "id": "offline",
+      "scope": "Explicit hidden diagnostic action, not ordinary first-visit behavior",
+      "clicked": true,
+      "disabled": false,
+      "status": "Saved at 06:39 AM",
+      "savedAt": 1788676786357
+    }
+  ],
+  "onlineHashes": [
+    {
+      "name": "dist/emu.wasm",
+      "status": 200,
+      "bytes": 250531,
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "name": "seed-jit.js",
+      "status": 200,
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "name": "service-worker.js",
+      "status": 200,
+      "bytes": 3228,
+      "sha256": "60b00dc89d60f5d5f7babdc0e4fb3a88b5d5228eacf50241e3a73dd58ebd8abd"
+    }
+  ],
+  "savedBefore": {
+    "savedAt": 1788676786357,
+    "size": 249053154,
+    "storedBytes": 103849559,
+    "encoding": "gzip",
+    "hash": "e2a89b449411c9b2245457b42afd6bc42e65a3236a8bc944e24ca5e053845a6a"
+  },
+  "savedAfter": {
+    "savedAt": 1788676786357,
+    "size": 249053154,
+    "storedBytes": 103849559,
+    "encoding": "gzip",
+    "hash": "e2a89b449411c9b2245457b42afd6bc42e65a3236a8bc944e24ca5e053845a6a"
+  },
+  "installedSW": {
+    "active": "http://127.0.0.1:8204/service-worker.js",
+    "waiting": false
+  },
+  "installedHashes": [
+    {
+      "name": "service-worker.js",
+      "status": 200,
+      "bytes": 3228,
+      "sha256": "60b00dc89d60f5d5f7babdc0e4fb3a88b5d5228eacf50241e3a73dd58ebd8abd"
+    }
+  ],
+  "barrier": {
+    "listening": false,
+    "connectionsClosed": 1,
+    "refusal": {
+      "host": "127.0.0.1",
+      "port": 8204,
+      "code": "ECONNREFUSED",
+      "at": "2026-09-06T06:39:57.893Z"
+    }
+  },
+  "originCountAtBarrier": 52,
+  "offlineHashes": [
+    {
+      "name": "dist/emu.wasm",
+      "status": 200,
+      "bytes": 250531,
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    {
+      "name": "seed-jit.js",
+      "status": 200,
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    }
+  ],
+  "savedOffline": {
+    "savedAt": 1788676786357,
+    "size": 249053154,
+    "storedBytes": 103849559,
+    "encoding": "gzip",
+    "hash": "e2a89b449411c9b2245457b42afd6bc42e65a3236a8bc944e24ca5e053845a6a"
+  },
+  "nonce": [
+    {
+      "url": "http://127.0.0.1:8204/final-offline-1788676804360",
+      "error": "Failed to fetch"
+    },
+    {
+      "url": "https://iphone.files.garden/final-offline-1788676804360",
+      "error": "Failed to fetch"
+    }
+  ],
+  "browserClosed": true,
+  "video": "/home/vercel-sandbox/iphone-1/.context/rtc-release-upgrade/final-release/run-1/page@fa8c5ffbf75948b3a303e7cade70f39a.webm",
+  "durationSeconds": 58.470814763
+}

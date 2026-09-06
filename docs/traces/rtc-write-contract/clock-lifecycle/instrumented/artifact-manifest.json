@@ -1,0 +1,34 @@
+{
+  "README.md": {
+    "bytes": 2605,
+    "sha256": "2bb91150b9b93d9902a0ac93c6e855bc101c9cf34a02c73526f55a6cb86b48ac"
+  },
+  "clock-lifecycle-instrumented.log": {
+    "bytes": 11423,
+    "sha256": "52ce79a274568e365e1e123ecaaf47a4a411576b48ca674f4ee49c3c8902457d"
+  },
+  "clock-lifecycle-instrumented.mjs": {
+    "bytes": 13181,
+    "sha256": "64bed35fa82203814be49ff5adf88f21b406e54508018b7d3c4e345eaf3e6570"
+  },
+  "final.png": {
+    "bytes": 200481,
+    "sha256": "fbe2be792503ed4b80173973fae6dcef8ff8e3c0b86a91c3b7b2f6de23abf49f"
+  },
+  "report.json": {
+    "bytes": 11423,
+    "sha256": "52ce79a274568e365e1e123ecaaf47a4a411576b48ca674f4ee49c3c8902457d"
+  },
+  "source-pins.json": {
+    "bytes": 500,
+    "sha256": "95e1071dc09e493d16258fda42af61d293f097d7d1b9739a2e8175282a23b30d"
+  },
+  "tiny-report.json": {
+    "bytes": 3583,
+    "sha256": "b0b68179866e631d9b5c3c37bebf5ce1392409b560f6f39664f0d1469f7b8e2d"
+  },
+  "tiny-reproduce.mjs": {
+    "bytes": 4231,
+    "sha256": "2e6cd5fbb596f3ee2bde6880631811e8152b132ccf2ba6c4e01907374d3425a8"
+  }
+}

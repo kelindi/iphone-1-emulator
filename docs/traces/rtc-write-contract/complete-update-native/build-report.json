@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "scope": "Isolated supported complete-register RTC update; original guest continuation not yet run",
+  "unitTestLog": "PASS 1089 complete-update/phase/unsupported-input contracts\n",
+  "snapshotTestLog": "PASS 7 pending full/partial snapshot39 exact-byte roundtrips and subsequent pulse\n",
+  "negative": {
+    "passed": true,
+    "mutant": "wrong extra increment on commit pulse",
+    "exitCode": 1,
+    "expectedFailure": "FAIL line29: p.seconds==desired\n"
+  },
+  "linkedArchiveNotNewlySanitized": true,
+  "pins": {
+    ".context/rtc-write/pcf50635.c": {
+      "bytes": 11060,
+      "sha256": "10e2b7db2df47372daa92ae592c5e5d051564e84771b846a74931c27e919782c"
+    },
+    ".context/rtc-write/test.c": {
+      "bytes": 4635,
+      "sha256": "d92770621ce37fd9062e1732ef6426d89680d4b0262d5b58b1ad6eeeff8f2ee3"
+    },
+    ".context/rtc-write/snapshot-test.c": {
+      "bytes": 1851,
+      "sha256": "db298113b2dd9fd99e585a38811de89b5f57f6692116ea6be533c2543d168854"
+    },
+    ".context/rtc-write/probe.c": {
+      "bytes": 6424,
+      "sha256": "478e036e854ecd0f6ebd8b1bc077f4df8e67ef3e04e8d6b5b3faa9e8a2df3166"
+    },
+    ".context/rtc-write/run.py": {
+      "bytes": 1318,
+      "sha256": "599bb3536ea0e95c769c28883ab32748fab9e5ffb098be0fa9a51d3ac0277d34"
+    },
+    ".context/rtc-write/audit.py": {
+      "bytes": 2562,
+      "sha256": "269e7739808930908838474ef5ddf2f6db82883ce06c972ae55a491508ff7740"
+    },
+    ".context/rtc-write/probe": {
+      "bytes": 301568,
+      "sha256": "0166761aaabe98a2e78e2b8d6f7ea23748261919ccad678981e8bffdf0d9a3a8"
+    },
+    ".context/rtc-write/test": {
+      "bytes": 136592,
+      "sha256": "7630c1288f022c7e09e3f21e66ce88e8a611d1e1c860058b0b588c958afc0249"
+    },
+    ".context/rtc-write/snapshot-test": {
+      "bytes": 976120,
+      "sha256": "8789a53b0b9ef7a798912a053263e49de4a95848b74f1470a5c7b3b7b77a203e"
+    },
+    ".context/build-native/core/libemucore.a": {
+      "bytes": 1854772,
+      "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+    },
+    ".context/rtc-contract/emu_api.c": {
+      "bytes": 22190,
+      "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1"
+    },
+    ".context/amc-first/stage-h/source/peek.c": {
+      "bytes": 1946,
+      "sha256": "50577c62beb22c08e8b365bf16f566704226f7efd768732043461fee91ff7153"
+    },
+    ".context/amc-first/stage-h/source/peek.h": {
+      "bytes": 269,
+      "sha256": "246d25d6e11affe5ae60c910ccdf0c6ba8022b15da6844627fa9fa1ee0b52dd6"
+    },
+    ".context/amc-first/stage-g/native-include/emscripten/emscripten.h": {
+      "bytes": 377,
+      "sha256": "c1405e5e3548e49c725787f67fd969e47286d706e06f5c4f20017e6652161bef"
+    },
+    ".context/rtc-contract/browser-2/before-manual-change.snap": {
+      "bytes": 255983586,
+      "sha256": "d478cf35dbebaf45319c75175df29c743e9f21929eea36b3b63827de454bfb5d"
+    },
+    ".context/rtc-second/run-1/trace.log": {
+      "bytes": 4270,
+      "sha256": "64a8e48d769f80f9fa560f4764c612dde5f6e91ebd1fd44d87a521822056ae17"
+    }
+  }
+}

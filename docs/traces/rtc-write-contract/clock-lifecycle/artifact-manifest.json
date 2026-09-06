@@ -1,0 +1,22 @@
+{
+  "README.md": {
+    "bytes": 2170,
+    "sha256": "a20ad25b713c0e39e817bd610238cb5b8cb96a28f59ac0fcc792d77de5dad428"
+  },
+  "clock-harness-pins.json": {
+    "bytes": 359,
+    "sha256": "ce955ff77c1e16a68d5f4ec10ce60d6f0d0a1f2b267f4fbfc54a95a1f95b86e4"
+  },
+  "clock-lifecycle.log": {
+    "bytes": 3243,
+    "sha256": "2b12bd6872c994874d8c1ceaae9529286363d3f7824c1d984e38ad57c999c3c4"
+  },
+  "clock-lifecycle.mjs": {
+    "bytes": 11188,
+    "sha256": "e11b90285720522b14ea1b3cbad6a24e6f9f34ccc96f23781ab6093c8762eaba"
+  },
+  "report.json": {
+    "bytes": 3243,
+    "sha256": "2b12bd6872c994874d8c1ceaae9529286363d3f7824c1d984e38ad57c999c3c4"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "availableBytes": 3646144512,
+  "filesystemBytes": 68652367872,
+  "chromiumBlobDocumentation": "https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/storage/browser/blob/README.md",
+  "documentedDesktop64InMemoryLimitBytes": 2147483648,
+  "documentedMinimumDiskReserveBytes": 4294967296,
+  "causalityStatus": "Pending unchanged-code reproduction after independently scoped disk cleanup; no code change or second guest run yet."
+}

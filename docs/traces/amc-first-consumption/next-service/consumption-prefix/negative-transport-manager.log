@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-t/run-1/consumption-prefix/transport-audit.py", line 49, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-t/run-1/consumption-prefix/transport-audit.py", line 44, in run
+    stages=[audit_stage(out,s) for s in ['fixture','first-pcm','copy','release']]
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-t/run-1/consumption-prefix/transport-audit.py", line 44, in <listcomp>
+    stages=[audit_stage(out,s) for s in ['fixture','first-pcm','copy','release']]
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-t/run-1/consumption-prefix/transport-audit.py", line 27, in audit_stage
+    assert 0<base<end<=2**32 and 0<capacity<=0x40000 and end-base==capacity and base<=read<=end and base<=write<=end and w[5]<=capacity,'manager bounds differ'
+AssertionError: manager bounds differ

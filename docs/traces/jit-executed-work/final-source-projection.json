@@ -1,0 +1,24 @@
+[
+  {
+    "source": "core/src/arm/arm_interp.c",
+    "output": "arm_interp.c",
+    "sourceSha256": "71466a84bfcf301eb98d887af554f45b3ad01b099041f6c957c5a634d6ff1b3a",
+    "candidateSha256": "6072c22a5dfe880c609b86d61fc8a0dc55c0debac0927c7f5688404e29e22c22",
+    "inverseProjectionByteExact": true,
+    "replacements": 7,
+    "finalObserverSha256": "6072c22a5dfe880c609b86d61fc8a0dc55c0debac0927c7f5688404e29e22c22",
+    "generatedPointerExportSuffixOnly": false,
+    "priorProjectionRestoredByteExactly": true
+  },
+  {
+    "source": "web/jit-runtime.c",
+    "output": "jit-runtime.c",
+    "sourceSha256": "c50843d8546e9b6d9d14e97673fbf6d2681b473cc1aa1cc89c7a5a8984dbc36e",
+    "candidateSha256": "1b33c2caa59e203d8fdec6b1d8724f4bd25ef15ba4008fd84ebc7d663b9c81d7",
+    "inverseProjectionByteExact": true,
+    "replacements": 8,
+    "finalObserverSha256": "e0eeb9a7c387f7bc821274c15f43e83b1bf7bca1d2f5c658edb25003a406f87f",
+    "generatedPointerExportSuffixOnly": true,
+    "priorProjectionRestoredByteExactly": true
+  }
+]

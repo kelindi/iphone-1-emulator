@@ -1,0 +1,14 @@
+{
+  "scope": "Baseline actual-WASM VFP conformance FAIL, relative LTO output identical, no expected-result or implementation change",
+  "files": {
+    "README.md": "4e83368084133c23c7d828c912f52673127fac04540529fc2a12e03d4aec459e",
+    "control-vfp.log": "bab0cfc3b980c1b3296dc1ea625935bcfc662f55814534937d587620d1c5629f",
+    "candidate-vfp.log": "bab0cfc3b980c1b3296dc1ea625935bcfc662f55814534937d587620d1c5629f",
+    "relative-focused-report.json": "099d8d4dcb23bb9be4173685050a12866264377df1f64f3681cd4b8212824a23",
+    "source/fenv.h": "a97c3cd98f8674fa36c2f798f8e7cc72d0479b022140cbdc6523b049109241e2",
+    "source/fenv.c": "6994f1dc4cb270072277d61fd3f7836f3df3455c873727a33e59713e0c058d93",
+    "source/fesetround.c": "977d5b1221c51f14f49b8d210095b61ba0411f7215eaea57aae197df6b6d87af"
+  },
+  "testSourceSHA256": "61feb78f65c8c6c08dffc9d534621e5bef3cc1046955b86bd535851f79d9f11b",
+  "vfpSourceSHA256": "c095fc1721c34cf17ae6ca11a053575eb9ae8adb4197e7809d158452649de1ea"
+}

@@ -1,0 +1,32 @@
+{
+  "files": {
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/timing.mjs": "92cc56e0fc1e0f7ae938bf6abc814625956df4ab02c6c5404631e7e9385e6564",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/timing-once.py": "e3f0960e760aab6e2176ce0c662d76d7fd19bc34f163de2c3a7fec257a773948",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/timing-contract.md": "b0aab3dbe055a05b247a68547733ff3658804a749b7e617af7b381a16383b2b2",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/control/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/control/emu.wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate/emu.js": "f99be828cce8eb0d53fc57591be3ee6a7bf23a0a9aacba732be98508340be47a",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/candidate/emu.wasm": "7a528805814b7cf8ad061a1f5d2fb70aeb316c8a12585dfb25d6d08752dca740",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/retained-control-100m.json": "80d184c145a54d9368e5e9f95154447fbfdb7e0daeb1eb2ddbceeceaeddc3f12",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/correctness-result.json": "c8ce05b40e68fb5f04f31bd1d1e0d1b977eb9da5db7a86b28eeaff0c3d0c6bc4",
+    "/home/vercel-sandbox/iphone-1/.context/web-lto/relative-focused-report.json": "099d8d4dcb23bb9be4173685050a12866264377df1f64f3681cd4b8212824a23",
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    "web/firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+    "web/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "web/jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+    "web/jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+    ".context/graphics-speed/fixed-dismiss.snap": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "/usr/local/bin/node": "bf9112eb83a827dc9f9c8d19bb7bddcbf00f7b2fedae18fdcaee05406981f20a"
+  },
+  "nodeExecutable": "/usr/local/bin/node",
+  "order": [
+    "control",
+    "candidate",
+    "candidate",
+    "control"
+  ],
+  "warmupPerCore": 600000000,
+  "instructionsPerArm": 600000000,
+  "processCapSeconds": 420,
+  "productionChanges": false
+}

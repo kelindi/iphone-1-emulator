@@ -1,0 +1,10 @@
+file:///home/vercel-sandbox/iphone-1/web/tests/input-feedback.mjs:28
+const save=()=>writeFile(resolve(dir,'report.json'),JSON.stringify(report,null,2)+'\n');
+                                                         ^
+
+TypeError: Do not know how to serialize a BigInt
+    at JSON.stringify (<anonymous>)
+    at save (file:///home/vercel-sandbox/iphone-1/web/tests/input-feedback.mjs:28:58)
+    at file:///home/vercel-sandbox/iphone-1/web/tests/input-feedback.mjs:92:145
+
+Node.js v24.14.1
