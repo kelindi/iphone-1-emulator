@@ -1,0 +1,4 @@
+SDIO isolated contracts: 101589 checks, 0 failures
+SDIO endpoint contracts: 12723 new, 114312 total checks, 0 failures
+SDIO data contracts: 53750 new, 168062 total checks, 0 failures
+SDIO helper contracts: 142135 new, 310197 total checks, 0 failures

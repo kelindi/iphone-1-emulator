@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "rawCheckpoints": 24,
+  "forwardElapsedReductionPercent": 4.438291826217133,
+  "reverseElapsedReductionPercent": 3.9707342502125265,
+  "combinedElapsedReductionPercent": 4.204265420986086,
+  "combinedProcessCpuReductionPercent": 4.214591898939024,
+  "quietDurationMs": 117641,
+  "decision": "Repeatable bounded CPU gain; no browser gain established and no production promotion. Request actual browser comparison separately."
+}

@@ -1,0 +1,61 @@
+c01031f0 90b5     push     {r4, r7, lr}
+c01031f2 01af     add      r7, sp, #4
+c01031f4 84b0     sub      sp, #0x10
+c01031f6 0c1c     adds     r4, r1, #0
+c01031f8 0868     ldr      r0, [r1]
+c01031fa 0028     cmp      r0, #0
+c01031fc 18d1     bne      #0xc0103230
+c01031fe 6068     ldr      r0, [r4, #4]
+c0103200 0028     cmp      r0, #0
+c0103202 1ed1     bne      #0xc0103242
+c0103204 2368     ldr      r3, [r4]
+c0103206 002b     cmp      r3, #0
+c0103208 24d1     bne      #0xc0103254
+c010320a 6168     ldr      r1, [r4, #4]
+c010320c 0029     cmp      r1, #0
+c010320e 02d1     bne      #0xc0103216
+c0103210 0020     movs     r0, #0
+c0103212 04b0     add      sp, #0x10
+c0103214 90bd     pop      {r4, r7, pc}
+c0103216 184c     ldr      r4, [pc, #0x60]
+c0103218 2068     ldr      r0, [r4]
+c010321a 59f76ae9 blx      #0xc005c4f0
+c010321e 1749     ldr      r1, [pc, #0x5c]
+c0103220 009a     ldr      r2, [sp]
+c0103222 019b     ldr      r3, [sp, #4]
+c0103224 2068     ldr      r0, [r4]
+c0103226 0a60     str      r2, [r1]
+c0103228 4b60     str      r3, [r1, #4]
+c010322a 59f7aae9 blx      #0xc005c580
+c010322e efe7     b        #0xc0103210
+c0103230 02a9     add      r1, sp, #8
+c0103232 0822     movs     r2, #8
+c0103234 5df788e8 blx      #0xc0060348
+c0103238 0028     cmp      r0, #0
+c010323a ead1     bne      #0xc0103212
+c010323c 6068     ldr      r0, [r4, #4]
+c010323e 0028     cmp      r0, #0
+c0103240 e0d0     beq      #0xc0103204
+c0103242 6946     mov      r1, sp
+c0103244 0822     movs     r2, #8
+c0103246 5df780e8 blx      #0xc0060348
+c010324a 0028     cmp      r0, #0
+c010324c e1d1     bne      #0xc0103212
+c010324e 2368     ldr      r3, [r4]
+c0103250 002b     cmp      r3, #0
+c0103252 dad0     beq      #0xc010320a
+c0103254 02a8     add      r0, sp, #8
+c0103256 fff7a9ff bl       #0xc01031ac
+c010325a 029b     ldr      r3, [sp, #8]
+c010325c 002b     cmp      r3, #0
+c010325e 08db     blt      #0xc0103272
+c0103260 002b     cmp      r3, #0
+c0103262 02d1     bne      #0xc010326a
+c0103264 039b     ldr      r3, [sp, #0xc]
+c0103266 002b     cmp      r3, #0
+c0103268 03db     blt      #0xc0103272
+c010326a 02a8     add      r0, sp, #8
+c010326c fff7b8ff bl       #0xc01031e0
+c0103270 cbe7     b        #0xc010320a
+c0103272 0120     movs     r0, #1
+c0103274 cde7     b        #0xc0103212

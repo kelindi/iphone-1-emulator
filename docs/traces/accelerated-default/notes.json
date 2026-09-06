@@ -1,0 +1,159 @@
+{
+  "date": "2026-09-05T21:42:53.719Z",
+  "method": "Original guest keyboard and touch only; explicit browser Save, reload, and guest framebuffer comparison. Human screenshot review confirms contact/event content.",
+  "actions": [
+    {
+      "tap": [
+        200,
+        250
+      ],
+      "wait": 6000,
+      "shot": "01-notes",
+      "keyboard": true,
+      "videoSeconds": 8.657
+    },
+    {
+      "type": "hello",
+      "wait": 1500,
+      "shot": "02-hello-editing",
+      "videoSeconds": 16.229
+    },
+    {
+      "tap": [
+        289,
+        43
+      ],
+      "wait": 3000,
+      "shot": "03-hello-done",
+      "videoSeconds": 27.303
+    },
+    {
+      "saveReload": "04-hello",
+      "videoSeconds": 31.11
+    },
+    {
+      "tap": [
+        100,
+        112
+      ],
+      "wait": 1500,
+      "shot": "05-edit-open",
+      "keyboard": true,
+      "videoSeconds": 47.652
+    },
+    {
+      "type": " web",
+      "wait": 1500,
+      "shot": "06-edited-hello-web",
+      "videoSeconds": 50.918
+    },
+    {
+      "tap": [
+        289,
+        43
+      ],
+      "wait": 2000,
+      "shot": "07-edited-done",
+      "videoSeconds": 59.966
+    },
+    {
+      "saveReload": "08-edited",
+      "videoSeconds": 62.853
+    },
+    {
+      "tap": [
+        196,
+        453
+      ],
+      "wait": 2000,
+      "shot": "09-delete-confirm",
+      "videoSeconds": 82.109
+    },
+    {
+      "tap": [
+        160,
+        371
+      ],
+      "wait": 3000,
+      "shot": "10-deleted",
+      "videoSeconds": 85.4
+    },
+    {
+      "saveReload": "11-deleted",
+      "videoSeconds": 89.21
+    },
+    {
+      "home": true,
+      "wait": 3000,
+      "shot": "12-home",
+      "videoSeconds": 107.856
+    }
+  ],
+  "checks": [
+    {
+      "name": "startup-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 6267855,
+        "calls": 807818
+      }
+    },
+    {
+      "name": "04-hello-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "08-edited-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "11-deleted-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "completed-workflow-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 18381453,
+        "calls": 2803422
+      }
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    }
+  ],
+  "lastStatus": "Saved at 09:44 PM",
+  "lastDiagnostics": "13.73 M instructions/s\n3.0 changed frames/s · 1.00× guest time\nInstruction 11,794,627,756 · WASM heap 614 MiB\nSnapshot capture: — ms\n\nAppleBasebandOutput: could not start DMA: device is not ready\n\r",
+  "passed": true,
+  "durationSeconds": 111.562,
+  "video": "/home/vercel-sandbox/iphone-1/.context/graphics-final/default-notes/page@8462eb42f17694ef0d517efa27e015ae.webm"
+}

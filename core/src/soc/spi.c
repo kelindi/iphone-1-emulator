@@ -409,3 +409,17 @@ void s5l_spi_lcd_bind(s5l_spi_slave_t *slave, s5l_spi_t *bus) {
     slave->ctx = bus;
     slave->transfer = lcd_transfer;
 }
+
+void s5l_spi_mpl_bind(s5l_spi_slave_t *slave, s5l_spi_t *bus) {
+    if (!slave) return;
+    memset(slave, 0, sizeof *slave);
+    /* OS 1.0's display-enable path writes {register, value} through the
+     * helper at 0xc03b3fac, beginning with {0x16, 0xff}. Its synchronous SPI
+     * driver still drains a receive byte for each transmitted byte before
+     * completing the request. No returned register value is used by these
+     * writes. Clocking zeroes through the existing FIFOs lets the actual
+     * SPI interrupt complete them; an absent endpoint leaves both bytes in
+     * TX forever while the caller holds the display workloop gate. */
+    slave->ctx = bus;
+    slave->transfer = null_transfer;
+}

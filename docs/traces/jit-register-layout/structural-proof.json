@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "regions": 512,
+  "removedLoads": 1580,
+  "removedSpills": 1980,
+  "scope": "Exact non-transfer WAT and all compiler metadata unchanged for every original region. Admission metadata byte-identical. This is source structure proof, not a claim about host optimizer behavior or speed."
+}

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "auditorSHA256": "bfa458bf12dabd882e04e9a164f5ac61fed3343096d82275a011c149347ed587",
+  "actualArtifactMutations": [
+    {
+      "name": "wire-minute",
+      "exitCode": 1,
+      "rejected": true
+    },
+    {
+      "name": "callback-pending",
+      "exitCode": 1,
+      "rejected": true
+    },
+    {
+      "name": "queued-date",
+      "exitCode": 1,
+      "rejected": true
+    },
+    {
+      "name": "actual-transaction",
+      "exitCode": 1,
+      "rejected": true
+    },
+    {
+      "name": "retirement",
+      "exitCode": 1,
+      "rejected": true
+    },
+    {
+      "name": "device-accounting",
+      "exitCode": 1,
+      "rejected": true
+    }
+  ],
+  "guestReplay": false
+}

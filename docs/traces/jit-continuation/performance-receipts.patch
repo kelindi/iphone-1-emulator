@@ -1,0 +1,33 @@
+--- performance.mjs
++++ performance.mjs
+@@ -4,6 +4,7 @@
+  * This is a bounded comparison, not the full 30-sample product acceptance gate.
+  */
+ import {chromium} from 'playwright';
++import {createHash} from 'node:crypto';
+ import {mkdir,writeFile} from 'node:fs/promises';
+ import {resolve} from 'node:path';
+ import {cpus,platform,release,totalmem} from 'node:os';
+@@ -14,6 +15,11 @@
+ const page=await context.newPage();
+ const report={host:{platform:platform(),release:release(),cpu:cpus()[0]?.model,logicalCpus:cpus().length,memoryBytes:totalmem()},date:new Date().toISOString(),browser:browser.version(),url:process.env.BASE_URL || 'http://localhost:8080',pulseMs:30,actions:[],errors:[],method:'50 ms canvas sampling; changed pixels exclude status bar; readiness must remain visually stable 500 ms. Ready time starts that stable interval. Legacy readyMs/firstVisibleMs start before mouse-down; release-relative fields use the actual browser pointerup event. First/warm are separate; at least20 warm samples are required for a per-action p95.'};
+ page.on('pageerror',e=>report.errors.push(e.message));
++const expectedAssets=JSON.parse(process.env.EXPECTED_ASSETS || '{}'),receipts=[],pending=[];
++context.on('response',response=>{
++ const name=new URL(response.url()).pathname.replace(/^\//,'');if(!Object.hasOwn(expectedAssets,name))return;
++ pending.push((async()=>{try{const body=await response.body();receipts.push({name,url:response.url(),status:response.status(),sha256:createHash('sha256').update(body).digest('hex'),bytes:body.length,fromServiceWorker:response.fromServiceWorker()});}catch(error){report.errors.push('Asset receipt '+name+': '+error.message);}})());
++});
+ try {
+  await page.goto(report.url);
+  await page.waitForFunction(()=>window.iphone?.ready,null,{timeout:120000});
+@@ -24,6 +30,10 @@
+   if (/Import failed/.test(await page.locator('#status').textContent())) throw new Error('Fixture import failed');
+  }
+  await page.waitForTimeout(1000);
++ const assetDeadline=Date.now()+10000;
++ while(Object.keys(expectedAssets).some(name=>!receipts.some(r=>r.name===name)) && Date.now()<assetDeadline){await Promise.all([...pending]);await page.waitForTimeout(50);}
++ await Promise.all([...pending]);report.servedAssets=receipts;
++ for(const [name,hash] of Object.entries(expectedAssets)){const rows=receipts.filter(r=>r.name===name);if(!rows.length || rows.some(r=>r.status!==200 || r.sha256!==hash))throw Error('Actual served asset mismatch: '+name);}
+  report.client=await page.evaluate(()=>({userAgent:navigator.userAgent,hardwareConcurrency:navigator.hardwareConcurrency,deviceMemory:navigator.deviceMemory}));
+  await page.evaluate(()=>{
+   const canvas=document.querySelector('#screen');

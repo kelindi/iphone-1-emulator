@@ -1,0 +1,46 @@
+
+> test:unit
+> node --test web/tests/*.test.mjs
+
+✔ corrupt cached firmware is discarded and verified network bytes replace it (35.9907ms)
+✔ corrupt network firmware is never cached or returned (2.446402ms)
+✔ multipart gzip checks each part before reconstructing the original bytes (13.254429ms)
+✔ cross-origin firmware is rejected before fetching (0.608876ms)
+✔ disabled engine avoids optional fetch and allocations (7.692949ms)
+✔ HTTP missing seed preserves interpreter fallback (2.71263ms)
+✔ missing shared-memory binding disables the optional engine (1.734445ms)
+✔ older runtime without optional exports remains usable (2.720352ms)
+✔ stalled optional fetch is aborted and falls back (12.481064ms)
+✔ module hash mismatch disables optional engine (2.022436ms)
+✔ missing module hash disables optional engine (1.470462ms)
+✔ region hash mismatch disables optional engine (1.612747ms)
+✔ ABI revision mismatch disables optional engine (1.95799ms)
+✔ ABI offset mismatch disables optional engine (1.581313ms)
+✔ false admission reclaims partial table installation (1.61915ms)
+✔ throwing admission reclaims the just-created table slot (1.348959ms)
+✔ duplicate region key is rejected (2.865783ms)
+✔ duplicate export index is rejected (1.355409ms)
+✔ invalid region PC is rejected (1.414204ms)
+✔ invalid mask value is rejected (8.699738ms)
+✔ non-boolean instruction state is rejected (1.424093ms)
+✔ non-function export disables optional engine (1.494644ms)
+✔ first buffer allocation failure falls back without throwing (1.403249ms)
+✔ second buffer allocation failure reclaims first buffer (1.481096ms)
+✔ older asynchronous installation cannot survive two resets (2.492458ms)
+✔ actual worker startup is independent of a stalled optional seed (4.031326ms)
+✔ actual worker initializes and binds memory before installing the controller (3.245168ms)
+✔ actual restore disables old table before loading guest and rejects old completion (6.868113ms)
+✔ actual running capture preserves the clock anchor and derived tables (8.095381ms)
+✔ actual paused capture preserves the clock anchor and derived tables (3.427308ms)
+✔ existing checkpoints without encoding remain readable as raw bytes (2.092616ms)
+✔ gzip checkpoints expand to their original bytes (16.722925ms)
+✔ corrupt gzip and inconsistent expanded size are rejected (6.339919ms)
+✔ encoding and allocation limits are checked before expansion (1.323016ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 194.075288

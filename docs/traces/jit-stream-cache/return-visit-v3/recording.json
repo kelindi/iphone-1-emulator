@@ -1,0 +1,27 @@
+{
+  "scope": "Complete candidate arm2 from coordinated V3; narrower returning-Settings finding, Home tail tradeoff and housekeeping limits retained.",
+  "source": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v3/measured/2-candidate/video/page@a7bfd0579adda0de2a530bcef238a4dd.webm",
+    "sha256": "89d1de83415da4b92e5d6f22ce15cab01b205f1668b5cdf28dc7641eb0371409",
+    "durationSeconds": 109.08
+  },
+  "video": {
+    "path": "tweets/videos/seed_cache_return_settings.mp4",
+    "sha256": "907de922c55be639385d53ab34fbe14fe9f84f41eb3cca0fd1092e960583219d",
+    "durationSeconds": 109.08
+  },
+  "thumbnail": {
+    "path": "tweets/thumbnails/seed_cache_return_settings.jpg",
+    "sha256": "ee2effddf4d59e22204661b626a1ff267f1f1efee1582ce1b8a88d1e9095dda3",
+    "timestampSeconds": 27,
+    "manualReview": "Actual complete original Settings in frozen phone shell."
+  },
+  "encoding": {
+    "codec": "libx264",
+    "threads": 1,
+    "preset": "fast",
+    "crf": 23,
+    "cuts": false,
+    "speedChanges": false
+  }
+}

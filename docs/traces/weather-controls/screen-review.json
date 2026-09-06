@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "method": "Independent PNG decoding and exact RGBA equality below scaled original30px status exclusion; actual wrong units/city state negatives. Separate original canvas gate compares144000RGB pixels perreload.",
+  "pairs": [
+    {
+      "stage": "04-celsius",
+      "allRGBAExact": true,
+      "comparedPixels": 126600
+    },
+    {
+      "stage": "08-city-removed",
+      "allRGBAExact": true,
+      "comparedPixels": 126600
+    },
+    {
+      "stage": "10-fahrenheit",
+      "allRGBAExact": true,
+      "comparedPixels": 126600
+    }
+  ],
+  "wrongStateNegatives": [
+    {
+      "expected": "04-celsius-restored",
+      "wrongState": "02-cities-f",
+      "differentPixels": 10897,
+      "rejected": true
+    },
+    {
+      "expected": "08-city-removed-restored",
+      "wrongState": "04-celsius-restored",
+      "differentPixels": 12515,
+      "rejected": true
+    },
+    {
+      "expected": "10-fahrenheit-restored",
+      "wrongState": "08-city-removed-restored",
+      "differentPixels": 10897,
+      "rejected": true
+    }
+  ]
+}

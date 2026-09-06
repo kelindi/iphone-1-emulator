@@ -42,6 +42,15 @@ static bool m68_attach(s5l8900_t *m) {
     s5l_i2c_slave_t pmu;
     s5l_pcf50635_bind(&m->pmu, &pmu);
     if (!s5l_i2c_attach(&m->i2c[0], &pmu)) return false;
+    s5l_i2c_slave_t codec;
+    s5l_wm8758_reset(&m->codec);
+    s5l_wm8758_bind(&m->codec, &codec);
+    if (!s5l_i2c_attach(&m->i2c[0], &codec)) return false;
+
+    s5l_spi_slave_t mpl;
+    s5l_spi_mpl_bind(&mpl, &m->spi[0]);
+    if (!s5l_spi_attach(&m->spi[0], 0u, &mpl)) return false;
+    m->spi[0].cs = 0u;
 
     s5l_spi_slave_t lcd;
     s5l_spi_lcd_bind(&lcd, &m->spi[1]);

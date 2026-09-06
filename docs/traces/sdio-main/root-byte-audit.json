@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Root independent extraction directly from original Mach-O segments; no model or precomputed expected-wire values used for byte comparison.",
+  "wireBytes": 2880,
+  "helperBytes": 2140,
+  "mainHeaderWords": [
+    1,
+    3221229568,
+    512,
+    642280425
+  ],
+  "bodyBytes": 512,
+  "copiedBytes": 508,
+  "untouchedTailBytes": 4,
+  "skippedContainerTrailerHex": "946e44e6",
+  "wireSha256": "db9c5514eea1ffa5ec3f3809fec85a51949b3d6f9cf2699235a272dee27d7ab2",
+  "cardRamSha256": "b998586995ad751456abc7dcfb060b0289383e13c3d3fb9e835cd27e07609b0a"
+}

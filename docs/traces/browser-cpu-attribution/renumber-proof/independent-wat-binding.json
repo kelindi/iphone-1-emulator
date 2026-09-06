@@ -1,0 +1,14 @@
+[
+  {
+    "name": "production",
+    "byteIdentical": true,
+    "sourceSha256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+    "watSha256": "f31c75a5f07601741c550c8d975538899b3c366a09e852eefb50cb83f66e0dc2"
+  },
+  {
+    "name": "symbols",
+    "byteIdentical": true,
+    "sourceSha256": "e3ea1df9e5f6bf8aa2215bbb7de45096aa31e48ae47427ed1b188f6af56020b1",
+    "watSha256": "729be422e1a331ed2a4ec26cdd02b627df379fa9193f4c749a7e59957fd33ca9"
+  }
+]

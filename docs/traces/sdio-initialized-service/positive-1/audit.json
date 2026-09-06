@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "scope": "Independent complete raw event parser and all retained image/mask/helper/handoff bytes; original instruction proof pins mode/branch meaning. No runtime implementation imported.",
+  "mode": "positive",
+  "events": 22919,
+  "traceSha256": "c92482f0414171909c7f453e322e8015263f5e6038eb42769eb6c03b794eac82",
+  "statusReads": 1,
+  "zeroLengthPair": [
+    [
+      16,
+      4096
+    ],
+    [
+      17,
+      4096
+    ]
+  ],
+  "markerReads": 2,
+  "runtimeDataStarts": 0,
+  "retainedBytes": {
+    "low.bin": {
+      "bytes": 94208,
+      "sha256": "125a14829cf24771837c868d9110dd8c22475a93d88e2bc9141869d939750a99"
+    },
+    "high.bin": {
+      "bytes": 24576,
+      "sha256": "e5909201e884b0d1e3648d1005c333ccf43cf920514e87acfb0ca1d450e0c7c6"
+    },
+    "low-mask.bin": {
+      "bytes": 94208,
+      "sha256": "a87614985973b62550f56a062ec4072fcab3a8afc7a8d0b3023ada074f974b48"
+    },
+    "high-mask.bin": {
+      "bytes": 24576,
+      "sha256": "38026258afbc5a4ead3855e4574a880730551baff6bc1ac293ba75f20a3b9db6"
+    },
+    "handoff.bin": {
+      "bytes": 32,
+      "sha256": "80d7fa7330c242c81159bffeb7a5d1cc772363f84c5ba43df2a1779cc13ec42c"
+    },
+    "helper.bin": {
+      "bytes": 2140,
+      "sha256": "f1404eaae9b12a4858ac7440567de187de78dc0b8704bd693ee7de94dec74211"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "startedUTC": "2026-09-06T01:48:16.617907+00:00",
+  "command": "probe-checkpoint --full-main",
+  "bootInstructions": 22000000000,
+  "bootSeconds": 900,
+  "serializeSeconds": 120,
+  "continuationInstructions": 100000000,
+  "continuationSeconds": 90,
+  "context": "all other agents heavy jobs closed; untimed root single-thread media encoding allowed; not a speed benchmark"
+}

@@ -1,0 +1,1622 @@
+[
+  {
+    "name": "WeatherWindow",
+    "classVA": "0x17788",
+    "fields": [
+      "0x17ae8",
+      "0x10d80",
+      "0x10d70",
+      "0x0",
+      "0x1",
+      "0x40",
+      "0x0",
+      "0x17ec0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "handleStatusBarHeightChange",
+        "types": "v8@0:4",
+        "implementation": "0x45e0"
+      },
+      {
+        "selector": "setFrame:",
+        "types": "v24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0x44f0"
+      }
+    ]
+  },
+  {
+    "name": "WeatherController",
+    "classVA": "0x177b8",
+    "fields": [
+      "0x17b18",
+      "0x10d64",
+      "0x10d50",
+      "0x0",
+      "0x1",
+      "0x20",
+      "0x18b58",
+      "0x17ee0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "_handleStatusBarHeightChange",
+        "types": "v8@0:4",
+        "implementation": "0x4fe0"
+      },
+      {
+        "selector": "saveStateToDisk",
+        "types": "v8@0:4",
+        "implementation": "0x4fc0"
+      },
+      {
+        "selector": "tabControllerWillScroll:",
+        "types": "v12@0:4@8",
+        "implementation": "0x4f88"
+      },
+      {
+        "selector": "removeKeyboard",
+        "types": "v8@0:4",
+        "implementation": "0x4ee4"
+      },
+      {
+        "selector": "hideKeyboard",
+        "types": "v8@0:4",
+        "implementation": "0x4e58"
+      },
+      {
+        "selector": "showKeyboard",
+        "types": "v8@0:4",
+        "implementation": "0x4d78"
+      },
+      {
+        "selector": "defaultKeyboardOrigin",
+        "types": "{CGPoint=ff}8@0:4",
+        "implementation": "0x54ac"
+      },
+      {
+        "selector": "tabController:updateWidgetInstanceListFromArray:",
+        "types": "v16@0:4@8^{__CFArray=}12",
+        "implementation": "0x4d74"
+      },
+      {
+        "selector": "tabController",
+        "types": "@8@0:4",
+        "implementation": "0x4d6c"
+      },
+      {
+        "selector": "webView:runJavaScriptAlertPanelWithMessage:",
+        "types": "v16@0:4@8@12",
+        "implementation": "0x4d50"
+      },
+      {
+        "selector": "keyboardSuperview",
+        "types": "@8@0:4",
+        "implementation": "0x4d48"
+      },
+      {
+        "selector": "isShowingKeyboard",
+        "types": "c8@0:4",
+        "implementation": "0x4d40"
+      },
+      {
+        "selector": "showKeyboard:atPoint:inLayer:belowLayer:",
+        "types": "v28@0:4c8{CGPoint=ff}12@20@24",
+        "implementation": "0x5554"
+      },
+      {
+        "selector": "animator:stopAnimation:fraction:",
+        "types": "v20@0:4@8@12f16",
+        "implementation": "0x4c48"
+      },
+      {
+        "selector": "animator:startAnimation:",
+        "types": "v16@0:4@8@12",
+        "implementation": "0x4bfc"
+      },
+      {
+        "selector": "animateLayer:fromPoint:toPoint:inLayer:belowLayer:currentAnimation:",
+        "types": "@40@0:4@8{CGPoint=ff}12{CGPoint=ff}20@28@32@36",
+        "implementation": "0x51fc"
+      },
+      {
+        "selector": "keyboard",
+        "types": "@8@0:4",
+        "implementation": "0x4b60"
+      },
+      {
+        "selector": "setupWindowAndViews",
+        "types": "v8@0:4",
+        "implementation": "0x4a40"
+      },
+      {
+        "selector": "_windowRect",
+        "types": "{CGRect={CGPoint=ff}{CGSize=ff}}8@0:4",
+        "implementation": "0x49f8"
+      },
+      {
+        "selector": "window",
+        "types": "@8@0:4",
+        "implementation": "0x49f0"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0x48d8"
+      },
+      {
+        "selector": "init",
+        "types": "@8@0:4",
+        "implementation": "0x46ec"
+      },
+      {
+        "selector": "reachabilityManager:hostname:isReachable:",
+        "types": "v20@0:4@8@12c16",
+        "implementation": "0x46c0"
+      },
+      {
+        "selector": "_contentLayerRect",
+        "types": "{CGRect={CGPoint=ff}{CGSize=ff}}8@0:4",
+        "implementation": "0x4664"
+      }
+    ]
+  },
+  {
+    "name": "Application",
+    "classVA": "0x177e8",
+    "fields": [
+      "0x17b48",
+      "0x11128",
+      "0x102c4",
+      "0x0",
+      "0x1",
+      "0x18",
+      "0x18bb0",
+      "0x18008",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "controller",
+        "types": "@8@0:4",
+        "implementation": "0x5b8c"
+      },
+      {
+        "selector": "window",
+        "types": "@8@0:4",
+        "implementation": "0x5b6c"
+      },
+      {
+        "selector": "didReceiveUrgentMemoryWarning",
+        "types": "v8@0:4",
+        "implementation": "0x5b20"
+      },
+      {
+        "selector": "didReceiveMemoryWarning",
+        "types": "v8@0:4",
+        "implementation": "0x5ad4"
+      },
+      {
+        "selector": "currrentTestName",
+        "types": "@8@0:4",
+        "implementation": "0x5acc"
+      },
+      {
+        "selector": "isTestRunning",
+        "types": "c8@0:4",
+        "implementation": "0x5ac4"
+      },
+      {
+        "selector": "finishedPurpleTest",
+        "types": "v8@0:4",
+        "implementation": "0x5a90"
+      },
+      {
+        "selector": "startedPurpleTest",
+        "types": "v8@0:4",
+        "implementation": "0x5a68"
+      },
+      {
+        "selector": "runTest:options:",
+        "types": "c16@0:4@8@12",
+        "implementation": "0x59bc"
+      },
+      {
+        "selector": "applicationDidFinishLaunching:",
+        "types": "v12@0:4@8",
+        "implementation": "0x5848"
+      },
+      {
+        "selector": "applicationResume:withArguments:",
+        "types": "v16@0:4^{__GSEvent=}8@12",
+        "implementation": "0x583c"
+      },
+      {
+        "selector": "applicationSuspend:",
+        "types": "v12@0:4^{__GSEvent=}8",
+        "implementation": "0x57ac"
+      }
+    ]
+  },
+  {
+    "name": "TabController",
+    "classVA": "0x17818",
+    "fields": [
+      "0x17b78",
+      "0x10d64",
+      "0x10d98",
+      "0x0",
+      "0x1",
+      "0x38",
+      "0x18be4",
+      "0x180a0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "setFrame:",
+        "types": "v24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0x75e8"
+      },
+      {
+        "selector": "celsiusPressedFromBacksideController:",
+        "types": "v12@0:4@8",
+        "implementation": "0x75bc"
+      },
+      {
+        "selector": "reloadFailedCities",
+        "types": "v8@0:4",
+        "implementation": "0x7514"
+      },
+      {
+        "selector": "saveStateToDisk",
+        "types": "v8@0:4",
+        "implementation": "0x74d4"
+      },
+      {
+        "selector": "citiesForBackside:",
+        "types": "@12@0:4@8",
+        "implementation": "0x74cc"
+      },
+      {
+        "selector": "cityViewPressedInfoButton:",
+        "types": "v12@0:4@8",
+        "implementation": "0x74ac"
+      },
+      {
+        "selector": "donePressedFromBacksideController:",
+        "types": "v12@0:4@8",
+        "implementation": "0x7414"
+      },
+      {
+        "selector": "backside:deletedCityAtIndex:",
+        "types": "v16@0:4@8I12",
+        "implementation": "0x72fc"
+      },
+      {
+        "selector": "backside:addedCity:",
+        "types": "v16@0:4@8@12",
+        "implementation": "0x72b4"
+      },
+      {
+        "selector": "loadCities",
+        "types": "v8@0:4",
+        "implementation": "0x76a8"
+      },
+      {
+        "selector": "switchToBack",
+        "types": "v8@0:4",
+        "implementation": "0x7294"
+      },
+      {
+        "selector": "reflowCityViews",
+        "types": "v8@0:4",
+        "implementation": "0x718c"
+      },
+      {
+        "selector": "TabScrollIndicatorLeftPress:",
+        "types": "v12@0:4@8",
+        "implementation": "0x716c"
+      },
+      {
+        "selector": "TabScrollIndicatorRightPress:",
+        "types": "v12@0:4@8",
+        "implementation": "0x714c"
+      },
+      {
+        "selector": "_animateSlideLeft:",
+        "types": "v12@0:4c8",
+        "implementation": "0x6ee8"
+      },
+      {
+        "selector": "animationDidStop:finished:",
+        "types": "v16@0:4@8c12",
+        "implementation": "0x6e80"
+      },
+      {
+        "selector": "_widgetSwitchedToBack:",
+        "types": "v12@0:4c8",
+        "implementation": "0x6b24"
+      },
+      {
+        "selector": "_setBacksideView:",
+        "types": "v12@0:4@8",
+        "implementation": "0x6ae4"
+      },
+      {
+        "selector": "animator:stopAnimation:fraction:",
+        "types": "v20@0:4@8@12f16",
+        "implementation": "0x6a1c"
+      },
+      {
+        "selector": "scrollerDidScroll:",
+        "types": "v12@0:4@8",
+        "implementation": "0x6938"
+      },
+      {
+        "selector": "scrollerDidEndDragging:willSmoothScroll:",
+        "types": "v16@0:4@8c12",
+        "implementation": "0x6914"
+      },
+      {
+        "selector": "scrollerDidEndSmoothScrolling:",
+        "types": "v12@0:4@8",
+        "implementation": "0x68f8"
+      },
+      {
+        "selector": "_updateScrollerViewsLater",
+        "types": "v8@0:4",
+        "implementation": "0x68b8"
+      },
+      {
+        "selector": "_updateScrollerViews",
+        "types": "v8@0:4",
+        "implementation": "0x6834"
+      },
+      {
+        "selector": "_nextCity",
+        "types": "@8@0:4",
+        "implementation": "0x682c"
+      },
+      {
+        "selector": "_setNextCity:",
+        "types": "v12@0:4@8",
+        "implementation": "0x67e4"
+      },
+      {
+        "selector": "hideKeyboard",
+        "types": "v8@0:4",
+        "implementation": "0x67c4"
+      },
+      {
+        "selector": "showKeyboard",
+        "types": "v8@0:4",
+        "implementation": "0x67a4"
+      },
+      {
+        "selector": "_setScrollPointToActiveCity",
+        "types": "v8@0:4",
+        "implementation": "0x66f4"
+      },
+      {
+        "selector": "_tile",
+        "types": "v8@0:4",
+        "implementation": "0x642c"
+      },
+      {
+        "selector": "_offsetForDocument:",
+        "types": "f12@0:4i8",
+        "implementation": "0x63d8"
+      },
+      {
+        "selector": "_documentForOffset:",
+        "types": "i12@0:4f8",
+        "implementation": "0x637c"
+      },
+      {
+        "selector": "containerLayer",
+        "types": "@8@0:4",
+        "implementation": "0x6374"
+      },
+      {
+        "selector": "initWithFrame:withScrollIndicator:",
+        "types": "@28@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8c24",
+        "implementation": "0x6060"
+      },
+      {
+        "selector": "tileWithFrame:",
+        "types": "v24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0x7924"
+      },
+      {
+        "selector": "_backsideViewFrame",
+        "types": "{CGRect={CGPoint=ff}{CGSize=ff}}8@0:4",
+        "implementation": "0x5f74"
+      },
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0x5f6c"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0x5e14"
+      },
+      {
+        "selector": "setActiveCity:reflowViews:",
+        "types": "v16@0:4@8c12",
+        "implementation": "0x5c00"
+      },
+      {
+        "selector": "activeCity",
+        "types": "@8@0:4",
+        "implementation": "0x5bf8"
+      },
+      {
+        "selector": "_backsideController",
+        "types": "@8@0:4",
+        "implementation": "0x5b94"
+      }
+    ]
+  },
+  {
+    "name": "TabScroller",
+    "classVA": "0x17848",
+    "fields": [
+      "0x17ba8",
+      "0x11ad0",
+      "0x11ac4",
+      "0x0",
+      "0x1",
+      "0x148",
+      "0x0",
+      "0x18294",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "highlightView:state:",
+        "types": "v16@0:4@8c12",
+        "implementation": "0x763c"
+      }
+    ]
+  },
+  {
+    "name": "TabScrollIndicatorView",
+    "classVA": "0x17878",
+    "fields": [
+      "0x17bd8",
+      "0x11bd0",
+      "0x11b00",
+      "0x0",
+      "0x1",
+      "0x40",
+      "0x18c90",
+      "0x182a8",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "mouseUp:",
+        "types": "v12@0:4^{__GSEvent=}8",
+        "implementation": "0x7aa4"
+      },
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0x7a9c"
+      }
+    ]
+  },
+  {
+    "name": "CityView",
+    "classVA": "0x178a8",
+    "fields": [
+      "0x17c08",
+      "0x10dcc",
+      "0x11b6c",
+      "0x0",
+      "0x1",
+      "0xd8",
+      "0x18ca0",
+      "0x182c8",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0x8774"
+      },
+      {
+        "selector": "yahooButtonPressed",
+        "types": "v8@0:4",
+        "implementation": "0x86d0"
+      },
+      {
+        "selector": "infoButtonPressed",
+        "types": "v8@0:4",
+        "implementation": "0x86ac"
+      },
+      {
+        "selector": "drawRect:",
+        "types": "v24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0x877c"
+      },
+      {
+        "selector": "_drawUpdateLabel:",
+        "types": "v12@0:4^{CGContext=}8",
+        "implementation": "0x8428"
+      },
+      {
+        "selector": "cityDidFinishWeatherUpdate:",
+        "types": "v12@0:4@8",
+        "implementation": "0x840c"
+      },
+      {
+        "selector": "cityDidStartWeatherUpdate:",
+        "types": "v12@0:4@8",
+        "implementation": "0x83c8"
+      },
+      {
+        "selector": "_temperatureInUserUnits:",
+        "types": "@12@0:4@8",
+        "implementation": "0x82d8"
+      },
+      {
+        "selector": "city",
+        "types": "@8@0:4",
+        "implementation": "0x82d0"
+      },
+      {
+        "selector": "showCity:",
+        "types": "v12@0:4@8",
+        "implementation": "0x824c"
+      },
+      {
+        "selector": "initWithFrame:",
+        "types": "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0x966c"
+      },
+      {
+        "selector": "_updateWeatherDisplayForCity:",
+        "types": "v12@0:4@8",
+        "implementation": "0x8078"
+      },
+      {
+        "selector": "_setSmallIcon:forIndex:",
+        "types": "v16@0:4I8I12",
+        "implementation": "0x7fa8"
+      },
+      {
+        "selector": "_setBigIcon:dayNightChanged:",
+        "types": "v16@0:4I8c12",
+        "implementation": "0x935c"
+      },
+      {
+        "selector": "_updateWind",
+        "types": "v8@0:4",
+        "implementation": "0x7cf4"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0x7bf8"
+      },
+      {
+        "selector": "_removeWindView",
+        "types": "v8@0:4",
+        "implementation": "0x7b8c"
+      }
+    ]
+  },
+  {
+    "name": "BacksideController",
+    "classVA": "0x178d8",
+    "fields": [
+      "0x17c38",
+      "0x10d64",
+      "0x11adc",
+      "0x0",
+      "0x1",
+      "0x18",
+      "0x18dd0",
+      "0x1839c",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa660"
+      },
+      {
+        "selector": "backsideView:resizedTo:",
+        "types": "v28@0:4@8{CGRect={CGPoint=ff}{CGSize=ff}}12",
+        "implementation": "0xa5d4"
+      },
+      {
+        "selector": "backsideView:deleteItemAtIndex:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0xa590"
+      },
+      {
+        "selector": "backsideView:titleForItemAtIndex:",
+        "types": "@16@0:4@8i12",
+        "implementation": "0xa518"
+      },
+      {
+        "selector": "numberOfItemsForBacksideView:",
+        "types": "i12@0:4@8",
+        "implementation": "0xa4e4"
+      },
+      {
+        "selector": "addLocation:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa3e0"
+      },
+      {
+        "selector": "reloadData",
+        "types": "v8@0:4",
+        "implementation": "0xa3c0"
+      },
+      {
+        "selector": "didFailWithError:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa39c"
+      },
+      {
+        "selector": "didValidateLocation:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa2d8"
+      },
+      {
+        "selector": "_hideWeatherPickerAnimationDidStop:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa294"
+      },
+      {
+        "selector": "hideWeatherPicker",
+        "types": "v8@0:4",
+        "implementation": "0xa148"
+      },
+      {
+        "selector": "_showWeatherPickerAnimationDidStop:",
+        "types": "v12@0:4@8",
+        "implementation": "0xa128"
+      },
+      {
+        "selector": "finishedFlipToLocationPicker",
+        "types": "v8@0:4",
+        "implementation": "0xa108"
+      },
+      {
+        "selector": "showWeatherPickerAnimated:",
+        "types": "v12@0:4c8",
+        "implementation": "0x9e7c"
+      },
+      {
+        "selector": "alertSheet:buttonClicked:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0x9e1c"
+      },
+      {
+        "selector": "_showModalAlertWithString:",
+        "types": "v12@0:4@8",
+        "implementation": "0x9d0c"
+      },
+      {
+        "selector": "cancelValidation",
+        "types": "v8@0:4",
+        "implementation": "0x9cd4"
+      },
+      {
+        "selector": "validateLocation:",
+        "types": "v12@0:4@8",
+        "implementation": "0x9c54"
+      },
+      {
+        "selector": "setShowsCelsius:",
+        "types": "v12@0:4c8",
+        "implementation": "0x9be4"
+      },
+      {
+        "selector": "showsCelsius",
+        "types": "c8@0:4",
+        "implementation": "0x9ba8"
+      },
+      {
+        "selector": "done",
+        "types": "v8@0:4",
+        "implementation": "0x9b84"
+      },
+      {
+        "selector": "viewForBackside",
+        "types": "@8@0:4",
+        "implementation": "0x9b34"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0x9ad4"
+      },
+      {
+        "selector": "init",
+        "types": "@8@0:4",
+        "implementation": "0x9a98"
+      }
+    ]
+  },
+  {
+    "name": "WeatherBacksideView",
+    "classVA": "0x17908",
+    "fields": [
+      "0x17c68",
+      "0x10dcc",
+      "0x129b8",
+      "0x0",
+      "0x1",
+      "0x38",
+      "0x18e10",
+      "0x184c4",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "segmentedControl:selectedSegmentChanged:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0xb0b4"
+      },
+      {
+        "selector": "navigationBar:buttonClicked:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0xb068"
+      },
+      {
+        "selector": "table:canDeleteRow:",
+        "types": "c16@0:4@8i12",
+        "implementation": "0xb060"
+      },
+      {
+        "selector": "table:deleteRow:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0xb038"
+      },
+      {
+        "selector": "preferencesTable:cellForRow:inGroup:",
+        "types": "@20@0:4@8i12i16",
+        "implementation": "0xaf4c"
+      },
+      {
+        "selector": "preferencesTable:cellForGroup:",
+        "types": "@16@0:4@8i12",
+        "implementation": "0xaeb8"
+      },
+      {
+        "selector": "preferencesTable:numberOfRowsInGroup:",
+        "types": "i16@0:4@8i12",
+        "implementation": "0xae94"
+      },
+      {
+        "selector": "numberOfGroupsInPreferencesTable:",
+        "types": "i12@0:4@8",
+        "implementation": "0xae8c"
+      },
+      {
+        "selector": "movedToSuperview:",
+        "types": "v12@0:4@8",
+        "implementation": "0xae68"
+      },
+      {
+        "selector": "scrollListToBottom",
+        "types": "v8@0:4",
+        "implementation": "0xae2c"
+      },
+      {
+        "selector": "updateUI",
+        "types": "v8@0:4",
+        "implementation": "0xada8"
+      },
+      {
+        "selector": "updateNavigationBarEnabledState",
+        "types": "v8@0:4",
+        "implementation": "0xad58"
+      },
+      {
+        "selector": "layoutSubviews",
+        "types": "v8@0:4",
+        "implementation": "0xb114"
+      },
+      {
+        "selector": "logoViewPressed",
+        "types": "v8@0:4",
+        "implementation": "0xacfc"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xac78"
+      },
+      {
+        "selector": "initWithPlugin:",
+        "types": "@12@0:4@8",
+        "implementation": "0xa698"
+      },
+      {
+        "selector": "initWithFrame:",
+        "types": "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0xa668"
+      }
+    ]
+  },
+  {
+    "name": "LocationPickerView",
+    "classVA": "0x17938",
+    "fields": [
+      "0x17c98",
+      "0x10dcc",
+      "0x129f0",
+      "0x0",
+      "0x1",
+      "0x40",
+      "0x18e68",
+      "0x18598",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "textFieldShouldEndEditing:",
+        "types": "c12@0:4@8",
+        "implementation": "0xbed4"
+      },
+      {
+        "selector": "table:didSelectCompletionAtIndex:",
+        "types": "v16@0:4@8I12",
+        "implementation": "0xbe50"
+      },
+      {
+        "selector": "table:completionAtIndex:",
+        "types": "@16@0:4@8I12",
+        "implementation": "0xbe1c"
+      },
+      {
+        "selector": "numberOfCompletionsInTable:",
+        "types": "I12@0:4@8",
+        "implementation": "0xbdfc"
+      },
+      {
+        "selector": "navigationBar:buttonClicked:",
+        "types": "v16@0:4@8i12",
+        "implementation": "0xbdd4"
+      },
+      {
+        "selector": "layoutSubviews",
+        "types": "v8@0:4",
+        "implementation": "0xc278"
+      },
+      {
+        "selector": "setValidatedLocations:",
+        "types": "v12@0:4@8",
+        "implementation": "0xbdb4"
+      },
+      {
+        "selector": "_setValidatedLocations:updateStatus:",
+        "types": "v16@0:4@8c12",
+        "implementation": "0xbd3c"
+      },
+      {
+        "selector": "willHide",
+        "types": "v8@0:4",
+        "implementation": "0xbc78"
+      },
+      {
+        "selector": "didShow",
+        "types": "v8@0:4",
+        "implementation": "0xbba4"
+      },
+      {
+        "selector": "_applicationResumed",
+        "types": "v8@0:4",
+        "implementation": "0xbb6c"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xbad0"
+      },
+      {
+        "selector": "initWithPlugin:",
+        "types": "@12@0:4@8",
+        "implementation": "0xb540"
+      },
+      {
+        "selector": "initWithFrame:",
+        "types": "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8",
+        "implementation": "0xb510"
+      }
+    ]
+  },
+  {
+    "name": "DayForecast",
+    "classVA": "0x17968",
+    "fields": [
+      "0x17cc8",
+      "0x10d64",
+      "0x1376c",
+      "0x0",
+      "0x1",
+      "0x18",
+      "0x18ee4",
+      "0x18648",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "compareDayNumberToDayForecast:",
+        "types": "i12@0:4@8",
+        "implementation": "0xc77c"
+      },
+      {
+        "selector": "dayNumber",
+        "types": "I8@0:4",
+        "implementation": "0xc774"
+      },
+      {
+        "selector": "setDayNumber:",
+        "types": "v12@0:4I8",
+        "implementation": "0xc76c"
+      },
+      {
+        "selector": "icon",
+        "types": "I8@0:4",
+        "implementation": "0xc764"
+      },
+      {
+        "selector": "setIcon:",
+        "types": "v12@0:4I8",
+        "implementation": "0xc75c"
+      },
+      {
+        "selector": "dayName",
+        "types": "@8@0:4",
+        "implementation": "0xc754"
+      },
+      {
+        "selector": "setDayName:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc6e8"
+      },
+      {
+        "selector": "low",
+        "types": "@8@0:4",
+        "implementation": "0xc6e0"
+      },
+      {
+        "selector": "setLow:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc684"
+      },
+      {
+        "selector": "high",
+        "types": "@8@0:4",
+        "implementation": "0xc67c"
+      },
+      {
+        "selector": "setHigh:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc620"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xc5b4"
+      }
+    ]
+  },
+  {
+    "name": "City",
+    "classVA": "0x17998",
+    "fields": [
+      "0x17cf8",
+      "0x10d64",
+      "0x12a18",
+      "0x0",
+      "0x1",
+      "0x40",
+      "0x18f24",
+      "0x186e0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "updateTimeString",
+        "types": "@8@0:4",
+        "implementation": "0xcf6c"
+      },
+      {
+        "selector": "updateTime",
+        "types": "@8@0:4",
+        "implementation": "0xcf64"
+      },
+      {
+        "selector": "lastUpdateStatus",
+        "types": "i8@0:4",
+        "implementation": "0xcf5c"
+      },
+      {
+        "selector": "isUpdatingOrNoData",
+        "types": "c8@0:4",
+        "implementation": "0xcf20"
+      },
+      {
+        "selector": "_isUpdating",
+        "types": "c8@0:4",
+        "implementation": "0xcedc"
+      },
+      {
+        "selector": "finishedUpdating:",
+        "types": "v12@0:4I8",
+        "implementation": "0xce08"
+      },
+      {
+        "selector": "setUpdateTime:",
+        "types": "v12@0:4@8",
+        "implementation": "0xcd54"
+      },
+      {
+        "selector": "addDayForecast:",
+        "types": "v12@0:4@8",
+        "implementation": "0xcd34"
+      },
+      {
+        "selector": "clearForecasts",
+        "types": "v8@0:4",
+        "implementation": "0xcd14"
+      },
+      {
+        "selector": "update",
+        "types": "v8@0:4",
+        "implementation": "0xcc44"
+      },
+      {
+        "selector": "weatherDataAge",
+        "types": "i8@0:4",
+        "implementation": "0xcb8c"
+      },
+      {
+        "selector": "setMoonPhase:",
+        "types": "v12@0:4I8",
+        "implementation": "0xcb84"
+      },
+      {
+        "selector": "moonPhase",
+        "types": "I8@0:4",
+        "implementation": "0xcb7c"
+      },
+      {
+        "selector": "isDay",
+        "types": "c8@0:4",
+        "implementation": "0xcafc"
+      },
+      {
+        "selector": "sunriseTime",
+        "types": "I8@0:4",
+        "implementation": "0xcaf4"
+      },
+      {
+        "selector": "setSunriseTime:",
+        "types": "v12@0:4I8",
+        "implementation": "0xcaec"
+      },
+      {
+        "selector": "sunsetTime",
+        "types": "I8@0:4",
+        "implementation": "0xcae4"
+      },
+      {
+        "selector": "setSunsetTime:",
+        "types": "v12@0:4I8",
+        "implementation": "0xcadc"
+      },
+      {
+        "selector": "observationTime",
+        "types": "I8@0:4",
+        "implementation": "0xcad4"
+      },
+      {
+        "selector": "setObservationTime:",
+        "types": "v12@0:4I8",
+        "implementation": "0xcacc"
+      },
+      {
+        "selector": "dayForecasts",
+        "types": "@8@0:4",
+        "implementation": "0xcac4"
+      },
+      {
+        "selector": "setBigIcon:",
+        "types": "v12@0:4I8",
+        "implementation": "0xcabc"
+      },
+      {
+        "selector": "bigIcon",
+        "types": "I8@0:4",
+        "implementation": "0xcab4"
+      },
+      {
+        "selector": "temperature",
+        "types": "@8@0:4",
+        "implementation": "0xca9c"
+      },
+      {
+        "selector": "setTemperature:",
+        "types": "v12@0:4@8",
+        "implementation": "0xca40"
+      },
+      {
+        "selector": "link",
+        "types": "@8@0:4",
+        "implementation": "0xca38"
+      },
+      {
+        "selector": "setLink:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc9dc"
+      },
+      {
+        "selector": "setZip:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc980"
+      },
+      {
+        "selector": "displayName",
+        "types": "@8@0:4",
+        "implementation": "0xc96c"
+      },
+      {
+        "selector": "zip",
+        "types": "@8@0:4",
+        "implementation": "0xc964"
+      },
+      {
+        "selector": "name",
+        "types": "@8@0:4",
+        "implementation": "0xc95c"
+      },
+      {
+        "selector": "setName:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc900"
+      },
+      {
+        "selector": "setAutoUpdate:",
+        "types": "v12@0:4c8",
+        "implementation": "0xc8ac"
+      },
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0xc8a4"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xc820"
+      },
+      {
+        "selector": "init",
+        "types": "@8@0:4",
+        "implementation": "0xc7b0"
+      }
+    ]
+  },
+  {
+    "name": "XMLHTTPRequest",
+    "classVA": "0x179c8",
+    "fields": [
+      "0x17d28",
+      "0x10d64",
+      "0x139fc",
+      "0x0",
+      "0x1",
+      "0x10",
+      "0x18fe8",
+      "0x18898",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "failWithError:",
+        "types": "v12@0:4@8",
+        "implementation": "0xd3a0"
+      },
+      {
+        "selector": "processDocument:",
+        "types": "v12@0:4^{_xmlDoc=^vi*^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlDoc}ii^{_xmlDtd}^{_xmlDtd}^{_xmlNs}**^v^v*i^{_xmlDict}^v}8",
+        "implementation": "0xd388"
+      },
+      {
+        "selector": "didProcessDocument",
+        "types": "v8@0:4",
+        "implementation": "0xd384"
+      },
+      {
+        "selector": "willProcessDocument",
+        "types": "v8@0:4",
+        "implementation": "0xd380"
+      },
+      {
+        "selector": "connection:didFailWithError:",
+        "types": "v16@0:4@8@12",
+        "implementation": "0xd31c"
+      },
+      {
+        "selector": "connectionDidFinishLoading:",
+        "types": "v12@0:4@8",
+        "implementation": "0xd1cc"
+      },
+      {
+        "selector": "connection:didReceiveData:",
+        "types": "v16@0:4@8@12",
+        "implementation": "0xd154"
+      },
+      {
+        "selector": "isLoading",
+        "types": "c8@0:4",
+        "implementation": "0xd144"
+      },
+      {
+        "selector": "cancel",
+        "types": "v8@0:4",
+        "implementation": "0xd0bc"
+      },
+      {
+        "selector": "loadRequest:",
+        "types": "v12@0:4@8",
+        "implementation": "0xd050"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xd000"
+      }
+    ]
+  },
+  {
+    "name": "WeatherUpdater",
+    "classVA": "0x179f8",
+    "fields": [
+      "0x17d58",
+      "0x139fc",
+      "0x11b5c",
+      "0x0",
+      "0x1",
+      "0x18",
+      "0x19010",
+      "0x18924",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "isUpdatingCity:",
+        "types": "c12@0:4@8",
+        "implementation": "0xe3f4"
+      },
+      {
+        "selector": "failWithError:",
+        "types": "v12@0:4@8",
+        "implementation": "0xe3d8"
+      },
+      {
+        "selector": "didProcessDocument",
+        "types": "v8@0:4",
+        "implementation": "0xe384"
+      },
+      {
+        "selector": "updateWeatherForCity:",
+        "types": "v12@0:4@8",
+        "implementation": "0xe014"
+      },
+      {
+        "selector": "processDocument:",
+        "types": "v12@0:4^{_xmlDoc=^vi*^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlDoc}ii^{_xmlDtd}^{_xmlDtd}^{_xmlNs}**^v^v*i^{_xmlDict}^v}8",
+        "implementation": "0xd7dc"
+      },
+      {
+        "selector": "_timeStringToUnsigned:",
+        "types": "I12@0:4@8",
+        "implementation": "0xd7bc"
+      },
+      {
+        "selector": "_failed",
+        "types": "v8@0:4",
+        "implementation": "0xd72c"
+      },
+      {
+        "selector": "addCityToPendingQueue:",
+        "types": "v12@0:4@8",
+        "implementation": "0xd6e4"
+      },
+      {
+        "selector": "_updateNextPendingCity",
+        "types": "v8@0:4",
+        "implementation": "0xd614"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xd594"
+      },
+      {
+        "selector": "init",
+        "types": "@8@0:4",
+        "implementation": "0xd504"
+      }
+    ]
+  },
+  {
+    "name": "Preferences",
+    "classVA": "0x17a28",
+    "fields": [
+      "0x17d88",
+      "0x10d64",
+      "0x11b50",
+      "0x0",
+      "0x1",
+      "0xc",
+      "0x1902c",
+      "0x189b0",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "UUID",
+        "types": "@8@0:4",
+        "implementation": "0xf1c0"
+      },
+      {
+        "selector": "savedCities",
+        "types": "@8@0:4",
+        "implementation": "0xeb84"
+      },
+      {
+        "selector": "saveToDiskWithCities:",
+        "types": "v12@0:4@8",
+        "implementation": "0xe5fc"
+      },
+      {
+        "selector": "loadFromDisk",
+        "types": "v8@0:4",
+        "implementation": "0xe58c"
+      },
+      {
+        "selector": "_defaultsAreValid:",
+        "types": "c12@0:4@8",
+        "implementation": "0xe50c"
+      },
+      {
+        "selector": "isCelsius",
+        "types": "c8@0:4",
+        "implementation": "0xe504"
+      },
+      {
+        "selector": "setCelsius:",
+        "types": "v12@0:4c8",
+        "implementation": "0xe4fc"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xe4ac"
+      }
+    ]
+  },
+  {
+    "name": "ValidatorCity",
+    "classVA": "0x17a58",
+    "fields": [
+      "0x17db8",
+      "0x10d64",
+      "0x13f98",
+      "0x0",
+      "0x1",
+      "0x10",
+      "0x19048",
+      "0x18a18",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "setZip:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf410"
+      },
+      {
+        "selector": "zip",
+        "types": "@8@0:4",
+        "implementation": "0xf408"
+      },
+      {
+        "selector": "city",
+        "types": "@8@0:4",
+        "implementation": "0xf400"
+      },
+      {
+        "selector": "setState:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf3a4"
+      },
+      {
+        "selector": "setCity:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf348"
+      },
+      {
+        "selector": "cityAndState",
+        "types": "@8@0:4",
+        "implementation": "0xf2f4"
+      },
+      {
+        "selector": "dealloc",
+        "types": "v8@0:4",
+        "implementation": "0xf288"
+      }
+    ]
+  },
+  {
+    "name": "WeatherValidator",
+    "classVA": "0x17a88",
+    "fields": [
+      "0x17de8",
+      "0x139fc",
+      "0x129cc",
+      "0x0",
+      "0x1",
+      "0x14",
+      "0x19070",
+      "0x18a74",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "validateLocation:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf9dc"
+      },
+      {
+        "selector": "failWithError:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf9c0"
+      },
+      {
+        "selector": "processDocument:",
+        "types": "v12@0:4^{_xmlDoc=^vi*^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlNode}^{_xmlDoc}ii^{_xmlDtd}^{_xmlDtd}^{_xmlNs}**^v^v*i^{_xmlDict}^v}8",
+        "implementation": "0xf4e4"
+      },
+      {
+        "selector": "_failWithError:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf4c4"
+      },
+      {
+        "selector": "setDelegate:",
+        "types": "v12@0:4@8",
+        "implementation": "0xf4bc"
+      }
+    ]
+  },
+  {
+    "name": "ProgressController",
+    "classVA": "0x17ab8",
+    "fields": [
+      "0x17e18",
+      "0x10d64",
+      "0x10e04",
+      "0x0",
+      "0x1",
+      "0x14",
+      "0x19080",
+      "0x18ab8",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x0"
+    ],
+    "methods": [
+      {
+        "selector": "suspend",
+        "types": "v8@0:4",
+        "implementation": "0xff34"
+      },
+      {
+        "selector": "setLoadingData:",
+        "types": "v12@0:4c8",
+        "implementation": "0xfdbc"
+      },
+      {
+        "selector": "_showSpinner",
+        "types": "v8@0:4",
+        "implementation": "0xfd78"
+      },
+      {
+        "selector": "_hideSpinner",
+        "types": "v8@0:4",
+        "implementation": "0xfd34"
+      },
+      {
+        "selector": "_setHideSpinnerTimer:",
+        "types": "v12@0:4@8",
+        "implementation": "0xfcd8"
+      },
+      {
+        "selector": "userScrolled",
+        "types": "v8@0:4",
+        "implementation": "0xfc60"
+      },
+      {
+        "selector": "_progressHUD",
+        "types": "@8@0:4",
+        "implementation": "0xfbe4"
+      },
+      {
+        "selector": "init",
+        "types": "@8@0:4",
+        "implementation": "0xfb9c"
+      }
+    ]
+  }
+]

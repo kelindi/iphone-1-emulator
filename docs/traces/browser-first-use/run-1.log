@@ -1,0 +1,15 @@
+{"label":"C0","kind":"settings","readyMs":4864.89999999851,"retired":112807782,"generated":81593407}
+{"label":"C0","kind":"home","readyMs":815,"retired":27732239,"generated":18065728}
+{"label":"H1","kind":"settings","readyMs":2716.800000000745,"retired":93951262,"generated":67243064}
+{"label":"H1","kind":"home","readyMs":866.4000000022352,"retired":26398462,"generated":16925245}
+{"label":"C1","kind":"settings","readyMs":3366.699999999255,"retired":108438919,"generated":77936751}
+{"label":"C1","kind":"home","readyMs":1066.699999999255,"retired":36496256,"generated":23634535}
+file:///home/vercel-sandbox/iphone-1/.context/first-use/run.mjs:54
+ await Promise.allSettled(assetTasks);client.close();await context.close();await browser.close();await writeFile(resolve(dir,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({finished:true,passed:report.passed,errors:report.errors}));
+                                                                                                                                                 ^
+
+TypeError: Do not know how to serialize a BigInt
+    at JSON.stringify (<anonymous>)
+    at file:///home/vercel-sandbox/iphone-1/.context/first-use/run.mjs:54:146
+
+Node.js v24.14.1

@@ -9,6 +9,9 @@
  * Copyright (c) 2026 j0shua-SYSON. MIT licensed.
  */
 #include "soc.h"
+#ifdef S5LBOX_WASM_JIT
+#include "arm_wasm_jit.h"
+#endif
 #include <stdio.h>
 #include "board.h"
 #include "../arm/a64_static_engine.h"
@@ -713,6 +716,17 @@ bool s5l8900_set_wfi_host_pacing(s5l8900_t *m,
     return true;
 }
 
+/* Keep the historical discard contract unless a frontend opts in. Changing
+ * policy discards pending host-only debt; ordinary sync retains every trusted
+ * foreground interval while still advancing devices at most 8ms per sync. */
+bool s5l8900_set_active_clock_carry(s5l8900_t *m, bool enabled) {
+    /* One CPU-clock tick must fit the 8ms payment bound. */
+    if (!m || (enabled && m->cpu_hz < 125u)) return false;
+    m->active_clock_carry = enabled;
+    m->active_clock_debt_ticks = 0u;
+    return true;
+}
+
 bool s5l8900_set_active_host_clock(s5l8900_t *m,
                                    s5l_active_host_now_fn now, void *ctx) {
     if (!m) return false;
@@ -725,6 +739,7 @@ bool s5l8900_set_active_host_clock(s5l8900_t *m,
     m->active_clock_last_host_ns = 0u;
     m->active_clock_guest_ticks_since_sync = 0u;
     m->active_clock_fraction = 0u;
+    m->active_clock_debt_ticks = 0u;
     m->active_clock_updates = 0u;
     m->active_clock_added_ticks = 0u;
     m->active_clock_clamps = 0u;
@@ -1422,6 +1437,10 @@ void s5l8900_free(s5l8900_t *m) {
 
 bool s5l8900_set_cycles_per_insn(s5l8900_t *m, unsigned cpi) {
     if (!m || cpi < 1u || cpi > 16u) return false;
+    /* CPU-clock debt/fractions cannot change units while foreground carry is
+     * live. A frontend may pause (clearing the anchor/debt), set CPI, resume. */
+    if (m->active_host_now && m->active_clock_carry &&
+        m->cpu_hz != S5L8900_CPU_HZ / cpi) return false;
     m->cpu_hz = S5L8900_CPU_HZ / cpi;
     m->tb_accum %= m->cpu_hz;
     return true;
@@ -1537,6 +1556,7 @@ bool s5l8900_wake_from_standby(s5l8900_t *m) {
     m->active_clock_last_host_ns = 0u;
     m->active_clock_guest_ticks_since_sync = 0u;
     m->active_clock_fraction = 0u;
+    m->active_clock_debt_ticks = 0u;
     m->active_clock_anchor_valid = false;
     m->level_dirty = true;
     s5l8900_tick(m, 0u);
@@ -1882,6 +1902,7 @@ static bool active_host_clock_sync(s5l8900_t *m,
         m->active_clock_anchor_valid = false;
         m->active_clock_last_host_ns = 0u;
         m->active_clock_fraction = 0u;
+        m->active_clock_debt_ticks = 0u;
         m->active_clock_guest_ticks_since_sync = 0u;
         s5l8900_tick(m, fallback_ticks);
         return false;
@@ -1891,6 +1912,7 @@ static bool active_host_clock_sync(s5l8900_t *m,
         m->active_clock_last_host_ns = now_ns;
         m->active_clock_guest_ticks_since_sync = 0u;
         m->active_clock_fraction = 0u;
+        m->active_clock_debt_ticks = 0u;
         m->active_clock_anchor_valid = true;
         /* Establish the same level/input boundary the first ordinary device
          * tick in this run would have supplied, without manufacturing time. */
@@ -1913,6 +1935,38 @@ static bool active_host_clock_sync(s5l8900_t *m,
         S5L8900_ACTIVE_CLOCK_MAX_STEP_NS, m->cpu_hz, prior_fraction,
         &max_added_ticks, &max_fraction);
     uint64_t added_ticks = 0u;
+    /* Foreground carry keeps complete elapsed time; only an individual device
+     * update is bounded. An unrepresentable interval fails closed like an
+     * invalid host sample instead of wrapping or inventing elapsed time. */
+    if (m->active_clock_carry) {
+        /* Conversion fractions belong to elapsed time, not the payment cap.
+         * The carry branch never rounds an individual update above 8ms. */
+        max_added_ticks = (S5L8900_ACTIVE_CLOCK_MAX_STEP_NS * m->cpu_hz) /
+                          UINT64_C(1000000000);
+        if (!converted || !max_converted || m->cpu_hz < 125u ||
+            UINT64_MAX - due_ticks < m->active_clock_debt_ticks) {
+            active_clock_counter_add(&m->active_clock_failures, 1u);
+            m->active_clock_anchor_valid = false;
+            m->active_clock_last_host_ns = 0u;
+            m->active_clock_guest_ticks_since_sync = 0u;
+            m->active_clock_fraction = 0u;
+            m->active_clock_debt_ticks = 0u;
+            s5l8900_tick(m, fallback_ticks);
+            return false;
+        }
+        due_ticks += m->active_clock_debt_ticks;
+        uint64_t unpaid = due_ticks > observed_ticks ? due_ticks - observed_ticks : 0u;
+        added_ticks = unpaid > max_added_ticks ? max_added_ticks : unpaid;
+        m->active_clock_debt_ticks = unpaid - added_ticks;
+        if (unpaid > max_added_ticks)
+            active_clock_counter_add(&m->active_clock_clamps, 1u);
+        m->active_clock_fraction = due_fraction;
+        active_clock_counter_add(&m->active_clock_updates, 1u);
+        active_clock_counter_add(&m->active_clock_added_ticks, added_ticks);
+        s5l8900_tick(m, (uint32_t)added_ticks);
+        m->active_clock_guest_ticks_since_sync = 0u;
+        return true;
+    }
     bool clamp = !converted || !max_converted;
 
     if (!clamp && due_ticks > observed_ticks) {
@@ -2131,6 +2185,30 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
             unsigned retired = 0u;
             unsigned total_retired = 0u;
             bool flushed = false;
+#ifdef S5LBOX_WASM_JIT
+            if (arm_wasm_jit_enabled) {
+            do {
+                unsigned prefix = arm_wasm_jit_try(&m->cpu, limit - retired);
+                retired += prefix;
+                total_retired += prefix;
+                if (retired == limit) break;
+                unsigned retired_before = retired;
+                m->batch_pending = retired_before;
+                st = arm_step(&m->cpu);
+                if (st != ARM_OK) {
+                    m->batch_pending = 0u;
+                    break;
+                }
+                flushed = m->batch_pending != retired_before;
+                retired = m->batch_pending + 1u;
+                total_retired++;
+                if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
+                    flushed || m->wfi_pace_yield)
+                    break;
+            } while (retired < limit);
+            } else
+#endif
+            {
             do {
                 unsigned retired_before = retired;
                 m->batch_pending = retired_before;
@@ -2146,6 +2224,7 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                     flushed || m->wfi_pace_yield)
                     break;
             } while (retired < limit);
+            }
 
             if (total_retired) {
                 n += total_retired;

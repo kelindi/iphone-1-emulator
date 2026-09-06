@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "scope": "Original complete main container received/stored; final command4 physical completion acknowledged; no helper/main CPU execution or firmware readiness",
+  "report": {
+    "baseline": false,
+    "gateReached": true,
+    "cccrInitializerEntered": true,
+    "pc": "c0379684",
+    "instructions": 17517070017,
+    "ticks": 256764208,
+    "cpuHz": 412000000,
+    "commandTicks": 600,
+    "accesses": 15624221,
+    "statusReads": 15586429,
+    "triggers": 3414,
+    "completedResponses": 3414,
+    "transportErrors": 0,
+    "rejectedWrites": 0,
+    "cardErrorResponses": 0,
+    "cccrReads": 2,
+    "cccrMask": 257,
+    "cardState": 3,
+    "rca": 1,
+    "irq": false,
+    "forwarded": [
+      401170061,
+      15576,
+      16763695,
+      2045272666,
+      102410,
+      15872172
+    ]
+  },
+  "data": {
+    "dataStarts": 504,
+    "dataCompletions": 504,
+    "dataErrors": 0,
+    "dmaSourceLookups": 504,
+    "irqHandlerEntered": true,
+    "completeDMAEntered": true,
+    "dataTicks": 600,
+    "used": 0,
+    "irqPending": 0,
+    "events": 0
+  },
+  "helper": {
+    "noConsume": false,
+    "mainNegative": false,
+    "helperBytes": 2140,
+    "helperFrames": 37,
+    "terminated": true,
+    "protocolErrors": 0,
+    "completionReturns": 504,
+    "sourceWireBytes": 128704,
+    "wireOK": true,
+    "allTransfersOK": true
+  },
+  "model": {
+    "semanticModelOnly": true,
+    "phase": 7,
+    "requested": 0,
+    "headers": 234,
+    "bodies": 233,
+    "copied": 117932,
+    "errors": 0,
+    "publications": 468,
+    "mainCallReturns": 466,
+    "mainLengthPairs": 466,
+    "mainSequenceOK": true,
+    "mainCallsOK": true
+  },
+  "budget": {
+    "instructionLimit": 22000000000,
+    "wallLimitSeconds": 900,
+    "wallElapsedSeconds": 766,
+    "exhausted": false
+  },
+  "banks": {
+    "low": {
+      "bytes": 94208,
+      "written": 93556,
+      "guardBytes": 652,
+      "sha256": "125a14829cf24771837c868d9110dd8c22475a93d88e2bc9141869d939750a99",
+      "coverageSha256": "a87614985973b62550f56a062ec4072fcab3a8afc7a8d0b3023ada074f974b48"
+    },
+    "high": {
+      "bytes": 24576,
+      "written": 24376,
+      "guardBytes": 200,
+      "sha256": "e5909201e884b0d1e3648d1005c333ccf43cf920514e87acfb0ca1d450e0c7c6",
+      "coverageSha256": "38026258afbc5a4ead3855e4574a880730551baff6bc1ac293ba75f20a3b9db6"
+    }
+  },
+  "wireBytes": 128704,
+  "mainWireBytes": 126368,
+  "wireSha256": "445167098fb17ac5376f1910578459f7a6bc5ac4ed29fcd09cf9ac8c69eac727",
+  "mainWireSha256": "53e09e88bcb062c5cd2c8636b1b63f087e8d0215dd2226ba4b1cbe3f72aeef73",
+  "checks": 1012343,
+  "preservedChecks": 549969,
+  "newChecks": 462374,
+  "commandResponses": 3414,
+  "completeDMAAcknowledgements": 504,
+  "coherentHostLengthPairs": 467,
+  "commandCompletionObservations": {
+    "600": 3413,
+    "616": 1
+  },
+  "delayedObservationScope": "600tick modeled deadline; one first-observed completion at616ticks. No early observation; exact cause of16tick delay not established by suppressed-poll trace.",
+  "hostReadZeroAfterHandoff": false,
+  "originalMainCallReturnsBeforeFinalIRQ": 466,
+  "inputsUnchanged": {
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    "web/firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+    ".context/organizer-debug/rootfs-compact168-checked.img": "0b544d47fb67603167099e658d50e3c284c28233d489263b269682c4f9ac53b0",
+    ".context/build-native/core/libemucore.a": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+  },
+  "sourceHashes": {
+    ".context/sdio-first/checkpoint/checkpoint.h": "449c5a924d2c6f9fb54999d99cd73507fd393728b8ab9c343637f8b37a8481b6",
+    ".context/sdio-first/checkpoint/codec.c": "9c4997853714fbf5a7ce13ed43a4260c733c9ea365191f1f8fdc0ffc6ac62704",
+    ".context/sdio-first/checkpoint/compare.c": "982079ebd94e8a16813566ae38004b8ec244f099a70f823d300c234f4bcecb05",
+    ".context/sdio-first/checkpoint/continue.c": "5bbd4807528dd470e37b99ef1881d6f02265ec7b68fda5592292f8ff851242d5",
+    ".context/sdio-first/checkpoint/field_coverage.py": "57f29e267c05b31ee1e07ac0cd73b0faa547857b77ca1fc9a1b85f573d128155",
+    ".context/sdio-first/checkpoint/fields.inc": "7fe417c2329a78433c607b2f1b12276a4ac2813c3d08ad82dffc0e2f7312bbb7",
+    ".context/sdio-first/checkpoint/independent_fields.inc": "401bcb58e9da9d5e674797dce0448e726d624efc127b20bfc4a9aaa549c3af12",
+    ".context/sdio-first/checkpoint/main_model.inc": "6f294f33075d5befc2076bcbbc4f142b7385d6be75a55303ac3aeb5ee83dee13",
+    ".context/sdio-first/checkpoint/package.py": "cd48ceb1f266a530e3ec686cd506ef536991bd181236e943dbd543fcc3d61b44",
+    ".context/sdio-first/checkpoint/phone.c": "779e2a17a081424c6c0b565845031a098a1965721e445da9e81e1c6619ad85b1",
+    ".context/sdio-first/checkpoint/probe-checkpoint": "c02cd5519dedfe62306a0173e3d4df4dc30b2ec052842b2a330437074eec12b8",
+    ".context/sdio-first/checkpoint/probe-checkpoint.c": "8a813fdda0281817abde34471b12e29deb153f0b1ddc500ed85af1ab98f6ab22",
+    ".context/sdio-first/checkpoint/sdio.c": "297484dd20098721cc8ed2be5660fa0428fc325e7d3bf26d0cdc2b855459c689",
+    ".context/sdio-first/checkpoint/sdio.h": "e3a18c481bfe032ea34350d8e6b216ef9e728b6b8714c4d01b3026a01c0c4762",
+    ".context/sdio-first/checkpoint/supported_helper.inc": "cb04170c1a81cbc2832f1afcf3cd96fe9e12f6ab3b0cd8d2661dc2348b27e5d2",
+    ".context/sdio-first/checkpoint/test.c": "e242b660b2497a30b00a2b929a4dc3cae4102778b3cb322864a2f72ac7ca3295",
+    ".context/sdio-first/checkpoint/test_package.py": "7a703b189ac37239fc09e327db94c77ef6dda63318d7cc0aa1beb738c48b0c60",
+    ".context/sdio-first/checkpoint/validate": "ece27e8d318c857d85c09fd6d7051c5ab71840badc29bce1394e96bfa608b75f",
+    ".context/sdio-first/checkpoint/validate.c": "8bf5853b2ef2773d463bf3cd0521faec4112de492735ef93f3ccee020af8b237"
+  },
+  "controlsPassed": true,
+  "dtAudit": "Only approved missing calibration property/count and local-MAC bytes in private loaded copy"
+}

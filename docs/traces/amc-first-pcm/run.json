@@ -1,0 +1,54 @@
+{
+  "command": [
+    ".context/amc-first/stage-g/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-g/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin"
+  ],
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructionsAfterStart": 5000000,
+    "postInputInstructions": 5000000,
+    "publicationStop": 1,
+    "hardPublicationCap": 2
+  },
+  "returncode": 0,
+  "timedOut": false,
+  "wallSeconds": 5.382745012000669,
+  "guestPass": true,
+  "externalAuditsPass": true,
+  "pins": {
+    ".context/audio/ringtone-page.snap": "385aead20010aaf796be93423dade4afb5dc13c824d59c7857a452f7fbafd2e6",
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    ".context/amc-first/stage-d/verified/sram.bin": "011452fdff9699442c49115354c9b0bced1b98265ba64ee5b95c1c48bbb01583",
+    ".context/amc-first/stage-d/verified/written.bin": "5f15b3ccf7ff3acdd8494c7deb8dc2dc550bc950c2e15abc58625c606f24dad9",
+    ".context/build-native/core/libemucore.a": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2",
+    ".context/amc-first/stage-e/framing/build/libfaad.a": "7a091924433488caa93806aa2017ba8428172878b13f5d2a0122a2e2d07f6866",
+    ".context/amc-first/stage-g/source/emu_api.c": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1"
+  },
+  "auditSHA256": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+  "kernelOracleSHA256": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9",
+  "launcherSHA256": "963f7448be7b38f369d4836bd961c4fabb206d35366e04592fb40a502456eb9b",
+  "artifactNegativeControls": [
+    {
+      "target": "input-final.bin",
+      "xorOffset": 123,
+      "returncode": 1,
+      "log": ".context/amc-first/stage-g/run-1/negative-input.log",
+      "expectedFailure": "input-final.bin"
+    },
+    {
+      "target": "first-pcm.bin",
+      "xorOffset": 123,
+      "returncode": 1,
+      "log": ".context/amc-first/stage-g/run-1/negative-pcm.log",
+      "expectedFailure": "PCM differs from independent packetized decode"
+    }
+  ]
+}

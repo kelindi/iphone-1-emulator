@@ -1,0 +1,195 @@
+{
+  "base": "http://localhost:8080",
+  "date": "2026-09-05T22:23:54.424Z",
+  "wasmSHA256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+  "method": "One immediate50ms requested first Calculator tap, then observations with no further guest input. Concurrent functional tests may affect timing; no speed claim.",
+  "frames": [
+    {
+      "maxRGBDelta": 255,
+      "changed": 28160,
+      "alphaExact": true,
+      "zero": false,
+      "frameSequence": "1",
+      "metrics": {
+        "type": "metrics",
+        "mips": 0.5983950372208436,
+        "fps": 0,
+        "guestRate": 0.9941439205955335,
+        "cycles": "11205602883",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 473317,
+          "calls": 57368
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      },
+      "targetMs": 1000,
+      "observedAfterReleaseMs": 1028.4782029999997
+    },
+    {
+      "maxRGBDelta": 167,
+      "changed": 28160,
+      "alphaExact": true,
+      "zero": false,
+      "frameSequence": "10",
+      "metrics": {
+        "type": "metrics",
+        "mips": 10.4228413356929,
+        "fps": 3.9517881841489664,
+        "guestRate": 1.0000987947034996,
+        "cycles": "11233902883",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 21694458,
+          "calls": 3126545
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      },
+      "targetMs": 4000,
+      "observedAfterReleaseMs": 4102.937201
+    },
+    {
+      "maxRGBDelta": 1,
+      "changed": 298,
+      "alphaExact": true,
+      "zero": true,
+      "frameSequence": "12",
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.86856886227545,
+        "fps": 1.996007984031936,
+        "guestRate": 1.0000004990019962,
+        "cycles": "11313455189",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 79641426,
+          "calls": 10482614
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      },
+      "targetMs": 8000,
+      "observedAfterReleaseMs": 8025.4975380000005
+    },
+    {
+      "maxRGBDelta": 1,
+      "changed": 298,
+      "alphaExact": true,
+      "zero": true,
+      "frameSequence": "12",
+      "metrics": {
+        "type": "metrics",
+        "mips": 12.329552744292664,
+        "fps": 0,
+        "guestRate": 1.0000046485369998,
+        "cycles": "11332965864",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 93912258,
+          "calls": 12094474
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      },
+      "targetMs": 12000,
+      "observedAfterReleaseMs": 12013.646943
+    },
+    {
+      "maxRGBDelta": 1,
+      "changed": 298,
+      "alphaExact": true,
+      "zero": true,
+      "frameSequence": "12",
+      "metrics": {
+        "type": "metrics",
+        "mips": 1.9509449915469814,
+        "fps": 0,
+        "guestRate": 1.0000077920366568,
+        "cycles": "11378491476",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 129758234,
+          "calls": 16604317
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      },
+      "targetMs": 20000,
+      "observedAfterReleaseMs": 20014.105018
+    },
+    {
+      "maxRGBDelta": 1,
+      "changed": 298,
+      "alphaExact": true,
+      "zero": true,
+      "frameSequence": "12",
+      "metrics": {
+        "type": "metrics",
+        "mips": 6.500037946884048,
+        "fps": 0,
+        "guestRate": 1.0000148125971873,
+        "cycles": "11432089446",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 510,
+          "bytes": 12341313,
+          "retired": 171007513,
+          "calls": 21778912
+        },
+        "serial": "",
+        "captureMs": 346.19999999925494,
+        "captureChunkMs": 3.700000001117587,
+        "finalizeMs": 758.5999999996275
+      },
+      "targetMs": 30000,
+      "observedAfterReleaseMs": 30042.327326000002
+    }
+  ],
+  "errors": [],
+  "video": "/home/vercel-sandbox/iphone-1/.context/input-first/render-timeline/page@ff040985f5bd891f19ec9435e05ff8cd.webm",
+  "manualReview": {
+    "04000.png": "Genuine Calculator keypad with gray blank display; exactly matches original failed PNG",
+    "08000.png": "Complete original Calculator0 display",
+    "12000.png": "Zero oracle remains satisfied",
+    "20000.png": "Zero oracle remains satisfied",
+    "30000.png": "Zero oracle remains satisfied"
+  },
+  "originalFailureSHA256": "f7e68d908fb653bc7c7d5c860e0a014ff1c827554035990b38f68d877957016b",
+  "transientSHA256": "f7e68d908fb653bc7c7d5c860e0a014ff1c827554035990b38f68d877957016b",
+  "sameTransientAsOriginalFailure": true,
+  "limit": "Original phone was closed at its failed fixed8s assertion; continuation is a fresh production phone that reproduces the byte-identical frame. No additional input between transient and completed frame. Overlapping functional tests mean this is not a benchmark."
+}

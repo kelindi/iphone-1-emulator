@@ -1,0 +1,7 @@
+c01031e0 80b5     push     {r7, lr}
+c01031e2 0368     ldr      r3, [r0]
+c01031e4 4168     ldr      r1, [r0, #4]
+c01031e6 00af     add      r7, sp, #0
+c01031e8 181c     adds     r0, r3, #0
+c01031ea 15f7cffb bl       #0xc001898c
+c01031ee 80bd     pop      {r7, pc}

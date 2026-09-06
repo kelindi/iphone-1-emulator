@@ -1,0 +1,12 @@
+{
+  "durationSeconds": 244.44,
+  "method": "Complete original-speed interactivebrowser2,1280x1000at25fps, nocuts; thumbnailat176s, manuallyreviewed. Failed finalexecutiongate retained.",
+  "tweets/videos/manual_time_diagnostic.mp4": {
+    "bytes": 3383511,
+    "sha256": "53ca676f72a6841519d2a3f307e29b34ccdea574b410144ee1c99f09ffed61f7"
+  },
+  "tweets/thumbnails/manual_time_diagnostic.jpg": {
+    "bytes": 55347,
+    "sha256": "9ca3ef3359b377d93aa0ed13402ce9137c494395b44f55cc009b85156aad256d"
+  }
+}

@@ -1,0 +1,14 @@
+{"fixtureSha256":"764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244","instructions":600000000,"regions":512}
+{"enabled":0,"done":100000000,"hash":"d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c","generated":0,"calls":0,"regions":0,"ms":5822.291893}
+{"enabled":0,"done":200000000,"hash":"3115619513272084d708351eda5d6e61977ec41bc00cea816f5d5282b6993da5","generated":0,"calls":0,"regions":0,"ms":11419.032522}
+{"enabled":0,"done":300000000,"hash":"4adeb36a28ac0d7b4bc8e8e5ca3ea139c8b2dd7bdda479bf450f78a7830aa4b5","generated":0,"calls":0,"regions":0,"ms":16981.564699000002}
+{"enabled":0,"done":400000000,"hash":"b60be77e1272bfc8bb4b40a4203d33c229ba54a521ffa189ecf458480ec95673","generated":0,"calls":0,"regions":0,"ms":22627.079919000003}
+{"enabled":0,"done":500000000,"hash":"eee279887e62c47a027dd9e3460a17a6730dfc030b2bf686e622e6f893c23f7a","generated":0,"calls":0,"regions":0,"ms":28121.382289}
+{"enabled":0,"done":600000000,"hash":"642bd79aa34ec60617b745f2eceeff4c5f7c9e64ccf694cbf4b1f439adc958b4","generated":0,"calls":0,"regions":0,"ms":33678.320334000004}
+{"enabled":1,"done":100000000,"hash":"d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c","generated":73093840,"calls":9273308,"regions":509,"ms":5744.838076}
+{"enabled":1,"done":200000000,"hash":"3115619513272084d708351eda5d6e61977ec41bc00cea816f5d5282b6993da5","generated":149198304,"calls":20340291,"regions":509,"ms":10880.751714000005}
+{"enabled":1,"done":300000000,"hash":"4adeb36a28ac0d7b4bc8e8e5ca3ea139c8b2dd7bdda479bf450f78a7830aa4b5","generated":228284970,"calls":31736600,"regions":509,"ms":15945.628674000007}
+{"enabled":1,"done":400000000,"hash":"b60be77e1272bfc8bb4b40a4203d33c229ba54a521ffa189ecf458480ec95673","generated":301465886,"calls":42239062,"regions":509,"ms":21096.661408}
+{"enabled":1,"done":500000000,"hash":"eee279887e62c47a027dd9e3460a17a6730dfc030b2bf686e622e6f893c23f7a","generated":380720709,"calls":53366835,"regions":509,"ms":25967.603683}
+{"enabled":1,"done":600000000,"hash":"642bd79aa34ec60617b745f2eceeff4c5f7c9e64ccf694cbf4b1f439adc958b4","generated":460306256,"calls":64437078,"regions":509,"ms":30805.645333}
+Full machine snapshot equivalence passed

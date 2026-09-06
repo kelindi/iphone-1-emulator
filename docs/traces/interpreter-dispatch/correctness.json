@@ -1,0 +1,82 @@
+{
+  "scope": "Untimed100M genuine Settings per fixture. Candidate interpreter and original-seed execution compared against preserved original603679 full raw snapshots and original JIT counters; no normalization is used for acceptance.",
+  "runs": [
+    {
+      "fixture": "mbx",
+      "rows": [
+        {
+          "enabled": 0,
+          "done": 100000000,
+          "hash": "d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c",
+          "architectureHash": "98f9598a3a6be40ad8a1540f12aed12a84f7ffb49f732ec644080a3f19b7c8fe",
+          "tlb": [
+            "2354163240",
+            "75506320",
+            "462707"
+          ],
+          "generated": 0,
+          "calls": 0,
+          "regions": 0,
+          "runMs": 4544.704906000007,
+          "ms": 6572.963658999999
+        },
+        {
+          "enabled": 1,
+          "done": 100000000,
+          "hash": "d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c",
+          "architectureHash": "98f9598a3a6be40ad8a1540f12aed12a84f7ffb49f732ec644080a3f19b7c8fe",
+          "tlb": [
+            "2354163240",
+            "75506320",
+            "462707"
+          ],
+          "generated": 73093840,
+          "calls": 9273308,
+          "regions": 509,
+          "runMs": 4602.931016999997,
+          "ms": 6420.317826
+        }
+      ],
+      "passed": true
+    },
+    {
+      "fixture": "software",
+      "rows": [
+        {
+          "enabled": 0,
+          "done": 100000000,
+          "hash": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+          "architectureHash": "fa874776028c395160e0dfcf2897e119c62d436ab49e14d68b4b82dca0d0a4bd",
+          "tlb": [
+            "2416294936",
+            "58979021",
+            "387578"
+          ],
+          "generated": 0,
+          "calls": 0,
+          "regions": 0,
+          "runMs": 4394.047193000004,
+          "ms": 6293.9245980000005
+        },
+        {
+          "enabled": 1,
+          "done": 100000000,
+          "hash": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+          "architectureHash": "fa874776028c395160e0dfcf2897e119c62d436ab49e14d68b4b82dca0d0a4bd",
+          "tlb": [
+            "2416294936",
+            "58979021",
+            "387578"
+          ],
+          "generated": 87140487,
+          "calls": 8561513,
+          "regions": 511,
+          "runMs": 2743.0195179999973,
+          "ms": 4547.389955000001
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

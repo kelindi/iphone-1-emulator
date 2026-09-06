@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "scope": "Original kernel file tables/source bytes, independent of emulated RAM and C oracle",
+  "kernelSHA256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+  "sramSHA256": "011452fdff9699442c49115354c9b0bced1b98265ba64ee5b95c1c48bbb01583",
+  "fullSRAMBytesCompared": 180224,
+  "descriptorBytes": 59622,
+  "guestWriteFootprintBytes": 59628,
+  "originalGuestWrites": 17687,
+  "selectedCodecIndex": 1,
+  "originalTableLabel": "Espico_aac",
+  "negativeControls": 8,
+  "zeroByteCoverageNegativeOffset": "0x187d4",
+  "retainedRMWNeighborOffsets": [
+    "0x29230",
+    "0x29231",
+    "0x29bbe",
+    "0x29bbf",
+    "0x2ae5e",
+    "0x2ae5f"
+  ]
+}
+Original-prefix oracle PASS:19 accepted writes,1 unaccepted command,5 negative controls.

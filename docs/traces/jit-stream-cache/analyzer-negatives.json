@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "positiveActualTrace": true,
+  "negativeCases": [
+    {
+      "name": "missingSucceeded",
+      "rejected": true
+    },
+    {
+      "name": "missingDigest",
+      "rejected": true
+    },
+    {
+      "name": "missingFinish",
+      "rejected": true
+    },
+    {
+      "name": "missingHit",
+      "rejected": true
+    },
+    {
+      "name": "duplicateHit",
+      "rejected": true
+    },
+    {
+      "name": "differentPID",
+      "rejected": true
+    },
+    {
+      "name": "differentThread",
+      "rejected": true
+    },
+    {
+      "name": "outOfScopeDeserialize",
+      "rejected": true
+    },
+    {
+      "name": "wrongURL",
+      "rejected": true
+    },
+    {
+      "name": "succeededOutsideFinish",
+      "rejected": true
+    },
+    {
+      "name": "v8.wasm.moduleCacheInvalid",
+      "rejected": true
+    },
+    {
+      "name": "v8.wasm.moduleCacheInvalidDigest",
+      "rejected": true
+    }
+  ]
+}

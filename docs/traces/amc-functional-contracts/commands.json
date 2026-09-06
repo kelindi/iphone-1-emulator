@@ -1,0 +1,91 @@
+[
+  {
+    "mode": "positive",
+    "command": [
+      "cc",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DAMC_INPUT_PREFIX=6",
+      "-I.context/amc-first/stage-f/source",
+      "-I.context/amc-first/stage-e/framing/source/include",
+      ".context/amc-first/stage-f/source/test_engine.c",
+      ".context/amc-first/stage-f/source/amc_engine.c",
+      ".context/amc-first/stage-f/source/amc_faad.c",
+      ".context/amc-first/stage-f/source/amc_idle.c",
+      ".context/amc-first/stage-f/source/amc_sram.c",
+      ".context/amc-first/stage-e/framing/build/libfaad.a",
+      "-lm",
+      "-o",
+      ".context/amc-first/stage-f/run-4/positive"
+    ],
+    "runArguments": [
+      ".context/amc-first/stage-d/verified/sram.bin",
+      ".context/amc-first/stage-d/verified/written.bin",
+      ".context/amc-first/stage-e/framing/fixture/stream.aac",
+      ".context/amc-first/stage-e/framing/run-1/packetized.pcm"
+    ],
+    "elapsedSeconds": 0.7006440529985412,
+    "returncode": 0,
+    "expectedReturncode": 0
+  },
+  {
+    "mode": "synchronous-mutant",
+    "command": [
+      "cc",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DAMC_INPUT_PREFIX=6",
+      "-I.context/amc-first/stage-f/source",
+      "-I.context/amc-first/stage-e/framing/source/include",
+      ".context/amc-first/stage-f/source/test_engine.c",
+      ".context/amc-first/stage-f/run-4/synchronous-service-mutant.c",
+      ".context/amc-first/stage-f/source/amc_faad.c",
+      ".context/amc-first/stage-f/source/amc_idle.c",
+      ".context/amc-first/stage-f/source/amc_sram.c",
+      ".context/amc-first/stage-e/framing/build/libfaad.a",
+      "-lm",
+      "-o",
+      ".context/amc-first/stage-f/run-4/synchronous-mutant"
+    ],
+    "runArguments": [
+      ".context/amc-first/stage-d/verified/sram.bin",
+      ".context/amc-first/stage-d/verified/written.bin",
+      ".context/amc-first/stage-e/framing/fixture/stream.aac",
+      ".context/amc-first/stage-e/framing/run-1/packetized.pcm"
+    ],
+    "elapsedSeconds": 0.7519381740021345,
+    "returncode": 2,
+    "expectedReturncode": 2
+  },
+  {
+    "mode": "adapter",
+    "command": [
+      "cc",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DAMC_INPUT_PREFIX=6",
+      "-I.context/amc-first/stage-f/source",
+      "-I.context/amc-first/stage-e/framing/source/include",
+      ".context/amc-first/stage-f/source/test_adapter.c",
+      ".context/amc-first/stage-f/source/amc_faad.c",
+      ".context/amc-first/stage-e/framing/build/libfaad.a",
+      "-lm",
+      "-o",
+      ".context/amc-first/stage-f/run-4/adapter"
+    ],
+    "runArguments": [
+      ".context/amc-first/stage-e/framing/fixture/stream.aac",
+      ".context/amc-first/stage-f/run-4/adapter.pcm",
+      ".context/amc-first/stage-f/run-4/adapter.csv"
+    ],
+    "elapsedSeconds": 0.4334854689986969,
+    "returncode": 0,
+    "expectedReturncode": 0
+  }
+]

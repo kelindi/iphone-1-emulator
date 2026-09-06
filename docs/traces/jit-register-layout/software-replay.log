@@ -1,0 +1,9 @@
+{"module":"file:///home/vercel-sandbox/iphone-1/.context/jit-register-layout/runtime/emu.js","seedDirectory":"/home/vercel-sandbox/iphone-1/.context/jit-register-layout/seed"}
+{"fixtureSha256":"28591a3003b8677469b2e506185792e26ac128ba9383b7f110959f4f4fb0c82d","instructions":600000000,"regions":512}
+{"enabled":1,"done":100000000,"hash":"1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8","tlb":["2416294936","58979021","387578"],"generated":87140487,"calls":8561513,"regions":511,"runMs":3913.0444290000028,"ms":5292.524656}
+{"enabled":1,"done":200000000,"hash":"da6c48512d75b2ade5664f588340959c3e926c979d438b8d6feea0e7b918e919","tlb":["2421778565","59213427","388913"],"generated":176605249,"calls":16616121,"regions":511,"runMs":6037.8674000000065,"ms":8715.52851}
+{"enabled":1,"done":300000000,"hash":"6114ecf3334724c186c755adad431dea8734e06c4705c5f6c4d3a015e8bca474","tlb":["2429321470","59921103","393170"],"generated":253540588,"calls":26428966,"regions":509,"runMs":9295.537962000008,"ms":13257.267224}
+{"enabled":1,"done":400000000,"hash":"e74003574be3b30e52d08be3f1f70e39e5fd9af00481b952f76ecab22dae3553","tlb":["2435364887","60274090","394982"],"generated":337162411,"calls":35316926,"regions":509,"runMs":11926.32226599999,"ms":17148.977624}
+{"enabled":1,"done":500000000,"hash":"9af0da669ca03b0dd9d5f3666d82707bb759db76338ee63c2fd848a5fca49813","tlb":["2443746548","61067199","399862"],"generated":416969250,"calls":45873089,"regions":509,"runMs":15360.188854000002,"ms":21826.234939}
+{"enabled":1,"done":600000000,"hash":"bfcde2adfff879343c437ef0d0b55fb689525a2178e080c16b95f7956c77c7f5","tlb":["2453015500","62116776","405752"],"generated":496605837,"calls":56932774,"regions":509,"runMs":19028.77419399999,"ms":26698.980544}
+Full machine snapshot equivalence passed

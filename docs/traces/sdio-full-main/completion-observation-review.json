@@ -1,0 +1,21 @@
+[
+  {
+    "line": 10869,
+    "commandNumber": 663,
+    "elapsed": 616,
+    "instruction": 4293093685,
+    "pc": "c043152c",
+    "context": [
+      "4293051416 ticks=62991248 pc=c04314cc R4 38d00018=00000001 accepted=1 card=3 busy=0 triggers=662 complete=662",
+      "4293051420 ticks=62991248 pc=c043151c R4 38d00008=000501f5 accepted=1 card=3 busy=0 triggers=662 complete=662",
+      "4293051422 ticks=62991248 pc=c0431524 W4 38d00008=800501f5 accepted=1 card=3 busy=1 triggers=663 complete=662",
+      "CMD53 request committed pc=c0431528 descriptor=000501f5 argument=9a000010 buffer=13c87004 length=512 capturedFrames=111; continuing through genuine DMA path",
+      "4293051424 ticks=62991248 pc=c043152c R4 38d00018=00000000 accepted=1 card=3 busy=1 triggers=663 complete=662",
+      "4293093685 ticks=62991864 pc=c043152c R4 38d00018=00000015 accepted=1 card=3 busy=0 triggers=663 complete=663",
+      "4293093695 ticks=62991864 pc=c0431568 W4 38d00014=00000015 accepted=1 card=3 busy=0 triggers=663 complete=663",
+      "4293093704 ticks=62991864 pc=c0431594 R4 38d00020=00001000 accepted=1 card=3 busy=0 triggers=663 complete=663",
+      "4293093707 ticks=62991864 pc=c04315a0 R4 38d00024=00000000 accepted=1 card=3 busy=0 triggers=663 complete=663",
+      "4293093710 ticks=62991864 pc=c04315ac R4 38d00028=00000000 accepted=1 card=3 busy=0 triggers=663 complete=663"
+    ]
+  }
+]

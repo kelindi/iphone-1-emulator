@@ -1,0 +1,269 @@
+{
+  "decision": "parked; no production promotion",
+  "method": "Four fresh browser profiles, original/candidate/candidate/original. Diagnostic C0 first use, H1 repeat, C1 same-worker guest restore. Two observations per configuration/stage, not p95 or a release gate.",
+  "screensPassed": 24,
+  "rootManualReview": "All 24 screens show correct Settings or Home content. Contact sheet rows are run1/2/3/4; columns C0 Settings/Home, H1 Settings/Home, C1 Settings/Home.",
+  "reason": "Cold Settings regresses in both paired directions; warm Settings also regresses. Smaller functions do not lower observed seed baseline compilation CPU.",
+  "runs": [
+    {
+      "run": "1-original",
+      "stages": [
+        {
+          "label": "C0-settings",
+          "readyMs": 4934.400000002235,
+          "retired": 114069256,
+          "generated": 82393948,
+          "calls": 10336989,
+          "compileThreadCpuLowerMs": 10195.074,
+          "compileThreadCpuUpperMs": 10481.059,
+          "compileGlobalWallUnionMs": 3271.522
+        },
+        {
+          "label": "C0-home",
+          "readyMs": 915.7999999970198,
+          "retired": 28684156,
+          "generated": 18672426,
+          "calls": 2637277,
+          "compileThreadCpuLowerMs": 106.456,
+          "compileThreadCpuUpperMs": 106.456,
+          "compileGlobalWallUnionMs": 82.942
+        },
+        {
+          "label": "H1-settings",
+          "readyMs": 2767.099999997765,
+          "retired": 95222333,
+          "generated": 68369315,
+          "calls": 8118133,
+          "compileThreadCpuLowerMs": 43.11,
+          "compileThreadCpuUpperMs": 43.11,
+          "compileGlobalWallUnionMs": 43.206
+        },
+        {
+          "label": "H1-home",
+          "readyMs": 866.7999999970198,
+          "retired": 26724659,
+          "generated": 17046839,
+          "calls": 2474837,
+          "compileThreadCpuLowerMs": 0.0,
+          "compileThreadCpuUpperMs": 0.0,
+          "compileGlobalWallUnionMs": 0.0
+        },
+        {
+          "label": "C1-settings",
+          "readyMs": 3414.39999999851,
+          "retired": 111274862,
+          "generated": 79814635,
+          "calls": 9934149,
+          "compileThreadCpuLowerMs": 1.999,
+          "compileThreadCpuUpperMs": 1.999,
+          "compileGlobalWallUnionMs": 2.086
+        },
+        {
+          "label": "C1-home",
+          "readyMs": 916.8999999985099,
+          "retired": 32300931,
+          "generated": 21457250,
+          "calls": 2830152,
+          "compileThreadCpuLowerMs": 11.745,
+          "compileThreadCpuUpperMs": 11.745,
+          "compileGlobalWallUnionMs": 11.823
+        }
+      ]
+    },
+    {
+      "run": "2-candidate",
+      "stages": [
+        {
+          "label": "C0-settings",
+          "readyMs": 5013.60000000149,
+          "retired": 114507059,
+          "generated": 82684445,
+          "calls": 10405181,
+          "compileThreadCpuLowerMs": 10178.567,
+          "compileThreadCpuUpperMs": 10180.088,
+          "compileGlobalWallUnionMs": 3227.69
+        },
+        {
+          "label": "C0-home",
+          "readyMs": 866.4000000022352,
+          "retired": 27879137,
+          "generated": 18194442,
+          "calls": 2551483,
+          "compileThreadCpuLowerMs": 168.545,
+          "compileThreadCpuUpperMs": 168.545,
+          "compileGlobalWallUnionMs": 128.57
+        },
+        {
+          "label": "H1-settings",
+          "readyMs": 3216.300000000745,
+          "retired": 99778233,
+          "generated": 71565581,
+          "calls": 8656769,
+          "compileThreadCpuLowerMs": 63.015,
+          "compileThreadCpuUpperMs": 63.015,
+          "compileGlobalWallUnionMs": 63.776
+        },
+        {
+          "label": "H1-home",
+          "readyMs": 866.3000000007451,
+          "retired": 25434230,
+          "generated": 16414266,
+          "calls": 2369381,
+          "compileThreadCpuLowerMs": 18.731,
+          "compileThreadCpuUpperMs": 18.731,
+          "compileGlobalWallUnionMs": 16.535
+        },
+        {
+          "label": "C1-settings",
+          "readyMs": 3616.699999999255,
+          "retired": 111850964,
+          "generated": 80296891,
+          "calls": 10024725,
+          "compileThreadCpuLowerMs": 52.015,
+          "compileThreadCpuUpperMs": 52.015,
+          "compileGlobalWallUnionMs": 52.195
+        },
+        {
+          "label": "C1-home",
+          "readyMs": 866.1999999992549,
+          "retired": 26111159,
+          "generated": 16962277,
+          "calls": 2350137,
+          "compileThreadCpuLowerMs": 12.217,
+          "compileThreadCpuUpperMs": 12.217,
+          "compileGlobalWallUnionMs": 12.309
+        }
+      ]
+    },
+    {
+      "run": "3-candidate",
+      "stages": [
+        {
+          "label": "C0-settings",
+          "readyMs": 5265.20000000298,
+          "retired": 113075751,
+          "generated": 81794487,
+          "calls": 10279178,
+          "compileThreadCpuLowerMs": 10595.514,
+          "compileThreadCpuUpperMs": 10595.514,
+          "compileGlobalWallUnionMs": 3516.687
+        },
+        {
+          "label": "C0-home",
+          "readyMs": 966.3000000007451,
+          "retired": 28617751,
+          "generated": 18779483,
+          "calls": 2644323,
+          "compileThreadCpuLowerMs": 157.476,
+          "compileThreadCpuUpperMs": 157.476,
+          "compileGlobalWallUnionMs": 121.712
+        },
+        {
+          "label": "H1-settings",
+          "readyMs": 2966.5,
+          "retired": 97563721,
+          "generated": 69705656,
+          "calls": 8339619,
+          "compileThreadCpuLowerMs": 99.493,
+          "compileThreadCpuUpperMs": 99.493,
+          "compileGlobalWallUnionMs": 99.922
+        },
+        {
+          "label": "H1-home",
+          "readyMs": 916.9000000022352,
+          "retired": 27009762,
+          "generated": 17593022,
+          "calls": 2549749,
+          "compileThreadCpuLowerMs": 11.422,
+          "compileThreadCpuUpperMs": 11.422,
+          "compileGlobalWallUnionMs": 11.54
+        },
+        {
+          "label": "C1-settings",
+          "readyMs": 3466.89999999851,
+          "retired": 109965340,
+          "generated": 78893298,
+          "calls": 9793732,
+          "compileThreadCpuLowerMs": 51.87,
+          "compileThreadCpuUpperMs": 51.87,
+          "compileGlobalWallUnionMs": 52.195
+        },
+        {
+          "label": "C1-home",
+          "readyMs": 1166.300000000745,
+          "retired": 34808625,
+          "generated": 22966151,
+          "calls": 3053554,
+          "compileThreadCpuLowerMs": 15.76,
+          "compileThreadCpuUpperMs": 15.76,
+          "compileGlobalWallUnionMs": 15.869
+        }
+      ]
+    },
+    {
+      "run": "4-original",
+      "stages": [
+        {
+          "label": "C0-settings",
+          "readyMs": 4955.60000000149,
+          "retired": 113636034,
+          "generated": 82008439,
+          "calls": 10299489,
+          "compileThreadCpuLowerMs": 10356.525,
+          "compileThreadCpuUpperMs": 11126.456,
+          "compileGlobalWallUnionMs": 3356.768
+        },
+        {
+          "label": "C0-home",
+          "readyMs": 866.2999999970198,
+          "retired": 28391409,
+          "generated": 18511042,
+          "calls": 2589961,
+          "compileThreadCpuLowerMs": 105.19,
+          "compileThreadCpuUpperMs": 105.19,
+          "compileGlobalWallUnionMs": 82.507
+        },
+        {
+          "label": "H1-settings",
+          "readyMs": 2816.5,
+          "retired": 94814554,
+          "generated": 67971346,
+          "calls": 8039565,
+          "compileThreadCpuLowerMs": 44.506,
+          "compileThreadCpuUpperMs": 44.506,
+          "compileGlobalWallUnionMs": 44.561
+        },
+        {
+          "label": "H1-home",
+          "readyMs": 866.3999999985099,
+          "retired": 26030068,
+          "generated": 16670915,
+          "calls": 2385913,
+          "compileThreadCpuLowerMs": 0.0,
+          "compileThreadCpuUpperMs": 0.0,
+          "compileGlobalWallUnionMs": 0.0
+        },
+        {
+          "label": "C1-settings",
+          "readyMs": 3566.300000000745,
+          "retired": 112884684,
+          "generated": 80941670,
+          "calls": 10134697,
+          "compileThreadCpuLowerMs": 2.432,
+          "compileThreadCpuUpperMs": 2.432,
+          "compileGlobalWallUnionMs": 2.55
+        },
+        {
+          "label": "C1-home",
+          "readyMs": 917.6999999992549,
+          "retired": 32594647,
+          "generated": 20487821,
+          "calls": 2870478,
+          "compileThreadCpuLowerMs": 12.283,
+          "compileThreadCpuUpperMs": 12.283,
+          "compileGlobalWallUnionMs": 12.362
+        }
+      ]
+    }
+  ]
+}

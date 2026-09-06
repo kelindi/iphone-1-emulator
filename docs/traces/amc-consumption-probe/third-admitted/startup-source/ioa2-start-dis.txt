@@ -1,0 +1,242 @@
+original SHA256 5f377fec52ae10a7dc17659e4e2c856d39808c87bf9702059ea62b9e300528ec
+
+__ZN17IOA2U_Transformer5StartEv
+3196b4f0 push     {r4, r5, r6, r7, lr}
+3196b4f4 add      r7, sp, #0xc
+3196b4f8 ldr      r3, [pc, #0x394] literal 3196b894=07ffec40 
+3196b4fc push     {r8, sl, fp}
+3196b500 fstmdbx  sp!, {d8, d9, d10, d11, d12, d13, d14, d15}
+3196b504 sub      sp, sp, #0x78
+3196b508 ldr      r3, [pc, r3]
+3196b50c str      r3, [sp, #0x5c]
+3196b510 ldr      r3, [pc, #0x380] literal 3196b898=07ffeca8 
+3196b514 str      r0, [sp, #0x24]
+3196b518 add      r3, pc, r3
+3196b51c str      r3, [sp, #0x60]
+3196b520 ldr      r3, [pc, #0x374] literal 3196b89c=00000314 
+3196b524 add      r0, sp, #0x44
+3196b528 add      r3, pc, r3
+3196b52c str      r3, [sp, #0x68]
+3196b530 str      r7, [sp, #0x64]
+3196b534 str      sp, [sp, #0x6c]
+3196b538 bl       #0x31972c88 ('__Unwind_SjLj_Register [stub]', 0)
+3196b53c ldr      r2, [sp, #0x24]
+3196b540 mvn      r3, #0
+3196b544 ldr      r2, [r2, #0xc4]
+3196b548 str      r3, [sp, #0x48]
+3196b54c str      r2, [sp, #0x28]
+3196b550 bl       #0x31972400 ('__ZN9CAProcess6GetPIDEv', 0)
+3196b554 ldr      r2, [sp, #0x28]
+3196b558 cmp      r2, r0
+3196b55c beq      #0x3196b584
+3196b560 mov      r0, #4
+3196b564 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b568 ldr      r1, [pc, #0x330] literal 3196b8a0=07ffebdc 
+3196b56c ldr      r2, [pc, #0x330] literal 3196b8a4=07ffebc8 
+3196b570 mvn      r3, #0
+3196b574 ldr      r1, [pc, r1]
+3196b578 ldr      r2, [pc, r2]
+3196b57c str      r3, [r0]
+3196b580 b        #0x3196b5b8
+3196b584 ldr      r2, [sp, #0x24]
+3196b588 ldr      r0, [r2, #0x14]
+3196b58c cmp      r0, #0
+3196b590 bne      #0x3196b5bc
+3196b594 add      r0, r0, #4
+3196b598 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b59c ldr      r1, [pc, #0x304] literal 3196b8a8=07ffebac 
+3196b5a0 ldr      r2, [pc, #0x304] literal 3196b8ac=07ffeb98 
+3196b5a4 ldr      r1, [pc, r1]
+3196b5a8 ldr      r2, [pc, r2]
+3196b5ac mvn      r3, #0
+3196b5b0 str      r3, [r0]
+3196b5b4 str      r3, [sp, #0x48]
+3196b5b8 bl       #0x31972d58 ('___cxa_throw [stub]', 0)
+3196b5bc ldr      r2, [sp, #0x24]
+3196b5c0 ldrb     r1, [r2, #0x30]
+3196b5c4 cmp      r1, #0
+3196b5c8 bne      #0x3196b878
+3196b5cc mov      r3, #2
+3196b5d0 str      r3, [sp, #0x48]
+3196b5d4 str      r1, [sp]
+3196b5d8 str      r1, [sp, #4]
+3196b5dc str      r1, [sp, #8]
+3196b5e0 str      r1, [sp, #0xc]
+3196b5e4 str      r1, [sp, #0x10]
+3196b5e8 str      r1, [sp, #0x14]
+3196b5ec mov      r2, r1
+3196b5f0 mov      r3, r1
+3196b5f4 bl       #0x31972c68 ('_IOConnectCallMethod [stub]', 0)
+3196b5f8 cmp      r0, #0
+3196b5fc str      r0, [sp, #0x2c]
+3196b600 beq      #0x3196b628
+3196b604 mov      r0, #4
+3196b608 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b60c ldr      r2, [sp, #0x2c]
+3196b610 ldr      r1, [pc, #0x298] literal 3196b8b0=07ffeb3c 
+3196b614 ldr      r1, [pc, r1]
+3196b618 str      r2, [r0]
+3196b61c ldr      r2, [pc, #0x290] literal 3196b8b4=07ffeb20 
+3196b620 ldr      r2, [pc, r2]
+3196b624 b        #0x3196b66c
+3196b628 ldr      r3, [sp, #0x24]
+3196b62c mov      r2, #2
+3196b630 add      r1, r3, #0x34
+3196b634 ldr      r0, [r3, #0x18]
+3196b638 str      r2, [sp, #0x48]
+3196b63c bl       #0x3197242c ('_IOStreamOpen', 0)
+3196b640 cmp      r0, #0
+3196b644 str      r0, [sp, #0x30]
+3196b648 beq      #0x3196b670
+3196b64c mov      r0, #4
+3196b650 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b654 ldr      r1, [pc, #0x25c] literal 3196b8b8=07ffeaf0 
+3196b658 ldr      r2, [pc, #0x25c] literal 3196b8bc=07ffeadc 
+3196b65c ldr      r3, [sp, #0x30]
+3196b660 ldr      r1, [pc, r1]
+3196b664 ldr      r2, [pc, r2]
+3196b668 str      r3, [r0]
+3196b66c bl       #0x31972d58 ('___cxa_throw [stub]', 0)
+3196b670 ldr      r2, [pc, #0x248] literal 3196b8c0=000025f4 
+3196b674 ldr      r3, [sp, #0x24]
+3196b678 add      r2, pc, r2
+3196b67c str      r2, [sp, #0x20]
+3196b680 mov      r2, #2
+3196b684 ldr      r0, [r3, #0x34]
+3196b688 ldr      r1, [sp, #0x20]
+3196b68c str      r2, [sp, #0x48]
+3196b690 mov      r2, r3
+3196b694 bl       #0x31972824 ('_IOStreamSetCallback', 0)
+3196b698 cmp      r0, #0
+3196b69c str      r0, [sp, #0x34]
+3196b6a0 beq      #0x3196b6c8
+3196b6a4 mov      r0, #4
+3196b6a8 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b6ac ldr      r1, [pc, #0x210] literal 3196b8c4=07ffea98 
+3196b6b0 ldr      r2, [pc, #0x210] literal 3196b8c8=07ffea84 
+3196b6b4 ldr      r3, [sp, #0x34]
+3196b6b8 ldr      r1, [pc, r1]
+3196b6bc ldr      r2, [pc, r2]
+3196b6c0 str      r3, [r0]
+3196b6c4 b        #0x3196b66c
+3196b6c8 ldr      r2, [sp, #0x24]
+3196b6cc mov      r3, #2
+3196b6d0 add      r1, r2, #0x38
+3196b6d4 ldr      r0, [r2, #0x20]
+3196b6d8 str      r3, [sp, #0x48]
+3196b6dc bl       #0x3197242c ('_IOStreamOpen', 0)
+3196b6e0 cmp      r0, #0
+3196b6e4 str      r0, [sp, #0x38]
+3196b6e8 beq      #0x3196b710
+3196b6ec mov      r0, #4
+3196b6f0 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b6f4 ldr      r2, [sp, #0x38]
+3196b6f8 ldr      r1, [pc, #0x1cc] literal 3196b8cc=07ffea54 
+3196b6fc ldr      r1, [pc, r1]
+3196b700 str      r2, [r0]
+3196b704 ldr      r2, [pc, #0x1c4] literal 3196b8d0=07ffea38 
+3196b708 ldr      r2, [pc, r2]
+3196b70c b        #0x3196b66c
+3196b710 ldr      r3, [sp, #0x24]
+3196b714 mov      r2, #2
+3196b718 ldr      r1, [sp, #0x20]
+3196b71c ldr      r0, [r3, #0x38]
+3196b720 str      r2, [sp, #0x48]
+3196b724 mov      r2, r3
+3196b728 bl       #0x31972824 ('_IOStreamSetCallback', 0)
+3196b72c cmp      r0, #0
+3196b730 str      r0, [sp, #0x3c]
+3196b734 beq      #0x3196b75c
+3196b738 mov      r0, #4
+3196b73c bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b740 ldr      r1, [pc, #0x18c] literal 3196b8d4=07ffea04 
+3196b744 ldr      r2, [pc, #0x18c] literal 3196b8d8=07ffe9f0 
+3196b748 ldr      r3, [sp, #0x3c]
+3196b74c ldr      r1, [pc, r1]
+3196b750 ldr      r2, [pc, r2]
+3196b754 str      r3, [r0]
+3196b758 b        #0x3196b66c
+3196b75c ldr      r2, [sp, #0x24]
+3196b760 ldr      r3, [sp, #0x3c]
+3196b764 mov      r1, #1
+3196b768 ldr      r0, [r2, #0x14]
+3196b76c mov      r2, #2
+3196b770 str      r2, [sp, #0x48]
+3196b774 str      r3, [sp]
+3196b778 str      r3, [sp, #4]
+3196b77c str      r3, [sp, #8]
+3196b780 str      r3, [sp, #0xc]
+3196b784 str      r3, [sp, #0x10]
+3196b788 str      r3, [sp, #0x14]
+3196b78c mov      r2, r3
+3196b790 bl       #0x31972c68 ('_IOConnectCallMethod [stub]', 0)
+3196b794 cmp      r0, #0
+3196b798 str      r0, [sp, #0x40]
+3196b79c beq      #0x3196b7c4
+3196b7a0 mov      r0, #4
+3196b7a4 bl       #0x31972c48 ('___cxa_allocate_exception [stub]', 0)
+3196b7a8 ldr      r1, [pc, #0x12c] literal 3196b8dc=07ffe99c 
+3196b7ac ldr      r2, [pc, #0x12c] literal 3196b8e0=07ffe988 
+3196b7b0 ldr      r3, [sp, #0x40]
+3196b7b4 ldr      r1, [pc, r1]
+3196b7b8 ldr      r2, [pc, r2]
+3196b7bc str      r3, [r0]
+3196b7c0 b        #0x3196b66c
+3196b7c4 ldr      r2, [sp, #0x24]
+3196b7c8 mov      r3, #1
+3196b7cc strb     r3, [r2, #0x30]
+3196b7d0 b        #0x3196b878
+3196b7d4 ldr      r0, [sp, #0x1c]
+3196b7d8 bl       #0x31972e38 ('___cxa_begin_catch [stub]', 0)
+3196b7dc ldr      r3, [sp, #0x24]
+3196b7e0 ldr      r0, [r3, #0x34]
+3196b7e4 cmp      r0, #0
+3196b7e8 beq      #0x3196b804
+3196b7ec ldr      r2, [sp, #0x18]
+3196b7f0 str      r2, [sp, #0x48]
+3196b7f4 bl       #0x3197263c ('_IOStreamClose', 0)
+3196b7f8 ldr      r2, [sp, #0x24]
+3196b7fc mov      r3, #0
+3196b800 str      r3, [r2, #0x34]
+3196b804 ldr      r3, [sp, #0x24]
+3196b808 ldr      r0, [r3, #0x38]
+3196b80c cmp      r0, #0
+3196b810 beq      #0x3196b82c
+3196b814 ldr      r2, [sp, #0x18]
+3196b818 str      r2, [sp, #0x48]
+3196b81c bl       #0x3197263c ('_IOStreamClose', 0)
+3196b820 ldr      r2, [sp, #0x24]
+3196b824 mov      r3, #0
+3196b828 str      r3, [r2, #0x38]
+3196b82c ldr      r2, [sp, #0x24]
+3196b830 mov      r3, #0
+3196b834 strb     r3, [r2, #0x30]
+3196b838 ldr      r3, [sp, #0x18]
+3196b83c str      r3, [sp, #0x48]
+3196b840 bl       #0x31972c98 ('___cxa_rethrow [stub]', 0)
+3196b844 ldr      r2, [sp, #0x48]
+3196b848 ldr      r3, [sp, #0x4c]
+3196b84c cmp      r2, #1
+3196b850 str      r2, [sp, #0x18]
+3196b854 str      r3, [sp, #0x1c]
+3196b858 beq      #0x3196b7d4
+3196b85c mov      r3, #0
+3196b860 str      r3, [sp, #0x48]
+3196b864 bl       #0x31972eb8 ('___cxa_end_catch [stub]', 0)
+3196b868 mvn      r3, #0
+3196b86c ldr      r0, [sp, #0x1c]
+3196b870 str      r3, [sp, #0x48]
+3196b874 bl       #0x31972d68 ('__Unwind_SjLj_Resume [stub]', 0)
+3196b878 add      r0, sp, #0x44
+3196b87c bl       #0x31972d78 ('__Unwind_SjLj_Unregister [stub]', 0)
+3196b880 sub      sp, r7, #0x5c
+3196b884 fldmiax  sp!, {d8, d9, d10, d11, d12, d13, d14, d15}
+3196b888 sub      sp, r7, #0x18
+3196b88c pop      {r8, sl, fp}
+3196b890 pop      {r4, r5, r6, r7, pc}
+3196b894 ldrbeq   lr, [pc, r0, asr #24]!
+3196b898 ldrbeq   lr, [pc, r8, lsr #25]!
+3196b89c andeq    r0, r0, r4, lsl r3
+3196b8a0 ubfxeq   lr, ip, #0x17, #0x20
+3196b8a4 ldrbeq   lr, [pc, r8, asr #23]!
+3196b8a8 ldrbeq   lr, [pc, ip, lsr #23]!

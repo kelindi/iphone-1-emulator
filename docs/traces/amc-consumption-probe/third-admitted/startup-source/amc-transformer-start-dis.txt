@@ -1,0 +1,232 @@
+0xc02732a0  push     {r4, r5, r6, r7, lr}
+0xc02732a4  mov      r6, r0
+0xc02732a8  add      r7, sp, #0xc
+0xc02732ac  push     {r8, sl}
+0xc02732b0  ldr      r0, [r0, #0x22c]
+0xc02732b4  cmp      r0, #0
+0xc02732b8  beq      #0xc02733bc
+0xc02732bc  ldr      r3, [r0]
+0xc02732c0  mov      lr, pc
+0xc02732c4  ldr      pc, [r3, #0xa0]
+0xc02732c8  mov      r8, #0
+0xc02732cc  mov      sl, r0
+0xc02732d0  mov      r5, r0
+0xc02732d4  b        #0xc027336c
+0xc02732d8  ldr      r0, [r6, #0x22c]
+0xc02732dc  sub      r5, r5, #1
+0xc02732e0  mov      r1, r5
+0xc02732e4  ldr      r3, [r0]
+0xc02732e8  mov      lr, pc
+0xc02732ec  ldr      pc, [r3, #0xfc]
+0xc02732f0  ldr      r1, [pc, #0xdc] ; literal@c02733d4 = c02250e0
+0xc02732f4  ldr      r3, [pc, #0xdc] ; literal@c02733d8 = c0120cf7
+0xc02732f8  ldr      r1, [r1]
+0xc02732fc  blx      r3
+0xc0273300  subs     r4, r0, #0
+0xc0273304  beq      #0xc0273368
+0xc0273308  ldr      r3, [r4]
+0xc027330c  mov      lr, pc
+0xc0273310  ldr      pc, [r3, #0x18]
+0xc0273314  ldr      r0, [r6, #0x22c]
+0xc0273318  mov      r1, r5
+0xc027331c  ldr      r3, [r0]
+0xc0273320  mov      lr, pc
+0xc0273324  ldr      pc, [r3, #0xf4]
+0xc0273328  ldr      r0, [r6, #0x50]
+0xc027332c  mov      r1, r4
+0xc0273330  mov      r2, #0
+0xc0273334  ldr      r3, [r0]
+0xc0273338  mov      lr, pc
+0xc027333c  ldr      pc, [r3, #0x4f0]
+0xc0273340  cmp      r0, #0
+0xc0273344  movne    r1, r4
+0xc0273348  ldrne    r0, [r6, #0x22c]
+0xc027334c  ldrne    r3, [r0]
+0xc0273350  movne    lr, pc
+0xc0273354  ldrne    pc, [r3, #0xe4]
+0xc0273358  ldr      r3, [r4]
+0xc027335c  mov      r0, r4
+0xc0273360  mov      lr, pc
+0xc0273364  ldr      pc, [r3, #0x1c]
+0xc0273368  add      r8, r8, #1
+0xc027336c  cmp      sl, r8
+0xc0273370  bne      #0xc02732d8
+0xc0273374  ldr      r0, [r6, #0x50]
+0xc0273378  mov      r3, #1
+0xc027337c  strb     r3, [r6, #0x24e]
+0xc0273380  sub      r3, r3, #1
+0xc0273384  strb     r3, [r6, #0x24d]
+0xc0273388  str      r3, [r6, #0x23c]
+0xc027338c  str      r3, [r6, #0x244]
+0xc0273390  str      r3, [r6, #0x248]
+0xc0273394  strb     r3, [r6, #0x24c]
+0xc0273398  ldr      r3, [r0]
+0xc027339c  mov      lr, pc
+0xc02733a0  ldr      pc, [r3, #0x4ec]
+0xc02733a4  ldr      r3, [pc, #0x30] ; literal@c02733dc = c022edd0
+0xc02733a8  mov      r0, r6
+0xc02733ac  ldr      r3, [r3, #0x52c]
+0xc02733b0  pop      {r8, sl}
+0xc02733b4  pop      {r4, r5, r6, r7, lr}
+0xc02733b8  bx       r3
+0xc02733bc  ldr      r0, [pc, #0x1c] ; literal@c02733e0 = c027bc90 'Assertion "0 == mFreeInputBuffers" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line '
+0xc02733c0  ldr      r3, [pc, #0x1c] ; literal@c02733e4 = c012d41f
+0xc02733c4  blx      r3
+0xc02733c8  ldr      r0, [pc, #0x18] ; literal@c02733e8 = e00002bc
+0xc02733cc  pop      {r8, sl}
+0xc02733d0  pop      {r4, r5, r6, r7, pc}
+0xc02733d4  eorgt    r5, r2, r0, ror #1
+0xc02733d8  ldrshgt  r0, [r2], -r7
+0xc02733dc  .byte    0xd0, 0xed, 0x22, 0xc0
+0xc02733e0  mlagt    r7, r0, ip, fp
+0xc02733e4  andsgt   sp, r2, pc, lsl r4
+0xc02733e8  strh     r0, [r0], -ip
+0xc02733ec  push     {r4, r5, r6, r7, lr}
+0xc02733f0  add      r7, sp, #0xc
+0xc02733f4  push     {r8, sl, fp}
+0xc02733f8  uxtb     fp, r1
+0xc02733fc  sub      sp, sp, #8
+0xc0273400  cmp      fp, #0
+0xc0273404  moveq    r3, #2
+0xc0273408  movne    r3, #1
+0xc027340c  stm      sp, {r0, r3}
+0xc0273410  mov      r0, r3
+0xc0273414  ldr      r3, [pc, #0x118] ; literal@c0273534 = c0122245
+0xc0273418  blx      r3
+0xc027341c  subs     sl, r0, #0
+0xc0273420  movne    r8, #0
+0xc0273424  bne      #0xc02734f4
+0xc0273428  b        #0xc0273524
+0xc027342c  cmp      fp, #0
+0xc0273430  beq      #0xc0273468
+0xc0273434  mov      r1, #0x1000
+0xc0273438  mov      r2, #1
+0xc027343c  ldr      r3, [pc, #0xf4] ; literal@c0273538 = c0143191
+0xc0273440  mov      r0, #0x10000
+0xc0273444  blx      r3
+0xc0273448  ldr      r1, [pc, #0xec] ; literal@c027353c = 00003ff8
+0xc027344c  mov      r2, #1
+0xc0273450  ldr      r3, [pc, #0xe0] ; literal@c0273538 = c0143191
+0xc0273454  mov      r6, r0
+0xc0273458  mov      r0, #0x10000
+0xc027345c  blx      r3
+0xc0273460  mov      r5, r0
+0xc0273464  b        #0xc0273484
+0xc0273468  mov      r0, #0x10000
+0xc027346c  mov      r1, #0x1200
+0xc0273470  mov      r2, #1
+0xc0273474  ldr      r3, [pc, #0xbc] ; literal@c0273538 = c0143191
+0xc0273478  blx      r3
+0xc027347c  mov      r5, fp
+0xc0273480  mov      r6, r0
+0xc0273484  cmp      r6, #0
+0xc0273488  beq      #0xc02734dc
+0xc027348c  mov      r0, r6
+0xc0273490  mov      r1, r5
+0xc0273494  mov      r2, r8
+0xc0273498  ldr      r3, [pc, #0xa0] ; literal@c0273540 = c0224250
+0xc027349c  blx      r3
+0xc02734a0  subs     r4, r0, #0
+0xc02734a4  beq      #0xc02734cc
+0xc02734a8  ldr      r3, [sl]
+0xc02734ac  mov      r0, sl
+0xc02734b0  mov      r1, r4
+0xc02734b4  mov      lr, pc
+0xc02734b8  ldr      pc, [r3, #0xe4]
+0xc02734bc  ldr      r3, [r4]
+0xc02734c0  mov      r0, r4
+0xc02734c4  mov      lr, pc
+0xc02734c8  ldr      pc, [r3, #0x1c]
+0xc02734cc  ldr      r3, [r6]
+0xc02734d0  mov      r0, r6
+0xc02734d4  mov      lr, pc
+0xc02734d8  ldr      pc, [r3, #0x1c]
+0xc02734dc  cmp      r5, #0
+0xc02734e0  movne    r0, r5
+0xc02734e4  ldrne    r3, [r5]
+0xc02734e8  movne    lr, pc
+0xc02734ec  ldrne    pc, [r3, #0x1c]
+0xc02734f0  add      r8, r8, #1
+0xc02734f4  ldr      r3, [sp, #4]
+0xc02734f8  cmp      r3, r8
+0xc02734fc  bhi      #0xc027342c
+0xc0273500  cmp      fp, #0
+0xc0273504  mov      r0, sl
+0xc0273508  ldrne    r3, [sp]
+0xc027350c  ldreq    r3, [sp]
+0xc0273510  strne    sl, [r3, #0x22c]
+0xc0273514  streq    sl, [r3, #0x230]
+0xc0273518  ldr      r3, [sl]
+0xc027351c  mov      lr, pc
+0xc0273520  ldr      pc, [r3, #0x18]
+0xc0273524  mov      r0, sl
+0xc0273528  sub      sp, r7, #0x18
+0xc027352c  pop      {r8, sl, fp}
+0xc0273530  pop      {r4, r5, r6, r7, pc}
+0xc0273534  andsgt   r2, r2, r5, asr #4
+0xc0273538  mulsgt   r4, r1, r1
+0xc027353c  strdeq   r3, r4, [r0], -r8
+0xc0273540  eorgt    r4, r2, r0, asr r2
+0xc0273544  push     {r4, r5, r6, r7, lr}
+0xc0273548  subs     r6, r1, #0
+0xc027354c  add      r7, sp, #0xc
+0xc0273550  sub      sp, sp, #0xc
+0xc0273554  mov      r4, r0
+0xc0273558  mov      r5, r2
+0xc027355c  ldreq    r0, [pc, #0x9c] ; literal@c0273600 = c027bd1c 'Assertion "0 == inStream" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 2896 goto'
+0xc0273560  beq      #0xc02735f0
+0xc0273564  cmp      r2, #0
+0xc0273568  ldreq    r0, [pc, #0x94] ; literal@c0273604 = c027bd9c 'Assertion "0 == inBuffer" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 2897 goto'
+0xc027356c  beq      #0xc02735f0
+0xc0273570  ldr      r0, [r4, #0x6c]
+0xc0273574  cmp      r0, #0
+0xc0273578  ldreq    r0, [pc, #0x88] ; literal@c0273608 = c027be1c 'Assertion "0 == mWorkLoop" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 2899 got'
+0xc027357c  beq      #0xc02735f0
+0xc0273580  ldr      r3, [pc, #0x84] ; literal@c027360c = c0282468
+0xc0273584  ldm      r3, {r1, r2}
+0xc0273588  uxth     r3, r1
+0xc027358c  cmp      r3, #0
+0xc0273590  beq      #0xc02735ac
+0xc0273594  ldr      r0, [pc, #0x74] ; literal@c0273610 = c027bea0 'Multiple inheritance is not supported'
+0xc0273598  ldr      r3, [pc, #0x74] ; literal@c0273614 = c0019791
+0xc027359c  blx      r3
+0xc02735a0  ldr      r0, [r4, #0x6c]
+0xc02735a4  mov      r1, #0
+0xc02735a8  b        #0xc02735c0
+0xc02735ac  asrs     r3, r1, #0x10
+0xc02735b0  movmi    r1, r2
+0xc02735b4  ldrpl    r2, [r4]
+0xc02735b8  addpl    r1, r2, r3, lsl #2
+0xc02735bc  ldrpl    r1, [r1, #-4]
+0xc02735c0  mov      r3, #0
+0xc02735c4  ldr      ip, [r0]
+0xc02735c8  mov      r2, r4
+0xc02735cc  str      r3, [sp, #4]
+0xc02735d0  str      r3, [sp, #8]
+0xc02735d4  str      r5, [sp]
+0xc02735d8  mov      r3, r6
+0xc02735dc  mov      lr, pc
+0xc02735e0  ldr      pc, [ip, #0xd8]
+0xc02735e4  cmp      r0, #0
+0xc02735e8  beq      #0xc02735f8
+0xc02735ec  ldr      r0, [pc, #0x24] ; literal@c0273618 = c027bec8 'Assertion "0 != mWorkLoop->runAction(wlAction, this, (void*) inStream, (void*) inBuffer)" failed in "/SourceCache/AppleA'
+0xc02735f0  ldr      r3, [pc, #0x24] ; literal@c027361c = c012d41f
+0xc02735f4  blx      r3
+0xc02735f8  sub      sp, r7, #0xc
+0xc02735fc  pop      {r4, r5, r6, r7, pc}
+0xc0273600  eorgt    fp, r7, ip, lsl sp
+0xc0273604  mlagt    r7, ip, sp, fp
+0xc0273608  eorgt    fp, r7, ip, lsl lr
+0xc027360c  eorgt    r2, r8, r8, ror #8
+0xc0273610  eorgt    fp, r7, r0, lsr #29
+0xc0273614  mulgt    r1, r1, r7
+0xc0273618  eorgt    fp, r7, r8, asr #29
+0xc027361c  andsgt   sp, r2, pc, lsl r4
+0xc0273620  push     {r4, r5, r6, r7, lr}
+0xc0273624  add      r7, sp, #0xc
+0xc0273628  push     {r8, sl, fp}
+0xc027362c  sub      sp, sp, #0x10
+0xc0273630  mov      r5, r0
+0xc0273634  ldr      r3, [pc, #0x228] ; literal@c0273864 = c02781b0
+0xc0273638  str      r1, [sp, #0xc]
+0xc027363c  blx      r3

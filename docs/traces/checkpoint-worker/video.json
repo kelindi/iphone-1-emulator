@@ -1,0 +1,9 @@
+{
+  "sourceBaseline": ".context/save-worker/quiet/1-baseline/page@7cbac5feba5eecffc24648466df2c0ad.webm",
+  "sourceWorker": ".context/save-worker/quiet/2-worker/page@1b1a31c193e1702a0b3b0a59662b58a4.webm",
+  "baselineSeconds": 25.88,
+  "workerSeconds": 23.96,
+  "totalSeconds": 49.84,
+  "output": "tweets/videos/save_compression_worker.mp4",
+  "playback": "original speed, full first ordered pair; labels only, no skipped frames or acceleration"
+}

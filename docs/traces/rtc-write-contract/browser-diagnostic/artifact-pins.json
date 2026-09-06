@@ -1,0 +1,192 @@
+{
+  ".context/rtc-contract/browser-1/page@76c3211222ffd18d9c17b4e27d30ae2e.webm": {
+    "bytes": 638961,
+    "sha256": "051b275fc8abe95a2c9230f199d6a3104f69d994a3bdc1906b17bd9369ffa33e",
+    "copied": false
+  },
+  ".context/rtc-contract/browser-1/00-home.png": {
+    "bytes": 481708,
+    "sha256": "8c9adef8e9f2f630b2ad5a0cb191899d4f07f90cdf7bdb1c22615a352bb94491",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-1/00-home-guest.png": {
+    "bytes": 103120,
+    "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-1/report.json": {
+    "bytes": 1203,
+    "sha256": "f1c18b29bf217ca51430e0d6e0762b0e491031badcf358763a70d686ba36f3aa",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-1/actions.json": {
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/page@14239b6996b42be3c0101b6ca9d3b840.webm": {
+    "bytes": 12967188,
+    "sha256": "c7096f49bcaff6ed9f71f401fd356f454947bf7bb321ec75d82ce2afed5ce2b4",
+    "copied": false
+  },
+  ".context/rtc-contract/browser-2/00-home.png": {
+    "bytes": 481708,
+    "sha256": "8c9adef8e9f2f630b2ad5a0cb191899d4f07f90cdf7bdb1c22615a352bb94491",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/00-home-guest.png": {
+    "bytes": 103120,
+    "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/report.json": {
+    "bytes": 3042,
+    "sha256": "bb56853e5edcb6f5a5090640d30c8f5a43ce3de2decae5f950c32cf963a65045",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/actions.json": {
+    "bytes": 1202,
+    "sha256": "5ef34ccd26e234f87968df8bc1c075a606522ab7ecf391c43c2a41f32a8931f0",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/01-settings.png": {
+    "bytes": 407776,
+    "sha256": "f52f584814806ed4fae939553f019da44a2a04c4f027fc0b6dbc93a79f5176ef",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/01-settings-guest.png": {
+    "bytes": 36536,
+    "sha256": "74d1bb72370b4fc366913583fc9268bb48cc0f3facf2e93a2be06e4e11138025",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/02-general.png": {
+    "bytes": 388810,
+    "sha256": "17ac3e8ebac59ca942478b45f28eadc19a55298e47c663c7a7971b19c7ac830e",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/02-general-guest.png": {
+    "bytes": 22107,
+    "sha256": "80133a022fb1c6c2f447f21ecbeb5aad5f304f2e4ea362c49d4b5d3312f4a0ea",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/03-actual-general.png": {
+    "bytes": 398754,
+    "sha256": "cb3e1317670caf1cb8d2a11e98ada67c35bee209ffeafc4f8399deaa111e1bc6",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/03-actual-general-guest.png": {
+    "bytes": 27261,
+    "sha256": "d472c2f8c70e7da907016d9b2e98364ff2789367f705c3325f14b5199ba67e07",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/04-date-time.png": {
+    "bytes": 430873,
+    "sha256": "205b589a51a86f8c9c3d43cd6ef41ab7c474a7d7d8f074926212321a9389769c",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/04-date-time-guest.png": {
+    "bytes": 55163,
+    "sha256": "84c3de68ba211ad6a37c1288dbeadc3c82bee8d2989b68ff940ffc98a2555ed7",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/05-manual-time-controls.png": {
+    "bytes": 421957,
+    "sha256": "f1706e2667467363e177591f8225274cfe0a0daf0a6b7aab7f0d09a6d8c884c0",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/05-manual-time-controls-guest.png": {
+    "bytes": 48955,
+    "sha256": "90aad4f938e1559fe6f0941aaad32331cc9a1971bec4d81202ab355c2b67e07c",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/06-date-picker.png": {
+    "bytes": 402670,
+    "sha256": "f011ec407f25de82b01f2358e4ce5bb306cec08a077409ff00b020582025ad29",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/06-date-picker-guest.png": {
+    "bytes": 36539,
+    "sha256": "25b78ae50f682138db7b6f3f53b841766cf308932290cbf4bac76a9ff95587c4",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/before-manual-change.snap": {
+    "bytes": 255983586,
+    "sha256": "d478cf35dbebaf45319c75175df29c743e9f21929eea36b3b63827de454bfb5d",
+    "copied": false
+  },
+  ".context/rtc-contract/browser-2/07-before-manual-change.png": {
+    "bytes": 404816,
+    "sha256": "bd618782ba2415b1ec0636a485af1272dda9fbd8056b81696c6ab8c59b0b5a67",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/07-before-manual-change-guest.png": {
+    "bytes": 36379,
+    "sha256": "941cd25bd0fe83241e4bc5e35dc4035d33721fc03e5521ad9f9fb03c33e507a2",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/08-minute-change.png": {
+    "bytes": 403294,
+    "sha256": "c0234d0b8c1aa2112e7973dd015d60f17fe34a48e0f80c6b1f2322b057b747c4",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/08-minute-change-guest.png": {
+    "bytes": 36669,
+    "sha256": "c806a01423efbfd1e52578971f7c00462200a76263ff08f31b49caf974f0c71f",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/after-manual-change.snap": {
+    "bytes": 256274402,
+    "sha256": "70fed30a34f940819b732c3519c712faf035c3750ef248f42b7a60546c985ef8",
+    "copied": false
+  },
+  ".context/rtc-contract/browser-2/09-after-manual-change.png": {
+    "bytes": 405500,
+    "sha256": "77429659bb8f3609a2624c41d6a39070c5624df00049986bcab957c42abfca7f",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/09-after-manual-change-guest.png": {
+    "bytes": 36773,
+    "sha256": "b98490823d540d7dc7eaabbd1359443fdc62d7dd3f7605e82c50c9043bec9008",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/10-manual-time-saved.png": {
+    "bytes": 404683,
+    "sha256": "2a9a9785c3011f52569708b49304bd081219e3b0041f4d5d9ff1232fc5a995a4",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/10-manual-time-saved-guest.png": {
+    "bytes": 36773,
+    "sha256": "b98490823d540d7dc7eaabbd1359443fdc62d7dd3f7605e82c50c9043bec9008",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/10-manual-time-restored.png": {
+    "bytes": 404378,
+    "sha256": "68cb770ad1d70e9a698c271472835ef3072b3bb268518b8fe7d7c387bb41c754",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/10-manual-time-restored-guest.png": {
+    "bytes": 36773,
+    "sha256": "b98490823d540d7dc7eaabbd1359443fdc62d7dd3f7605e82c50c9043bec9008",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/11-restored-paused.png": {
+    "bytes": 404378,
+    "sha256": "68cb770ad1d70e9a698c271472835ef3072b3bb268518b8fe7d7c387bb41c754",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/11-restored-paused-guest.png": {
+    "bytes": 36773,
+    "sha256": "b98490823d540d7dc7eaabbd1359443fdc62d7dd3f7605e82c50c9043bec9008",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/failure.png": {
+    "bytes": 404378,
+    "sha256": "68cb770ad1d70e9a698c271472835ef3072b3bb268518b8fe7d7c387bb41c754",
+    "copied": true
+  },
+  ".context/rtc-contract/browser-2/failure-guest.png": {
+    "bytes": 36773,
+    "sha256": "b98490823d540d7dc7eaabbd1359443fdc62d7dd3f7605e82c50c9043bec9008",
+    "copied": true
+  }
+}

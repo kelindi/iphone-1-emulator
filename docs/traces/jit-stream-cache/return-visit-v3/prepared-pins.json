@@ -1,0 +1,17 @@
+{
+  "sources": {
+    "run-browser.mjs": "709abe5a5b8ffc380e2ab81bc886c77c74d7ee2f9be852237e9eec3896f1e327",
+    "run-series.py": "9d8e0935d70a62d4e822dff47d087e04c5b14742f7cca21e1324ebf92dda826c",
+    "cache-server.mjs": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+    "site-pins.json": "d00f178adac74e32d4e5e43c690a17380e36ca59ca262719ec351e4c0c773958",
+    "frames.mjs": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+    "frame-packet.mjs": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+    "check-receipt.py": "ff7cc550ef142d97ffbe932302477b25071c020cabc72bc4770a920fa5907d8e",
+    "analyze-cache.py": "a099c8b3a8c8f5c41705c221e677636813f459940abbcda3eb3a5c2b2318f909",
+    "training-review.py": "89cff4966b412076c34f4fb4eb0ea4ef7baee733bc7d44b3defa9649195ba888",
+    "prepare.py": "b4e1d1e168879b4fcce36b0169d8b0d85ea5270dd686356aac1455b96f2fc12c"
+  },
+  "projectionProofSha256": "a2b31f7dd2b0c20d3e57bd569985f433550ea671b977040acf1619de8a69fa8a",
+  "profilesAbsent": true,
+  "referencesAbsent": true
+}

@@ -2295,6 +2295,18 @@ void s5l_wm8991_bind(s5l_wm8991_t *codec, s5l_i2c_slave_t *slave);
  * state. Exposed so the tests can assert the register file directly. */
 uint16_t s5l_wm8991_peek(const s5l_wm8991_t *codec, uint8_t reg);
 
+/* M68's WM8758 uses the same bounded register/transaction storage layout,
+ * but has a separate 7-bit-index/9-bit-data protocol and no WM8991 ID probe.
+ * Reusing storage preserves v39 checkpoints; callbacks and validation remain
+ * codec-specific. Unwritten registers are reset state, not stored defaults. */
+typedef s5l_wm8991_t s5l_wm8758_t;
+#define WM8758_I2C_ADDR 0x1au
+#define WM8758_NREG 62u
+void s5l_wm8758_reset(s5l_wm8758_t *codec);
+void s5l_wm8758_bind(s5l_wm8758_t *codec, s5l_i2c_slave_t *slave);
+bool s5l_wm8758_register_valid(unsigned reg);
+uint16_t s5l_wm8758_peek(const s5l_wm8758_t *codec, unsigned reg);
+
 /* ----------------------------------------------------------------- I2S ---
  * The two S5L8900 I2S controllers. Their windows are derived at the top of this
  * header; this is the register model, and it is deliberately the smallest one
@@ -2707,6 +2719,12 @@ void     s5l_spi_null_bind(s5l_spi_slave_t *slave);
  * across a checkpoint. It must be the controller the slave is attached to.
  */
 void     s5l_spi_lcd_bind(s5l_spi_slave_t *slave, s5l_spi_t *bus);
+
+/* M68's separate display-link transmitter: /arm-io/spi0/lcd0,
+ * compatible mpl-tx,lm2512, chip select 0. This transport clocks the measured
+ * two-byte configuration writes; it supplies no register-read semantics and
+ * does not generate pixels or change CLCD window state. */
+void     s5l_spi_mpl_bind(s5l_spi_slave_t *slave, s5l_spi_t *bus);
 
 /* ---------------------------------------- AppleMultitouchZ2SPI's device ---
  * The touch controller on /arm-io/spi1 chip select 0. See core/src/soc/mtz2.c
@@ -4189,6 +4207,8 @@ typedef struct {
     uint64_t               active_clock_clamps;
     uint64_t               active_clock_failures;
     bool                   active_clock_anchor_valid;
+    bool                   active_clock_carry; /* Optional foreground policy, never serialized. */
+    uint64_t               active_clock_debt_ticks; /* Unpaid CPU-clock ticks, never serialized. */
 
     /*
      * uart4's optional host peer. Host wiring, never guest state: snapshot
@@ -4420,6 +4440,11 @@ bool s5l8900_set_wfi_host_pacing(s5l8900_t *m,
 bool s5l8900_set_active_host_clock(s5l8900_t *m,
                                    s5l_active_host_now_fn now, void *ctx);
 
+/* Optional foreground policy: retain unpaid host time, paying <=8ms per sync.
+ * CPU rates below 125Hz are refused; changing policy clears pending debt.
+ * Pause/restore/failure clear debt. Native default remains discard-after-cap. */
+bool s5l8900_set_active_clock_carry(s5l8900_t *m, bool enabled);
+
 /*
  * Attach or detach uart4's host peer. Attaching requires both callbacks; the
  * context may be NULL. Passing all three as NULL detaches. A partial request
@@ -4444,7 +4469,8 @@ void s5l8900_free(s5l8900_t *m);
 /*
  * Set the average ARM1176 cycles per retired instruction. Guest wall clock
  * (the 6 MHz timebase) is unchanged; only the instructions per guest second
- * change. The default is 1.
+ * change. The default is 1. A changed rate is refused while foreground carry
+ * and its host callback are live; Pause/clear the callback before changing it.
  */
 bool s5l8900_set_cycles_per_insn(s5l8900_t *m, unsigned cpi);
 

@@ -1,0 +1,297 @@
+{
+  "decision": "Park continuation without production promotion. Fixed-workload CPU gain does not produce a meaningful warm p95/Home improvement; strict screenshot gate fails4/88 and remains failed. All observations retained.",
+  "passedNavigationOnly": true,
+  "passedStrictImages": false,
+  "strictFailures": [
+    {
+      "run": 1,
+      "arm": "baseline",
+      "kind": "settings",
+      "round": 7,
+      "screenshot": "1-baseline/7-settings.png",
+      "rgbPixels": 129300,
+      "differentChannels": 3843,
+      "channelsDifferentByMoreThan1": 3831,
+      "channelsDifferentByMoreThan3": 3060,
+      "largestDifference": 5,
+      "sha256": "22b0d8d2440f95324f1d961d3afaaa615c50cfa074e297d1739519138434c79b",
+      "referenceSha256": "cded4fc21a8091e21d548bdc6304467ea5a019363fe1a772b91c113b941ea735",
+      "overToleranceBounds": [
+        294,
+        63,
+        297,
+        318
+      ],
+      "passed": false
+    },
+    {
+      "run": 1,
+      "arm": "baseline",
+      "kind": "settings",
+      "round": 10,
+      "screenshot": "1-baseline/10-settings.png",
+      "rgbPixels": 129300,
+      "differentChannels": 3840,
+      "channelsDifferentByMoreThan1": 3831,
+      "channelsDifferentByMoreThan3": 3055,
+      "largestDifference": 5,
+      "sha256": "9081537d05dbdb850b4e480901d748acbbd154b7e2d557e65b555ca7a599011b",
+      "referenceSha256": "cded4fc21a8091e21d548bdc6304467ea5a019363fe1a772b91c113b941ea735",
+      "overToleranceBounds": [
+        294,
+        63,
+        297,
+        318
+      ],
+      "passed": false
+    },
+    {
+      "run": 3,
+      "arm": "candidate",
+      "kind": "settings",
+      "round": 4,
+      "screenshot": "3-candidate/4-settings.png",
+      "rgbPixels": 129300,
+      "differentChannels": 3843,
+      "channelsDifferentByMoreThan1": 3831,
+      "channelsDifferentByMoreThan3": 3062,
+      "largestDifference": 6,
+      "sha256": "20e058ab7242e815ceed4c6aa4e4f78a4cb72cc25db5df753df6412d78990163",
+      "referenceSha256": "cded4fc21a8091e21d548bdc6304467ea5a019363fe1a772b91c113b941ea735",
+      "overToleranceBounds": [
+        294,
+        63,
+        297,
+        318
+      ],
+      "passed": false
+    },
+    {
+      "run": 4,
+      "arm": "baseline",
+      "kind": "settings",
+      "round": 1,
+      "screenshot": "4-baseline/1-settings.png",
+      "rgbPixels": 129300,
+      "differentChannels": 3843,
+      "channelsDifferentByMoreThan1": 3831,
+      "channelsDifferentByMoreThan3": 3060,
+      "largestDifference": 5,
+      "sha256": "22b0d8d2440f95324f1d961d3afaaa615c50cfa074e297d1739519138434c79b",
+      "referenceSha256": "cded4fc21a8091e21d548bdc6304467ea5a019363fe1a772b91c113b941ea735",
+      "overToleranceBounds": [
+        294,
+        63,
+        297,
+        318
+      ],
+      "passed": false
+    }
+  ],
+  "manuallyReviewedFailures": [
+    {
+      "path": "1-baseline/7-settings.png",
+      "finding": "Genuine Settings screen and unchanged row geometry; out-of-tolerance pixels are confined to the scrollbar. This inspection does not waive the numeric failure."
+    },
+    {
+      "path": "1-baseline/10-settings.png",
+      "finding": "Genuine Settings screen and unchanged row geometry; out-of-tolerance pixels are confined to the scrollbar. This inspection does not waive the numeric failure."
+    },
+    {
+      "path": "3-candidate/4-settings.png",
+      "finding": "Genuine Settings screen and unchanged row geometry; out-of-tolerance pixels are confined to the scrollbar. This inspection does not waive the numeric failure."
+    },
+    {
+      "path": "4-baseline/1-settings.png",
+      "finding": "Genuine Settings screen and unchanged row geometry; out-of-tolerance pixels are confined to the scrollbar. This inspection does not waive the numeric failure."
+    }
+  ],
+  "timings": {
+    "baseline": {
+      "settings": {
+        "firstReleaseToReadyMs": [
+          4116.29999999702,
+          4055
+        ],
+        "warmSamples": 20,
+        "warmReleaseToReadyMs": [
+          2666.800000000745,
+          3116.2000000029802,
+          2916.900000002235,
+          2767.10000000149,
+          3117,
+          2967,
+          2817,
+          3167.10000000149,
+          3067.39999999851,
+          2517.10000000149,
+          2566.800000000745,
+          3167.60000000149,
+          3214.39999999851,
+          2766.39999999851,
+          2917.5,
+          3117.800000000745,
+          2967.199999999255,
+          3017.099999997765,
+          3167.599999997765,
+          2666.800000000745
+        ],
+        "p95Ms": 3167.60000000149,
+        "medianMs": 2967.0999999996275
+      },
+      "home": {
+        "firstReleaseToReadyMs": [
+          816.1999999992549,
+          866.6999999992549
+        ],
+        "warmSamples": 20,
+        "warmReleaseToReadyMs": [
+          866.1000000014901,
+          865.5,
+          1016.9000000022352,
+          867,
+          867.1999999992549,
+          917.1999999992549,
+          867.1000000014901,
+          817.1999999992549,
+          917.1999999992549,
+          917,
+          866.3999999985099,
+          917.9000000022352,
+          866.6000000014901,
+          867.5999999977648,
+          866.8999999985099,
+          866.8999999985099,
+          867,
+          867.3000000007451,
+          867.2999999970198,
+          866.8999999985099
+        ],
+        "p95Ms": 917.9000000022352,
+        "medianMs": 867.0500000007451
+      }
+    },
+    "candidate": {
+      "settings": {
+        "firstReleaseToReadyMs": [
+          4313.5,
+          3916.5
+        ],
+        "warmSamples": 20,
+        "warmReleaseToReadyMs": [
+          2766.89999999851,
+          2917.199999999255,
+          3017.199999999255,
+          2717.099999997765,
+          2868.60000000149,
+          2917.300000000745,
+          2717.199999999255,
+          3117.400000002235,
+          3267.39999999851,
+          2667.099999997765,
+          2560.7000000029802,
+          3113.900000002235,
+          3167.699999999255,
+          2617.199999999255,
+          3067.199999999255,
+          3066.699999999255,
+          2817.400000002235,
+          2917.199999999255,
+          2817.39999999851,
+          2917.5
+        ],
+        "p95Ms": 3167.699999999255,
+        "medianMs": 2917.199999999255
+      },
+      "home": {
+        "firstReleaseToReadyMs": [
+          966.4000000022352,
+          866.3000000007451
+        ],
+        "warmSamples": 20,
+        "warmReleaseToReadyMs": [
+          916.3000000007451,
+          916.6999999992549,
+          868.0999999977648,
+          867,
+          867,
+          917.4000000022352,
+          866.5999999977648,
+          867.1000000014901,
+          866.8999999985099,
+          967.1999999992549,
+          916.5999999977648,
+          865.7000000029802,
+          916.1999999992549,
+          817,
+          867.3000000007451,
+          867.3000000007451,
+          867.3999999985099,
+          867.0999999977648,
+          866.9000000022352,
+          916.5
+        ],
+        "p95Ms": 917.4000000022352,
+        "medianMs": 867.3000000007451
+      }
+    }
+  },
+  "perOrder": [
+    {
+      "index": 1,
+      "arm": "baseline",
+      "settings": {
+        "firstMs": 4116.29999999702,
+        "warmSamples": 10,
+        "medianMs": 2941.9500000011176
+      },
+      "home": {
+        "firstMs": 816.1999999992549,
+        "warmSamples": 10,
+        "medianMs": 867.1500000003725
+      }
+    },
+    {
+      "index": 2,
+      "arm": "candidate",
+      "settings": {
+        "firstMs": 4313.5,
+        "warmSamples": 10,
+        "medianMs": 2892.9000000003725
+      },
+      "home": {
+        "firstMs": 966.4000000022352,
+        "warmSamples": 10,
+        "medianMs": 867.5999999996275
+      }
+    },
+    {
+      "index": 3,
+      "arm": "candidate",
+      "settings": {
+        "firstMs": 3916.5,
+        "warmSamples": 10,
+        "medianMs": 2917.3499999996275
+      },
+      "home": {
+        "firstMs": 866.3000000007451,
+        "warmSamples": 10,
+        "medianMs": 867.3000000007451
+      }
+    },
+    {
+      "index": 4,
+      "arm": "baseline",
+      "settings": {
+        "firstMs": 4055,
+        "warmSamples": 10,
+        "medianMs": 2992.14999999851
+      },
+      "home": {
+        "firstMs": 866.6999999992549,
+        "warmSamples": 10,
+        "medianMs": 866.9499999992549
+      }
+    }
+  ]
+}

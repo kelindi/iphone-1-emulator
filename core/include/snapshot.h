@@ -239,4 +239,17 @@ snapshot_status_t snapshot_save_mem(const s5l8900_t *m,
 snapshot_status_t snapshot_load_mem(s5l8900_t *m,
                                     const uint8_t *buf, size_t len);
 
+/* Consistent capture with incremental checksum finalization. Begin must run
+ * while the guest is stopped; after it returns the guest may run or be freed.
+ * Advance reads at most max_bytes from the owned copy, returning true when
+ * complete. Data is NULL until then and belongs to capture until free. Final
+ * bytes are identical to snapshot_save_mem(), including the v39 checksum. */
+typedef struct snapshot_capture snapshot_capture_t;
+snapshot_status_t snapshot_capture_begin(const s5l8900_t *m,
+                                          snapshot_capture_t **out);
+bool snapshot_capture_advance(snapshot_capture_t *capture, size_t max_bytes);
+const uint8_t *snapshot_capture_data(const snapshot_capture_t *capture,
+                                      size_t *length);
+void snapshot_capture_free(snapshot_capture_t *capture);
+
 #endif /* S5LBOX_SNAPSHOT_H */

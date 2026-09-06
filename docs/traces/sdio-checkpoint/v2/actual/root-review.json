@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "method": "Root chunked byte equality and SHA256 for both complete32-byte LE transaction streams, independent monotonic cycles/ticks and accepted-width checks. Source loop and5complete comparison reports reviewed separately.",
+  "transactions": 4581748,
+  "bytesPerTrace": 146615936,
+  "sha256": "13881df363adc1770b768a2841874ab289f7377c5d58eb337e52569b2735eae9",
+  "writeStatusTriggers": [
+    {
+      "address": "0x38d0000c",
+      "value": "0x10004000",
+      "count": 1000
+    },
+    {
+      "address": "0x38d00008",
+      "value": "0x80050074",
+      "count": 1000
+    }
+  ],
+  "readStatusResponses": [
+    {
+      "address": "0x38d00020",
+      "value": "0x1008",
+      "count": 1000
+    }
+  ]
+}

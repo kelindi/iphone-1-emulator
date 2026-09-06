@@ -1,0 +1,29 @@
+c037963c push     {r4, r5, r7, lr}
+c0379640 mov      r4, r0
+c0379644 ldr      r3, [r0, #0x80]
+c0379648 add      r7, sp, #8
+c037964c subs     r5, r3, #0
+c0379650 popeq    {r4, r5, r7, pc}
+c0379654 ldr      r3, [r3, #8]
+c0379658 str      r3, [r0, #0x80]
+c037965c mov      r0, r5
+c0379660 ldr      r3, [r5]
+c0379664 mov      lr, pc
+c0379668 ldr      pc, [r3, #0xb4]
+c037966c cmp      r0, #0
+c0379670 movne    r0, r4
+c0379674 ldrne    r3, [r4]
+c0379678 movne    r1, r5
+c037967c movne    lr, pc
+c0379680 ldrne    pc, [r3, #0x4d0]
+c0379684 ldr      r0, [r4, #0x7c]
+c0379688 mov      r1, r5
+c037968c mov      r2, #0
+c0379690 ldr      r3, [r0]
+c0379694 mov      lr, pc
+c0379698 ldr      pc, [r3, #0xfc]
+c037969c ldr      r3, [r4, #0x80]
+c03796a0 cmp      r3, #0
+c03796a4 popeq    {r4, r5, r7, pc}
+c03796a8 ldr      r0, [pc, #0x10] ; =c037c030 b'Invoking processCommand() from completeCurrentCommand()\n'
+c03796ac ldr      r3, [pc, #0x10] ; =c012d41f

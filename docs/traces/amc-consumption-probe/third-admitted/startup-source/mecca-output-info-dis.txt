@@ -1,0 +1,98 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+
+__ZN18AMCDeviceInterface34getOutputBufferInfoForCurrentCodecEPPPhPPmS4_S4_
+31240528 push     {r7, lr}
+3124052c add      r7, sp, #0
+31240530 sub      sp, sp, #4
+31240534 cmp      r1, #0
+31240538 ldr      lr, [sp, #0xc]
+3124053c bne      #0x3124056c
+31240540 ldr      r3, [pc, #0xf4] literal 3124063c=00084634 
+31240544 ldr      r0, [pc, #0xf4] literal 31240640=00083428 
+31240548 add      r3, pc, r3
+3124054c str      r3, [sp]
+31240550 ldr      r2, [pc, #0xec] literal 31240644=000845b4 
+31240554 ldr      r3, [pc, #0xec] literal 31240648=0007b058 
+31240558 ldr      r1, [pc, #0xec] literal 3124064c=000003f9 
+3124055c add      r0, pc, r0
+31240560 add      r2, pc, r2
+31240564 add      r3, pc, r3
+31240568 b        #0x3124059c
+3124056c cmp      r2, #0
+31240570 bne      #0x312405a8
+31240574 ldr      r3, [pc, #0xd4] literal 31240650=0008463c 
+31240578 ldr      r0, [pc, #0xd4] literal 31240654=000833f4 
+3124057c add      r3, pc, r3
+31240580 str      r3, [sp]
+31240584 ldr      r2, [pc, #0xcc] literal 31240658=00084580 
+31240588 ldr      r3, [pc, #0xcc] literal 3124065c=0007b024 
+3124058c ldr      r1, [pc, #0xcc] literal 31240660=000003fa 
+31240590 add      r0, pc, r0
+31240594 add      r2, pc, r2
+31240598 add      r3, pc, r3
+3124059c bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+312405a0 ldr      r0, [pc, #0xbc] literal 31240664=e00002c2 
+312405a4 b        #0x31240634
+312405a8 cmp      r3, #0
+312405ac bne      #0x312405dc
+312405b0 ldr      r3, [pc, #0xb0] literal 31240668=00084644 
+312405b4 ldr      r0, [pc, #0xb0] literal 3124066c=000833b8 
+312405b8 add      r3, pc, r3
+312405bc str      r3, [sp]
+312405c0 ldr      r2, [pc, #0xa8] literal 31240670=00084544 
+312405c4 ldr      r3, [pc, #0xa8] literal 31240674=0007afe8 
+312405c8 ldr      r1, [pc, #0xa8] literal 31240678=000003fb 
+312405cc add      r0, pc, r0
+312405d0 add      r2, pc, r2
+312405d4 add      r3, pc, r3
+312405d8 b        #0x3124059c
+312405dc cmp      lr, #0
+312405e0 bne      #0x31240610
+312405e4 ldr      r3, [pc, #0x90] literal 3124067c=00084654 
+312405e8 ldr      r0, [pc, #0x90] literal 31240680=00083388 
+312405ec add      r3, pc, r3
+312405f0 str      r3, [sp]
+312405f4 ldr      r2, [pc, #0x88] literal 31240684=00084510 
+312405f8 ldr      r3, [pc, #0x88] literal 31240688=0007afb4 
+312405fc add      r0, pc, r0
+31240600 mov      r1, #0x3fc
+31240604 add      r2, pc, r2
+31240608 add      r3, pc, r3
+3124060c b        #0x3124059c
+31240610 add      ip, r0, #0x64
+31240614 str      ip, [r1]
+31240618 add      r1, r0, #0x74
+3124061c str      r1, [r2]
+31240620 add      r2, r0, #0x7c
+31240624 add      r0, r0, #0x6c
+31240628 str      r2, [r3]
+3124062c str      r0, [lr]
+31240630 mov      r0, #0
+31240634 sub      sp, r7, #0
+31240638 pop      {r7, pc}
+3124063c andeq    r4, r8, r4, lsr r6
+31240640 andeq    r3, r8, r8, lsr #8
+31240644 strheq   r4, [r8], -r4
+31240648 andeq    fp, r7, r8, asr r0
+3124064c strdeq   r0, r1, [r0], -sb
+31240650 andeq    r4, r8, ip, lsr r6
+31240654 strdeq   r3, r4, [r8], -r4
+31240658 andeq    r4, r8, r0, lsl #11
+3124065c andeq    fp, r7, r4, lsr #32
+31240660 strdeq   r0, r1, [r0], -sl
+31240664 and      r0, r0, r2, asr #5
+31240668 andeq    r4, r8, r4, asr #12
+3124066c strheq   r3, [r8], -r8
+31240670 andeq    r4, r8, r4, asr #10
+31240674 andeq    sl, r7, r8, ror #31
+31240678 strdeq   r0, r1, [r0], -fp
+3124067c andeq    r4, r8, r4, asr r6
+31240680 andeq    r3, r8, r8, lsl #7
+31240684 andeq    r4, r8, r0, lsl r5
+31240688 strheq   sl, [r7], -r4
+
+__ZNK18AMCDeviceInterface22getDecodingIsSuspendedEv
+3124068c ldr      r3, [r0, #0x14]
+31240690 cmp      r3, #7
+31240694 cmpne    r3, #5
+31240698 movne    r0, #0

@@ -14,9 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
       - uses: mymindstorm/setup-emsdk@v14
         with:
-          version: latest
+          version: '4.0.16'
       - name: Build WebAssembly emulator
         run: |
           emcmake cmake -S . -B web/build -DIPHONE1_WEB=ON -DCMAKE_BUILD_TYPE=Release

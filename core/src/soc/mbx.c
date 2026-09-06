@@ -83,6 +83,7 @@
 #define MBX_2D_COPY_BODY_WORDS 10u
 #define MBX_2D_BLEND_BODY_WORDS 12u
 #define MBX_2D_COPY_WORDS      16u
+#define MBX_2D_CLIP_WORDS       3u
 #define MBX_2D_BLEND_WORDS     18u
 #define MBX_2D_END             0x70000000u
 #define MBX_2D_COMMAND_HEADER  S5L_MBX_2D_COMMAND_HEADER
@@ -623,9 +624,16 @@ static bool mbx_stage_simple_copy(s5l_mbx_t *m, const arm_bus_t *bus,
                                   struct mbx_2d_job *job,
                                   const char **why) {
     memset(job, 0, sizeof *job);
-    uint32_t w[MBX_2D_COPY_WORDS];
-    for (unsigned i = 0; i < MBX_2D_COPY_WORDS; i++)
+    const bool clipped = mbx_edram_word(m, packet_off + 5u * 4u) == 1u;
+    const uint32_t extra = clipped ? MBX_2D_CLIP_WORDS : 0u;
+    if (packet_off > S5L_MBX_APERTURE - (MBX_2D_COPY_WORDS + extra) * 4u) {
+        if (why) *why = "clipped copy crosses the MBX aperture";
+        return false;
+    }
+    uint32_t w[MBX_2D_COPY_WORDS + MBX_2D_CLIP_WORDS];
+    for (unsigned i = 0; i < MBX_2D_COPY_WORDS + extra; i++)
         w[i] = mbx_edram_word(m, packet_off + i * 4u);
+    const uint32_t control = 5u + extra;
 
     /* These constants and masks are the stores/literal pool in
      * _pack2DCtxBlitCopy at 0x30e1c2ac..0x30e1c5a4. QuartzCore's
@@ -645,25 +653,28 @@ static bool mbx_stage_simple_copy(s5l_mbx_t *m, const arm_bus_t *bus,
     const bool source_argb1555 = source_format == MBX_2D_SOURCE_ARGB1555;
     if ((w[0] != MBX_2D_COMMAND_HEADER && w[0] != MBX_2D_SUBMIT) ||
         (!source_bgra8 && !source_argb1555) ||
+        (clipped && (w[2] & 0xfff80000u) != 0x94000000u) ||
         (w[4] & 0xf8002000u) != 0x30000000u ||
-        w[5] != 0x60800200u || w[6] != 0x8000ccccu ||
-        w[7] != 0xffffffffu ||
-        (w[8] & ~0x1fff1fffu) || (w[9] & ~0x1fff1fffu)) {
+        w[control] != 0x60800200u ||
+        w[control + 1u] != (clipped ? 0x8004ccccu : 0x8000ccccu) ||
+        w[control + 2u] != 0xffffffffu ||
+        (w[control + 3u] & ~0x1fff1fffu) ||
+        (w[control + 4u] & ~0x1fff1fffu)) {
         if (why)
             *why = "packet is not a decoded BGRA8 or ARGB1555 unity simple-copy form";
         return false;
     }
-    if (w[MBX_2D_COPY_BODY_WORDS] != MBX_2D_END) {
+    if (w[MBX_2D_COPY_BODY_WORDS + extra] != MBX_2D_END) {
         if (why) *why = "packet terminators are incomplete";
         return false;
     }
 
     uint32_t src_x = (w[4] >> 14) & 0x1fffu;
     uint32_t src_y = w[4] & 0x1fffu;
-    uint32_t dst_x = (w[8] >> 16) & 0x1fffu;
-    uint32_t dst_y = w[8] & 0x1fffu;
-    uint32_t dst_x1 = (w[9] >> 16) & 0x1fffu;
-    uint32_t dst_y1 = w[9] & 0x1fffu;
+    uint32_t dst_x = (w[control + 3u] >> 16) & 0x1fffu;
+    uint32_t dst_y = w[control + 3u] & 0x1fffu;
+    uint32_t dst_x1 = (w[control + 4u] >> 16) & 0x1fffu;
+    uint32_t dst_y1 = w[control + 4u] & 0x1fffu;
     uint32_t source_stride = w[2] & 0x7fffu;
     const uint32_t source_pixel_bytes = source_bgra8 ? 4u : 2u;
     if (!source_stride || source_stride % source_pixel_bytes != 0u ||
@@ -675,6 +686,28 @@ static bool mbx_stage_simple_copy(s5l_mbx_t *m, const arm_bus_t *bus,
     if (dst_x1 <= dst_x || dst_y1 <= dst_y) {
         if (why) *why = "destination rectangle is empty or reversed";
         return false;
+    }
+    if (clipped) {
+        /* The genuine OS1 _pack2DCtxBlitCopy at 0x30b3ad00..0x30b3ad58
+         * emits tag 1 followed by packed left/right and top/bottom, after
+         * intersecting the clip with the destination. At 0x30b3ae50..0x30b3ae6c
+         * the same context flag adds bit 0x40000 to the copy mode. Require
+         * both halves and the complete bounded rectangle; neither rotation
+         * nor blend/scale modes are implied by this extension.
+         * Unity-copy sampling keeps the original source/destination offset
+         * when the visible destination begins inside that original rectangle.
+         */
+        const uint32_t left = w[6] & 0xffffu, right = w[6] >> 16;
+        const uint32_t top = w[7] & 0xffffu, bottom = w[7] >> 16;
+        if (left > right || top > bottom ||
+            right > MBX_2D_WIDTH || bottom > MBX_2D_HEIGHT ||
+            left < dst_x || top < dst_y || right > dst_x1 || bottom > dst_y1) {
+            if (why) *why = "copy clip is not a bounded destination intersection";
+            return false;
+        }
+        src_x += left - dst_x;
+        src_y += top - dst_y;
+        dst_x = left; dst_y = top; dst_x1 = right; dst_y1 = bottom;
     }
     uint32_t width = dst_x1 - dst_x;
     uint32_t height = dst_y1 - dst_y;
@@ -696,6 +729,17 @@ static bool mbx_stage_simple_copy(s5l_mbx_t *m, const arm_bus_t *bus,
         return false;
     }
     if (!mbx_2d_batch_target_ok(batch, w[1], why)) return false;
+    if (!width || !height) {
+        /* The producer rejects strict nonintersection, but permits equality
+         * at an edge. A validated empty clip completes without touching RAM;
+         * still require known mapped allocations and the batch alias gate. */
+        if ((batch && !mbx_2d_batch_source_ok(w[3], source_pixel_bytes,
+                                             batch->target, why)) ||
+            !mbx_gart_validate(m, bus, w[3], source_pixel_bytes, why) ||
+            !mbx_gart_validate(m, bus, w[1], 4u, why)) return false;
+        job->target = w[1];
+        return true;
+    }
 
     /* Validate every source and destination before changing one byte. A bad
      * late PTE must not leave a half-rendered frame and then withhold
@@ -1083,9 +1127,11 @@ static bool mbx_stage_2d_packet(s5l_mbx_t *m, const arm_bus_t *bus,
         if (!mbx_stage_simple_copy(m, bus, packet_off,
                                    batch, job, why))
             return false;
+        const uint32_t extra = mbx_edram_word(m, packet_off + 5u * 4u) == 1u
+            ? MBX_2D_CLIP_WORDS : 0u;
         *packet_words = mbx_2d_packet_words(m, packet_off,
-                                            MBX_2D_COPY_BODY_WORDS,
-                                            MBX_2D_COPY_WORDS);
+                                            MBX_2D_COPY_BODY_WORDS + extra,
+                                            MBX_2D_COPY_WORDS + extra);
     }
     return true;
 }
@@ -1319,6 +1365,23 @@ static bool mbx_gart_u32(const s5l_mbx_t *m, const arm_bus_t *bus,
 
 static uint32_t mbx_3d_decode_address(uint32_t word) {
     return (word & MBX_3D_ADDRESS_MASK) << 7;
+}
+
+/* Original OS1 CoreGraphics _CGSBlendARGB8888toARGB8888 at 0x3056c020
+ * uses src + floor(dst * (255-alpha) / 255). Running its unmodified ARM
+ * vector and scalar paths independently verifies every alpha/destination byte.
+ * This is the OS1 software reference; MBX silicon rounding remains unmeasured.
+ * Apply it only to the OS1 solid producer, keeping later-family math intact. */
+static uint32_t mbx_os1_solid_over(uint32_t dst, uint32_t src) {
+    uint32_t inv = 255u - (src >> 24), out = 0u;
+    for (unsigned shift = 0; shift < 32u; shift += 8u) {
+        uint32_t product = ((dst >> shift) & 255u) * inv;
+        uint32_t value = ((src >> shift) & 255u) +
+                         ((product + (product >> 8) + 1u) >> 8);
+        if (value > 255u) value = 255u;
+        out |= value << shift;
+    }
+    return out;
 }
 
 /* QuartzCore selects source ONE and destination ONE_MINUS_SRC_ALPHA for this
@@ -2416,7 +2479,10 @@ static bool mbx_affine_pixel(const struct mbx_affine_transform *transform,
  * record before every normalized vertex pair.  Those four words must be one
  * uniform premultiplied A8R8G8B8 colour.  The four trailing parameter records
  * carry fixed all-one words and exact controls; they are not the quad colour.
- * Non-axis-aligned quads remain rejected. */
+ * OS1's source-over variant uses row-major main vertices and an independent
+ * integer clip, with the producer's uniform 0.5 rounding bias. Its fractional
+ * alpha follows the original OS1 software reference; non-axis-aligned quads
+ * remain rejected. */
 static bool mbx_execute_solid_quad(s5l_mbx_t *m,
                                    const arm_bus_t *bus,
                                    const char **why,
@@ -2465,8 +2531,9 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
     for (unsigned i = 0; i < 33u; i++)
         if (!mbx_gart_u32(m, bus, solid + i * 4u, &main[i], why))
             return false;
+    bool os1_solid = main[3] == 0xa6106673u;
     if (main[0] != 0xe0000000u || main[1] != 0xa7718000u ||
-        main[3] != 0xa6104620u || main[4] != 0x22220e80u) {
+        (!os1_solid && main[3] != 0xa6104620u) || main[4] != 0x22220e80u) {
         if (why) *why = "solid-quad main record has unknown controls";
         return false;
     }
@@ -2487,21 +2554,55 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
             return false;
         }
     }
-    if (main[5] != main[7] || main[5] == main[9] ||
-        main[9] != main[11] || main[6] != main[10] ||
-        main[6] == main[8] || main[8] != main[12]) {
+    bool axis_aligned = os1_solid
+        ? main[5] == main[9] && main[7] == main[11] &&
+          main[6] == main[8] && main[10] == main[12]
+        : main[5] == main[7] && main[9] == main[11] &&
+          main[6] == main[10] && main[8] == main[12];
+    if (!axis_aligned) {
         if (why) *why = "solid-quad destination is not an axis-aligned rectangle";
         return false;
     }
 
-    float x0, y0, x1, y1;
-    if (!mbx_3d_word_to_nonnegative_float(main[5], &x0) ||
-        !mbx_3d_word_to_nonnegative_float(main[8], &y0) ||
-        !mbx_3d_word_to_nonnegative_float(main[9], &x1) ||
-        !mbx_3d_word_to_nonnegative_float(main[6], &y1) ||
-        x0 >= x1 || y0 >= y1 || x1 > 320.0f || y1 > 480.0f) {
+    if (!os1_solid && ((main[5] | main[6] | main[8] | main[9]) & 0x80000000u)) {
         if (why) *why = "solid-quad destination coordinates are invalid";
         return false;
+    }
+    float x0, y0, x1, y1;
+    if (!mbx_3d_word_to_finite_float(main[5], &x0) ||
+        !mbx_3d_word_to_finite_float(main[os1_solid ? 6u : 8u], &y0) ||
+        !mbx_3d_word_to_finite_float(main[os1_solid ? 7u : 9u], &x1) ||
+        !mbx_3d_word_to_finite_float(main[os1_solid ? 12u : 6u], &y1) ||
+        x0 >= x1 || y0 >= y1 ||
+        (os1_solid ? x0 < -4096.0f || y0 < -4096.0f ||
+                      x1 > 4096.0f || y1 > 4096.0f
+                    : x0 < 0.0f || y0 < 0.0f || x1 > 320.0f || y1 > 480.0f)) {
+        if (why) *why = "solid-quad destination coordinates are invalid";
+        return false;
+    }
+
+    /* OS1's solid producer emits TL,TR,BL,BR main vertices, but its independent
+     * integer context clip retains BL,TL,BR,TR order. FB clips only describe
+     * coarse 8x16 tiles: Safari's first opaque white quad must fill row 410,
+     * not every row in its enormous world rectangle or its 400..416 tile. */
+    uint32_t boundary[8] = {0};
+    if (os1_solid) {
+        float edge[8];
+        for (unsigned i = 0; i < 8u; i++) {
+            if (!mbx_gart_u32(m, bus, object + 0xb8u + i * 4u,
+                              &boundary[i], why)) return false;
+            if (!mbx_3d_word_to_nonnegative_float(boundary[i], &edge[i]) ||
+                edge[i] > 4096.0f || edge[i] != (float)(uint32_t)edge[i]) {
+                if (why) *why = "OS1 solid boundary is not a bounded integer rectangle";
+                return false;
+            }
+        }
+        if (boundary[0] != boundary[2] || boundary[4] != boundary[6] ||
+            boundary[1] != boundary[5] || boundary[3] != boundary[7] ||
+            edge[0] >= edge[4] || edge[3] >= edge[1]) {
+            if (why) *why = "OS1 solid boundary corner order is invalid";
+            return false;
+        }
     }
 
     static const unsigned x_words[4] = {5u, 7u, 9u, 11u};
@@ -2516,8 +2617,8 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
     for (unsigned vertex = 0; vertex < 4u; vertex++) {
         float x, y;
         unsigned attribute = 21u + vertex * 3u;
-        if (!mbx_3d_word_to_nonnegative_float(main[x_words[vertex]], &x) ||
-            !mbx_3d_word_to_nonnegative_float(main[y_words[vertex]], &y) ||
+        if (!mbx_3d_word_to_finite_float(main[x_words[vertex]], &x) ||
+            !mbx_3d_word_to_finite_float(main[y_words[vertex]], &y) ||
             main[attribute] != colour ||
             main[attribute + 1u] != mbx_3d_float_to_word(x / 1024.0f) ||
             main[attribute + 2u] != mbx_3d_float_to_word(y / 1024.0f)) {
@@ -2527,13 +2628,32 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
         }
     }
 
-    const float lower_bias = 0.468505859375f; /* producer 0x3eefe000 */
-    const float upper_bias = 0.531494140625f; /* producer 0x3f081000 */
+    if (os1_solid) {
+        float bound_left, bound_top, bound_right, bound_bottom;
+        mbx_3d_word_to_finite_float(boundary[0], &bound_left);
+        mbx_3d_word_to_finite_float(boundary[3], &bound_top);
+        mbx_3d_word_to_finite_float(boundary[4], &bound_right);
+        mbx_3d_word_to_finite_float(boundary[1], &bound_bottom);
+        if (x0 < bound_left) x0 = bound_left;
+        if (y0 < bound_top) y0 = bound_top;
+        if (x1 > bound_right) x1 = bound_right;
+        if (y1 > bound_bottom) y1 = bound_bottom;
+        if (x1 > 320.0f) x1 = 320.0f;
+        if (y1 > 480.0f) y1 = 480.0f;
+        if (x0 > x1 || y0 > y1) {
+            if (why) *why = "OS1 solid world and boundary are disjoint";
+            return false;
+        }
+    }
+    const float lower_bias = os1_solid ? 0.5f : 0.468505859375f;
+    const float upper_bias = os1_solid ? 0.5f : 0.531494140625f;
     uint32_t left = (uint32_t)(x0 + lower_bias);
     uint32_t top = (uint32_t)(y0 + lower_bias);
     uint32_t right = (uint32_t)(x1 + upper_bias);
     uint32_t bottom = (uint32_t)(y1 + upper_bias);
-    if (left >= right || top >= bottom || right > MBX_3D_WIDTH ||
+    bool zero_coverage = os1_solid && (left == right || top == bottom);
+    if (left > right || top > bottom || (!os1_solid &&
+        (left == right || top == bottom)) || right > MBX_3D_WIDTH ||
         bottom > 480u) {
         if (why) *why = "solid-quad producer bounds leave the 320x480 surface";
         return false;
@@ -2551,19 +2671,19 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
     }
 
     uint32_t tile_x0 = clip_left / 8u;
-    uint32_t tile_x1 = clip_right / 8u - 1u;
+    uint32_t tile_x1 = clip_right / 8u;
     uint32_t tile_y0 = clip_top / 16u;
-    uint32_t tile_y1 = clip_bottom / 16u - 1u;
-    uint32_t tile_count = (tile_x1 - tile_x0 + 1u) *
-                          (tile_y1 - tile_y0 + 1u);
-    if (!tile_count || tile_count > 40u * 30u ||
+    uint32_t tile_y1 = clip_bottom / 16u;
+    uint32_t tile_count = (tile_x1 - tile_x0) *
+                          (tile_y1 - tile_y0);
+    if ((!tile_count && !zero_coverage) || tile_count > 40u * 30u ||
         (uint64_t)region + (uint64_t)tile_count * 8u > UINT32_MAX) {
         if (why) *why = "solid-quad tile rectangle is invalid";
         return false;
     }
     uint32_t tile_index = 0u;
-    for (uint32_t y = tile_y0; y <= tile_y1; y++) {
-        for (uint32_t x = tile_x0; x <= tile_x1; x++) {
+    for (uint32_t y = tile_y0; y < tile_y1; y++) {
+        for (uint32_t x = tile_x0; x < tile_x1; x++) {
             uint32_t code, pointer;
             if (!mbx_gart_u32(m, bus, region + tile_index * 8u,
                               &code, why) ||
@@ -2610,7 +2730,8 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
         if (!mbx_gart_u32(m, bus, object + off, &value, why)) return false;
         uint32_t expected = mbx_3d_boundary_fixed_expected(off);
         if (off >= 0x0b8u && off <= 0x0d4u)
-            expected = main[5u + (off - 0x0b8u) / 4u];
+            expected = os1_solid ? boundary[(off - 0x0b8u) / 4u]
+                                  : main[5u + (off - 0x0b8u) / 4u];
         if (value != expected) {
             if (why) *why = "solid-quad boundary object disagrees with its geometry";
             return false;
@@ -2638,6 +2759,33 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
                 return false;
             }
         }
+    }
+
+    /* A nonempty world/clip intersection can round to zero pixel coverage.
+     * Completion still requires the complete command and mapped integer clip
+     * footprint; it must not turn malformed pointers into successful no-ops. */
+    if (zero_coverage) {
+        float edge[4];
+        mbx_3d_word_to_finite_float(boundary[0], &edge[0]);
+        mbx_3d_word_to_finite_float(boundary[3], &edge[1]);
+        mbx_3d_word_to_finite_float(boundary[4], &edge[2]);
+        mbx_3d_word_to_finite_float(boundary[1], &edge[3]);
+        uint32_t x0 = (uint32_t)edge[0], y0 = (uint32_t)edge[1];
+        uint32_t x1 = edge[2] > 320.0f ? 320u : (uint32_t)edge[2];
+        uint32_t y1 = edge[3] > 480.0f ? 480u : (uint32_t)edge[3];
+        uint64_t end = (uint64_t)target + (uint64_t)(y1 - 1u) *
+                       MBX_3D_TARGET_STRIDE + (uint64_t)x1 * 4u;
+        if (x0 >= x1 || y0 >= y1 || end > UINT32_MAX) {
+            if (why) *why = "zero-coverage solid target boundary overflows";
+            return false;
+        }
+        for (uint32_t y = y0; y < y1; y++) {
+            uint32_t dst = target + y * MBX_3D_TARGET_STRIDE + x0 * 4u;
+            if (!mbx_gart_validate(m, bus, dst, (x1 - x0) * 4u, why))
+                return false;
+        }
+        if (pixels_filled) *pixels_filled = 0u;
+        return true;
     }
 
     uint32_t width = right - left;
@@ -2670,8 +2818,9 @@ static bool mbx_execute_solid_quad(s5l_mbx_t *m,
                            row_bytes, why);
     }
     for (uint32_t i = 0; i < total && ok; i += 4u) {
-        uint32_t blended = mbx_source_over_clamped(
-            mbx_load_le32(pixels + i), colour);
+        uint32_t dst = mbx_load_le32(pixels + i);
+        uint32_t blended = os1_solid ? mbx_os1_solid_over(dst, colour)
+                                     : mbx_source_over_clamped(dst, colour);
         pixels[i] = (uint8_t)blended;
         pixels[i + 1u] = (uint8_t)(blended >> 8);
         pixels[i + 2u] = (uint8_t)(blended >> 16);
@@ -2890,6 +3039,12 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     unsigned p11 = row_major_corners ? 3u : 2u;
     float x0 = destination_x[p00], y0 = destination_y[p00];
     float x1 = destination_x[p11], y1 = destination_y[p11];
+    /* Clock's captured column is turned through 180 degrees. Its genuine
+     * packet has a tiny rotation residual; the exact axis-aligned limit uses
+     * the same affine sampler, but must pass the narrow column gate below. */
+    bool reversed_axis_column = axis_aligned && half_texel_layout &&
+        modulated_sampler && x0 > x1 && y0 > y1;
+    if (reversed_axis_column) axis_aligned = false;
     struct mbx_affine_transform affine = {0};
     bool affine_sprite = !axis_aligned;
     if (compact_copy && affine_sprite) {
@@ -2983,7 +3138,16 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
      * still covering one or more pixel centres. Empty and reversed geometry
      * was rejected above; the scale family, pixel-centre coverage, boundary,
      * clip, tile, source and target checks below remain authoritative. */
-    if (dx > 512.0f + epsilon || dy > 512.0f + epsilon) {
+    /* OS1 Text emits a 32x26 texture stretched 214x horizontally.
+     * Its genuine producer carries the unclipped -2763..4085 quad and a
+     * separate small context scissor. Permit a larger coordinate envelope
+     * provisionally; the complete UV/sampler family is validated below. */
+    bool wide_horizontal_candidate =
+        perspective_copy && row_major_corners && !affine_sprite &&
+        modulated_sampler && half_texel_layout &&
+        x0 >= -4096.0f && x1 <= 4096.0f && dy <= 512.0f + epsilon;
+    if ((dx > 512.0f + epsilon && !wide_horizontal_candidate) ||
+        dy > 512.0f + epsilon) {
         if (why) *why = "sprite transform exceeds the bounded textured family";
         return false;
     }
@@ -2993,7 +3157,10 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
      * power-of-two allocation and split pitch independently.  This is what
      * distinguishes r420's 320x460 texture from its 28.8x41.4 destination. */
     uint32_t header_width_field = (quad[1] >> 24) & 7u;
-    uint32_t header_height_field = (quad[1] >> 20) & 7u;
+    /* OS1 _mbx3DCtxQuadCopyPerspective computes ceil(log2(height))-3
+     * independently at 0x30b38a68..0x30b38ab8. Calendar captures use
+     * exponents 7 and 8 (1024/2048 rows); bit 23 belongs to the height. */
+    uint32_t header_height_field = (quad[1] >> 20) & 15u;
     uint32_t header_texture_width = 8u << header_width_field;
     uint32_t header_texture_height = 8u << header_height_field;
     uint32_t u0_word = quad[25];
@@ -3026,9 +3193,23 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     /* A constant-u strip (both u edges on one texel column) is a legitimate
      * gradient stretch: SpringBoard's app-close animation samples a single
      * column of an 8x256 ramp across the full 320-pixel width. */
+    /* OS1 Safari separator captures use a 320x1 destination and constant
+     * V=0.5 texels across a complete 320-pixel row (512x8 allocation). The
+     * existing half-texel bilinear sampler evaluates that centre as row zero.
+     * Keep this distinct from vertical scaling or an arbitrary collapsed UV. */
+    bool constant_v_row = v_texel_start == v_texel_end;
+    if (constant_v_row &&
+        (!perspective_copy || !row_major_corners || affine_sprite ||
+         !modulated_sampler || !half_texel_layout ||
+         header_texture_width != 512u || header_texture_height != 8u ||
+         u_texel_start != 0.0f || u_texel_end != 320.0f ||
+         v_texel_start != 0.5f || dx != 320.0f || dy != 1.0f)) {
+        if (why) *why = "constant-V sprite is not the captured horizontal row family";
+        return false;
+    }
     if (u_texel_start > u_texel_end ||
-        v_texel_start >= v_texel_end ||
-        u_texel_end > 512.0f || v_texel_end > 512.0f ||
+        v_texel_start > v_texel_end ||
+        u_texel_end > 512.0f || v_texel_end > 2048.0f ||
         u_texel_end > (float)header_texture_width ||
         v_texel_end > (float)header_texture_height) {
         if (why) *why = "sprite UV rectangle leaves the supported texture bounds";
@@ -3062,8 +3243,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                            ((quad[1] & 1u) << 1);
     uint32_t source_stride = pitch_units * 16u;
     uint32_t source_pitch_pixels = source_stride / 4u;
-    if (!pitch_units || source_pitch_pixels > 512u ||
-        header_texture_width > 512u || header_texture_height > 512u ||
+    if ((constant_v_row && source_pitch_pixels != 320u) ||
+        !pitch_units || source_pitch_pixels > 512u ||
+        header_texture_width > 512u || header_texture_height > 2048u ||
         source_right > source_pitch_pixels ||
         source_bottom > header_texture_height) {
         if (why) *why =
@@ -3083,6 +3265,17 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         return false;
     }
 
+    if (dx > 512.0f + epsilon &&
+        (!wide_horizontal_candidate ||
+         header_texture_width != 32u || header_texture_height != 32u ||
+         source_pitch_pixels != 32u || source_width != 32u ||
+         source_height != 26u || u_texel_start != 0.0f ||
+         u_texel_end != 32.0f || v_texel_start != 0.0f ||
+         v_texel_end != 26.0f || dy != 26.0f)) {
+        if (why) *why = "wide sprite is outside the captured horizontal row family";
+        return false;
+    }
+
     if (affine_sprite) {
         float expected_u2 = (float)source_width * (float)source_width;
         float expected_v2 = (float)source_height * (float)source_height;
@@ -3091,11 +3284,37 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float v2 = affine.v_x * affine.v_x + affine.v_y * affine.v_y;
         float dot = affine.u_x * affine.v_x + affine.u_y * affine.v_y;
         if (dot < 0.0f) dot = -dot;
-        if (source_width > MBX_3D_WIDTH || source_height > 480u) {
+        if (!source_width || !source_height ||
+            source_width > MBX_3D_WIDTH || source_height > 480u) {
             if (why) *why = "affine sprite source is outside measured bounds";
             return false;
         }
-        if (direct_sampler) {
+        /* OS1 Clock stretches the centre of one 8x32 texture column across
+         * a 380x30 rectangle, turned through 180 degrees. Its vertical UV
+         * centres .5..29.5 retain the 30-row conservative source envelope.
+         * This is not a general nonuniform affine transform: preserve the
+         * measured allocation, pitch, column, envelope, orientation and size.
+         * The existing affine bilinear sampler stages the checked footprint. */
+        bool os1_clock_column = perspective_copy && row_major_corners &&
+            modulated_sampler && half_texel_layout &&
+            header_texture_width == 8u && header_texture_height == 32u &&
+            source_pitch_pixels == 8u && source_width == 1u &&
+            source_height == 30u && u_texel_start == 0.5f &&
+            u_texel_end == 0.5f && v_texel_start == 0.5f &&
+            v_texel_end == 29.5f && vertex_alpha_word == 0xff000000u &&
+            affine.u_x >= -380.0f - epsilon &&
+            affine.u_x <= -380.0f + epsilon &&
+            affine.u_y >= -epsilon && affine.u_y <= epsilon &&
+            affine.v_x >= -epsilon && affine.v_x <= epsilon &&
+            affine.v_y >= -30.0f - epsilon &&
+            affine.v_y <= -30.0f + epsilon;
+        if (reversed_axis_column && !os1_clock_column) {
+            if (why) *why = "reversed axis sprite is not the captured Clock column";
+            return false;
+        }
+        if (os1_clock_column) {
+            /* All common clipping, tile, parameter and GART checks still run. */
+        } else if (direct_sampler) {
             float u_error = u2 - expected_u2;
             float v_error = v2 - expected_v2;
             float det_error = affine.determinant - expected_det;
@@ -3150,6 +3369,19 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                 scale_x > 0.0f && scale_y > 0.0f &&
                 scale_x <= 1.0f + epsilon && scale_y <= 1.0f + epsilon &&
                 scale_difference <= 0.00001f;
+            /* Safari's address-field transition preserves the 31-row conservative source envelope while
+             * reducing its 290-column texture horizontally. Captures retain
+             * texel-centre inset UVs in a 512x32 allocation and padded 296-pixel row.
+             * This does not admit arbitrary nonuniform scaling. */
+            bool os1_modulated_field_minification =
+                perspective_copy && modulated_sampler && half_texel_layout &&
+                header_texture_width == 512u && header_texture_height == 32u &&
+                source_pitch_pixels == 296u && source_width == 290u &&
+                source_height == 31u && u_texel_start == 0.5f &&
+                u_texel_end == 289.5f && v_texel_start == 0.5f &&
+                v_texel_end == 30.5f && scale_x > 0.0f &&
+                scale_x <= 1.0f + epsilon &&
+                scale_y >= 1.0f - epsilon && scale_y <= 1.0f + epsilon;
             /* Safari's keyboard/address transition contributes a direct-
              * filtered row operation with a wide source rectangle. It keeps
              * the conservative source height exactly 1:1 while reducing only
@@ -3202,6 +3434,19 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                 modulated_sampler && half_texel_layout &&
                 scale_x > 0.0f && scale_y > 0.0f &&
                 scale_difference <= 0.00001f;
+            /* OS1 Calendar's Month transition stretches an 8x18 gradient
+             * to 320x18 with the established modulated bilinear sampler.
+             * Admit horizontal magnification of a complete texture width
+             * only with integer UV edges and unchanged source rows; this
+             * does not imply general nonuniform 2D scaling or cropped strips. */
+            bool modulated_horizontal_magnification =
+                modulated_sampler && half_texel_layout && source_width > 2u &&
+                u_texel_start == 0.0f &&
+                u_texel_end == (float)header_texture_width &&
+                v_texel_start == (float)source_top &&
+                v_texel_end == (float)source_bottom &&
+                scale_x >= 1.0f - epsilon &&
+                scale_y >= 1.0f - epsilon && scale_y <= 1.0f + epsilon;
             bool alternate_uniform_minification =
                 scaled_sampler && half_texel_layout &&
                 scale_x > 0.0f && scale_y > 0.0f &&
@@ -3210,9 +3455,11 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             if (source_width > MBX_3D_WIDTH || source_height > 480u ||
                 (!direct_magnification && !direct_uniform_minification &&
                  !direct_horizontal_minification &&
+                 !os1_modulated_field_minification &&
                  !compact_full_extent_uniform_minification &&
                  !filtered_narrow_strip_resample &&
                  !modulated_uniform_scale &&
+                 !modulated_horizontal_magnification &&
                  !alternate_uniform_minification)) {
                 if (mbx_trace_state == 1) {
                     fprintf(stderr,
@@ -3234,7 +3481,13 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                     "filtered transform is outside its measured sampler scale family";
                 return false;
             }
-        } else if (scaled_sampler) {
+        } else if (scaled_sampler &&
+                   !(perspective_copy && half_texel_layout &&
+                     header_texture_width == 512u && header_texture_height == 8u &&
+                     source_pitch_pixels == 320u && source_width == 320u &&
+                     source_height == 2u && u_texel_start == 0.0f &&
+                     u_texel_end == 320.0f && v_texel_start == 0.5f &&
+                     v_texel_end == 1.5f)) {
             if (why) *why =
                 "alternate filtered state lacks its measured minification";
             return false;
@@ -3242,6 +3495,16 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     }
     bool filtered_sampling = half_texel_layout ||
                              compact_full_extent_uniform_minification;
+    /* Only the captured unfiltered perspective crop establishes tall-source
+     * semantics. Destination work remains bounded to a 320x480 window; the
+     * existing contiguous-crop and staged GART checks validate sampled rows.
+     * Do not broaden filtered, compact or affine sampler families. */
+    if (header_texture_height > 512u &&
+        (filtered_sampling || compact_copy || affine_sprite ||
+         source_width > MBX_3D_WIDTH || source_height > 480u)) {
+        if (why) *why = "tall sprite is not a bounded unfiltered perspective crop";
+        return false;
+    }
     float bounded_x0 = x0 < 0.0f ? 0.0f : x0;
     float bounded_y0 = y0 < 0.0f ? 0.0f : y0;
     float bounded_x1 = x1 > (float)MBX_3D_WIDTH
@@ -3399,35 +3662,54 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     uint32_t clip_right = (guard_right + 7u) & ~7u;
     uint32_t clip_top = guard_top & ~15u;
     uint32_t clip_bottom = (guard_bottom + 15u) & ~15u;
-    if (clip_left >= clip_right || clip_top >= clip_bottom ||
-        clip_right > MBX_3D_WIDTH || clip_bottom > 480u) {
-        if (why) {
-            *why = "sprite aligned clip rectangle is empty or out of bounds";
-        }
-        return false;
-    }
     uint32_t expected_xclip = (clip_right << 16) | clip_left;
     uint32_t expected_yclip = (clip_bottom << 16) | clip_top;
     if (m->reg[S5L_MBX_FBXCLIP / 4u] != expected_xclip ||
         m->reg[S5L_MBX_FBYCLIP / 4u] != expected_yclip) {
-        if (why) *why = "sprite clip registers disagree with producer geometry";
+        /* OS1 MBX2D _mbx3DCtxQuadCopyPerspective at 0x30b389fc
+         * loads one exact 0.5f literal (0x30b38dec) for all four
+         * clipped extrema before VCVT.U32 and 8x16 tile alignment.
+         * Its producer differs from the later asymmetric guard above.
+         * Accept either independently derived complete clip pair; never mix
+         * axes or take arbitrary register values as geometry authority. */
+        uint32_t early_left = (uint32_t)(producer_x0 + 0.5f) & ~7u;
+        uint32_t early_top = (uint32_t)(producer_y0 + 0.5f) & ~15u;
+        uint32_t early_right = ((uint32_t)(producer_x1 + 0.5f) + 7u) & ~7u;
+        uint32_t early_bottom = ((uint32_t)(producer_y1 + 0.5f) + 15u) & ~15u;
+        if (m->reg[S5L_MBX_FBXCLIP / 4u] !=
+                ((early_right << 16) | early_left) ||
+            m->reg[S5L_MBX_FBYCLIP / 4u] !=
+                ((early_bottom << 16) | early_top)) {
+            if (why) *why = "sprite clip registers disagree with producer geometry";
+            return false;
+        }
+        clip_left = early_left; clip_right = early_right;
+        clip_top = early_top; clip_bottom = early_bottom;
+    }
+    bool empty_clip = clip_left == clip_right || clip_top == clip_bottom;
+    if (clip_left > clip_right || clip_top > clip_bottom ||
+        clip_right > MBX_3D_WIDTH || clip_bottom > 480u ||
+        (empty_clip && !zero_coverage)) {
+        if (why) *why = "sprite aligned clip rectangle is invalid for its coverage";
         return false;
     }
 
+    /* Exclusive tile bounds keep the genuine empty edge scissor from
+     * underflowing a last-tile index. With no tiles and no covered centres,
+     * the existing no-op path still validates source/target mappings. */
     uint32_t tile_x0 = clip_left / 8u;
-    uint32_t tile_x1 = clip_right / 8u - 1u;
+    uint32_t tile_x1 = clip_right / 8u;
     uint32_t tile_y0 = clip_top / 16u;
-    uint32_t tile_y1 = clip_bottom / 16u - 1u;
-    uint32_t tile_count = (tile_x1 - tile_x0 + 1u) *
-                          (tile_y1 - tile_y0 + 1u);
-    if (!tile_count || tile_count > 40u * 30u ||
+    uint32_t tile_y1 = clip_bottom / 16u;
+    uint32_t tile_count = (tile_x1 - tile_x0) * (tile_y1 - tile_y0);
+    if ((!tile_count && !zero_coverage) || tile_count > 40u * 30u ||
         (uint64_t)region + (uint64_t)tile_count * 8u > UINT32_MAX) {
         if (why) *why = "sprite tile rectangle is invalid";
         return false;
     }
     uint32_t tile_index = 0u;
-    for (uint32_t y = tile_y0; y <= tile_y1; y++) {
-        for (uint32_t x = tile_x0; x <= tile_x1; x++) {
+    for (uint32_t y = tile_y0; y < tile_y1; y++) {
+        for (uint32_t x = tile_x0; x < tile_x1; x++) {
             uint32_t code, pointer;
             if (!mbx_gart_u32(m, bus, region + tile_index * 8u,
                               &code, why) ||

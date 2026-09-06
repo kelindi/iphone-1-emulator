@@ -1,0 +1,50 @@
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c: In function ‘mbx_execute_solid_quad’:
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2422:5: warning: ‘bound_left’ may be used uninitialized [-Wmaybe-uninitialized]
+ 2422 |     memcpy(value, &word, sizeof *value);
+      |     ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2632:15: note: ‘bound_left’ was declared here
+ 2632 |         float bound_left, bound_top, bound_right, bound_bottom;
+      |               ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2422:5: warning: ‘bound_top’ may be used uninitialized [-Wmaybe-uninitialized]
+ 2422 |     memcpy(value, &word, sizeof *value);
+      |     ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2632:27: note: ‘bound_top’ was declared here
+ 2632 |         float bound_left, bound_top, bound_right, bound_bottom;
+      |                           ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2422:5: warning: ‘bound_right’ may be used uninitialized [-Wmaybe-uninitialized]
+ 2422 |     memcpy(value, &word, sizeof *value);
+      |     ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2632:38: note: ‘bound_right’ was declared here
+ 2632 |         float bound_left, bound_top, bound_right, bound_bottom;
+      |                                      ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2422:5: warning: ‘bound_bottom’ may be used uninitialized [-Wmaybe-uninitialized]
+ 2422 |     memcpy(value, &word, sizeof *value);
+      |     ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2632:51: note: ‘bound_bottom’ was declared here
+ 2632 |         float bound_left, bound_top, bound_right, bound_bottom;
+      |                                                   ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2775:27: warning: ‘MEM <unsigned int> [(char * {ref-all})&edge + 12B]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 2775 |         uint32_t y1 = edge[3] > 480.0f ? 480u : (uint32_t)edge[3];
+      |                           ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2768:15: note: ‘MEM <unsigned int> [(char * {ref-all})&edge + 12B]’ was declared here
+ 2768 |         float edge[4];
+      |               ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2774:27: warning: ‘MEM <unsigned int> [(char * {ref-all})&edge + 8B]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 2774 |         uint32_t x1 = edge[2] > 320.0f ? 320u : (uint32_t)edge[2];
+      |                           ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2768:15: note: ‘MEM <unsigned int> [(char * {ref-all})&edge + 8B]’ was declared here
+ 2768 |         float edge[4];
+      |               ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2773:61: warning: ‘MEM <unsigned int> [(char * {ref-all})&edge + 4B]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 2773 |         uint32_t x0 = (uint32_t)edge[0], y0 = (uint32_t)edge[1];
+      |                                                             ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2768:15: note: ‘MEM <unsigned int> [(char * {ref-all})&edge + 4B]’ was declared here
+ 2768 |         float edge[4];
+      |               ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2773:37: warning: ‘MEM <unsigned int> [(char * {ref-all})&edge]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 2773 |         uint32_t x0 = (uint32_t)edge[0], y0 = (uint32_t)edge[1];
+      |                                     ^
+/home/vercel-sandbox/iphone-1/core/src/soc/mbx.c:2768:15: note: ‘MEM <unsigned int> [(char * {ref-all})&edge]’ was declared here
+ 2768 |         float edge[4];
+      |               ^

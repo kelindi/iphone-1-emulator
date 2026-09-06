@@ -1,0 +1,28 @@
+{
+  "scope": "Full uncut candidate arm3 from externally contaminated V2 diagnostic; not accepted speed benchmark.",
+  "source": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v2/measured/3-candidate/video/page@d7952747aae7cf050f0faa50378888b9.webm",
+    "sha256": "95cae7b3973ba7c4a47d5d9e2fb179d60746aa4dd30c04ec72f66476b780d8ce",
+    "durationSeconds": 109.52
+  },
+  "video": {
+    "path": "tweets/videos/seed_cache_revalidation_diagnostic.mp4",
+    "sha256": "3307eda6f161384024eb3e97bf3d3a3d8d8fe9e9a9661449b1b8d6eee752ecb0",
+    "durationSeconds": 109.52
+  },
+  "thumbnail": {
+    "path": "tweets/thumbnails/seed_cache_revalidation_diagnostic.jpg",
+    "sha256": "e821c823ea936523a785060757b6747556f7ebb054ca31706a7aaf61a7c06f16",
+    "timestampSeconds": 36,
+    "manualReview": "Genuine complete original Settings in actual frozen phone shell."
+  },
+  "encoding": {
+    "codec": "libx264",
+    "threads": 1,
+    "preset": "fast",
+    "crf": 23,
+    "pixelFormat": "yuv420p",
+    "cuts": false,
+    "speedChanges": false
+  }
+}

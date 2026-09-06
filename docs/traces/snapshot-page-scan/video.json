@@ -1,0 +1,10 @@
+{
+  "sourceBaseline": "/home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/browser-1-baseline/page@82e6f6ef7f1c82080bde9aa7bf78dba5.webm",
+  "sourceCandidate": "/home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/browser-2-candidate/page@d9bdd83e7e2a99ded774362158bd27a1.webm",
+  "baselineSeconds": 17.72,
+  "candidateSeconds": 17.68,
+  "totalSeconds": 35.4,
+  "thumbnailSeconds": 29.72,
+  "output": "tweets/videos/snapshot_page_scan.mp4",
+  "playback": "Original speed, full first accepted ordered pair, labels only; no omitted or accelerated sections."
+}

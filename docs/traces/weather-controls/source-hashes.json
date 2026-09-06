@@ -1,0 +1,12 @@
+{
+  "scope": "Local production files after the functional run; no served-response interception was used. JIT participation independently checked by actual worker metrics.",
+  "files": {
+    "web/dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+    "web/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "web/emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+    "web/app.js": "42045be66c4ecfcaacdb44f6d3a71a61e53472178e9a056f2121d6213a950ae2",
+    "web/storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+    "web/checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+    "web/tests/organizer.mjs": "cc961abe9af112019b78f306d816e77278eddce0f2ed231e56d1710231cb90ef"
+  }
+}

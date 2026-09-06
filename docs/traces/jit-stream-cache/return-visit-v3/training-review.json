@@ -1,0 +1,890 @@
+{
+  "passed": true,
+  "scope": "Training/settled references and serialization only; no-cache/304 accepted reuse remains enforced before each candidate measured resume. No training timing claim.",
+  "overlap": "None reported at START; functional training, no speed claim.",
+  "runs": [
+    {
+      "variant": "original",
+      "seedURL": "http://127.0.0.1:8191/jit/seed.wasm",
+      "seedSerializations": [],
+      "allCompiledURLCounts": {},
+      "nativeHits": [],
+      "passedRuntime": true,
+      "validationPassed": true,
+      "traceComplete": {
+        "dataLossOccurred": false,
+        "stream": "1",
+        "traceFormat": "json",
+        "streamCompression": "none"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8191/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "12341313",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:58:56 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8191/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:59:00 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "manualScreensPassed": true,
+      "actions": [
+        {
+          "label": "C0",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.5,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.30000000447034836,
+              "pairWait": 50.19999999552965,
+              "secondCapture": 0.10000000149011612,
+              "png": 3.600000001490116,
+              "encoding": 68.29999999701977,
+              "hash": 6.200000002980232,
+              "inPageTotal": 128.70000000298023,
+              "evaluationWall": 166.23128799999904,
+              "evaluationOutsideBody": 37.53128799701881,
+              "decodeAndIdentity": 36.517077000004065,
+              "rawPngWrites": 1.1527439999990747,
+              "referenceAndCompare": 8.25950699999521,
+              "totalSettled": 1213.4875829999983
+            }
+          }
+        },
+        {
+          "label": "C0",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.599999994039536,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.3999999985098839,
+              "pairWait": 50.19999999552965,
+              "secondCapture": 0.4000000059604645,
+              "png": 5.5,
+              "encoding": 66,
+              "hash": 3.7999999970197678,
+              "inPageTotal": 126.29999999701977,
+              "evaluationWall": 166.12431999999535,
+              "evaluationOutsideBody": 39.82432000297558,
+              "decodeAndIdentity": 21.921299000001454,
+              "rawPngWrites": 3.2108960000041407,
+              "referenceAndCompare": 5.059094999996887,
+              "totalSettled": 1198.0915200000018
+            }
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.69999999552965,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.3999999985098839,
+              "pairWait": 50.29999999701977,
+              "secondCapture": 0.5,
+              "png": 3.4000000059604645,
+              "encoding": 64.59999999403954,
+              "hash": 3.9000000059604645,
+              "inPageTotal": 123.10000000149012,
+              "evaluationWall": 159.65459399999963,
+              "evaluationOutsideBody": 36.55459399850952,
+              "decodeAndIdentity": 13.787607999998727,
+              "rawPngWrites": 1.2880000000004657,
+              "referenceAndCompare": 8.050532000001112,
+              "totalSettled": 1183.7467649999962
+            }
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.899999998509884,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.7000000029802322,
+              "pairWait": 50.19999999552965,
+              "secondCapture": 0.5,
+              "png": 5.100000001490116,
+              "encoding": 65.30000000447035,
+              "hash": 3.7999999970197678,
+              "inPageTotal": 125.60000000149012,
+              "evaluationWall": 168.37757499999861,
+              "evaluationOutsideBody": 42.7775749985085,
+              "decodeAndIdentity": 25.536159999996016,
+              "rawPngWrites": 7.251561000004585,
+              "referenceAndCompare": 9.583318999997573,
+              "totalSettled": 1211.6752320000014
+            }
+          }
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "seedURL": "http://127.0.0.1:8192/jit/seed.wasm",
+      "seedSerializations": [
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 1185391
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40513522247,
+            "tts": 379812,
+            "eventIndex": 39387
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40513521169,
+            "tts": 378763,
+            "eventIndex": 39384
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 2540620
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40530698195,
+            "tts": 725635,
+            "eventIndex": 83487
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40530695325,
+            "tts": 722766,
+            "eventIndex": 83479
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 3997660
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40530744959,
+            "tts": 771340,
+            "eventIndex": 83715
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40530741227,
+            "tts": 767609,
+            "eventIndex": 83690
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 5147890
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40530944038,
+            "tts": 1005339,
+            "eventIndex": 84092
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40530940310,
+            "tts": 1001613,
+            "eventIndex": 84084
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 6385348
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355964,
+            "ts": 40531660179,
+            "tts": 873671,
+            "eventIndex": 86376
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355964,
+            "ts": 40531654122,
+            "tts": 867616,
+            "eventIndex": 86368
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 7865724
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40532016307,
+            "tts": 1497283,
+            "eventIndex": 91879
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40532008627,
+            "tts": 1489810,
+            "eventIndex": 91865
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 9260051
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355964,
+            "ts": 40532453396,
+            "tts": 1316325,
+            "eventIndex": 92613
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355964,
+            "ts": 40532438290,
+            "tts": 1303928,
+            "eventIndex": 92585
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 10921695
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355967,
+            "ts": 40532815748,
+            "tts": 1316808,
+            "eventIndex": 99437
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355967,
+            "ts": 40532805899,
+            "tts": 1307150,
+            "eventIndex": 99429
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 12465030
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355966,
+            "ts": 40533116721,
+            "tts": 1519942,
+            "eventIndex": 100238
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355966,
+            "ts": 40533102268,
+            "tts": 1505556,
+            "eventIndex": 100051
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 14074552
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40533303162,
+            "tts": 2133796,
+            "eventIndex": 100683
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40533290175,
+            "tts": 2121228,
+            "eventIndex": 100672
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 15311341
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355967,
+            "ts": 40533797826,
+            "tts": 1771540,
+            "eventIndex": 105647
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355967,
+            "ts": 40533778336,
+            "tts": 1757323,
+            "eventIndex": 101473
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 16871434
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355966,
+            "ts": 40534299488,
+            "tts": 2143414,
+            "eventIndex": 106401
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355966,
+            "ts": 40534285086,
+            "tts": 2129038,
+            "eventIndex": 106381
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 18225619
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40534500631,
+            "tts": 2357881,
+            "eventIndex": 110740
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40534483400,
+            "tts": 2341468,
+            "eventIndex": 110683
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 19965781
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40534568905,
+            "tts": 2425747,
+            "eventIndex": 110948
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355918,
+            "ts": 40534552647,
+            "tts": 2409490,
+            "eventIndex": 110932
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 21104888
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40535702177,
+            "tts": 3065183,
+            "eventIndex": 112920
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 3355906,
+            "s": "t",
+            "tid": 3355916,
+            "ts": 40535683867,
+            "tts": 3047047,
+            "eventIndex": 112865
+          }
+        }
+      ],
+      "allCompiledURLCounts": {
+        "http://127.0.0.1:8192/jit/seed.wasm": 15
+      },
+      "nativeHits": [],
+      "passedRuntime": true,
+      "validationPassed": true,
+      "traceComplete": {
+        "dataLossOccurred": false,
+        "stream": "1",
+        "traceFormat": "json",
+        "streamCompression": "none"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8192/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "12341313",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 05:00:03 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8192/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 05:00:07 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "manualScreensPassed": true,
+      "actions": [
+        {
+          "label": "C0",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.29999999701977,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.09999999403953552,
+              "pairWait": 50.20000000298023,
+              "secondCapture": 0.20000000298023224,
+              "png": 3.5999999940395355,
+              "encoding": 68.80000000447035,
+              "hash": 4.600000001490116,
+              "inPageTotal": 127.5,
+              "evaluationWall": 170.84634700000606,
+              "evaluationOutsideBody": 43.34634700000606,
+              "decodeAndIdentity": 41.92591999999422,
+              "rawPngWrites": 25.100862999999663,
+              "referenceAndCompare": 9.693683000004967,
+              "totalSettled": 1249.4934100000028
+            }
+          }
+        },
+        {
+          "label": "C0",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.30000000447035,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.10000000149011612,
+              "pairWait": 50.20000000298023,
+              "secondCapture": 0.19999999552965164,
+              "png": 5.5,
+              "encoding": 69.5,
+              "hash": 4,
+              "inPageTotal": 129.5,
+              "evaluationWall": 168.5437449999954,
+              "evaluationOutsideBody": 39.0437449999954,
+              "decodeAndIdentity": 19.84072500000184,
+              "rawPngWrites": 3.2463100000022678,
+              "referenceAndCompare": 5.937654000001203,
+              "totalSettled": 1198.2506619999986
+            }
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.70000000298023,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.3999999985098839,
+              "pairWait": 50.30000000447035,
+              "secondCapture": 0.3999999985098839,
+              "png": 3.5,
+              "encoding": 65.69999999552965,
+              "hash": 4,
+              "inPageTotal": 124.29999999701977,
+              "evaluationWall": 165.60160500000347,
+              "evaluationOutsideBody": 41.301605002983706,
+              "decodeAndIdentity": 13.569988999995985,
+              "rawPngWrites": 1.926911000002292,
+              "referenceAndCompare": 8.470735000002605,
+              "totalSettled": 1190.788311000004
+            }
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.600000001490116,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true,
+            "phaseMs": {
+              "firstCapture": 0.3999999985098839,
+              "pairWait": 50.20000000298023,
+              "secondCapture": 0.5,
+              "png": 5,
+              "encoding": 64,
+              "hash": 4.0999999940395355,
+              "inPageTotal": 124.19999999552965,
+              "evaluationWall": 165.86635899999965,
+              "evaluationOutsideBody": 41.666359004469996,
+              "decodeAndIdentity": 16.853710000003048,
+              "rawPngWrites": 4.33788099999947,
+              "referenceAndCompare": 9.492405999997573,
+              "totalSettled": 1197.5652809999956
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "referencePins": {
+    "C0-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    "C0-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    "H1-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "H1-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    "H1-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "H1-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+  }
+}

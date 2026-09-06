@@ -1,0 +1,33 @@
+0xc0143398 ldr      r0, [r0, #0x6c]
+0xc014339a bx       lr
+0xc014339c str      r1, [r0, #0x1c]
+0xc014339e str      r1, [r0, #0x38]
+0xc01433a0 bx       lr
+0xc01433a2 str      r1, [r0, #0x18]
+0xc01433a4 bx       lr
+0xc01433a6 push     {r4, r5, r6, r7, lr}
+0xc01433f0 ldr      r3, [r0, #0x10]
+0xc01433f2 movs     r2, #0xf0
+0xc01433f4 ands     r3, r2
+0xc01433f6 cmp      r3, #0x20
+0xc01433f8 beq      #0xc01433fe
+0xc01433fa ldr      r0, [r0, #0x34]
+0xc01433fc bx       lr
+0xc01433fe ldr      r0, [r0, #0x68]
+0xc0143400 b        #0xc01433fc
+0xc0143402 push     {r4, lr}
+0xc0143404 ldr      r3, [r0, #0x10]
+0xc0143406 adds     r4, r2, #0
+0xc0143408 movs     r2, #0xf0
+0xc014340a ands     r3, r2
+0xc014340c cmp      r3, #0x20
+0xc014340e beq      #0xc014341c
+0xc0143410 ldr      r3, [r0, #0x34]
+0xc0143412 ldr      r0, [r0, #0x1c]
+0xc0143414 cmp      r0, r1
+0xc0143416 bhi      #0xc0143424
+0xc0143418 movs     r0, #0
+0xc014341a pop      {r4, pc}
+0xc014341c ldr      r3, [r0, #0x68]
+0xc014341e ldr      r0, [r0, #0x1c]
+0xc0143420 cmp      r0, r1
