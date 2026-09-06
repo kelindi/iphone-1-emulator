@@ -1,0 +1,66 @@
+{
+  "scope": "Tiny no-guest offline transport diagnostic, same persistent context + independent browser CDP tracing. No WASM compilation.",
+  "requests": [
+    {
+      "url": "/setup.html",
+      "at": 1788674394476
+    },
+    {
+      "url": "/favicon.ico",
+      "at": 1788674394497
+    },
+    {
+      "url": "/sw.js",
+      "at": 1788674394509
+    },
+    {
+      "url": "/phone.html",
+      "at": 1788674394519
+    },
+    {
+      "url": "/worker.js",
+      "at": 1788674394524
+    }
+  ],
+  "stages": [
+    {
+      "name": "before",
+      "online": true
+    },
+    {
+      "name": "after-setOffline",
+      "online": false
+    },
+    {
+      "name": "after-trace",
+      "online": false
+    },
+    {
+      "name": "after-navigation",
+      "online": true
+    }
+  ],
+  "actualSWSource": {
+    "url": "http://127.0.0.1:8197/sw.js",
+    "bytes": 344,
+    "sha256": "a73065853f35a08efedb9edba1dd0d3b379271b710f8076b076eda7324513057",
+    "exact": true
+  },
+  "requestsBeforeOffline": 5,
+  "probes": {
+    "page": {
+      "error": "Failed to fetch"
+    },
+    "worker": {
+      "online": true,
+      "error": "Failed to fetch"
+    },
+    "serviceWorker": {
+      "online": true,
+      "error": "Failed to fetch"
+    }
+  },
+  "zeroPostOfflineServerRequests": true,
+  "passed": true,
+  "browserClosed": true
+}

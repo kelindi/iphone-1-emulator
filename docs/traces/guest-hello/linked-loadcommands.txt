@@ -1,0 +1,140 @@
+.context/guest-hello/iphone1-own-program:
+Mach header
+      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
+   MH_MAGIC     ARM         V6  0x00     EXECUTE     9        696   NOUNDEFS DYLDLINK TWOLEVEL
+Load command 0
+      cmd LC_SEGMENT
+  cmdsize 56
+  segname __PAGEZERO
+   vmaddr 0x00000000
+   vmsize 0x00001000
+  fileoff 0
+ filesize 0
+  maxprot ---
+ initprot ---
+   nsects 0
+    flags (none)
+Load command 1
+      cmd LC_SEGMENT
+  cmdsize 192
+  segname __TEXT
+   vmaddr 0x00001000
+   vmsize 0x00001000
+  fileoff 0
+ filesize 4096
+  maxprot r-x
+ initprot r-x
+   nsects 2
+    flags (none)
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x00001f04
+      size 0x000000d4
+    offset 3844
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+      type S_REGULAR
+attributes PURE_INSTRUCTIONS SOME_INSTRUCTIONS
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cstring
+   segname __TEXT
+      addr 0x00001fd8
+      size 0x00000027
+    offset 4056
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+      type S_CSTRING_LITERALS
+attributes (none)
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT
+  cmdsize 124
+  segname __DATA
+   vmaddr 0x00002000
+   vmsize 0x00001000
+  fileoff 4096
+ filesize 4096
+  maxprot rw-
+ initprot rw-
+   nsects 1
+    flags (none)
+Section
+  sectname __data
+   segname __DATA
+      addr 0x00002000
+      size 0x0000000c
+    offset 4096
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+      type S_REGULAR
+attributes (none)
+ reserved1 0
+ reserved2 0
+Load command 3
+      cmd LC_SEGMENT
+  cmdsize 56
+  segname __LINKEDIT
+   vmaddr 0x00003000
+   vmsize 0x00001000
+  fileoff 8192
+ filesize 204
+  maxprot r--
+ initprot r--
+   nsects 0
+    flags (none)
+Load command 4
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 8192
+   nsyms 8
+  stroff 8312
+ strsize 84
+Load command 5
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 3
+     iextdefsym 3
+     nextdefsym 2
+      iundefsym 5
+      nundefsym 3
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 8288
+        nextrel 3
+      locreloff 0
+        nlocrel 0
+Load command 6
+          cmd LC_LOAD_DYLINKER
+      cmdsize 28
+         name /usr/lib/dyld (offset 12)
+Load command 7
+        cmd LC_UNIXTHREAD
+    cmdsize 84
+     flavor ARM_THREAD_STATE
+      count ARM_THREAD_STATE_COUNT
+	    r0  0x00000000 r1     0x00000000 r2  0x00000000 r3  0x00000000
+	    r4  0x00000000 r5     0x00000000 r6  0x00000000 r7  0x00000000
+	    r8  0x00000000 r9     0x00000000 r10 0x00000000 r11 0x00000000
+	    r12 0x00000000 sp     0x00000000 lr  0x00000000 pc  0x00001f04
+	   cpsr 0x00000000
+Load command 8
+          cmd LC_LOAD_DYLIB
+      cmdsize 52
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 94.0.0
+compatibility version 1.0.0

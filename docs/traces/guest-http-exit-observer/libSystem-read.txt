@@ -1,0 +1,6 @@
+300097e0 03c0a0e3   mov      ip, #3
+300097e4 800000ef   svc      #0x80
+300097e8 1eff2f31   bxlo     lr
+300097ec 04c09fe5   ldr      ip, [pc, #4]
+300097f0 0cc09fe7   ldr      ip, [pc, ip]
+300097f4 000000ea   b        #0x300097fc

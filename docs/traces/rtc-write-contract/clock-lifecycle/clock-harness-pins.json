@@ -1,0 +1,6 @@
+{
+  "source": "web/tests/clock-lifecycle.mjs",
+  "sourceSHA256": "c8be06c2c8087459d7085aac51a63021ff4e139e6ed40c2902382c897bdbb1ad",
+  "candidateSHA256": "e11b90285720522b14ea1b3cbad6a24e6f9f34ccc96f23781ab6093c8762eaba",
+  "onlyChange": "Invoke hidden pause/export diagnostic DOM controls; all clock tests unchanged. Not ordinary user control acceptance."
+}

@@ -305,7 +305,19 @@ class Work:
         self._write_vh_u32(64, self.next_catalog_id)
         return ident
 
-    def _new_file(self, parent, name, data_bytes):
+    @staticmethod
+    def _validate_new_file_permissions(mode, uid, gid):
+        # HFSPlusBSDInfo: ownerID/groupID UInt32, fileMode UInt16.
+        # Only ordinary permission bits are accepted; the file type is fixed.
+        for name, value, maximum in (("mode", mode, 0o777),
+                                     ("uid", uid, 0xffffffff),
+                                     ("gid", gid, 0xffffffff)):
+            if value is not None and (type(value) is not int or
+                                      not 0 <= value <= maximum):
+                raise ValueError("invalid new-file " + name)
+
+    def _new_file(self, parent, name, data_bytes, *, mode=None, uid=None, gid=None):
+        self._validate_new_file_permissions(mode, uid, gid)
         sibling = self._find_record(1452, ".GlobalPreferences.plist", 2)
         if not sibling:
             raise SystemExit("file template /var/root/Library/Preferences missing")
@@ -317,6 +329,12 @@ class Work:
         struct.pack_into(">H", data, 2, 0x0002)
         struct.pack_into(">I", data, 8, ident)
         data[44:52] = b"\0" * 8
+        if mode is not None:
+            struct.pack_into(">H", data, 42, 0o100000 | mode)
+        if uid is not None:
+            struct.pack_into(">I", data, 32, uid)
+        if gid is not None:
+            struct.pack_into(">I", data, 36, gid)
         fork = 88
         struct.pack_into(">Q", data, fork, len(data_bytes))
         struct.pack_into(">I", data, fork + 8, 0)
@@ -336,12 +354,14 @@ class Work:
         self._write_vh_u32(32, H.u32(self.vh, 32) + 1)
         self._write_vh_u32(64, self.next_catalog_id)
 
-    def add_file(self, guest_path, host_path):
+    def add_file(self, guest_path, host_path, *, mode=None, uid=None, gid=None):
         with open(host_path, "rb") as f:
             data = f.read()
-        self.add_file_data(guest_path, data)
+        self.add_file_data(guest_path, data, mode=mode, uid=uid, gid=gid)
 
-    def add_file_data(self, guest_path, data):
+    def add_file_data(self, guest_path, data, *, mode=None, uid=None, gid=None):
+        # Reject malformed permissions before allocation or directory mutation.
+        self._validate_new_file_permissions(mode, uid, gid)
         components = [x for x in guest_path.split("/") if x]
         if not guest_path.startswith("/") or not components:
             raise SystemExit("--add guest path must be absolute: %s" % guest_path)
@@ -357,7 +377,7 @@ class Work:
         name = components[-1]
         if self._find_record(parent, name):
             raise SystemExit("%s already exists" % guest_path)
-        self._new_file(parent, name, data)
+        self._new_file(parent, name, data, mode=mode, uid=uid, gid=gid)
         print("%s: added %d bytes" % (guest_path, len(data)))
 
     def find_file_path(self, guest_path):

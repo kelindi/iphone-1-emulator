@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "scope": "Exact unchanged Y boundary; read-only cloned diagnostic only, no live instruction fetch/retirement or accepted HAL call.",
+  "ramBase": "0x8000000",
+  "ramBytes": 268435456,
+  "geometryHeaderHex": "53354c426f7820534e415053484f54002700000028000000b2df9b0e00000000000000000000000047454f4d000000005a000000000000000000000800000010",
+  "reason": 4,
+  "actualOriginalWindowAvailable": false,
+  "cloneReasons": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "cloneFaults": [
+    [
+      7
+    ],
+    [
+      7
+    ],
+    [
+      7
+    ],
+    [
+      7
+    ]
+  ],
+  "liveCP15FaultRegisters": [
+    2055,
+    7,
+    7900136,
+    824305140
+  ],
+  "actualFetchExecuted": false,
+  "HALAccepted": false,
+  "sameYTraceAndResources": true
+}

@@ -18,7 +18,9 @@
     "test:calculator": "node web/tests/calculator.mjs",
     "test:notes": "node web/tests/organizer.mjs --notes",
     "test:jit-replay": "node tools/jit/replay.mjs",
-    "test:checkpoint-worker": "node web/tests/checkpoint-worker.mjs"
+    "test:checkpoint-worker": "node web/tests/checkpoint-worker.mjs",
+    "test:recovery-ui": "node web/tests/recovery-ui.mjs",
+    "test:input-feedback": "node web/tests/input-feedback.mjs"
   },
   "devDependencies": {
     "ffmpeg-static": "5.2.0",

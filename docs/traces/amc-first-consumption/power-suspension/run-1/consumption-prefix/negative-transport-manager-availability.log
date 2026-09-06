@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/transport-audit.py", line 49, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/transport-audit.py", line 44, in run
+    stages=[audit_stage(out,s) for s in ['fixture','first-pcm','copy','release']]
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/transport-audit.py", line 44, in <listcomp>
+    stages=[audit_stage(out,s) for s in ['fixture','first-pcm','copy','release']]
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/consumption-prefix/transport-audit.py", line 28, in audit_stage
+    else:assert manager==bytes(64),'unavailable manager fabricated'
+AssertionError: unavailable manager fabricated

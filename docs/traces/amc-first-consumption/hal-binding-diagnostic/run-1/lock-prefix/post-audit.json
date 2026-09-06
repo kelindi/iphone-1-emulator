@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "Fresh exact083/R/S prefix and bounded observational continuation; earliest stop retained, not downstream audio success.",
+  "stop": "post observer binding/bounds",
+  "cycles": 9874747384,
+  "additionalRetiredOrInFlightCycles": 994750,
+  "records": [],
+  "fifoOriginUnresolved": false,
+  "halReturnObserved": false
+}

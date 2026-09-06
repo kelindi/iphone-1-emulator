@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "label": "actual failed Safari snapshot RAM filesystem",
+      "imageOffset": 6094848,
+      "filesystemSignature": "HX",
+      "blockSize": 4096,
+      "totalBlocks": 43008,
+      "catalogSHA256": "02e145815d9e4069b0211ea108bb01877f539c3788cbb452b18fc954786930d2",
+      "path": "/System/Library/LaunchDaemons/com.apple.SpringBoard.plist",
+      "forkBytes": 337,
+      "forkExtents": [
+        [
+          30870,
+          1
+        ]
+      ],
+      "plistSHA256": "6cec0567a7d8ec68b1f243d18b18e604d1ba06f155dc0fdee8f751174e3402bb",
+      "environment": {
+        "LK_ENABLE_MBX2D": "1",
+        "LK_ENABLE_OGL": "0"
+      }
+    },
+    {
+      "label": "actual retained091 installed filesystem image",
+      "imageOffset": 0,
+      "filesystemSignature": "HX",
+      "blockSize": 4096,
+      "totalBlocks": 43008,
+      "catalogSHA256": "eee2d4c066197f99ed8602c779d28fc7df9b1af7e7ababdfa82bf05871d24d18",
+      "path": "/System/Library/LaunchDaemons/com.apple.SpringBoard.plist",
+      "forkBytes": 333,
+      "forkExtents": [
+        [
+          30870,
+          1
+        ]
+      ],
+      "plistSHA256": "21fac95e3a412c7de94e71f21911088f07d86f1436b41d1ae84be321f3782858",
+      "environment": {
+        "LK_ENABLE_MBX2D": "0",
+        "LK_ENABLE_OGL": "0"
+      }
+    },
+    {
+      "label": "actual091 imported listener checkpoint RAM filesystem",
+      "imageOffset": 6094848,
+      "filesystemSignature": "HX",
+      "blockSize": 4096,
+      "totalBlocks": 43008,
+      "catalogSHA256": "f2e59858ffa2718fbdde4732ccb93cf6a6a056715ec5f617a287ecbc3e9d0275",
+      "path": "/System/Library/LaunchDaemons/com.apple.SpringBoard.plist",
+      "forkBytes": 333,
+      "forkExtents": [
+        [
+          30870,
+          1
+        ]
+      ],
+      "plistSHA256": "21fac95e3a412c7de94e71f21911088f07d86f1436b41d1ae84be321f3782858",
+      "environment": {
+        "LK_ENABLE_MBX2D": "0",
+        "LK_ENABLE_OGL": "0"
+      }
+    }
+  ],
+  "guestExecuted": false
+}

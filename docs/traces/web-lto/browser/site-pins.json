@@ -1,0 +1,47 @@
+{
+  "sites": {
+    "original": {
+      "app.js": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "dist/emu.wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "emu-worker.js": "68170ebc9558dca67d192f6e6119090384294e6614088b9509f3de9fc3ee20e2",
+      "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "index.html": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "phone.css": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    "candidate": {
+      "app.js": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "dist/emu.js": "f99be828cce8eb0d53fc57591be3ee6a7bf23a0a9aacba732be98508340be47a",
+      "dist/emu.wasm": "7a528805814b7cf8ad061a1f5d2fb70aeb316c8a12585dfb25d6d08752dca740",
+      "emu-worker.js": "68170ebc9558dca67d192f6e6119090384294e6614088b9509f3de9fc3ee20e2",
+      "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "index.html": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "phone.css": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+      "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    }
+  },
+  "origins": {
+    "original": "http://127.0.0.1:8222",
+    "candidate": "http://127.0.0.1:8223"
+  },
+  "fixture": {
+    "path": ".context/graphics-speed/fixed-dismiss.snap",
+    "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244"
+  },
+  "scope": "Current085 recovery frontend byteidentical botharms; original seed/loader. Only core/glue change to LTO; same preserved diagnostic worker counter seam. Fresh profiles, normal clock/autosave, prior fixed settled references."
+}

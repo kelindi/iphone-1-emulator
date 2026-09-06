@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "scriptChecks": 30,
+  "independentAbsoluteRemoteTransportReceipts": [
+    {
+      "phase": "disconnected-B",
+      "context": "page",
+      "url": "https://iphone.files.garden/offline-proof-1788675871712",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675871718
+    },
+    {
+      "phase": "disconnected-B",
+      "context": "dedicated worker",
+      "url": "https://iphone.files.garden/offline-proof-1788675871712-worker",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675871728
+    },
+    {
+      "phase": "disconnected-B",
+      "context": "service worker",
+      "url": "https://iphone.files.garden/offline-proof-1788675871712-sw",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675871734
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "context": "page",
+      "url": "https://iphone.files.garden/offline-proof-1788675885033",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675885037
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "context": "dedicated worker",
+      "url": "https://iphone.files.garden/offline-proof-1788675885033-worker",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675885046
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "context": "service worker",
+      "url": "https://iphone.files.garden/offline-proof-1788675885033-sw",
+      "failure": {
+        "errorText": "net::ERR_INTERNET_DISCONNECTED"
+      },
+      "at": 1788675885049
+    }
+  ],
+  "physicalLocalBarriers": [
+    {
+      "phase": "disconnected-B",
+      "originRequestCount": 56,
+      "listening": false,
+      "connectionsClosed": 1,
+      "refusal": {
+        "host": "127.0.0.1",
+        "port": 8202,
+        "code": "ECONNREFUSED",
+        "at": "2026-09-06T06:24:31.712Z"
+      },
+      "probes": {
+        "main": {
+          "url": "/offline-proof-1788675871712",
+          "error": "Failed to fetch"
+        },
+        "external": {
+          "url": "https://iphone.files.garden/offline-proof-1788675871712",
+          "error": "Failed to fetch"
+        },
+        "worker": [
+          {
+            "error": "Failed to execute 'fetch' on 'WorkerGlobalScope': Failed to parse URL from /offline-proof-1788675871712-worker"
+          },
+          {
+            "error": "Failed to fetch"
+          }
+        ],
+        "serviceWorker": {
+          "error": "Failed to fetch"
+        }
+      }
+    },
+    {
+      "phase": "corrupt-kernel-offline",
+      "originRequestCount": 68,
+      "listening": false,
+      "connectionsClosed": 1,
+      "refusal": {
+        "host": "127.0.0.1",
+        "port": 8202,
+        "code": "ECONNREFUSED",
+        "at": "2026-09-06T06:24:45.033Z"
+      },
+      "probes": {
+        "main": {
+          "url": "/offline-proof-1788675885033",
+          "error": "Failed to fetch"
+        },
+        "external": {
+          "url": "https://iphone.files.garden/offline-proof-1788675885033",
+          "error": "Failed to fetch"
+        },
+        "worker": [
+          {
+            "error": "Failed to execute 'fetch' on 'WorkerGlobalScope': Failed to parse URL from /offline-proof-1788675885033-worker"
+          },
+          {
+            "error": "Failed to fetch"
+          }
+        ],
+        "serviceWorker": {
+          "error": "Failed to fetch"
+        }
+      }
+    }
+  ],
+  "offlineSWHTTPResponses": 46,
+  "localBlobWorkerScriptResponses": 2,
+  "offlineNetworkResponses": 0,
+  "all56FrozenSourcePinsUnchanged": true,
+  "negativeControls": [
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675871712",
+      "rejected": true
+    },
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675871712-worker",
+      "rejected": true
+    },
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675871712-sw",
+      "rejected": true
+    },
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675885033",
+      "rejected": true
+    },
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675885033-worker",
+      "rejected": true
+    },
+    {
+      "removed": "https://iphone.files.garden/offline-proof-1788675885033-sw",
+      "rejected": true
+    },
+    {
+      "injectedNonSWOfflineResponse": true,
+      "rejected": true
+    }
+  ],
+  "excludedDiagnostic": "Both redundant Blob-worker relative local URLs failed parsing; not transport proof. Physical TCP refusal closes local-origin gap. Actual absolute remote probes are independently bound to network-error receipts in all three execution contexts. Original report and executed harness unchanged."
+}

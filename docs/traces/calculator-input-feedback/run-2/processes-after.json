@@ -1,0 +1,98 @@
+{
+  "at": 1788683729.7431772,
+  "processes": [
+    {
+      "pid": 3837710,
+      "ppid": 3837708,
+      "startTicks": "5340037",
+      "exe": "/usr/bin/coreutils",
+      "args": "/usr/bin/coreutils --coreutils-prog-shebang=timeout /usr/bin/timeout -k 5s 180s node web/tests/input-feedback.mjs "
+    },
+    {
+      "pid": 3837711,
+      "ppid": 3837710,
+      "startTicks": "5340037",
+      "exe": "/usr/local/bin/node",
+      "args": "node web/tests/input-feedback.mjs "
+    },
+    {
+      "pid": 3837723,
+      "ppid": 3837711,
+      "startTicks": "5340084",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/usr/bin/google-chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --remote-debugging-pipe --no-startup-window "
+    },
+    {
+      "pid": 3837730,
+      "ppid": 99,
+      "startTicks": "5340094",
+      "exe": "/opt/google/chrome/chrome_crashpad_handler",
+      "args": "/opt/google/chrome/chrome_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --database=/home/vercel-sandbox/.config/google-chrome/Crash Reports --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=lsb-release=Amazon Linux 2023.12.20260727 --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=152.0.7977.82 --initial-client-fd=7 --shared-client-connection "
+    },
+    {
+      "pid": 3837732,
+      "ppid": 99,
+      "startTicks": "5340094",
+      "exe": "/opt/google/chrome/chrome_crashpad_handler",
+      "args": "/opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler --database=/home/vercel-sandbox/.config/google-chrome/Crash Reports --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=lsb-release=Amazon Linux 2023.12.20260727 --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=152.0.7977.82 --initial-client-fd=4 --shared-client-connection "
+    },
+    {
+      "pid": 3837737,
+      "ppid": 3837723,
+      "startTicks": "5340095",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --no-sandbox --headless --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --no-first-run --ozone-platform=headless --ozone-override-screen-size=800,600 --use-angle=swiftshader-webgl "
+    },
+    {
+      "pid": 3837738,
+      "ppid": 3837723,
+      "startTicks": "5340095",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=zygote --no-sandbox --headless --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --no-first-run --ozone-platform=headless --ozone-override-screen-size=800,600 --use-angle=swiftshader-webgl "
+    },
+    {
+      "pid": 3837758,
+      "ppid": 3837737,
+      "startTicks": "5340103",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=gpu-process --no-sandbox --disable-dev-shm-usage --disable-breakpad --headless --ozone-platform=headless --use-angle=swiftshader-webgl --enable-unsafe-swiftshader --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --gpu-preferences=YAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAASAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAMAAAAAQAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708988185955192 "
+    },
+    {
+      "pid": 3837761,
+      "ppid": 3837723,
+      "startTicks": "5340103",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --disable-dev-shm-usage --use-angle=swiftshader-webgl --mute-audio --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708989122997041 "
+    },
+    {
+      "pid": 3837762,
+      "ppid": 3837738,
+      "startTicks": "5340106",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=utility --no-sandbox --disable-dev-shm-usage --use-angle=swiftshader-webgl --mute-audio --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708990060038890 "
+    },
+    {
+      "pid": 3837806,
+      "ppid": 3837738,
+      "startTicks": "5340112",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=renderer --top-chrome-webui --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --no-sandbox --disable-dev-shm-usage --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --ozone-platform=headless --disable-gpu-compositing --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=53401121589 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708990997080739 "
+    },
+    {
+      "pid": 3837815,
+      "ppid": 3837738,
+      "startTicks": "5340114",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=renderer --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --no-sandbox --disable-dev-shm-usage --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --ozone-platform=headless --disable-gpu-compositing --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=53401147751 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708992871164437 "
+    },
+    {
+      "pid": 3837817,
+      "ppid": 3837738,
+      "startTicks": "5340115",
+      "exe": "/opt/google/chrome/chrome",
+      "args": "/opt/google/chrome/chrome --type=renderer --crashpad-handler-pid=0 --enable-crash-reporter=, --noerrdialogs --user-data-dir=/tmp/playwright_chromiumdev_profile-5MRRAa --change-stack-guard-on-fork=enable --no-sandbox --disable-dev-shm-usage --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --ozone-platform=headless --disable-gpu-compositing --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=53401149911 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12133793559430935754,6438818123737894697,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,3045027244122882352,11562394149170207217,4 --trace-process-track-uuid=3190708991934122588 "
+    }
+  ],
+  "closedAt": 1788683815.3198853,
+  "remaining": []
+}

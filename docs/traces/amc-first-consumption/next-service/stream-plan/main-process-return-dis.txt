@@ -1,0 +1,16 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+312278a8 ldr      r3, [sp, #0x20]
+312278ac cmp      r3, #1
+312278b0 bne      #0x312278c8
+312278b4 bl       #0x312271a4 ('__ZN24MainChannelBufferManager11theInstanceEv', 0)
+312278b8 mov      r1, #0
+312278bc ldr      r2, [sp, #0x20]
+312278c0 ldr      r3, [sp, #0x24]
+312278c4 bl       #0x31227020 ('__ZN24MainChannelBufferManager20releaseProcessBufferEjbb', 0)
+312278c8 sub      sp, r7, #0x18
+312278cc pop      {r8, sl, fp}
+312278d0 pop      {r4, r5, r6, r7, lr}
+312278d4 add      sp, sp, #0xc
+312278d8 bx       lr
+312278dc andeq    r0, r0, r0
+312278e0 svclo    #0xf00000

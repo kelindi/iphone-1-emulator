@@ -1,0 +1,562 @@
+{
+  "passed": true,
+  "arms": {
+    "baseline": {
+      "exports": [
+        {
+          "name": "i",
+          "kind": "memory"
+        },
+        {
+          "name": "j",
+          "kind": "function"
+        },
+        {
+          "name": "k",
+          "kind": "function"
+        },
+        {
+          "name": "l",
+          "kind": "function"
+        },
+        {
+          "name": "m",
+          "kind": "function"
+        },
+        {
+          "name": "n",
+          "kind": "function"
+        },
+        {
+          "name": "o",
+          "kind": "function"
+        },
+        {
+          "name": "p",
+          "kind": "function"
+        },
+        {
+          "name": "q",
+          "kind": "function"
+        },
+        {
+          "name": "r",
+          "kind": "function"
+        },
+        {
+          "name": "s",
+          "kind": "function"
+        },
+        {
+          "name": "t",
+          "kind": "function"
+        },
+        {
+          "name": "u",
+          "kind": "function"
+        },
+        {
+          "name": "v",
+          "kind": "function"
+        },
+        {
+          "name": "w",
+          "kind": "function"
+        },
+        {
+          "name": "x",
+          "kind": "function"
+        },
+        {
+          "name": "y",
+          "kind": "function"
+        },
+        {
+          "name": "z",
+          "kind": "function"
+        },
+        {
+          "name": "A",
+          "kind": "function"
+        },
+        {
+          "name": "B",
+          "kind": "function"
+        },
+        {
+          "name": "C",
+          "kind": "function"
+        },
+        {
+          "name": "D",
+          "kind": "function"
+        },
+        {
+          "name": "E",
+          "kind": "function"
+        },
+        {
+          "name": "F",
+          "kind": "function"
+        },
+        {
+          "name": "G",
+          "kind": "function"
+        },
+        {
+          "name": "H",
+          "kind": "function"
+        },
+        {
+          "name": "I",
+          "kind": "function"
+        },
+        {
+          "name": "J",
+          "kind": "table"
+        },
+        {
+          "name": "K",
+          "kind": "function"
+        },
+        {
+          "name": "L",
+          "kind": "function"
+        },
+        {
+          "name": "M",
+          "kind": "function"
+        },
+        {
+          "name": "N",
+          "kind": "function"
+        },
+        {
+          "name": "O",
+          "kind": "function"
+        },
+        {
+          "name": "P",
+          "kind": "function"
+        },
+        {
+          "name": "Q",
+          "kind": "function"
+        },
+        {
+          "name": "R",
+          "kind": "function"
+        },
+        {
+          "name": "S",
+          "kind": "function"
+        },
+        {
+          "name": "T",
+          "kind": "function"
+        },
+        {
+          "name": "U",
+          "kind": "function"
+        },
+        {
+          "name": "V",
+          "kind": "function"
+        },
+        {
+          "name": "W",
+          "kind": "function"
+        }
+      ],
+      "imports": [
+        {
+          "module": "a",
+          "name": "a",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "b",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "c",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "d",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "e",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "f",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "g",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "h",
+          "kind": "function"
+        }
+      ],
+      "api": [
+        "_emu_button",
+        "_emu_button_state",
+        "_emu_clock_delay",
+        "_emu_cycles",
+        "_emu_error",
+        "_emu_frame",
+        "_emu_free_snapshot",
+        "_emu_host_clock",
+        "_emu_init",
+        "_emu_inputs_idle",
+        "_emu_jit_abi",
+        "_emu_jit_enable",
+        "_emu_jit_install",
+        "_emu_jit_offset",
+        "_emu_jit_reset",
+        "_emu_jit_retired",
+        "_emu_jit_span",
+        "_emu_jit_stale",
+        "_emu_jit_stat",
+        "_emu_load_snapshot",
+        "_emu_release_inputs",
+        "_emu_run",
+        "_emu_save_snapshot",
+        "_emu_serial_read",
+        "_emu_set_cpi",
+        "_emu_snapshot_advance",
+        "_emu_snapshot_begin",
+        "_emu_snapshot_data",
+        "_emu_snapshot_size",
+        "_emu_status",
+        "_emu_ticks",
+        "_emu_touch",
+        "_emu_touch_contacts",
+        "_free",
+        "_malloc"
+      ],
+      "jitABI": 1,
+      "offsets": [
+        0,
+        68,
+        65956,
+        65960,
+        65972,
+        66740,
+        65952,
+        67560,
+        67576,
+        256,
+        32,
+        12,
+        288,
+        280,
+        80,
+        284
+      ],
+      "sha256": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088"
+    },
+    "candidate": {
+      "exports": [
+        {
+          "name": "i",
+          "kind": "memory"
+        },
+        {
+          "name": "j",
+          "kind": "function"
+        },
+        {
+          "name": "k",
+          "kind": "function"
+        },
+        {
+          "name": "l",
+          "kind": "function"
+        },
+        {
+          "name": "m",
+          "kind": "function"
+        },
+        {
+          "name": "n",
+          "kind": "function"
+        },
+        {
+          "name": "o",
+          "kind": "function"
+        },
+        {
+          "name": "p",
+          "kind": "function"
+        },
+        {
+          "name": "q",
+          "kind": "function"
+        },
+        {
+          "name": "r",
+          "kind": "function"
+        },
+        {
+          "name": "s",
+          "kind": "function"
+        },
+        {
+          "name": "t",
+          "kind": "function"
+        },
+        {
+          "name": "u",
+          "kind": "function"
+        },
+        {
+          "name": "v",
+          "kind": "function"
+        },
+        {
+          "name": "w",
+          "kind": "function"
+        },
+        {
+          "name": "x",
+          "kind": "function"
+        },
+        {
+          "name": "y",
+          "kind": "function"
+        },
+        {
+          "name": "z",
+          "kind": "function"
+        },
+        {
+          "name": "A",
+          "kind": "function"
+        },
+        {
+          "name": "B",
+          "kind": "function"
+        },
+        {
+          "name": "C",
+          "kind": "function"
+        },
+        {
+          "name": "D",
+          "kind": "function"
+        },
+        {
+          "name": "E",
+          "kind": "function"
+        },
+        {
+          "name": "F",
+          "kind": "function"
+        },
+        {
+          "name": "G",
+          "kind": "function"
+        },
+        {
+          "name": "H",
+          "kind": "function"
+        },
+        {
+          "name": "I",
+          "kind": "function"
+        },
+        {
+          "name": "J",
+          "kind": "table"
+        },
+        {
+          "name": "K",
+          "kind": "function"
+        },
+        {
+          "name": "L",
+          "kind": "function"
+        },
+        {
+          "name": "M",
+          "kind": "function"
+        },
+        {
+          "name": "N",
+          "kind": "function"
+        },
+        {
+          "name": "O",
+          "kind": "function"
+        },
+        {
+          "name": "P",
+          "kind": "function"
+        },
+        {
+          "name": "Q",
+          "kind": "function"
+        },
+        {
+          "name": "R",
+          "kind": "function"
+        },
+        {
+          "name": "S",
+          "kind": "function"
+        },
+        {
+          "name": "T",
+          "kind": "function"
+        },
+        {
+          "name": "U",
+          "kind": "function"
+        },
+        {
+          "name": "V",
+          "kind": "function"
+        },
+        {
+          "name": "W",
+          "kind": "function"
+        }
+      ],
+      "imports": [
+        {
+          "module": "a",
+          "name": "a",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "b",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "c",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "d",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "e",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "f",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "g",
+          "kind": "function"
+        },
+        {
+          "module": "a",
+          "name": "h",
+          "kind": "function"
+        }
+      ],
+      "api": [
+        "_emu_button",
+        "_emu_button_state",
+        "_emu_clock_delay",
+        "_emu_cycles",
+        "_emu_error",
+        "_emu_frame",
+        "_emu_free_snapshot",
+        "_emu_host_clock",
+        "_emu_init",
+        "_emu_inputs_idle",
+        "_emu_jit_abi",
+        "_emu_jit_enable",
+        "_emu_jit_install",
+        "_emu_jit_offset",
+        "_emu_jit_reset",
+        "_emu_jit_retired",
+        "_emu_jit_span",
+        "_emu_jit_stale",
+        "_emu_jit_stat",
+        "_emu_load_snapshot",
+        "_emu_release_inputs",
+        "_emu_run",
+        "_emu_save_snapshot",
+        "_emu_serial_read",
+        "_emu_set_cpi",
+        "_emu_snapshot_advance",
+        "_emu_snapshot_begin",
+        "_emu_snapshot_data",
+        "_emu_snapshot_size",
+        "_emu_status",
+        "_emu_ticks",
+        "_emu_touch",
+        "_emu_touch_contacts",
+        "_free",
+        "_malloc"
+      ],
+      "jitABI": 1,
+      "offsets": [
+        0,
+        68,
+        65956,
+        65960,
+        65972,
+        66740,
+        65952,
+        67560,
+        67576,
+        256,
+        32,
+        12,
+        288,
+        280,
+        80,
+        284
+      ],
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    }
+  },
+  "seed": {
+    "revision": 1,
+    "offsets": [
+      0,
+      68,
+      65956,
+      65960,
+      65972,
+      66740,
+      65952,
+      67560,
+      67576,
+      256,
+      32,
+      12,
+      288,
+      280,
+      80,
+      284
+    ],
+    "moduleSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "regionsSha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+  }
+}

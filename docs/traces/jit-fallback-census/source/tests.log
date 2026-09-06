@@ -1,0 +1,3 @@
+collector focused contracts PASS
+386000 unique synthetic rows, zero overflow, 524288 capacity
+65 identical slot/stride keys: 64 admitted, explicit overflow, conservation PASS

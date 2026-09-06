@@ -1,0 +1,49 @@
+{
+  "sites": {
+    "original": {
+      "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "dist/emu.wasm": "7a72add6d886440f64a853511375ba51cbbb23f2263831b6a05c51fde7969088",
+      "emu-worker.js": "68170ebc9558dca67d192f6e6119090384294e6614088b9509f3de9fc3ee20e2",
+      "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    "candidate": {
+      "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "dist/emu.wasm": "4752729764601d23b8f073ec895f0d426a9cae9bb8de39fd1a33e5930bc21b59",
+      "emu-worker.js": "68170ebc9558dca67d192f6e6119090384294e6614088b9509f3de9fc3ee20e2",
+      "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "jit/abi.json": "2479b3980f530459e6b9de7e12314be02e8496d75ceaa22d6f609162a0891a60",
+      "jit/regions.json": "0ceea4be7ddcdd5dc880be6fe064c1770e38b2e6f1819092ed25c4e00a84ed3c",
+      "jit/seed.wasm": "43532cd26c7367058087f8baa9ecf9b3a88fa706cfd1c467e983954c1de28164",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "seed-jit.js": "630b7e9d319560ead52833047855d4e7051546d86fa3046a01655279491ed8ba",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    }
+  },
+  "origins": {
+    "original": "http://127.0.0.1:8214",
+    "candidate": "http://127.0.0.1:8215"
+  },
+  "fixture": {
+    "path": ".context/graphics-speed/fixed-dismiss.snap",
+    "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244"
+  },
+  "chrome": {
+    "path": "/usr/bin/google-chrome",
+    "sha256": "aea09d69ce7f24d5901f6bfb15dd44d0c856e793e0a498f8d8393ec7d2c308ec"
+  },
+  "scope": "Identical frozen census frontend before visible-recovery UI; isolated observer-free core/seed expansion only. Same normalSave/clock/input. Original independent settled references from declared1s+50ms method."
+}

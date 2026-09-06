@@ -1,0 +1,1 @@
+ld: symbol dyld_stub_binding_helper not found, normally in crt1.o/dylib1.o/bundle1.o for architecture armv6

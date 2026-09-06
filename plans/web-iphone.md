@@ -2,6 +2,29 @@
 
 Planning baseline: 2026-09-05, local commit `b0a7399`. This is a proposed implementation plan, not a claim that the features below are complete. The existing browser recordings demonstrate SpringBoard, Settings, Safari launches, and Home navigation; the other app workflows need verification.
 
+## Current execution priorities — 2026-09-06
+
+The physical web phone, all16 app launches, several persistent organizer workflows,
+RTC updates and compiled-seed reuse are implemented. The full product gates below
+are still open. [The project overview](README.md) links current evidence.
+
+1. Correct actual populated-app graphics failures. The maintained Safari service
+   reaches pages but stalls at a form; Photos discovers two images but fails its
+   next-image transition. Preserve these first failures in [093](../tweets/093_default_local_demo_qualification_failure.md)
+   and [094](../tweets/094_photos_first_workflow_failure.md). A bounded Safari
+   source-stride correction passes native and actual WASM tests; browser validation
+   is pending. Its effect on Photos is unproven.
+2. Establish why the own HTTP daemon disappears on the accelerated default before
+   distributing it. Original exit/signal paths are qualified; no runtime cause or
+   lifecycle fix is established. Earlier successful091 used software composition.
+3. Target app-launch CPU work using exact executed-instruction counts. LTO's5.81%
+   fixed-work improvement yields only~50ms warm Settings median improvement and a
+   Home tail regression, so it stays parked. Calculator feedback passes its narrow
+   150ms gate, while multi-second app launches remain below target.
+4. Resume downstream audio after these blocking graphics workflows are understood.
+   Guest PCM consumption is verified in an isolated model; audible output, Camera,
+   external networking, rotation and broad media functionality remain open.
+
 ## Product destination
 
 Open a URL and see an original iPhone: silver rim, black glass, earpiece, a real 320×480 guest display, and clickable Home, sleep/wake, volume, and ringer controls. Unlock it, type on its keyboard, swipe lists, open every original app, play music, take a picture, browse compatible sites, and keep your data when you return.
@@ -31,13 +54,13 @@ These are proposed release gates, to be measured on the agreed reference laptops
 
 ## All 16 original apps: intended release behavior
 
-All rows below are targets. Except for the documented Settings/Safari navigation, current functionality is unverified until milestone 0.
+All rows below remain release targets. Current accepted workflows and failures are tracked in [the app audit](app-coverage.md) and [execution log](execution.md); the initial planning baseline above is historical.
 
 | App | Workflow that must work | Dependencies and practical boundary |
 |---|---|---|
 | Text | Open a seeded conversation, send a message to a demo contact, receive a scripted reply, delete it, and retain history. | Minimal simulated baseband/SIM/SMS behavior consumed by genuine CommCenter. Real carrier SMS is outside the initial target. |
 | Calendar | Create, edit, and delete an event; browse dates; fire an alert while the emulator is running. | Writable guest data, clock, persistence, and audio. External calendar sync is optional. |
-| Photos | Browse imported/demo albums, swipe, pinch zoom, rotate between portrait/landscape, and use supported slideshow controls. | Import must generate the guest's expected database and thumbnails, not merely copy JPEGs. Graphics, multi-contact input, and accelerometer. |
+| Photos | Browse imported/demo albums, swipe, pinch zoom, rotate between portrait/landscape, and use supported slideshow controls. | Original Camera Roll now discovers guest-created DCF JPEG/THM pairs; synced albums still need their database. Populated navigation currently fails rendering. Graphics, multi-contact input, and accelerometer remain dependencies. |
 | Camera | Preview a webcam or deterministic test scene, take a photo inside Camera, and see it in Photos after reload. | Camera sensor/controller emulation and guest media integration. Webcam capture alone does not make Camera work. |
 | YouTube | Browse/search a curated catalog and play a permitted, compatible-format clip with sound in the original app. | Reverse-engineered service responses and guest video decode/rendering. Arbitrary current YouTube accounts, DRM, and full catalog parity are outside the initial target. |
 | Stocks | Add/remove a supported symbol, view quote and chart, retain the list. | Compatible service with a fixed demo dataset first; optional live provider with source/time labels. |

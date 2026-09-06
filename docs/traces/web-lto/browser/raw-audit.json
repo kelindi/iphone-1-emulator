@@ -1,0 +1,1682 @@
+{
+  "passed": true,
+  "stages": 88,
+  "rawPairs": 88,
+  "referenceComparisons": 88,
+  "actualAssetArms": 4,
+  "originalFirstArmFailedClosureAndTruncatedRecording": true,
+  "rows": [
+    {
+      "folder": "measured/1-original",
+      "name": "C0-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "C0-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H1-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H1-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H2-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H2-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H3-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H3-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H4-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H4-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H5-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H5-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H6-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H6-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H7-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H7-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H8-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H8-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H9-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H9-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H10-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "measured/1-original",
+      "name": "H10-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "C0-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "C0-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H1-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H1-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H2-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H2-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H3-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H3-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H4-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H4-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H5-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H5-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H6-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H6-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H7-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H7-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H8-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H8-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H9-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H9-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H10-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/2-candidate",
+      "name": "H10-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "C0-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "C0-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H1-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H1-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H2-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H2-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H3-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H3-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H4-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H4-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H5-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H5-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H6-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H6-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H7-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H7-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H8-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H8-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H9-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H9-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H10-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/3-candidate",
+      "name": "H10-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "C0-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "C0-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H1-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H1-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H2-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H2-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H3-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H3-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H4-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H4-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H5-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H5-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H6-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H6-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H7-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H7-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H8-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H8-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H9-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H9-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H10-settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b"
+    },
+    {
+      "folder": "continuation/4-original",
+      "name": "H10-home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+--- stage-p/source/continuation.inc
++++ stage-q/source/continuation.inc
+@@ -79,7 +79,8 @@
+  return false;
+ }
+ static void continuation_done(void){
+- if(in_guest||machine.cpu.cycles!=release_cycles+1)stop("release store not retired",0,0,0);
++ if(!release_finish_valid(&current_step,release_cycles,release_pc,release_cpsr,release_instruction,machine.cpu.cycles,machine.cpu.r[15],machine.cpu.cpsr,in_guest))stop("release store not retired",0,0,0);
++ printf("RELEASE RETIRED startCycles%llu callbackCycles%llu endCycles%llu startPC%08x afterPC%08x startCPSR%08x afterCPSR%08x instruction%08x emuRunReturned%u inGuest%u\n",(unsigned long long)current_step.cycles,(unsigned long long)release_cycles,(unsigned long long)machine.cpu.cycles,current_step.pc,machine.cpu.r[15],current_step.cpsr,machine.cpu.cpsr,release_instruction,current_step.returned,in_guest);
+  if(!consume_complete(&consumed)||(!ipc_complete&&!copy_complete)||!output_ack||!output_enabled||!service_requested||!release_path||
+     (release_pc!=0xc0272690&&release_pc!=0xc02726a8&&release_pc!=0xc02726c4))stop("release without complete handoff evidence",release_pc,consumed.covered,0);
+  if(memcmp(sram.bytes+AMC_OUTPUT0,consumed.expected,CONSUME_BYTES)||first_owner()!=1)stop("released PCM changed",0,0,0);
+--- stage-p/source/probe.c
++++ stage-q/source/probe.c
+@@ -14,6 +14,7 @@
+ #include "admission.h"
+ #include "ordering.h"
+ #include "later.h"
++#include "retirement.h"
+ #include <setjmp.h>
+ static arm_bus_t original;
+ static amc_sram_t sram, expected;
+@@ -38,6 +39,8 @@
+ static order_log ordering;
+ static unsigned later_requests;
+ static bool user_boundary_saved;
++static guest_step current_step;
++static uint32_t release_instruction;
+ static uint8_t later_inputs[2][16384];
+ static dma_observer dma_observed;
+ static void later_boundary(unsigned);
+@@ -192,6 +195,13 @@
+   if(engine_started){
+    printf("ENGINE SRAM W %08x width%u value%08x pc%08x\n",a,w,v,machine.cpu.r[15]);
+    unsigned owner=sram.bytes[AMC_HEADER+8]|(unsigned)sram.bytes[AMC_HEADER+9]<<8;
++   if(first_saved&&a==0x2200f208u&&w==2&&v==1&&owner==0){
++    uint8_t code[4];
++    if(!amc_peek_ram(&machine.cpu,machine.ram,machine.ram_base,machine.ram_size,machine.cpu.r[15],code,4))stop("release instruction inspection unavailable",a,v,w);
++    release_instruction=code[0]|(uint32_t)code[1]<<8|(uint32_t)code[2]<<16|(uint32_t)code[3]<<24;
++    if(!in_guest||!release_start_valid(&current_step,machine.cpu.cycles,machine.cpu.r[15],machine.cpu.cpsr,release_instruction))stop("release instruction start differs",a,v,w);
++    printf("RELEASE STEP startCycles%llu startPC%08x startCPSR%08x instruction%08x callbackCycles%llu callbackPC%08x callbackCPSR%08x\n",(unsigned long long)current_step.cycles,current_step.pc,current_step.cpsr,release_instruction,(unsigned long long)machine.cpu.cycles,machine.cpu.r[15],machine.cpu.cpsr);
++   }
+    if(amc_engine_sram_write(&engine,a-AMC_SRAM_BASE,w,v)!=AMC_ENGINE_OK)stop("unsupported engine SRAM write",a,v,w);
+    unsigned after=sram.bytes[AMC_HEADER+8]|(unsigned)sram.bytes[AMC_HEADER+9]<<8;
+    if(first_saved&&a==0x2200f208u)printf("OWNER WRITE accepted address%08x width%u value%08x before%u after%u cycles%llu pc%08x cpsr%08x\n",a,w,v,owner,after,(unsigned long long)machine.cpu.cycles,machine.cpu.r[15],machine.cpu.cpsr);
+@@ -387,7 +397,9 @@
+    if(command_cycles&&!first_input_cycles&&machine.cpu.cycles-command_cycles>=5000000)stop("pre-input retirement cap",0,0,0);
+    if(first_input_cycles&&machine.cpu.cycles-first_input_cycles>=5000000)stop("post-input retirement cap",0,0,0);
+    if(first_saved&&machine.cpu.cycles-first_publication_cycles>=5000000)stop("post-publication retirement cap",0,0,0);
+-   uint64_t before=machine.cpu.cycles;in_guest=true;emu_run(1);in_guest=false;
++   uint64_t before=machine.cpu.cycles;
++   current_step=(guest_step){.cycles=before,.pc=machine.cpu.r[15],.cpsr=machine.cpu.cpsr,.active=true};
++   in_guest=true;emu_run(1);in_guest=false;current_step.active=false;current_step.returned=true;
+    if(machine.cpu.cycles!=before+1)stop("unexpected one-step retirement",0,0,0);
+    if(ordering.pending){
+     if(order_finish(&ordering,&machine.cpu)!=ORDER_OK)stop("ordering retirement boundary differs",0,ordering.count,0);
+--- stage-p/source/retirement.h
++++ stage-q/source/retirement.h
+@@ -0,0 +1,20 @@
++#ifndef AMC_RELEASE_RETIREMENT_H
++#define AMC_RELEASE_RETIREMENT_H
++#include <stdint.h>
++#include <stdbool.h>
++typedef struct {uint64_t cycles;uint32_t pc,cpsr;bool active,returned;} guest_step;
++static bool release_opcode(uint32_t pc,uint32_t op,uint32_t cpsr){
++ return (pc==0xc0272690&&op==0x01c120b0&&(cpsr&(1u<<30)))||
++ ((pc==0xc02726a8||pc==0xc02726c4)&&op==0xe1c030b0);
++}
++static bool release_start_valid(const guest_step*s,uint64_t callback,uint32_t pc,uint32_t cpsr,uint32_t opcode){
++ return s&&s->active&&!s->returned&&s->cycles!=UINT64_MAX&&callback==s->cycles+1&&pc==s->pc&&cpsr==s->cpsr&&
++ (cpsr&0x3f)==0x13&&release_opcode(pc,opcode,cpsr);
++}
++static bool release_finish_valid(const guest_step*s,uint64_t callback,uint32_t pc,uint32_t cpsr,uint32_t opcode,
++ uint64_t end,uint32_t after_pc,uint32_t after_cpsr,bool in_guest){
++ if(!s||s->active||!s->returned||in_guest)return false;
++ guest_step began=*s;began.active=true;began.returned=false;
++ return release_start_valid(&began,callback,pc,cpsr,opcode)&&end==s->cycles+1&&after_pc==pc+4&&after_cpsr==cpsr;
++}
++#endif
+--- stage-p/source/test_retirement.c
++++ stage-q/source/test_retirement.c
+@@ -0,0 +1,16 @@
++#include "retirement.h"
++#include <assert.h>
++#include <stdio.h>
++static unsigned n;
++#define CHECK(x) do{n++;assert(x);}while(0)
++int main(void){guest_step s={100,0xc02726a8,0x20000013,true,false};
++ CHECK(release_start_valid(&s,101,s.pc,s.cpsr,0xe1c030b0));
++ CHECK(!release_start_valid(&s,100,s.pc,s.cpsr,0xe1c030b0));CHECK(!release_start_valid(&s,102,s.pc,s.cpsr,0xe1c030b0));CHECK(!release_start_valid(&s,101,s.pc+4,s.cpsr,0xe1c030b0));CHECK(!release_start_valid(&s,101,s.pc,s.cpsr^0x20,0xe1c030b0));CHECK(!release_start_valid(&s,101,s.pc,s.cpsr,0xe1c030b1));
++ CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+4,s.cpsr,false));s.active=false;s.returned=true;
++ CHECK(release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+4,s.cpsr,false));
++ for(unsigned delta=0;delta<9;delta++)if(delta!=4)CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+delta,s.cpsr,false));
++ for(unsigned bit=0;bit<32;bit++)CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+4,s.cpsr^(1u<<bit),false));
++ CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,100,s.pc+4,s.cpsr,false));CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,102,s.pc+4,s.cpsr,false));CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+4,s.cpsr,true));CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,0xffff0018,0x92,false));
++ s.returned=false;CHECK(!release_finish_valid(&s,101,s.pc,s.cpsr,0xe1c030b0,101,s.pc+4,s.cpsr,false));
++ s=(guest_step){100,0xc0272690,0x60000013,true,false};CHECK(release_start_valid(&s,101,s.pc,s.cpsr,0x01c120b0));s.cpsr^=1u<<30;CHECK(!release_start_valid(&s,101,s.pc,s.cpsr,0x01c120b0));
++ printf("actual instruction-start/return retirement: %u PASS; synthetic only\n",n);}
+--- stage-p/source/test_service.c
++++ stage-q/source/test_service.c
+@@ -14,7 +14,8 @@
+  sram.bytes[AMC_HEADER+8]=1;reject_boundary("third work cap");CHECK(service_calls==0);
+  /* A genuine release is tested before the same third-work opportunity. */
+  release_pending=release_path=ipc_complete=output_ack=output_enabled=service_requested=true;
+- release_pc=0xc02726a8;release_cycles=100;machine.cpu.cycles=100;
++ release_pc=0xc02726a8;release_cycles=101;release_cpsr=ARM_MODE_SVC;release_instruction=0xe1c030b0;machine.cpu.cycles=100;
++ current_step=(guest_step){.cycles=100,.pc=release_pc,.cpsr=release_cpsr,.returned=true};machine.cpu.r[15]=release_pc+4;machine.cpu.cpsr=release_cpsr;
+  for(unsigned i=0;i<sizeof pcm;i++)CHECK(consume_read(&consumed,CONSUME_BASE+i,1,pcm[i],true,0)==CONSUME_ACCEPT);
+  memcpy(sram.bytes+AMC_OUTPUT0,pcm,sizeof pcm);reject_boundary("unretired store");CHECK(service_calls==0);
+  machine.cpu.cycles=101;in_guest=true;reject_boundary("still inside guest");in_guest=false;
+@@ -24,9 +25,11 @@
+  original.read32=fake_clock;enabled=true;idle.enabled=idle.de_complete=true;engine.initialized=true;
+  release_pending=false;result=0;machine.cpu.cycles=200;machine.cpu.r[15]=0xc02726a8;machine.cpu.cpsr=ARM_MODE_SVC;
+  writebus(&machine,0x2200f208,2,1);CHECK(!release_pending); /* idempotent1→1 */
++ uint32_t opcode=0xe1c030b0;machine.ram=(uint8_t*)&opcode;machine.ram_base=release_pc;machine.ram_size=4;
++ current_step=(guest_step){.cycles=199,.pc=release_pc,.cpsr=ARM_MODE_SVC,.active=true};in_guest=true;
+  sram.bytes[AMC_HEADER+8]=0;writebus(&machine,0x2200f208,2,1);
+  CHECK(release_pending&&release_cycles==200&&release_pc==0xc02726a8);CHECK(sram.bytes[AMC_HEADER+8]==1);CHECK(engine.host_writes[AMC_HEADER+8]);
+- reject_boundary("actual store still unretired");machine.cpu.cycles=201;result=0;service_boundary();CHECK(result==6&&service_calls==0&&engine.published_frames==2);
++ reject_boundary("actual store still unretired");in_guest=false;current_step.active=false;current_step.returned=true;machine.cpu.r[15]=release_pc+4;result=0;service_boundary();CHECK(result==6&&service_calls==0&&engine.published_frames==2);
+  /* A fourth request is rejected before device/SRAM/ownership mutation. */
+  third_input_cycles=9873362515ull;before_engine=engine;before_sram=sram;result=0;
+  if(!setjmp(finish)){writebus(&machine,0x3850100c,4,1);CHECK(false);}

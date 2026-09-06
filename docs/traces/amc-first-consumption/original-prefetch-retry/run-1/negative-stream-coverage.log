@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/stream-audit.py", line 104, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/stream-audit.py", line 57, in run
+    assert (p/f'stream-seen-{n}.bin').read_bytes()==seen[i] and (p/f'stream-coverage-{n}.bin').read_bytes()==cover[i],'generation read receipt differs'
+AssertionError: generation read receipt differs

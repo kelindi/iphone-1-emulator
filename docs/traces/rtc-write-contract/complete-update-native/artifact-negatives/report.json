@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "guestRuns": 0,
+  "cases": [
+    {
+      "case": "wrong-active-second",
+      "exitCode": 1
+    },
+    {
+      "case": "wrong-fraction",
+      "exitCode": 1
+    },
+    {
+      "case": "premature-pulse",
+      "exitCode": 1
+    },
+    {
+      "case": "missing-pending-byte",
+      "exitCode": 1
+    },
+    {
+      "case": "changed-wire-byte",
+      "exitCode": 1
+    },
+    {
+      "case": "wrong-retirement-count",
+      "exitCode": 1
+    },
+    {
+      "case": "unsupported-write",
+      "exitCode": 1
+    }
+  ]
+}

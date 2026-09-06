@@ -1,0 +1,965 @@
+{
+  "scope": "New successful disposable profile only; all scoped processes alreadyclosed. Entire IndexedDB,LocalStorage,SessionStorage and Preferences retained outside profile. HTTP/Code caches not reused or needed for this fresh-profile comparison. No oldprofile/fixture mutated.",
+  "freeBefore": 5134102528,
+  "inventory": [
+    {
+      "path": "Variations",
+      "bytes": 85
+    },
+    {
+      "path": "VariationsSeedV2",
+      "bytes": 11
+    },
+    {
+      "path": "VariationsSafeSeedV2",
+      "bytes": 19
+    },
+    {
+      "path": "Local State",
+      "bytes": 3542
+    },
+    {
+      "path": "Last Version",
+      "bytes": 13
+    },
+    {
+      "path": "first_party_sets.db",
+      "bytes": 49152
+    },
+    {
+      "path": "first_party_sets.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "BrowserMetrics-spare.pma",
+      "bytes": 4194304
+    },
+    {
+      "path": "component_crx_cache/metadata.json",
+      "bytes": 13
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.db",
+      "bytes": 4096
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.journal",
+      "bytes": 0
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.db-wal",
+      "bytes": 12392
+    },
+    {
+      "path": "segmentation_platform/ukm_db",
+      "bytes": 49152
+    },
+    {
+      "path": "Default/README",
+      "bytes": 180
+    },
+    {
+      "path": "Default/History",
+      "bytes": 163840
+    },
+    {
+      "path": "Default/History-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/ServerCertificate",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Web Data",
+      "bytes": 169984
+    },
+    {
+      "path": "Default/Web Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/ServerCertificate-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Affiliation Database",
+      "bytes": 53248
+    },
+    {
+      "path": "Default/Affiliation Database-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Login Data For Account",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/Login Data",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/Login Data For Account-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Login Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/engine_allowlist.bf",
+      "bytes": 360
+    },
+    {
+      "path": "Default/Favicons",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Favicons-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Account Web Data",
+      "bytes": 77824
+    },
+    {
+      "path": "Default/Account Web Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Top Sites",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Top Sites-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Trust Tokens",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Trust Tokens-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Cookies",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Cookies-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Reporting and NEL",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Reporting and NEL-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/trusted_vault.pb",
+      "bytes": 84
+    },
+    {
+      "path": "Default/declarative_performance_observer.db",
+      "bytes": 32768
+    },
+    {
+      "path": "Default/declarative_performance_observer.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/heavy_ad_intervention_opt_out.db",
+      "bytes": 16384
+    },
+    {
+      "path": "Default/heavy_ad_intervention_opt_out.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Shortcuts",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Shortcuts-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/DIPS",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Network Action Predictor",
+      "bytes": 53248
+    },
+    {
+      "path": "Default/Network Action Predictor-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/PreferredApps",
+      "bytes": 33
+    },
+    {
+      "path": "Default/BookmarkMergedSurfaceOrdering",
+      "bytes": 4
+    },
+    {
+      "path": "Default/Secure Preferences",
+      "bytes": 95
+    },
+    {
+      "path": "Default/Preferences",
+      "bytes": 15294
+    },
+    {
+      "path": "Default/Network Persistent State",
+      "bytes": 1303
+    },
+    {
+      "path": "Default/TransportSecurity",
+      "bytes": 188
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/LOG",
+      "bytes": 355
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/000003.log",
+      "bytes": 118
+    },
+    {
+      "path": "Default/Cache/Cache_Data/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Cache/Cache_Data/5761d302839d26b6_0",
+      "bytes": 3785
+    },
+    {
+      "path": "Default/Cache/Cache_Data/e521e576d7c34e5f_0",
+      "bytes": 5917
+    },
+    {
+      "path": "Default/Cache/Cache_Data/53f85942c410af9e_0",
+      "bytes": 9801
+    },
+    {
+      "path": "Default/Cache/Cache_Data/2c6091ba1d285ef5_0",
+      "bytes": 19005
+    },
+    {
+      "path": "Default/Cache/Cache_Data/59f18734d460630e_0",
+      "bytes": 787
+    },
+    {
+      "path": "Default/Cache/Cache_Data/e8c2539b193076e2_0",
+      "bytes": 12091
+    },
+    {
+      "path": "Default/Cache/Cache_Data/b38f3178529f7bcd_0",
+      "bytes": 18171
+    },
+    {
+      "path": "Default/Cache/Cache_Data/ceaab27b1369927a_0",
+      "bytes": 10024
+    },
+    {
+      "path": "Default/Cache/Cache_Data/0a816f333f2167c6_0",
+      "bytes": 12341850
+    },
+    {
+      "path": "Default/Cache/Cache_Data/f8ceb0d3b35b24e6_0",
+      "bytes": 75321
+    },
+    {
+      "path": "Default/Cache/Cache_Data/9b9264a2a3221e04_0",
+      "bytes": 776
+    },
+    {
+      "path": "Default/Cache/Cache_Data/dfc31e455c4723b8_0",
+      "bytes": 2806
+    },
+    {
+      "path": "Default/Cache/Cache_Data/cea207b5a8f32a79_0",
+      "bytes": 1639
+    },
+    {
+      "path": "Default/Cache/Cache_Data/a3dbd540f4ebf43a_0",
+      "bytes": 5891597
+    },
+    {
+      "path": "Default/Cache/Cache_Data/9681bb19c3cc30e1_0",
+      "bytes": 39602
+    },
+    {
+      "path": "Default/Cache/Cache_Data/995a041187c9a02d_0",
+      "bytes": 50203867
+    },
+    {
+      "path": "Default/Cache/Cache_Data/4adac90341c04704_0",
+      "bytes": 50203862
+    },
+    {
+      "path": "Default/Cache/Cache_Data/06ab608e8e36fb3d_0",
+      "bytes": 250948
+    },
+    {
+      "path": "Default/Cache/Cache_Data/8b5eb3f74ce5a507_0",
+      "bytes": 1035
+    },
+    {
+      "path": "Default/Cache/Cache_Data/8aff97031704ca1a_0",
+      "bytes": 9489
+    },
+    {
+      "path": "Default/Cache/Cache_Data/index-dir/the-real-index",
+      "bytes": 528
+    },
+    {
+      "path": "Default/Cache/No_Vary_Search/snapshot.baf",
+      "bytes": 20
+    },
+    {
+      "path": "Default/Cache/No_Vary_Search/journal.baj",
+      "bytes": 4
+    },
+    {
+      "path": "Default/Shared Dictionary/db",
+      "bytes": 45056
+    },
+    {
+      "path": "Default/Shared Dictionary/db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Shared Dictionary/cache/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Shared Dictionary/cache/index-dir/the-real-index",
+      "bytes": 48
+    },
+    {
+      "path": "Default/Code Cache/js/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Code Cache/js/222536dd523006ba_0",
+      "bytes": 191
+    },
+    {
+      "path": "Default/Code Cache/js/28c0e74e3922c0f8_0",
+      "bytes": 195
+    },
+    {
+      "path": "Default/Code Cache/js/192d29f7e0a85c37_0",
+      "bytes": 194
+    },
+    {
+      "path": "Default/Code Cache/js/index-dir/the-real-index",
+      "bytes": 120
+    },
+    {
+      "path": "Default/Code Cache/wasm/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Code Cache/wasm/5958ab8a66279eaf_0",
+      "bytes": 238
+    },
+    {
+      "path": "Default/Code Cache/wasm/9660fd464aa2d4ae_0",
+      "bytes": 1216869
+    },
+    {
+      "path": "Default/Code Cache/wasm/0084878f988b3ff4_0",
+      "bytes": 2585272
+    },
+    {
+      "path": "Default/Code Cache/wasm/5cdff4efaccf3bcf_0",
+      "bytes": 4038669
+    },
+    {
+      "path": "Default/Code Cache/wasm/7fbde9d8fe6f3dce_0",
+      "bytes": 5159598
+    },
+    {
+      "path": "Default/Code Cache/wasm/c45b91475bd13173_0",
+      "bytes": 6452351
+    },
+    {
+      "path": "Default/Code Cache/wasm/b444edde403f7924_0",
+      "bytes": 7848405
+    },
+    {
+      "path": "Default/Code Cache/wasm/337449ac4cefe386_0",
+      "bytes": 9190573
+    },
+    {
+      "path": "Default/Code Cache/wasm/d57cd22c573d0b7e_0",
+      "bytes": 10940134
+    },
+    {
+      "path": "Default/Code Cache/wasm/801e3a52cc32c437_0",
+      "bytes": 12161989
+    },
+    {
+      "path": "Default/Code Cache/wasm/66f24cac677e0ea9_0",
+      "bytes": 13412500
+    },
+    {
+      "path": "Default/Code Cache/wasm/18dd44636287578c_0",
+      "bytes": 14546374
+    },
+    {
+      "path": "Default/Code Cache/wasm/e4c4c750745f0d61_0",
+      "bytes": 15930391
+    },
+    {
+      "path": "Default/Code Cache/wasm/0c3e6f095792c3d6_0",
+      "bytes": 17130739
+    },
+    {
+      "path": "Default/Code Cache/wasm/f7deafe94486ba2c_0",
+      "bytes": 19774193
+    },
+    {
+      "path": "Default/Code Cache/wasm/cab4aa70926a677d_0",
+      "bytes": 20898819
+    },
+    {
+      "path": "Default/Code Cache/wasm/index-dir/the-real-index",
+      "bytes": 432
+    },
+    {
+      "path": "Default/ClientCertificates/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/ClientCertificates/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Site Characteristics Database/LOG",
+      "bytes": 379
+    },
+    {
+      "path": "Default/Site Characteristics Database/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Site Characteristics Database/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Site Characteristics Database/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Site Characteristics Database/000003.log",
+      "bytes": 112
+    },
+    {
+      "path": "Default/discounts_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discounts_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/chrome_cart_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/chrome_cart_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discount_infos_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discount_infos_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/parcel_tracking_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/parcel_tracking_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/commerce_subscription_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/commerce_subscription_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SegmentInfoDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SegmentInfoDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalStorageConfigDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalStorageConfigDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Local Storage/leveldb/LOG",
+      "bytes": 363
+    },
+    {
+      "path": "Default/Local Storage/leveldb/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Local Storage/leveldb/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Local Storage/leveldb/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Local Storage/leveldb/000003.log",
+      "bytes": 49
+    },
+    {
+      "path": "Default/PersistentOriginTrials/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/PersistentOriginTrials/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Rules/LOG",
+      "bytes": 351
+    },
+    {
+      "path": "Default/Extension Rules/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Rules/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension Rules/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension Rules/000003.log",
+      "bytes": 19
+    },
+    {
+      "path": "Default/Extension Scripts/LOG",
+      "bytes": 355
+    },
+    {
+      "path": "Default/Extension Scripts/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Scripts/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension Scripts/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension Scripts/000003.log",
+      "bytes": 19
+    },
+    {
+      "path": "Default/Sessions/Session_13433163328146322",
+      "bytes": 2311
+    },
+    {
+      "path": "Default/Sessions/Tabs_13433163447520337",
+      "bytes": 1999
+    },
+    {
+      "path": "Default/GPUCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/GPUCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/GPUCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/GPUCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/GPUCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/Session Storage/LOG",
+      "bytes": 351
+    },
+    {
+      "path": "Default/Session Storage/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Session Storage/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Session Storage/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Session Storage/000003.log",
+      "bytes": 87
+    },
+    {
+      "path": "Default/shared_proto_db/LOG",
+      "bytes": 351
+    },
+    {
+      "path": "Default/shared_proto_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/shared_proto_db/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/shared_proto_db/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/shared_proto_db/000003.log",
+      "bytes": 7371
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/LOG",
+      "bytes": 369
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/000003.log",
+      "bytes": 880
+    },
+    {
+      "path": "Default/Extension State/LOG",
+      "bytes": 351
+    },
+    {
+      "path": "Default/Extension State/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension State/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension State/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension State/000003.log",
+      "bytes": 57
+    },
+    {
+      "path": "Default/WebStorage/QuotaManager",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/WebStorage/QuotaManager-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/LOG",
+      "bytes": 415
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/MANIFEST-000001",
+      "bytes": 23
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/000003.log",
+      "bytes": 7180
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.blob/1/00/7",
+      "bytes": 103943641
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.blob/1/00/8",
+      "bytes": 103319898
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/index.txt",
+      "bytes": 180
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/279a748add17d2e0_0",
+      "bytes": 5889106
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/3b02ceb2515927e6_0",
+      "bytes": 37075
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/8058b51b95b27318_0",
+      "bytes": 50201372
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/67e717e0f1049d7c_0",
+      "bytes": 50201371
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/6b25769362bc8dbe7c0fdbacd9f4530e81e07ead/cd1a77c5-68a4-4bc3-a364-fe9b86ae684a/index-dir/the-real-index",
+      "bytes": 144
+    },
+    {
+      "path": "Default/AutofillAiModelCache/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillAiModelCache/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillStrikeDatabase/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillStrikeDatabase/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/BudgetDatabase/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/BudgetDatabase/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/GCM Store/LOG",
+      "bytes": 339
+    },
+    {
+      "path": "Default/GCM Store/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/GCM Store/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/GCM Store/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/GCM Store/000003.log",
+      "bytes": 1142
+    },
+    {
+      "path": "extensions_crx_cache/metadata.json",
+      "bytes": 13
+    }
+  ],
+  "preserved": [
+    "Default/IndexedDB",
+    "Default/Local Storage",
+    "Default/Session Storage",
+    "Default/Preferences",
+    "Local State"
+  ],
+  "savedFileHashes": {
+    "Local State": {
+      "bytes": 3542,
+      "sha256": "cbb76ca605b69ca4fd9e6be0adbb0f717b51469c42a0bb1e5f4080587b41c1d7"
+    },
+    "Default/Preferences": {
+      "bytes": 15294,
+      "sha256": "5c298be59e4b6c0b258f431d6ec1b7adf0d69b64ac956c148ceb8bf2e7249484"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/LOG": {
+      "bytes": 415,
+      "sha256": "102201fee3d866aeefbd9cda00397dd799cca619f0c84b1d59293a98dfe674d9"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/MANIFEST-000001": {
+      "bytes": 23,
+      "sha256": "720a78803b84cbcc8eb204d5cf8ea6ee2f693be0ab2124ddf2b81455de02a3ed"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.leveldb/000003.log": {
+      "bytes": 7180,
+      "sha256": "960305f466bfc774fd5fd946314bdd178bae7c3d8de1794f1f2b8efaf44d1e93"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.blob/1/00/7": {
+      "bytes": 103943641,
+      "sha256": "5bf6299ba04bc96c1b74c5265a8c65d030042418e7e1f61bf1eb432b251e2468"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8222.indexeddb.blob/1/00/8": {
+      "bytes": 103319898,
+      "sha256": "cde99d76c86ccc2d5ac85a1ef3391806b43160f954ef7802aecf2458d139eb19"
+    },
+    "Default/Local Storage/leveldb/LOG": {
+      "bytes": 363,
+      "sha256": "91618150834a871aeceb25dc5fa56e3ea07eeec242e107d504bef8c13c0c0fea"
+    },
+    "Default/Local Storage/leveldb/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/Local Storage/leveldb/MANIFEST-000001": {
+      "bytes": 41,
+      "sha256": "f9d31b278e215eb0d0e9cd709edfa037e828f36214ab7906f612160fead4b2b4"
+    },
+    "Default/Local Storage/leveldb/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/Local Storage/leveldb/000003.log": {
+      "bytes": 49,
+      "sha256": "af47b5d07d2f1aa55711e00774a429289267a82e604602df8fdd2c5047626159"
+    },
+    "Default/Session Storage/LOG": {
+      "bytes": 351,
+      "sha256": "ca9203e281ed4197f44693715f28b306b4ab219e7bc392adeb0f85fa8c8ae429"
+    },
+    "Default/Session Storage/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/Session Storage/MANIFEST-000001": {
+      "bytes": 41,
+      "sha256": "f9d31b278e215eb0d0e9cd709edfa037e828f36214ab7906f612160fead4b2b4"
+    },
+    "Default/Session Storage/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/Session Storage/000003.log": {
+      "bytes": 87,
+      "sha256": "4d7a760b35105bcacd2adef01d3f8080d1cebcf017b27603c32bf4fda6321b47"
+    }
+  },
+  "removed": true,
+  "freeAfter": 5358514176
+}

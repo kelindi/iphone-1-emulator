@@ -1,0 +1,323 @@
+{
+  "passed": true,
+  "checks": 39,
+  "actualRows": 22,
+  "requiredKinds": 13,
+  "cases": [
+    {
+      "name": "actual retained 22 response rows",
+      "passed": true,
+      "accepted": true,
+      "errors": []
+    },
+    {
+      "name": "missing index.html",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: index.html"
+      ]
+    },
+    {
+      "name": "missing app.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: app.js"
+      ]
+    },
+    {
+      "name": "missing phone.css",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: phone.css"
+      ]
+    },
+    {
+      "name": "missing dist/emu.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: dist/emu.js"
+      ]
+    },
+    {
+      "name": "missing dist/emu.wasm",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: dist/emu.wasm"
+      ]
+    },
+    {
+      "name": "missing seed-jit.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: seed-jit.js"
+      ]
+    },
+    {
+      "name": "missing emu-worker.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: emu-worker.js"
+      ]
+    },
+    {
+      "name": "missing jit/seed.wasm",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: jit/seed.wasm"
+      ]
+    },
+    {
+      "name": "missing jit/regions.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: jit/regions.json"
+      ]
+    },
+    {
+      "name": "missing jit/abi.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: jit/abi.json"
+      ]
+    },
+    {
+      "name": "missing storage.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: storage.js"
+      ]
+    },
+    {
+      "name": "missing assets.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: assets.js"
+      ]
+    },
+    {
+      "name": "missing manifest.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Missing required asset: manifest.json"
+      ]
+    },
+    {
+      "name": "mismatched app.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: app.js"
+      ]
+    },
+    {
+      "name": "mismatched assets.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: assets.js"
+      ]
+    },
+    {
+      "name": "mismatched checkpoint-worker.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: checkpoint-worker.js",
+        "Actual served hash mismatch: checkpoint-worker.js",
+        "Actual served hash mismatch: checkpoint-worker.js",
+        "Actual served hash mismatch: checkpoint-worker.js"
+      ]
+    },
+    {
+      "name": "mismatched dist/emu.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: dist/emu.js"
+      ]
+    },
+    {
+      "name": "mismatched dist/emu.wasm",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: dist/emu.wasm"
+      ]
+    },
+    {
+      "name": "mismatched emu-worker.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: emu-worker.js"
+      ]
+    },
+    {
+      "name": "mismatched icon.svg",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: icon.svg"
+      ]
+    },
+    {
+      "name": "mismatched index.html",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: index.html"
+      ]
+    },
+    {
+      "name": "mismatched jit/abi.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: jit/abi.json"
+      ]
+    },
+    {
+      "name": "mismatched jit/regions.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: jit/regions.json"
+      ]
+    },
+    {
+      "name": "mismatched jit/seed.wasm",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: jit/seed.wasm"
+      ]
+    },
+    {
+      "name": "mismatched manifest.json",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: manifest.json"
+      ]
+    },
+    {
+      "name": "mismatched phone.css",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: phone.css"
+      ]
+    },
+    {
+      "name": "mismatched seed-jit.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: seed-jit.js"
+      ]
+    },
+    {
+      "name": "mismatched storage.js",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: storage.js",
+        "Actual served hash mismatch: storage.js",
+        "Actual served hash mismatch: storage.js",
+        "Actual served hash mismatch: storage.js",
+        "Actual served hash mismatch: storage.js"
+      ]
+    },
+    {
+      "name": "method-shaped URL",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Stored asset URL must be a string",
+        "Missing required asset: index.html"
+      ]
+    },
+    {
+      "name": "malformed URL",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Malformed stored asset URL",
+        "Missing required asset: index.html"
+      ]
+    },
+    {
+      "name": "relative URL",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Malformed stored asset URL",
+        "Missing required asset: index.html"
+      ]
+    },
+    {
+      "name": "foreign origin",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Unexpected asset origin: https://foreign.invalid",
+        "Missing required asset: index.html"
+      ]
+    },
+    {
+      "name": "missing digest",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: index.html"
+      ]
+    },
+    {
+      "name": "malformed digest",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: index.html"
+      ]
+    },
+    {
+      "name": "capture error",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Actual served hash mismatch: index.html"
+      ]
+    },
+    {
+      "name": "null row",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Stored asset URL must be a string"
+      ]
+    },
+    {
+      "name": "non-array",
+      "passed": true,
+      "accepted": false,
+      "errors": [
+        "Asset rows must be an array"
+      ]
+    }
+  ],
+  "cleanupReachedOnMalformed": true,
+  "noGuestRun": true
+}

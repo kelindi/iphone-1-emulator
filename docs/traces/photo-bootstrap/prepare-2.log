@@ -1,0 +1,53 @@
+/usr/libexec/iphone1-photos: added 50072 bytes
+/System/Library/LaunchDaemons/com.iphone1.photos.plist: added 520 bytes
+{
+  "passed": true,
+  "sourceSHA256": "73d0d2a0ed4564dc16c67c7c6efc167725d2833461cd47919faa676595c0ded9",
+  "sourceUnchanged": true,
+  "outputSHA256": "b978ba952c953811840aaeb977c2db2a30d660e470d8cd7938afb64497d3a381",
+  "outputBytes": 176160768,
+  "programSHA256": "37842801ccf9eb92f6940c81c4978b925b5191805afd7847a259659490a30987",
+  "unchangedExistingFileForks": 5120,
+  "preservedCatalogRecords": 5828,
+  "newCatalogRecords": 4,
+  "newFiles": [
+    "/usr/libexec/iphone1-photos",
+    "/System/Library/LaunchDaemons/com.iphone1.photos.plist"
+  ],
+  "preflight": {
+    "catalog": [
+      {
+        "path": "/usr/libexec/iphone1-photos",
+        "node": 53,
+        "usedAfter": 4048,
+        "capacity": 4096,
+        "existingFirstKeyUnchanged": true
+      },
+      {
+        "path": "/usr/libexec/iphone1-photos",
+        "node": 1,
+        "usedAfter": 3998,
+        "capacity": 4096,
+        "existingFirstKeyUnchanged": true
+      },
+      {
+        "path": "/System/Library/LaunchDaemons/com.iphone1.photos.plist",
+        "node": 11,
+        "usedAfter": 2760,
+        "capacity": 4096,
+        "existingFirstKeyUnchanged": true
+      },
+      {
+        "path": "/System/Library/LaunchDaemons/com.iphone1.photos.plist",
+        "node": 1,
+        "usedAfter": 4066,
+        "capacity": 4096,
+        "existingFirstKeyUnchanged": true
+      }
+    ],
+    "primarySHA256": "9553391d0b552392834c100e7718eb6df599339c83f78e3e74cfd48aee5b36fe",
+    "alternateSHA256": "9553391d0b552392834c100e7718eb6df599339c83f78e3e74cfd48aee5b36fe",
+    "headerDifferentWords": [],
+    "policy": "Known source hash binds both headers; preserve any stale alternate, never normalize it."
+  }
+}

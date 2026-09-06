@@ -4,54 +4,125 @@ const SEED_MAX_BYTES = 32 * 1024 * 1024;
 const SEED_MAX_REGIONS = 512;
 const SEED_PREPARE_TIMEOUT_MS = 8000;
 const seedAbort = new AbortController();
-async function readSeed(path, limit) {
+const seedResponses = new Set();
+function checkSeedActive() {
+  if (seedAbort.signal.aborted) throw Error('Optional seed preparation aborted');
+}
+function cancelSeedResponse(response) {
+  if (!response) return;
+  seedResponses.delete(response);
+  // A tee branch's cancel promise can wait for the other branch. Never await
+  // it here; abort plus cancellation of every owned branch bounds cleanup.
+  try { response.body?.cancel()?.catch(() => {}); } catch (_) {}
+}
+async function fetchSeed(path, limit) {
   const response = await fetch(path, {signal: seedAbort.signal});
-  if (!response.ok) throw Error('Seed download: ' + path);
-  if (Number(response.headers?.get('Content-Length')) > limit) throw Error('Seed byte cap');
+  seedResponses.add(response);
+  try {
+    checkSeedActive();
+    if (!response.ok) throw Error('Seed download: ' + path);
+    if (Number(response.headers?.get('Content-Length')) > limit) throw Error('Seed byte cap');
+    return response;
+  } catch (error) { cancelSeedResponse(response); throw error; }
+}
+async function readSeedResponse(response, limit) {
+  checkSeedActive();
   if (!response.body?.getReader) {
     const bytes = await response.arrayBuffer();
+    checkSeedActive();
     if (bytes.byteLength > limit) throw Error('Seed byte cap');
+    seedResponses.delete(response);
     return bytes;
   }
   const reader = response.body.getReader(), chunks = [];
-  let length = 0;
+  let length = 0, complete = false;
   try {
     for (;;) {
       const {done, value} = await reader.read();
+      checkSeedActive();
       if (done) break;
       length += value.byteLength;
       if (length > limit) throw Error('Seed byte cap');
       chunks.push(value);
     }
-  } catch (error) { await reader.cancel().catch(() => {}); throw error; }
-  const bytes = new Uint8Array(length);
-  let offset = 0;
-  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-  return bytes.buffer;
+    const bytes = new Uint8Array(length);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    complete = true;
+    return bytes.buffer;
+  } finally {
+    if (!complete) { try { reader.cancel().catch(() => {}); } catch (_) {} }
+    reader.releaseLock();
+    seedResponses.delete(response);
+  }
+}
+async function readSeed(path, limit) {
+  return readSeedResponse(await fetchSeed(path, limit), limit);
+}
+async function readSeedModule() {
+  const response = await fetchSeed('jit/seed.wasm', SEED_MAX_BYTES);
+  const mime = response.headers?.get('Content-Type')?.split(';')[0].trim().toLowerCase();
+  if (typeof WebAssembly.compileStreaming === 'function' &&
+      typeof response.clone === 'function' && mime === 'application/wasm') {
+    let verificationResponse;
+    try { verificationResponse = response.clone(); } catch (_) {}
+    if (verificationResponse) {
+      seedResponses.add(verificationResponse);
+      const binary = await readSeedResponse(verificationResponse, SEED_MAX_BYTES);
+      // Keep the actual fetched Response and its URL/cache metadata. A new
+      // Response(binary) would not retain Blink's native-code-cache handler.
+      return {binary, response};
+    }
+  }
+  return {binary: await readSeedResponse(response, SEED_MAX_BYTES), response: null};
+}
+async function compileVerifiedSeed(binary, response) {
+  checkSeedActive();
+  if (response) {
+    try {
+      const module = await WebAssembly.compileStreaming(response);
+      checkSeedActive();
+      return module;
+    } catch (error) {
+      checkSeedActive();
+      // Unsupported streaming/response MIME can still use the verified bytes.
+      // A real compilation error is preserved rather than doing the work twice.
+      if (!(error instanceof TypeError)) throw error;
+    } finally { cancelSeedResponse(response); }
+  }
+  checkSeedActive();
+  const module = await WebAssembly.compile(binary);
+  checkSeedActive();
+  return module;
 }
 async function prepareSeed() {
   let timer;
   try {
     return await Promise.race([
       (async () => {
-        const [binary, definitions, abiBytes] = await Promise.all([
-          readSeed('jit/seed.wasm', SEED_MAX_BYTES),
-          readSeed('jit/regions.json', 512 * 1024), readSeed('jit/abi.json', 16384)
+        const [{binary, response}, definitions, abiBytes] = await Promise.all([
+          readSeedModule(), readSeed('jit/regions.json', 512 * 1024), readSeed('jit/abi.json', 16384)
         ]);
         const abi = JSON.parse(new TextDecoder().decode(abiBytes));
         const hash = async bytes => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)),
           b => b.toString(16).padStart(2, '0')).join('');
         if (await hash(binary) !== abi.moduleSha256 || await hash(definitions) !== abi.regionsSha256)
           throw Error('Seed asset identity mismatch');
-        return [{module: await WebAssembly.compile(binary), bytes: binary.byteLength},
-          JSON.parse(new TextDecoder().decode(definitions)), abi];
+        const defs = JSON.parse(new TextDecoder().decode(definitions));
+        checkSeedActive();
+        return [{module: await compileVerifiedSeed(binary, response), bytes: binary.byteLength}, defs, abi];
       })(),
       new Promise((_, reject) => { timer = setTimeout(() => {
-        seedAbort.abort(); reject(Error('Optional seed preparation timed out'));
+        seedAbort.abort();
+        for (const response of seedResponses) cancelSeedResponse(response);
+        reject(Error('Optional seed preparation timed out'));
       }, SEED_PREPARE_TIMEOUT_MS); })
     ]);
-  } catch (error) { seedAbort.abort(); return {error}; }
-  finally { clearTimeout(timer); }
+  } catch (error) {
+    seedAbort.abort();
+    for (const response of seedResponses) cancelSeedResponse(response);
+    return {error};
+  } finally { clearTimeout(timer); }
 }
 const seedPromise = seedEnabled ? prepareSeed() : null;
 class SeedJIT {

@@ -1,0 +1,63 @@
+{
+  "kind": "interpreter",
+  "passed": true,
+  "vfpConformancePassed": false,
+  "scope": "Relative LTO correctness only. Baseline VFP literal595pass/12fail retained. No timing claim or normalization.",
+  "checkpoints": [
+    {
+      "done": 25000000,
+      "rawSha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+      "bytes": 244965346,
+      "gzipSha256": "d34ea98ee78e033a54d2386152fca61b5ff76f136e063cf0dd963c2c970e4104",
+      "gzipBytes": 102657245,
+      "file": "raw-25000000.snap.gz",
+      "generated": 0,
+      "calls": 0,
+      "regions": 0
+    },
+    {
+      "done": 50000000,
+      "rawSha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+      "bytes": 245731298,
+      "gzipSha256": "9d3db448850165da8ea1e4b724c64263dfc2c97694b81e7c8df6ed45f12369a1",
+      "gzipBytes": 102852039,
+      "file": "raw-50000000.snap.gz",
+      "generated": 0,
+      "calls": 0,
+      "regions": 0
+    },
+    {
+      "done": 75000000,
+      "rawSha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+      "bytes": 246837218,
+      "gzipSha256": "a1e82e827e249c17c4082232096ae652c6f2a81e45432f944866d52516259049",
+      "gzipBytes": 103236507,
+      "file": "raw-75000000.snap.gz",
+      "generated": 0,
+      "calls": 0,
+      "regions": 0
+    },
+    {
+      "done": 100000000,
+      "rawSha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+      "bytes": 248274914,
+      "gzipSha256": "0dc0def4cd12f19823bb8beb05795d650eead677c3195a112820e78501739240",
+      "gzipBytes": 103409585,
+      "file": "raw-100000000.snap.gz",
+      "generated": 0,
+      "calls": 0,
+      "regions": 0
+    }
+  ],
+  "started": "2026-09-06T09:25:03.475Z",
+  "initialRegions": 0,
+  "moduleSha256": "7a528805814b7cf8ad061a1f5d2fb70aeb316c8a12585dfb25d6d08752dca740",
+  "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "seedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "frame": {
+    "width": 320,
+    "height": 480,
+    "sha256": "4d9e9478b41ddb9e31108744025cc07a518043d43096ef78cd8d044b6565e69b"
+  },
+  "ended": "2026-09-06T09:25:50.026Z"
+}

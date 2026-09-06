@@ -1,0 +1,1646 @@
+{
+  "phase": "train",
+  "started": "2026-09-06T06:13:01.231Z",
+  "scope": "Functional offline CacheStorage/native-code reuse and real autosave; no speed measurement. Installer is an explicit mechanism fixture, not a user UI flow.",
+  "checks": [
+    {
+      "name": "real offline worker activated",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /index.html",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /phone.css",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /icon.svg",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /app.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /storage.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /checkpoint-worker.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /assets.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /emu-worker.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /manifest.json",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /dist/emu.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /dist/emu.wasm",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /seed-jit.js",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /jit/seed.wasm",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /jit/regions.json",
+      "passed": true
+    },
+    {
+      "name": "verified installed shell /jit/abi.json",
+      "passed": true
+    },
+    {
+      "name": "one exact service-worker source target",
+      "passed": true
+    },
+    {
+      "name": "unique actual service-worker script",
+      "passed": true
+    },
+    {
+      "name": "actual installed SW source byte identity",
+      "passed": true
+    },
+    {
+      "name": "required cache trace categories",
+      "passed": true
+    },
+    {
+      "name": "real service worker controls phone",
+      "passed": true
+    },
+    {
+      "name": "real phone ready with positive generated work",
+      "passed": true,
+      "metrics": {
+        "type": "metrics",
+        "mips": 4.741006691280142,
+        "fps": 0,
+        "guestRate": 0.9958157728242103,
+        "cycles": "11209747170",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 3755515,
+          "calls": 482008
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "name": "latest startup indicator dismissed",
+      "passed": true
+    },
+    {
+      "name": "latest Save control remains hidden",
+      "passed": true
+    },
+    {
+      "name": "one actual emulator dedicated worker for network probe",
+      "passed": true
+    },
+    {
+      "name": "one actual SW for network probe",
+      "passed": true
+    },
+    {
+      "name": "uncached network transport denied in page",
+      "passed": true,
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    },
+    {
+      "name": "uncached network transport denied in dedicatedWorker",
+      "passed": true,
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    },
+    {
+      "name": "uncached network transport denied in serviceWorker",
+      "passed": true,
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    },
+    {
+      "name": "initial-home",
+      "passed": true,
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "cycle0-settings",
+      "passed": true,
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "cycle0-home",
+      "passed": true,
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "cycle1-settings",
+      "passed": true,
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "cycle1-home",
+      "passed": true,
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "autosave-settings",
+      "passed": true,
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "normal30-second autosave creates newer checkpoint",
+      "passed": true
+    },
+    {
+      "name": "actual compressed autosave record",
+      "passed": true
+    },
+    {
+      "name": "saved-settings",
+      "passed": true,
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "trace complete without loss",
+      "passed": true
+    },
+    {
+      "name": "native-cache receipt matches phase",
+      "passed": true
+    },
+    {
+      "name": "generated work remains active",
+      "passed": true
+    },
+    {
+      "name": "closing checkpoint still contains real autosave",
+      "passed": true
+    },
+    {
+      "name": "zero actual HTTP server requests after disconnect",
+      "passed": true
+    },
+    {
+      "name": "actual failed network receipt page",
+      "passed": true
+    },
+    {
+      "name": "actual failed network receipt worker",
+      "passed": true
+    },
+    {
+      "name": "actual failed network receipt sw",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:8202/assets.js",
+      "path": "assets.js",
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "length": 2397,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "2397",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:01 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:01.763Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/manifest.json",
+      "path": "manifest.json",
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "length": 1222,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "1222",
+        "content-type": "application/json",
+        "date": "Sun, 06 Sep 2026 06:13:01 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:01.811Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/service-worker.js",
+      "path": "service-worker.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "3228",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.172Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/index.html",
+      "path": "index.html",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "5450",
+        "content-type": "text/html",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.182Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/phone.css",
+      "path": "phone.css",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "9067",
+        "content-type": "text/css",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.189Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/icon.svg",
+      "path": "icon.svg",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "379",
+        "content-type": "image/svg+xml",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.201Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/app.js",
+      "path": "app.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "18558",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.206Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/storage.js",
+      "path": "storage.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "9079",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.213Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/checkpoint-worker.js",
+      "path": "checkpoint-worker.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "615",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.219Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/assets.js",
+      "path": "assets.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "2397",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.224Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/emu-worker.js",
+      "path": "emu-worker.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "11426",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.228Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/manifest.json",
+      "path": "manifest.json",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "1222",
+        "content-type": "application/json",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.236Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/dist/emu.js",
+      "path": "dist/emu.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "17756",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.246Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/dist/emu.wasm",
+      "path": "dist/emu.wasm",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "249414",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.256Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/seed-jit.js",
+      "path": "seed-jit.js",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "9613",
+        "content-type": "text/javascript",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.269Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/seed.wasm",
+      "path": "jit/seed.wasm",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "12341313",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+        "keep-alive": "timeout=5",
+        "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.283Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/regions.json",
+      "path": "jit/regions.json",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "74901",
+        "content-type": "application/json",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.453Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/abi.json",
+      "path": "jit/abi.json",
+      "requestServiceWorkerURL": "http://127.0.0.1:8202/service-worker.js",
+      "bodyVerifiedViaInstalledCache": true,
+      "fromServiceWorker": false,
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "364",
+        "content-type": "application/json",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.461Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/phone.css",
+      "path": "phone.css",
+      "sha256": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "length": 9067,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "9067",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/css",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.676Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/app.js",
+      "path": "app.js",
+      "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "length": 18558,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "18558",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.686Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/app.js",
+      "path": "app.js",
+      "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "length": 18558,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "18558",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.688Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/storage.js",
+      "path": "storage.js",
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "length": 9079,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "9079",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.693Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/icon.svg",
+      "path": "icon.svg",
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "length": 379,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "379",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "image/svg+xml",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.706Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/dist/emu.js",
+      "path": "dist/emu.js",
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "length": 17756,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "17756",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.734Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/seed-jit.js",
+      "path": "seed-jit.js",
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "length": 9613,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "9613",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.736Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/emu-worker.js",
+      "path": "emu-worker.js",
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "length": 11426,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "11426",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.739Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/regions.json",
+      "path": "jit/regions.json",
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "length": 74901,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "74901",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "application/json",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.813Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/abi.json",
+      "path": "jit/abi.json",
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "length": 364,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "364",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "application/json",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.814Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/assets.js",
+      "path": "assets.js",
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "length": 2397,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "2397",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:09.814Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/jit/seed.wasm",
+      "path": "jit/seed.wasm",
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "length": 12341313,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff",
+        "content-length": "12341313",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "application/wasm",
+        "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT"
+      },
+      "receivedUTC": "2026-09-06T06:13:10.187Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/manifest.json",
+      "path": "manifest.json",
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "length": 1222,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "1222",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "application/json",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:10.190Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/dist/emu.wasm",
+      "path": "dist/emu.wasm",
+      "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "length": 249414,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "249414",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "application/wasm",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:14.098Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/checkpoint-worker.js",
+      "path": "checkpoint-worker.js",
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "length": 615,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "615",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:40.808Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/storage.js",
+      "path": "storage.js",
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "length": 9079,
+      "fromServiceWorker": true,
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "9079",
+        "keep-alive": "timeout=5",
+        "date": "Sun, 06 Sep 2026 06:13:09 GMT",
+        "content-type": "text/javascript",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff"
+      },
+      "receivedUTC": "2026-09-06T06:13:40.811Z"
+    }
+  ],
+  "frames": [
+    {
+      "name": "initial-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "cycle0-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "cycle0-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "cycle1-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "cycle1-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "autosave-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "saved-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    }
+  ],
+  "profile": "/home/vercel-sandbox/iphone-1/.context/jit-sw-cache-v4/profile",
+  "pins": {
+    "origin": "http://127.0.0.1:8202",
+    "productionSource": {
+      "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+      "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6"
+    },
+    "sites": {
+      "original": {
+        "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+        "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+        "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+        "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6",
+        "service-worker.js": "c7d26e9352e25ce99840bb1ec8b5fbc66f8c551c1f90974804f3eeb744e36812"
+      },
+      "candidate": {
+        "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+        "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+        "emu-worker.js": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+        "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "service-worker.template.js": "b7772c6ab00972c5b5285ff9990bdab449552b0ddf352c4325c3a02da6e6d1c6",
+        "service-worker.js": "24d871728b2ea56926a86ff0eb9e3e3ae9d3b1822ff54a16eb623c3475894ca8"
+      }
+    },
+    "generatorSha256": "2f67787c6959d2e580c283f9e19cd37a2866e8c91793000d335971e899fb23c5",
+    "candidateLoaderSha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+    "sourceScope": "Current production app/index/CSS/worker copied byte-exact; only seed loader and generated SW bundle differ. No production mutation."
+  },
+  "originServer": {
+    "seed": {
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313,
+      "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+      "lastModified": "Sun, 06 Sep 2026 00:43:01 GMT",
+      "cache": "no-cache"
+    },
+    "address": {
+      "address": "127.0.0.1",
+      "family": "IPv4",
+      "port": 8202
+    }
+  },
+  "requestFailures": [
+    {
+      "url": "http://127.0.0.1:8202/__offline-uncached-1788675195170-page",
+      "failure": "net::ERR_INTERNET_DISCONNECTED",
+      "at": "2026-09-06T06:13:15.204Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/__offline-uncached-1788675195170-worker",
+      "failure": "net::ERR_INTERNET_DISCONNECTED",
+      "at": "2026-09-06T06:13:15.258Z"
+    },
+    {
+      "url": "http://127.0.0.1:8202/__offline-uncached-1788675195170-sw",
+      "failure": "net::ERR_INTERNET_DISCONNECTED",
+      "at": "2026-09-06T06:13:15.268Z"
+    }
+  ],
+  "console": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+  ],
+  "version": {
+    "Browser": "Chrome/152.0.7977.82",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "V8-Version": "15.2.124.21",
+    "WebKit-Version": "537.36 (@d04cdb24d67b081f6cf80200ffc5233f44b61109)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:9241/devtools/browser/b01391eb-c3d6-49e6-8b7f-5e41f4e4d60d"
+  },
+  "processReceipts": [
+    {
+      "label": "before-navigation",
+      "utc": "2026-09-06T06:13:01.718Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3803230,
+          "cpuTime": 0.45
+        },
+        {
+          "type": "renderer",
+          "id": 3803323,
+          "cpuTime": 0.02
+        },
+        {
+          "type": "renderer",
+          "id": 3803325,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "renderer",
+          "id": 3803305,
+          "cpuTime": 0.22
+        },
+        {
+          "type": "GPU",
+          "id": 3803266,
+          "cpuTime": 0.08
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3803269,
+          "cpuTime": 0.11
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3803270,
+          "cpuTime": 0.01
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3803230,
+          "ppid": 3803218,
+          "startTicks": "4488492",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803234,
+          "ppid": 3803230,
+          "startTicks": "4488493",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803235,
+          "ppid": 3803230,
+          "startTicks": "4488493",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803244,
+          "ppid": 3803230,
+          "startTicks": "4488502",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803245,
+          "ppid": 3803230,
+          "startTicks": "4488502",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803266,
+          "ppid": 3803244,
+          "startTicks": "4488509",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803269,
+          "ppid": 3803230,
+          "startTicks": "4488510",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803270,
+          "ppid": 3803245,
+          "startTicks": "4488512",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803305,
+          "ppid": 3803245,
+          "startTicks": "4488516",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803323,
+          "ppid": 3803245,
+          "startTicks": "4488519",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803325,
+          "ppid": 3803245,
+          "startTicks": "4488519",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    },
+    {
+      "label": "before-close",
+      "utc": "2026-09-06T06:13:53.981Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3803230,
+          "cpuTime": 7.57
+        },
+        {
+          "type": "renderer",
+          "id": 3803323,
+          "cpuTime": 0.04
+        },
+        {
+          "type": "renderer",
+          "id": 3803325,
+          "cpuTime": 60.55
+        },
+        {
+          "type": "renderer",
+          "id": 3803305,
+          "cpuTime": 0.85
+        },
+        {
+          "type": "GPU",
+          "id": 3803266,
+          "cpuTime": 9.68
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3803269,
+          "cpuTime": 0.99
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3803270,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 3803374,
+          "cpuTime": 1.1
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3803230,
+          "ppid": 3803218,
+          "startTicks": "4488492",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803234,
+          "ppid": 3803230,
+          "startTicks": "4488493",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803235,
+          "ppid": 3803230,
+          "startTicks": "4488493",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3803244,
+          "ppid": 3803230,
+          "startTicks": "4488502",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803245,
+          "ppid": 3803230,
+          "startTicks": "4488502",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803266,
+          "ppid": 3803244,
+          "startTicks": "4488509",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803269,
+          "ppid": 3803230,
+          "startTicks": "4488510",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803270,
+          "ppid": 3803245,
+          "startTicks": "4488512",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803305,
+          "ppid": 3803245,
+          "startTicks": "4488516",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803323,
+          "ppid": 3803245,
+          "startTicks": "4488519",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803325,
+          "ppid": 3803245,
+          "startTicks": "4488519",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3803374,
+          "ppid": 3803245,
+          "startTicks": "4489323",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    }
+  ],
+  "storageBefore": {
+    "quota": 10737418240,
+    "usage": 0,
+    "usageDetails": {}
+  },
+  "setup": {
+    "installation": {
+      "states": [
+        {
+          "at": 1788675189205,
+          "state": "installing"
+        },
+        {
+          "at": 1788675189464,
+          "state": "installed"
+        },
+        {
+          "at": 1788675189464,
+          "state": "activating"
+        },
+        {
+          "at": 1788675189464,
+          "state": "activated"
+        }
+      ],
+      "scriptURL": "http://127.0.0.1:8202/service-worker.js"
+    },
+    "storage": {
+      "quota": 10856575388,
+      "usage": 119157148,
+      "usageDetails": {
+        "caches": 119153920,
+        "serviceWorkerRegistrations": 3228
+      }
+    },
+    "scope": "http://127.0.0.1:8202/",
+    "scriptURL": "http://127.0.0.1:8202/service-worker.js",
+    "caches": [
+      "iphone-1-assets-1a543a-v1",
+      "iphone-1-shell-1cca76e0e202cef46f8b6053"
+    ]
+  },
+  "cacheEntries": {
+    "name": "iphone-1-shell-1cca76e0e202cef46f8b6053",
+    "entries": [
+      {
+        "url": "http://127.0.0.1:8202/index.html",
+        "sha256": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b"
+      },
+      {
+        "url": "http://127.0.0.1:8202/phone.css",
+        "sha256": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0"
+      },
+      {
+        "url": "http://127.0.0.1:8202/icon.svg",
+        "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+      },
+      {
+        "url": "http://127.0.0.1:8202/app.js",
+        "sha256": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2"
+      },
+      {
+        "url": "http://127.0.0.1:8202/storage.js",
+        "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+      },
+      {
+        "url": "http://127.0.0.1:8202/checkpoint-worker.js",
+        "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+      },
+      {
+        "url": "http://127.0.0.1:8202/assets.js",
+        "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+      },
+      {
+        "url": "http://127.0.0.1:8202/emu-worker.js",
+        "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+      },
+      {
+        "url": "http://127.0.0.1:8202/manifest.json",
+        "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+      },
+      {
+        "url": "http://127.0.0.1:8202/dist/emu.js",
+        "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+      },
+      {
+        "url": "http://127.0.0.1:8202/dist/emu.wasm",
+        "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606"
+      },
+      {
+        "url": "http://127.0.0.1:8202/seed-jit.js",
+        "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+      },
+      {
+        "url": "http://127.0.0.1:8202/jit/seed.wasm",
+        "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+      },
+      {
+        "url": "http://127.0.0.1:8202/jit/regions.json",
+        "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+      },
+      {
+        "url": "http://127.0.0.1:8202/jit/abi.json",
+        "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+      }
+    ]
+  },
+  "actualSWSource": {
+    "url": "http://127.0.0.1:8202/service-worker.js",
+    "sha256": "24d871728b2ea56926a86ff0eb9e3e3ae9d3b1822ff54a16eb623c3475894ca8",
+    "bytes": 3228,
+    "isolate": "service_worker only, before guest; never emulator worker"
+  },
+  "physicalOffline": {
+    "listening": false,
+    "connectionsClosed": 1,
+    "refusal": {
+      "host": "127.0.0.1",
+      "port": 8202,
+      "code": "ECONNREFUSED",
+      "at": "2026-09-06T06:13:09.627Z"
+    }
+  },
+  "disconnectedUTC": "2026-09-06T06:13:09.627Z",
+  "navigatorOnlineAfterNavigation": true,
+  "storageAfterStartup": {
+    "quota": 10856588053,
+    "usage": 119169813,
+    "usageDetails": {
+      "caches": 119165184,
+      "indexedDB": 1401,
+      "serviceWorkerRegistrations": 3228
+    }
+  },
+  "offlineProbePrefix": "http://127.0.0.1:8202/__offline-uncached-1788675195170-",
+  "offlineTransport": {
+    "page": {
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    },
+    "dedicatedWorker": {
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    },
+    "serviceWorker": {
+      "online": true,
+      "error": {
+        "name": "TypeError",
+        "message": "Failed to fetch"
+      }
+    }
+  },
+  "autosaveWaitAfter": 1788675219614,
+  "serializationWaitMs": 10000,
+  "savedAfterTraining": {
+    "metadata": {
+      "version": "m68-1a543a-snapshot39",
+      "savedAt": 1788675227636,
+      "size": 249413602,
+      "storedSize": 103649276,
+      "encoding": "gzip",
+      "compressionMs": 6825.10000000149
+    },
+    "blobBytes": 103649276,
+    "blobType": "",
+    "sha256": "199353389f60353003104a752ecdc9f559e9204b89d0f97d8ab9f112fcf1c080"
+  },
+  "traceComplete": {
+    "dataLossOccurred": false,
+    "stream": "1",
+    "traceFormat": "json",
+    "streamCompression": "none"
+  },
+  "cacheReceipt": {
+    "accepted": false,
+    "analysis": {
+      "session": "startup",
+      "eventCounts": {
+        "v8.wasm.compileConsume": 3,
+        "v8.wasm.compileConsumeDone": 2,
+        "wasm.FinishAsyncCompile": 2,
+        "wasm.OnCompilationSucceeded": 2,
+        "v8.wasm.compiledModule": 15,
+        "v8.wasm.cachedModule": 15
+      },
+      "consumption": [],
+      "seedAccepted": [],
+      "unmatchedRelevantScopes": [],
+      "method": "Only a unique URL hit within the same complete compileConsume scope as digest and Deserialize containing FinishAsyncCompile/OnCompilationSucceeded can pass. Split callbacks remain unbound."
+    }
+  },
+  "finalMetrics": {
+    "type": "metrics",
+    "mips": 7.274891043593404,
+    "fps": 0.9996001599375146,
+    "guestRate": 0.9999157003880015,
+    "cycles": "11724967899",
+    "memory": 643039232,
+    "jit": {
+      "enabled": true,
+      "generation": 1,
+      "regions": 509,
+      "bytes": 12341313,
+      "retired": 376242151,
+      "calls": 47176239
+    },
+    "serial": "",
+    "captureMs": 196.5,
+    "captureChunkMs": 2.7000000029802322,
+    "finalizeMs": 906.2000000029802
+  },
+  "passed": true,
+  "closingSaved": {
+    "metadata": {
+      "version": "m68-1a543a-snapshot39",
+      "savedAt": 1788675227636,
+      "size": 249413602,
+      "storedSize": 103649276,
+      "encoding": "gzip",
+      "compressionMs": 6825.10000000149
+    },
+    "blobBytes": 103649276,
+    "blobType": "",
+    "sha256": "199353389f60353003104a752ecdc9f559e9204b89d0f97d8ab9f112fcf1c080"
+  },
+  "postOfflineServerRequests": [],
+  "finalOriginRefusal": {
+    "host": "127.0.0.1",
+    "port": 8202,
+    "code": "ECONNREFUSED",
+    "at": "2026-09-06T06:13:53.958Z"
+  },
+  "storageBeforeClose": {
+    "quota": 10980916225,
+    "usage": 243497985,
+    "usageDetails": {
+      "caches": 139843328,
+      "indexedDB": 103651429,
+      "serviceWorkerRegistrations": 3228
+    }
+  },
+  "video": "/home/vercel-sandbox/iphone-1/.context/jit-sw-cache-v4/run/1-train/video/page@ab02366971a61698591f4ace7bfa8111.webm",
+  "browserClosed": true
+}

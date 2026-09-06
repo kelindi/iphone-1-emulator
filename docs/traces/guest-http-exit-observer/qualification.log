@@ -1,0 +1,243 @@
+{
+  "scope": "Original file addresses and N_ARM_THUMB_DEF metadata; libSystem addresses require actual relocated pointer and executed code binding before a runtime hook can accept them.",
+  "images": {
+    "kernel": {
+      "path": "web/firmware/kernel_1A543a.macho",
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+      "hooks": [
+        {
+          "name": "_exit",
+          "va": "0xc00f7168",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 979304,
+          "entry32Hex": "80b5096800af0902fff790ff0348002100682ff77bff68f7acea000058621ec0",
+          "entry32SHA256": "619e82c8ac034ed8f22a1524c5430ab2c9483b47497003e8f68ef0c33ea8563e",
+          "decodedBytes": 512
+        },
+        {
+          "name": "_exit1",
+          "va": "0xc00f7094",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 979092,
+          "entry32Hex": "f0b55646454660b405af041c8a46161c68f7bcef051c9c20400020588046281c",
+          "entry32SHA256": "bb83e17a3e5ea9a632b8f20c1ce54b61b47f07f5d16d4b2b6a58d61c64029e5d",
+          "decodedBytes": 212
+        },
+        {
+          "name": "_proc_exit",
+          "va": "0xc00f6414",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 975892,
+          "entry32Hex": "f0b55e465546444670b4061c06af9c2092b0400086253058ad0083467359d948",
+          "entry32SHA256": "fcd8b331bff27c6414b6437b11acedc06298eef7d667b6ff014183722479182e",
+          "decodedBytes": 512
+        },
+        {
+          "name": "_psignal",
+          "va": "0xc00fd790",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1005456,
+          "entry32Hex": "80b500af0122fff7b3fd80bdf0b55e465546444670b406af86b00e1c03902df7",
+          "entry32SHA256": "736095bd4bcc148bcbe0afd49779ca5ffc76dd24b08d531b15fb30309756f727",
+          "decodedBytes": 12
+        },
+        {
+          "name": "_postsig",
+          "va": "0xc00fdfc4",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1007556,
+          "entry32Hex": "f0b55e465546444670b406af83b0804621f074ff041c8569fef770fa201cfff7",
+          "entry32SHA256": "e636ba2ef6d96024df5c7419c7f80eaef61dbd993ba1cfc18e34f840a2bb0551",
+          "decodedBytes": 472
+        },
+        {
+          "name": "_sigexit_locked",
+          "va": "0xc00fdf6c",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1007468,
+          "entry32Hex": "b0b502af041c0d1cfff722ff962149001023625a13430f4a6352ab009b589a07",
+          "entry32SHA256": "36f4f081dbcc9116e79934056cf645680c53afdb199736a56750f915d432215f",
+          "decodedBytes": 88
+        },
+        {
+          "name": "_sosetopt",
+          "va": "0xc01124f0",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1090800,
+          "entry32Hex": "f0b55646454660b405af8cb080468a460121fff784fb414630224b891340302b",
+          "entry32SHA256": "5c7a3b44cccfd483d21b9b028265bf9ae3f58ee726953e7bf7635b4ebad7489e",
+          "decodedBytes": 1040
+        },
+        {
+          "name": "_accept",
+          "va": "0xc01154ca",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1103050,
+          "entry32Hex": "f0b55e465546444670b406af88b082460020069093460a68012301925a465b42",
+          "entry32SHA256": "56f0ed1265fa42063424c123041dddbdcde8a48f47e734455196f13a071c67a2",
+          "decodedBytes": 512
+        },
+        {
+          "name": "_poll",
+          "va": "0xc0105700",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 1038080,
+          "entry32Hex": "f0b55e465546444670b406af91b0a023049103924d689b01061c9d4241d84169",
+          "entry32SHA256": "1e1385856b13cb0c5c811daabc0a0f4b53c321d57ae489c5c0a745b4b478293c",
+          "decodedBytes": 512
+        }
+      ]
+    },
+    "own": {
+      "path": ".context/guest-http-default/build-quiet-2/iphone1-local-http",
+      "sha256": "bfcc524cae77250b3d3c8d754e7bdfe328734395a0d625fa9735f00ccdd1a19f",
+      "hooks": [
+        {
+          "name": "_start",
+          "va": "0x16c4",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 1732,
+          "entry32Hex": "f0402de90c708de2000d2de962dd4de207d0cde3cc199fe5cc099fe50020a0e3",
+          "entry32SHA256": "992fd6ce8c21d2875404e0c7f7d63104e613aa8e91f9d310e92ced9d1ba6f164",
+          "decodedBytes": 2676
+        },
+        {
+          "name": "_logline",
+          "va": "0x2138",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 4408,
+          "entry32Hex": "f0402de90c708de2000d2de904d04de20080a0e10060e0e3060088e0016086e2",
+          "entry32SHA256": "2d7f6f59edbed0b80d1f6ebd107f1b53000a36646b0a9cfc5159d345e0bbd396",
+          "decodedBytes": 224
+        },
+        {
+          "name": "_number",
+          "va": "0x2218",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 4632,
+          "entry32Hex": "90402de904708de264d04de20030a0e30390d0e7014083e2000059e30200000a",
+          "entry32SHA256": "853d25086470728011ed07712abf0065056b3993e3fceab99933f25ec4a1d8a9",
+          "decodedBytes": 224
+        },
+        {
+          "name": "_nonblock",
+          "va": "0x23b8",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 5048,
+          "entry32Hex": "f0402de90c708de208d04de2e0609fe50310a0e30040a0e1002096e532ff2fe1",
+          "entry32SHA256": "c3b4db1edd65f5a4902cfd09e5300a695322921b8e6f07327fcc515aeb3d2908",
+          "decodedBytes": 268
+        },
+        {
+          "name": "_waitfd",
+          "va": "0x24c4",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 5316,
+          "entry32Hex": "f0402de90c708de2000d2de90cd04de2cc509fe500b0a0e1c8009fe51440a0e3",
+          "entry32SHA256": "d35c6a33b40b1e02e6423dd5dd502f115ff0c854a9c7dda0b459e4122333fe8e",
+          "decodedBytes": 244
+        }
+      ]
+    },
+    "libSystem": {
+      "path": ".context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib",
+      "sha256": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+      "hooks": [
+        {
+          "name": "__exit",
+          "va": "0x300099f0",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 39408,
+          "entry32Hex": "01c0a0e3800000ef0400003a04c09fe50cc09fe7000000ea64ecff071cff2fe1",
+          "entry32SHA256": "088f66b1e20fe32abee8e3689353216c76b5737a885ffcbeb023d0ba6cbbfa61",
+          "decodedBytes": 36
+        },
+        {
+          "name": "___error",
+          "va": "0x30001bb0",
+          "mode": "Thumb",
+          "nDesc": 8,
+          "fileOffset": 7088,
+          "entry32Hex": "4b46002b06d01a68044b9a4202d14846443002e0024878440068704744524854",
+          "entry32SHA256": "263820a0ffa1a25ba432f867314430c82428377770d66a7529efd71fd18ed96f",
+          "decodedBytes": 48
+        },
+        {
+          "name": "_accept",
+          "va": "0x30030520",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 197920,
+          "entry32Hex": "1ec0a0e3800000ef1eff2f3104c09fe50cc09fe7000000ea3481fd071cff2fe1",
+          "entry32SHA256": "4cb3bbfb700eabe0ddcff1356fb56681bd6f73c9388697b2dbb978509ca188aa",
+          "decodedBytes": 40
+        },
+        {
+          "name": "_poll",
+          "va": "0x30067ae0",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 424672,
+          "entry32Hex": "e6c0a0e3800000ef1eff2f3104c09fe50cc09fe7000000ea740bfa071cff2fe1",
+          "entry32SHA256": "2133707c1174e1be11ab70c0c138c8e88338fdb4a9d731fe88150892f9728c4a",
+          "decodedBytes": 32
+        },
+        {
+          "name": "_setsockopt",
+          "va": "0x3000e8b0",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 59568,
+          "entry32Hex": "0dc0a0e130002de900409ce569c0a0e3800000ef3000bde81eff2f3104c09fe5",
+          "entry32SHA256": "8664fa864b1276aeb326d9a11ddaa759d76664f999bc92e697325b642b1a0014",
+          "decodedBytes": 48
+        },
+        {
+          "name": "_close",
+          "va": "0x30009880",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 39040,
+          "entry32Hex": "06c0a0e3800000ef1eff2f3104c09fe50cc09fe7000000ead4edff071cff2fe1",
+          "entry32SHA256": "0884e4c8f9f2415dca22be7c26a31da5bd5f433b429126a484819b218bb76619",
+          "decodedBytes": 32
+        },
+        {
+          "name": "_write",
+          "va": "0x30009860",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 39008,
+          "entry32Hex": "04c0a0e3800000ef1eff2f3104c09fe50cc09fe7000000eaf4edff071cff2fe1",
+          "entry32SHA256": "1ada589f4c35ed0981d7f5955a1bb4e9b3fa05a56980a4e6b5cccc76f3de1a3e",
+          "decodedBytes": 32
+        },
+        {
+          "name": "_read",
+          "va": "0x300097e0",
+          "mode": "ARM",
+          "nDesc": 0,
+          "fileOffset": 38880,
+          "entry32Hex": "03c0a0e3800000ef1eff2f3104c09fe50cc09fe7000000ea74eeff071cff2fe1",
+          "entry32SHA256": "ae3c01d87342e2db504cd20106140e70b9acd547224009aac17d211da9544984",
+          "decodedBytes": 32
+        }
+      ]
+    }
+  }
+}

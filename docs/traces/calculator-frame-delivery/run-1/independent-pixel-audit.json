@@ -1,0 +1,566 @@
+{
+  "passed": true,
+  "measuredRawRows": 60,
+  "warmupRawRows": 2,
+  "rows": [
+    {
+      "key": "9",
+      "round": 0,
+      "actualButtonFrame": 11,
+      "rafButtonFrame": 11,
+      "canvasButtonMs": 89.10000000149012,
+      "rafButtonMs": 98.40000000596046,
+      "canvasResultMs": 201.80000000447035
+    },
+    {
+      "key": "C",
+      "round": 0,
+      "actualButtonFrame": 21,
+      "rafButtonFrame": 21,
+      "canvasButtonMs": 148.19999999552965,
+      "rafButtonMs": 151.0,
+      "canvasResultMs": 148.19999999552965
+    },
+    {
+      "key": "9",
+      "round": 1,
+      "actualButtonFrame": 32,
+      "rafButtonFrame": 32,
+      "canvasButtonMs": 75.89999999850988,
+      "rafButtonMs": 81.79999999701977,
+      "canvasResultMs": 152.10000000149012
+    },
+    {
+      "key": "C",
+      "round": 1,
+      "actualButtonFrame": 43,
+      "rafButtonFrame": 43,
+      "canvasButtonMs": 134.0,
+      "rafButtonMs": 148.89999999850988,
+      "canvasResultMs": 134.0
+    },
+    {
+      "key": "9",
+      "round": 2,
+      "actualButtonFrame": 53,
+      "rafButtonFrame": 53,
+      "canvasButtonMs": 160.5,
+      "rafButtonMs": 165.10000000149012,
+      "canvasResultMs": 160.5
+    },
+    {
+      "key": "C",
+      "round": 2,
+      "actualButtonFrame": 62,
+      "rafButtonFrame": 62,
+      "canvasButtonMs": 69.80000000447035,
+      "rafButtonMs": 82.30000000447035,
+      "canvasResultMs": 150.5
+    },
+    {
+      "key": "9",
+      "round": 3,
+      "actualButtonFrame": 73,
+      "rafButtonFrame": 73,
+      "canvasButtonMs": 66.0,
+      "rafButtonMs": 82.0,
+      "canvasResultMs": 135.5
+    },
+    {
+      "key": "C",
+      "round": 3,
+      "actualButtonFrame": 85,
+      "rafButtonFrame": 85,
+      "canvasButtonMs": 49.70000000298023,
+      "rafButtonMs": 65.79999999701977,
+      "canvasResultMs": 135.20000000298023
+    },
+    {
+      "key": "9",
+      "round": 4,
+      "actualButtonFrame": 97,
+      "rafButtonFrame": 97,
+      "canvasButtonMs": 65.89999999850988,
+      "rafButtonMs": 81.59999999403954,
+      "canvasResultMs": 134.5
+    },
+    {
+      "key": "C",
+      "round": 4,
+      "actualButtonFrame": 109,
+      "rafButtonFrame": 109,
+      "canvasButtonMs": 66.60000000149012,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 148.30000000447035
+    },
+    {
+      "key": "9",
+      "round": 5,
+      "actualButtonFrame": 122,
+      "rafButtonFrame": 122,
+      "canvasButtonMs": 49.29999999701977,
+      "rafButtonMs": 65.39999999850988,
+      "canvasResultMs": 142.19999999552965
+    },
+    {
+      "key": "C",
+      "round": 5,
+      "actualButtonFrame": 135,
+      "rafButtonFrame": 135,
+      "canvasButtonMs": 64.29999999701977,
+      "rafButtonMs": 66.70000000298023,
+      "canvasResultMs": 148.29999999701977
+    },
+    {
+      "key": "9",
+      "round": 6,
+      "actualButtonFrame": 147,
+      "rafButtonFrame": 147,
+      "canvasButtonMs": 68.19999999552965,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 136.29999999701977
+    },
+    {
+      "key": "C",
+      "round": 6,
+      "actualButtonFrame": 158,
+      "rafButtonFrame": 158,
+      "canvasButtonMs": 52.399999998509884,
+      "rafButtonMs": 65.30000000447035,
+      "canvasResultMs": 145.20000000298023
+    },
+    {
+      "key": "9",
+      "round": 7,
+      "actualButtonFrame": 169,
+      "rafButtonFrame": 169,
+      "canvasButtonMs": 51.5,
+      "rafButtonMs": 65.5,
+      "canvasResultMs": 152.89999999850988
+    },
+    {
+      "key": "C",
+      "round": 7,
+      "actualButtonFrame": 180,
+      "rafButtonFrame": 180,
+      "canvasButtonMs": 50.79999999701977,
+      "rafButtonMs": 65.60000000149012,
+      "canvasResultMs": 134.69999999552965
+    },
+    {
+      "key": "9",
+      "round": 8,
+      "actualButtonFrame": 192,
+      "rafButtonFrame": 192,
+      "canvasButtonMs": 69.5,
+      "rafButtonMs": 82.5,
+      "canvasResultMs": 168
+    },
+    {
+      "key": "C",
+      "round": 8,
+      "actualButtonFrame": 204,
+      "rafButtonFrame": 204,
+      "canvasButtonMs": 65.5,
+      "rafButtonMs": 67.79999999701977,
+      "canvasResultMs": 147.79999999701977
+    },
+    {
+      "key": "9",
+      "round": 9,
+      "actualButtonFrame": 216,
+      "rafButtonFrame": 216,
+      "canvasButtonMs": 67.20000000298023,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 136.60000000149012
+    },
+    {
+      "key": "C",
+      "round": 9,
+      "actualButtonFrame": 228,
+      "rafButtonFrame": 228,
+      "canvasButtonMs": 58.600000001490116,
+      "rafButtonMs": 65.5,
+      "canvasResultMs": 144.60000000149012
+    },
+    {
+      "key": "9",
+      "round": 10,
+      "actualButtonFrame": 240,
+      "rafButtonFrame": 240,
+      "canvasButtonMs": 66.80000000447035,
+      "rafButtonMs": 82.10000000149012,
+      "canvasResultMs": 134.80000000447035
+    },
+    {
+      "key": "C",
+      "round": 10,
+      "actualButtonFrame": 252,
+      "rafButtonFrame": 252,
+      "canvasButtonMs": 58.100000001490116,
+      "rafButtonMs": 65.70000000298023,
+      "canvasResultMs": 150.29999999701977
+    },
+    {
+      "key": "9",
+      "round": 11,
+      "actualButtonFrame": 263,
+      "rafButtonFrame": 263,
+      "canvasButtonMs": 64.10000000149012,
+      "rafButtonMs": 79.0,
+      "canvasResultMs": 145.70000000298023
+    },
+    {
+      "key": "C",
+      "round": 11,
+      "actualButtonFrame": 273,
+      "rafButtonFrame": 273,
+      "canvasButtonMs": 66.5,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 137.5
+    },
+    {
+      "key": "9",
+      "round": 12,
+      "actualButtonFrame": 285,
+      "rafButtonFrame": 285,
+      "canvasButtonMs": 135.69999999552965,
+      "rafButtonMs": 148.59999999403954,
+      "canvasResultMs": 135.69999999552965
+    },
+    {
+      "key": "C",
+      "round": 12,
+      "actualButtonFrame": 296,
+      "rafButtonFrame": 296,
+      "canvasButtonMs": 71.89999999850988,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 134.60000000149012
+    },
+    {
+      "key": "9",
+      "round": 13,
+      "actualButtonFrame": 308,
+      "rafButtonFrame": 308,
+      "canvasButtonMs": 73.79999999701977,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 135.79999999701977
+    },
+    {
+      "key": "C",
+      "round": 13,
+      "actualButtonFrame": 320,
+      "rafButtonFrame": 320,
+      "canvasButtonMs": 58.29999999701977,
+      "rafButtonMs": 65.79999999701977,
+      "canvasResultMs": 145.39999999850988
+    },
+    {
+      "key": "9",
+      "round": 14,
+      "actualButtonFrame": 330,
+      "rafButtonFrame": 330,
+      "canvasButtonMs": 57.899999998509884,
+      "rafButtonMs": 65.39999999850988,
+      "canvasResultMs": 136.39999999850988
+    },
+    {
+      "key": "C",
+      "round": 14,
+      "actualButtonFrame": 342,
+      "rafButtonFrame": 342,
+      "canvasButtonMs": 70.5,
+      "rafButtonMs": 82.5,
+      "canvasResultMs": 160.0
+    },
+    {
+      "key": "9",
+      "round": 15,
+      "actualButtonFrame": 353,
+      "rafButtonFrame": 353,
+      "canvasButtonMs": 66.10000000149012,
+      "rafButtonMs": 82.10000000149012,
+      "canvasResultMs": 144.89999999850988
+    },
+    {
+      "key": "C",
+      "round": 15,
+      "actualButtonFrame": 365,
+      "rafButtonFrame": 365,
+      "canvasButtonMs": 51.600000001490116,
+      "rafButtonMs": 65.60000000149012,
+      "canvasResultMs": 140.70000000298023
+    },
+    {
+      "key": "9",
+      "round": 16,
+      "actualButtonFrame": 377,
+      "rafButtonFrame": 377,
+      "canvasButtonMs": 51.100000001490116,
+      "rafButtonMs": 65.5,
+      "canvasResultMs": 136.79999999701977
+    },
+    {
+      "key": "C",
+      "round": 16,
+      "actualButtonFrame": 389,
+      "rafButtonFrame": 389,
+      "canvasButtonMs": 52.100000001490116,
+      "rafButtonMs": 64.80000000447035,
+      "canvasResultMs": 144.60000000149012
+    },
+    {
+      "key": "9",
+      "round": 17,
+      "actualButtonFrame": 400,
+      "rafButtonFrame": 400,
+      "canvasButtonMs": 52.399999998509884,
+      "rafButtonMs": 66.0,
+      "canvasResultMs": 135.60000000149012
+    },
+    {
+      "key": "C",
+      "round": 17,
+      "actualButtonFrame": 410,
+      "rafButtonFrame": 410,
+      "canvasButtonMs": 57.80000000447035,
+      "rafButtonMs": 65.39999999850988,
+      "canvasResultMs": 147.39999999850988
+    },
+    {
+      "key": "9",
+      "round": 18,
+      "actualButtonFrame": 421,
+      "rafButtonFrame": 421,
+      "canvasButtonMs": 52.80000000447035,
+      "rafButtonMs": 65.70000000298023,
+      "canvasResultMs": 135.90000000596046
+    },
+    {
+      "key": "C",
+      "round": 18,
+      "actualButtonFrame": 433,
+      "rafButtonFrame": 433,
+      "canvasButtonMs": 149.5,
+      "rafButtonMs": 163,
+      "canvasResultMs": 149.5
+    },
+    {
+      "key": "9",
+      "round": 19,
+      "actualButtonFrame": 443,
+      "rafButtonFrame": 443,
+      "canvasButtonMs": 72.89999999850988,
+      "rafButtonMs": 82.29999999701977,
+      "canvasResultMs": 140.89999999850988
+    },
+    {
+      "key": "C",
+      "round": 19,
+      "actualButtonFrame": 454,
+      "rafButtonFrame": 454,
+      "canvasButtonMs": 52.899999998509884,
+      "rafButtonMs": 65.5,
+      "canvasResultMs": 161.10000000149012
+    },
+    {
+      "key": "9",
+      "round": 20,
+      "actualButtonFrame": 465,
+      "rafButtonFrame": 465,
+      "canvasButtonMs": 64.30000000447035,
+      "rafButtonMs": 66.70000000298023,
+      "canvasResultMs": 134.70000000298023
+    },
+    {
+      "key": "C",
+      "round": 20,
+      "actualButtonFrame": 477,
+      "rafButtonFrame": 477,
+      "canvasButtonMs": 65.09999999403954,
+      "rafButtonMs": 67.59999999403954,
+      "canvasResultMs": 149.09999999403954
+    },
+    {
+      "key": "9",
+      "round": 21,
+      "actualButtonFrame": 489,
+      "rafButtonFrame": 489,
+      "canvasButtonMs": 62.69999999552965,
+      "rafButtonMs": 65.79999999701977,
+      "canvasResultMs": 152.19999999552965
+    },
+    {
+      "key": "C",
+      "round": 21,
+      "actualButtonFrame": 501,
+      "rafButtonFrame": 501,
+      "canvasButtonMs": 70.60000000149012,
+      "rafButtonMs": 82.0,
+      "canvasResultMs": 157.19999999552965
+    },
+    {
+      "key": "9",
+      "round": 22,
+      "actualButtonFrame": 511,
+      "rafButtonFrame": 511,
+      "canvasButtonMs": 75.60000000149012,
+      "rafButtonMs": 82.29999999701977,
+      "canvasResultMs": 162.60000000149012
+    },
+    {
+      "key": "C",
+      "round": 22,
+      "actualButtonFrame": 522,
+      "rafButtonFrame": 522,
+      "canvasButtonMs": 130.5,
+      "rafButtonMs": 144.89999999850988,
+      "canvasResultMs": 130.5
+    },
+    {
+      "key": "9",
+      "round": 23,
+      "actualButtonFrame": 533,
+      "rafButtonFrame": 533,
+      "canvasButtonMs": 52.80000000447035,
+      "rafButtonMs": 65.70000000298023,
+      "canvasResultMs": 157.70000000298023
+    },
+    {
+      "key": "C",
+      "round": 23,
+      "actualButtonFrame": 544,
+      "rafButtonFrame": 544,
+      "canvasButtonMs": 52.20000000298023,
+      "rafButtonMs": 65.60000000149012,
+      "canvasResultMs": 161.60000000149012
+    },
+    {
+      "key": "9",
+      "round": 24,
+      "actualButtonFrame": 555,
+      "rafButtonFrame": 555,
+      "canvasButtonMs": 67.19999999552965,
+      "rafButtonMs": 82.0,
+      "canvasResultMs": 136.0
+    },
+    {
+      "key": "C",
+      "round": 24,
+      "actualButtonFrame": 566,
+      "rafButtonFrame": 566,
+      "canvasButtonMs": 71.5,
+      "rafButtonMs": 82.19999999552965,
+      "canvasResultMs": 135.5
+    },
+    {
+      "key": "9",
+      "round": 25,
+      "actualButtonFrame": 578,
+      "rafButtonFrame": 578,
+      "canvasButtonMs": 67.30000000447035,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 136.10000000149012
+    },
+    {
+      "key": "C",
+      "round": 25,
+      "actualButtonFrame": 590,
+      "rafButtonFrame": 590,
+      "canvasButtonMs": 66.60000000149012,
+      "rafButtonMs": 82.10000000149012,
+      "canvasResultMs": 134.0
+    },
+    {
+      "key": "9",
+      "round": 26,
+      "actualButtonFrame": 601,
+      "rafButtonFrame": 601,
+      "canvasButtonMs": 71.29999999701977,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 180.09999999403954
+    },
+    {
+      "key": "C",
+      "round": 26,
+      "actualButtonFrame": 612,
+      "rafButtonFrame": 612,
+      "canvasButtonMs": 67.89999999850988,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 136.09999999403954
+    },
+    {
+      "key": "9",
+      "round": 27,
+      "actualButtonFrame": 622,
+      "rafButtonFrame": 622,
+      "canvasButtonMs": 51.70000000298023,
+      "rafButtonMs": 65.70000000298023,
+      "canvasResultMs": 136.89999999850988
+    },
+    {
+      "key": "C",
+      "round": 27,
+      "actualButtonFrame": 633,
+      "rafButtonFrame": 633,
+      "canvasButtonMs": 68.39999999850988,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 135.89999999850988
+    },
+    {
+      "key": "9",
+      "round": 28,
+      "actualButtonFrame": 644,
+      "rafButtonFrame": 644,
+      "canvasButtonMs": 69.89999999850988,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 168.70000000298023
+    },
+    {
+      "key": "C",
+      "round": 28,
+      "actualButtonFrame": 656,
+      "rafButtonFrame": 656,
+      "canvasButtonMs": 52.5,
+      "rafButtonMs": 65.29999999701977,
+      "canvasResultMs": 137.29999999701977
+    },
+    {
+      "key": "9",
+      "round": 29,
+      "actualButtonFrame": 668,
+      "rafButtonFrame": 668,
+      "canvasButtonMs": 50.79999999701977,
+      "rafButtonMs": 65.29999999701977,
+      "canvasResultMs": 137.5
+    },
+    {
+      "key": "C",
+      "round": 29,
+      "actualButtonFrame": 680,
+      "rafButtonFrame": 680,
+      "canvasButtonMs": 70.89999999850988,
+      "rafButtonMs": 82.39999999850988,
+      "canvasResultMs": 154.0
+    },
+    {
+      "key": "9",
+      "round": 30,
+      "actualButtonFrame": 691,
+      "rafButtonFrame": 691,
+      "canvasButtonMs": 67.90000000596046,
+      "rafButtonMs": 82.20000000298023,
+      "canvasResultMs": 171.40000000596046
+    },
+    {
+      "key": "C",
+      "round": 30,
+      "actualButtonFrame": 701,
+      "rafButtonFrame": 701,
+      "canvasButtonMs": 46.79999999701977,
+      "rafButtonMs": 49.19999999552965,
+      "canvasResultMs": 136.5
+    }
+  ],
+  "scope": "Recomputed retained actual/source/RAF button and display crops against hashed independent originalPNG references. Baseline is actual prepress canvas with latest frame sequence, no independently retained baseline sourceROI. Earliest detection relies on complete per-frame metadata; raw crops retained at selected evidence points."
+}

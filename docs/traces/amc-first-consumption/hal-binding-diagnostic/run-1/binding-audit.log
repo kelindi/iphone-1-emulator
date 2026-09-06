@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/binding-audit.py", line 98, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/binding-audit.py", line 81, in run
+    if available:assert address%4==0 and 0x10000000<=address and address+4<=0x20000000,'page-table data outside actual RAM'
+AssertionError: page-table data outside actual RAM

@@ -1,0 +1,66 @@
+Internal ctest changing into directory: /home/vercel-sandbox/iphone-1/.context/mbx-stride-integration/native-build
+Test project /home/vercel-sandbox/iphone-1/.context/mbx-stride-integration/native-build
+      Start  1: test_arm
+ 1/30 Test  #1: test_arm ............................   Passed    0.02 sec
+      Start  2: test_soc
+ 2/30 Test  #2: test_soc ............................   Passed    0.27 sec
+      Start  3: test_devicetree
+ 3/30 Test  #3: test_devicetree .....................   Passed    0.00 sec
+      Start  4: test_macho
+ 4/30 Test  #4: test_macho ..........................   Passed    0.00 sec
+      Start  5: test_lzss
+ 5/30 Test  #5: test_lzss ...........................   Passed    0.00 sec
+      Start  6: test_loader
+ 6/30 Test  #6: test_loader .........................   Passed    0.04 sec
+      Start  7: test_vfp
+ 7/30 Test  #7: test_vfp ............................   Passed    0.01 sec
+      Start  8: test_spi
+ 8/30 Test  #8: test_spi ............................   Passed    0.14 sec
+      Start  9: test_i2c
+ 9/30 Test  #9: test_i2c ............................   Passed    0.13 sec
+      Start 10: test_gpioic
+10/30 Test #10: test_gpioic .........................   Passed    0.25 sec
+      Start 11: test_buttons
+11/30 Test #11: test_buttons ........................   Passed    0.24 sec
+      Start 12: test_mtz2
+12/30 Test #12: test_mtz2 ...........................   Passed    0.14 sec
+      Start 13: test_mtz1
+13/30 Test #13: test_mtz1 ...........................   Passed    0.00 sec
+      Start 14: test_pl080
+14/30 Test #14: test_pl080 ..........................   Passed    0.23 sec
+      Start 15: test_mbx
+15/30 Test #15: test_mbx ............................   Passed    0.43 sec
+      Start 16: test_nand
+16/30 Test #16: test_nand ...........................   Passed    0.00 sec
+      Start 17: test_snapshot
+17/30 Test #17: test_snapshot .......................   Passed    5.21 sec
+      Start 18: test_ksyms
+18/30 Test #18: test_ksyms ..........................   Passed    0.00 sec
+      Start 19: test_img3
+19/30 Test #19: test_img3 ...........................   Passed    0.00 sec
+      Start 20: test_aes
+20/30 Test #20: test_aes ............................   Passed    0.00 sec
+      Start 21: test_board
+21/30 Test #21: test_board ..........................   Passed    0.56 sec
+      Start 22: test_bringup_os1
+22/30 Test #22: test_bringup_os1 ....................   Passed    0.00 sec
+      Start 23: test_wm8758
+23/30 Test #23: test_wm8758 .........................   Passed    0.32 sec
+      Start 24: test_clock_carry
+24/30 Test #24: test_clock_carry ....................   Passed    0.19 sec
+      Start 25: test_pcf50635_update
+25/30 Test #25: test_pcf50635_update ................   Passed    0.00 sec
+      Start 26: test_pcf50635_pending_snapshot
+26/30 Test #26: test_pcf50635_pending_snapshot ......   Passed    1.07 sec
+      Start 27: test_web_api
+27/30 Test #27: test_web_api ........................   Passed    0.69 sec
+      Start 28: test_iphone1_input
+28/30 Test #28: test_iphone1_input ..................   Passed    0.00 sec
+      Start 29: test_guest_http
+29/30 Test #29: test_guest_http .....................   Passed    0.01 sec
+      Start 30: test_guest_http_lifecycle_logging
+30/30 Test #30: test_guest_http_lifecycle_logging ...   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 30
+
+Total Test time (real) =  10.00 sec

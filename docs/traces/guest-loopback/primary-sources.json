@@ -1,0 +1,61 @@
+[
+  {
+    "file": "socket.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/socket.h",
+    "bytes": 25526,
+    "sha256": "caefe52e1831eef7bab49f0351540c35dee19e4277338e6bf390a5bcd6ed1479"
+  },
+  {
+    "file": "in.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/netinet/in.h",
+    "bytes": 23738,
+    "sha256": "b79e83880079fc025f95a9686d74a890f616a8cf064245fa3c5a8854b6fd22c0"
+  },
+  {
+    "file": "if.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/net/if.h",
+    "bytes": 16428,
+    "sha256": "1ad7ec84aab79204f637efa8704e3553930a0b4a837f66bb5a4504ac2538f99c"
+  },
+  {
+    "file": "route.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/net/route.h",
+    "bytes": 14907,
+    "sha256": "905ff79e5c41325f586bd08c7220e935d72575db9b9d51373877a27cfe3abc9a"
+  },
+  {
+    "file": "sysctl.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/sysctl.h",
+    "bytes": 41390,
+    "sha256": "4d5c25a6ec616d01d934a35813d74c14f43d677e716b13c3f668ebb9a13a077e"
+  },
+  {
+    "file": "poll.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/poll.h",
+    "bytes": 4710,
+    "sha256": "08f8487634f198c3c8be07d55028b5c9bcead922d6bd27bfd9f6fdf6d743c30b"
+  },
+  {
+    "file": "fcntl.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/fcntl.h",
+    "bytes": 19137,
+    "sha256": "42620b00279a6fb7230c4f321e74f992f54b2b2ec13f7ba0d056cfd615b02aca"
+  },
+  {
+    "file": "errno.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/errno.h",
+    "bytes": 11568,
+    "sha256": "999b0e0ead801822d2f674f8ee767af169712ec929703f5b05680d10907cdb63"
+  },
+  {
+    "file": "ifaddrs.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/Libc/Libc-498.1.7/net/FreeBSD/ifaddrs.h",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "sockio.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-1228/bsd/sys/sockio.h",
+    "bytes": 9949,
+    "sha256": "1a1e5aca7b57e90c821abd386bb2ca5417e37627d92f75f43cae5fcc1313e0ec"
+  }
+]

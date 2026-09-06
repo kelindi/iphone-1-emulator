@@ -1,0 +1,163 @@
+{
+  "passed": true,
+  "scope": "Mapped original code, bounded actual return records and exact Stage O state before the user-hook attempt. No additional device behavior or playback claim.",
+  "records": [
+    {
+      "pc": "c01533c2",
+      "cycles": 9873234592,
+      "cpsr": "60000033",
+      "retired": true,
+      "afterPC": "c01533c4",
+      "afterCPSR": "60000033",
+      "afterLR": "c027602c",
+      "r0": 0,
+      "kernelFieldsAvailable": true,
+      "kernelState": 3,
+      "kernelOutputs": [
+        0,
+        0
+      ],
+      "object": "00000000",
+      "linked": "00000000",
+      "codeSHA256": "9bf52d7125c6966fc3bd5674c043147c52809b66536a9a3e54a84eb8c6fde970"
+    },
+    {
+      "pc": "3123f7f0",
+      "cycles": 9873717675,
+      "cpsr": "60000010",
+      "retired": true,
+      "afterPC": "3123f7f4",
+      "afterCPSR": "60000010",
+      "afterLR": "309e3244",
+      "r0": 0,
+      "kernelFieldsAvailable": false,
+      "kernelState": null,
+      "kernelOutputs": null,
+      "object": "00111710",
+      "linked": "00000000",
+      "codeSHA256": "5dfb4ef21ef1445117cb7fe1f9fe59e5b202f0fda077c119ba55df78b376480f",
+      "scalarOutputCount": 4,
+      "scalarOutputs": [
+        61984,
+        8192,
+        70176,
+        8192
+      ],
+      "interfaceConnection": 23303,
+      "interfaceSRAM": "0055a000"
+    },
+    {
+      "pc": "3123cdc8",
+      "cycles": 9873717695,
+      "cpsr": "60000010",
+      "retired": true,
+      "afterPC": "3123cdcc",
+      "afterCPSR": "60000010",
+      "afterLR": "309e3244",
+      "r0": 0,
+      "kernelFieldsAvailable": false,
+      "kernelState": null,
+      "kernelOutputs": null,
+      "object": "392577cc",
+      "linked": "00111710",
+      "codeSHA256": "7dcb522f705742c56e738af3f5c5ac9a354337175b719e8781606807cad5adf5",
+      "inputIndex": 1,
+      "finalInputIndex": 4294967295,
+      "interfaceOutputPointers": [
+        "00569220",
+        "0056b220"
+      ],
+      "interfaceOutputCapacities": [
+        8192,
+        8192
+      ]
+    },
+    {
+      "pc": "3123ce18",
+      "cycles": 9873717727,
+      "cpsr": "20000010",
+      "retired": true,
+      "afterPC": "3123ce1c",
+      "afterCPSR": "60000010",
+      "afterLR": "39257864",
+      "r0": 0,
+      "kernelFieldsAvailable": false,
+      "kernelState": null,
+      "kernelOutputs": null,
+      "object": "392577cc",
+      "linked": "00111710",
+      "codeSHA256": "637d8db904fd3917b06a9eb7a23aade60701fd1f796bc09d66ee4628229ebb70",
+      "inputIndex": 1,
+      "finalInputIndex": 4294967295,
+      "interfaceOutputPointers": [
+        "00569220",
+        "0056b220"
+      ],
+      "interfaceOutputCapacities": [
+        8192,
+        8192
+      ]
+    },
+    {
+      "pc": "3123f95c",
+      "cycles": 9873717755,
+      "cpsr": "60000010",
+      "retired": true,
+      "afterPC": "3123f2f8",
+      "afterCPSR": "60000010",
+      "afterLR": "3123f960",
+      "r0": 1120016,
+      "kernelFieldsAvailable": false,
+      "kernelState": null,
+      "kernelOutputs": null,
+      "object": "00111710",
+      "linked": "00000000",
+      "codeSHA256": "727c37d96d06cb45346cd5cc4e4c9978fbd002cb2b8583b58e3283e515aabec2"
+    },
+    {
+      "pc": "c0272224",
+      "cycles": 9873719525,
+      "cpsr": "80000013",
+      "retired": true,
+      "afterPC": "c0272228",
+      "afterCPSR": "80000013",
+      "afterLR": "c015335f",
+      "r0": 3433704448,
+      "kernelFieldsAvailable": true,
+      "kernelState": 3,
+      "kernelOutputs": [
+        0,
+        0
+      ],
+      "object": "00000000",
+      "linked": "00000000",
+      "codeSHA256": "7165dca29247d10071815450bc41478a1a7a7daa0888052eea278a7321943102"
+    }
+  ],
+  "stateSHA256": {
+    "sram.bin": "6980f3359392b84914470bb262e12f62dcb6b63c04e91a3edd6ee0ce62a7cff6",
+    "expected.bin": "011452fdff9699442c49115354c9b0bced1b98265ba64ee5b95c1c48bbb01583",
+    "predicted.bin": "a5a5970ef918548e3291b76ba54e47c498333ddc90faefec6d808700ba0d4d66",
+    "written.bin": "5f15b3ccf7ff3acdd8494c7deb8dc2dc550bc950c2e15abc58625c606f24dad9",
+    "init-written.bin": "2dedf5c3d5724191e7332faa267bb495f5c5fe3caafb189ba01769801a8a87fc",
+    "pcm-written.bin": "086037d9e53f76e6212eeef40a6bcb06d825c07f7785782af8b8ec454aa9c904",
+    "host-written.bin": "5b35cbe181b235c3c2b14c2ae8526399950c06f6b69c9356cbb078dd16c8248b",
+    "owned-queue.bin": "1f047875f9b58b5e0c72f51ec72e8474d1018c4fe62739446474daf5a2663215",
+    "registers.bin": "1d771fc7f1dd2035c96b88906574d2137ede3e8965f0383905f2a242c2a6ac40",
+    "first-pcm.bin": "2ce90c8f574188134ae90dc6a79e045c8e75c99c05ed28a466669d381f7ec372",
+    "read-coverage.bin": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+    "read-bytes.bin": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+    "read-ledger.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ordering.bin": "d61082144535294a887c835a0ce0963715cda9647ff4df71da327462729cd16a",
+    "dma-copies.bin": "048a6fc019e997dc9ed2adc516df46c1655df499e666eeb38f91c9edfe35fdfc",
+    "dma-bytes.bin": "3ce8e7891395dcf9270209aef9baa786a222db60115e4f84609adcb48a822fa7"
+  },
+  "observedRetiredSites": [
+    "c01533c2",
+    "3123f7f0",
+    "3123cdc8",
+    "3123ce18",
+    "3123f95c",
+    "c0272224"
+  ]
+}

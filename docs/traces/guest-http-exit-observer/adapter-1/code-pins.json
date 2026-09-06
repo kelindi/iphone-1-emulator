@@ -1,0 +1,289 @@
+{
+  "inputs": {
+    ".context/guest-http-default/build-quiet-2/iphone1-local-http": "bfcc524cae77250b3d3c8d754e7bdfe328734395a0d625fa9735f00ccdd1a19f",
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    ".context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2"
+  },
+  "witnesses": [
+    {
+      "name": "own_exit",
+      "image": "own",
+      "va": "0x1a84",
+      "bytes": 32,
+      "sha256": "ac300863a46f01bed2c52f455df171224210cd16a9fe0d4cbc75a2910ac1d60f"
+    },
+    {
+      "name": "lib_exit",
+      "image": "lib",
+      "va": "0x300099f0",
+      "bytes": 32,
+      "sha256": "088f66b1e20fe32abee8e3689353216c76b5737a885ffcbeb023d0ba6cbbfa61"
+    },
+    {
+      "name": "return_exit",
+      "image": "own",
+      "va": "0x1a88",
+      "bytes": 32,
+      "sha256": "862520832161fca197b47b252cd2c491c00b82c107aeae25284b6669ae79488b"
+    },
+    {
+      "name": "own_poll",
+      "image": "own",
+      "va": "0x1c18",
+      "bytes": 32,
+      "sha256": "ed7a47686850b9e6cc3bce9f8e562c47365bc760cbd314473b4ea2efccd1a2f2"
+    },
+    {
+      "name": "lib_poll",
+      "image": "lib",
+      "va": "0x30067ae0",
+      "bytes": 32,
+      "sha256": "2133707c1174e1be11ab70c0c138c8e88338fdb4a9d731fe88150892f9728c4a"
+    },
+    {
+      "name": "return_poll",
+      "image": "own",
+      "va": "0x1c1c",
+      "bytes": 32,
+      "sha256": "80fc7d3094d4b5bc445643c45cc1a591d9bd3ab2dd55812d5ef45e61c74dfceb"
+    },
+    {
+      "name": "errcall_poll",
+      "image": "own",
+      "va": "0x1ce4",
+      "bytes": 32,
+      "sha256": "581d8394b173ed48ae1af360dc2012685cc00d9ba91bffc8da5e55b5d18d8d6e"
+    },
+    {
+      "name": "errread_poll",
+      "image": "own",
+      "va": "0x1ce8",
+      "bytes": 32,
+      "sha256": "7bdc7b47d72a7e329ba6d9b4fe4a02804389118b21f09cf5eee8d512596698d1"
+    },
+    {
+      "name": "errafter_poll",
+      "image": "own",
+      "va": "0x1cec",
+      "bytes": 32,
+      "sha256": "8b0516a7d56a3c50277d0ce49899bfb06782ffe13496f714d54efe6c961e5fad"
+    },
+    {
+      "name": "own_accept",
+      "image": "own",
+      "va": "0x1c70",
+      "bytes": 32,
+      "sha256": "6713475ab9bef45532f60cf1c9f868195ee20e46987ba913acb5bd05dc734755"
+    },
+    {
+      "name": "lib_accept",
+      "image": "lib",
+      "va": "0x30030520",
+      "bytes": 32,
+      "sha256": "4cb3bbfb700eabe0ddcff1356fb56681bd6f73c9388697b2dbb978509ca188aa"
+    },
+    {
+      "name": "return_accept",
+      "image": "own",
+      "va": "0x1c74",
+      "bytes": 32,
+      "sha256": "8c6af51ebad7237742d918da467f7bab56b29b57cce209414413f7c767a1c922"
+    },
+    {
+      "name": "errcall_accept",
+      "image": "own",
+      "va": "0x1d00",
+      "bytes": 32,
+      "sha256": "f153385a213bda83e5b01cd4dbedffbe80cf4ac01cffbe79f4e52f77a7fdea50"
+    },
+    {
+      "name": "errread_accept",
+      "image": "own",
+      "va": "0x1d04",
+      "bytes": 32,
+      "sha256": "64b2a46ff828332d9f07127fd2fe76ebae34f389b13d1299c8e6026298109c36"
+    },
+    {
+      "name": "errafter_accept",
+      "image": "own",
+      "va": "0x1d08",
+      "bytes": 32,
+      "sha256": "af5ed71d94bb1c1fd876515a548bf044b8c4811294c484a6cd6fca5d55de669c"
+    },
+    {
+      "name": "own_close",
+      "image": "own",
+      "va": "0x1cb0",
+      "bytes": 32,
+      "sha256": "3492ad73c96a51f7ab9538e7208476afad1032576d6f8f95870180834d7b342f"
+    },
+    {
+      "name": "lib_close",
+      "image": "lib",
+      "va": "0x30009880",
+      "bytes": 32,
+      "sha256": "0884e4c8f9f2415dca22be7c26a31da5bd5f433b429126a484819b218bb76619"
+    },
+    {
+      "name": "return_close",
+      "image": "own",
+      "va": "0x1cb4",
+      "bytes": 32,
+      "sha256": "09f42b50d9243a4ade93bf38f5fa8787ddcd6366c1e5eafe15479373b766280c"
+    },
+    {
+      "name": "own_setsockopt",
+      "image": "own",
+      "va": "0x2430",
+      "bytes": 32,
+      "sha256": "2c0f23cbcbf63f5aa116540adfe7b067457dd9014d535c74a8197eaedcea1ab6"
+    },
+    {
+      "name": "lib_setsockopt",
+      "image": "lib",
+      "va": "0x3000e8b0",
+      "bytes": 32,
+      "sha256": "8664fa864b1276aeb326d9a11ddaa759d76664f999bc92e697325b642b1a0014"
+    },
+    {
+      "name": "return_setsockopt",
+      "image": "own",
+      "va": "0x2434",
+      "bytes": 32,
+      "sha256": "cfa25a1ef8f74be084748b9214647934f675b6f199b37cf913310ebc61a73d39"
+    },
+    {
+      "name": "errcall_setsockopt",
+      "image": "own",
+      "va": "0x2448",
+      "bytes": 32,
+      "sha256": "562f4eaf5face64161672feda7f748ce3c12de19d9c03364d4dc50b62c2fd3c5"
+    },
+    {
+      "name": "errread_setsockopt",
+      "image": "own",
+      "va": "0x244c",
+      "bytes": 32,
+      "sha256": "927936f5dc5eac32eacbbc62e2af6226a9785cab1bc03d8f6c827f56a0038c49"
+    },
+    {
+      "name": "errafter_setsockopt",
+      "image": "own",
+      "va": "0x2450",
+      "bytes": 32,
+      "sha256": "c602aa6df0477c8ca9e0eaf2aacd8fa2236f82915b2136a5a9237e6be7236a9c"
+    },
+    {
+      "name": "own_console",
+      "image": "own",
+      "va": "0x219c",
+      "bytes": 32,
+      "sha256": "6246b057ac8322222d6ab472744a9f5f02ee4c670b908d0039961586e059c079"
+    },
+    {
+      "name": "lib_console",
+      "image": "lib",
+      "va": "0x30009860",
+      "bytes": 32,
+      "sha256": "1ada589f4c35ed0981d7f5955a1bb4e9b3fa05a56980a4e6b5cccc76f3de1a3e"
+    },
+    {
+      "name": "return_console",
+      "image": "own",
+      "va": "0x21a0",
+      "bytes": 32,
+      "sha256": "b3335b3fdcdd6ed2bf38a4dc80ce9350939f6ae0f9d176f55434af3427f2162c"
+    },
+    {
+      "name": "errcall_console",
+      "image": "own",
+      "va": "0x21c8",
+      "bytes": 32,
+      "sha256": "757d75833cb7f194e4fc13ec1a2ec52a26b1ff1d554b932645a3b582f5ace649"
+    },
+    {
+      "name": "errread_console",
+      "image": "own",
+      "va": "0x21cc",
+      "bytes": 32,
+      "sha256": "44c984e4eb2d9acf4ef00a3dfb606f4466cb222548e27069747cd553eeba5dfb"
+    },
+    {
+      "name": "errafter_console",
+      "image": "own",
+      "va": "0x21d0",
+      "bytes": 32,
+      "sha256": "3f4710eab3b4ef4d42de405cd4948c732e365742d10dae0b369fdeed57c9ea03"
+    },
+    {
+      "name": "lib_error",
+      "image": "lib",
+      "va": "0x30001bb0",
+      "bytes": 32,
+      "sha256": "263820a0ffa1a25ba432f867314430c82428377770d66a7529efd71fd18ed96f"
+    },
+    {
+      "name": "kernel_exit1",
+      "image": "kernel",
+      "va": "0xc00f7094",
+      "bytes": 32,
+      "sha256": "bb83e17a3e5ea9a632b8f20c1ce54b61b47f07f5d16d4b2b6a58d61c64029e5d"
+    },
+    {
+      "name": "kernel_psignal",
+      "image": "kernel",
+      "va": "0xc00fd790",
+      "bytes": 10,
+      "sha256": "8b466fbea65f40617639828a380ae20575c65714a9143fcbddb345a31f5767e6"
+    },
+    {
+      "name": "kernel_sigexit",
+      "image": "kernel",
+      "va": "0xc00fdf6c",
+      "bytes": 32,
+      "sha256": "36f4f081dbcc9116e79934056cf645680c53afdb199736a56750f915d432215f"
+    },
+    {
+      "name": "kernel_statuspre",
+      "image": "kernel",
+      "va": "0xc00f710e",
+      "bytes": 2,
+      "sha256": "98dd2b77f42c0649fc5ed24b1bb4f5302a8904a1157db281a6752e7b4a3f1280"
+    },
+    {
+      "name": "kernel_statuspost",
+      "image": "kernel",
+      "va": "0xc00f7110",
+      "bytes": 4,
+      "sha256": "f2253fe12975ca465ea624b367d9b9c6a7567a652932e0b63af6415c370958eb"
+    },
+    {
+      "name": "kernel_setthread",
+      "image": "kernel",
+      "va": "0xc0060028",
+      "bytes": 12,
+      "sha256": "4e4a67016e66699e7f01ad99fd565a082ad47ce8168e486399c8bed451040592"
+    },
+    {
+      "name": "kernel_currenttask",
+      "image": "kernel",
+      "va": "0xc0026040",
+      "bytes": 10,
+      "sha256": "b28d6cd110b006123a9cf4e467f763d3769a95a787768f12442fcff5023eb599"
+    },
+    {
+      "name": "kernel_bsdtask",
+      "image": "kernel",
+      "va": "0xc002b5ac",
+      "bytes": 8,
+      "sha256": "b14c7560586e54001ea3667cb562be83ee6c1cf6f9f56110e9455d782a38600b"
+    },
+    {
+      "name": "kernel_bsdthread",
+      "image": "kernel",
+      "va": "0xc002b5bc",
+      "bytes": 8,
+      "sha256": "01d25ac8919978b9187198a21beb43516cff5f78a76fdedf7dda6adf8a4af251"
+    }
+  ]
+}

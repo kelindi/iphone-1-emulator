@@ -1,5 +1,7 @@
 # Browser iPhone execution log
 
+**2026-09-06 — original guest consumes its first PCM buffer (083):** the actual app returns successfully from initialization, explicitly starts AMC, receives the original driver notification, reads every one of4,096 PCM bytes and returns ownership through a verified retired original store. All18 actual artifact negatives reject; root independently confirms the read coverage, IPC and exact instruction receipt. The same bounded engine still has a partial fifth input and two published buffers. [Milestone083](../tweets/083_original_audio_buffer_consumed.md) and [complete evidence](../docs/traces/amc-first-consumption/README.md). Continuous timing, I2S/codec output and audible playback remain open. The GPL decoder/model remain isolated; no production/snapshot/browser-audio integration.
+
 **2026-09-06 — first consumption attempt preserved:**075's complete first-publication boundary repeats exactly. The original guest acknowledges input completion and requests a second16KiB DMA before reading PCM; the probe stops before accepting that request. No consumption, release or playback pass is claimed, and no automatic retry ran. [Trace, unchanged-buffer audit and focused contracts](../docs/traces/amc-consumption-probe/README.md).
 
 **2026-09-06 — isolated first guest PCM (075):** one reviewed bounded run reaches the original start/input requests and actual buffer-layout/session writes, then publishes 4,096 real PCM bytes. Independent original-program/input/PCM/full-SRAM checks, two executed corrupted-artifact controls and root review pass. The stop is after a retired instruction and before host consumption; no playback, continuous sample clock or production integration is claimed. [Evidence and exact boundary](../docs/traces/amc-first-pcm/README.md).
@@ -410,3 +412,183 @@ V3 coordinated return-visit comparison: all88 strict/raw stages,8manual referenc
 
 
 **Audio return observation:** the original kernel configuration return retires successfully with R0=0; all Stage M trace/state remain exact. User return/start locations are still unobserved, with no output consumption. [Bounded result and mapping limitation](../docs/traces/amc-consumption-probe/mecca-return/README.md).
+
+RTC isolated browser follow-up (2026-09-06): the complete-write candidate matches the production seed ABI and passes actual generated execution, import and the first genuine picker action. The one authorized recorded workflow stops at a real autosave failure (“Failed to fetch”); no newer checkpoint commits within65seconds, so the second edit and reload are not attempted. The guest remains unpaused and continues generated execution. No retry, production promotion or milestone081 is claimed; the fetch failure is not attributed to RTC without further evidence. [Full original-speed failure recording, report and immutable pins](../docs/traces/rtc-write-contract/complete-update-browser/README.md).
+
+
+### 2026-09-06 — Complete RTC update reaches the active hardware clock (isolated)
+
+The candidate now applies the real original driver’s seven date bytes on the next elapsed second pulse, with no unsupported writes. One5.132s native run/45,152,141 instructions preserves the exact079 callback prefix and changes active seconds1262304843→1262304805 at the correct batched pulse phase.1,089 focused sanitizer contracts, seven exact pending snapshot roundtrips, a wrong-phase implementation negative and seven actual-trace corruption negatives pass. Only complete valid seven-register dates are supported; partial/invalid/independent-weekday writes remain explicitly unsupported. [Sources and immutable evidence](../docs/traces/rtc-write-contract/complete-update-native/README.md). The separate browser autosave failure keeps persistence and production promotion open.
+
+
+### Offline seed-cache gate: preserved storage failure and bounded successor (2026-09-06)
+
+The first real service-worker setup failed before guest startup and hit its unchanged 240-second process cap; all scoped Chrome processes closed and the return process never began. The underlying install rejection was swallowed before observation, so it is not retroactively asserted. Root-authorized removal of obsolete browser download/code/shell caches restored disk headroom while preserving IndexedDB and experiment evidence. A separate storage-only installer then activated and matched all fifteen file hashes; the unchanged actual checkpoint Blob roundtrip also passed after cleanup. [Full failure and cleanup evidence](../docs/traces/jit-stream-cache/sw-install-storage-failure/README.md) remains retained. A fresh, separately named full offline pair now has bounded installer failure handling, current production UI/remote-firmware pins and the same original phone/cache gates; it awaits the other functional storage run’s END. Production loader remains unchanged.
+
+
+**Audio input backpressure verified:** the unchanged64KiB queue owns the full fourth transfer and only348bytes of the fifth. Completion remains clear, allowing execution to reach the expected userspace return PC. The observer then rejects before validating/retiring it; likely user/kernel inspection-permission issue, not a demonstrated engine failure. All actual-input/queue/prefix proofs and eight artifact negatives pass. [Preserved evidence](../docs/traces/amc-consumption-probe/input-backpressure/README.md). No PCM consumption or playback claim.
+
+RTC complete manual-time candidate passes (2026-09-06): after unchanged-code storage diagnosis and byte-preserving VM cleanup, one instrumented workflow passes19checks, two actual picker edits, two natural autosaves/reloads and final unpaused generated execution. Independent actual-export inspection confirms both hardware times, seven cleared pending flags and zero unsupported writes; existing unknown-read counts51–54 remain explicit. All294,400RGBpixels belowstatus acrossbothreloadpairs match exactly. CandidateWASM7a72add6…9088 retains seed d9c661…3881 and ABI; production is unchanged. [Milestone082 and full recording](../tweets/082_manual_time_autosave.md). The first failed attempt remains linked; no automatic retry occurred.
+
+
+**Original userspace audio startup and first PCM reads verified:** correcting only observer permissions reveals successful actual scalar/init/output-info returns, explicit method3 startup and all4,096 first-output bytes read by the original user process. The run stops at the existing owner-release retirement counter assumption; full handoff remains unaccepted pending instruction-start/successor validation. Exact earlier prefix, real input/queue/both PCM and nine artifact negatives pass. [Preserved evidence](../docs/traces/amc-consumption-probe/user-start-reads/README.md). No audible playback or production change.
+
+
+The separately named offline successors preserved two further fixture failures. The stale `navigator.onLine` indicator was replaced only after a tiny three-context actual-network-denial proof. The next full phone run then passed seven strict screens and an ordinary autosave, but the actual server caught three browser-managed service-worker update requests bypassing Playwright offline emulation. The return process did not run. [Exact failed transport gate and phone evidence](../docs/traces/jit-stream-cache/sw-update-transport-failure/README.md) remain retained; actual fully isolated offline native-code reuse is still open, and production is unchanged.
+
+RTC candidate lifecycle follow-up passes all12 original assertions. A tiny no-emulator negative and real control-state receipts identify the prior export timeout: hidden DOM click omitted Playwright’s enabled wait while visibility-triggered autosave was active. The corrected diagnostic helper waits5.326seconds, downloads244,887,522bytes, then proves exact paused restore and JIT generation1→2. Original failure retained; no product change or retry. [Evidence](../docs/traces/rtc-write-contract/clock-lifecycle/instrumented/README.md).
+
+
+### Real offline compiled-seed reuse passes (2026-09-06)
+
+The fourth separately named functional pair passes **71 checks and ten strict/manually reviewed guest screens**. The first process hash-caches firmware and installs the unchanged real service worker before starting the phone; after the local origin listener and all connections are physically closed, the genuine phone navigates and performs its ordinary autosave. A fresh Chrome process restores exactly the same metadata and compressed checkpoint SHA, loads both seed/interpreter from CacheStorage with exact body hashes, and accepts **20,677,964 bytes** of native code belonging to the exact seed URL. All 25 scoped process identities close, and actual origin requests remain zero after the barrier. The previous three failures remain retained. [Milestone 084 with both full uncut recordings](../tweets/084_offline_compiled_seed_reuse.md) and [full evidence](../docs/traces/jit-stream-cache/sw-cache-offline/README.md) document the explicit cache-preparation fixture and transport limits.
+
+The loader-prefix-only patch preserves the entire SeedJIT lifecycle/admission class byte-for-byte and passes 49 focused loader/lifecycle checks, including real HTTP URL/body/hash, corruption and MIME fallback. It remains isolated pending the combined RTC-runtime/loader offline upgrade and fallback gates. This functional pair is not a speed benchmark, does not establish ordinary first-visit behavior, and leaves milestone 080’s **49.8 ms worse pooled Home p95** explicit. Production loader remains unchanged at this checkpoint.
+
+
+**Audio follow-up to083:** exact first PCM copy destination and original MeCCA caller are now independently verified without extending guest/device bounds. All prior trace/state and23 actual artifact negatives pass. [Evidence](../docs/traces/amc-first-consumption/copy-destination/README.md); no I2S or sound claim.
+
+
+### RTC and streaming loader integrated and final bundle verified (2026-09-06)
+
+The default local build now uses RTC WASM `7a72add6…9088`, streaming loader `3c2cc412…7e9`, unchanged seed `d9c661…3881`, and offline generation `9c31daade3d7df58b6e2624a`. All 28 native CTest suites, 58 JavaScript tests and WASM initialization pass. The actual old `b323` runtime upgrades to the new core in a 30-check workflow, including optional-seed interpreter fallback, rejected corrupt update and corrupt-firmware recovery. The independent transport audit distinguishes 46 SW HTTP responses from two local Blob scripts; a malformed redundant relative-URL probe is excluded, while real remote-disconnection receipts and physically closed local listeners prove the barrier. Original failures remain retained.
+
+The exact unmarked final bundle then passes 21 browser checks: real Settings/physical Home, natural autosave, online and physically disconnected reloads, matching core/loader/SW hashes, and positive generated execution. Both restored Home frames match all 294,400 compared RGB pixels below the status bar exactly. The actual saved checkpoint remains byte/metadata-identical. Offline setup is explicitly diagnostic instrumentation; an ordinary fresh visit does not automatically install the SW. The current minimalist UI and R2 manifest remain unchanged. [Final integration evidence and recording](../docs/traces/rtc-loader-release/README.md).
+
+The loader's prior controlled Settings gain remains narrow: about 30% on first returning Settings, with 49.8 ms worse pooled Home p95. The integrated bundle's functional verification is not a new speed benchmark. The two-second Settings target, reference-Mac/Safari verification, continuous sound and guest networking remain open. No public deployment or full product completion is claimed. Next work follows actual warm interpreter coverage and the verified audio output-copy destination.
+
+
+**Next speed measurement prepared:** retained original-runtime warm profiles show roughly 99.2–99.3% nonidle worker residency during the conservatively bounded readiness window, with interpreter and memory/MMU work much larger than distinct rendering/clock or compilation work. The isolated all-fallback PC collector and correctness contract are prepared, not executed; it will measure wholly absent seed pages and actual admission/guard paths before proposing broader generation. [Analysis](../docs/traces/warm-settings-reassessment/README.md) and [bounded probe plan](../docs/traces/jit-fallback-census/README.md). No production CPU change or new speed claim.
+
+
+**Audio transport census:** one bounded unchanged-state run captures actual software ring/format and hardware counters at083. All27 artifact negatives pass; no I2S access or configured audio DMA exists by this stop. Earlier codec state is preserved. [Evidence](../docs/traces/amc-first-consumption/transport-census/README.md); no continuation or sound.
+
+
+### Visible error recovery (2026-09-06)
+
+The minimalist page had hidden Retry/previous-save buttons, and post-ready fatal messages left the boot overlay hidden. Those existing actions now appear inside the phone only on failure; fail clears readiness and reveals the overlay before updating its label. One 12-check Chrome session verifies an actual worker HTTP503 failure, pointer retry into genuine Home, an explicitly injected runtime-fatal message, and keyboard retry into the real OS. Source and recording are in [milestone 085](../tweets/085_visible_recovery.md). The three frontend files and generated shell `6fc3927f86a86269a30dc811` are integrated locally; core, worker, loader, seed, manifest and storage are unchanged. The prior exact-bundle offline gate remains evidence for its prior UI hashes, not a repeated claim for this shell.
+
+
+**Audio next-service boundary:** fresh083/S state remains exact; the real driver asks for more decoding12 instructions after returning ownership. The preserved two-publication guard stops first, with28 artifact negatives and no retry. [Evidence](../docs/traces/amc-first-consumption/next-service/README.md). Next: bounded genuine buffer reuse toward HAL/I2S startup.
+
+
+### Own guest-program execution (2026-09-06)
+
+One disposable clean boot now executes our own ARMv6 program through original launchd/dyld/libSystem. Actual PID21, exact38-byte UART message/write return and exit(0) entry pass; full existing5,178 fork hashes remain unchanged. [086](../tweets/086_own_guest_program.md) retains the nonvisual trace, independent audit and pre-guest tooling failures. No production change, process-reap proof, HTTP exchange or networking claim. Next is ordinary guest loopback qualification.
+
+
+**Warm interpreter coverage measured:** one zero-loss actual Settings/Home census and its complete recording now pass state, counter, screen and scoped-process gates. The result exposes newly observed instruction sequences missed by the parked exit-only expansion. A bounded mixed seed candidate is authorized for isolated correctness work; runtime/loader resource caps must agree and existing512 regions remain. No speed improvement has been measured from this work. [Counts, excluded cohorts, failures and next gates](../docs/traces/jit-fallback-census/README.md).
+
+
+**Audio stream follow-up (Stage U):** one isolated guest now decodes and reads53 consecutive4KiB PCM buffers with51 verified ownership returns. All53 match the independent original-media decode; actual transferred bytes reconstruct the full65,534-byte queue. Fresh083/R/S/T proofs and28 prior+10 new artifact negatives pass. An initial auditor-format assumption about the pre083 generation2 IPC is preserved and corrected using the same artifacts, without a guest retry. Actual software-ring fill reaches228KiB, but I2S remains untouched: the earliest stop is the original BSU+0x400 lock request in the audio state-saving path. No production/sound claim. [Evidence and limits](../docs/traces/amc-first-consumption/continuous-stream/README.md).
+
+### 2026-09-06 — Mixed hot-code seed correctness, still isolated
+
+The bounded64-page/2,048-position expansion passes its16MiB/576-region/80KiB-body structural caps and preserves original compiler guards and all original admission bits. Loader/lifecycle53, actual capacity1,744 and404 boundary scenarios pass. Its one100M genuine-guest run matches every full raw checkpoint and final frame of the retained7a72 control, with no normalized fields; generated work increases5.88M instructions. There is no browser speed result or production update yet. [Detailed evidence](../docs/traces/jit-mixed-coverage/README.md).
+
+
+### Genuine guest loopback exchange (2026-09-06)
+
+[087](../tweets/087_guest_loopback_http.md) passes the corrected own-program/native/UART gate: original TCP APIs carry exact54/113-byte HTTP request/response, with full own code identity and exit0 entry.111 native witnesses,33 matching result rows,8 matching buffers and6 artifact negatives pass; post-run source/core/image hashes remain exact. The first full-code-at-entry observer attempt is retained incomplete, and the clone-only read repair has38 focused checks. No production, Safari, Weather or internet-access claim. The next bounded step is original Safari against an ordinary guest demo server.
+
+### 2026-09-06 — Mixed coverage browser comparison parked
+
+The candidate passes 88 settled screens, eight manual views and both compilation budgets. Settings warm median improves 3.167→3.067s, but first launch is mixed and reverse Home p95 worsens by ~100ms. Production remains unchanged. The original series' disk stop and separately recorded unstarted fourth control are preserved; no samples were dropped. [088](../tweets/088_mixed_seed_coverage_diagnostic.md) contains the complete actual recording and tradeoffs. The register-transfer follow-up is source-identical to the prior parked experiment, so it does not justify repeating that work.
+
+
+**Audio083 follow-up — BSU lock and partial DMA pause:** the one Stage V guest preserves all53 PCM generations/51 ownership returns, then retires the original BSU-lock and two transport-pause stores. The original driver saves actual current14ae1568 and3,750 remaining words while65,534 owned queue bytes stay exact. Stops before returning unmodeled BSU+410; all17 native targets,483 new focused checks and40 actual artifact negatives pass. No sound, saved-context or production claim. [Evidence](../docs/traces/amc-first-consumption/bsu-lock-pause/README.md).
+
+
+### Calculator input measurement (2026-09-06)
+
+The maintained `test:input-feedback` checks 30 real presses each of 9 and Clear against independent original display references. All 60 results, six actual asset hashes and 16 post-run pins pass. Sampled button p95 is 165.4/165.6 ms and release-to-result p95 is 134.5/134.4 ms, but the RAF observer skips delivered frames; the 150 ms input gate remains unresolved. All 13 scoped processes close. The first warmup BigInt reporting failure remains retained; the successor fixes only serialization. No autosave completes during this active sequence. [089 and full recording](../tweets/089_calculator_input_feedback.md), [independent audit and limits](../docs/traces/calculator-input-feedback/README.md). Next is a separate delivery observer, not a production scheduler change.
+
+## 2026-09-06 — Calculator actual frame delivery (090)
+
+One separately frozen, harness-only run completes 60 measured 9/C presses plus two warmups on unchanged production, with all scoped processes closed. Independent original-reference/raw-source/canvas crop and timestamp audits pass. Canvas button p95 is 135.7/134.0 ms; same-frame RAF p95 148.6/148.9 ms. This meets the literal canvas button threshold only for this observed Calculator workload, not physical paint or broader input. Post-draw observer p95 is 4.1 ms and crop transport extends cadence; no overhead subtraction, favorable-latency retry or production optimization. [090 recording](../tweets/090_calculator_frame_delivery.md) and [full durable evidence](../docs/traces/calculator-frame-delivery/README.md) retain every result and the earlier test's limitations. Warm Settings remains a separate speed target.
+
+## 2026-09-06 — Original Safari local demo (091)
+
+One native boot qualifies our own bounded HTTP listener and genuine Home, followed by a verified standard snapshot and one browser workflow. Original Safari enters the numeric loopback URL, follows a link, submits `hi`, creates a bookmark and returns Home. Ordinary interval autosave/reload preserves the bookmark and running service; two new requests arrive afterward. All 20 browser checks, seven independent HTTP send/close/byte audits and three exact screenshot comparisons pass; all 5,178 preexisting file forks and frozen production source bytes remain unchanged. [091 full recording](../tweets/091_safari_local_demo.md) and [durable evidence](../docs/traces/guest-safari/README.md) retain the setup, artifact-auditor corrections and limits. This is an isolated imported phone; default service installation, discovery, external networking and Weather data remain open.
+
+**Audio083 follow-up — save boundary with preserved observer failure:** one Stage W guest performs all seven resource-derived BSU reads and reads every byte of the original48KiB SRAM save sources, then stops before forwarding the power selector request. All V prefixes/resources and40 prior artifact negatives pass. The final destination observer exceeded its4KiB helper limit, so full save acceptance fails; unavailable zeros are not guest bytes. A separate source-only artifact audit validates12,288 actual reads and two corruption negatives, without a guest replay. [Evidence, first failure and limits](../docs/traces/amc-first-consumption/bsu-save-boundary/README.md). No restore/power/sound/production claim.
+
+**Audio083 follow-up — actual saved context verified:** the observer-only Stage X successor passes the complete seven-word context, actual current/remaining input fields, and49,152-byte destination comparison plus source-read coverage. Its full guest trace and every unchanged W artifact are exact; all20 native targets and47 actual artifact negatives pass. The first W capture failure remains preserved. The pending39a0000c=3 is ONCTRL for already-ungated domains0/1, correcting the earlier “selector” label; no write is forwarded or power transition claimed. [Evidence and limits](../docs/traces/amc-first-consumption/bsu-saved-context/README.md). Reset/restore, sound and production integration remain open.
+
+
+**Audio083 follow-up — real suspension:** one Stage Y guest retires all four original power/clock writes and the driver's actual state3→5 store. One retained decoder generation owns the unchanged180,224 SRAM bytes and65,534-byte queue; active allocations/service/DMA/IRQ are cleared. All21 native targets and57 actual artifact negatives pass across the original audits and a separately preserved artifact-only correction. The first auditor's synthetic service1 assumption and final-USR field assumption remain documented; no guest retry. Execution stops at an unaccepted observer binding at31236650, so no HAL/sound claim. [Actual transitions, limits and failed/corrected evidence](../docs/traces/amc-first-consumption/power-suspension/README.md). Reset/restore and production integration remain open.
+
+
+### Whole-web LTO actual navigation diagnostic (2026-09-06)
+
+The isolated full-LTO core has5.81% fixed-work CPU benefit, but actual fresh-profile Settings median changes3266.75→3216.90ms and Home pooledp95 increases917.7→966.7ms. Settingsp95 improves3816.8→3417.0ms; both firstSettings observations improve, while reverseHomep95 worsens50.4ms. All88 strict raw comparisons and eight manual first screens pass. The first original control completed all22 stages then failed its asset reporter; its complete trace/pixels were independently recovered but graceful closure/full recording are absent. The three unstarted arms continued separately, retaining every observation and failed profile. LTO stays parked; production is unchanged. [092 full actual recording and scope](../tweets/092_web_lto_navigation_diagnostic.md), [complete per-arm evidence](../docs/traces/web-lto/browser/README.md).
+
+
+**Audio083 follow-up — observer stopped before an unmapped page:** the single Stage Z diagnostic preserves every Stage Y guest/resource byte and stop cycle. Actual L1`15c8ac48=08511001` and L2`085110d8=0` explain all four cloned READ/FETCH fault7 results; no actual guest fetch or HAL call occurred. All22 native targets and65 actual artifact negatives pass across the original proofs and an artifact-only correction using actual snapshot RAM geometry. The original auditor's synthetic-aperture failure is retained; no guest retry. [Evidence and limits](../docs/traces/amc-first-consumption/hal-binding-diagnostic/README.md). Next is the original kernel's normal fetch-fault path, not a fabricated mapping or audio event.
+
+
+**Audio083 follow-up — original prefetch abort and mapped retry:** the single Stage AA run lets the unmodified CPU take the actual missing-code fault, then returns 1,636 core steps later to the same full user context with original MeCCA bytes mapped. It stops before the original StartIO entry instruction at `0x31236650`, not HALOutputProc. Exact fresh Z/083 prefixes, all retained SRAM/queue/ownership and suspension proofs pass; 23 native targets and 70 actual artifact negatives pass. No HAL, reset/restore or sound claim. [Evidence and bounds](../docs/traces/amc-first-consumption/original-prefetch-retry/README.md).
+
+## 2026-09-06 — own Photos fixture reaches native Home; app gate pending
+
+The original guest filesystem now creates five own JPEG/THM test files with exact
+readbacks on a separate pristine MBX image. Its native snapshot passes the original
+loader and an independent full256MiB RAM comparison; actual HFS hard-link targets
+match every file SHA. Nineteen host filesystem cases, twelve original import bindings,
+all5,120 old fork preservation checks and seven mutated hard-link controls pass.
+The offline placement refusals and initial direct-datafork auditor failure remain
+retained. The first4B boot reaches its cap before Home; its Home gate is incomplete.
+A separately frozen continuation to10B reaches real Home+Repair, preserving the first
+result and all data. [Native evidence](../docs/traces/photo-bootstrap/README.md).
+The original Photos UI/persistence gate is queued after the persistent Safari
+service browser workflow. Default firmware/runtime assets remain unchanged.
+
+
+### Executed-work census preparation (2026-09-06)
+
+The isolated original512 observer adds per-generated-retirement counters while retaining the actual interpreter census. All404 focused scenarios/1212 engine rows preserve state and policy counters;26 precise cases,3 deliberately wrong-count negatives and14 retained-byte decoder controls pass. Physical/routine mapping stays unknown without independent binding. All original emitted bodies strip byte-identically. The one deterministic100M gate is prepared but held for Safari/Photos disk priority; no phone census or performance measurement has run. [Contract and evidence](../docs/traces/jit-executed-work/README.md).
+
+## 2026-09-06 — Default local HTTP qualification stopped at form failure
+
+[093](../tweets/093_default_local_demo_qualification_failure.md) preserves the complete single800-second browser attempt. Actual pristine MBX input, all5,120 old forks, final quiet ARMv6 binary, native listener/Home and two Safari local pages pass. The first form fails;365 pending2D hangs and absence of daemon PID21 are separate unresolved observations. New crashdump-process report is not evidence of the daemon exit cause. Full raw failed snapshot retained, no retry/fallback/default promotion. Bookmark and real autosave/reload gates remain open.
+
+## 2026-09-06 — First populated Photos workflow exposes rendering failure
+
+Own fixed importer passes19 real-filesystem sanitizer cases, exact five-payload
+readback/backing-file validation and separate native Home continuation. The first
+unchanged-MBX browser session runs313.486seconds: original Camera Roll(2), correct
+thumbnails and first circle image appear, then controls/Next leave stale content
+and a narrow image strip. The square/previous-next/Home/persistence gates are
+unfinished; no retry or production promotion.32 actual local bodies,16 unchanged
+projected files and12 raw frames verify; browser/server close. Live3D-restart
+observation is retained with its limit: this harness did not preserve full serial
+or export final guest state. [094/full recording](../tweets/094_photos_first_workflow_failure.md)
+and [evidence](../docs/traces/photo-bootstrap/README.md). Prioritize actual graphics
+correction before extending app fixtures.
+
+**Safari graphics candidate:** actual retained packets identify a 472-pixel BGRA8 source-row cap failure. The isolated correction passes 2,847 native/WASM checks and exact source-row pixel audits; released baseline/JIT/seed identity verified. Prior091's software graphics differs from the failed MBX default. First rendering attempt has a closed-input launcher fault and no navigation acceptance; server absence and Photos failure remain separate. [Source/evidence](../docs/traces/safari-stride472/README.md). No production change.
+
+
+### Executed-work100M correctness and retained ranking (2026-09-06)
+
+The single count-only observer trajectory passes all four complete raw snapshots, original JIT policy counters and final frame. Independent saved-byte audit reconciles73,093,840 generated and26,906,160 interpreted steps with zero count loss; all nine observed process identities closed. This is no timing or warm-browser result. Retained first100M work identifies a3,883,986-step byte-hash-shaped range that is already99.734% generated. Routine/physical identities remain unbound; no optimization follows from count share alone. [Evidence and limits](../docs/traces/jit-executed-work/README.md), [next measurement hypothesis](../docs/traces/jit-executed-work/hotspot-note.md). Production unchanged.
+
+**095 — bounded Safari rendering recovery passes:** one corrected-launch run on the isolated stride472 core redraws the actual failed Safari state, visibly types `glyph`, returns Home with144000 exact RGB pixels, and reopens the retained page. All ten checks/full serial/export/served-asset gates pass; no new graphics hang/restart. The initial EOF launcher failure is retained. [Complete original-speed video and evidence](../tweets/095_safari_wide_source_recovery.md). Root owns maintained integration/upgrade gates; no HTTP or Photos acceptance.
+
+## 2026-09-06 — Narrow MBX source correction enters maintained source
+
+After095's isolated rendering acceptance, root applies only the reviewed BGRA472
+source-stride admission and its meaningful32 new checks to maintained MBX source.
+Fresh native build passes30 suites;58JS tests and stagedWASM smoke pass. Exact old
+and candidate web projections differ only in WASM plus generated service-worker
+version. Actual saved-phone upgrade/offline/final-package gates are pending;
+`web/dist/emu.wasm` still serves7a72. No HTTP, Photos or general speed acceptance.
+Private preparation is `.context/mbx-stride-integration/`; public evidence follows
+completed package verification.
+
+
+### 2026-09-06 — MBX correction integrated; scope narrowed to responsiveness
+
+The bounded Safari source-row fix is now the local default core3b43, offline generationc145cb.30native suites,58JS tests and WASM smoke pass; actual old/new saved-phone upgrade30 and final unmarked bundle21 pass, with exact autosave/offline preservation. Both upgrade attempts are retained; first body audit failed despite functional success. [096](../tweets/096_graphics_fix_default_release.md) records full final video and evidence. No public deployment or app-launch speedup is claimed.
+
+The user called out roughly ten hours of work without adequate responsiveness. Finish the already-running Photos/daemon diagnostic outcomes, defer further audio/network expansion, and focus on a concrete measured app-launch improvement. Full product goal remains open.

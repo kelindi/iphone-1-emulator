@@ -60,6 +60,44 @@ void s5l_pcf50635_set_time(s5l_pcf50635_t *pmu,
     if (unix_seconds > PCF50635_MAX_TIME) unix_seconds = PCF50635_MAX_TIME;
     pmu->seconds = unix_seconds;
     pmu->tick_accum = 0;
+    for (unsigned i = 0; i < 7; i++) pmu->written[PCF50635_RTCSC + i] = 0;
+}
+
+/* Isolated bounded date-write model: accepts the original driver's complete,
+ * valid seven-register update. Partial/invalid updates are explicitly counted
+ * as unsupported at the next pulse; no partial-calendar behavior is claimed.
+ * The existing regs/written arrays hold pending bytes/mask and already travel
+ * in snapshots. Reads continue to expose active seconds until that pulse. */
+static unsigned pending_rtc(const s5l_pcf50635_t *p) {
+    unsigned mask = 0;
+    for (unsigned i = 0; i < 7; i++)
+        if (p->written[PCF50635_RTCSC + i]) mask |= 1u << i;
+    return mask;
+}
+static int unbcd(uint8_t b, unsigned max) {
+    unsigned n = (b >> 4) * 10u + (b & 15u);
+    return (b & 15u) <= 9u && (b >> 4) <= 9u && n <= max ? (int)n : -1;
+}
+static bool pending_date(const s5l_pcf50635_t *p, uint64_t *seconds) {
+    const uint8_t *r = p->regs + PCF50635_RTCSC;
+    int sec = unbcd(r[0], 59), min = unbcd(r[1], 59);
+    int hour = unbcd(r[2], 23), day = unbcd(r[4], 31);
+    int month = unbcd(r[5], 12), year = unbcd(r[6], 99);
+    if (sec < 0 || min < 0 || hour < 0 || day < 1 ||
+        month < 1 || year < 0 || r[3] > 6) return false;
+    static const unsigned lengths[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    unsigned limit = lengths[month - 1] + (month == 2 && year % 4 == 0);
+    if ((unsigned)day > limit) return false;
+    uint64_t days = 0;
+    for (int y = 0; y < year; y++) days += 365u + (y % 4 == 0);
+    for (int m = 1; m < month; m++) days += lengths[m - 1] + (m == 2 && year % 4 == 0);
+    days += day - 1;
+    uint64_t result = PCF50635_MIN_TIME + days * 86400u + hour * 3600u + min * 60u + sec;
+    /* The original driver always supplies a calendar-consistent weekday.
+     * Independent weekday programming is outside this bounded operation. */
+    if ((result / 86400u + 4u) % 7u != r[3]) return false;
+    *seconds = result;
+    return true;
 }
 
 void s5l_pcf50635_tick(s5l_pcf50635_t *pmu, uint32_t ticks) {
@@ -70,6 +108,22 @@ void s5l_pcf50635_tick(s5l_pcf50635_t *pmu, uint32_t ticks) {
     if (pmu->seconds < PCF50635_MIN_TIME) pmu->seconds = PCF50635_MIN_TIME;
     uint64_t total = (pmu->tick_accum % pmu->tick_hz) + (uint64_t)ticks;
     uint64_t advance = total / pmu->tick_hz;
+    bool second_edge = advance != 0;
+    if (second_edge) {
+        unsigned mask = pending_rtc(pmu);
+        if (mask) {
+            uint64_t updated;
+            if (mask == 0x7fu && pending_date(pmu, &updated)) {
+                pmu->seconds = updated;
+                advance--; /* New bytes become active at this first pulse. */
+            } else {
+                for (unsigned i = 0; i < 7; i++)
+                    if (mask & (1u << i)) pmu->unknown_writes++;
+            }
+            for (unsigned i = 0; i < 7; i++)
+                pmu->written[PCF50635_RTCSC + i] = 0;
+        }
+    }
     if (pmu->seconds >= PCF50635_MAX_TIME ||
         advance > PCF50635_MAX_TIME - pmu->seconds) {
         pmu->seconds = PCF50635_MAX_TIME;
@@ -78,6 +132,9 @@ void s5l_pcf50635_tick(s5l_pcf50635_t *pmu, uint32_t ticks) {
         pmu->seconds += advance;
         pmu->tick_accum = total % pmu->tick_hz;
     }
+    /* Each elapsed oscillator edge latches one coalesced SECOND event, even
+     * when a newly applied date equals the previous calendar second. */
+    if (second_edge) pmu->regs[PCF50635_INT1] |= 0x80u;
 }
 
 static bool is_rtc(uint8_t reg) {
@@ -138,13 +195,13 @@ static uint8_t reg_read(s5l_pcf50635_t *pmu, uint8_t reg) {
 
 static void reg_write(s5l_pcf50635_t *pmu, uint8_t reg, uint8_t val) {
     pmu->reg_writes++;
-    /* RTC writes remain unsupported by this device model. The original OS 1.0
-     * driver has a real asynchronous seven-byte setter, documented in
-     * docs/traces/rtc-write-contract; its conditional member-pointer panic is
-     * not the normal setter path. Count missing behavior visibly until write,
-     * partial-transaction and rollover semantics are implemented and tested. */
+    /* RTC bytes are staged in the existing snapshot-backed register bank.
+     * The next second pulse validates and applies the bounded full update.
+     * Reads remain the active clock; unsupported partial/invalid updates are
+     * counted at that pulse and cleared rather than silently normalized. */
     if (is_rtc(reg)) {
-        pmu->unknown_writes++;
+        pmu->regs[reg] = val;
+        pmu->written[reg] = 1u;
         return;
     }
     pmu->regs[reg] = val;

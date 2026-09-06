@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "Actual BSU lock and partial DMA pause; stops before first unmodeled BSU save-register value. No saved context, power gating, I2S or sound.",
+  "actualStoreReceipts": 3,
+  "actualReadReceipts": 4,
+  "remainingInputWords": 3750,
+  "ownedQueueBytes": 65534,
+  "stopCycles": 9874729099,
+  "additionalCyclesAfterURequest": 57,
+  "pubs": 53,
+  "released": 51
+}

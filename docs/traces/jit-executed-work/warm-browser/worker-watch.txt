@@ -1,0 +1,8 @@
+ diagnosticRetired += ran;
+      const censusView = new DataView(module.jitMemory.buffer), censusPtr = module._emu_fc_summary();
+      if (censusView.getUint32(censusPtr+76,true) && (
+          censusView.getBigUint64(censusPtr+40,true) || censusView.getBigUint64(censusPtr+48,true) ||
+          censusView.getBigUint64(censusPtr+64,true) || censusView.getBigUint64(module._emu_fc_generated_overflow(),true) ||
+          diagnosticRetired-diagnosticWindowStart >= 150000000)) {
+        module._emu_fc_stop(); throw Error('Count-only observation loss or150M window cap; stopped before next chunk');
+      }

@@ -1,0 +1,34 @@
+{
+  "scope": "Independent static admission reconstruction from original seed definitions and retained actual browser rows. Inactive versus active positions are combined; this does not independently validate their runtime invalidation history.",
+  "regionsSHA256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+  "actions": [
+    {
+      "name": "warm-settings",
+      "rawRowsSHA256": "e9ae86603555e92dacd52ed8684232d9cb55a9712257763f9f77b029beb122b2",
+      "rows": 286966,
+      "totals": [
+        13189241,
+        76942,
+        9514709,
+        12799,
+        7416861
+      ],
+      "allStaticAdmissionChecksPass": true,
+      "alteredAdmissionControlsRejected": 5
+    },
+    {
+      "name": "warm-home",
+      "rawRowsSHA256": "acefa8aedcc66c2b196f6d2b40dcec6828abfbeca079f75468601c37cbd4ffa5",
+      "rows": 145032,
+      "totals": [
+        3742734,
+        16975,
+        1961117,
+        2835,
+        1618401
+      ],
+      "allStaticAdmissionChecksPass": true,
+      "alteredAdmissionControlsRejected": 5
+    }
+  ]
+}

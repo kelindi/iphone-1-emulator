@@ -1,0 +1,6 @@
+{
+  "originalPath": "tools/jit/compiler.cjs",
+  "originalSha256": "b68ddff5c7b0a5aa52b87ba1ba8ae3b72457ec74e2b1cfe9dc4d33ae3f22c170",
+  "observerSha256": "ec80f22cb5f9bbb0e016c7c9c728c32dd0b2334ac3410662b0f1bcab31dc5041",
+  "scope": "Add enabled-gated saturating count after original generated n increment; no other emitted body alteration."
+}

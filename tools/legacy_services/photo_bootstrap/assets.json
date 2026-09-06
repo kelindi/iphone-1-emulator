@@ -1,0 +1,30 @@
+{
+  "scope": "Own fixed JPEG test patterns, not camera captures",
+  "files": [
+    {
+      "name": "IMG_0001.JPG",
+      "bytes": 19484,
+      "sha256": "d2c65cda764d893c536c94d7e6ae4899bc4b6ac9235252c750267a6119960a5c"
+    },
+    {
+      "name": "IMG_0001.THM",
+      "bytes": 1882,
+      "sha256": "f32b6594ab69d49d92d45eafa334cb0647d1901f7f761cd94f9533fed0e0a121"
+    },
+    {
+      "name": "IMG_0002.JPG",
+      "bytes": 9221,
+      "sha256": "20bc8e4b30563a1c75e2b4079f1ac4d84336b1c5801404e0917430f1c0f43699"
+    },
+    {
+      "name": "IMG_0002.THM",
+      "bytes": 1035,
+      "sha256": "6999149555b12a48d4d899fad15f58e216cb5ec2ab6281d66b4a65a28aa8bbea"
+    },
+    {
+      "name": "BAD.JPG",
+      "bytes": 7398,
+      "sha256": "f08fc7bab2ac9b3d172eb27efcc8524755a6e0f47e2182493655a68672c8c9db"
+    }
+  ]
+}

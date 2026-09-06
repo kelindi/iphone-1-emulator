@@ -1,0 +1,477 @@
+{
+  "command": [
+    ".context/amc-first/stage-aa/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-aa/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin",
+    ".context/amc-first/stage-g/run-1"
+  ],
+  "returncode": 10,
+  "timedOut": false,
+  "wallSeconds": 6.4490343690049485,
+  "guestPass": false,
+  "firstBoundaryAuditPass": true,
+  "secondRequestAuditPass": true,
+  "thirdRequestAuditPass": true,
+  "laterAuditPass": true,
+  "queueAuditPass": true,
+  "orderingAuditPass": true,
+  "consumptionAuditPass": true,
+  "destinationAuditPass": true,
+  "frozenScripts": {
+    "prefetch-negatives.py": "9e057f2c860f64956b4e576d67e1ebafe1379b7552a069e550b51c82bf572b58",
+    "prefetch-audit.py": "aa059bc9177ee95b2a853424c14d6b487dc0484938e2f7c177335054e97472ec",
+    "binding-audit.py": "209b5ef8d9cb9f65c86e3bb16fbce35da855c1f2aeadf9ebe6b03fd8e50b1187",
+    "suspend-audit.py": "46826b8a9101c99b0018f2e4a2b5fa87cacd3c2ce29274f20c83b22593ca892d",
+    "save-audit.py": "bbfafe9158897eaf0b5f0628fded4666ffc9953b723cfcb34529cbec48a6e8ac",
+    "lock-audit.py": "791e7b9d23f0178ffca67b2d57c556e2c1d4e7f6706e2558beda4828f585cfc5",
+    "stream-audit.py": "51fcc1aa62ef94612508d48c664267871866090ea899d1daa1bf5dfeaae22626",
+    "post-audit.py": "a8290805f79ceff90110072ac51ae332013a4d3a092009b9005485480e7612e2",
+    "transport-audit.py": "9d577c998f9cb44480813d419216e01481e834fcd29d2bd76a137c0c29d7d86d",
+    "caller-audit.py": "62e6a2464bf417040c6c82c0a739106f0523336fc0894d058497e79895d8fc82",
+    "audit.py": "55cf0ee3a6482fa89c4699581151df1193a4496f1e8f578e15b434d9ac436c6e",
+    "destination-audit.py": "985cc57c4a52d9cab2b544b6fa81d4ffb15c2238d54863033770fcecadc5bc09",
+    "retirement-audit.py": "f41bdd2a32092ce4bd921d676f990e212b9d3ca1d490115cef5638cc2e6dc47c",
+    "second-audit.py": "6bb317c1615a49f904acfc5db431d9b4bf4917797051af4bd3cd79dcfd93af54",
+    "third-audit.py": "03c7c7964719433a8e79e6746167c9950e610eeefded3879b915020c524cd348",
+    "later-audit.py": "72ef1575f0806489d66fd85c21e3fc25b1b323db65ed4047035c19da8bc39bf4",
+    "queue-audit.py": "b8664bad17733259d202483eb9a49d8357daef4aaf6c0554d3f7e9be0c706ef4",
+    "ordering-audit.py": "047395142634d7ed55635d83f2361631de4717ae1d7074445d1d6ac81b132c67",
+    "original-context-oracle.py": "cf336784660c1c12e032d93663ed0d87918537f480baa67130fb419a3cbbb332",
+    "mp4_oracle.py": "93d25ab33f7a343d61b9a2990524f861e3200f2d4bfe5169422400d173e27f09",
+    "commands.py": "b5d12ac6f7c5dadd99976c23a001abea68c17359570002a134baa14ce2fea9db",
+    "launch.py": "ec550f48f0772fd63242cc035dad3321a5126011500e505db3c4a5c695d7dcc9",
+    "first-audit.py": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+    "kernel-oracle.py": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9"
+  },
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructions": 5000000,
+    "postInputInstructions": 5000000,
+    "postPublicationInstructions": 5000000,
+    "maximumPublications": 64,
+    "maximumAdmittedInputs": 8,
+    "unchangedEngine": false,
+    "isolatedSaveOnly": false,
+    "isolatedSuspension": true,
+    "resetRestoreAdmitted": false,
+    "bindingDiagnosticOnly": false,
+    "originalPrefetchContinuation": true,
+    "maximumTargetAttempts": 8,
+    "postZCoreSteps": 1000000,
+    "HALAdmission": false
+  },
+  "prefixPass": true,
+  "postAuditPass": true,
+  "artifactNegatives": [
+    {
+      "label": "third-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/third-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-third-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual third input lacks unique original provenance"
+    },
+    {
+      "label": "fourth-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/later-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-fourth-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual later input lacks unique original provenance"
+    },
+    {
+      "label": "fifth-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/later-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-fifth-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual later input lacks unique original provenance"
+    },
+    {
+      "label": "dma-bytes",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/later-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-dma-bytes"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual copied bytes differ from capture"
+    },
+    {
+      "label": "dma-state",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/later-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-dma-state"
+      ],
+      "returncode": 1,
+      "expectedFailure": "DMA final current/ownership differs"
+    },
+    {
+      "label": "queue",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/queue-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-queue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "owned queue differs from actual copied inputs"
+    },
+    {
+      "label": "record",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/ordering-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-record"
+      ],
+      "returncode": 1,
+      "expectedFailure": "record/log bytes differ"
+    },
+    {
+      "label": "mapped-code",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/ordering-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-mapped-code"
+      ],
+      "returncode": 1,
+      "expectedFailure": "original mapped code differs"
+    },
+    {
+      "label": "kernel-unavailable",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/ordering-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-kernel-unavailable"
+      ],
+      "returncode": 1,
+      "expectedFailure": "unavailable kernel fields fabricated"
+    },
+    {
+      "label": "coverage",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-coverage"
+      ],
+      "returncode": 1,
+      "expectedFailure": "missing actual read coverage"
+    },
+    {
+      "label": "read-bytes",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-read-bytes"
+      ],
+      "returncode": 1,
+      "expectedFailure": "observed read bytes differ"
+    },
+    {
+      "label": "release-pc",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-release-pc"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual owner store differs"
+    },
+    {
+      "label": "release-value",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-release-value"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual owner store differs"
+    },
+    {
+      "label": "step-start",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-step-start"
+      ],
+      "returncode": 1,
+      "expectedFailure": "instruction retirement cycles differ"
+    },
+    {
+      "label": "step-pc",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-step-pc"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual retired successor/mode differs"
+    },
+    {
+      "label": "step-mode",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-step-mode"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual retired successor/mode differs"
+    },
+    {
+      "label": "step-return",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-step-return"
+      ],
+      "returncode": 1,
+      "expectedFailure": "emu_run did not return outside guest"
+    },
+    {
+      "label": "step-code",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-step-code"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual original owner instruction differs"
+    },
+    {
+      "label": "copy-destination",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/destination-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-copy-destination"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual copied destination differs"
+    },
+    {
+      "label": "reader-code",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/destination-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-reader-code"
+      ],
+      "returncode": 1,
+      "expectedFailure": "mapped reader bytes differ"
+    },
+    {
+      "label": "reader-prologue",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/destination-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-reader-prologue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "mapped prologue bytes differ"
+    },
+    {
+      "label": "saved-frame",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/destination-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-saved-frame"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual saved frame differs"
+    },
+    {
+      "label": "copy-addressspace",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/destination-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-copy-addressspace"
+      ],
+      "returncode": 1,
+      "expectedFailure": "destination context/log differs"
+    },
+    {
+      "label": "transport-values",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/transport-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-transport-values"
+      ],
+      "returncode": 1,
+      "expectedFailure": "transport scalar receipt differs"
+    },
+    {
+      "label": "transport-manager",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/transport-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-transport-manager"
+      ],
+      "returncode": 1,
+      "expectedFailure": "manager bounds differ"
+    },
+    {
+      "label": "transport-manager-availability",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/transport-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-transport-manager-availability"
+      ],
+      "returncode": 1,
+      "expectedFailure": "unavailable manager fabricated"
+    },
+    {
+      "label": "transport-lli-availability",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/transport-audit.py",
+        ".context/amc-first/stage-aa/run-1/consumption-prefix/negative-transport-lli-availability"
+      ],
+      "returncode": 1,
+      "expectedFailure": "LLI availability differs"
+    },
+    {
+      "label": "post-start-service",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/post-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-post-start-service"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual post start state differs"
+    },
+    {
+      "label": "stream-coverage",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-coverage"
+      ],
+      "returncode": 1,
+      "expectedFailure": "generation read receipt differs"
+    },
+    {
+      "label": "stream-read-value",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-read-value"
+      ],
+      "returncode": 1,
+      "expectedFailure": "observed generation bytes differ"
+    },
+    {
+      "label": "stream-pcm",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-pcm"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual decoded PCM differs"
+    },
+    {
+      "label": "stream-release",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-release"
+      ],
+      "returncode": 1,
+      "expectedFailure": "generation retirement differs"
+    },
+    {
+      "label": "stream-opcode",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-opcode"
+      ],
+      "returncode": 1,
+      "expectedFailure": "generation original store differs"
+    },
+    {
+      "label": "stream-copied",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-copied"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual copied bytes differ from capture"
+    },
+    {
+      "label": "stream-final-queue",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/stream-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stream-final-queue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "final queue differs from actual copied bytes"
+    },
+    {
+      "label": "paused-ownership",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/lock-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-paused-ownership"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual lock/pause ownership differs"
+    },
+    {
+      "label": "paused-current",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/lock-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-paused-current"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual frozen resources differ"
+    },
+    {
+      "label": "saved-remaining",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/lock-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-saved-remaining"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual original saved current/remaining differs"
+    },
+    {
+      "label": "stopped-read-code",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/lock-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-stopped-read-code"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual stopped save read instruction differs"
+    },
+    {
+      "label": "lock-successor",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-aa/run-1/lock-audit.py",
+        ".context/amc-first/stage-aa/run-1/negative-lock-successor"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual lock successor/mode differs"
+    }
+  ],
+  "transportAuditPass": true,
+  "streamAuditPass": true,
+  "lockAuditPass": true
+}

@@ -1,0 +1,611 @@
+original SHA256 15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec
+
+__ZN24AudioOutputBufferManagerC2Ev
+3122bc80 ldr      r3, [pc, #0x1a4] literal 3122be2c=0000167c 
+3122bc84 push     {r4, r5, r6, r7, lr}
+3122bc88 mov      r2, #0
+3122bc8c add      r7, sp, #0xc
+3122bc90 str      r8, [sp, #-4]!
+3122bc94 sub      sp, sp, #8
+3122bc98 str      r2, [r0, r3]
+3122bc9c mov      r3, #0
+3122bca0 str      r3, [r0, #0x38]
+3122bca4 ldr      r3, [pc, #0x184] literal 3122be30=00001674 
+3122bca8 mov      r1, #1
+3122bcac ldr      r6, [pc, #0x180] literal 3122be34=3ff00000 
+3122bcb0 str      r2, [r0, r3]
+3122bcb4 add      r3, r3, #4
+3122bcb8 str      r2, [r0]
+3122bcbc str      r2, [r0, r3]
+3122bcc0 add      r3, r0, #0x1680
+3122bcc4 str      r2, [r0, #0x30]
+3122bcc8 strb     r2, [r3]
+3122bccc ldr      r3, [pc, #0x164] literal 3122be38=00001688 
+3122bcd0 str      r2, [r0, #0x34]
+3122bcd4 mov      r8, r0
+3122bcd8 strb     r2, [r0, r3]
+3122bcdc add      r3, r3, #0x4c
+3122bce0 mov      ip, r2
+3122bce4 str      r2, [r0, r3]
+3122bce8 add      r3, r3, #4
+3122bcec mov      r5, #0
+3122bcf0 str      r2, [r0, r3]
+3122bcf4 sub      r3, r3, #0x57
+3122bcf8 strb     r1, [r0, r3]
+3122bcfc mov      r3, #0x40000
+3122bd00 str      r3, [r0, #0x20]
+3122bd04 sub      r3, r3, #0x30000
+3122bd08 str      r3, [r0, #0x24]
+3122bd0c add      r3, r3, #0x28000
+3122bd10 str      r3, [r0, #0x28]
+3122bd14 mvn      r1, #0
+3122bd18 mov      r3, r0
+3122bd1c mov      r0, r2
+3122bd20 mvn      r2, #0
+3122bd24 add      ip, ip, #1
+3122bd28 cmp      ip, #0x40
+3122bd2c str      r0, [r3, #0x44]
+3122bd30 str      r1, [r3, #0x48]
+3122bd34 str      r2, [r3, #0x4c]
+3122bd38 str      r0, [r3, #0x50]
+3122bd3c str      r0, [r3, #0x40]
+3122bd40 str      r1, [r3, #0x54]
+3122bd44 str      r2, [r3, #0x58]
+3122bd48 str      r5, [r3, #0x64]
+3122bd4c str      r6, [r3, #0x68]
+3122bd50 add      r3, r3, #0x2c
+3122bd54 bne      #0x3122bd24
+3122bd58 add      r3, r8, #0xb70
+3122bd5c mov      r4, r0
+3122bd60 add      r0, r0, #1
+3122bd64 cmp      r0, #0x40
+3122bd68 str      r4, [r3]
+3122bd6c stmib    r3, {r1, r2}
+3122bd70 str      r4, [r3, #0xc]
+3122bd74 str      r4, [r3, #-4]
+3122bd78 str      r1, [r3, #0x10]
+3122bd7c str      r2, [r3, #0x14]
+3122bd80 str      r5, [r3, #0x20]
+3122bd84 str      r6, [r3, #0x24]
+3122bd88 add      r3, r3, #0x2c
+3122bd8c bne      #0x3122bd60
+3122bd90 ldr      r3, [pc, #0xa4] literal 3122be3c=0000166c 
+3122bd94 ldr      r0, [pc, #0xa4] literal 3122be40=0802c448 
+3122bd98 str      r4, [r8, #0x1c]
+3122bd9c str      r4, [r8, r3]
+3122bda0 add      r3, r3, #4
+3122bda4 add      r0, pc, r0
+3122bda8 str      r4, [r8, r3]
+3122bdac add      r3, r3, #0x14
+3122bdb0 add      r5, r8, #0x1680
+3122bdb4 str      r4, [r8, r3]
+3122bdb8 mov      r3, #0x400
+3122bdbc str      r3, [r8, #0x3c]
+3122bdc0 add      r3, r3, #0xc00
+3122bdc4 str      r3, [r8, #0x18]
+3122bdc8 bl       #0x31230d10 ('__Z29MeCCA_Engine_Create_SemaphorePj', 0)
+3122bdcc ldr      r0, [pc, #0x70] literal 3122be44=00093c60 
+3122bdd0 ldr      r1, [pc, #0x70] literal 3122be48=00000364 
+3122bdd4 mov      r2, r4
+3122bdd8 mov      r3, #0x39
+3122bddc add      r0, pc, r0
+3122bde0 add      r1, pc, r1
+3122bde4 str      r4, [sp]
+3122bde8 str      r4, [sp, #4]
+3122bdec bl       #0x31230bd0 ('__Z24MeCCA_Engine_Create_TaskPKcPFPvS1_EjjbS1_', 0)
+3122bdf0 ldr      r0, [pc, #0x54] literal 3122be4c=0802c3c4 
+3122bdf4 mov      r1, r4
+3122bdf8 add      r5, r5, #0x28
+3122bdfc add      r0, pc, r0
+3122be00 bl       #0x31230c70 ('__Z24MeCCA_Engine_Create_LockP23_opaque_pthread_mutex_t20MeCCA_EngineLockType', 0)
+3122be04 mov      r0, r5
+3122be08 mov      r1, r4
+3122be0c bl       #0x31230c70 ('__Z24MeCCA_Engine_Create_LockP23_opaque_pthread_mutex_t20MeCCA_EngineLockType', 0)
+3122be10 add      r0, r8, #0x1680
+3122be14 add      r0, r0, #0xc
+3122be18 mov      r1, r5
+3122be1c bl       #0x31230d64 ('__Z22MeCCA_Engine_Create_CVP22_opaque_pthread_cond_tP23_opaque_pthread_mutex_t', 0)
+3122be20 sub      sp, r7, #0x10
+3122be24 ldm      sp!, {r8}
+3122be28 pop      {r4, r5, r6, r7, pc}
+3122be2c andeq    r1, r0, ip, ror r6
+3122be30 andeq    r1, r0, r4, ror r6
+3122be34 svclo    #0xf00000
+3122be38 andeq    r1, r0, r8, lsl #13
+3122be3c andeq    r1, r0, ip, ror #12
+3122be40 stmdaeq  r2, {r3, r6, sl, lr, pc}
+3122be44 andeq    r3, sb, r0, ror #24
+3122be48 andeq    r0, r0, r4, ror #6
+3122be4c stmdaeq  r2, {r2, r6, r7, r8, sb, lr, pc}
+
+__ZN24AudioOutputBufferManager4initEbj
+3122be50 push     {r4, r5, r6, r7, lr}
+3122be54 mov      r5, r2
+3122be58 ldr      r2, [pc, #0x110] literal 3122bf70=07fda1ee 
+3122be5c add      r7, sp, #0xc
+3122be60 add      r2, pc, r2
+3122be64 mov      r4, r0
+3122be68 ldrb     r3, [r2]
+3122be6c uxtb     r6, r1
+3122be70 cmp      r3, #1
+3122be74 beq      #0x3122bf68
+3122be78 mov      r3, #1
+3122be7c strb     r3, [r2]
+3122be80 ldr      r0, [r0]
+3122be84 cmp      r0, #0
+3122be88 bne      #0x3122be98
+3122be8c add      r0, r0, #0x40000
+3122be90 bl       #0x312cdcc4 ('__Znam [stub]', 0)
+3122be94 str      r0, [r4]
+3122be98 mov      r1, #0
+3122be9c mov      r2, #0x40000
+3122bea0 bl       #0x312cdba4 ('_memset [stub]', 0)
+3122bea4 ldr      r3, [pc, #0xc8] literal 3122bf74=0000ac44 
+3122bea8 ldr      r2, [r4]
+3122beac str      r3, [r4, #0x2c]
+3122beb0 ldr      r3, [r4, #0x20]
+3122beb4 mov      r1, #0
+3122beb8 add      r3, r2, r3
+3122bebc str      r3, [r4, #4]
+3122bec0 ldr      r3, [r4, #0x18]
+3122bec4 add      r3, r2, r3, lsl #2
+3122bec8 str      r3, [r4, #0xc]
+3122becc mov      r2, r1
+3122bed0 mov      r3, r4
+3122bed4 add      r2, r2, #1
+3122bed8 cmp      r2, #0x40
+3122bedc str      r1, [r3, #0x40]
+3122bee0 add      r3, r3, #0x2c
+3122bee4 bne      #0x3122bed4
+3122bee8 ldr      r3, [pc, #0x88] literal 3122bf78=0000167c 
+3122beec cmp      r6, #0
+3122bef0 str      r1, [r4, r3]
+3122bef4 add      r3, r4, #0x1680
+3122bef8 strb     r1, [r3]
+3122befc beq      #0x3122bf28
+3122bf00 ldr      r0, [pc, #0x74] literal 3122bf7c=00001674 
+3122bf04 mov      r3, r4
+3122bf08 mov      r2, r1
+3122bf0c str      r1, [r4, r0]
+3122bf10 add      r2, r2, #1
+3122bf14 cmp      r2, #0x40
+3122bf18 str      r1, [r3, #0x50]
+3122bf1c add      r3, r3, #0x2c
+3122bf20 bne      #0x3122bf10
+3122bf24 b        #0x3122bf50
+3122bf28 ldr      r2, [pc, #0x4c] literal 3122bf7c=00001674 
+3122bf2c strb     r6, [r3]
+3122bf30 mov      r1, r6
+3122bf34 mov      r3, r4
+3122bf38 str      r5, [r4, r2]
+3122bf3c add      r1, r1, #1
+3122bf40 cmp      r1, #0x40
+3122bf44 str      r5, [r3, #0x50]
+3122bf48 add      r3, r3, #0x2c
+3122bf4c bne      #0x3122bf3c
+3122bf50 ldr      r2, [r4]
+3122bf54 ldr      r3, [r4, #0xc]
+3122bf58 str      r2, [r4, #8]
+3122bf5c str      r3, [r4, #0x10]
+3122bf60 rsb      r3, r2, r3
+3122bf64 str      r3, [r4, #0x14]
+3122bf68 mov      r0, #0
+3122bf6c pop      {r4, r5, r6, r7, pc}
+3122bf70 ldrbeq   sl, [sp, lr, ror #3]!
+3122bf74 andeq    sl, r0, r4, asr #24
+3122bf78 andeq    r1, r0, ip, ror r6
+3122bf7c andeq    r1, r0, r4, ror r6
+
+__ZN24AudioOutputBufferManager15setOutputFormatEjjjbb
+3122bf80 push     {r4, r5, r6, r7, lr}
+3122bf84 mov      r5, r1
+3122bf88 cmp      r5, #0x7d00
+3122bf8c add      r7, sp, #0xc
+3122bf90 mov      r4, r0
+3122bf94 ldrb     r6, [sp, #0x14]
+3122bf98 ldrb     r1, [sp, #0x18]
+3122bf9c movhs    r2, #0x40000
+3122bfa0 bhs      #0x3122bfb4
+3122bfa4 ldr      r3, [pc, #0xa4] literal 3122c050=00005621 
+3122bfa8 cmp      r5, r3
+3122bfac movls    r2, #0x10000
+3122bfb0 movhi    r2, #0x20000
+3122bfb4 cmp      r1, #0
+3122bfb8 ldr      r3, [r4, #0x20]
+3122bfbc lsreq    r2, r2, #1
+3122bfc0 cmp      r2, r3
+3122bfc4 moveq    r0, #0
+3122bfc8 beq      #0x3122c03c
+3122bfcc vmov     s15, r2
+3122bfd0 vldr     s13, [pc, #0x6c]
+3122bfd4 ldr      r3, [pc, #0x78] literal 3122c054=07fda066 
+3122bfd8 str      r2, [r4, #0x20]
+3122bfdc vcvt.f32.u32 s14, s15
+3122bfe0 vldr     s15, [pc, #0x60]
+3122bfe4 mov      r2, #0
+3122bfe8 add      r3, pc, r3
+3122bfec cmp      r6, r2
+3122bff0 movne    r0, r4
+3122bff4 movne    r1, #1
+3122bff8 vmul.f32 s15, s14, s15
+3122bffc vdiv.f32 s15, s15, s13
+3122c000 vcvt.u32.f32 s15, s15
+3122c004 vstr     s15, [r4, #0x24]
+3122c008 vldr     s15, [pc, #0x3c]
+3122c00c vmul.f32 s15, s14, s15
+3122c010 vdiv.f32 s15, s15, s13
+3122c014 vcvt.u32.f32 s15, s15
+3122c018 vstr     s15, [r4, #0x28]
+3122c01c strb     r2, [r3]
+3122c020 bne      #0x3122c038
+3122c024 mov      r0, r4
+3122c028 bl       #0x3122b8a0 ('__ZN24AudioOutputBufferManager16getElapsedTimeMSEv', 0)
+3122c02c mov      r1, r6
+3122c030 mov      r2, r0
+3122c034 mov      r0, r4
+3122c038 bl       #0x3122be50 ('__ZN24AudioOutputBufferManager4initEbj', 0)
+3122c03c str      r5, [r4, #0x2c]
+3122c040 pop      {r4, r5, r6, r7, pc}
+3122c044 sbcmi    r0, r8, #0
+3122c048 bicmi    r0, r8, r0
+3122c04c adcmi    r0, pc, #0
+3122c050 andeq    r5, r0, r1, lsr #12
+3122c054 ldrbeq   sl, [sp, r6, rrx]!
+
+__ZN24AudioOutputBufferManager5resetEbj
+3122c058 push     {r4, r5, r6, r7, lr}
+3122c05c add      r7, sp, #0xc
+3122c060 mov      r6, r2
+3122c064 uxtb     r4, r1
+3122c068 mov      r5, r0
+3122c06c bl       #0x312271a4 ('__ZN24MainChannelBufferManager11theInstanceEv', 0)
+3122c070 mov      r1, #0
+3122c074 bl       #0x31226de4 ('__ZN24MainChannelBufferManager19clearChannelBuffersEj', 0)
+3122c078 ldr      r3, [pc, #0x1c] literal 3122c09c=07fd9fce 
+3122c07c mov      r2, #0
+3122c080 add      r3, pc, r3
+3122c084 mov      r0, r5
+3122c088 strb     r2, [r3]
+3122c08c mov      r1, r4
+3122c090 mov      r2, r6
+3122c094 pop      {r4, r5, r6, r7, lr}
+3122c098 b        #0x3122be50
+3122c09c ldrbeq   sb, [sp, lr, asr #31]!
+
+__ZN24AudioOutputBufferManager11theInstanceEv
+3122c0a0 push     {r4, r5, r7, lr}
+3122c0a4 add      r7, sp, #8
+3122c0a8 ldr      r4, [pc, #0x80] literal 3122c130=08028c7c 
+3122c0ac add      r4, pc, r4
+3122c0b0 ldrsb    r5, [r4]
+3122c0b4 cmp      r5, #0
+3122c0b8 bne      #0x3122c0f8
+3122c0bc mov      r0, r4
+3122c0c0 bl       #0x312cdb54 ('___cxa_guard_acquire [stub]', 0)
+3122c0c4 cmp      r0, #0
+3122c0c8 beq      #0x3122c0f8
+3122c0cc ldr      r0, [pc, #0x60] literal 3122c134=08028c60 
+3122c0d0 add      r0, pc, r0
+3122c0d4 bl       #0x3122bc80 ('__ZN24AudioOutputBufferManagerC2Ev', 0)
+3122c0d8 mov      r0, r4
+3122c0dc bl       #0x312cdb24 ('___cxa_guard_release [stub]', 0)
+3122c0e0 ldr      r0, [pc, #0x50] literal 3122c138=00000ae4 
+3122c0e4 ldr      r2, [pc, #0x50] literal 3122c13c=08016fb0 
+3122c0e8 add      r0, pc, r0
+3122c0ec mov      r1, r5
+3122c0f0 ldr      r2, [pc, r2]
+3122c0f4 bl       #0x312071dc ('___cxa_atexit', 0)
+3122c0f8 ldr      r4, [pc, #0x40] literal 3122c140=07fd9f52 
+3122c0fc add      r4, pc, r4
+3122c100 ldrb     r2, [r4]
+3122c104 cmp      r2, #0
+3122c108 bne      #0x3122c124
+3122c10c ldr      r0, [pc, #0x30] literal 3122c144=08028c1c 
+3122c110 mov      r1, #1
+3122c114 add      r0, pc, r0
+3122c118 bl       #0x3122be50 ('__ZN24AudioOutputBufferManager4initEbj', 0)
+3122c11c mov      r3, #1
+3122c120 strb     r3, [r4]
+3122c124 ldr      r0, [pc, #0x1c] literal 3122c148=08028c08 
+3122c128 add      r0, pc, r0
+3122c12c pop      {r4, r5, r7, pc}
+3122c130 stmdaeq  r2, {r2, r3, r4, r5, r6, sl, fp, pc}
+3122c134 stmdaeq  r2, {r5, r6, sl, fp, pc}
+3122c138 andeq    r0, r0, r4, ror #21
+3122c13c stmdaeq  r1, {r4, r5, r7, r8, sb, sl, fp, sp, lr}
+3122c140 ubfxeq   sb, r2, #0x1e, #0x1e
+3122c144 stmdaeq  r2, {r2, r3, r4, sl, fp, pc}
+3122c148 stmdaeq  r2, {r3, sl, fp, pc}
+
+__Z21trackPlaybackInfoTaskPv
+3122c14c push     {r4, r7, lr}
+3122c150 add      r7, sp, #4
+3122c154 ldr      r4, [pc, #0x14] literal 3122c170=0802c094 
+3122c158 add      r4, pc, r4
+3122c15c mov      r0, r4
+3122c160 bl       #0x31230d50 ('__Z27MeCCA_Engine_Wait_SemaphorePj', 0)
+3122c164 bl       #0x3122c0a0 ('__ZN24AudioOutputBufferManager11theInstanceEv', 0)
+3122c168 bl       #0x3122b9f0 ('__ZN24AudioOutputBufferManager25callTrackPlaybackInfoProcEv', 0)
+3122c16c b        #0x3122c15c
+3122c170 stmdaeq  r2, {r2, r4, r7, lr, pc}
+
+__ZN24AudioOutputBufferManager11readSamplesEPjRjyb
+3122c174 sub      sp, sp, #4
+3122c178 push     {r4, r5, r6, r7, lr}
+3122c17c add      r7, sp, #0xc
+3122c180 push     {r8, sl, fp}
+3122c184 sub      sp, sp, #0x30
+3122c188 mov      r5, r0
+3122c18c str      r1, [sp, #0x20]
+3122c190 str      r2, [sp, #0x1c]
+3122c194 str      r3, [sp, #0x50]
+3122c198 ldr      r3, [r2]
+3122c19c ldr      r1, [r5, #8]
+3122c1a0 str      r3, [r5, #0x3c]
+3122c1a4 ldr      r2, [r2]
+3122c1a8 ldrb     r0, [sp, #0x58]
+3122c1ac lsl      fp, r2, #2
+3122c1b0 ldr      r2, [r5, #0x10]
+3122c1b4 cmp      r2, r1
+3122c1b8 rsbhi    r4, r1, r2
+3122c1bc bhi      #0x3122c1d0
+3122c1c0 ldrne    r3, [r5, #0x20]
+3122c1c4 rsbne    r2, r2, r1
+3122c1c8 moveq    r4, #0
+3122c1cc rsbne    r4, r2, r3
+3122c1d0 ldr      r2, [pc, #0x7d8] literal 3122c9b0=0000167c 
+3122c1d4 ldr      r3, [r5, #0x1c]
+3122c1d8 cmp      r3, r4, lsr #2
+3122c1dc ldr      r3, [r5, r2]
+3122c1e0 movhs    r4, #0
+3122c1e4 cmp      r3, #0
+3122c1e8 beq      #0x3122c1fc
+3122c1ec sub      r3, r3, #1
+3122c1f0 cmp      r3, #0
+3122c1f4 str      r3, [r5, r2]
+3122c1f8 bne      #0x3122c208
+3122c1fc add      r3, r5, #0x1680
+3122c200 mov      r2, #0
+3122c204 strb     r2, [r3]
+3122c208 cmp      r4, fp
+3122c20c blo      #0x3122c4ec
+3122c210 ldr      r3, [r5]
+3122c214 ldr      r2, [pc, #0x798] literal 3122c9b4=00001674 
+3122c218 rsb      r3, r3, r1
+3122c21c cmp      r0, #0
+3122c220 lsr      r6, r3, #0xc
+3122c224 lsl      r8, r6, #4
+3122c228 lsl      sl, r6, #2
+3122c22c sub      r3, r8, r6, lsl #2
+3122c230 rsb      r3, r6, r3
+3122c234 add      r3, r5, r3, lsl #2
+3122c238 ldr      r3, [r3, #0x50]
+3122c23c str      r3, [r5, r2]
+3122c240 beq      #0x3122c274
+3122c244 mov      r3, r5
+3122c248 mov      r1, #0
+3122c24c ldr      r2, [r3, #0x40]
+3122c250 cmp      r2, #0
+3122c254 beq      #0x3122c290
+3122c258 lsl      r3, r1, #4
+3122c25c sub      r3, r3, r1, lsl #2
+3122c260 rsb      r3, r1, r3
+3122c264 add      r2, r5, r3, lsl #2
+3122c268 ldr      r3, [r2, #0x40]
+3122c26c orr      r3, r3, #1
+3122c270 str      r3, [r2, #0x40]
+3122c274 rsb      r3, sl, r8
+3122c278 rsb      r3, r6, r3
+3122c27c add      r3, r5, r3, lsl #2
+3122c280 ldr      r3, [r3, #0x40]
+3122c284 cmp      r3, #0
+3122c288 beq      #0x3122c434
+3122c28c b        #0x3122c2ac
+3122c290 add      r1, r1, #1
+3122c294 cmp      r1, #0x40
+3122c298 add      r3, r3, #0x2c
+3122c29c bne      #0x3122c24c
+3122c2a0 rsb      r3, sl, r8
+3122c2a4 rsb      r3, r6, r3
+3122c2a8 b        #0x3122c264
+3122c2ac rsb      r3, sl, r8
+3122c2b0 rsb      r3, r6, r3
+3122c2b4 add      r3, r5, r3, lsl #2
+3122c2b8 add      r2, r3, #0x54
+3122c2bc ldr      r3, [r3, #0x54]
+3122c2c0 cmn      r3, #1
+3122c2c4 bne      #0x3122c2d4
+3122c2c8 ldr      r3, [r2, #4]
+3122c2cc cmn      r3, #1
+3122c2d0 beq      #0x3122c434
+3122c2d4 ldr      r3, [pc, #0x6dc] literal 3122c9b8=0000166c 
+3122c2d8 ldr      r2, [r5, r3]
+3122c2dc add      r3, r3, #4
+3122c2e0 ldr      r3, [r5, r3]
+3122c2e4 cmp      r2, r3
+3122c2e8 rsblt    r3, r3, r2
+3122c2ec rsbge    r3, r3, r2
+3122c2f0 addlt    r3, r3, #0x80
+3122c2f4 cmp      r3, #0x3f
+3122c2f8 ble      #0x3122c328
+3122c2fc ldr      r3, [pc, #0x6b8] literal 3122c9bc=00093814 
+3122c300 ldr      r0, [pc, #0x6b8] literal 3122c9c0=000937a4 
+3122c304 add      r3, pc, r3
+3122c308 str      r3, [sp]
+3122c30c ldr      r2, [pc, #0x6b0] literal 3122c9c4=00093734 
+3122c310 ldr      r3, [pc, #0x6b0] literal 3122c9c8=0008f34c 
+3122c314 add      r0, pc, r0
+3122c318 mov      r1, #0x28c
+3122c31c add      r2, pc, r2
+3122c320 add      r3, pc, r3
+3122c324 b        #0x3122c430
+3122c328 ldr      r2, [pc, #0x69c] literal 3122c9cc=0802be94 
+3122c32c add      r2, pc, r2
+3122c330 mov      r0, r2
+3122c334 str      r2, [sp, #0x18]
+3122c338 bl       #0x31230ccc ('__Z21MeCCA_Engine_Try_LockP23_opaque_pthread_mutex_t', 0)
+3122c33c cmp      r0, #0
+3122c340 str      r0, [sp, #0x24]
+3122c344 bne      #0x3122c408
+3122c348 ldr      r3, [pc, #0x668] literal 3122c9b8=0000166c 
+3122c34c ldr      r1, [r5, r3]
+3122c350 asr      r3, r1, #0x1f
+3122c354 lsr      r2, r3, #0x1a
+3122c358 add      r3, r1, r2
+3122c35c and      r3, r3, #0x3f
+3122c360 rsb      r3, r2, r3
+3122c364 lsl      r2, r3, #4
+3122c368 sub      r2, r2, r3, lsl #2
+3122c36c rsb      r3, r3, r2
+3122c370 add      r3, r5, r3, lsl #2
+3122c374 str      r3, [sp, #0x14]
+3122c378 add      r4, r3, #0xb60
+3122c37c rsb      r3, sl, r8
+3122c380 rsb      r3, r6, r3
+3122c384 add      r4, r4, #0xc
+3122c388 add      r0, r5, r3, lsl #2
+3122c38c add      r0, r0, #0x40
+3122c390 mov      lr, r0
+3122c394 mov      ip, r4
+3122c398 ldm      lr!, {r0, r1, r2, r3}
+3122c39c stm      ip!, {r0, r1, r2, r3}
+3122c3a0 ldm      lr!, {r0, r1, r2, r3}
+3122c3a4 stm      ip!, {r0, r1, r2, r3}
+3122c3a8 ldm      lr, {r0, r1, r2}
+3122c3ac stm      ip, {r0, r1, r2}
+3122c3b0 add      r1, sp, #0x50
+3122c3b4 ldm      r1, {r1, r2}
+3122c3b8 ldr      r3, [sp, #0x14]
+3122c3bc ldr      r0, [pc, #0x60c] literal 3122c9d0=0802be20 
+3122c3c0 str      r1, [r3, #0xb88]
+3122c3c4 str      r2, [r3, #0xb8c]
+3122c3c8 ldr      r1, [pc, #0x5e8] literal 3122c9b8=0000166c 
+3122c3cc add      r0, pc, r0
+3122c3d0 ldr      r3, [r5, r1]
+3122c3d4 add      r2, r3, #1
+3122c3d8 asr      r3, r2, #0x1f
+3122c3dc lsr      r1, r3, #0x19
+3122c3e0 add      r3, r2, r1
+3122c3e4 ldr      r2, [pc, #0x5cc] literal 3122c9b8=0000166c 
+3122c3e8 and      r3, r3, #0x7f
+3122c3ec rsb      r3, r1, r3
+3122c3f0 ldr      r1, [sp, #0x24]
+3122c3f4 str      r3, [r5, r2]
+3122c3f8 bl       #0x31230d3c ('__Z27MeCCA_Engine_Post_SemaphorePj18MeCCAEngineContext', 0)
+3122c3fc ldr      r0, [sp, #0x18]
+3122c400 bl       #0x31230cf0 ('__Z25MeCCA_Engine_Release_LockP23_opaque_pthread_mutex_t', 0)
+3122c404 b        #0x3122c434
+3122c408 ldr      r3, [pc, #0x5c4] literal 3122c9d4=00093720 
+3122c40c ldr      r0, [pc, #0x5c4] literal 3122c9d8=00093694 
+3122c410 add      r3, pc, r3
+3122c414 str      r3, [sp]
+3122c418 ldr      r2, [pc, #0x5bc] literal 3122c9dc=00093628 
+3122c41c ldr      r3, [pc, #0x5bc] literal 3122c9e0=0008f240 
+3122c420 ldr      r1, [pc, #0x5bc] literal 3122c9e4=00000297 
+3122c424 add      r0, pc, r0
+3122c428 add      r2, pc, r2
+3122c42c add      r3, pc, r3
+3122c430 bl       #0x31239318 ('__Z18MeCCA_PrintMessagePKciS0_S0_S0_z', 0)
+3122c434 rsb      r3, sl, r8
+3122c438 rsb      r3, r6, r3
+3122c43c mov      r2, #0
+3122c440 add      r3, r5, r3, lsl #2
+3122c444 str      r2, [r3, #0x40]
+3122c448 ldr      r1, [r5, #8]
+3122c44c ldr      r2, [r5, #4]
+3122c450 add      r3, fp, r1
+3122c454 cmp      r3, r2
+3122c458 bhi      #0x3122c48c
+3122c45c mov      r2, fp
+3122c460 ldr      r0, [sp, #0x20]
+3122c464 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c468 ldr      r0, [r5, #8]
+3122c46c ldr      r1, [r5, #4]
+3122c470 add      r3, fp, r0
+3122c474 cmp      r3, r1
+3122c478 ldrne    r3, [sp, #0x1c]
+3122c47c ldreq    r1, [r5]
+3122c480 ldrne    r2, [r3]
+3122c484 addne    r1, r0, r2, lsl #2
+3122c488 b        #0x3122c4c4
+3122c48c rsb      r4, r1, r2
+3122c490 mov      r2, r4
+3122c494 ldr      r0, [sp, #0x20]
+3122c498 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c49c ldr      r1, [sp, #0x20]
+3122c4a0 rsb      r6, r4, fp
+3122c4a4 bic      r2, r4, #3
+3122c4a8 add      r0, r1, r2
+3122c4ac ldr      r1, [r5]
+3122c4b0 mov      r2, r6
+3122c4b4 bl       #0x312cdc04 ('_memcpy [stub]', 0)
+3122c4b8 ldr      r3, [r5]
+3122c4bc bic      r2, r6, #3
+3122c4c0 add      r1, r2, r3
+3122c4c4 ldr      r3, [r5, #0x14]
+3122c4c8 add      r0, r5, #0x1680
+3122c4cc str      r1, [r5, #8]
+3122c4d0 rsb      r2, fp, r3
+3122c4d4 add      r0, r0, #0xc
+3122c4d8 mov      r1, #0
+3122c4dc str      r2, [r5, #0x14]
+3122c4e0 bl       #0x31230d88 ('__Z25MeCCA_Engine_Broadcast_CVP22_opaque_pthread_cond_t18MeCCAEngineContext', 0)
+3122c4e4 mov      r0, #0
+3122c4e8 b        #0x3122c99c
+3122c4ec cmp      r4, #0
+3122c4f0 beq      #0x3122c75c
+3122c4f4 ldr      r2, [sp, #0x1c]
+3122c4f8 lsr      r3, r4, #2
+3122c4fc str      r3, [r2]
+3122c500 ldr      r2, [r5, #8]
+3122c504 ldr      r3, [r5]
+3122c508 rsb      r3, r3, r2
+3122c50c lsr      r8, r3, #0xc
+3122c510 lsl      r1, r8, #4
+3122c514 lsl      r3, r8, #2
+3122c518 str      r3, [sp, #0xc]
+3122c51c sub      r3, r1, r8, lsl #2
+3122c520 rsb      r3, r8, r3
+3122c524 str      r1, [sp, #4]
+3122c528 add      r3, r5, r3, lsl #2
+3122c52c ldr      r2, [r3, #0x40]
+3122c530 cmp      r2, #0
+3122c534 beq      #0x3122c6b0
+3122c538 add      r2, r3, #0x54
+3122c53c ldr      r3, [r3, #0x54]
+3122c540 cmn      r3, #1
+3122c544 bne      #0x3122c554
+3122c548 ldr      r3, [r2, #4]
+3122c54c cmn      r3, #1
+3122c550 beq      #0x3122c6b0
+3122c554 ldr      r3, [pc, #0x45c] literal 3122c9b8=0000166c 
+3122c558 ldr      r2, [r5, r3]
+3122c55c add      r3, r3, #4
+3122c560 ldr      r3, [r5, r3]
+3122c564 cmp      r2, r3
+3122c568 rsblt    r3, r3, r2
+3122c56c rsbge    r3, r3, r2
+3122c570 addlt    r3, r3, #0x80
+3122c574 cmp      r3, #0x3f
+3122c578 ble      #0x3122c5a8
+3122c57c ldr      r3, [pc, #0x464] literal 3122c9e8=00093594 
+3122c580 ldr      r0, [pc, #0x464] literal 3122c9ec=00093524 
+3122c584 add      r3, pc, r3
+3122c588 str      r3, [sp]
+3122c58c ldr      r2, [pc, #0x45c] literal 3122c9f0=000934b4 
+3122c590 ldr      r3, [pc, #0x45c] literal 3122c9f4=0008f0cc 
+3122c594 add      r0, pc, r0
+3122c598 mov      r1, #0x308
+3122c59c add      r2, pc, r2
+3122c5a0 add      r3, pc, r3
+3122c5a4 b        #0x3122c6ac
+3122c5a8 ldr      fp, [pc, #0x448] literal 3122c9f8=0802bc14 
+3122c5ac add      fp, pc, fp
+3122c5b0 mov      r0, fp
+3122c5b4 bl       #0x31230ccc ('__Z21MeCCA_Engine_Try_LockP23_opaque_pthread_mutex_t', 0)
+3122c5b8 cmp      r0, #0
+3122c5bc str      r0, [sp, #0x28]
+3122c5c0 bne      #0x3122c684
+3122c5c4 ldr      r2, [pc, #0x3ec] literal 3122c9b8=0000166c 
+3122c5c8 ldr      r1, [r5, r2]
+3122c5cc asr      r3, r1, #0x1f

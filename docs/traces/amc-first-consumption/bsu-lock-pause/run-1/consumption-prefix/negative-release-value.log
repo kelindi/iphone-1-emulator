@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-v/run-1/consumption-prefix/audit.py", line 135, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-v/run-1/consumption-prefix/audit.py", line 77, in run
+    audit_release(continuation,release,retired,int(final[12],16),int(final[13],16))
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-v/run-1/consumption-prefix/audit.py", line 53, in audit_release
+    assert (int(store[1]),int(store[2],16),int(store[3],16))==(2,1,pc), 'actual owner store differs'
+AssertionError: actual owner store differs

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/lock-audit.py", line 47, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/lock-audit.py", line 37, in run
+    assert j['pc']==0xc0277dfc and j['cpsr']&63==0x13 and (p/'locked-read-code.bin').read_bytes()==code(j['pc']),'actual stopped save read instruction differs'
+AssertionError: actual stopped save read instruction differs

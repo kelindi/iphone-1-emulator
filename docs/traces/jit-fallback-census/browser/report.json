@@ -1,0 +1,755 @@
+{
+  "started": "2026-09-06T07:24:50.437Z",
+  "scope": "One instrumented warm Settings/Home step census; not a speed measurement",
+  "pins": {
+    "origin": "http://127.0.0.1:8211",
+    "port": 8211,
+    "debugPort": 9251,
+    "fixture": ".context/graphics-speed/fixed-dismiss.snap",
+    "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "expectedPausedImportActive": 512,
+    "definitionCount": 512,
+    "ordinaryStartupExpected": 511,
+    "capacity": 524288,
+    "maxProbes": 64,
+    "site": {
+      "app.js": "b84f29e0107bf2f482628d5e47a89e8ad6a33ac4d4e0877207e526ca21bb3ba2",
+      "assets.js": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+      "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+      "dist/emu.js": "2645b263ccc9d6b5c3aad19025f6e16f09bd64d6c43fd595b16dff89608817ca",
+      "dist/emu.wasm": "c8d213d084eebb85a68c28f86171b46edaac8b8edcf3177afc9276e9ba18d89f",
+      "emu-worker.js": "6dfb809314dbc1ea5cd4875f69d9833b255ae021a0b3bada32d6fe3b6518106d",
+      "index.html": "592aed2a0db86c39fb5a892a6f738f1f8c0d1cc6122267476c2ae0540b0b5a5b",
+      "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+      "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "manifest.json": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+      "phone.css": "e6330f7313c08c2679d8fbe8e9923ea8c0a84cee8f38979b2ae95153a0456fc0",
+      "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+      "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    "originalWorkerSha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65",
+    "workerInverseProjectionByteExact": true,
+    "uiScope": "Frozen just-verified RTC/loader release UI before independent visible-recovery edit; no app/index/CSS changes by census",
+    "references": {
+      "C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+      "C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    }
+  },
+  "actions": [
+    {
+      "label": "prepare-settings",
+      "before": {
+        "type": "fc",
+        "id": 900003,
+        "retired": 15941167,
+        "cycles": "11220838284",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 12496975,
+          "calls": 1608173
+        },
+        "at": 27016.79999999702,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 0
+        }
+      },
+      "after": {
+        "type": "fc",
+        "id": 900004,
+        "retired": 122012020,
+        "cycles": "11326909137",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 89283121,
+          "calls": 11007611
+        },
+        "at": 33201.20000000298,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 0
+        }
+      },
+      "readiness": {
+        "observedMs": 6150.10000000149,
+        "readinessMs": 5650.10000000149
+      }
+    },
+    {
+      "label": "prepare-home",
+      "before": {
+        "type": "fc",
+        "id": 900005,
+        "retired": 124897236,
+        "cycles": "11329794353",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 91622859,
+          "calls": 11186193
+        },
+        "at": 34563.10000000149,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 0
+        }
+      },
+      "after": {
+        "type": "fc",
+        "id": 900006,
+        "retired": 156587486,
+        "cycles": "11361484603",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 111840025,
+          "calls": 13916868
+        },
+        "at": 35979.29999999702,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 0
+        }
+      },
+      "readiness": {
+        "observedMs": 1400.1999999955297,
+        "readinessMs": 900.1999999955297
+      }
+    },
+    {
+      "label": "warm-settings",
+      "before": {
+        "type": "fc",
+        "id": 900007,
+        "retired": 165505114,
+        "cycles": "11370402231",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 118870121,
+          "calls": 14789270
+        },
+        "at": 37379.60000000149,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 1
+        }
+      },
+      "after": {
+        "type": "fc",
+        "id": 900008,
+        "retired": 277376403,
+        "cycles": "11482273520",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 200530858,
+          "calls": 25200508
+        },
+        "at": 43721.20000000298,
+        "census": {
+          "calls": 30210552,
+          "ok": 30210552,
+          "fetched": 30206737,
+          "nofetch": 3815,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 286966,
+          "enabled": 0
+        }
+      },
+      "readiness": {
+        "observedMs": 6300.20000000298,
+        "readinessMs": 5800.20000000298
+      },
+      "admission": [
+        13189241,
+        76942,
+        9514709,
+        12799,
+        7416861
+      ],
+      "provenance": [
+        7,
+        0,
+        12986461,
+        5071566,
+        2053346,
+        352235,
+        9746937,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "warm-home",
+      "before": {
+        "type": "fc",
+        "id": 900009,
+        "retired": 308382995,
+        "cycles": "11513280112",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 223553257,
+          "calls": 28060705
+        },
+        "at": 48556.29999999702,
+        "census": {
+          "calls": 0,
+          "ok": 0,
+          "fetched": 0,
+          "nofetch": 0,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 0,
+          "enabled": 1
+        }
+      },
+      "after": {
+        "type": "fc",
+        "id": 900010,
+        "retired": 330644481,
+        "cycles": "11535541598",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 238472681,
+          "calls": 30223850
+        },
+        "at": 50249.79999999702,
+        "census": {
+          "calls": 7342062,
+          "ok": 7342062,
+          "fetched": 7340926,
+          "nofetch": 1136,
+          "nonok": 0,
+          "overflow": 0,
+          "mapOverflow": 0,
+          "epoch": 4,
+          "installs": 0,
+          "rows": 145032,
+          "enabled": 0
+        }
+      },
+      "readiness": {
+        "observedMs": 1650.1000000014901,
+        "readinessMs": 1150.1000000014901
+      },
+      "admission": [
+        3742734,
+        16975,
+        1961117,
+        2835,
+        1618401
+      ],
+      "provenance": [
+        2,
+        0,
+        3694823,
+        1085859,
+        454275,
+        92901,
+        2014202,
+        0,
+        0
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "name": "initial-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "prepare-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "prepare-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    },
+    {
+      "name": "warm-settings",
+      "kind": "settings",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+    },
+    {
+      "name": "warm-home",
+      "kind": "home",
+      "stable": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "reference": {
+        "passed": true,
+        "pixelsOver2": 0,
+        "alphaDifferences": 0,
+        "maxRGBDifference": 0,
+        "bounds": null
+      },
+      "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+    }
+  ],
+  "errors": [],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:8211/jit/seed.wasm",
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "length": 12341313
+    },
+    {
+      "url": "http://127.0.0.1:8211/dist/emu.wasm",
+      "sha256": "c8d213d084eebb85a68c28f86171b46edaac8b8edcf3177afc9276e9ba18d89f",
+      "length": 253448
+    }
+  ],
+  "processReceipts": [
+    {
+      "label": "before-navigation",
+      "utc": "2026-09-06T07:24:52.000Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3827677,
+          "cpuTime": 0.55
+        },
+        {
+          "type": "renderer",
+          "id": 3827769,
+          "cpuTime": 0.02
+        },
+        {
+          "type": "renderer",
+          "id": 3827770,
+          "cpuTime": 0.04
+        },
+        {
+          "type": "renderer",
+          "id": 3827751,
+          "cpuTime": 0.23
+        },
+        {
+          "type": "GPU",
+          "id": 3827712,
+          "cpuTime": 0.1
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3827715,
+          "cpuTime": 0.09
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3827716,
+          "cpuTime": 0.02
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3827677,
+          "ppid": 3827663,
+          "startTicks": "4919513",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827681,
+          "ppid": 3827677,
+          "startTicks": "4919515",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3827682,
+          "ppid": 3827677,
+          "startTicks": "4919515",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3827691,
+          "ppid": 3827677,
+          "startTicks": "4919525",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827692,
+          "ppid": 3827677,
+          "startTicks": "4919525",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827712,
+          "ppid": 3827691,
+          "startTicks": "4919533",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827715,
+          "ppid": 3827677,
+          "startTicks": "4919533",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827716,
+          "ppid": 3827692,
+          "startTicks": "4919536",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827751,
+          "ppid": 3827692,
+          "startTicks": "4919540",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827769,
+          "ppid": 3827692,
+          "startTicks": "4919543",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827770,
+          "ppid": 3827692,
+          "startTicks": "4919543",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    },
+    {
+      "label": "before-close",
+      "utc": "2026-09-06T07:25:46.425Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3827677,
+          "cpuTime": 9.35
+        },
+        {
+          "type": "renderer",
+          "id": 3827769,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "renderer",
+          "id": 3827770,
+          "cpuTime": 71.66
+        },
+        {
+          "type": "renderer",
+          "id": 3827751,
+          "cpuTime": 0.86
+        },
+        {
+          "type": "GPU",
+          "id": 3827712,
+          "cpuTime": 10.96
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3827715,
+          "cpuTime": 1
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3827716,
+          "cpuTime": 0.02
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3827677,
+          "ppid": 3827663,
+          "startTicks": "4919513",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827681,
+          "ppid": 3827677,
+          "startTicks": "4919515",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3827682,
+          "ppid": 3827677,
+          "startTicks": "4919515",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3827691,
+          "ppid": 3827677,
+          "startTicks": "4919525",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827692,
+          "ppid": 3827677,
+          "startTicks": "4919525",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827712,
+          "ppid": 3827691,
+          "startTicks": "4919533",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827715,
+          "ppid": 3827677,
+          "startTicks": "4919533",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827716,
+          "ppid": 3827692,
+          "startTicks": "4919536",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827751,
+          "ppid": 3827692,
+          "startTicks": "4919540",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827769,
+          "ppid": 3827692,
+          "startTicks": "4919543",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3827770,
+          "ppid": 3827692,
+          "startTicks": "4919543",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "Browser": "Chrome/152.0.7977.82",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "V8-Version": "15.2.124.21",
+    "WebKit-Version": "537.36 (@d04cdb24d67b081f6cf80200ffc5233f44b61109)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:9251/devtools/browser/43bcf18c-40c2-4d44-9589-4e6301d51904"
+  },
+  "startup": {
+    "type": "fc",
+    "id": 900001,
+    "retired": 2883,
+    "cycles": "11205002883",
+    "jit": {
+      "enabled": true,
+      "generation": 1,
+      "regions": 512,
+      "bytes": 12341313,
+      "retired": 2686,
+      "calls": 149
+    },
+    "at": 7340.39999999851,
+    "census": {
+      "calls": 0,
+      "ok": 0,
+      "fetched": 0,
+      "nofetch": 0,
+      "nonok": 0,
+      "overflow": 0,
+      "mapOverflow": 0,
+      "epoch": 3,
+      "installs": 0,
+      "rows": 0,
+      "enabled": 0
+    }
+  },
+  "import": {
+    "type": "fc",
+    "id": 900002,
+    "retired": 102883,
+    "cycles": "11205000000",
+    "jit": {
+      "enabled": true,
+      "generation": 2,
+      "regions": 512,
+      "bytes": 12341313,
+      "retired": 0,
+      "calls": 0
+    },
+    "at": 24487.29999999702,
+    "census": {
+      "calls": 0,
+      "ok": 0,
+      "fetched": 0,
+      "nofetch": 0,
+      "nonok": 0,
+      "overflow": 0,
+      "mapOverflow": 0,
+      "epoch": 4,
+      "installs": 0,
+      "rows": 0,
+      "enabled": 0
+    }
+  },
+  "final": {
+    "type": "fc",
+    "id": 900011,
+    "retired": 358672681,
+    "cycles": "11563569798",
+    "jit": {
+      "enabled": true,
+      "generation": 2,
+      "regions": 509,
+      "bytes": 12341313,
+      "retired": 260328475,
+      "calls": 33024246
+    },
+    "at": 54291.10000000149,
+    "census": {
+      "calls": 7342062,
+      "ok": 7342062,
+      "fetched": 7340926,
+      "nofetch": 1136,
+      "nonok": 0,
+      "overflow": 0,
+      "mapOverflow": 0,
+      "epoch": 4,
+      "installs": 0,
+      "rows": 145032,
+      "enabled": 0
+    }
+  },
+  "passed": true,
+  "video": "/home/vercel-sandbox/iphone-1/.context/jit-fallback-census/browser-1/video/page@b0e1c72abc0628d8188d254810aa9a11.webm",
+  "closed": "2026-09-06T07:25:48.415Z",
+  "browserClosed": true
+}

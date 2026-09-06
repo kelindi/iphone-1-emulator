@@ -1,0 +1,969 @@
+{
+  "scope": "New successful disposable profile only; all scoped processes alreadyclosed. Entire IndexedDB,LocalStorage,SessionStorage and Preferences retained outside profile. HTTP/Code caches not reused or needed for this fresh-profile comparison. No oldprofile/fixture mutated.",
+  "freeBefore": 5703331840,
+  "inventory": [
+    {
+      "path": "Variations",
+      "bytes": 85
+    },
+    {
+      "path": "VariationsSafeSeedV2",
+      "bytes": 19
+    },
+    {
+      "path": "VariationsSeedV2",
+      "bytes": 11
+    },
+    {
+      "path": "Local State",
+      "bytes": 3540
+    },
+    {
+      "path": "Last Version",
+      "bytes": 13
+    },
+    {
+      "path": "first_party_sets.db",
+      "bytes": 49152
+    },
+    {
+      "path": "first_party_sets.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "BrowserMetrics-spare.pma",
+      "bytes": 4194304
+    },
+    {
+      "path": "component_crx_cache/metadata.json",
+      "bytes": 13
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.db",
+      "bytes": 4096
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.journal",
+      "bytes": 0
+    },
+    {
+      "path": "GPUPersistentCache/GPUCache/UFESZEW7QIH6WTE655CKMG6KM4OROEZG/cache.db-wal",
+      "bytes": 12392
+    },
+    {
+      "path": "segmentation_platform/ukm_db",
+      "bytes": 49152
+    },
+    {
+      "path": "Default/README",
+      "bytes": 180
+    },
+    {
+      "path": "Default/History",
+      "bytes": 163840
+    },
+    {
+      "path": "Default/History-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/ServerCertificate",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Web Data",
+      "bytes": 169984
+    },
+    {
+      "path": "Default/ServerCertificate-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Web Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Login Data For Account",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/Login Data For Account-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Login Data",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/Affiliation Database",
+      "bytes": 53248
+    },
+    {
+      "path": "Default/Login Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Affiliation Database-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/engine_allowlist.bf",
+      "bytes": 360
+    },
+    {
+      "path": "Default/Favicons",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Favicons-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Account Web Data",
+      "bytes": 77824
+    },
+    {
+      "path": "Default/Account Web Data-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Top Sites",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Top Sites-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Trust Tokens",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Trust Tokens-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Cookies",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Cookies-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Reporting and NEL",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Reporting and NEL-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/trusted_vault.pb",
+      "bytes": 84
+    },
+    {
+      "path": "Default/declarative_performance_observer.db",
+      "bytes": 32768
+    },
+    {
+      "path": "Default/heavy_ad_intervention_opt_out.db",
+      "bytes": 16384
+    },
+    {
+      "path": "Default/heavy_ad_intervention_opt_out.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/declarative_performance_observer.db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Shortcuts",
+      "bytes": 20480
+    },
+    {
+      "path": "Default/Shortcuts-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/DIPS",
+      "bytes": 36864
+    },
+    {
+      "path": "Default/Network Action Predictor",
+      "bytes": 53248
+    },
+    {
+      "path": "Default/Network Action Predictor-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/PreferredApps",
+      "bytes": 33
+    },
+    {
+      "path": "Default/BookmarkMergedSurfaceOrdering",
+      "bytes": 4
+    },
+    {
+      "path": "Default/Secure Preferences",
+      "bytes": 95
+    },
+    {
+      "path": "Default/Preferences",
+      "bytes": 15293
+    },
+    {
+      "path": "Default/Network Persistent State",
+      "bytes": 1303
+    },
+    {
+      "path": "Default/TransportSecurity",
+      "bytes": 188
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/LOG",
+      "bytes": 357
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Sync Data/LevelDB/000003.log",
+      "bytes": 118
+    },
+    {
+      "path": "Default/Cache/Cache_Data/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Cache/Cache_Data/5761d302839d26b6_0",
+      "bytes": 3785
+    },
+    {
+      "path": "Default/Cache/Cache_Data/2a7a7798e413bbe8_0",
+      "bytes": 5917
+    },
+    {
+      "path": "Default/Cache/Cache_Data/8c9029182717fc20_0",
+      "bytes": 9801
+    },
+    {
+      "path": "Default/Cache/Cache_Data/c7d745f1b2c01719_0",
+      "bytes": 19005
+    },
+    {
+      "path": "Default/Cache/Cache_Data/135411433dec3105_0",
+      "bytes": 787
+    },
+    {
+      "path": "Default/Cache/Cache_Data/7d71b8f05fe9c1e5_0",
+      "bytes": 12091
+    },
+    {
+      "path": "Default/Cache/Cache_Data/ebb0f2bc810b62f2_0",
+      "bytes": 19369
+    },
+    {
+      "path": "Default/Cache/Cache_Data/486afb66a8b8920f_0",
+      "bytes": 10024
+    },
+    {
+      "path": "Default/Cache/Cache_Data/08d3e4fc7319dbfe_0",
+      "bytes": 12341850
+    },
+    {
+      "path": "Default/Cache/Cache_Data/ad5f1a41ebcfb898_0",
+      "bytes": 75321
+    },
+    {
+      "path": "Default/Cache/Cache_Data/2937189a37920611_0",
+      "bytes": 776
+    },
+    {
+      "path": "Default/Cache/Cache_Data/6f9712c15006d7e1_0",
+      "bytes": 2806
+    },
+    {
+      "path": "Default/Cache/Cache_Data/4656ff464afef1dd_0",
+      "bytes": 1639
+    },
+    {
+      "path": "Default/Cache/Cache_Data/a3dbd540f4ebf43a_0",
+      "bytes": 5891597
+    },
+    {
+      "path": "Default/Cache/Cache_Data/9681bb19c3cc30e1_0",
+      "bytes": 39586
+    },
+    {
+      "path": "Default/Cache/Cache_Data/995a041187c9a02d_0",
+      "bytes": 50203863
+    },
+    {
+      "path": "Default/Cache/Cache_Data/4adac90341c04704_0",
+      "bytes": 50203862
+    },
+    {
+      "path": "Default/Cache/Cache_Data/7a028fc81f92fcf9_0",
+      "bytes": 259436
+    },
+    {
+      "path": "Default/Cache/Cache_Data/8348e7cad5d23fdb_0",
+      "bytes": 1035
+    },
+    {
+      "path": "Default/Cache/Cache_Data/56da1c9edfcf5a12_0",
+      "bytes": 9489
+    },
+    {
+      "path": "Default/Cache/Cache_Data/index-dir/the-real-index",
+      "bytes": 528
+    },
+    {
+      "path": "Default/Cache/No_Vary_Search/snapshot.baf",
+      "bytes": 20
+    },
+    {
+      "path": "Default/Cache/No_Vary_Search/journal.baj",
+      "bytes": 4
+    },
+    {
+      "path": "Default/Shared Dictionary/db",
+      "bytes": 45056
+    },
+    {
+      "path": "Default/Shared Dictionary/db-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Shared Dictionary/cache/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Shared Dictionary/cache/index-dir/the-real-index",
+      "bytes": 48
+    },
+    {
+      "path": "Default/Code Cache/js/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Code Cache/js/96ea9c59641191eb_0",
+      "bytes": 191
+    },
+    {
+      "path": "Default/Code Cache/js/41e1acc0b987a4b3_0",
+      "bytes": 195
+    },
+    {
+      "path": "Default/Code Cache/js/c4744361b3d723b6_0",
+      "bytes": 194
+    },
+    {
+      "path": "Default/Code Cache/js/index-dir/the-real-index",
+      "bytes": 120
+    },
+    {
+      "path": "Default/Code Cache/wasm/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Code Cache/wasm/3dd3876be653f5e0_0",
+      "bytes": 1208327
+    },
+    {
+      "path": "Default/Code Cache/wasm/60fa005a7457a611_0",
+      "bytes": 238
+    },
+    {
+      "path": "Default/Code Cache/wasm/d5939dee8179f7ba_0",
+      "bytes": 2650184
+    },
+    {
+      "path": "Default/Code Cache/wasm/7c19b301d5fde2e3_0",
+      "bytes": 3884320
+    },
+    {
+      "path": "Default/Code Cache/wasm/62e50ec7e51505d2_0",
+      "bytes": 5096076
+    },
+    {
+      "path": "Default/Code Cache/wasm/45041f1d13698629_0",
+      "bytes": 6335747
+    },
+    {
+      "path": "Default/Code Cache/wasm/56644791bc867614_0",
+      "bytes": 7660020
+    },
+    {
+      "path": "Default/Code Cache/wasm/ee56c20a9f525037_0",
+      "bytes": 9071485
+    },
+    {
+      "path": "Default/Code Cache/wasm/a3ebc459ef3d7a0f_0",
+      "bytes": 10509936
+    },
+    {
+      "path": "Default/Code Cache/wasm/08441edbf85f90e9_0",
+      "bytes": 11717675
+    },
+    {
+      "path": "Default/Code Cache/wasm/0b22a4d38cbbd16c_0",
+      "bytes": 13418587
+    },
+    {
+      "path": "Default/Code Cache/wasm/f23ddc139c924405_0",
+      "bytes": 14584759
+    },
+    {
+      "path": "Default/Code Cache/wasm/0631d98af4eb16e8_0",
+      "bytes": 15971096
+    },
+    {
+      "path": "Default/Code Cache/wasm/bd3f0d6fe7817f77_0",
+      "bytes": 17212020
+    },
+    {
+      "path": "Default/Code Cache/wasm/cb7eb3e257dfc895_0",
+      "bytes": 18384544
+    },
+    {
+      "path": "Default/Code Cache/wasm/9635572f1d83cdf9_0",
+      "bytes": 19965997
+    },
+    {
+      "path": "Default/Code Cache/wasm/f8486d6ba0a37d9a_0",
+      "bytes": 21105104
+    },
+    {
+      "path": "Default/Code Cache/wasm/index-dir/the-real-index",
+      "bytes": 456
+    },
+    {
+      "path": "Default/ClientCertificates/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/ClientCertificates/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Site Characteristics Database/LOG",
+      "bytes": 381
+    },
+    {
+      "path": "Default/Site Characteristics Database/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Site Characteristics Database/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Site Characteristics Database/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Site Characteristics Database/000003.log",
+      "bytes": 112
+    },
+    {
+      "path": "Default/discounts_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discounts_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discount_infos_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/discount_infos_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Local Storage/leveldb/LOG",
+      "bytes": 365
+    },
+    {
+      "path": "Default/Local Storage/leveldb/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Local Storage/leveldb/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Local Storage/leveldb/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Local Storage/leveldb/000003.log",
+      "bytes": 49
+    },
+    {
+      "path": "Default/parcel_tracking_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/parcel_tracking_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/commerce_subscription_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/commerce_subscription_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/chrome_cart_db/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/chrome_cart_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SegmentInfoDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SegmentInfoDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalStorageConfigDB/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Segmentation Platform/SignalStorageConfigDB/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/PersistentOriginTrials/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/PersistentOriginTrials/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Rules/LOG",
+      "bytes": 353
+    },
+    {
+      "path": "Default/Extension Rules/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Rules/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension Rules/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension Rules/000003.log",
+      "bytes": 19
+    },
+    {
+      "path": "Default/Extension Scripts/LOG",
+      "bytes": 357
+    },
+    {
+      "path": "Default/Extension Scripts/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension Scripts/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension Scripts/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension Scripts/000003.log",
+      "bytes": 19
+    },
+    {
+      "path": "Default/Sessions/Session_13433163070289909",
+      "bytes": 2311
+    },
+    {
+      "path": "Default/Sessions/Tabs_13433163186229043",
+      "bytes": 1999
+    },
+    {
+      "path": "Default/GPUCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/GPUCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/GPUCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/GPUCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/GPUCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnWebGPUCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/index",
+      "bytes": 262512
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_0",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_1",
+      "bytes": 270336
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_2",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/DawnGraphiteCache/data_3",
+      "bytes": 8192
+    },
+    {
+      "path": "Default/Session Storage/LOG",
+      "bytes": 353
+    },
+    {
+      "path": "Default/Session Storage/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Session Storage/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Session Storage/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Session Storage/000003.log",
+      "bytes": 87
+    },
+    {
+      "path": "Default/shared_proto_db/LOG",
+      "bytes": 353
+    },
+    {
+      "path": "Default/shared_proto_db/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/shared_proto_db/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/shared_proto_db/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/shared_proto_db/000003.log",
+      "bytes": 7276
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/LOG",
+      "bytes": 371
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/shared_proto_db/metadata/000003.log",
+      "bytes": 880
+    },
+    {
+      "path": "Default/Extension State/LOG",
+      "bytes": 353
+    },
+    {
+      "path": "Default/Extension State/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/Extension State/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/Extension State/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/Extension State/000003.log",
+      "bytes": 57
+    },
+    {
+      "path": "Default/WebStorage/QuotaManager",
+      "bytes": 40960
+    },
+    {
+      "path": "Default/WebStorage/QuotaManager-journal",
+      "bytes": 0
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/LOG",
+      "bytes": 417
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/MANIFEST-000001",
+      "bytes": 23
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/000003.log",
+      "bytes": 9090
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.blob/1/00/9",
+      "bytes": 103571130
+    },
+    {
+      "path": "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.blob/1/00/a",
+      "bytes": 103656372
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/index.txt",
+      "bytes": 180
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/index",
+      "bytes": 24
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/279a748add17d2e0_0",
+      "bytes": 5889106
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/3b02ceb2515927e6_0",
+      "bytes": 37075
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/8058b51b95b27318_0",
+      "bytes": 50201372
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/67e717e0f1049d7c_0",
+      "bytes": 50201371
+    },
+    {
+      "path": "Default/Service Worker/CacheStorage/7ee8d2a8519c6a09a7d1caa0c7ad72bcfe2952ae/8014054d-fc72-41ba-9704-c7d0ed892223/index-dir/the-real-index",
+      "bytes": 144
+    },
+    {
+      "path": "Default/AutofillAiModelCache/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillAiModelCache/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillStrikeDatabase/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/AutofillStrikeDatabase/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/BudgetDatabase/LOG",
+      "bytes": 0
+    },
+    {
+      "path": "Default/BudgetDatabase/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/GCM Store/LOG",
+      "bytes": 341
+    },
+    {
+      "path": "Default/GCM Store/LOCK",
+      "bytes": 0
+    },
+    {
+      "path": "Default/GCM Store/MANIFEST-000001",
+      "bytes": 41
+    },
+    {
+      "path": "Default/GCM Store/CURRENT",
+      "bytes": 16
+    },
+    {
+      "path": "Default/GCM Store/000003.log",
+      "bytes": 1142
+    },
+    {
+      "path": "extensions_crx_cache/metadata.json",
+      "bytes": 13
+    }
+  ],
+  "preserved": [
+    "Default/IndexedDB",
+    "Default/Local Storage",
+    "Default/Session Storage",
+    "Default/Preferences",
+    "Local State"
+  ],
+  "savedFileHashes": {
+    "Local State": {
+      "bytes": 3540,
+      "sha256": "a02af57f3af3242e25f6a36f9f34509437892ff5a4a46890ded2c91ef91e33de"
+    },
+    "Default/Preferences": {
+      "bytes": 15293,
+      "sha256": "6b9fe15a7b55a7e0990e275e49360ea439e9b432e26c9b40a670abcf5f95df15"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/LOG": {
+      "bytes": 417,
+      "sha256": "462738c5c8d1a35ac5c80fe23e7ac0966ad5783204a9acec4a2b44579ce65d81"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/MANIFEST-000001": {
+      "bytes": 23,
+      "sha256": "720a78803b84cbcc8eb204d5cf8ea6ee2f693be0ab2124ddf2b81455de02a3ed"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.leveldb/000003.log": {
+      "bytes": 9090,
+      "sha256": "eec68761c56da38705aea2d4406ad7af8888bc9d8343483c179a619cba44269e"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.blob/1/00/9": {
+      "bytes": 103571130,
+      "sha256": "247671b6c5f3119e4801242253c7303c795442e450f6f7463063a1871d7eb011"
+    },
+    "Default/IndexedDB/http_127.0.0.1_8223.indexeddb.blob/1/00/a": {
+      "bytes": 103656372,
+      "sha256": "9c332efb7d38ed774a71b0c9f7ac95723dea8246e1a8aaf4f98bd38835a80b5c"
+    },
+    "Default/Local Storage/leveldb/LOG": {
+      "bytes": 365,
+      "sha256": "a42943310839b28377866786a7ebb82cf48f46cbbc1be229f904021cbf386e0d"
+    },
+    "Default/Local Storage/leveldb/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/Local Storage/leveldb/MANIFEST-000001": {
+      "bytes": 41,
+      "sha256": "f9d31b278e215eb0d0e9cd709edfa037e828f36214ab7906f612160fead4b2b4"
+    },
+    "Default/Local Storage/leveldb/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/Local Storage/leveldb/000003.log": {
+      "bytes": 49,
+      "sha256": "af47b5d07d2f1aa55711e00774a429289267a82e604602df8fdd2c5047626159"
+    },
+    "Default/Session Storage/LOG": {
+      "bytes": 353,
+      "sha256": "abff39725b3da3d21d86d88a50dd9c2126ce8f20dc7f1f78fb4fd35add065db2"
+    },
+    "Default/Session Storage/LOCK": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Default/Session Storage/MANIFEST-000001": {
+      "bytes": 41,
+      "sha256": "f9d31b278e215eb0d0e9cd709edfa037e828f36214ab7906f612160fead4b2b4"
+    },
+    "Default/Session Storage/CURRENT": {
+      "bytes": 16,
+      "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+    },
+    "Default/Session Storage/000003.log": {
+      "bytes": 87,
+      "sha256": "4d7a760b35105bcacd2adef01d3f8080d1cebcf017b27603c32bf4fda6321b47"
+    }
+  },
+  "removed": true,
+  "freeAfter": 5914329088
+}

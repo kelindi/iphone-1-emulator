@@ -1,0 +1,57 @@
+[
+  {
+    "program": "iphone1-photo-bootstrap",
+    "plist": "com.iphone1.photo-bootstrap.plist",
+    "passed": false,
+    "error": "catalog leaf has insufficient space",
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 9, in <module>\n  File \"/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/install.py\", line 131, in preflight\n    raise ValueError(\"catalog leaf has insufficient space\")\nValueError: catalog leaf has insufficient space\n",
+    "failedAdmission": {
+      "guest": "/System/Library/LaunchDaemons/com.iphone1.photo-bootstrap.plist",
+      "name": "com.iphone1.photo-bootstrap.plist",
+      "node_id": 1,
+      "used": 4102,
+      "ident": 2933
+    }
+  },
+  {
+    "program": "iphone1-photos",
+    "plist": "com.iphone1.photos.plist",
+    "passed": true,
+    "preflight": {
+      "catalog": [
+        {
+          "path": "/usr/libexec/iphone1-photos",
+          "node": 53,
+          "usedAfter": 4048,
+          "capacity": 4096,
+          "existingFirstKeyUnchanged": true
+        },
+        {
+          "path": "/usr/libexec/iphone1-photos",
+          "node": 1,
+          "usedAfter": 3998,
+          "capacity": 4096,
+          "existingFirstKeyUnchanged": true
+        },
+        {
+          "path": "/System/Library/LaunchDaemons/com.iphone1.photos.plist",
+          "node": 11,
+          "usedAfter": 2760,
+          "capacity": 4096,
+          "existingFirstKeyUnchanged": true
+        },
+        {
+          "path": "/System/Library/LaunchDaemons/com.iphone1.photos.plist",
+          "node": 1,
+          "usedAfter": 4066,
+          "capacity": 4096,
+          "existingFirstKeyUnchanged": true
+        }
+      ],
+      "primarySHA256": "9553391d0b552392834c100e7718eb6df599339c83f78e3e74cfd48aee5b36fe",
+      "alternateSHA256": "9553391d0b552392834c100e7718eb6df599339c83f78e3e74cfd48aee5b36fe",
+      "headerDifferentWords": [],
+      "policy": "Known source hash binds both headers; preserve any stale alternate, never normalize it."
+    }
+  }
+]

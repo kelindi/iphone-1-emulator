@@ -1,0 +1,11 @@
+--- .context/amc-first/stage-u/source/amc_engine.h	2026-09-06 03:11:49.503640407 +0000
++++ .context/amc-first/stage-v/source/amc_engine.h	2026-09-06 08:26:59.178578315 +0000
+@@ -43,6 +43,8 @@
+     uint32_t events, mask, input_mask, staged_address, staged_words;
+     uint32_t dma_start, dma_words, copied_words;
+     bool transport_enabled;
++    /* Isolated functional BSU/DMA exclusion; unfinished input ownership stays active. */
++    bool bsu_locked, dma_paused;
+     size_t queue_used;
+     uint64_t queue_epoch, last_probe_epoch, decoded_bytes, copied_bytes;
+     uint64_t decoded_frames, published_frames, sample_units, generation;

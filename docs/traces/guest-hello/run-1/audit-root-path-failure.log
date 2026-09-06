@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/guest-hello/audit_run.py", line 38, in <module>
+    assert set(after)-set(before)==added and not set(before)-set(after)
+AssertionError

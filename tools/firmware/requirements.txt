@@ -1,0 +1,2 @@
+# Existing rootfs activation/verification dependency, also used by file-tool tests.
+cryptography==50.0.1

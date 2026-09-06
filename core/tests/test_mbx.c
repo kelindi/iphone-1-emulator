@@ -7580,7 +7580,75 @@ static void test_os1_clock_mirrored_column(void) {
     test_captured_status_form(&form);
 }
 
+/* Actual first retained Safari packet; only GART physical backing is synthetic.
+ * Source width472 differs from the fixed320-pixel screen, not its pixel layout. */
+static void test_os1_safari_472_source_copy(void) {
+    const uint32_t table0=0x08001000u,table6=0x08002000u;
+    const uint32_t source=0x00026080u,target=0x0196d000u;
+    const uint32_t source_pa=0x080e0000u,target_pa=0x08040000u;
+    uint32_t packet[16]={0xa0060500u,0x0196d000u,0x94060760u,0x00026080u,
+        0x301bc155u,0x60800200u,0x8000ccccu,0xffffffffu,
+        0x00690080u,0x006d0081u,0x70000000u,0x70000000u,
+        0x70000000u,0x70000000u,0x70000000u,0x70000000u};
+    s5l8900_t m;CHECK(s5l8900_init(&m,RAM_BASE,RAM_SIZE),"wide source init failed");if(!m.ram)return;
+    m.bus.write32(m.bus.ctx,MBX_BASE+0x1000u,table0);
+    m.bus.write32(m.bus.ctx,MBX_BASE+0x1018u,table6);
+    for(unsigned n=0;n<0x80+1888*480;n+=4096)
+        test_map_gpu_page(&m,table0,(source&~4095u)+n,source_pa+((n/4096)^1u)*4096);
+    for(unsigned n=0;n<1280*480;n+=4096)test_map_gpu_page(&m,table6,target+n,target_pa+n);
+    for(unsigned y=0;y<480;y++)for(unsigned x=0;x<472;x++)
+        test_gpu_write32(&m,source+y*1888+x*4,0xff000000u|(y<<12)|x);
+    uint8_t*expected=malloc(1280*480),*before=malloc(1280*480);
+    CHECK(expected&&before,"wide source expected allocation");if(!expected||!before){free(expected);free(before);s5l8900_free(&m);return;}
+    memset(m.ram+target_pa-RAM_BASE,0x69,1280*480);memcpy(expected,m.ram+target_pa-RAM_BASE,1280*480);memcpy(before,m.ram+target_pa-RAM_BASE,1280*480);
+    for(unsigned x=0;x<4;x++){uint32_t v=0xff000000u|(341u<<12)|(111u+x);memcpy(expected+128*1280+(105+x)*4,&v,4);}
+    write_packet(&m,RING+0x2cu,packet,16);
+    CHECK(!memcmp(before,m.ram+target_pa-RAM_BASE,1280*480),"wide packet changed before submit");
+    CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,"wide packet completed before submit");
+    m.bus.write32(m.bus.ctx,MBX_BASE+RING,0xf0000000u);
+    CHECK(!memcmp(expected,m.ram+target_pa-RAM_BASE,1280*480),"actual wide packet pixels or outside rectangle differ");
+    CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0x400u&&m.mbx_telemetry.bytes_2d==16&&m.mbx_telemetry.completed_2d==1,"wide packet exact completion missing");
+    /* Last four pixels in each source row; swapped physical pages prove GART
+     * lookup for each row, rather than flat pointer arithmetic at320 pixels. */
+    packet[4]=0x30000000u|(468u<<14)|300u;packet[8]=(12u<<16)|470u;packet[9]=(16u<<16)|474u;
+    for(unsigned y=0;y<4;y++)for(unsigned x=0;x<4;x++){uint32_t v=0xff000000u|((300+y)<<12)|(468+x);memcpy(expected+(470+y)*1280+(12+x)*4,&v,4);}
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x400u);write_packet(&m,RING+0x200u,packet,16);m.bus.write32(m.bus.ctx,MBX_BASE+RING,0xf0000000u);
+    CHECK(!memcmp(expected,m.ram+target_pa-RAM_BASE,1280*480),"wide source row boundary/noncontiguous mapping differs");
+    CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0x400u,"wide source multirow completion missing");
+    memcpy(before,m.ram+target_pa-RAM_BASE,1280*480);
+    for(unsigned variant=0;variant<10;variant++){
+        uint32_t bad[16];memcpy(bad,packet,sizeof bad);uint32_t pte=0,old=0;
+        if(variant==0)bad[2]=0x94060764u;
+        if(variant==1)bad[2]=0x94060761u;
+        if(variant==2)bad[2]=0x94060000u;
+        if(variant==3)bad[4]=0x30000000u|(470u<<14)|300u;
+        if(variant==4)bad[4]=0x30000000u|(468u<<14)|478u;
+        if(variant==5){bad[8]=(318u<<16)|470u;bad[9]=(322u<<16)|474u;}
+        if(variant==6)bad[2]=0x94048760u; /* no wider1555 admission */
+        if(variant==7)bad[6]^=0x10000u;
+        if(variant==8)pte=table0+(((source+303u*1888+468u*4)>>12)&1023u)*4;
+        if(variant==9)pte=table6+(((target+473u*1280+12u*4)>>12)&1023u)*4;
+        if(pte){old=m.bus.read32(m.bus.ctx,pte);m.bus.write32(m.bus.ctx,pte,0);}
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x400u);write_packet(&m,RING+0x400u,bad,16);m.bus.write32(m.bus.ctx,MBX_BASE+RING,0xf0000000u);
+        CHECK(!memcmp(before,m.ram+target_pa-RAM_BASE,1280*480),"wide source negative%u partially changed target",variant);
+        CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,"wide source negative%u completed",variant);
+        if(pte)m.bus.write32(m.bus.ctx,pte,old);
+    }
+    /* A valid earlier copy must not commit before a later malformed packet,
+     * including unmeasured target-as-source semantics in the same batch. */
+    for(unsigned alias=0;alias<2;alias++){
+        uint32_t later[16];memcpy(later,packet,sizeof later);
+        if(alias){later[3]=target;later[4]=0x30000000u;}else later[2]=0x94060764u;
+        test_gpu_write32(&m,target+470*1280+12*4,0x13572468u);memcpy(before,m.ram+target_pa-RAM_BASE,1280*480);
+        write_packet(&m,RING+0x800u,packet,11);write_packet(&m,RING+0x82cu,later,11);m.bus.write32(m.bus.ctx,MBX_BASE+RING,0xf0000000u);
+        CHECK(!memcmp(before,m.ram+target_pa-RAM_BASE,1280*480),"wide batch%u partially committed",alias);
+        CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,"wide batch%u completed",alias);
+    }
+    free(before);free(expected);s5l8900_free(&m);
+}
+
 int main(void) {
+    test_os1_safari_472_source_copy();
     test_os1_clock_mirrored_column();
     test_os1_text_wide_stretch();
     test_os1_safari_address_scales();

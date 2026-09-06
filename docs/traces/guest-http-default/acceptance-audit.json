@@ -1,0 +1,83 @@
+{
+  "workflowPassed": false,
+  "elapsedSeconds": 800.005,
+  "passedScriptChecks": 7,
+  "errors": [
+    "Error: Unfinished workflow gate: fresh-form-token-1\n    at file:///home/vercel-sandbox/iphone-1/.context/guest-http-default/browser.mjs:79:544"
+  ],
+  "consoleCount": 0,
+  "browserRequestFailures": 0,
+  "receivedAssetAudit": {
+    "passed": true,
+    "requiredAssets": [
+      "index.html",
+      "phone.css",
+      "app.js",
+      "assets.js",
+      "storage.js",
+      "checkpoint-worker.js",
+      "emu-worker.js",
+      "seed-jit.js",
+      "manifest.json",
+      "icon.svg",
+      "dist/emu.js",
+      "dist/emu.wasm",
+      "jit/abi.json",
+      "jit/regions.json",
+      "jit/seed.wasm"
+    ],
+    "acceptedLocalResponses": 66,
+    "scope": "Actual received local response bodies match frozen source bytes; service-worker installation and offline transport are not claimed."
+  },
+  "projectionUnchanged": true,
+  "finalState": {
+    "ready": true,
+    "paused": false,
+    "savedAt": 1788692261095,
+    "metrics": {
+      "type": "metrics",
+      "mips": 10.14575379399009,
+      "fps": 2.9952076677494537,
+      "guestRate": 1.0000251264702749,
+      "cycles": "15625176212",
+      "memory": 643039232,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 4652489235,
+        "calls": 581308961
+      },
+      "serial": "",
+      "captureMs": 211.79999999701977,
+      "captureChunkMs": 4.299999997019768,
+      "finalizeMs": 674.8000000044703
+    },
+    "status": "Saved at 10:57 AM"
+  },
+  "failedSnapshot": {
+    "scope": "Hidden existing Export button, enabled wait, native DOM click; separate from real autosave",
+    "before": {
+      "disabled": false,
+      "status": "Saved at 10:56 AM",
+      "savedAt": 1788692201319,
+      "paused": false
+    },
+    "click": {
+      "disabled": false,
+      "status": "Saved at 10:56 AM",
+      "savedAt": 1788692201319
+    },
+    "suggestedFilename": "iphone-2026-09-06.snap",
+    "file": {
+      "path": "/home/vercel-sandbox/iphone-1/.context/guest-http-default/browser-run-1/final-home.snap",
+      "bytes": 260767808,
+      "sha256": "c407b3734919c76dc0eae153b1bb70366969c4548e3fa2232716a1bc3395e693"
+    }
+  },
+  "graphicsPending2DHangs": 365,
+  "graphics3DRestarts": 5,
+  "daemonFailureLines": [],
+  "scope": "Artifact-only audit. Seven passed checks are partial; form/bookmark/autosave-reload/final Home were not accepted. Generic final-home.snap contains failed form. Daemon absent at final snapshot; cause unobserved. No speed claim."
+}

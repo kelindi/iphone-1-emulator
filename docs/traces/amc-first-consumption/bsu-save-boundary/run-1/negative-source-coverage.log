@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/source-read-audit.py", line 12, in <module>
+    sram=(p/'sram.bin').read_bytes();assert sram==(old/'sram.bin').read_bytes();coverage=(p/'saved-copy-coverage.bin').read_bytes();assert coverage==b'\1'*49152,'source coverage missing';data=(p/'saved-copy-reads.bin').read_bytes();assert len(data)%32==0
+AssertionError: source coverage missing

@@ -11,6 +11,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify copy-only HFSX compaction
         run: python3 -m unittest discover -s tools/firmware -p test_hfsx_compact.py -v
+      - name: Verify explicit new-file permissions and local-demo installation
+        run: |
+          python3 -m pip install -r tools/firmware/requirements.txt
+          python3 -m unittest discover -s tools/firmware -p test_rootfs_work_permissions.py -v
+          python3 -m unittest discover -s tools/legacy_services/guest_http -p test_install.py -v
       - name: Verify original Weather demo backend
         run: python3 -m unittest discover -s tools/legacy_services -p 'test_*.py' -v
       - name: Build native emulator

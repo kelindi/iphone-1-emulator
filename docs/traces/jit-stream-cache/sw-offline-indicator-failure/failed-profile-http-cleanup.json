@@ -1,0 +1,40 @@
+{
+  "at": "2026-09-06T06:03:17.257728+00:00",
+  "authorization": "Root approved obsolete SW-v1/v2 HTTP Cache only; actual Service Worker/IndexedDB/receipts retained. No future cache-reuse benchmark on modified failed profiles.",
+  "directories": [
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-sw-cache/profile/Default/Cache",
+      "bytes": 119021898,
+      "allocatedBytes": 119128064,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/jit-sw-cache-v2/profile/Default/Cache",
+      "bytes": 119108931,
+      "allocatedBytes": 119218176,
+      "removed": true
+    },
+    {
+      "path": "/home/vercel-sandbox/iphone-1/.context/rtc-write/browser-preview/run-1/profile/Default/Cache",
+      "bytes": 119100458,
+      "allocatedBytes": 119201792,
+      "authorization": "Root explicitly approved; legacy confirms unused",
+      "removed": true
+    }
+  ],
+  "before": {
+    "total": 68652367872,
+    "used": 63311663104,
+    "free": 5340704768
+  },
+  "after": {
+    "total": 68652367872,
+    "used": 63294672896,
+    "free": 5357694976
+  },
+  "settledAfter": {
+    "total": 68652367872,
+    "used": 63073320960,
+    "free": 5579046912
+  }
+}

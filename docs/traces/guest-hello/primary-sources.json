@@ -1,0 +1,26 @@
+[
+  {
+    "file": "libc-unistd.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/Libc/Libc-498.1.7/include/unistd.h",
+    "bytes": 26208,
+    "sha256": "5ac0c0ee7ba488e97de24389dfd22d2632159ad5a40902741f82778157bf53f4"
+  },
+  {
+    "file": "macho-loader.h",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/cctools/cctools-667.3/include/mach-o/loader.h",
+    "bytes": 52765,
+    "sha256": "3aae4b393468da9e59c1e9609bce7bdee639c4eb294e51eab9736bbae196a25f"
+  },
+  {
+    "file": "launchd.plist.5",
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/launchd/launchd-258.1/launchd/src/launchd.plist.5",
+    "bytes": 19108,
+    "sha256": "129d4724cb17ed64618c3b219880d1258da499a0d0879542301eaf8a50826c2a"
+  },
+  {
+    "file": "arm-aapcs32.rst",
+    "url": "https://raw.githubusercontent.com/ARM-software/abi-aa/main/aapcs32/aapcs32.rst",
+    "bytes": 131679,
+    "sha256": "a955491b97dab97721818ee1c6d2d7286903fd7c574649e191a6f6e8e3e71632"
+  }
+]

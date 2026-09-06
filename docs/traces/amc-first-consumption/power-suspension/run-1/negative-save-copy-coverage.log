@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 86, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 42, in run
+    coverage=(p/'saved-copy-coverage.bin').read_bytes();assert coverage==bytes([1])*49152,'actual SRAM copy read coverage missing'
+AssertionError: actual SRAM copy read coverage missing
