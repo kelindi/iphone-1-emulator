@@ -1,0 +1,2 @@
+ordering auditor: 9 synthetic record/retirement/cap checks pass
+complete ordering auditor: 17 checks pass, including both Z branches and actual saved ARM/Thumb returns

@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "scope": "Independent offline SRAM/count/ownership/write-mask reconstruction; no guest audio or admission claim",
+  "fullSRAMSha256": "c1de457c760db690798c5c5a8078280a3e2d7f0bf38753ee73b58d02f0f49f85",
+  "originalSRAMSha256": "011452fdff9699442c49115354c9b0bced1b98265ba64ee5b95c1c48bbb01583",
+  "publishedPCMSha256": "c6dd0b784dee554dbb24461511ea3511319c411d001896ac1c359295928afbda",
+  "publishedPCMBytes": 200704,
+  "nonzeroPCMBytes": 193221,
+  "exactOriginalBytesOutsideMasks": 172012,
+  "masks": {
+    "init-written.bin": {
+      "sha256": "2dedf5c3d5724191e7332faa267bb495f5c5fe3caafb189ba01769801a8a87fc",
+      "writtenBytes": 12,
+      "spans": [
+        [
+          "0xf208",
+          "0xf214"
+        ]
+      ]
+    },
+    "pcm-written.bin": {
+      "sha256": "c345ec58bf6df9e6439d552992c395fdc70054fd7bc7840cc76e9f52bcc20ffc",
+      "writtenBytes": 8200,
+      "spans": [
+        [
+          "0xf208",
+          "0xf210"
+        ],
+        [
+          "0xf220",
+          "0x10220"
+        ],
+        [
+          "0x11220",
+          "0x12220"
+        ]
+      ]
+    },
+    "host-written.bin": {
+      "sha256": "b0860455a0749a6e49f1d565f20370483c283973d0048c69a689f0bc17bae0d2",
+      "writtenBytes": 12,
+      "spans": [
+        [
+          "0xf208",
+          "0xf20c"
+        ],
+        [
+          "0x2a000",
+          "0x2a006"
+        ],
+        [
+          "0x2a00a",
+          "0x2a00c"
+        ]
+      ]
+    }
+  }
+}

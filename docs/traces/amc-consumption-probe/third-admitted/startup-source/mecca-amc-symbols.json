@@ -1,0 +1,764 @@
+[
+  {
+    "name": "__ZGVZN23AMC_IOKit_DecoderDriver11theInstanceEvE12sTheInstance",
+    "address": "392577c0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver30handleInputDMADoneNotificationEvE19__PRETTY_FUNCTION__",
+    "address": "312c27f4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver24disableDecoderInterruptsEvE19__PRETTY_FUNCTION__",
+    "address": "312c28d0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver23enableDecoderInterruptsEvE19__PRETTY_FUNCTION__",
+    "address": "312c2994",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver17stabilizeForResetEvE19__PRETTY_FUNCTION__",
+    "address": "312c2a64",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver20stabilizeDMAForResetEvE19__PRETTY_FUNCTION__",
+    "address": "312c2aec",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver27meccaCircularBufferAddFrameEvE19__PRETTY_FUNCTION__",
+    "address": "312c2b70",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver28meccaCircularBufferPreBufferEvE19__PRETTY_FUNCTION__",
+    "address": "312c2c40",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver18handleInputDMADoneEvE19__PRETTY_FUNCTION__",
+    "address": "312c2de4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver18inputDMATaskActionEPvE19__PRETTY_FUNCTION__",
+    "address": "312c2f6c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver12loadNewCodecEvE19__PRETTY_FUNCTION__",
+    "address": "312c2fd4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver12resetDecoderEvE19__PRETTY_FUNCTION__",
+    "address": "312c3064",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver12restartCodecEvE19__PRETTY_FUNCTION__",
+    "address": "312c30f4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver22getDecodingIsSuspendedEvE19__PRETTY_FUNCTION__",
+    "address": "312c32d0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver17unsuspendDecodingEvE19__PRETTY_FUNCTION__",
+    "address": "312c3310",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver17handleEndOfStreamEvE19__PRETTY_FUNCTION__",
+    "address": "312c33a8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver15getDecodedFrameEvE19__PRETTY_FUNCTION__",
+    "address": "312c3438",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver22releaseBufferOwnershipEbE19__PRETTY_FUNCTION__",
+    "address": "312c34a4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver16getElapsedTimeMSEvE19__PRETTY_FUNCTION__",
+    "address": "312c3578",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver35frameDecodeDoneNotificationCallbackEPvE19__PRETTY_FUNCTION__",
+    "address": "312c35ec",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriverC4EvE19__PRETTY_FUNCTION__",
+    "address": "312c363c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver11theInstanceEvE7sInited",
+    "address": "392577c8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver11theInstanceEvE12sTheInstance",
+    "address": "392577cc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver12setupDecoderEPN11MediaEngine11MediaSourceEE19__PRETTY_FUNCTION__",
+    "address": "312c3754",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN23AMC_IOKit_DecoderDriver32inputDMADoneNotificationCallbackEPvE19__PRETTY_FUNCTION__",
+    "address": "312c38f8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver11theInstanceEv",
+    "address": "3123d90c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver33getAMCIOKitDriverExistsOnPlatformEv",
+    "address": "3123bfb8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver10resetCodecEv",
+    "address": "3123ccc0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver11forceReloadEv",
+    "address": "3123d038",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver12loadNewCodecEv",
+    "address": "3123cb50",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver12resetDecoderEv",
+    "address": "3123cc08",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver12restartCodecEv",
+    "address": "3123cd18",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver12setupDecoderEPN11MediaEngine11MediaSourceE",
+    "address": "3123da14",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver15decoderFinishedEv",
+    "address": "312cf790",
+    "thumb": false,
+    "desc": 128
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver15getDecodedFrameEv",
+    "address": "3123d14c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver15tearDownDecoderEv",
+    "address": "3123d010",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver16getElapsedTimeMSEv",
+    "address": "3123d5a4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver17getElapsedSamplesEv",
+    "address": "3123d59c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver17handleEndOfStreamEv",
+    "address": "3123d084",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver17stabilizeForResetEv",
+    "address": "3123c1a4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver17unsuspendDecodingEv",
+    "address": "3123cf64",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver18handleInputDMADoneEv",
+    "address": "3123c920",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver18inputDMATaskActionEPv",
+    "address": "3123caec",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver19signalDoneWithFrameEv",
+    "address": "3123d62c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver19waitForDecoderReadyEv",
+    "address": "3123d04c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver20stabilizeDMAForResetEv",
+    "address": "3123c250",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver22getDecodingIsSuspendedEv",
+    "address": "3123cef8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver22releaseBufferOwnershipEb",
+    "address": "3123d4d0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver23enableDecoderInterruptsEv",
+    "address": "3123c07c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver24disableDecoderInterruptsEv",
+    "address": "3123bfc8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver27meccaCircularBufferAddFrameEv",
+    "address": "3123c300",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver28meccaCircularBufferPreBufferEv",
+    "address": "3123c6b0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver32inputDMADoneNotificationCallbackEPv",
+    "address": "3123df1c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriver35frameDecodeDoneNotificationCallbackEPv",
+    "address": "3123d630",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriverC2Ev",
+    "address": "3123d6a0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriverD0Ev",
+    "address": "3123bf50",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriverD1Ev",
+    "address": "3123da00",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN23AMC_IOKit_DecoderDriverD2Ev",
+    "address": "3123d9a0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZTV23AMC_IOKit_DecoderDriver",
+    "address": "392439ac",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface33getAMCIOKitDriverExistsOnPlatformEvE6result",
+    "address": "392578b0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface33getAMCIOKitDriverExistsOnPlatformEvE14alreadyChecked",
+    "address": "392578b1",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface24openUserClientConnectionEvE19__PRETTY_FUNCTION__",
+    "address": "312c3dac",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface25closeUserClientConnectionEvE19__PRETTY_FUNCTION__",
+    "address": "312c3e28",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface22mapDeviceMemoryForTypeEmPPvPmE19__PRETTY_FUNCTION__",
+    "address": "312c3e64",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface24unmapDeviceMemoryForTypeEmE19__PRETTY_FUNCTION__",
+    "address": "312c3fdc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface26unregisterForNotificationsEvE19__PRETTY_FUNCTION__",
+    "address": "312c4100",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface22releaseAMCDriverAccessEvE19__PRETTY_FUNCTION__",
+    "address": "312c41e0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface24registerForNotificationsEvE19__PRETTY_FUNCTION__",
+    "address": "312c424c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface22acquireAMCDriverAccessEvE19__PRETTY_FUNCTION__",
+    "address": "312c42bc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface35frameDecodeDoneNotificationOccurredEmmmE19__PRETTY_FUNCTION__",
+    "address": "312c4500",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface31callNoArgIOConnectMethodForTypeEmE19__PRETTY_FUNCTION__",
+    "address": "312c459c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface11loadDecoderEP14AMCCodecParamsE19__PRETTY_FUNCTION__",
+    "address": "312c45e4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface12resetDecoderEP14AMCCodecParamsE19__PRETTY_FUNCTION__",
+    "address": "312c4654",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface30initializeDecoderWithDMABufferEmmE19__PRETTY_FUNCTION__",
+    "address": "312c4690",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface12startDecoderEvE19__PRETTY_FUNCTION__",
+    "address": "312c4744",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface17disableInterruptsEvE19__PRETTY_FUNCTION__",
+    "address": "312c4770",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface16enableInterruptsEvE19__PRETTY_FUNCTION__",
+    "address": "312c47a4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface17stabilizeForResetEvE19__PRETTY_FUNCTION__",
+    "address": "312c47d4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface20stabilizeDMAForResetEvE19__PRETTY_FUNCTION__",
+    "address": "312c4808",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface18getInputBufferInfoEPPPhPmS2_S3_E19__PRETTY_FUNCTION__",
+    "address": "312c483c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface19updateDecodingStateEvE19__PRETTY_FUNCTION__",
+    "address": "312c49bc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface17startNextInputDMAEmmE19__PRETTY_FUNCTION__",
+    "address": "312c49f0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface30releaseBufferOwnershipForIndexEmbE19__PRETTY_FUNCTION__",
+    "address": "312c4a30",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface17unsuspendDecodingEvE19__PRETTY_FUNCTION__",
+    "address": "312c4a7c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface17handleEndOfStreamEvE19__PRETTY_FUNCTION__",
+    "address": "312c4ab0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface18decryptInputBufferEmE19__PRETTY_FUNCTION__",
+    "address": "312c4ae4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface34getOutputBufferInfoForCurrentCodecEPPPhPPmS4_S4_E19__PRETTY_FUNCTION__",
+    "address": "312c4b1c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface4initEvE19__PRETTY_FUNCTION__",
+    "address": "312c4d7c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZZN18AMCDeviceInterface16machPortCallBackEP12__CFMachPortPvlS2_E19__PRETTY_FUNCTION__",
+    "address": "312c4e58",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface11loadDecoderEP14AMCCodecParams",
+    "address": "3123f3c8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface12resetDecoderEP14AMCCodecParams",
+    "address": "3123f554",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface12startDecoderEv",
+    "address": "3123f90c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface16enableInterruptsEv",
+    "address": "3123fa84",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface17disableInterruptsEv",
+    "address": "3123f9c8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface17handleEndOfStreamEv",
+    "address": "312403a8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface17stabilizeForResetEv",
+    "address": "3123fb3c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface17startNextInputDMAEmm",
+    "address": "312400e8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface17unsuspendDecodingEv",
+    "address": "312402dc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface18decryptInputBufferEm",
+    "address": "31240468",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface18getInputBufferInfoEPPPhPmS2_S3_",
+    "address": "3123fcb0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface20stabilizeDMAForResetEv",
+    "address": "3123fbf4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface30initializeDecoderWithDMABufferEmm",
+    "address": "3123f6dc",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface30releaseBufferOwnershipForIndexEmb",
+    "address": "312401b0",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface33getAMCIOKitDriverExistsOnPlatformEv",
+    "address": "3123e534",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface34getOutputBufferInfoForCurrentCodecEPPPhPPmS4_S4_",
+    "address": "31240528",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface35setInputDMADoneNotificationCallbackEPFvPvES0_",
+    "address": "3123f258",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface38setFrameDecodeDoneNotificationCallbackEPFvPvES0_",
+    "address": "3123f264",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterfaceC1Ev",
+    "address": "3123e530",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZNK18AMCDeviceInterface22getDecodingIsSuspendedEv",
+    "address": "3124068c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface16machPortCallBackEP12__CFMachPortPvlS2_",
+    "address": "31240b1c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface19updateDecodingStateEv",
+    "address": "3123ffa4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface22acquireAMCDriverAccessEv",
+    "address": "3123ed84",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface22mapDeviceMemoryForTypeEmPPvPm",
+    "address": "3123e6f8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface22releaseAMCDriverAccessEv",
+    "address": "3123eb14",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface24openUserClientConnectionEv",
+    "address": "3123e590",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface24registerForNotificationsEv",
+    "address": "3123ec64",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface24unmapDeviceMemoryForTypeEm",
+    "address": "3123e904",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface25closeUserClientConnectionEv",
+    "address": "3123e67c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface26unregisterForNotificationsEv",
+    "address": "3123ea5c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface31callNoArgIOConnectMethodForTypeEm",
+    "address": "3123f2f8",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface35frameDecodeDoneNotificationOccurredEmmm",
+    "address": "3123f270",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterface4initEv",
+    "address": "312407e4",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterfaceC2Ev",
+    "address": "3123e474",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterfaceD0Ev",
+    "address": "31240d10",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterfaceD1Ev",
+    "address": "31240d0c",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZN18AMCDeviceInterfaceD2Ev",
+    "address": "31240c48",
+    "thumb": false,
+    "desc": 0
+  },
+  {
+    "name": "__ZTV18AMCDeviceInterface",
+    "address": "39243a04",
+    "thumb": false,
+    "desc": 0
+  }
+]

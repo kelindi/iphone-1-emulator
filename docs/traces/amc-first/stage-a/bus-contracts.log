@@ -1,0 +1,13 @@
+BUS W tick0 pc00000000 lr00000000 addr22028000 width4 valuea1b2c3d4
+BUS R tick0 pc00000000 lr00000000 addr22028000 width4 valuea1b2c3d4
+BUS R tick0 pc00000000 lr00000000 addr22028002 width2 value0000a1b2
+BUS W tick0 pc00000000 lr00000000 addr22028001 width1 value00000055
+BUS R tick0 pc00000000 lr00000000 addr22028000 width4 valuea1b255d4
+BUS W tick0 pc00000000 lr00000000 addr3c500050 width4 value0000a000
+BUS W tick0 pc00000000 lr00000000 addr3c500050 width4 value00000a00
+BUS W tick0 pc00000000 lr00000000 addr38502000 width4 value00000003
+BUS R tick0 pc00000000 lr00000000 addr38500b18 width4 value00000000
+BUS W tick0 pc00000000 lr00000000 addr2202bfff width4 value00000000
+BUS R tick0 pc00000000 lr00000000 addr2202bfff width4 value00000000
+BUS R tick0 pc00000000 lr00000000 addr2202bfff width1 value00000000
+isolated SRAM bus: 14 checks passed

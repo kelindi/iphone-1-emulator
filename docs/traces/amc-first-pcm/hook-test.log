@@ -1,0 +1,23 @@
+AMC W 38500204 width4 value00000002 pc00000000 tick0
+STOP unsupported engine write cycles0 ticks0 pc00000000 lr00000000 address38500204 width4 value00000002
+STOP context between-instructions
+STOP unmodeled active lifecycle cycles0 ticks0 pc00000000 lr00000000 address3c500048 width4 value00000018
+STOP context between-instructions
+STOP unmodeled active lifecycle cycles0 ticks0 pc00000000 lr00000000 address39a00000 width4 value00000000
+STOP context between-instructions
+ENGINE SRAM W 2200f220 width2 value00000001 pc00000000
+STOP unsupported engine SRAM write cycles0 ticks0 pc00000000 lr00000000 address2200f220 width2 value00000001
+STOP context between-instructions
+ENGINE SRAM W 2200f208 width2 value00000001 pc00000000
+AMC W 38500204 width4 value00000001 pc00000000 tick0
+AMC W 38500184 width4 value00000007 pc00000000 tick0
+AMC W 38500b0c width4 value00002000 pc00000000 tick0
+AMC W 38501018 width4 value00000001 pc00000000 tick0
+AMC W 3850100c width4 value00000000 pc00000000 tick0
+STOP unsupported engine write cycles0 ticks0 pc00000000 lr00000000 address3850100c width4 value00000000
+STOP context between-instructions
+AMC W 38501000 width4 value00000001 pc00000000 tick0
+STOP unsupported engine write cycles0 ticks0 pc00000000 lr00000000 address38501000 width4 value00000001
+STOP context between-instructions
+PASS first PCM publication after retired instruction cycles1234 ticks0 decodedFrames1 decodedBytes1 sampleUnits2 buffer0 events00000400 mask00000400 inputPending0 irqWouldAssert1 serviceCalls1; no next guest instruction or output IRQ refresh
+isolated guest-hook contracts: 37 checks passed; synthetic PCM only in wrapper unit test

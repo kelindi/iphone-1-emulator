@@ -1,0 +1,29 @@
+{
+  "scope": "All four original Playwright recordings retained at these local paths; no speed transformation. Diagnostic result was not promoted as a visual milestone.",
+  "recordings": [
+    {
+      "path": ".context/jit-continuation/browser/quiet-navigation/1-baseline/page@fa876923f8cdd5a259e15780e01edf10.webm",
+      "sha256": "722f7e37edc4152f41216bbcb5803cd76ab406a57dae391f9b287efecc462947",
+      "bytes": 9525433,
+      "originalSpeed": true
+    },
+    {
+      "path": ".context/jit-continuation/browser/quiet-navigation/2-candidate/page@e997b2148a5155ee25b9ab78d44401cd.webm",
+      "sha256": "4dc61963a6750ce6c955ec776706c11e165f1db7d34a56c127f95628ae0e5236",
+      "bytes": 9595953,
+      "originalSpeed": true
+    },
+    {
+      "path": ".context/jit-continuation/browser/quiet-navigation/3-candidate/page@6a206841d631f9e367cae6c0c56885a6.webm",
+      "sha256": "563c124471735957e3c7118f5b579447b45b41945d7b44f5c6dcc0dfe37a5689",
+      "bytes": 9482117,
+      "originalSpeed": true
+    },
+    {
+      "path": ".context/jit-continuation/browser/quiet-navigation/4-baseline/page@592028e8664ec8dfb55de0bc6a5900a5.webm",
+      "sha256": "5440998868490514fec4462245355f7534cf87814bf67dd7a9e1dd8ebae23911",
+      "bytes": 9593679,
+      "originalSpeed": true
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "scope": "Static original metadata/code proof plus separately decoded immutable snapshots. No new guest execution or RTC transaction claim.",
+  "appSHA256": "5efb9f552131284d4ca63ce5b369e953d5aa6906106fa0d94dc241637577d2a0",
+  "classAddress": "0x1996c",
+  "methodListAddress": "0x1a448",
+  "methods": [
+    {
+      "selector": "tableSelectionDidChange:",
+      "types": "v12@0:4@8",
+      "implementation": "0x7f9c"
+    },
+    {
+      "selector": "specifiers",
+      "types": "@8@0:4",
+      "implementation": "0x7ddc"
+    },
+    {
+      "selector": "table:cellForRow:column:",
+      "types": "@20@0:4@8i12@16",
+      "implementation": "0x7d28"
+    },
+    {
+      "selector": "viewWillBecomeVisible:",
+      "types": "v12@0:4^v8",
+      "implementation": "0x7ca0"
+    },
+    {
+      "selector": "datePickerChanged:",
+      "types": "v12@0:4@8",
+      "implementation": "0x7bf4"
+    },
+    {
+      "selector": "startTimer",
+      "types": "v8@0:4",
+      "implementation": "0x7af8"
+    },
+    {
+      "selector": "showTimePicker",
+      "types": "v8@0:4",
+      "implementation": "0x7ad8"
+    },
+    {
+      "selector": "showDatePicker",
+      "types": "v8@0:4",
+      "implementation": "0x7ab8"
+    },
+    {
+      "selector": "showPicker:",
+      "types": "v12@0:4c8",
+      "implementation": "0x7774"
+    },
+    {
+      "selector": "update:",
+      "types": "v12@0:4@8",
+      "implementation": "0x7570"
+    },
+    {
+      "selector": "bundle",
+      "types": "@8@0:4",
+      "implementation": "0x74f8"
+    },
+    {
+      "selector": "suspend",
+      "types": "v8@0:4",
+      "implementation": "0x74a8"
+    },
+    {
+      "selector": "stopTimer",
+      "types": "v8@0:4",
+      "implementation": "0x7468"
+    },
+    {
+      "selector": "dealloc",
+      "types": "v8@0:4",
+      "implementation": "0x73d0"
+    },
+    {
+      "selector": "initForContentSize:",
+      "types": "@16@0:4{CGSize=ff}8",
+      "implementation": "0x72fc"
+    }
+  ],
+  "selectors": {
+    "0x194a4": "date",
+    "0x194a8": "timeIntervalSince1970",
+    "0x19494": "update:",
+    "0x194ac": "startTimer"
+  },
+  "stubs": [
+    {
+      "stub": "0x162d4",
+      "pointer": "0x170dc",
+      "target": "0x30e980a4",
+      "symbol": "objc_msgSend"
+    },
+    {
+      "stub": "0x16514",
+      "pointer": "0x1719c",
+      "target": "0x300679a0",
+      "symbol": "settimeofday"
+    },
+    {
+      "stub": "0x16538",
+      "pointer": "0x171a8",
+      "target": "0x30040c60",
+      "symbol": "lrint"
+    }
+  ],
+  "ranges": [
+    {
+      "name": "datePickerChanged",
+      "address": "0x7bf4",
+      "bytes": 152,
+      "thumb": false,
+      "sha256": "9459b48c55033d319ec8cd9f0226d9cc78949273ff5f1a189986953c306679d8"
+    },
+    {
+      "name": "settimeofday",
+      "address": "0xc01031f0",
+      "bytes": 134,
+      "thumb": true,
+      "sha256": "89ac1192923560e70a0e30cba98197eb2a5e5447015e4603d2096e1bdfc3a06d"
+    },
+    {
+      "name": "set-calendar-wrapper",
+      "address": "0xc01031e0",
+      "bytes": 16,
+      "thumb": true,
+      "sha256": "649d7df7b26a9a451b0570aef9246c06590fd446591ff6fa0a67161f72ed005c"
+    },
+    {
+      "name": "clock-set-calendar",
+      "address": "0xc001898c",
+      "bytes": 202,
+      "thumb": true,
+      "sha256": "3983461176852013b9127d01048337314362ab69a72439504ee586e09172c0b4"
+    },
+    {
+      "name": "platform-set-gmt",
+      "address": "0xc014c674",
+      "bytes": 24,
+      "thumb": true,
+      "sha256": "82c1cfc535b8e5907fb861b1b665a456af00b6d5f1e9058e618d1fbb44798f4c"
+    },
+    {
+      "name": "arm-platform-set-gmt",
+      "address": "0xc015c490",
+      "bytes": 90,
+      "thumb": true,
+      "sha256": "4d6e0c0955c4a7aee7bbe16f6ead3af0348c4cb2d7cd79ef40bf92eec5824226"
+    },
+    {
+      "name": "rtc-platform-dispatch",
+      "address": "0xc015de04",
+      "bytes": 134,
+      "thumb": true,
+      "sha256": "9fe13fa7fbdd3267b9dcfbc4a77225da9084fe7fda9530b75b824a90ecb132d2"
+    }
+  ]
+}

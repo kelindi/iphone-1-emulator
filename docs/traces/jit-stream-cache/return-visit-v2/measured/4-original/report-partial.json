@@ -1,0 +1,2905 @@
+{
+  "variant": "original",
+  "expectedSeed": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "started": "2026-09-06T04:48:13.540Z",
+  "fixture": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/fixed-dismiss.snap",
+  "fixtureSha": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "actions": [
+    {
+      "round": 1,
+      "label": "C0",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900002,
+        "retired": 5824155,
+        "ticks": 4103564347,
+        "cycles": "11210674155",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 511,
+          "bytes": 12341313,
+          "retired": 4488504,
+          "calls": 573308
+        },
+        "at": 23450.09999999404,
+        "mainSend": 24995.5,
+        "mainReply": 24995.79999999702
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900003,
+        "retired": 120231359,
+        "ticks": 4141467560,
+        "cycles": "11325081359",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 87102540,
+          "calls": 10976360
+        },
+        "at": 29768.39999999851,
+        "mainSend": 31311,
+        "mainReply": 31314.10000000149
+      },
+      "firstVisibleMs": 1850.1000000014901,
+      "readyMs": 5750.30000000447,
+      "releaseOffsetMs": 35.600000001490116,
+      "releaseToFirstVisibleMs": 1814.5,
+      "releaseToReadyMs": 5714.70000000298,
+      "observedAtMs": 6300.20000000298,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.741474805890103,
+        "fps": 6.970722963584109,
+        "guestRate": 1.0000003319436406,
+        "cycles": "11322162772",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 85537625,
+          "calls": 10758876
+        },
+        "serial": "",
+        "captureMs": 101.20000000298023,
+        "captureChunkMs": 2.7999999970197678,
+        "finalizeMs": 562.6999999955297
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.399999998509884,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.29999999701976776,
+          "pairWait": 50.100000001490116,
+          "secondCapture": 0.20000000298023224,
+          "png": 3.6999999955296516,
+          "encoding": 69.70000000298023,
+          "hash": 4.5,
+          "inPageTotal": 128.5,
+          "evaluationWall": 170.30657200000132,
+          "evaluationOutsideBody": 41.806572000001324,
+          "decodeAndIdentity": 37.190522999997484,
+          "rawPngWrites": 1.1880900000032852,
+          "referenceAndCompare": 11.366630999997142,
+          "totalSettled": 1220.858490999999
+        }
+      }
+    },
+    {
+      "round": 1,
+      "label": "C0",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900004,
+        "retired": 122611450,
+        "ticks": 4148857818,
+        "cycles": "11327461450",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 89126703,
+          "calls": 11130093
+        },
+        "at": 31003.59999999404,
+        "mainSend": 32549,
+        "mainReply": 32549.29999999702
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900005,
+        "retired": 146068466,
+        "ticks": 4157646034,
+        "cycles": "11350918466",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 104051375,
+          "calls": 13115448
+        },
+        "at": 32465,
+        "mainSend": 34010.5,
+        "mainReply": 34010.69999999553
+      },
+      "firstVisibleMs": 550.1000000014901,
+      "readyMs": 950.1000000014901,
+      "releaseOffsetMs": 33.79999999701977,
+      "releaseToFirstVisibleMs": 516.3000000044703,
+      "releaseToReadyMs": 916.3000000044703,
+      "observedAtMs": 1450.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.260722255477646,
+        "fps": 13.947001394741548,
+        "guestRate": 1.0000018263960089,
+        "cycles": "11350899823",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 104034207,
+          "calls": 13114342
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.69999999552965,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.20000000298023224,
+          "png": 5.600000001490116,
+          "encoding": 66.79999999701977,
+          "hash": 4.100000001490116,
+          "inPageTotal": 127.39999999850988,
+          "evaluationWall": 169.23588500000187,
+          "evaluationOutsideBody": 41.83588500149199,
+          "decodeAndIdentity": 20.136804000001575,
+          "rawPngWrites": 1.3694120000000112,
+          "referenceAndCompare": 8.323808000001009,
+          "totalSettled": 1201.3700450000033
+        }
+      }
+    },
+    {
+      "round": 2,
+      "label": "H1",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900006,
+        "retired": 159604518,
+        "ticks": 4164909692,
+        "cycles": "11364454518",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 113495666,
+          "calls": 14299868
+        },
+        "at": 33673.29999999702,
+        "mainSend": 35218,
+        "mainReply": 35219
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900007,
+        "retired": 264668139,
+        "ticks": 4188243118,
+        "cycles": "11469518139",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 189050833,
+          "calls": 23671002
+        },
+        "at": 37562.29999999702,
+        "mainSend": 39100.89999999851,
+        "mainReply": 39108
+      },
+      "firstVisibleMs": 400.1000000014901,
+      "readyMs": 3350.2000000029802,
+      "releaseOffsetMs": 33.20000000298023,
+      "releaseToFirstVisibleMs": 366.8999999985099,
+      "releaseToReadyMs": 3317,
+      "observedAtMs": 3850.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 21.733775622567286,
+        "fps": 17.998200180089267,
+        "guestRate": 1.0000029997059898,
+        "cycles": "11468166724",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 188231199,
+          "calls": 23554282
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.20000000298023,
+          "secondCapture": 0.3999999985098839,
+          "png": 3.5,
+          "encoding": 64.29999999701977,
+          "hash": 3.8000000044703484,
+          "inPageTotal": 122.60000000149012,
+          "evaluationWall": 161.50346400000126,
+          "evaluationOutsideBody": 38.90346399851114,
+          "decodeAndIdentity": 13.917913999997836,
+          "rawPngWrites": 1.3019920000006096,
+          "referenceAndCompare": 8.62107300000207,
+          "totalSettled": 1187.0955200000026
+        }
+      }
+    },
+    {
+      "round": 2,
+      "label": "H1",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900008,
+        "retired": 272088959,
+        "ticks": 4195433618,
+        "cycles": "11476938959",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 194822535,
+          "calls": 24419657
+        },
+        "at": 38763.69999999553,
+        "mainSend": 40309.19999999553,
+        "mainReply": 40309.39999999851
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900009,
+        "retired": 298438700,
+        "ticks": 4203960852,
+        "cycles": "11503288700",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 211758348,
+          "calls": 26878613
+        },
+        "at": 40181.79999999702,
+        "mainSend": 41727,
+        "mainReply": 41727.5
+      },
+      "firstVisibleMs": 450.20000000298023,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 33.20000000298023,
+      "releaseToFirstVisibleMs": 417,
+      "releaseToReadyMs": 866.8999999985099,
+      "observedAtMs": 1400.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 14.926257,
+        "fps": 8,
+        "guestRate": 1.0000066666666667,
+        "cycles": "11490201081",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 202862248,
+          "calls": 25625317
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.099999994039536,
+          "secondCapture": 0.4000000059604645,
+          "png": 5,
+          "encoding": 64.09999999403954,
+          "hash": 4,
+          "inPageTotal": 124.09999999403954,
+          "evaluationWall": 162.75052000000142,
+          "evaluationOutsideBody": 38.65052000596188,
+          "decodeAndIdentity": 16.69263299999875,
+          "rawPngWrites": 1.1982630000056815,
+          "referenceAndCompare": 5.77106300000014,
+          "totalSettled": 1188.208179000001
+        }
+      }
+    },
+    {
+      "round": 3,
+      "label": "H2",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900010,
+        "retired": 306187415,
+        "ticks": 4211127363,
+        "cycles": "11511037415",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 217875814,
+          "calls": 27664201
+        },
+        "at": 41376.19999999553,
+        "mainSend": 42921.39999999851,
+        "mainReply": 42921.89999999851
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900011,
+        "retired": 410206507,
+        "ticks": 4232351166,
+        "cycles": "11615056507",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 291408497,
+          "calls": 36467574
+        },
+        "at": 44913.39999999851,
+        "mainSend": 46457.19999999553,
+        "mainReply": 46459.10000000149
+      },
+      "firstVisibleMs": 400.19999999552965,
+      "readyMs": 3000.2999999970198,
+      "releaseOffsetMs": 33.69999999552965,
+      "releaseToFirstVisibleMs": 366.5,
+      "releaseToReadyMs": 2966.60000000149,
+      "observedAtMs": 3500.2999999970198,
+      "metrics": {
+        "type": "metrics",
+        "mips": 28.782730361954382,
+        "fps": 2.9982010793702485,
+        "guestRate": 1.0000000000059568,
+        "cycles": "11605555831",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 286187017,
+          "calls": 35694059
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.100000001490116,
+          "secondCapture": 0.5,
+          "png": 3.399999998509884,
+          "encoding": 80.20000000298023,
+          "hash": 4,
+          "inPageTotal": 138.70000000298023,
+          "evaluationWall": 176.57302699999855,
+          "evaluationOutsideBody": 37.873026997018314,
+          "decodeAndIdentity": 14.048525999998674,
+          "rawPngWrites": 1.204037999996217,
+          "referenceAndCompare": 9.499349000005168,
+          "totalSettled": 1202.984682000002
+        }
+      }
+    },
+    {
+      "round": 3,
+      "label": "H2",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900012,
+        "retired": 416342387,
+        "ticks": 4239650855,
+        "cycles": "11621192387",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 296274416,
+          "calls": 37073451
+        },
+        "at": 46130.79999999702,
+        "mainSend": 47675.69999999553,
+        "mainReply": 47676.69999999553
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900013,
+        "retired": 442030315,
+        "ticks": 4248158888,
+        "cycles": "11646880315",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 312652787,
+          "calls": 39433897
+        },
+        "at": 47548.59999999404,
+        "mainSend": 49094.10000000149,
+        "mainReply": 49094.39999999851
+      },
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 34,
+      "releaseToFirstVisibleMs": 416.1000000014901,
+      "releaseToReadyMs": 866.1000000014901,
+      "observedAtMs": 1400.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 18.372194075940207,
+        "fps": 14.959609055505553,
+        "guestRate": 1.000002160829447,
+        "cycles": "11646501166",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 312355628,
+          "calls": 39395710
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.20000000298023,
+          "secondCapture": 0.3999999985098839,
+          "png": 10.5,
+          "encoding": 66.5,
+          "hash": 4,
+          "inPageTotal": 132,
+          "evaluationWall": 175.85869800000364,
+          "evaluationOutsideBody": 43.85869800000364,
+          "decodeAndIdentity": 25.31881599999906,
+          "rawPngWrites": 3.8310419999979786,
+          "referenceAndCompare": 9.702401000002283,
+          "totalSettled": 1215.9311129999987
+        }
+      }
+    },
+    {
+      "round": 4,
+      "label": "H3",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900014,
+        "retired": 450128667,
+        "ticks": 4255493996,
+        "cycles": "11654978667",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 319038754,
+          "calls": 40257813
+        },
+        "at": 48771.39999999851,
+        "mainSend": 50316.89999999851,
+        "mainReply": 50317.10000000149
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900015,
+        "retired": 560305435,
+        "ticks": 4280085616,
+        "cycles": "11765155435",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 398083718,
+          "calls": 50237555
+        },
+        "at": 52873,
+        "mainSend": 54418.39999999851,
+        "mainReply": 54418.79999999702
+      },
+      "firstVisibleMs": 100.10000000149012,
+      "readyMs": 3550.10000000149,
+      "releaseOffsetMs": 32.399999998509884,
+      "releaseToFirstVisibleMs": 67.70000000298023,
+      "releaseToReadyMs": 3517.7000000029802,
+      "observedAtMs": 4050.10000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 25.796741685038164,
+        "fps": 4.9790878311315065,
+        "guestRate": 1.0000008298524237,
+        "cycles": "11760474005",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 395528303,
+          "calls": 49883601
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.100000001490116,
+          "secondCapture": 0.3999999985098839,
+          "png": 2.899999998509884,
+          "encoding": 64.70000000298023,
+          "hash": 3.899999998509884,
+          "inPageTotal": 122.5,
+          "evaluationWall": 159.70608499999798,
+          "evaluationOutsideBody": 37.206084999997984,
+          "decodeAndIdentity": 14.10678000000189,
+          "rawPngWrites": 1.0654609999983222,
+          "referenceAndCompare": 5.365488000003097,
+          "totalSettled": 1180.2858820000038
+        }
+      }
+    },
+    {
+      "round": 4,
+      "label": "H3",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900016,
+        "retired": 562391983,
+        "ticks": 4287239467,
+        "cycles": "11767241983",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 399898128,
+          "calls": 50366214
+        },
+        "at": 54065.5,
+        "mainSend": 55610.89999999851,
+        "mainReply": 55611.19999999553
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900017,
+        "retired": 594525362,
+        "ticks": 4296097271,
+        "cycles": "11799375362",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 420012583,
+          "calls": 53159084
+        },
+        "at": 55537.79999999702,
+        "mainSend": 57076.79999999702,
+        "mainReply": 57083.60000000149
+      },
+      "firstVisibleMs": 450,
+      "readyMs": 950.2000000029802,
+      "releaseOffsetMs": 33.29999999701977,
+      "releaseToFirstVisibleMs": 416.70000000298023,
+      "releaseToReadyMs": 916.9000000059605,
+      "observedAtMs": 1450.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 8.619135765524636,
+        "fps": 1.993620414667124,
+        "guestRate": 1.000004651777997,
+        "cycles": "11774975362",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 404616209,
+          "calls": 51023131
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.69999999552965,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.5,
+          "png": 4.9000000059604645,
+          "encoding": 64.69999999552965,
+          "hash": 3.899999998509884,
+          "inPageTotal": 124.69999999552965,
+          "evaluationWall": 165.68814900000143,
+          "evaluationOutsideBody": 40.98814900447178,
+          "decodeAndIdentity": 16.790032999997493,
+          "rawPngWrites": 5.666519000005792,
+          "referenceAndCompare": 9.223045999999158,
+          "totalSettled": 1199.1689420000039
+        }
+      }
+    },
+    {
+      "round": 5,
+      "label": "H4",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900018,
+        "retired": 600769802,
+        "ticks": 4303326761,
+        "cycles": "11805619802",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 424949020,
+          "calls": 53758052
+        },
+        "at": 56743.5,
+        "mainSend": 58289,
+        "mainReply": 58289.19999999553
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900019,
+        "retired": 707646863,
+        "ticks": 4326751997,
+        "cycles": "11912496863",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 501847098,
+          "calls": 63344020
+        },
+        "at": 60647.59999999404,
+        "mainSend": 62193.10000000149,
+        "mainReply": 62193.29999999702
+      },
+      "firstVisibleMs": 100.10000000149012,
+      "readyMs": 3350.10000000149,
+      "releaseOffsetMs": 33.399999998509884,
+      "releaseToFirstVisibleMs": 66.70000000298023,
+      "releaseToReadyMs": 3316.7000000029802,
+      "observedAtMs": 3850.10000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 22.201998402940873,
+        "fps": 16.96945498108462,
+        "guestRate": 1.0000039928159115,
+        "cycles": "11910853514",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 500837212,
+          "calls": 63202084
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.099999994039536,
+          "secondCapture": 0.7000000029802322,
+          "png": 4.700000002980232,
+          "encoding": 79.5,
+          "hash": 5.399999998509884,
+          "inPageTotal": 140.89999999850988,
+          "evaluationWall": 179.16909699999815,
+          "evaluationOutsideBody": 38.26909700148826,
+          "decodeAndIdentity": 14.333554999997432,
+          "rawPngWrites": 1.0693559999999707,
+          "referenceAndCompare": 5.301181000002543,
+          "totalSettled": 1201.2710789999983
+        }
+      }
+    },
+    {
+      "round": 5,
+      "label": "H4",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900020,
+        "retired": 716204899,
+        "ticks": 4334043308,
+        "cycles": "11921054899",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 508427742,
+          "calls": 64194804
+        },
+        "at": 61862.79999999702,
+        "mainSend": 63406.29999999702,
+        "mainReply": 63408.5
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900021,
+        "retired": 741487508,
+        "ticks": 4342248347,
+        "cycles": "11946337508",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 524499699,
+          "calls": 66514621
+        },
+        "at": 63230,
+        "mainSend": 64775.60000000149,
+        "mainReply": 64775.79999999702
+      },
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 850.1000000014901,
+      "releaseOffsetMs": 33.399999998509884,
+      "releaseToFirstVisibleMs": 416.70000000298023,
+      "releaseToReadyMs": 816.7000000029802,
+      "observedAtMs": 1350.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 15.233173861172366,
+        "fps": 10.94091903721534,
+        "guestRate": 1.0000082885765103,
+        "cycles": "11933747817",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 516047759,
+          "calls": 65322990
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.79999999701977,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.29999999701977,
+          "secondCapture": 0.3999999985098839,
+          "png": 5.700000002980232,
+          "encoding": 88.19999999552965,
+          "hash": 4,
+          "inPageTotal": 149.09999999403954,
+          "evaluationWall": 187.46788599999854,
+          "evaluationOutsideBody": 38.36788600595901,
+          "decodeAndIdentity": 16.584541999996873,
+          "rawPngWrites": 1.1061869999975897,
+          "referenceAndCompare": 5.399411999998847,
+          "totalSettled": 1212.230012999993
+        }
+      }
+    },
+    {
+      "round": 6,
+      "label": "H5",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900022,
+        "retired": 747831613,
+        "ticks": 4349530031,
+        "cycles": "11952681613",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 529310078,
+          "calls": 67087992
+        },
+        "at": 64451.69999999553,
+        "mainSend": 65997.19999999553,
+        "mainReply": 65997.5
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900023,
+        "retired": 853339509,
+        "ticks": 4371169658,
+        "cycles": "12058189509",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 604135410,
+          "calls": 76093446
+        },
+        "at": 68049.89999999851,
+        "mainSend": 69594.39999999851,
+        "mainReply": 69595.60000000149
+      },
+      "firstVisibleMs": 100.10000000149012,
+      "readyMs": 3050.10000000149,
+      "releaseOffsetMs": 33.5,
+      "releaseToFirstVisibleMs": 66.60000000149012,
+      "releaseToReadyMs": 3016.60000000149,
+      "observedAtMs": 3550.10000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 30.190942717274798,
+        "fps": 0.9997000899759866,
+        "guestRate": 1.0000000000029794,
+        "cycles": "12050553387",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 599636180,
+          "calls": 75416597
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.5,
+          "png": 3.4000000059604645,
+          "encoding": 66.5,
+          "hash": 4,
+          "inPageTotal": 125,
+          "evaluationWall": 163.52986700000474,
+          "evaluationOutsideBody": 38.52986700000474,
+          "decodeAndIdentity": 14.32428999998956,
+          "rawPngWrites": 1.333386000012979,
+          "referenceAndCompare": 8.263151999999536,
+          "totalSettled": 1188.380588
+        }
+      }
+    },
+    {
+      "round": 6,
+      "label": "H5",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900024,
+        "retired": 861740169,
+        "ticks": 4378378175,
+        "cycles": "12066590169",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 610678048,
+          "calls": 76941728
+        },
+        "at": 69251.19999999553,
+        "mainSend": 70796,
+        "mainReply": 70797
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900025,
+        "retired": 887430762,
+        "ticks": 4386831618,
+        "cycles": "12092280762",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 627121398,
+          "calls": 79324470
+        },
+        "at": 70664,
+        "mainSend": 72209.29999999702,
+        "mainReply": 72209.69999999553
+      },
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 900.2000000029802,
+      "releaseOffsetMs": 33.399999998509884,
+      "releaseToFirstVisibleMs": 416.70000000298023,
+      "releaseToReadyMs": 866.8000000044703,
+      "observedAtMs": 1400.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 19.099335265922093,
+        "fps": 11.995201919250174,
+        "guestRate": 1.0000033320020227,
+        "cycles": "12091490791",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 626501368,
+          "calls": 79243738
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.69999999552965,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.3999999985098839,
+          "png": 5.600000001490116,
+          "encoding": 65.60000000149012,
+          "hash": 3.7999999970197678,
+          "inPageTotal": 126.09999999403954,
+          "evaluationWall": 166.49734299999545,
+          "evaluationOutsideBody": 40.39734300595592,
+          "decodeAndIdentity": 16.744216000006418,
+          "rawPngWrites": 4.042602999994415,
+          "referenceAndCompare": 10.82359900001029,
+          "totalSettled": 1199.8795390000014
+        }
+      }
+    },
+    {
+      "round": 7,
+      "label": "H6",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900026,
+        "retired": 895145372,
+        "ticks": 4394089332,
+        "cycles": "12099995372",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 633213329,
+          "calls": 80108579
+        },
+        "at": 71870.09999999404,
+        "mainSend": 73415.60000000149,
+        "mainReply": 73415.79999999702
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900027,
+        "retired": 1000125929,
+        "ticks": 4416546176,
+        "cycles": "12204975929",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 708191791,
+          "calls": 89384705
+        },
+        "at": 75612.39999999851,
+        "mainSend": 77156.69999999553,
+        "mainReply": 77158.19999999553
+      },
+      "firstVisibleMs": 400.29999999701977,
+      "readyMs": 3150.5,
+      "releaseOffsetMs": 33.29999999701977,
+      "releaseToFirstVisibleMs": 367,
+      "releaseToReadyMs": 3117.2000000029802,
+      "observedAtMs": 3700.1999999955297,
+      "metrics": {
+        "type": "metrics",
+        "mips": 32.19546178353498,
+        "fps": 0,
+        "guestRate": 1.0000000000029658,
+        "cycles": "12183134201",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 694571462,
+          "calls": 87305373
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.099999994039536,
+          "secondCapture": 0.4000000059604645,
+          "png": 3.399999998509884,
+          "encoding": 64.69999999552965,
+          "hash": 3.9000000059604645,
+          "inPageTotal": 123,
+          "evaluationWall": 160.18026599999575,
+          "evaluationOutsideBody": 37.180265999995754,
+          "decodeAndIdentity": 22.22720300000219,
+          "rawPngWrites": 1.0954130000027362,
+          "referenceAndCompare": 5.343010999989929,
+          "totalSettled": 1190.5264279999974
+        }
+      }
+    },
+    {
+      "round": 7,
+      "label": "H6",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900028,
+        "retired": 1003686523,
+        "ticks": 4423752233,
+        "cycles": "12208536523",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 710898423,
+          "calls": 89641304
+        },
+        "at": 76814.89999999851,
+        "mainSend": 78360.39999999851,
+        "mainReply": 78360.60000000149
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900029,
+        "retired": 1036305112,
+        "ticks": 4432284240,
+        "cycles": "12241155112",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 730979260,
+          "calls": 92438245
+        },
+        "at": 78235.5,
+        "mainSend": 79775.10000000149,
+        "mainReply": 79781.19999999553
+      },
+      "firstVisibleMs": 450.70000000298023,
+      "readyMs": 900.2000000029802,
+      "releaseOffsetMs": 32.20000000298023,
+      "releaseToFirstVisibleMs": 418.5,
+      "releaseToReadyMs": 868,
+      "observedAtMs": 1400.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 13.898477805486284,
+        "fps": 10.972568578553616,
+        "guestRate": 1.0000028262676641,
+        "cycles": "12222105112",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 718741804,
+          "calls": 90798124
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.4000000059604645,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.5,
+          "png": 5.600000001490116,
+          "encoding": 62.899999998509884,
+          "hash": 3.899999998509884,
+          "inPageTotal": 123.5,
+          "evaluationWall": 162.16102200000023,
+          "evaluationOutsideBody": 38.66102200000023,
+          "decodeAndIdentity": 16.586696999991545,
+          "rawPngWrites": 3.557381999999052,
+          "referenceAndCompare": 9.33243800001219,
+          "totalSettled": 1193.3045830000046
+        }
+      }
+    },
+    {
+      "round": 8,
+      "label": "H7",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900030,
+        "retired": 1042458006,
+        "ticks": 4439473528,
+        "cycles": "12247308006",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 735872214,
+          "calls": 93020213
+        },
+        "at": 79435.29999999702,
+        "mainSend": 80980.89999999851,
+        "mainReply": 80981.10000000149
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900031,
+        "retired": 1146193599,
+        "ticks": 4462379761,
+        "cycles": "12351043599",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 810411107,
+          "calls": 102238950
+        },
+        "at": 83252.19999999553,
+        "mainSend": 84797.60000000149,
+        "mainReply": 84797.89999999851
+      },
+      "firstVisibleMs": 300.30000000447035,
+      "readyMs": 3300.2000000029802,
+      "releaseOffsetMs": 33.30000000447035,
+      "releaseToFirstVisibleMs": 267,
+      "releaseToReadyMs": 3266.89999999851,
+      "observedAtMs": 3800.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 29.007861478582047,
+        "fps": 0,
+        "guestRate": 0.9999999999940685,
+        "cycles": "12339407676",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 803791245,
+          "calls": 101184696
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.5,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.100000001490116,
+          "secondCapture": 0.5,
+          "png": 3.1999999955296516,
+          "encoding": 63.400000005960464,
+          "hash": 4,
+          "inPageTotal": 121.60000000149012,
+          "evaluationWall": 163.7612769999978,
+          "evaluationOutsideBody": 42.161276998507674,
+          "decodeAndIdentity": 13.777920000007725,
+          "rawPngWrites": 1.0369700000010198,
+          "referenceAndCompare": 5.285094999999274,
+          "totalSettled": 1185.2712610000017
+        }
+      }
+    },
+    {
+      "round": 8,
+      "label": "H7",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900032,
+        "retired": 1154419958,
+        "ticks": 4469554068,
+        "cycles": "12359269958",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 816737633,
+          "calls": 103056704
+        },
+        "at": 84448.69999999553,
+        "mainSend": 85994.10000000149,
+        "mainReply": 85994.29999999702
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900033,
+        "retired": 1180109969,
+        "ticks": 4478351304,
+        "cycles": "12384959969",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 833282907,
+          "calls": 105440409
+        },
+        "at": 85913.29999999702,
+        "mainSend": 87458.10000000149,
+        "mainReply": 87459.10000000149
+      },
+      "firstVisibleMs": 550,
+      "readyMs": 950.1000000014901,
+      "releaseOffsetMs": 33.100000001490116,
+      "releaseToFirstVisibleMs": 516.8999999985099,
+      "releaseToReadyMs": 917,
+      "observedAtMs": 1450.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 20.29722720922577,
+        "fps": 12.966287652085258,
+        "guestRate": 0.9999999999985137,
+        "cycles": "12381414563",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 830559770,
+          "calls": 105088336
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.70000000298023,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.20000000298023,
+          "secondCapture": 0.5,
+          "png": 5.299999997019768,
+          "encoding": 67.10000000149012,
+          "hash": 3.899999998509884,
+          "inPageTotal": 127.5,
+          "evaluationWall": 167.00354399999196,
+          "evaluationOutsideBody": 39.50354399999196,
+          "decodeAndIdentity": 17.52932800000417,
+          "rawPngWrites": 3.375060999998823,
+          "referenceAndCompare": 9.236195999998017,
+          "totalSettled": 1197.8612989999965
+        }
+      }
+    },
+    {
+      "round": 9,
+      "label": "H8",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900034,
+        "retired": 1188797976,
+        "ticks": 4485565816,
+        "cycles": "12393647976",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 839865884,
+          "calls": 106285873
+        },
+        "at": 87122.39999999851,
+        "mainSend": 88667.19999999553,
+        "mainReply": 88668.19999999553
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900035,
+        "retired": 1292581207,
+        "ticks": 4507195851,
+        "cycles": "12497431207",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 913632392,
+          "calls": 115093910
+        },
+        "at": 90720.59999999404,
+        "mainSend": 92265.79999999702,
+        "mainReply": 92266.29999999702
+      },
+      "firstVisibleMs": 400.09999999403954,
+      "readyMs": 3050.0999999940395,
+      "releaseOffsetMs": 33.5,
+      "releaseToFirstVisibleMs": 366.59999999403954,
+      "releaseToReadyMs": 3016.5999999940395,
+      "observedAtMs": 3550.0999999940395,
+      "metrics": {
+        "type": "metrics",
+        "mips": 24.034225758329185,
+        "fps": 15.912481352560913,
+        "guestRate": 1.0000044753853803,
+        "cycles": "12496255884",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 912907898,
+          "calls": 114991607
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.600000001490116,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.100000001490116,
+          "secondCapture": 0.3999999985098839,
+          "png": 3.2999999970197678,
+          "encoding": 65.30000000447035,
+          "hash": 3.899999998509884,
+          "inPageTotal": 123.5,
+          "evaluationWall": 160.80774000000383,
+          "evaluationOutsideBody": 37.30774000000383,
+          "decodeAndIdentity": 14.172826999987592,
+          "rawPngWrites": 1.735182000003988,
+          "referenceAndCompare": 8.933589000007487,
+          "totalSettled": 1187.0235340000072
+        }
+      }
+    },
+    {
+      "round": 9,
+      "label": "H8",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900036,
+        "retired": 1301451575,
+        "ticks": 4514365372,
+        "cycles": "12506301575",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 920418608,
+          "calls": 115980281
+        },
+        "at": 91919.29999999702,
+        "mainSend": 93464.79999999702,
+        "mainReply": 93465
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900037,
+        "retired": 1327132001,
+        "ticks": 4522841608,
+        "cycles": "12531982001",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 936828492,
+          "calls": 118349942
+        },
+        "at": 93329.09999999404,
+        "mainSend": 94874.60000000149,
+        "mainReply": 94874.79999999702
+      },
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 33.30000000447035,
+      "releaseToFirstVisibleMs": 416.79999999701977,
+      "releaseToReadyMs": 866.7999999970198,
+      "observedAtMs": 1400.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 15.139605341747819,
+        "fps": 8.969503687409347,
+        "guestRate": 1.000006311867025,
+        "cycles": "12519668045",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 928424207,
+          "calls": 117170868
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.70000000298023,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.20000000298023,
+          "secondCapture": 0.6000000014901161,
+          "png": 5.699999995529652,
+          "encoding": 66.70000000298023,
+          "hash": 4.100000001490116,
+          "inPageTotal": 127.80000000447035,
+          "evaluationWall": 169.0083619999932,
+          "evaluationOutsideBody": 41.208361995522864,
+          "decodeAndIdentity": 17.46697700000368,
+          "rawPngWrites": 4.10263500000292,
+          "referenceAndCompare": 8.757240000006277,
+          "totalSettled": 1200.1911680000048
+        }
+      }
+    },
+    {
+      "round": 10,
+      "label": "H9",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900038,
+        "retired": 1334625822,
+        "ticks": 4530085515,
+        "cycles": "12539475822",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 942735476,
+          "calls": 119118939
+        },
+        "at": 94535.89999999851,
+        "mainSend": 96081.29999999702,
+        "mainReply": 96081.5
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900039,
+        "retired": 1440569753,
+        "ticks": 4553686532,
+        "cycles": "12645419753",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1018663033,
+          "calls": 128609660
+        },
+        "at": 98471.79999999702,
+        "mainSend": 100017.29999999702,
+        "mainReply": 100017.60000000149
+      },
+      "firstVisibleMs": 400.19999999552965,
+      "readyMs": 3350.1999999955297,
+      "releaseOffsetMs": 32.69999999552965,
+      "releaseToFirstVisibleMs": 367.5,
+      "releaseToReadyMs": 3317.5,
+      "observedAtMs": 3900.1999999955297,
+      "metrics": {
+        "type": "metrics",
+        "mips": 30.1818908656605,
+        "fps": 0,
+        "guestRate": 1.0000000000059568,
+        "cycles": "12629963992",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1009549068,
+          "calls": 127111477
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.69999999552965,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.29999999701977,
+          "secondCapture": 0.4000000059604645,
+          "png": 3.1999999955296516,
+          "encoding": 77,
+          "hash": 3.899999998509884,
+          "inPageTotal": 135.19999999552965,
+          "evaluationWall": 173.50013800000306,
+          "evaluationOutsideBody": 38.30013800447341,
+          "decodeAndIdentity": 29.256339999992633,
+          "rawPngWrites": 2.3791560000099707,
+          "referenceAndCompare": 5.696989999996731,
+          "totalSettled": 1212.6363280000078
+        }
+      }
+    },
+    {
+      "round": 10,
+      "label": "H9",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900040,
+        "retired": 1442533644,
+        "ticks": 4561076191,
+        "cycles": "12647383644",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1020436106,
+          "calls": 128725650
+        },
+        "at": 99701.39999999851,
+        "mainSend": 101246.60000000149,
+        "mainReply": 101247
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900041,
+        "retired": 1473292057,
+        "ticks": 4569520012,
+        "cycles": "12678142057",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1040319880,
+          "calls": 131430371
+        },
+        "at": 101111.5,
+        "mainSend": 102657,
+        "mainReply": 102657.19999999553
+      },
+      "firstVisibleMs": 750.2000000029802,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 33,
+      "releaseToFirstVisibleMs": 717.2000000029802,
+      "releaseToReadyMs": 867.1000000014901,
+      "observedAtMs": 1400.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 23.075656665970214,
+        "fps": 7.947546195100494,
+        "guestRate": 1.0000011590156732,
+        "cycles": "12670487939",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1034898779,
+          "calls": 130703815
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.3999999985098839,
+          "pairWait": 50.19999999552965,
+          "secondCapture": 0.6000000014901161,
+          "png": 7.700000002980232,
+          "encoding": 114,
+          "hash": 5.699999995529652,
+          "inPageTotal": 178.59999999403954,
+          "evaluationWall": 222.22875799999747,
+          "evaluationOutsideBody": 43.628758005957934,
+          "decodeAndIdentity": 17.2110709999979,
+          "rawPngWrites": 4.527763000005507,
+          "referenceAndCompare": 9.219025999991572,
+          "totalSettled": 1254.8016759999882
+        }
+      }
+    },
+    {
+      "round": 11,
+      "label": "H10",
+      "kind": "settings",
+      "before": {
+        "type": "profileCounters",
+        "id": 900042,
+        "retired": 1481280048,
+        "ticks": 4577096326,
+        "cycles": "12686130048",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1046629951,
+          "calls": 132239838
+        },
+        "at": 102372.5,
+        "mainSend": 103918,
+        "mainReply": 103918.19999999553
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900043,
+        "retired": 1590244135,
+        "ticks": 4601467759,
+        "cycles": "12795094135",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1125142280,
+          "calls": 142131999
+        },
+        "at": 106433.39999999851,
+        "mainSend": 107978.79999999702,
+        "mainReply": 107979.10000000149
+      },
+      "firstVisibleMs": 350.19999999552965,
+      "readyMs": 3550.1999999955297,
+      "releaseOffsetMs": 36.100000001490116,
+      "releaseToFirstVisibleMs": 314.09999999403954,
+      "releaseToReadyMs": 3514.0999999940395,
+      "observedAtMs": 4050.1999999955297,
+      "metrics": {
+        "type": "metrics",
+        "mips": 28.514456630109674,
+        "fps": 0,
+        "guestRate": 1,
+        "cycles": "12780456524",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1116184039,
+          "calls": 140660406
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.79999999701977,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+        },
+        "rawSha256": "21fb1d46176fb0129194eeeb76ded254bc51e1ae54f1bdf70158a6ecb9e83f1b",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5999999940395355,
+          "pairWait": 50.20000000298023,
+          "secondCapture": 0.6000000014901161,
+          "png": 3.5,
+          "encoding": 99.60000000149012,
+          "hash": 5,
+          "inPageTotal": 159.5,
+          "evaluationWall": 210.7173829999956,
+          "evaluationOutsideBody": 51.21738299999561,
+          "decodeAndIdentity": 14.977338000011514,
+          "rawPngWrites": 1.838354999999865,
+          "referenceAndCompare": 5.75637899999856,
+          "totalSettled": 1234.090320000003
+        }
+      }
+    },
+    {
+      "round": 11,
+      "label": "H10",
+      "kind": "home",
+      "before": {
+        "type": "profileCounters",
+        "id": 900044,
+        "retired": 1598865872,
+        "ticks": 4608948074,
+        "cycles": "12803715872",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1131824916,
+          "calls": 142993955
+        },
+        "at": 107680.09999999404,
+        "mainSend": 109225.5,
+        "mainReply": 109225.79999999702
+      },
+      "after": {
+        "type": "profileCounters",
+        "id": 900045,
+        "retired": 1623020682,
+        "ticks": 4617727904,
+        "cycles": "12827870682",
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1146847502,
+          "calls": 145084976
+        },
+        "at": 109145.59999999404,
+        "mainSend": 110691,
+        "mainReply": 110691.29999999702
+      },
+      "firstVisibleMs": 500.1000000014901,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 33.100000001490116,
+      "releaseToFirstVisibleMs": 467,
+      "releaseToReadyMs": 867,
+      "observedAtMs": 1450.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 19.659342891307546,
+        "fps": 13.938669852669028,
+        "guestRate": 1.00000215717658,
+        "cycles": "12823437199",
+        "memory": 644284416,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1143523847,
+          "calls": 144681301
+        },
+        "serial": "",
+        "captureMs": 187.79999999701977,
+        "captureChunkMs": 2,
+        "finalizeMs": 1316.8999999985099
+      },
+      "validation": {
+        "fixedIdleMs": 1000,
+        "requestedPairDelayMs": 50,
+        "actualPairDelayMs": 50.599999994039536,
+        "stable": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null
+        },
+        "reference": {
+          "passed": true,
+          "pixelsOver2": 0,
+          "alphaDifferences": 0,
+          "maxRGBDifference": 0,
+          "bounds": null,
+          "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+        },
+        "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+        "passed": true,
+        "phaseMs": {
+          "firstCapture": 0.5,
+          "pairWait": 50.099999994039536,
+          "secondCapture": 0.4000000059604645,
+          "png": 5.699999995529652,
+          "encoding": 68.20000000298023,
+          "hash": 3.7999999970197678,
+          "inPageTotal": 128.69999999552965,
+          "evaluationWall": 170.9392719999887,
+          "evaluationOutsideBody": 42.23927200445905,
+          "decodeAndIdentity": 17.451270999998087,
+          "rawPngWrites": 3.9696920000133105,
+          "referenceAndCompare": 8.745071999990614,
+          "totalSettled": 1202.7906680000015
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "assets": [
+    {
+      "url": "http://127.0.0.1:8189/jit/seed.wasm",
+      "length": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 04:48:16 GMT",
+        "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+        "keep-alive": "timeout=5",
+        "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "fromServiceWorker": false
+    },
+    {
+      "url": "http://127.0.0.1:8189/dist/emu.wasm",
+      "length": 249414,
+      "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+      "headers": {
+        "cache-control": "no-cache",
+        "connection": "keep-alive",
+        "content-length": "249414",
+        "content-type": "application/wasm",
+        "date": "Sun, 06 Sep 2026 04:48:17 GMT",
+        "keep-alive": "timeout=5",
+        "x-content-type-options": "nosniff"
+      },
+      "fromServiceWorker": false
+    }
+  ],
+  "profile": "/home/vercel-sandbox/iphone-1/.context/jit-return-visit-v2/profiles/original",
+  "origin": "http://127.0.0.1:8189",
+  "pins": {
+    "sites": {
+      "original": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "42045be66c4ecfcaacdb44f6d3a71a61e53472178e9a056f2121d6213a950ae2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "590a50f3b2ff0624ee9422a0d55cc25e94c23c818a181d571a82f4012e9a0b1c",
+        "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "service-worker.js": "d7b1118cc913ea8e8777c3a4224c585c24bf287708a1835b134f132180c97efb",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+        "firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+        "firmware/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+        "firmware/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+        "firmware/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+        "firmware/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+      },
+      "candidate": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "42045be66c4ecfcaacdb44f6d3a71a61e53472178e9a056f2121d6213a950ae2",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "590a50f3b2ff0624ee9422a0d55cc25e94c23c818a181d571a82f4012e9a0b1c",
+        "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+        "seed-jit.js": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+        "service-worker.js": "d7b1118cc913ea8e8777c3a4224c585c24bf287708a1835b134f132180c97efb",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+        "firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+        "firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+        "firmware/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+        "firmware/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+        "firmware/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+        "firmware/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+      }
+    },
+    "fixture": {
+      "path": ".context/graphics-speed/fixed-dismiss.snap",
+      "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244"
+    },
+    "chrome": {
+      "path": "/opt/google/chrome/chrome",
+      "sha256": "2ea74f03744b5764ac86eddb7b501cfae5eaf18fc522060fe26232aa4c5a1797"
+    },
+    "origins": {
+      "original": "http://127.0.0.1:8189",
+      "candidate": "http://127.0.0.1:8190"
+    },
+    "headers": {
+      "seed": "Cache-Control: no-cache; strong SHA256ETag; actualmtime; correct304"
+    },
+    "productionControllerSha256": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+    "productionAppSha256": "42045be66c4ecfcaacdb44f6d3a71a61e53472178e9a056f2121d6213a950ae2",
+    "productionWorkerSha256": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+    "scope": "Only loader differs; both observer workers match, original b3237 core/d9c661 seed and normalSave",
+    "methodRevision": "v2 compact byte-exact frame transfer; original v1 failed profiles and sources retained"
+  },
+  "phase": "measured",
+  "validationPassed": true,
+  "seams": {
+    "app": "42045be66c4ecfcaacdb44f6d3a71a61e53472178e9a056f2121d6213a950ae2",
+    "worker": "590a50f3b2ff0624ee9422a0d55cc25e94c23c818a181d571a82f4012e9a0b1c"
+  },
+  "method": "Return-visit loader-only no-cache/ETag; fixed paused Import/512regions and1second resume; no Profiler/Debugger/interception; measured trace ends before resume; fixed1second idle+50ms paired raw validation; ordinary30second Save",
+  "network": [],
+  "version": {
+    "Browser": "Chrome/152.0.7977.82",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "V8-Version": "15.2.124.21",
+    "WebKit-Version": "537.36 (@d04cdb24d67b081f6cf80200ffc5233f44b61109)",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:9240/devtools/browser/9e8a961e-fa2e-4f99-9db2-717b8feeb7c8"
+  },
+  "processReceipts": [
+    {
+      "phase": "before-navigation",
+      "time": "2026-09-06T04:48:14.930Z",
+      "info": [
+        {
+          "type": "browser",
+          "id": 3265136,
+          "cpuTime": 0.39
+        },
+        {
+          "type": "renderer",
+          "id": 3265249,
+          "cpuTime": 0.01
+        },
+        {
+          "type": "renderer",
+          "id": 3265255,
+          "cpuTime": 0.03
+        },
+        {
+          "type": "renderer",
+          "id": 3265232,
+          "cpuTime": 0.15
+        },
+        {
+          "type": "GPU",
+          "id": 3265193,
+          "cpuTime": 0.08
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 3265196,
+          "cpuTime": 0.07
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 3265198,
+          "cpuTime": 0.01
+        }
+      ],
+      "processes": [
+        {
+          "pid": 3265136,
+          "ppid": 3264881,
+          "startTicks": "3979799",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265140,
+          "ppid": 3265136,
+          "startTicks": "3979801",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3265141,
+          "ppid": 3265136,
+          "startTicks": "3979801",
+          "exe": "/usr/bin/coreutils"
+        },
+        {
+          "pid": 3265163,
+          "ppid": 3265136,
+          "startTicks": "3979807",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265166,
+          "ppid": 3265136,
+          "startTicks": "3979807",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265193,
+          "ppid": 3265163,
+          "startTicks": "3979817",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265196,
+          "ppid": 3265136,
+          "startTicks": "3979817",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265198,
+          "ppid": 3265166,
+          "startTicks": "3979820",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265232,
+          "ppid": 3265166,
+          "startTicks": "3979824",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265249,
+          "ppid": 3265166,
+          "startTicks": "3979828",
+          "exe": "/opt/google/chrome/chrome"
+        },
+        {
+          "pid": 3265255,
+          "ppid": 3265166,
+          "startTicks": "3979828",
+          "exe": "/opt/google/chrome/chrome"
+        }
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "type": "browser",
+      "id": 3265136,
+      "cpuTime": 0.39
+    },
+    {
+      "type": "renderer",
+      "id": 3265249,
+      "cpuTime": 0.01
+    },
+    {
+      "type": "renderer",
+      "id": 3265255,
+      "cpuTime": 0.03
+    },
+    {
+      "type": "renderer",
+      "id": 3265232,
+      "cpuTime": 0.15
+    },
+    {
+      "type": "GPU",
+      "id": 3265193,
+      "cpuTime": 0.08
+    },
+    {
+      "type": "network.mojom.NetworkService",
+      "id": 3265196,
+      "cpuTime": 0.07
+    },
+    {
+      "type": "storage.mojom.StorageService",
+      "id": 3265198,
+      "cpuTime": 0.01
+    }
+  ],
+  "availableCategories": [
+    "AccountFetcherService",
+    "Blob",
+    "CacheStorage",
+    "Calculators",
+    "CameraStream",
+    "FileSystem",
+    "GAMEPAD",
+    "IndexedDB",
+    "Java",
+    "RLZ",
+    "ServiceWorker",
+    "SiteEngagement",
+    "ValueStoreFrontend::Backend",
+    "WebCore",
+    "__metadata",
+    "accessibility",
+    "actor",
+    "android.adpf",
+    "android.ui.jank",
+    "android_webview",
+    "android_webview.timeline",
+    "aogh",
+    "audio",
+    "base",
+    "base.power",
+    "benchmark",
+    "blink",
+    "blink.animations",
+    "blink.bindings",
+    "blink.console",
+    "blink.resource",
+    "blink.task_attribution",
+    "blink.user_timing",
+    "blink.webdx_feature_usage",
+    "blink.worker",
+    "blink_style",
+    "browser",
+    "browsing_data",
+    "camera",
+    "cast.stream",
+    "cc",
+    "cc.debug",
+    "chromeos",
+    "cma",
+    "compositor",
+    "config.scheduler.record_task_post_time",
+    "content",
+    "content.digitalcredentials",
+    "content.fedcm",
+    "content.frames.lifecycle",
+    "content.web_contents.lifecycle",
+    "content_capture",
+    "cppgc",
+    "cronet",
+    "delegated_ink_trails",
+    "device",
+    "devtools",
+    "devtools.contrast",
+    "devtools.timeline",
+    "disabled-by-default-SyncFileSystem",
+    "disabled-by-default-android_view_hierarchy",
+    "disabled-by-default-animation-worklet",
+    "disabled-by-default-audio",
+    "disabled-by-default-audio-worklet",
+    "disabled-by-default-audio.latency",
+    "disabled-by-default-base",
+    "disabled-by-default-blink.debug",
+    "disabled-by-default-blink.debug.display_lock",
+    "disabled-by-default-blink.debug.layout",
+    "disabled-by-default-blink.debug.layout.trees",
+    "disabled-by-default-blink.feature_usage",
+    "disabled-by-default-blink.image_decoding",
+    "disabled-by-default-blink.invalidation",
+    "disabled-by-default-cc",
+    "disabled-by-default-cc.debug",
+    "disabled-by-default-cc.debug.display_items",
+    "disabled-by-default-cc.debug.picture",
+    "disabled-by-default-cc.debug.scheduler",
+    "disabled-by-default-cc.debug.scheduler.frames",
+    "disabled-by-default-cc.debug.scheduler.now",
+    "disabled-by-default-content.verbose",
+    "disabled-by-default-cppgc",
+    "disabled-by-default-cpu_profiler",
+    "disabled-by-default-cpu_profiler.debug",
+    "disabled-by-default-crypto.dpapi",
+    "disabled-by-default-devtools.screenshot",
+    "disabled-by-default-devtools.target-rundown",
+    "disabled-by-default-devtools.timeline",
+    "disabled-by-default-devtools.timeline.frame",
+    "disabled-by-default-devtools.timeline.inputs",
+    "disabled-by-default-devtools.timeline.invalidationTracking",
+    "disabled-by-default-devtools.timeline.layers",
+    "disabled-by-default-devtools.timeline.picture",
+    "disabled-by-default-devtools.timeline.stack",
+    "disabled-by-default-devtools.v8-source-rundown",
+    "disabled-by-default-devtools.v8-source-rundown-sources",
+    "disabled-by-default-display.framedisplayed",
+    "disabled-by-default-file",
+    "disabled-by-default-fonts",
+    "disabled-by-default-gpu.dawn",
+    "disabled-by-default-gpu.debug",
+    "disabled-by-default-gpu.decoder",
+    "disabled-by-default-gpu.device",
+    "disabled-by-default-gpu.graphite.dawn",
+    "disabled-by-default-gpu.service",
+    "disabled-by-default-gpu.vulkan.vma",
+    "disabled-by-default-gpu_cmd_queue",
+    "disabled-by-default-histogram_samples",
+    "disabled-by-default-java-heap-profiler",
+    "disabled-by-default-layout_shift.debug",
+    "disabled-by-default-lifecycles",
+    "disabled-by-default-loading",
+    "disabled-by-default-mediastream",
+    "disabled-by-default-memory-infra",
+    "disabled-by-default-memory-infra.v8.code_stats",
+    "disabled-by-default-mojom",
+    "disabled-by-default-navigation",
+    "disabled-by-default-net",
+    "disabled-by-default-netlog.sensitive",
+    "disabled-by-default-network",
+    "disabled-by-default-paint-worklet",
+    "disabled-by-default-power",
+    "disabled-by-default-renderer.scheduler",
+    "disabled-by-default-renderer.scheduler.debug",
+    "disabled-by-default-sequence_manager",
+    "disabled-by-default-sequence_manager.debug",
+    "disabled-by-default-sequence_manager.verbose_snapshots",
+    "disabled-by-default-skia",
+    "disabled-by-default-skia.gpu",
+    "disabled-by-default-skia.gpu.cache",
+    "disabled-by-default-skia.shaders",
+    "disabled-by-default-skottie",
+    "disabled-by-default-system_metrics",
+    "disabled-by-default-system_power",
+    "disabled-by-default-toplevel.ipc",
+    "disabled-by-default-user_action_samples",
+    "disabled-by-default-v8",
+    "disabled-by-default-v8.compile",
+    "disabled-by-default-v8.cpu_profiler",
+    "disabled-by-default-v8.gc",
+    "disabled-by-default-v8.gc_stats",
+    "disabled-by-default-v8.ic_stats",
+    "disabled-by-default-v8.inspector",
+    "disabled-by-default-v8.maglev",
+    "disabled-by-default-v8.runtime",
+    "disabled-by-default-v8.runtime_stats",
+    "disabled-by-default-v8.runtime_stats_sampling",
+    "disabled-by-default-v8.stack_trace",
+    "disabled-by-default-v8.turbofan",
+    "disabled-by-default-v8.wasm.detailed",
+    "disabled-by-default-v8.wasm.turbofan",
+    "disabled-by-default-v8.zone_stats",
+    "disabled-by-default-video_and_image_capture",
+    "disabled-by-default-viz.debug.overlay_planes",
+    "disabled-by-default-viz.hit_testing_flow",
+    "disabled-by-default-viz.quads",
+    "disabled-by-default-viz.surface_id_flow",
+    "disabled-by-default-viz.surface_lifetime",
+    "disabled-by-default-viz.visual_debugger",
+    "disabled-by-default-webaudio.audionode",
+    "disabled-by-default-webgpu",
+    "disabled-by-default-webnn",
+    "disabled-by-default-webrtc",
+    "disabled-by-default-webrtc_stats",
+    "disabled-by-default-worker.scheduler",
+    "disabled-by-default-xr.debug",
+    "disk_cache",
+    "download",
+    "download_service",
+    "drm",
+    "drmcursor",
+    "dwrite",
+    "evdev",
+    "event",
+    "exo",
+    "extensions",
+    "extensions.content_verifier.debug",
+    "file_system_provider",
+    "fledge",
+    "fonts",
+    "glic",
+    "gpu",
+    "gpu.angle",
+    "gpu.angle.texture_metrics",
+    "gpu.capture",
+    "graphics.pipeline",
+    "headless",
+    "history",
+    "hwoverlays",
+    "identity",
+    "ime",
+    "input",
+    "input.scrolling",
+    "interactions",
+    "io",
+    "ipc",
+    "jni",
+    "jpeg",
+    "latency",
+    "latencyInfo",
+    "leveldb",
+    "loading",
+    "log",
+    "login",
+    "media",
+    "media_router",
+    "mediastream",
+    "memory",
+    "memory_pressure",
+    "midi",
+    "mojom",
+    "mojom.flow",
+    "mus",
+    "native",
+    "navigation",
+    "navigation.debug",
+    "net",
+    "net.stream",
+    "netlog",
+    "network.scheduler",
+    "offline_pages",
+    "omnibox",
+    "oobe",
+    "openscreen",
+    "optimization_guide",
+    "optimization_guide.debug",
+    "ozone",
+    "p2p",
+    "page-serialization",
+    "paint_preview",
+    "partition_alloc",
+    "passwords",
+    "pepper",
+    "performance_manager.cpu_metrics",
+    "performance_manager.graph",
+    "performance_scenarios",
+    "persistent_cache",
+    "ppapi",
+    "print",
+    "raf_investigation",
+    "rail",
+    "renderer",
+    "renderer.scheduler",
+    "renderer.scheduler.status",
+    "renderer_host",
+    "resources",
+    "safe_browsing",
+    "scheduler",
+    "scheduler.flow",
+    "scheduler.long_tasks",
+    "screenlock_monitor",
+    "segmentation_platform",
+    "sequence_manager",
+    "service_manager",
+    "sharing",
+    "shell",
+    "shutdown",
+    "skia",
+    "sql",
+    "startup",
+    "sync",
+    "system_apps",
+    "toplevel",
+    "toplevel.flow",
+    "tracing.background",
+    "ui",
+    "update_client",
+    "v8",
+    "v8.console",
+    "v8.execute",
+    "v8.memory",
+    "v8.wasm",
+    "views",
+    "views.frame",
+    "viz",
+    "vk",
+    "waap",
+    "wakeup.flow",
+    "wayland",
+    "wayland.debug",
+    "webaudio",
+    "webengine.fidl",
+    "webkit",
+    "webnn",
+    "webrtc",
+    "webrtc_stats",
+    "xr"
+  ],
+  "categories": [
+    "v8",
+    "v8.wasm",
+    "disabled-by-default-v8.wasm.detailed",
+    "disabled-by-default-v8.compile",
+    "disabled-by-default-devtools.timeline"
+  ],
+  "C0Import": {
+    "type": "profileCounters",
+    "id": 900001,
+    "retired": 150000,
+    "ticks": 4097348876,
+    "cycles": "11205000000",
+    "jit": {
+      "enabled": true,
+      "generation": 2,
+      "regions": 512,
+      "bytes": 12341313,
+      "retired": 0,
+      "calls": 0
+    },
+    "at": 20721.5,
+    "mainSend": 22266.69999999553,
+    "mainReply": 22267.19999999553
+  },
+  "traceComplete": {
+    "dataLossOccurred": false,
+    "stream": "1",
+    "traceFormat": "json",
+    "streamCompression": "none"
+  },
+  "cacheReceipt": {
+    "accepted": false,
+    "analysis": {
+      "session": "startup",
+      "eventCounts": {
+        "wasm.FinishAsyncCompile": 2,
+        "wasm.OnCompilationSucceeded": 2,
+        "v8.wasm.compileConsume": 7,
+        "v8.wasm.compileConsumeDone": 1
+      },
+      "consumption": [],
+      "seedAccepted": [],
+      "unmatchedRelevantScopes": [],
+      "method": "Only a unique URL hit within the same complete compileConsume scope as digest and Deserialize containing FinishAsyncCompile/OnCompilationSucceeded can pass. Split callbacks remain unbound."
+    }
+  }
+}

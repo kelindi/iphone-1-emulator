@@ -1,0 +1,3 @@
+ordering auditor: 9 synthetic record/retirement/cap checks pass
+complete ordering auditor: 13 checks pass, including actual saved ARM/Thumb returns
+Stage M ordering auditor: 21 synthetic checks pass

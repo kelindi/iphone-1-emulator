@@ -1,0 +1,313 @@
+
+WeatherValidator::processDocument:
+0000f4e4 push     {r4, r5, r6, r7, lr}                
+0000f4e8 mov      r6, r0                              
+0000f4ec add      r7, sp, #0xc                        
+0000f4f0 ldr      r0, [pc, #0x450]                    ; 0x17708 pointer 'NSMutableArray'
+0000f4f4 push     {r8, sl, fp}                        
+0000f4f8 sub      sp, sp, #0x1c                       
+0000f4fc ldr      sl, [pc, #0x448]                    ; 0x1707c pointer 'alloc'
+0000f500 ldr      fp, [pc, #0x448]                    ; 0x17080 pointer 'init'
+0000f504 ldr      r1, [sl]                            
+0000f508 ldr      r0, [r0]                            
+0000f50c mov      r4, r2                              
+0000f510 bl       #0x14348                            ; _objc_msgSend
+0000f514 ldr      r1, [fp]                            
+0000f518 bl       #0x14348                            ; _objc_msgSend
+0000f51c mov      r8, r0                              
+0000f520 mov      r0, r4                              
+0000f524 bl       #0x14540                            ; _xmlDocGetRootElement
+0000f528 ldr      r3, [r0, #4]                        
+0000f52c mov      r4, r0                              
+0000f530 cmp      r3, #1                              
+0000f534 bne      #0xf550                             
+0000f538 ldr      r1, [pc, #0x414]                    ; 0x15780 pointer 'response'
+0000f53c ldr      r0, [r0, #8]                        
+0000f540 ldr      r1, [r1]                            
+0000f544 bl       #0x14534                            ; _xmlStrcmp
+0000f548 cmp      r0, #0                              
+0000f54c beq      #0xf570                             
+0000f550 ldr      r0, [pc, #0x400]                    ; 0x15ef4 CFString 'Root node is expected to be responseTag but instead is %s'
+0000f554 ldr      r1, [r4, #8]                        
+0000f558 bl       #0x143cc                            ; _NSLog
+0000f55c ldr      r1, [pc, #0x3f8]                    ; 0x1766c pointer '_failWithError:'
+0000f560 mov      r0, r6                              
+0000f564 mov      r2, #0                              
+0000f568 ldr      r1, [r1]                            
+0000f56c b        #0xf938                             
+0000f570 ldr      r4, [r4, #0xc]                      
+0000f574 ldr      r5, [pc, #0x3e4]                    ; 0x1577c pointer 'result'
+0000f578 b        #0xf5a0                             
+0000f57c ldr      r3, [r4, #4]                        
+0000f580 cmp      r3, #1                              
+0000f584 bne      #0xf59c                             
+0000f588 ldr      r0, [r4, #8]                        
+0000f58c ldr      r1, [r5]                            
+0000f590 bl       #0x14534                            ; _xmlStrcmp
+0000f594 cmp      r0, #0                              
+0000f598 beq      #0xf5c4                             
+0000f59c ldr      r4, [r4, #0x18]                     
+0000f5a0 cmp      r4, #0                              
+0000f5a4 bne      #0xf57c                             
+0000f5a8 ldr      r0, [pc, #0x3b4]                    ; 0x15f04 CFString 'No result node!'
+0000f5ac bl       #0x143cc                            ; _NSLog
+0000f5b0 ldr      r1, [pc, #0x3a4]                    ; 0x1766c pointer '_failWithError:'
+0000f5b4 mov      r0, r6                              
+0000f5b8 mov      r2, r4                              
+0000f5bc ldr      r1, [r1]                            
+0000f5c0 b        #0xf938                             
+0000f5c4 ldr      r4, [r4, #0xc]                      
+0000f5c8 ldr      r5, [pc, #0x398]                    ; 0x15778 pointer 'list'
+0000f5cc b        #0xf5f4                             
+0000f5d0 ldr      r3, [r4, #4]                        
+0000f5d4 cmp      r3, #1                              
+0000f5d8 bne      #0xf5f0                             
+0000f5dc ldr      r0, [r4, #8]                        
+0000f5e0 ldr      r1, [r5]                            
+0000f5e4 bl       #0x14534                            ; _xmlStrcmp
+0000f5e8 cmp      r0, #0                              
+0000f5ec beq      #0xf600                             
+0000f5f0 ldr      r4, [r4, #0x18]                     
+0000f5f4 cmp      r4, #0                              
+0000f5f8 bne      #0xf5d0                             
+0000f5fc b        #0xf8e8                             
+0000f600 ldr      r4, [r4, #0xc]                      
+0000f604 str      r4, [sp, #4]                        
+0000f608 b        #0xf8dc                             
+0000f60c ldr      r2, [sp, #4]                        
+0000f610 ldr      r3, [r2, #4]                        
+0000f614 cmp      r3, #1                              
+0000f618 bne      #0xf8d0                             
+0000f61c ldr      r1, [pc, #0x348]                    ; 0x15774 pointer 'item'
+0000f620 ldr      r0, [r2, #8]                        
+0000f624 ldr      r1, [r1]                            
+0000f628 bl       #0x14534                            ; _xmlStrcmp
+0000f62c cmp      r0, #0                              
+0000f630 bne      #0xf8d0                             
+0000f634 ldr      r3, [sp, #4]                        
+0000f638 mov      r5, r0                              
+0000f63c ldr      r4, [r3, #0xc]                      
+0000f640 str      r0, [sp, #8]                        
+0000f644 str      r0, [sp, #0xc]                      
+0000f648 str      r0, [sp, #0x10]                     
+0000f64c str      r0, [sp, #0x14]                     
+0000f650 str      r0, [sp, #0x18]                     
+0000f654 b        #0xf804                             
+0000f658 ldr      r3, [sp, #8]                        
+0000f65c cmp      r3, #0                              
+0000f660 bne      #0xf6a0                             
+0000f664 ldr      r3, [r4, #4]                        
+0000f668 cmp      r3, #1                              
+0000f66c bne      #0xf698                             
+0000f670 ldr      r1, [pc, #0x2f8]                    ; 0x15770 pointer 'id'
+0000f674 ldr      r0, [r4, #8]                        
+0000f678 ldr      r1, [r1]                            
+0000f67c bl       #0x14534                            ; _xmlStrcmp
+0000f680 cmp      r0, #0                              
+0000f684 bne      #0xf698                             
+0000f688 mov      r0, r4                              
+0000f68c bl       #0xd410                             
+0000f690 str      r0, [sp, #8]                        
+0000f694 b        #0xf6a0                             
+0000f698 mov      r2, #0                              
+0000f69c str      r2, [sp, #8]                        
+0000f6a0 ldr      r3, [sp, #0xc]                      
+0000f6a4 cmp      r3, #0                              
+0000f6a8 bne      #0xf6e8                             
+0000f6ac ldr      r3, [r4, #4]                        
+0000f6b0 cmp      r3, #1                              
+0000f6b4 bne      #0xf6e0                             
+0000f6b8 ldr      r1, [pc, #0x2b4]                    ; 0x1576c pointer 'city'
+0000f6bc ldr      r0, [r4, #8]                        
+0000f6c0 ldr      r1, [r1]                            
+0000f6c4 bl       #0x14534                            ; _xmlStrcmp
+0000f6c8 cmp      r0, #0                              
+0000f6cc bne      #0xf6e0                             
+0000f6d0 mov      r0, r4                              
+0000f6d4 bl       #0xd410                             
+0000f6d8 str      r0, [sp, #0xc]                      
+0000f6dc b        #0xf6e8                             
+0000f6e0 mov      r2, #0                              
+0000f6e4 str      r2, [sp, #0xc]                      
+0000f6e8 ldr      r3, [sp, #0x10]                     
+0000f6ec cmp      r3, #0                              
+0000f6f0 bne      #0xf730                             
+0000f6f4 ldr      r3, [r4, #4]                        
+0000f6f8 cmp      r3, #1                              
+0000f6fc bne      #0xf728                             
+0000f700 ldr      r1, [pc, #0x270]                    ; 0x15768 pointer 'region'
+0000f704 ldr      r0, [r4, #8]                        
+0000f708 ldr      r1, [r1]                            
+0000f70c bl       #0x14534                            ; _xmlStrcmp
+0000f710 cmp      r0, #0                              
+0000f714 bne      #0xf728                             
+0000f718 mov      r0, r4                              
+0000f71c bl       #0xd410                             
+0000f720 str      r0, [sp, #0x10]                     
+0000f724 b        #0xf730                             
+0000f728 mov      r2, #0                              
+0000f72c str      r2, [sp, #0x10]                     
+0000f730 ldr      r3, [sp, #0x14]                     
+0000f734 cmp      r3, #0                              
+0000f738 bne      #0xf778                             
+0000f73c ldr      r3, [r4, #4]                        
+0000f740 cmp      r3, #1                              
+0000f744 bne      #0xf770                             
+0000f748 ldr      r1, [pc, #0x22c]                    ; 0x15764 pointer 'regionname'
+0000f74c ldr      r0, [r4, #8]                        
+0000f750 ldr      r1, [r1]                            
+0000f754 bl       #0x14534                            ; _xmlStrcmp
+0000f758 cmp      r0, #0                              
+0000f75c bne      #0xf770                             
+0000f760 mov      r0, r4                              
+0000f764 bl       #0xd410                             
+0000f768 str      r0, [sp, #0x14]                     
+0000f76c b        #0xf778                             
+0000f770 mov      r2, #0                              
+0000f774 str      r2, [sp, #0x14]                     
+0000f778 ldr      r3, [sp, #0x18]                     
+0000f77c cmp      r3, #0                              
+0000f780 bne      #0xf7c0                             
+0000f784 ldr      r3, [r4, #4]                        
+0000f788 cmp      r3, #1                              
+0000f78c bne      #0xf7b8                             
+0000f790 ldr      r1, [pc, #0x1e8]                    ; 0x15760 pointer 'country'
+0000f794 ldr      r0, [r4, #8]                        
+0000f798 ldr      r1, [r1]                            
+0000f79c bl       #0x14534                            ; _xmlStrcmp
+0000f7a0 cmp      r0, #0                              
+0000f7a4 bne      #0xf7b8                             
+0000f7a8 mov      r0, r4                              
+0000f7ac bl       #0xd410                             
+0000f7b0 str      r0, [sp, #0x18]                     
+0000f7b4 b        #0xf7c0                             
+0000f7b8 mov      r2, #0                              
+0000f7bc str      r2, [sp, #0x18]                     
+0000f7c0 cmp      r5, #0                              
+0000f7c4 bne      #0xf800                             
+0000f7c8 ldr      r3, [r4, #4]                        
+0000f7cc cmp      r3, #1                              
+0000f7d0 bne      #0xf7fc                             
+0000f7d4 ldr      r1, [pc, #0x1a8]                    ; 0x1575c pointer 'countryname'
+0000f7d8 ldr      r0, [r4, #8]                        
+0000f7dc ldr      r1, [r1]                            
+0000f7e0 bl       #0x14534                            ; _xmlStrcmp
+0000f7e4 cmp      r0, #0                              
+0000f7e8 bne      #0xf7fc                             
+0000f7ec mov      r0, r4                              
+0000f7f0 bl       #0xd410                             
+0000f7f4 mov      r5, r0                              
+0000f7f8 b        #0xf800                             
+0000f7fc mov      r5, #0                              
+0000f800 ldr      r4, [r4, #0x18]                     
+0000f804 cmp      r4, #0                              
+0000f808 bne      #0xf658                             
+0000f80c ldr      r1, [pc, #0x174]                    ; 0x171a0 pointer 'isEqualToString:'
+0000f810 ldr      r0, [sp, #0x18]                     
+0000f814 ldr      r2, [pc, #0x170]                    ; 0x15f14 CFString 'US'
+0000f818 ldr      r1, [r1]                            
+0000f81c bl       #0x14348                            ; _objc_msgSend
+0000f820 tst      r0, #0xff                           
+0000f824 ldrne    r5, [sp, #0x10]                     
+0000f828 bne      #0xf858                             
+0000f82c ldr      r3, [sp, #0x14]                     
+0000f830 cmp      r3, #0                              
+0000f834 beq      #0xf858                             
+0000f838 ldr      r0, [pc, #0x150]                    ; 0x1771c pointer 'NSString'
+0000f83c ldr      r1, [pc, #0x150]                    ; 0x172e4 pointer 'stringWithFormat:'
+0000f840 ldr      r2, [pc, #0x150]                    ; 0x15f24 CFString '%@(%@)'
+0000f844 ldr      r0, [r0]                            
+0000f848 ldr      r1, [r1]                            
+0000f84c str      r5, [sp]                            
+0000f850 bl       #0x14348                            ; _objc_msgSend
+0000f854 mov      r5, r0                              
+0000f858 ldr      r0, [pc, #0x13c]                    ; 0x17780 pointer 'ValidatorCity'
+0000f85c ldr      r1, [sl]                            
+0000f860 ldr      r0, [r0]                            
+0000f864 bl       #0x14348                            ; _objc_msgSend
+0000f868 ldr      r1, [fp]                            
+0000f86c bl       #0x14348                            ; _objc_msgSend
+0000f870 ldr      r1, [pc, #0x128]                    ; 0x17670 pointer 'setCity:'
+0000f874 ldr      r2, [sp, #0xc]                      
+0000f878 ldr      r1, [r1]                            
+0000f87c mov      r4, r0                              
+0000f880 bl       #0x14348                            ; _objc_msgSend
+0000f884 ldr      r1, [pc, #0x118]                    ; 0x17674 pointer 'setState:'
+0000f888 mov      r0, r4                              
+0000f88c mov      r2, r5                              
+0000f890 ldr      r1, [r1]                            
+0000f894 bl       #0x14348                            ; _objc_msgSend
+0000f898 ldr      r1, [pc, #0x108]                    ; 0x17438 pointer 'setZip:'
+0000f89c mov      r0, r4                              
+0000f8a0 ldr      r2, [sp, #8]                        
+0000f8a4 ldr      r1, [r1]                            
+0000f8a8 bl       #0x14348                            ; _objc_msgSend
+0000f8ac ldr      r1, [pc, #0xf8]                     ; 0x1729c pointer 'addObject:'
+0000f8b0 mov      r0, r8                              
+0000f8b4 mov      r2, r4                              
+0000f8b8 ldr      r1, [r1]                            
+0000f8bc bl       #0x14348                            ; _objc_msgSend
+0000f8c0 ldr      r1, [pc, #0xe8]                     ; 0x17088 pointer 'release'
+0000f8c4 mov      r0, r4                              
+0000f8c8 ldr      r1, [r1]                            
+0000f8cc bl       #0x14348                            ; _objc_msgSend
+0000f8d0 ldr      r2, [sp, #4]                        
+0000f8d4 ldr      r2, [r2, #0x18]                     
+0000f8d8 str      r2, [sp, #4]                        
+0000f8dc ldr      r3, [sp, #4]                        
+0000f8e0 cmp      r3, #0                              
+0000f8e4 bne      #0xf60c                             
+0000f8e8 ldr      r1, [pc, #0xc4]                     ; 0x171c4 pointer 'count'
+0000f8ec mov      r0, r8                              
+0000f8f0 ldr      r1, [r1]                            
+0000f8f4 bl       #0x14348                            ; _objc_msgSend
+0000f8f8 subs     r2, r0, #0                          
+0000f8fc beq      #0xf92c                             
+0000f900 ldr      r1, [pc, #0xb0]                     ; 0x17678 pointer 'didValidateLocation:'
+0000f904 mov      r0, r8                              
+0000f908 ldr      r5, [r6, #0x10]                     
+0000f90c ldr      r4, [r1]                            
+0000f910 ldr      r1, [pc, #0xa4]                     ; 0x17124 pointer 'autorelease'
+0000f914 ldr      r1, [r1]                            
+0000f918 bl       #0x14348                            ; _objc_msgSend
+0000f91c mov      r1, r4                              
+0000f920 mov      r2, r0                              
+0000f924 mov      r0, r5                              
+0000f928 b        #0xf938                             
+0000f92c ldr      r1, [pc, #0x28]                     ; 0x1766c pointer '_failWithError:'
+0000f930 mov      r0, r6                              
+0000f934 ldr      r1, [r1]                            
+0000f938 bl       #0x14348                            ; _objc_msgSend
+0000f93c sub      sp, r7, #0x18                       
+0000f940 pop      {r8, sl, fp}                        
+0000f944 pop      {r4, r5, r6, r7, pc}                
+0000f948 andeq    r7, r1, r8, lsl #14                 
+0000f94c andeq    r7, r1, ip, ror r0                  
+0000f950 andeq    r7, r1, r0, lsl #1                  
+0000f954 andeq    r5, r1, r0, lsl #15                 
+0000f958 strdeq   r5, r6, [r1], -r4                   
+0000f95c andeq    r7, r1, ip, ror #12                 
+0000f960 andeq    r5, r1, ip, ror r7                  
+0000f964 andeq    r5, r1, r4, lsl #30                 
+0000f968 andeq    r5, r1, r8, ror r7                  
+0000f96c andeq    r5, r1, r4, ror r7                  
+0000f970 andeq    r5, r1, r0, ror r7                  
+0000f974 andeq    r5, r1, ip, ror #14                 
+0000f978 andeq    r5, r1, r8, ror #14                 
+0000f97c andeq    r5, r1, r4, ror #14                 
+0000f980 andeq    r5, r1, r0, ror #14                 
+0000f984 andeq    r5, r1, ip, asr r7                  
+0000f988 andeq    r7, r1, r0, lsr #3                  
+0000f98c andeq    r5, r1, r4, lsl pc                  
+0000f990 andeq    r7, r1, ip, lsl r7                  
+0000f994 andeq    r7, r1, r4, ror #5                  
+0000f998 andeq    r5, r1, r4, lsr #30                 
+0000f99c andeq    r7, r1, r0, lsl #15                 
+0000f9a0 andeq    r7, r1, r0, ror r6                  
+0000f9a4 andeq    r7, r1, r4, ror r6                  
+0000f9a8 andeq    r7, r1, r8, lsr r4                  
+0000f9ac muleq    r1, ip, r2                          
+0000f9b0 andeq    r7, r1, r8, lsl #1                  
+0000f9b4 andeq    r7, r1, r4, asr #3                  
+0000f9b8 andeq    r7, r1, r8, ror r6                  
+0000f9bc andeq    r7, r1, r4, lsr #2                  

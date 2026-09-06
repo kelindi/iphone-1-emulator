@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "testMethods": 10,
+  "scope": "Deterministic backend unit and actual loopback HTTP tests only; no original guest parser or network integration.",
+  "sources": {
+    "tools/legacy_services/README.md": "330df69bf9e37c512bdd0e9142d7ef45f7f04a5d26562e81c24e4ce003b0a5f9",
+    "tools/legacy_services/fixtures/forecast-request.xml": "0eb2f80ec02b65e67d138a4032e03158ea2bb02a7fcf7dabc5c38fed7ad8cffa",
+    "tools/legacy_services/fixtures/search-request.xml": "7fb249318ad8809d0ddc28d0d318a31e8d1d56239abc3cf67e434f60ef299a04",
+    "tools/legacy_services/server.py": "be3a67c980794648c8b6ed8279f94e25265f13b0dbf64972014ea3dd58268fc1",
+    "tools/legacy_services/test_weather.py": "1f90f1978e76b980343a469d5103ebf154e0ec7f47c476d7a55e088cb4287ac5",
+    "tools/legacy_services/weather.py": "43a1048a4dc934a3898fbf6ca6084c31eb70ba516fbee741f7fc941a6b5c2ea9"
+  }
+}

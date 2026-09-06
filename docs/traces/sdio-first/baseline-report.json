@@ -1,0 +1,3 @@
+{
+"baseline":true,"gateReached":true,"cccrInitializerEntered":false,"pc":"c0431504","instructions":306172912,"ticks":4654136,"cpuHz":412000000,"commandTicks":600,"accesses":100011,"statusReads":100001,"triggers":0,"completedResponses":0,"transportErrors":0,"rejectedWrites":0,"cccrReads":0,"cccrMask":0,"cardState":0,"rca":0,"irq":false,"forwarded":[3719286,7557,177491,29057624,101447,1109282]
+}

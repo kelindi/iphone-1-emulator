@@ -138,8 +138,11 @@ static uint8_t reg_read(s5l_pcf50635_t *pmu, uint8_t reg) {
 
 static void reg_write(s5l_pcf50635_t *pmu, uint8_t reg, uint8_t val) {
     pmu->reg_writes++;
-    /* This kernel's setCurrentDateTime path is a panic stub, so writes to its
-     * computed RTC are unsupported and visible rather than silently accepted. */
+    /* RTC writes remain unsupported by this device model. The original OS 1.0
+     * driver has a real asynchronous seven-byte setter, documented in
+     * docs/traces/rtc-write-contract; its conditional member-pointer panic is
+     * not the normal setter path. Count missing behavior visibly until write,
+     * partial-transaction and rollover semantics are implemented and tested. */
     if (is_rtc(reg)) {
         pmu->unknown_writes++;
         return;

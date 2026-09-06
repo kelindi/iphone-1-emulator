@@ -1,0 +1,8 @@
+{
+  "source": "web/storage.js",
+  "sourceSha256": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+  "diagnosticSha256": "65de8228de824731f6f73a85851cfc518cd4e5c11163d3551e3cceb2a129e154",
+  "changes": "Expose unchanged private encoder; append commitEncoded containing verbatim original transaction body after encode. Original writeCheckpoint unchanged.",
+  "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "fixtureBytes": 244887522
+}

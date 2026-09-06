@@ -1,12 +1,20 @@
 {
-  "kernel": "firmware/kernel_1A543a.macho",
-  "devicetree": "firmware/devicetree_m68ap.bin",
+  "kernel": "https://iphone.files.garden/kernel_1A543a.macho",
+  "devicetree": "https://iphone.files.garden/devicetree_m68ap.bin",
   "rootfs": [
-    "firmware/rootfs_1A543a_act.img.gz.part0",
-    "firmware/rootfs_1A543a_act.img.gz.part1"
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part0",
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1"
   ],
   "snapshot": [
-    "firmware/home_1A543a.snap.gz.part0",
-    "firmware/home_1A543a.snap.gz.part1"
-  ]
+    "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+    "https://iphone.files.garden/home_1A543a.snap.gz.part1"
+  ],
+  "assetSha256": {
+    "https://iphone.files.garden/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    "https://iphone.files.garden/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+    "https://iphone.files.garden/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+    "https://iphone.files.garden/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+  }
 }

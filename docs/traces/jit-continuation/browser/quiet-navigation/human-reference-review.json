@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "references": [
+    {
+      "run": 1,
+      "arm": "baseline",
+      "kind": "settings",
+      "path": "1-baseline/0-settings.png",
+      "sha256": "cbf491d75a9c90919df08e4b89d9f0030f2ad043e46b504ad6da38259ac861c4",
+      "manuallyViewed": true,
+      "finding": "Genuine Settings title and expected rows from Airplane Mode through Mail; no blank frame or geometric corruption."
+    },
+    {
+      "run": 1,
+      "arm": "baseline",
+      "kind": "home",
+      "path": "1-baseline/0-home.png",
+      "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+      "manuallyViewed": true,
+      "finding": "Complete genuine16-app Home layout and all four dock icons with labels; no blank or missing dock frame."
+    },
+    {
+      "run": 2,
+      "arm": "candidate",
+      "kind": "settings",
+      "path": "2-candidate/0-settings.png",
+      "sha256": "cbf491d75a9c90919df08e4b89d9f0030f2ad043e46b504ad6da38259ac861c4",
+      "manuallyViewed": true,
+      "finding": "Genuine Settings title and expected rows from Airplane Mode through Mail; no blank frame or geometric corruption."
+    },
+    {
+      "run": 2,
+      "arm": "candidate",
+      "kind": "home",
+      "path": "2-candidate/0-home.png",
+      "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+      "manuallyViewed": true,
+      "finding": "Complete genuine16-app Home layout and all four dock icons with labels; no blank or missing dock frame."
+    },
+    {
+      "run": 3,
+      "arm": "candidate",
+      "kind": "settings",
+      "path": "3-candidate/0-settings.png",
+      "sha256": "cbf491d75a9c90919df08e4b89d9f0030f2ad043e46b504ad6da38259ac861c4",
+      "manuallyViewed": true,
+      "finding": "Genuine Settings title and expected rows from Airplane Mode through Mail; no blank frame or geometric corruption."
+    },
+    {
+      "run": 3,
+      "arm": "candidate",
+      "kind": "home",
+      "path": "3-candidate/0-home.png",
+      "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+      "manuallyViewed": true,
+      "finding": "Complete genuine16-app Home layout and all four dock icons with labels; no blank or missing dock frame."
+    },
+    {
+      "run": 4,
+      "arm": "baseline",
+      "kind": "settings",
+      "path": "4-baseline/0-settings.png",
+      "sha256": "cbf491d75a9c90919df08e4b89d9f0030f2ad043e46b504ad6da38259ac861c4",
+      "manuallyViewed": true,
+      "finding": "Genuine Settings title and expected rows from Airplane Mode through Mail; no blank frame or geometric corruption."
+    },
+    {
+      "run": 4,
+      "arm": "baseline",
+      "kind": "home",
+      "path": "4-baseline/0-home.png",
+      "sha256": "10e23f0f2ff1c14ca6a0626f0aa26f5a4f447a981a28b840773d1fabae09f2d3",
+      "manuallyViewed": true,
+      "finding": "Complete genuine16-app Home layout and all four dock icons with labels; no blank or missing dock frame."
+    }
+  ],
+  "scope": "Eight initial references manually viewed individually. Does not replace automated strict comparison of all88screens."
+}

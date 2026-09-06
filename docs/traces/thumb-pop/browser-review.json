@@ -1,0 +1,89 @@
+{
+  "referencesManuallyReviewed": 8,
+  "referenceResult": "All four complete genuine Settings screens and four complete Home screens pass identity review.",
+  "screens": 88,
+  "strictToleranceMaxRGBDelta": 3,
+  "strictPasses": 86,
+  "strictFailures": [
+    {
+      "run": 3,
+      "kind": "settings",
+      "round": 8,
+      "rgbPixels": 129300,
+      "differentChannels": 4608,
+      "channelsDifferentByMoreThan1": 3846,
+      "largestDifference": 16,
+      "sha256": "63266002f9026a123a3371220e71571f4f1d57d4bb6a945607ca5b099a05252b"
+    },
+    {
+      "run": 4,
+      "kind": "settings",
+      "round": 8,
+      "rgbPixels": 129300,
+      "differentChannels": 4618,
+      "channelsDifferentByMoreThan1": 4608,
+      "largestDifference": 37,
+      "sha256": "a0b25b460c8a60a79750e2f5d4dbf0266c65ff69cf9ac3401278f4e5b6d8552f"
+    }
+  ],
+  "failureInspection": "Both are correct Settings with a fading vertical scroll indicator; run3/candidate differences above3 lie at x293..297,y62..318; run4/baseline at x293..298,y62..318. Tolerance is not expanded, no samples are dropped.",
+  "perOrder": [
+    {
+      "run": 1,
+      "arm": "baseline",
+      "settings": {
+        "medianMs": 3141.7999999988824,
+        "warmSamples": 10,
+        "firstMs": 4352.900000002235
+      },
+      "home": {
+        "medianMs": 867.1500000003725,
+        "warmSamples": 10,
+        "firstMs": 1063.699999999255
+      }
+    },
+    {
+      "run": 2,
+      "arm": "candidate",
+      "settings": {
+        "medianMs": 3017.1500000003725,
+        "warmSamples": 10,
+        "firstMs": 4034.10000000149
+      },
+      "home": {
+        "medianMs": 866.8000000007451,
+        "warmSamples": 10,
+        "firstMs": 1059.0999999977648
+      }
+    },
+    {
+      "run": 3,
+      "arm": "candidate",
+      "settings": {
+        "medianMs": 3142.5500000026077,
+        "warmSamples": 10,
+        "firstMs": 4403.300000000745
+      },
+      "home": {
+        "medianMs": 867.0999999996275,
+        "warmSamples": 10,
+        "firstMs": 1066.2999999970198
+      }
+    },
+    {
+      "run": 4,
+      "arm": "baseline",
+      "settings": {
+        "medianMs": 3167.300000000745,
+        "warmSamples": 10,
+        "firstMs": 4952
+      },
+      "home": {
+        "medianMs": 867.0,
+        "warmSamples": 10,
+        "firstMs": 965.9000000022352
+      }
+    }
+  ],
+  "decision": "Park Thumb POP without production promotion. Warm p95 and Home median do not improve materially; only two first launches per engine and two strict readiness-image failures limit evidence."
+}

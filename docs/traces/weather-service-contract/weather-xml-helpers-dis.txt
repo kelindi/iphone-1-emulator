@@ -1,0 +1,81 @@
+0000d3c0 add      r7, sp, #4                          
+0000d3c4 moveq    r0, r4                              
+0000d3c8 popeq    {r4, r7, pc}                        
+0000d3cc ldr      r0, [pc, #0x2c]                     ; 0x1771c pointer 'NSString'
+0000d3d0 ldr      r1, [pc, #0x2c]                     ; 0x1707c pointer 'alloc'
+0000d3d4 ldr      r0, [r0]                            
+0000d3d8 ldr      r1, [r1]                            
+0000d3dc bl       #0x14348                            ; _objc_msgSend
+0000d3e0 ldr      r1, [pc, #0x20]                     ; 0x175ac pointer 'initWithUTF8String:'
+0000d3e4 mov      r2, r4                              
+0000d3e8 ldr      r1, [r1]                            
+0000d3ec bl       #0x14348                            ; _objc_msgSend
+0000d3f0 ldr      r1, [pc, #0x14]                     ; 0x17124 pointer 'autorelease'
+0000d3f4 ldr      r1, [r1]                            
+0000d3f8 bl       #0x14348                            ; _objc_msgSend
+0000d3fc pop      {r4, r7, pc}                        
+0000d400 andeq    r7, r1, ip, lsl r7                  
+0000d404 andeq    r7, r1, ip, ror r0                  
+0000d408 andeq    r7, r1, ip, lsr #11                 
+0000d40c andeq    r7, r1, r4, lsr #2                  
+0000d410 push     {r4, r5, r7, lr}                    
+0000d414 add      r7, sp, #8                          
+0000d418 bl       #0x14528                            ; _xmlNodeGetContent
+0000d41c mov      r4, r0                              
+0000d420 bl       #0xd3b8                             
+0000d424 ldr      r3, [pc, #0x24]                     ; 0x157c4 _xmlFree
+0000d428 ldr      r3, [r3]                            
+0000d42c mov      r5, r0                              
+0000d430 mov      r0, r4                              
+0000d434 mov      lr, pc                              
+0000d438 ldr      pc, [r3]                            
+0000d43c ldr      r1, [pc, #0x10]                     ; 0x175b0 pointer '_stocksTrimmedString'
+0000d440 mov      r0, r5                              
+0000d444 ldr      r1, [r1]                            
+0000d448 bl       #0x14348                            ; _objc_msgSend
+0000d44c pop      {r4, r5, r7, pc}                    
+0000d450 andeq    r5, r1, r4, asr #15                 
+0000d454 strheq   r7, [r1], -r0                       
+0000d458 push     {r4, r5, r7, lr}                    
+0000d45c add      r7, sp, #8                          
+0000d460 bl       #0x1451c                            ; _xmlHasProp
+0000d464 subs     r3, r0, #0                          
+0000d468 moveq    r4, r3                              
+0000d46c beq      #0xd478                             
+0000d470 bl       #0x14528                            ; _xmlNodeGetContent
+0000d474 mov      r4, r0                              
+0000d478 mov      r0, r4                              
+0000d47c bl       #0xd3b8                             
+0000d480 ldr      r3, [pc, #0x24]                     ; 0x157c4 _xmlFree
+0000d484 ldr      r3, [r3]                            
+0000d488 mov      r5, r0                              
+0000d48c mov      r0, r4                              
+0000d490 mov      lr, pc                              
+0000d494 ldr      pc, [r3]                            
+0000d498 ldr      r1, [pc, #0x10]                     ; 0x175b0 pointer '_stocksTrimmedString'
+0000d49c mov      r0, r5                              
+0000d4a0 ldr      r1, [r1]                            
+0000d4a4 bl       #0x14348                            ; _objc_msgSend
+0000d4a8 pop      {r4, r5, r7, pc}                    
+0000d4ac andeq    r5, r1, r4, asr #15                 
+0000d4b0 strheq   r7, [r1], -r0                       
+0000d4b4 push     {r4, r7, lr}                        
+0000d4b8 add      r7, sp, #4                          
+0000d4bc ldr      r4, [pc, #0x30]                     ; 0x16028 
+0000d4c0 ldr      r0, [r4]                            
+0000d4c4 cmp      r0, #0                              
+0000d4c8 popne    {r4, r7, pc}                        
+0000d4cc ldr      r0, [pc, #0x24]                     ; 0x176ec pointer 'WeatherUpdater'
+0000d4d0 ldr      r1, [pc, #0x24]                     ; 0x1707c pointer 'alloc'
+0000d4d4 ldr      r0, [r0]                            
+0000d4d8 ldr      r1, [r1]                            
+0000d4dc bl       #0x14348                            ; _objc_msgSend
+0000d4e0 ldr      r1, [pc, #0x18]                     ; 0x17080 pointer 'init'
+0000d4e4 ldr      r1, [r1]                            
+0000d4e8 bl       #0x14348                            ; _objc_msgSend
+0000d4ec str      r0, [r4]                            
+0000d4f0 pop      {r4, r7, pc}                        
+0000d4f4 andeq    r6, r1, r8, lsr #32                 
+0000d4f8 andeq    r7, r1, ip, ror #13                 
+0000d4fc andeq    r7, r1, ip, ror r0                  
+0000d500 andeq    r7, r1, r0, lsl #1                  

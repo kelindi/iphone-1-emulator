@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "transactions": 4581748,
+  "sha256": "13881df363adc1770b768a2841874ab289f7377c5d58eb337e52569b2735eae9",
+  "statusPolls": 1000,
+  "returnedStatus": 8,
+  "cacheCounters": [
+    {
+      "cycles": 17517070017,
+      "initialRaw": true,
+      "passed": true,
+      "original": [
+        3481149590,
+        86832766,
+        19539
+      ],
+      "restored": [
+        3481149590,
+        86832766,
+        19539
+      ],
+      "restoredMinusOriginal": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cycles": 17517070018,
+      "initialRaw": false,
+      "passed": true,
+      "original": [
+        3481149591,
+        86832766,
+        19539
+      ],
+      "restored": [
+        3481149590,
+        86832768,
+        19540
+      ],
+      "restoredMinusOriginal": [
+        -1,
+        2,
+        1
+      ]
+    },
+    {
+      "cycles": 17517071041,
+      "initialRaw": false,
+      "passed": true,
+      "original": [
+        3481149893,
+        86832770,
+        19539
+      ],
+      "restored": [
+        3481149823,
+        86832856,
+        19540
+      ],
+      "restoredMinusOriginal": [
+        -70,
+        86,
+        1
+      ]
+    },
+    {
+      "cycles": 17517102785,
+      "initialRaw": false,
+      "passed": true,
+      "original": [
+        3481155799,
+        86832804,
+        19539
+      ],
+      "restored": [
+        3481155562,
+        86833078,
+        19540
+      ],
+      "restoredMinusOriginal": [
+        -237,
+        274,
+        1
+      ]
+    },
+    {
+      "cycles": 17559017221,
+      "initialRaw": false,
+      "passed": true,
+      "original": [
+        3485956074,
+        86832836,
+        19539
+      ],
+      "restored": [
+        3485955794,
+        86833155,
+        19540
+      ],
+      "restoredMinusOriginal": [
+        -280,
+        319,
+        1
+      ]
+    }
+  ],
+  "scope": "original warm machine versus fresh loaded machine; every SDIO transaction, each instruction PC/time/IRQ; complete serialized architecture/device at five prefixes, excluding only independently checksum-validated CPU cache diagnostics"
+}

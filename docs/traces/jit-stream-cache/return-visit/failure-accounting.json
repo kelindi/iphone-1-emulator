@@ -1,0 +1,243 @@
+{
+  "failure": "First original arm reached fixed240-second process cap, scoped processes closed, no retries/candidate arms",
+  "loggedStages": 20,
+  "rows": [
+    {
+      "label": "C0",
+      "kind": "settings",
+      "observedReadyWaitMs": 5600.10000000149,
+      "counterBracketMs": 5647.60000000149,
+      "beforeCounterRoundTripMs": 0.5,
+      "afterCounterRoundTripMs": 0.20000000298023224,
+      "postActionGapToNextCounterMs": 8526.09999999404,
+      "pairDelayMs": 50.5,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "C0",
+      "kind": "home",
+      "observedReadyWaitMs": 1491,
+      "counterBracketMs": 1583.0,
+      "beforeCounterRoundTripMs": 0.5,
+      "afterCounterRoundTripMs": 0.19999999552965164,
+      "postActionGapToNextCounterMs": 8015.0,
+      "pairDelayMs": 62.19999999552965,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H1",
+      "kind": "settings",
+      "observedReadyWaitMs": 3750.0999999940395,
+      "counterBracketMs": 3777.9000000059605,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 0.20000000298023224,
+      "postActionGapToNextCounterMs": 7779.0,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H1",
+      "kind": "home",
+      "observedReadyWaitMs": 1450.1999999955297,
+      "counterBracketMs": 1467.5999999940395,
+      "beforeCounterRoundTripMs": 0.19999999552965164,
+      "afterCounterRoundTripMs": 0.19999999552965164,
+      "postActionGapToNextCounterMs": 8199.5,
+      "pairDelayMs": 50.69999999552965,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H2",
+      "kind": "settings",
+      "observedReadyWaitMs": 3727.60000000149,
+      "counterBracketMs": 3859.60000000149,
+      "beforeCounterRoundTripMs": 0.30000000447034836,
+      "afterCounterRoundTripMs": 32.79999999701977,
+      "postActionGapToNextCounterMs": 7862.70000000298,
+      "pairDelayMs": 70.29999999701977,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H2",
+      "kind": "home",
+      "observedReadyWaitMs": 1400.1999999955297,
+      "counterBracketMs": 1433.7999999970198,
+      "beforeCounterRoundTripMs": 0.6999999955296516,
+      "afterCounterRoundTripMs": 0.19999999552965164,
+      "postActionGapToNextCounterMs": 7878.5,
+      "pairDelayMs": 50.80000000447035,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H3",
+      "kind": "settings",
+      "observedReadyWaitMs": 3850.2000000029802,
+      "counterBracketMs": 3896.60000000149,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 3.600000001490116,
+      "postActionGapToNextCounterMs": 7969.20000000298,
+      "pairDelayMs": 50.5,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H3",
+      "kind": "home",
+      "observedReadyWaitMs": 1400.1999999955297,
+      "counterBracketMs": 1414.6999999955297,
+      "beforeCounterRoundTripMs": 0.6999999955296516,
+      "afterCounterRoundTripMs": 0.19999999552965164,
+      "postActionGapToNextCounterMs": 8198.10000000149,
+      "pairDelayMs": 50.599999994039536,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H4",
+      "kind": "settings",
+      "observedReadyWaitMs": 3300.10000000149,
+      "counterBracketMs": 3335.5,
+      "beforeCounterRoundTripMs": 0.29999999701976776,
+      "afterCounterRoundTripMs": 0.7999999970197678,
+      "postActionGapToNextCounterMs": 8017.29999999702,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H4",
+      "kind": "home",
+      "observedReadyWaitMs": 1400.1999999955297,
+      "counterBracketMs": 1415.0,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 0.29999999701976776,
+      "postActionGapToNextCounterMs": 8204.10000000149,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H5",
+      "kind": "settings",
+      "observedReadyWaitMs": 3700.10000000149,
+      "counterBracketMs": 3747.2000000029802,
+      "beforeCounterRoundTripMs": 1.0,
+      "afterCounterRoundTripMs": 6.899999998509884,
+      "postActionGapToNextCounterMs": 8149.89999999851,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H5",
+      "kind": "home",
+      "observedReadyWaitMs": 1400.3000000044703,
+      "counterBracketMs": 1414.8999999985099,
+      "beforeCounterRoundTripMs": 1.0,
+      "afterCounterRoundTripMs": 0.29999999701976776,
+      "postActionGapToNextCounterMs": 8040.30000000447,
+      "pairDelayMs": 50.69999999552965,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H6",
+      "kind": "settings",
+      "observedReadyWaitMs": 4000,
+      "counterBracketMs": 4009.0,
+      "beforeCounterRoundTripMs": 0.19999999552965164,
+      "afterCounterRoundTripMs": 0.30000000447034836,
+      "postActionGapToNextCounterMs": 8220.79999999702,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H6",
+      "kind": "home",
+      "observedReadyWaitMs": 1400.1999999955297,
+      "counterBracketMs": 1411.7000000029802,
+      "beforeCounterRoundTripMs": 0.29999999701976776,
+      "afterCounterRoundTripMs": 0.30000000447034836,
+      "postActionGapToNextCounterMs": 8046.79999999702,
+      "pairDelayMs": 50.5,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H7",
+      "kind": "settings",
+      "observedReadyWaitMs": 3550.10000000149,
+      "counterBracketMs": 3565.7000000029802,
+      "beforeCounterRoundTripMs": 0.29999999701976776,
+      "afterCounterRoundTripMs": 0.30000000447034836,
+      "postActionGapToNextCounterMs": 7854.89999999851,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H7",
+      "kind": "home",
+      "observedReadyWaitMs": 1450.0999999940395,
+      "counterBracketMs": 1465.1000000014901,
+      "beforeCounterRoundTripMs": 0.6000000014901161,
+      "afterCounterRoundTripMs": 0.20000000298023224,
+      "postActionGapToNextCounterMs": 8136.29999999702,
+      "pairDelayMs": 50.600000001490116,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H8",
+      "kind": "settings",
+      "observedReadyWaitMs": 3200.2000000029802,
+      "counterBracketMs": 3222.89999999851,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 0.19999999552965164,
+      "postActionGapToNextCounterMs": 7868.20000000298,
+      "pairDelayMs": 50.80000000447035,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H8",
+      "kind": "home",
+      "observedReadyWaitMs": 1450,
+      "counterBracketMs": 1472.2999999970198,
+      "beforeCounterRoundTripMs": 0.29999999701976776,
+      "afterCounterRoundTripMs": 0.29999999701976776,
+      "postActionGapToNextCounterMs": 7731.0,
+      "pairDelayMs": 50.69999999552965,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H9",
+      "kind": "settings",
+      "observedReadyWaitMs": 3300.2000000029802,
+      "counterBracketMs": 3338.89999999851,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 4.299999997019768,
+      "postActionGapToNextCounterMs": 8231.0,
+      "pairDelayMs": 50.599999994039536,
+      "strictValidationPassed": true
+    },
+    {
+      "label": "H9",
+      "kind": "home",
+      "observedReadyWaitMs": 1500.2000000029802,
+      "counterBracketMs": 1516.7000000029802,
+      "beforeCounterRoundTripMs": 0.20000000298023224,
+      "afterCounterRoundTripMs": 1.1000000014901161,
+      "postActionGapToNextCounterMs": null,
+      "pairDelayMs": 50.899999998509884,
+      "strictValidationPassed": true
+    }
+  ],
+  "observedReadyWaitTotalMs": 52321.29999998957,
+  "counterBracketTotalMs": 52995.70000000298,
+  "interstageGapTotalMs": 152928.69999999553,
+  "interstageGapMedianMs": 8040.30000000447,
+  "counterRoundTripsTotalMs": 60.99999997764826,
+  "counterRoundTripsMaximumMs": 32.79999999701977,
+  "initialPausedImportReplyAtPageMs": 19871.10000000149,
+  "firstActionCounterAtPageMs": 22485.80000000447,
+  "postImportThroughFirstCounterMs": 2614.7000000029802,
+  "lastActionCounterReplyAtPageMs": 228410.20000000298,
+  "fileTimesUTC": {
+    "process-receipt.json": "2026-09-06T04:06:12.591918+00:00",
+    "trace.json": "2026-09-06T04:06:33.850140+00:00",
+    "cache-receipt.json": "2026-09-06T04:06:34.126140+00:00",
+    "report-partial.json": "2026-09-06T04:10:09.354146+00:00"
+  },
+  "conclusion": "Accumulated post-action validation/transport/write overhead dominates, not a last action/counter stall. Existing receipts do not separate in-page array serialization, protocol transfer and file writing;1,228,800 numeric values are returned by every validation call. No cap extension or benchmark result claimed."
+}

@@ -1,0 +1,192 @@
+{
+  "startedAt": "2026-09-05T21:27:02.248Z",
+  "sourceRoot": "/home/vercel-sandbox/iphone-1/.context/graphics-final/default-preview/web",
+  "previousRoot": "/home/vercel-sandbox/iphone-1/web",
+  "checks": [
+    {
+      "name": "new visitor is not automatically registered for offline use",
+      "atSeconds": 6.33181992
+    },
+    {
+      "name": "version A controls a genuine running guest",
+      "atSeconds": 16.552534248
+    },
+    {
+      "name": "real guest checkpoint is durably stored before upgrade",
+      "atSeconds": 37.894671358
+    },
+    {
+      "name": "startup detects waiting update without another Keep offline click",
+      "atSeconds": 41.11552524700001
+    },
+    {
+      "name": "waiting update preserves matching old shell, manifest and WASM",
+      "atSeconds": 41.173896174
+    },
+    {
+      "name": "waiting update leaves saved checkpoint unchanged",
+      "atSeconds": 41.746459146
+    },
+    {
+      "name": "notice asks to Save and close every phone tab",
+      "atSeconds": 42.092353492
+    },
+    {
+      "name": "another phone tab cannot own the saved profile",
+      "atSeconds": 45.062041318000006
+    },
+    {
+      "name": "remaining phone tab retains version A while B waits",
+      "atSeconds": 45.36013663
+    },
+    {
+      "name": "closing all tabs and reopening activates matching version B",
+      "atSeconds": 50.497861803
+    },
+    {
+      "name": "upgrade retains identical checkpoint bytes and metadata",
+      "atSeconds": 51.04417977800001
+    },
+    {
+      "name": "new bundle restores genuine saved guest and profile ownership",
+      "atSeconds": 51.045689414
+    },
+    {
+      "name": "version B installs the matching seeded engine",
+      "atSeconds": 52.183661596,
+      "detail": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3789634,
+        "calls": 479622
+      }
+    },
+    {
+      "name": "waiting notice clears after normal activation",
+      "atSeconds": 52.186939741
+    },
+    {
+      "name": "new bundle and saved guest reopen while disconnected",
+      "atSeconds": 55.875759997,
+      "detail": {
+        "shell": "B",
+        "manifest": "B",
+        "wasm": "f88c3d92548c6e01d049f12b0886cc36b7388c4a229d77ea55be6d08f093eff2",
+        "online": true,
+        "networkAvailable": false
+      }
+    },
+    {
+      "name": "background offline update failure does not replace save status",
+      "atSeconds": 55.939359074
+    },
+    {
+      "name": "version B seeded engine installs while disconnected",
+      "atSeconds": 57.126511692,
+      "detail": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3412844,
+        "calls": 433256
+      }
+    },
+    {
+      "name": "no uncaught page errors",
+      "atSeconds": 57.12651581000001,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "variants": {
+    "A": {
+      "generation": "c08a542f4308cb77e698d77e",
+      "hashes": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "66a82c51e1e3a878be37e46bd96e645154beb66d98c629c3ab8b47b8b0527118",
+        "storage.js": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+        "manifest.json": "c9367e560025a5914f98d99a4399354263e7b0054f4035024f1b620c6a166048",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "6a9fbc8bb27ddf0c92bc59e8f636acab7a0ea611f6a6a7f5dc312aee4ae11f38",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+      }
+    },
+    "B": {
+      "generation": "3939a68c858fb4fd9ad55e37",
+      "hashes": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "8664b80a0dfb850393b712dd3cf00c145765efa73cdf9a2db04e8ec380939eba",
+        "storage.js": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+        "manifest.json": "c9cfb3f732296e8d7bbd9cb48c49eeceec124fa787c98bef9b83cdbadb3711d0",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "f88c3d92548c6e01d049f12b0886cc36b7388c4a229d77ea55be6d08f093eff2",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+      }
+    }
+  },
+  "savedBefore": {
+    "savedAt": 1788643659425,
+    "version": "m68-1a543a-snapshot39",
+    "size": 248819682,
+    "storedBytes": 103630706,
+    "hash": "11bc2a95bc997d6caeae57f8a32c72262754dca0e22465eb5500b45455dd10e0"
+  },
+  "waitingBundle": {
+    "shell": "A",
+    "manifest": "A",
+    "wasm": "6a9fbc8bb27ddf0c92bc59e8f636acab7a0ea611f6a6a7f5dc312aee4ae11f38"
+  },
+  "activatedBundle": {
+    "shell": "B",
+    "manifest": "B",
+    "wasm": "f88c3d92548c6e01d049f12b0886cc36b7388c4a229d77ea55be6d08f093eff2"
+  },
+  "savedAfter": {
+    "savedAt": 1788643659425,
+    "version": "m68-1a543a-snapshot39",
+    "size": 248819682,
+    "storedBytes": 103630706,
+    "hash": "11bc2a95bc997d6caeae57f8a32c72262754dca0e22465eb5500b45455dd10e0"
+  },
+  "activatedEngine": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 511,
+    "bytes": 12341313,
+    "retired": 3789634,
+    "calls": 479622
+  },
+  "disconnected": {
+    "shell": "B",
+    "manifest": "B",
+    "wasm": "f88c3d92548c6e01d049f12b0886cc36b7388c4a229d77ea55be6d08f093eff2",
+    "online": true,
+    "networkAvailable": false
+  },
+  "disconnectedEngine": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 511,
+    "bytes": 12341313,
+    "retired": 3412844,
+    "calls": 433256
+  },
+  "result": "pass"
+}

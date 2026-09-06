@@ -1,0 +1,256 @@
+{
+  "passed": true,
+  "scope": "Static original instruction/literal proof only; no model or guest execution",
+  "kernel": "web/firmware/kernel_1A543a.macho",
+  "kernelSha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+  "checkedInstructions": 39,
+  "instructions": [
+    {
+      "address": "0xc038a848",
+      "bytes": "0ab08be0",
+      "mnemonic": "add",
+      "operands": "fp, fp, sl"
+    },
+    {
+      "address": "0xc038a854",
+      "bytes": "2010a0e3",
+      "mnemonic": "mov",
+      "operands": "r1, #0x20"
+    },
+    {
+      "address": "0xc038a860",
+      "bytes": "014084e2",
+      "mnemonic": "add",
+      "operands": "r4, r4, #1"
+    },
+    {
+      "address": "0xc038a86c",
+      "bytes": "fa0f54e3",
+      "mnemonic": "cmp",
+      "operands": "r4, #0x3e8"
+    },
+    {
+      "address": "0xc038a870",
+      "bytes": "1d00000a",
+      "mnemonic": "beq",
+      "operands": "#0xc038a8ec"
+    },
+    {
+      "address": "0xc038a878",
+      "bytes": "080013e3",
+      "mnemonic": "tst",
+      "operands": "r3, #8"
+    },
+    {
+      "address": "0xc038a87c",
+      "bytes": "f3ffff0a",
+      "mnemonic": "beq",
+      "operands": "#0xc038a850"
+    },
+    {
+      "address": "0xc038a880",
+      "bytes": "010013e3",
+      "mnemonic": "tst",
+      "operands": "r3, #1"
+    },
+    {
+      "address": "0xc038a884",
+      "bytes": "f1ffff0a",
+      "mnemonic": "beq",
+      "operands": "#0xc038a850"
+    },
+    {
+      "address": "0xc038a88c",
+      "bytes": "1010a0e3",
+      "mnemonic": "mov",
+      "operands": "r1, #0x10"
+    },
+    {
+      "address": "0xc038a8a8",
+      "bytes": "1110a0e3",
+      "mnemonic": "mov",
+      "operands": "r1, #0x11"
+    },
+    {
+      "address": "0xc038a8c4",
+      "bytes": "02a48ae1",
+      "mnemonic": "orr",
+      "operands": "sl, sl, r2, lsl #8"
+    },
+    {
+      "address": "0xc038a8e0",
+      "bytes": "01001ae3",
+      "mnemonic": "tst",
+      "operands": "sl, #1"
+    },
+    {
+      "address": "0xc038a8e4",
+      "bytes": "b5ffff0a",
+      "mnemonic": "beq",
+      "operands": "#0xc038a7c0"
+    },
+    {
+      "address": "0xc038a7c4",
+      "bytes": "01204ae2",
+      "mnemonic": "sub",
+      "operands": "r2, sl, #1"
+    },
+    {
+      "address": "0xc038a7c8",
+      "bytes": "03005be1",
+      "mnemonic": "cmp",
+      "operands": "fp, r3"
+    },
+    {
+      "address": "0xc038a7cc",
+      "bytes": "020b5293",
+      "mnemonic": "cmpls",
+      "operands": "r2, #0x800"
+    },
+    {
+      "address": "0xc038a7d0",
+      "bytes": "6400002a",
+      "mnemonic": "bhs",
+      "operands": "#0xc038a968"
+    },
+    {
+      "address": "0xc038a968",
+      "bytes": "0100a0e3",
+      "mnemonic": "mov",
+      "operands": "r0, #1"
+    },
+    {
+      "address": "0xc038aaa4",
+      "bytes": "004050e2",
+      "mnemonic": "subs",
+      "operands": "r4, r0, #0"
+    },
+    {
+      "address": "0xc038aab4",
+      "bytes": "bed5ffeb",
+      "mnemonic": "bl",
+      "operands": "#0xc03801b4"
+    },
+    {
+      "address": "0xc03801c4",
+      "bytes": "6440a0e3",
+      "mnemonic": "mov",
+      "operands": "r4, #0x64"
+    },
+    {
+      "address": "0xc03801d0",
+      "bytes": "3410a0e3",
+      "mnemonic": "mov",
+      "operands": "r1, #0x34"
+    },
+    {
+      "address": "0xc03801d4",
+      "bytes": "d8ffffeb",
+      "mnemonic": "bl",
+      "operands": "#0xc038013c"
+    },
+    {
+      "address": "0xc03801d8",
+      "bytes": "b030dde1",
+      "mnemonic": "ldrh",
+      "operands": "r3, [sp]"
+    },
+    {
+      "address": "0xc03801dc",
+      "bytes": "48209fe5",
+      "mnemonic": "ldr",
+      "operands": "r2, [pc, #0x48]"
+    },
+    {
+      "address": "0xc03801e0",
+      "bytes": "020053e1",
+      "mnemonic": "cmp",
+      "operands": "r3, r2"
+    },
+    {
+      "address": "0xc03801e4",
+      "bytes": "0700000a",
+      "mnemonic": "beq",
+      "operands": "#0xc0380208"
+    },
+    {
+      "address": "0xc03801e8",
+      "bytes": "0100a0e3",
+      "mnemonic": "mov",
+      "operands": "r0, #1"
+    },
+    {
+      "address": "0xc03801f0",
+      "bytes": "33ff2fe1",
+      "mnemonic": "blx",
+      "operands": "r3"
+    },
+    {
+      "address": "0xc038020c",
+      "bytes": "0610a0e3",
+      "mnemonic": "mov",
+      "operands": "r1, #6"
+    },
+    {
+      "address": "0xc0380220",
+      "bytes": "0100a0e3",
+      "mnemonic": "mov",
+      "operands": "r0, #1"
+    },
+    {
+      "address": "0xc0380168",
+      "bytes": "000050e3",
+      "mnemonic": "cmp",
+      "operands": "r0, #0"
+    },
+    {
+      "address": "0xc038016c",
+      "bytes": "0d00000a",
+      "mnemonic": "beq",
+      "operands": "#0xc03801a8"
+    },
+    {
+      "address": "0xc0380174",
+      "bytes": "011085e2",
+      "mnemonic": "add",
+      "operands": "r1, r5, #1"
+    },
+    {
+      "address": "0xc0380188",
+      "bytes": "000050e3",
+      "mnemonic": "cmp",
+      "operands": "r0, #0"
+    },
+    {
+      "address": "0xc038018c",
+      "bytes": "0500000a",
+      "mnemonic": "beq",
+      "operands": "#0xc03801a8"
+    },
+    {
+      "address": "0xc038019c",
+      "bytes": "023483e1",
+      "mnemonic": "orr",
+      "operands": "r3, r3, r2, lsl #8"
+    },
+    {
+      "address": "0xc03801a0",
+      "bytes": "b030c6e1",
+      "mnemonic": "strh",
+      "operands": "r3, [r6]"
+    }
+  ],
+  "literals": {
+    "mainLastSourceOffset": {
+      "address": "0xc038a984",
+      "value": 122607,
+      "bytes": "efde0100"
+    },
+    "firmwareMarker": {
+      "address": "0xc038022c",
+      "value": 65244,
+      "bytes": "dcfe0000"
+    }
+  },
+  "zeroRequestHazard": "A zero requested length underflows size-1 to UINT32_MAX, so the actual loader success exit alone does not prove whole source was sent. Device admission must independently require exact complete image/coverage and valid final command4."
+}

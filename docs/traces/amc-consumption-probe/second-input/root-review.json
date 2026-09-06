@@ -1,0 +1,10 @@
+{
+  "scope": "Independent root byte comparison; no second transfer admission or PCM consumption claim",
+  "bytes": 16384,
+  "sha256": "7205c99a864329de5e1f14308d6aed889f7617535d6385220ce1d5c939c871ae",
+  "offset": 67624,
+  "unique": true,
+  "firstOffset": 51240,
+  "contiguous": true,
+  "allFinalArtifactsEqual": true
+}

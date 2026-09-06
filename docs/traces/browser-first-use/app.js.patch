@@ -1,0 +1,11 @@
+--- web/app.js
++++ diagnostic/app.js
+@@ -346,7 +346,7 @@
+     await start(previous);
+   } catch (error) { fail(error); }
+ });
+-setInterval(() => save(false), 30000);
++/* Diagnostic only: automatic saves suppressed identically for all stages. */
+ document.addEventListener('visibilitychange', () => {
+   if (!ready) return;
+   releaseInputs().catch(() => {});

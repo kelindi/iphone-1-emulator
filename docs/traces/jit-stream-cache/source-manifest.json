@@ -1,0 +1,74 @@
+[
+  {
+    "path": "third_party/blink/renderer/bindings/core/v8/v8_wasm_response_extensions.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/bindings/core/v8/v8_wasm_response_extensions.cc?format=TEXT",
+    "sha256": "20dd416e0eec776981b655f0c03ca42734aab029675d5c5247cc4e59c0bb19ca",
+    "bytes": 26635
+  },
+  {
+    "path": "third_party/blink/renderer/core/fetch/response.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/core/fetch/response.cc?format=TEXT",
+    "sha256": "2bdf40171dc923c683d9564ba46b3f8f4454229bfcf0acdd57d884044c80a02e",
+    "bytes": 23938
+  },
+  {
+    "path": "third_party/blink/renderer/core/fetch/fetch_response_data.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/core/fetch/fetch_response_data.cc?format=TEXT",
+    "sha256": "002af606ebd8dc1a926ad9b1e9ab48e1c9418cfa0f899fcdc98b580f08b5bd00",
+    "bytes": 16865
+  },
+  {
+    "path": "third_party/blink/renderer/core/fetch/body_stream_buffer.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/core/fetch/body_stream_buffer.cc?format=TEXT",
+    "sha256": "e72f2c9f570f8937ee1847afb1c1d6f16d0de459ac2a256f2db67c00a2dfd34a",
+    "bytes": 23044
+  },
+  {
+    "path": "DEPS",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/DEPS?format=TEXT",
+    "sha256": "146eb39a6e0681253701042551b4d5770799c1f37540aa0f861807197dd75fa9",
+    "bytes": 194497
+  },
+  {
+    "path": "third_party/blink/renderer/core/fetch/fetch_manager.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/core/fetch/fetch_manager.cc?format=TEXT",
+    "sha256": "fafea2865c445f3038f22f31842d14342b20bccf33403ae7fbb3483e47de5221",
+    "bytes": 78785
+  },
+  {
+    "path": "third_party/blink/renderer/platform/loader/fetch/url_loader/cached_metadata_handler.cc",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/platform/loader/fetch/url_loader/cached_metadata_handler.cc?format=TEXT",
+    "sha256": "e67a391052b5cc98fac992ce279d289c7bc79bd356d600abb0bd17e0b2b70612",
+    "bytes": 7454
+  },
+  {
+    "path": "third_party/blink/renderer/platform/loader/fetch/url_loader/cached_metadata_handler.h",
+    "url": "https://chromium.googlesource.com/chromium/src/+/refs/tags/152.0.7977.82/third_party/blink/renderer/platform/loader/fetch/url_loader/cached_metadata_handler.h?format=TEXT",
+    "sha256": "85ca9e50a22629a6c10a5ce3aec4bb8bbc232596e9ddf3d290b42f7cd50b5b3c",
+    "bytes": 8572
+  },
+  {
+    "path": "v8/src/flags/flag-definitions.h",
+    "url": "https://chromium.googlesource.com/v8/v8/+/4323497a6a73839e6d5260f6acd7ec0212cb3321/src/flags/flag-definitions.h?format=TEXT",
+    "sha256": "e5184bf1277d8e3a07ebb50639a645714fec67a9fb458ecfd9ccf2a8e30a81be",
+    "bytes": 216982
+  },
+  {
+    "path": "v8/src/wasm/streaming-decoder.cc",
+    "url": "https://chromium.googlesource.com/v8/v8/+/4323497a6a73839e6d5260f6acd7ec0212cb3321/src/wasm/streaming-decoder.cc?format=TEXT",
+    "sha256": "0a61b574e7cfa17b38666de4f7a16d2cf8507354d24dfe8b4bedcc755604fa8b",
+    "bytes": 32039
+  },
+  {
+    "path": "v8/src/wasm/wasm-serialization.cc",
+    "url": "https://chromium.googlesource.com/v8/v8/+/4323497a6a73839e6d5260f6acd7ec0212cb3321/src/wasm/wasm-serialization.cc?format=TEXT",
+    "sha256": "c42ca4c37e4313cc944f149a9d193bae4c026a12352c92f3be826e398b403c82",
+    "bytes": 51341
+  },
+  {
+    "path": "v8/src/wasm/module-compiler.cc",
+    "url": "https://chromium.googlesource.com/v8/v8/+/4323497a6a73839e6d5260f6acd7ec0212cb3321/src/wasm/module-compiler.cc?format=TEXT",
+    "sha256": "3c9212832082658ebf1fa81910a190f81810ecf7ceab609d0204c8b20bc2cbb6",
+    "bytes": 176006
+  }
+]

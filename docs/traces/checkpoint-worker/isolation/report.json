@@ -1,0 +1,420 @@
+{
+  "provenance": {
+    "source": "web/storage.js",
+    "sourceSha256": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+    "diagnosticSha256": "65de8228de824731f6f73a85851cfc518cd4e5c11163d3551e3cceb2a129e154",
+    "changes": "Expose unchanged private encoder; append commitEncoded containing verbatim original transaction body after encode. Original writeCheckpoint unchanged.",
+    "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "fixtureBytes": 244887522
+  },
+  "stages": [
+    {
+      "stage": "encode-only",
+      "startUnixMs": 1788652243132,
+      "endUnixMs": 1788652249797,
+      "result": {
+        "wallMs": 6653.599999997765,
+        "encoding": "gzip",
+        "storedBytes": 102885269,
+        "compressionMs": 6653.400000002235
+      },
+      "before": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 0.73
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 1.81
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.73
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.09
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.26
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "after": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 0.95
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 8.52
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.74
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.1
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.28
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "processCpu": [
+        {
+          "type": "browser",
+          "id": 1796479,
+          "cpuTime": 0.95,
+          "cpuMs": 219.99999999999997
+        },
+        {
+          "type": "renderer",
+          "id": 1796571,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 1796573,
+          "cpuTime": 8.52,
+          "cpuMs": 6709.999999999999
+        },
+        {
+          "type": "renderer",
+          "id": 1796562,
+          "cpuTime": 0.74,
+          "cpuMs": 10.000000000000009
+        },
+        {
+          "type": "GPU",
+          "id": 1796514,
+          "cpuTime": 0.1,
+          "cpuMs": 10.000000000000009
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 1796517,
+          "cpuTime": 0.28,
+          "cpuMs": 20.000000000000018
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 1796518,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        }
+      ]
+    },
+    {
+      "stage": "commit-only",
+      "startUnixMs": 1788652249804,
+      "endUnixMs": 1788652250003,
+      "result": {
+        "wallMs": 192.09999999776483,
+        "savedAt": 1788652249811
+      },
+      "before": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 0.95
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 8.52
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.74
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.1
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.28
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "after": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 1.15
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 8.54
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.74
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.1
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.28
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "processCpu": [
+        {
+          "type": "browser",
+          "id": 1796479,
+          "cpuTime": 1.15,
+          "cpuMs": 199.99999999999994
+        },
+        {
+          "type": "renderer",
+          "id": 1796571,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 1796573,
+          "cpuTime": 8.54,
+          "cpuMs": 19.999999999999574
+        },
+        {
+          "type": "renderer",
+          "id": 1796562,
+          "cpuTime": 0.74,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 1796514,
+          "cpuTime": 0.1,
+          "cpuMs": 0
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 1796517,
+          "cpuTime": 0.28,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 1796518,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        }
+      ]
+    },
+    {
+      "stage": "read-decode",
+      "startUnixMs": 1788652250008,
+      "endUnixMs": 1788652251245,
+      "result": {
+        "wallMs": 1229.300000000745,
+        "version": "m68-1a543a-snapshot39",
+        "size": 244887522,
+        "storedSize": 102885269,
+        "savedAt": 1788652249811,
+        "encoding": "gzip",
+        "restoredBytes": 244887522
+      },
+      "before": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 1.15
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 8.54
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.74
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.1
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.28
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "after": {
+        "processInfo": [
+          {
+            "type": "browser",
+            "id": 1796479,
+            "cpuTime": 1.2
+          },
+          {
+            "type": "renderer",
+            "id": 1796571,
+            "cpuTime": 0.01
+          },
+          {
+            "type": "renderer",
+            "id": 1796573,
+            "cpuTime": 9.81
+          },
+          {
+            "type": "renderer",
+            "id": 1796562,
+            "cpuTime": 0.74
+          },
+          {
+            "type": "GPU",
+            "id": 1796514,
+            "cpuTime": 0.1
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 1796517,
+            "cpuTime": 0.28
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "id": 1796518,
+            "cpuTime": 0.01
+          }
+        ]
+      },
+      "processCpu": [
+        {
+          "type": "browser",
+          "id": 1796479,
+          "cpuTime": 1.2,
+          "cpuMs": 50.00000000000004
+        },
+        {
+          "type": "renderer",
+          "id": 1796571,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 1796573,
+          "cpuTime": 9.81,
+          "cpuMs": 1270.0000000000014
+        },
+        {
+          "type": "renderer",
+          "id": 1796562,
+          "cpuTime": 0.74,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 1796514,
+          "cpuTime": 0.1,
+          "cpuMs": 0
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 1796517,
+          "cpuTime": 0.28,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 1796518,
+          "cpuTime": 0.01,
+          "cpuMs": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Standalone immutable actual snapshot encoding versus verbatim IndexedDB commit. No emulator is running; these are stage CPU diagnostics, not app launch timings.",
+  "identity": {
+    "originalAfter": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "restored": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "originalBytes": 244887522
+  },
+  "passed": true
+}

@@ -1,0 +1,18 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+setup = "bash tools/setup.sh"
+run_mode = "concurrent"
+
+[scripts.run.web]
+command = "npm run serve"
+default = true
+icon = "smartphone"
+
+[scripts.run.build]
+command = "bash tools/build-web.sh"
+icon = "hammer"
+
+[scripts.run.test]
+command = "cmake -S . -B build && cmake --build build --parallel 4 && ctest --test-dir build --output-on-failure"
+icon = "test-tube"

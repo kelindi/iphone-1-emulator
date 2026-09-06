@@ -1,0 +1,45 @@
+{
+  "scope": "Quiet ABBA actual Save/Pause/reload; initial capture and first Pause acknowledgement, not total Save timing",
+  "runs": [
+    {
+      "arm": "browser-1-baseline",
+      "passed": true,
+      "checks": 14,
+      "captureMs": 272.6000000014901,
+      "captureChunkMs": 5.100000001490116,
+      "finalizeMs": 529,
+      "firstPauseAcknowledgementMs": 328.3280670000004,
+      "jitRetired": 3069060
+    },
+    {
+      "arm": "browser-2-candidate",
+      "passed": true,
+      "checks": 14,
+      "captureMs": 135.59999999776483,
+      "captureChunkMs": 9.800000000745058,
+      "finalizeMs": 546.9000000022352,
+      "firstPauseAcknowledgementMs": 180.88841500000035,
+      "jitRetired": 2914529
+    },
+    {
+      "arm": "browser-3-candidate",
+      "passed": true,
+      "checks": 14,
+      "captureMs": 142.80000000074506,
+      "captureChunkMs": 10,
+      "finalizeMs": 563.5,
+      "firstPauseAcknowledgementMs": 206.20995500000026,
+      "jitRetired": 2006336
+    },
+    {
+      "arm": "browser-4-baseline",
+      "passed": true,
+      "checks": 14,
+      "captureMs": 224.90000000223517,
+      "captureChunkMs": 1.7999999970197678,
+      "finalizeMs": 508.80000000074506,
+      "firstPauseAcknowledgementMs": 250.20747800000026,
+      "jitRetired": 3450890
+    }
+  ]
+}

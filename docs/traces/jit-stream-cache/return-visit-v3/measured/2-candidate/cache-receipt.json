@@ -1,0 +1,133 @@
+{
+  "accepted": true,
+  "analysis": {
+    "session": "startup",
+    "eventCounts": {
+      "v8.wasm.compileConsume": 9,
+      "v8.wasm.moduleCacheHit": 1,
+      "v8.wasm.compileConsumeDone": 2,
+      "v8.wasm.compileDigestForConsume": 1,
+      "wasm.Deserialize": 1,
+      "wasm.FinishAsyncCompile": 2,
+      "wasm.OnCompilationSucceeded": 2
+    },
+    "consumption": [
+      {
+        "scope": {
+          "args": {},
+          "cat": "disabled-by-default-devtools.timeline",
+          "dur": 81933,
+          "name": "v8.wasm.compileConsume",
+          "ph": "X",
+          "pid": 3394878,
+          "tdur": 62616,
+          "tid": 3394936,
+          "ts": 40851157077,
+          "tts": 134008,
+          "beginIndex": 4929
+        },
+        "hits": [
+          {
+            "args": {
+              "consumedCacheSize": 21104920,
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.moduleCacheHit",
+            "ph": "I",
+            "pid": 3394878,
+            "s": "t",
+            "tid": 3394936,
+            "ts": 40851157086,
+            "tts": 134017,
+            "eventIndex": 4930
+          }
+        ],
+        "url": "http://127.0.0.1:8192/jit/seed.wasm",
+        "digestScopes": 1,
+        "deserialization": [
+          {
+            "scope": {
+              "args": {},
+              "cat": "v8.wasm",
+              "dur": 27768,
+              "name": "wasm.Deserialize",
+              "ph": "X",
+              "pid": 3394878,
+              "tdur": 8476,
+              "tid": 3394936,
+              "ts": 40851211234,
+              "tts": 188142,
+              "beginIndex": 4957
+            },
+            "finish": 1,
+            "succeeded": 1,
+            "passed": true
+          }
+        ],
+        "invalid": [],
+        "accepted": true
+      }
+    ],
+    "seedAccepted": [
+      {
+        "scope": {
+          "args": {},
+          "cat": "disabled-by-default-devtools.timeline",
+          "dur": 81933,
+          "name": "v8.wasm.compileConsume",
+          "ph": "X",
+          "pid": 3394878,
+          "tdur": 62616,
+          "tid": 3394936,
+          "ts": 40851157077,
+          "tts": 134008,
+          "beginIndex": 4929
+        },
+        "hits": [
+          {
+            "args": {
+              "consumedCacheSize": 21104920,
+              "url": "http://127.0.0.1:8192/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.moduleCacheHit",
+            "ph": "I",
+            "pid": 3394878,
+            "s": "t",
+            "tid": 3394936,
+            "ts": 40851157086,
+            "tts": 134017,
+            "eventIndex": 4930
+          }
+        ],
+        "url": "http://127.0.0.1:8192/jit/seed.wasm",
+        "digestScopes": 1,
+        "deserialization": [
+          {
+            "scope": {
+              "args": {},
+              "cat": "v8.wasm",
+              "dur": 27768,
+              "name": "wasm.Deserialize",
+              "ph": "X",
+              "pid": 3394878,
+              "tdur": 8476,
+              "tid": 3394936,
+              "ts": 40851211234,
+              "tts": 188142,
+              "beginIndex": 4957
+            },
+            "finish": 1,
+            "succeeded": 1,
+            "passed": true
+          }
+        ],
+        "invalid": [],
+        "accepted": true
+      }
+    ],
+    "unmatchedRelevantScopes": [],
+    "method": "Only a unique URL hit within the same complete compileConsume scope as digest and Deserialize containing FinishAsyncCompile/OnCompilationSucceeded can pass. Split callbacks remain unbound."
+  }
+}

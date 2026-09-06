@@ -1,0 +1,14 @@
+normal fresh073 start pc=c0379684 cycles=17517070017 ticks=256764208 mode=positive runtimeAdmitted=1; ARM SVC required; semantic model only, no firmware CPU
+completed R5 read cycles=17517137155 ticks=256765186 pc=c0431594 reg=20 value=1009 success=1
+completed R5 read cycles=17517179045 ticks=256765796 pc=c0431594 reg=10 value=1000 success=1
+completed R5 read cycles=17517220929 ticks=256766406 pc=c0431594 reg=11 value=1000 success=1
+original loader success boundary pc=c038a968 sourceCursor=122608 nextRequested=0 exact=1
+original loader returned pc=c038aaa4 r0=1
+original verification entered pc=c03801b4
+completed R5 read cycles=17517263365 ticks=256767024 pc=c0431594 reg=34 value=10dc success=1
+completed R5 read cycles=17517305259 ticks=256767634 pc=c0431594 reg=35 value=10fe success=1
+exact077 prefix pc=c0380208 cycles=17517305736 transactions=22919 instructions=235719
+completed R5 read cycles=17517347210 ticks=256768245 pc=c0431594 reg=06 value=1100 success=0
+original register6 wrapper return at c0380220 r0=00000001 cycles=17517347673 (recorded, not assumed false)
+original host block-size setter committed pc=c037a1c8 object=cbabe340 blockSize=320 cycles=17519479702
+normal outside-run stop pc=c0380804 r0=3418919872 r4=20 cycles=17519480204 ticks=256799308 instructions=2410187 passed=0 request-only; register6 R5 error retained; no runtime response/DMA or firmwareCPU

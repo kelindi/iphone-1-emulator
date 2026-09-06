@@ -1,0 +1,304 @@
+{
+  "startedAt": "2026-09-06T00:07:17.623Z",
+  "sourceRoot": "/home/vercel-sandbox/iphone-1/.context/save-worker/site",
+  "oldShellRoot": "/home/vercel-sandbox/iphone-1/web",
+  "oldHashes": {
+    "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+    "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+    "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+    "app.js": "49eeeb6e03fe1a954e35c3e6d032105f8c9da43d46923d1236b31b804e547804",
+    "storage.js": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+    "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+    "emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+    "manifest.json": "7cd45549d310f17808c261f0ed97a05b164bc5df6f4eecab66bafccdd5058fcc",
+    "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+    "dist/emu.wasm": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+    "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+    "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+    "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+  },
+  "checks": [
+    {
+      "name": "new visitor is not automatically registered for offline use",
+      "atSeconds": 4.764015698000001
+    },
+    {
+      "name": "version A controls a genuine running guest",
+      "atSeconds": 12.033609032
+    },
+    {
+      "name": "real guest checkpoint is durably stored before upgrade",
+      "atSeconds": 33.033916736
+    },
+    {
+      "name": "old shell saves without the new worker dependency",
+      "atSeconds": 33.049477378
+    },
+    {
+      "name": "startup detects waiting update without another Keep offline click",
+      "atSeconds": 36.213295527999996
+    },
+    {
+      "name": "waiting update preserves matching old shell, manifest and WASM",
+      "atSeconds": 36.311778075999996
+    },
+    {
+      "name": "waiting update leaves saved checkpoint unchanged",
+      "atSeconds": 36.88812303099999
+    },
+    {
+      "name": "notice asks to Save and close every phone tab",
+      "atSeconds": 37.228957577
+    },
+    {
+      "name": "another phone tab cannot own the saved profile",
+      "atSeconds": 40.339947830999996
+    },
+    {
+      "name": "remaining phone tab retains version A while B waits",
+      "atSeconds": 40.559836383
+    },
+    {
+      "name": "closing all tabs and reopening activates matching version B",
+      "atSeconds": 45.69163138
+    },
+    {
+      "name": "upgrade retains identical checkpoint bytes and metadata",
+      "atSeconds": 46.235687588
+    },
+    {
+      "name": "new bundle restores genuine saved guest and profile ownership",
+      "atSeconds": 46.23868120699999
+    },
+    {
+      "name": "version B installs the matching seeded engine",
+      "atSeconds": 47.356803796,
+      "detail": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3922479,
+        "calls": 500612
+      }
+    },
+    {
+      "name": "waiting notice clears after normal activation",
+      "atSeconds": 47.358896986
+    },
+    {
+      "name": "new bundle and saved guest reopen while disconnected",
+      "atSeconds": 50.671703605,
+      "detail": {
+        "shell": "B",
+        "manifest": "B",
+        "wasm": "653ff8767406a08f563ea30fa9d2d4843dab643804c720f6bf1d652994880b62",
+        "online": true,
+        "networkAvailable": false
+      }
+    },
+    {
+      "name": "background offline update failure does not replace save status",
+      "atSeconds": 50.678315481
+    },
+    {
+      "name": "version B seeded engine installs while disconnected",
+      "atSeconds": 51.873632805999996,
+      "detail": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 3975978,
+        "calls": 511852
+      }
+    },
+    {
+      "name": "introduced compression worker is cached with the new bundle hash",
+      "atSeconds": 51.887018221
+    },
+    {
+      "name": "offline Save transfers its actual capture to the introduced worker",
+      "atSeconds": 59.955865885,
+      "detail": [
+        {
+          "type": "created",
+          "url": "http://localhost:8164/checkpoint-worker.js"
+        },
+        {
+          "type": "ready"
+        },
+        {
+          "type": "transferred",
+          "size": 248983522,
+          "remaining": 0
+        },
+        {
+          "type": "encoded",
+          "rawSize": 248983522,
+          "encoding": "gzip",
+          "storedSize": 103586852
+        }
+      ]
+    },
+    {
+      "name": "offline worker returns the real encoded capture",
+      "atSeconds": 59.955871602
+    },
+    {
+      "name": "offline Save commits matching worker size and a new timestamp",
+      "atSeconds": 60.426322925
+    },
+    {
+      "name": "new worker Save survives another disconnected reload",
+      "atSeconds": 64.006954239
+    },
+    {
+      "name": "no uncaught page errors",
+      "atSeconds": 64.307742386,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "variants": {
+    "A": {
+      "generation": "f171191e1a02582ae9ae0399",
+      "hashes": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "66a82c51e1e3a878be37e46bd96e645154beb66d98c629c3ab8b47b8b0527118",
+        "storage.js": "1a8b05e60445f54cebf06142be71ce2df588297330b12697f868b8b15ef76f24",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+        "manifest.json": "018a0fe06cc3e22e9c498f77f6d9a494b31b5cc1246532048fff1992e410bc50",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "c9c5857d0862d57e7077028f26d204e0fe98207a4d9215d9e98294b0f6dc5abf",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+      }
+    },
+    "B": {
+      "generation": "421dde96ab35cef33a2a71ae",
+      "hashes": {
+        "index.html": "230ef7d151d8f0eba3cd81870c9b6ecd6e0e6051b498df6fa8d7176d23d63608",
+        "phone.css": "a10b70ceace9b945c37bc4d69cbedd27ffe24687d0fb60cd72c8ecac9846838e",
+        "icon.svg": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+        "app.js": "b83409b973698c055396b247208962596e0b27d845965412a6cf10cbf897186f",
+        "storage.js": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+        "assets.js": "dc9207bba2fdd5749790ac913df8eab79544af52a4b4fde975e494cb1935a952",
+        "checkpoint-worker.js": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+        "emu-worker.js": "931332f99b31bdd4652a5c2afe0b30e6f25ee72790e648be3b3738adc3a41ba3",
+        "manifest.json": "c9cfb3f732296e8d7bbd9cb48c49eeceec124fa787c98bef9b83cdbadb3711d0",
+        "dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+        "dist/emu.wasm": "653ff8767406a08f563ea30fa9d2d4843dab643804c720f6bf1d652994880b62",
+        "seed-jit.js": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+        "jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+        "jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+        "jit/abi.json": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+      }
+    }
+  },
+  "savedBefore": {
+    "savedAt": 1788653269948,
+    "version": "m68-1a543a-snapshot39",
+    "size": 248983522,
+    "storedBytes": 103586987,
+    "hash": "74d615a2e917d98c3f03182a6663fd6e679554a66b5d35466123ecbd23558c16",
+    "metadata": {
+      "version": "m68-1a543a-snapshot39",
+      "savedAt": 1788653269948,
+      "size": 248983522,
+      "storedSize": 103586987,
+      "encoding": "gzip",
+      "compressionMs": 6874.300000000745
+    }
+  },
+  "waitingBundle": {
+    "shell": "A",
+    "manifest": "A",
+    "wasm": "c9c5857d0862d57e7077028f26d204e0fe98207a4d9215d9e98294b0f6dc5abf"
+  },
+  "activatedBundle": {
+    "shell": "B",
+    "manifest": "B",
+    "wasm": "653ff8767406a08f563ea30fa9d2d4843dab643804c720f6bf1d652994880b62"
+  },
+  "savedAfter": {
+    "savedAt": 1788653269948,
+    "version": "m68-1a543a-snapshot39",
+    "size": 248983522,
+    "storedBytes": 103586987,
+    "hash": "74d615a2e917d98c3f03182a6663fd6e679554a66b5d35466123ecbd23558c16",
+    "metadata": {
+      "version": "m68-1a543a-snapshot39",
+      "savedAt": 1788653269948,
+      "size": 248983522,
+      "storedSize": 103586987,
+      "encoding": "gzip",
+      "compressionMs": 6874.300000000745
+    }
+  },
+  "activatedEngine": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 511,
+    "bytes": 12341313,
+    "retired": 3922479,
+    "calls": 500612
+  },
+  "disconnected": {
+    "shell": "B",
+    "manifest": "B",
+    "wasm": "653ff8767406a08f563ea30fa9d2d4843dab643804c720f6bf1d652994880b62",
+    "online": true,
+    "networkAvailable": false
+  },
+  "disconnectedEngine": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 511,
+    "bytes": 12341313,
+    "retired": 3975978,
+    "calls": 511852
+  },
+  "offlineWorker": [
+    {
+      "type": "created",
+      "url": "http://localhost:8164/checkpoint-worker.js"
+    },
+    {
+      "type": "ready"
+    },
+    {
+      "type": "transferred",
+      "size": 248983522,
+      "remaining": 0
+    },
+    {
+      "type": "encoded",
+      "rawSize": 248983522,
+      "encoding": "gzip",
+      "storedSize": 103586852
+    }
+  ],
+  "offlineSaved": {
+    "savedAt": 1788653297047,
+    "version": "m68-1a543a-snapshot39",
+    "size": 248983522,
+    "storedBytes": 103586852,
+    "hash": "bfcc1275def57a984bec608ac3b80b4b6c8c888da8cada001ab1e63c965883ee",
+    "metadata": {
+      "version": "m68-1a543a-snapshot39",
+      "savedAt": 1788653297047,
+      "size": 248983522,
+      "storedSize": 103586852,
+      "encoding": "gzip",
+      "compressionMs": 6727.099999997765
+    }
+  },
+  "result": "pass"
+}

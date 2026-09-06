@@ -1,0 +1,128 @@
+{
+  "scope": "Boundary observations plus coordinated holds, not continuous system-idle proof. Five Conductor-owned git processes seen at first three arm setups and one after all browsers closed; exact exits unavailable. No unscoped browser/encoder/compiler captured at retained boundaries. ps percentages lifetime only. No new benchmark replay.",
+  "boundaryUnscopedHeavyObserved": false,
+  "rows": [
+    {
+      "path": "system-boundaries/before-series.json",
+      "utc": "2026-09-06T05:03:38.813818+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    },
+    {
+      "path": "system-boundaries/completed-1-original.json",
+      "utc": "2026-09-06T05:05:38.999387+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    },
+    {
+      "path": "system-boundaries/completed-2-candidate.json",
+      "utc": "2026-09-06T05:07:36.328472+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    },
+    {
+      "path": "system-boundaries/completed-3-candidate.json",
+      "utc": "2026-09-06T05:09:31.815729+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    },
+    {
+      "path": "system-boundaries/completed-4-original.json",
+      "utc": "2026-09-06T05:11:32.496408+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    },
+    {
+      "path": "system-boundaries/series-end.json",
+      "utc": "2026-09-06T05:11:35.523762+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": [
+        {
+          "pid": 3433518,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 72,
+          "stimeTicks": 12,
+          "startTicks": 4119822
+        }
+      ]
+    },
+    {
+      "path": "system-boundaries/start-1-original.json",
+      "utc": "2026-09-06T05:03:43.829150+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": [
+        {
+          "pid": 3380757,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 59,
+          "stimeTicks": 10,
+          "startTicks": 4072671
+        },
+        {
+          "pid": 3380794,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 28,
+          "stimeTicks": 4,
+          "startTicks": 4072706
+        }
+      ]
+    },
+    {
+      "path": "system-boundaries/start-2-candidate.json",
+      "utc": "2026-09-06T05:05:43.016383+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": [
+        {
+          "pid": 3394220,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 87,
+          "stimeTicks": 10,
+          "startTicks": 4084559
+        }
+      ]
+    },
+    {
+      "path": "system-boundaries/start-3-candidate.json",
+      "utc": "2026-09-06T05:07:39.346811+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": [
+        {
+          "pid": 3408025,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 34,
+          "stimeTicks": 5,
+          "startTicks": 4096253
+        },
+        {
+          "pid": 3408062,
+          "ppid": 100,
+          "name": "git",
+          "utimeTicks": 9,
+          "stimeTicks": 1,
+          "startTicks": 4096279
+        }
+      ]
+    },
+    {
+      "path": "system-boundaries/start-4-original.json",
+      "utc": "2026-09-06T05:09:35.841527+00:00",
+      "unscopedBrowserEncoder": [],
+      "buildProcesses": [],
+      "gitProcesses": []
+    }
+  ]
+}

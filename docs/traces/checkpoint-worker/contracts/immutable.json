@@ -1,0 +1,14 @@
+{
+  "result": {
+    "before": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "after": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "rawSize": 244887522,
+    "callerBytesAfter": 0,
+    "saveMs": 6926.400000002235,
+    "encoding": "gzip",
+    "storedSize": 102885269,
+    "compressionMs": 6719.300000000745,
+    "version": "m68-1a543a-snapshot39"
+  },
+  "passed": true
+}

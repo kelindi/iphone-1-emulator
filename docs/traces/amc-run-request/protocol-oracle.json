@@ -1,0 +1,127 @@
+{
+  "pass": true,
+  "scope": "Exact original-code-derived MMIO prefix and preserved SRAM; request observed but not accepted",
+  "acceptedPostUploadWrites": 19,
+  "unacceptedCommandAddress": "0x38500000",
+  "unacceptedCommandValue": 1,
+  "stopPC": "0xc0277fa0",
+  "markerToRunRetiredInstructions": 159,
+  "taskObject": "0xcc999ee4",
+  "taskVtable": "0xc029c844",
+  "taskMethod": "0xc02782fc",
+  "taskArgument": 0,
+  "rawCodecParameterWords": [
+    2,
+    2,
+    48000,
+    128000,
+    0,
+    0,
+    0
+  ],
+  "unprovenFieldLabels": "Only codec type2 is independently named; other parameter words remain raw",
+  "negativeControls": [
+    "missing acknowledgement",
+    "duplicate acknowledgement",
+    "early run",
+    "wrong zero order",
+    "wrong original task constant"
+  ],
+  "expectedWrites": [
+    {
+      "offset": "0x101c",
+      "value": "0x1",
+      "pc": "0xc027814c"
+    },
+    {
+      "offset": "0x100c",
+      "value": "0x0",
+      "pc": "0xc027815c"
+    },
+    {
+      "offset": "0x1000",
+      "value": "0x0",
+      "pc": "0xc0278168"
+    },
+    {
+      "offset": "0x1004",
+      "value": "0x0",
+      "pc": "0xc0278174"
+    },
+    {
+      "offset": "0x1008",
+      "value": "0x0",
+      "pc": "0xc0278180"
+    },
+    {
+      "offset": "0xa00",
+      "value": "0x0",
+      "pc": "0xc0278188"
+    },
+    {
+      "offset": "0x300",
+      "value": "0x0",
+      "pc": "0xc0278320"
+    },
+    {
+      "offset": "0x310",
+      "value": "0x0",
+      "pc": "0xc0278330"
+    },
+    {
+      "offset": "0x304",
+      "value": "0x0",
+      "pc": "0xc0278320"
+    },
+    {
+      "offset": "0x314",
+      "value": "0x0",
+      "pc": "0xc0278330"
+    },
+    {
+      "offset": "0x308",
+      "value": "0x0",
+      "pc": "0xc0278320"
+    },
+    {
+      "offset": "0x318",
+      "value": "0x0",
+      "pc": "0xc0278330"
+    },
+    {
+      "offset": "0x30c",
+      "value": "0x0",
+      "pc": "0xc0278320"
+    },
+    {
+      "offset": "0x31c",
+      "value": "0x0",
+      "pc": "0xc0278330"
+    },
+    {
+      "offset": "0x320",
+      "value": "0x0",
+      "pc": "0xc027834c"
+    },
+    {
+      "offset": "0x324",
+      "value": "0x0",
+      "pc": "0xc027834c"
+    },
+    {
+      "offset": "0x300",
+      "value": "0x7000001",
+      "pc": "0xc0278398"
+    },
+    {
+      "offset": "0x304",
+      "value": "0x3f081603",
+      "pc": "0xc02783a4"
+    },
+    {
+      "offset": "0xd0c",
+      "value": "0x40",
+      "pc": "0xc02783b4"
+    }
+  ]
+}

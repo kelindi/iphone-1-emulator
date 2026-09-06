@@ -1,0 +1,9 @@
+{"module":"file:///home/vercel-sandbox/iphone-1/.context/jit-register-layout/runtime/emu.js","seedDirectory":"/home/vercel-sandbox/iphone-1/.context/jit-register-layout/seed"}
+file:///home/vercel-sandbox/iphone-1/.context/jit-register-layout/replay.mjs:11
+const m=await createEmu({locateFile:p=>fileURLToPath(new URL(p,process.env.REPLAY_MODULE))});
+              ^
+
+TypeError: createEmu is not a function
+    at file:///home/vercel-sandbox/iphone-1/.context/jit-register-layout/replay.mjs:11:15
+
+Node.js v24.14.1

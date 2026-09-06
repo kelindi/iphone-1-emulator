@@ -1,0 +1,125 @@
+{
+  "label": "candidate",
+  "startedAt": "2026-09-06T00:32:06.902Z",
+  "node": "v24.14.1",
+  "fixtureSha": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "runtimeSha": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+  "scope": "Synchronous snapshot_capture_begin only on a fixed paused phone; initialization, restore, finalization and compression excluded. First three observations retained as warmup.",
+  "observations": [
+    {
+      "index": 0,
+      "warmup": true,
+      "captureMs": 96.98187099999996
+    },
+    {
+      "index": 1,
+      "warmup": true,
+      "captureMs": 97.6189629999999
+    },
+    {
+      "index": 2,
+      "warmup": true,
+      "captureMs": 96.7898009999999
+    },
+    {
+      "index": 3,
+      "warmup": false,
+      "captureMs": 97.53200900000002
+    },
+    {
+      "index": 4,
+      "warmup": false,
+      "captureMs": 96.78481199999987
+    },
+    {
+      "index": 5,
+      "warmup": false,
+      "captureMs": 97.33555000000024
+    },
+    {
+      "index": 6,
+      "warmup": false,
+      "captureMs": 97.19269899999972
+    },
+    {
+      "index": 7,
+      "warmup": false,
+      "captureMs": 96.71372400000018
+    },
+    {
+      "index": 8,
+      "warmup": false,
+      "captureMs": 96.91531399999985
+    },
+    {
+      "index": 9,
+      "warmup": false,
+      "captureMs": 96.82591899999989
+    },
+    {
+      "index": 10,
+      "warmup": false,
+      "captureMs": 96.78559499999983
+    },
+    {
+      "index": 11,
+      "warmup": false,
+      "captureMs": 96.47450400000025
+    },
+    {
+      "index": 12,
+      "warmup": false,
+      "captureMs": 97.36844999999994
+    },
+    {
+      "index": 13,
+      "warmup": false,
+      "captureMs": 96.73102300000028
+    },
+    {
+      "index": 14,
+      "warmup": false,
+      "captureMs": 96.35299200000009
+    },
+    {
+      "index": 15,
+      "warmup": false,
+      "captureMs": 97.2240869999996
+    },
+    {
+      "index": 16,
+      "warmup": false,
+      "captureMs": 96.33392700000013
+    },
+    {
+      "index": 17,
+      "warmup": false,
+      "captureMs": 97.00838599999997
+    },
+    {
+      "index": 18,
+      "warmup": false,
+      "captureMs": 96.4021429999998
+    },
+    {
+      "index": 19,
+      "warmup": false,
+      "captureMs": 96.51183399999991
+    },
+    {
+      "index": 20,
+      "warmup": false,
+      "captureMs": 97.07579299999998
+    },
+    {
+      "index": 21,
+      "warmup": false,
+      "captureMs": 96.30721100000028
+    },
+    {
+      "index": 22,
+      "warmup": false,
+      "captureMs": 95.9789609999998
+    }
+  ]
+}

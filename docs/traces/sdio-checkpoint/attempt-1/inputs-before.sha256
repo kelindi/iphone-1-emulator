@@ -1,0 +1,4 @@
+42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9  web/firmware/kernel_1A543a.macho
+94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10  web/firmware/devicetree_m68ap.bin
+0b544d47fb67603167099e658d50e3c284c28233d489263b269682c4f9ac53b0  .context/organizer-debug/rootfs-compact168-checked.img
+0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2  .context/build-native/core/libemucore.a

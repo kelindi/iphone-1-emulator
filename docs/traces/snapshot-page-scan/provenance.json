@@ -1,0 +1,5 @@
+{
+  "scope": "Isolated page-equality optimization; production untouched",
+  "originalSha256": "f17c8deb469915cb626f37aa231b05c4d032a96ea82d7e8676a40904c8c42842",
+  "candidateSha256": "30ebacf922057a00c833ffdb6a922e43d6b8b0f3392ca3ce08edb9ca99363c01"
+}

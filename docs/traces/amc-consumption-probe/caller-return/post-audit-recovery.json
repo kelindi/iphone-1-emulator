@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "guestRuns": 1,
+  "guestReplayed": false,
+  "originalLauncherFailed": true,
+  "originalRunReportPreserved": true,
+  "originalLauncherPreserved": true,
+  "positiveFrozenAuditSHA256": "44a78e1079f6dc5842556702ac11b68d81577ed4ddaa1af4b29d38241a63431e",
+  "positiveAuditReportSHA256": "a4c3db5acb0e8575099c3c5780d325a56f90dc7c47f30df01a9eef754d9f1f6d",
+  "controls": [
+    {
+      "command": [
+        "python3",
+        ".context/amc-first/stage-l/run-1/ordering-audit.py",
+        ".context/amc-first/stage-l/run-1/recovered-negative-record"
+      ],
+      "returncode": 1,
+      "expectedFailure": "record/log bytes differ",
+      "logSHA256": "91640b8e452742eb3d1abe6e6a2928258268ba468d936fa10d002ac8c72dfc50"
+    },
+    {
+      "command": [
+        "python3",
+        ".context/amc-first/stage-l/run-1/ordering-audit.py",
+        ".context/amc-first/stage-l/run-1/recovered-negative-queue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "guest artifact differs",
+      "logSHA256": "c188ab871327909016d9a5d91da2aa09cd9690028c2b48d14b3126f4b1610500"
+    }
+  ],
+  "scope": "Complete the two missing artifact negatives only; no guest execution, device mutation or source/auditor repair."
+}

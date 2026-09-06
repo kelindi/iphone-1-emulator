@@ -1,0 +1,76 @@
+[
+  {
+    "tap": [
+      200,
+      250
+    ],
+    "wait": 6000,
+    "shot": "01-notes",
+    "keyboard": true
+  },
+  {
+    "type": "hello",
+    "wait": 1500,
+    "shot": "02-hello-editing"
+  },
+  {
+    "tap": [
+      289,
+      43
+    ],
+    "wait": 3000,
+    "shot": "03-hello-done"
+  },
+  {
+    "saveReload": "04-hello"
+  },
+  {
+    "tap": [
+      100,
+      112
+    ],
+    "wait": 1500,
+    "shot": "05-edit-open",
+    "keyboard": true
+  },
+  {
+    "type": " web",
+    "wait": 1500,
+    "shot": "06-edited-hello-web"
+  },
+  {
+    "tap": [
+      289,
+      43
+    ],
+    "wait": 2000,
+    "shot": "07-edited-done"
+  },
+  {
+    "saveReload": "08-edited"
+  },
+  {
+    "tap": [
+      196,
+      453
+    ],
+    "wait": 2000,
+    "shot": "09-delete-confirm"
+  },
+  {
+    "tap": [
+      160,
+      371
+    ],
+    "wait": 3000,
+    "shot": "10-deleted"
+  },
+  {
+    "saveReload": "11-deleted"
+  },
+  {
+    "home": true,
+    "wait": 3000,
+    "shot": "12-home"
+  }
+]

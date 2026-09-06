@@ -11,3 +11,7 @@ __pycache__/
 /web/build/
 /web/dist/
 !/web/firmware/**
+node_modules/
+/.context/
+/web/service-worker.js
+/web/jit/

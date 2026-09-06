@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "focusedZ1Checks": 3987,
+  "baselineLifecycleChecks": 36578,
+  "packageChecks": 65,
+  "unchangedFrozenSDIOContracts": 1012343,
+  "inventory": {
+    "z1Leaves": 118,
+    "z1Bytes": 1490,
+    "sdioLeaves": 106,
+    "bundleBytes": 246287
+  },
+  "oldPaddingNegative": {
+    "passed": true,
+    "expectedExitCode": 3,
+    "actualExitCode": 3,
+    "scope": "old zero-initialized Z1 decode loses native contact padding; new dirty-padding clone fails canonical admission before continuation"
+  },
+  "gateStatus": "no v2 genuine boot executed; first v1 attempt remains failed and unpublished",
+  "sourcePins": "source-pins.json",
+  "inputPinScope": "Original input hashes inherited from completed verified attempt1; all pins must be rechecked before any authorized v2 boot.",
+  "coreSourceReferenceScope": "core/src/snapshot.c and mtz1.c pins identify reviewed source references; the linked core is pinned by the frozen archive SHA and was not rebuilt in this experiment."
+}

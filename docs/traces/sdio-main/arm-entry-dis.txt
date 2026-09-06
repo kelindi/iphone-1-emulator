@@ -1,0 +1,11 @@
+c0000180 file0328 bl      #0xc00000d8
+c0000184 file032c blx     #0xc0000264
+c0000188 file0330 ldr     ip, [pc, #0x1c] ; literal[c00001ac]=000003c5
+c000018c file0334 add     ip, ip, pc
+c0000190 file0338 tst     ip, #1
+c0000194 file033c addne   lr, pc, #0xd
+c0000198 file0340 moveq   lr, pc
+c000019c file0344 bx      ip
+c00001a0 file0348 add     ip, pc, #1
+c00001a4 file034c bx      ip
+c00001a8 file0350 .byte   0x00, 0xf0, 0x52, 0xf8

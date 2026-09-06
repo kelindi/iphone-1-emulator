@@ -1,0 +1,68 @@
+✖ actual HTTP serves frozen seed bytes, stable strong ETag, conditional304 and correct MIME/cache headers (44.648247ms)
+✔ actual tiny WASM streams only after both hashes; original Response consumed, clone verified (43.821671ms)
+✔ verified binary fallback: unavailable (6.443312ms)
+✔ verified binary fallback: wrongMime (2.958981ms)
+✔ verified binary fallback: absentClone (2.531283ms)
+✔ verified binary fallback: cloneFailure (2.44062ms)
+✔ streaming TypeError falls back using already verified bytes without refetch (4.211566ms)
+✔ real streaming CompileError is retained, no duplicate compilation (2.409515ms)
+✔ reject before compilation: binaryHash (2.247966ms)
+✔ reject before compilation: definitionsHash (2.200538ms)
+✔ reject before compilation: corruptBytes (2.241727ms)
+✔ reject before compilation: invalidDefinitionsJson (1.939264ms)
+✔ reject before compilation: HTTP404 (1.556156ms)
+✔ reject before compilation: contentLengthCap (1.355491ms)
+✔ disabled engine performs no fetch/compile and owns no responses (0.870035ms)
+✔ eight-second production bound aborts all stalled fetches (16.176177ms)
+✔ late digest after timeout cannot start compilation (27.810593ms)
+✔ late fetch after timeout is canceled instead of retained (28.051575ms)
+✔ late native compilation cannot replace timeout or trigger binary fallback (27.099086ms)
+✔ stream byte cap does not wait forever on an unread tee branch (1.608649ms)
+✔ chunked bounded reader accepts the exact cap without trusting Content-Length (1.727922ms)
+✔ stream error releases its reader and owned response (1.683024ms)
+✖ integrity failure cancels the unread original streaming branch (7.710496ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 21
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 376.430352
+
+✖ failing tests:
+
+test at .context/jit-stream-cache/cache-server.test.mjs:7:1
+✖ actual HTTP serves frozen seed bytes, stable strong ETag, conditional304 and correct MIME/cache headers (44.648247ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  404 !== 200
+  
+      at TestContext.<anonymous> (file:///home/vercel-sandbox/iphone-1/.context/jit-stream-cache/cache-server.test.mjs:12:59)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at .context/jit-stream-cache/loader.test.mjs:48:1
+✖ integrity failure cancels the unread original streaming branch (7.710496ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(s.events.includes('cancel:seed'))
+  
+      at TestContext.<anonymous> (file:///home/vercel-sandbox/iphone-1/.context/jit-stream-cache/loader.test.mjs:48:156)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

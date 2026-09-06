@@ -1,0 +1,49 @@
+{
+  "source": "original main-loader polling loop c038a850-c038a884: no IOSleep in status poll loop",
+  "evidence": ".context/sdio-first/main-full/full-mmio.log",
+  "adjacentCommand52Pairs": 2402,
+  "medianInstructionDelta": 41935.0,
+  "medianTickDelta": 610.0,
+  "recentEightDeltas": [
+    [
+      42836,
+      624
+    ],
+    [
+      42565,
+      620
+    ],
+    [
+      41259,
+      601
+    ],
+    [
+      41935,
+      610
+    ],
+    [
+      41884,
+      610
+    ],
+    [
+      42836,
+      624
+    ],
+    [
+      42496,
+      619
+    ],
+    [
+      41250,
+      601
+    ]
+  ],
+  "pollCount": 1000,
+  "instructionLimit": 100000000,
+  "wallLimitSeconds": 90,
+  "bootLimitUnchanged": {
+    "instructions": 22000000000,
+    "seconds": 900
+  },
+  "onExpiry": "retain unpublished gate pair; no reusable checkpoint claim"
+}

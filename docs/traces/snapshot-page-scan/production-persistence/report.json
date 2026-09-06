@@ -1,0 +1,211 @@
+{
+  "date": "2026-09-06T00:45:47.045Z",
+  "browser": "152.0.7977.82",
+  "baseURL": "http://localhost:8080",
+  "incognito": false,
+  "method": "Real guest Settings screen and physical ringer latch saved through UI, IndexedDB metadata inspected read-only, raw exported snapshot inspected, reload pixels compared below status bar.",
+  "checks": [
+    {
+      "name": "isolated-tab-owns-profile",
+      "passed": true
+    },
+    {
+      "name": "02-open-settings",
+      "passed": true,
+      "elapsedMs": 9153.857023,
+      "changedFraction": 0.9590555555555556
+    },
+    {
+      "name": "ringer-on-before-save",
+      "passed": true
+    },
+    {
+      "name": "manual-save-commits-real-checkpoint",
+      "passed": true
+    },
+    {
+      "name": "save-preserves-live-frame",
+      "passed": true
+    },
+    {
+      "name": "save-2-retains-previous-generation",
+      "passed": true,
+      "status": "Paused. Your iPhone will wait here."
+    },
+    {
+      "name": "save-3-retains-previous-generation",
+      "passed": true,
+      "status": "Paused. Your iPhone will wait here."
+    },
+    {
+      "name": "save-4-retains-previous-generation",
+      "passed": true,
+      "status": "Paused. Your iPhone will wait here."
+    },
+    {
+      "name": "export-is-large-raw-snapshot",
+      "passed": true
+    },
+    {
+      "name": "invalid-import-keeps-live-guest",
+      "passed": true,
+      "status": "Import failed: snapshot file is truncated. Your previous save is retained."
+    },
+    {
+      "name": "invalid-import-reaches-snapshot-validator",
+      "passed": true,
+      "status": "Import failed: snapshot file is truncated. Your previous save is retained."
+    },
+    {
+      "name": "invalid-import-retains-checkpoint",
+      "passed": true
+    },
+    {
+      "name": "second-tab-cannot-save-or-reset",
+      "passed": true
+    },
+    {
+      "name": "reload-restores-settings-screen",
+      "passed": true,
+      "changedFraction": 0
+    },
+    {
+      "name": "reload-restores-ringer-latch",
+      "passed": true
+    },
+    {
+      "name": "reload-recovers-profile-ownership",
+      "passed": true
+    },
+    {
+      "name": "ringer-changed-before-valid-import",
+      "passed": true
+    },
+    {
+      "name": "valid-import-restores-ringer-control",
+      "passed": true
+    },
+    {
+      "name": "valid-import-restores-guest-screen",
+      "passed": true
+    },
+    {
+      "name": "valid-import-preserves-paused-state",
+      "passed": true
+    },
+    {
+      "name": "keyboard-shows-pressed-home",
+      "passed": true
+    },
+    {
+      "name": "blur-clears-pressed-key-ui",
+      "passed": true
+    },
+    {
+      "name": "blur-releases-guest-input-and-can-save",
+      "passed": true,
+      "homeFrameChanged": 0.9590555555555556
+    }
+  ],
+  "console": [
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    }
+  ],
+  "failures": [],
+  "committed": {
+    "current": {
+      "savedAt": 1788655574552,
+      "size": 249208802,
+      "blobSize": 103772878,
+      "version": "m68-1a543a-snapshot39",
+      "encoding": "gzip",
+      "storedSize": 103772878,
+      "compressionMs": 6760.800000000745
+    },
+    "previous": null
+  },
+  "storageEstimate": {
+    "quota": 10947523207,
+    "usage": 210104967,
+    "usageDetails": {
+      "caches": 106329856,
+      "indexedDB": 103775111
+    }
+  },
+  "repeatedSaves": [
+    {
+      "generation": 2,
+      "elapsedMs": 7973.738086000005,
+      "current": {
+        "savedAt": 1788655583295,
+        "size": 249208802,
+        "blobSize": 103772878,
+        "version": "m68-1a543a-snapshot39",
+        "encoding": "gzip",
+        "storedSize": 103772878,
+        "compressionMs": 6950.800000000745
+      },
+      "previous": {
+        "savedAt": 1788655574552,
+        "size": 249208802
+      }
+    },
+    {
+      "generation": 3,
+      "elapsedMs": 7827.347492000001,
+      "current": {
+        "savedAt": 1788655591133,
+        "size": 249208802,
+        "blobSize": 103772878,
+        "version": "m68-1a543a-snapshot39",
+        "encoding": "gzip",
+        "storedSize": 103772878,
+        "compressionMs": 6740.900000002235
+      },
+      "previous": {
+        "savedAt": 1788655583295,
+        "size": 249208802
+      }
+    },
+    {
+      "generation": 4,
+      "elapsedMs": 7577.798782999998,
+      "current": {
+        "savedAt": 1788655598745,
+        "size": 249208802,
+        "blobSize": 103772878,
+        "version": "m68-1a543a-snapshot39",
+        "encoding": "gzip",
+        "storedSize": 103772878,
+        "compressionMs": 6627
+      },
+      "previous": {
+        "savedAt": 1788655591133,
+        "size": 249208802
+      }
+    }
+  ],
+  "storageAfterRepeatedSaves": {
+    "quota": 11155074364,
+    "usage": 417656124,
+    "usageDetails": {
+      "caches": 106329856,
+      "indexedDB": 311326268
+    }
+  },
+  "export": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/production-persistence/settings-backup.snap",
+    "bytes": 249208802,
+    "version": 39
+  },
+  "restoredFrameDifference": 0,
+  "nativeTabSwitchBlur": false,
+  "passed": true,
+  "durationSeconds": 115.918208088
+}

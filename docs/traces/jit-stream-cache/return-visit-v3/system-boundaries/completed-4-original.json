@@ -1,0 +1,407 @@
+{
+  "utc": "2026-09-06T05:11:32.496408+00:00",
+  "label": "completed-4-original",
+  "ps": "    PID    PPID %CPU     ELAPSED COMMAND\n3380599 3380598  5.9       07:53 python3\n1776731     113  4.7    05:42:54 codex\n3144844     113  2.1       39:44 codex\n    100      99  1.8    11:25:13 conductor-works\n    113     100  0.9    11:25:13 MainThread\n3380562 3380554  0.2       07:54 python3\n      1       0  0.1    11:25:14 sandbox-init\n1776882 1776731  0.1    05:42:44 codex-code-mode\n     62       1  0.0    11:25:14 sshd\n     64       1  0.0    11:25:13 bash\n     96      64  0.0    11:25:13 tail\n     97      64  0.0    11:25:13 bash\n     99      64  0.0    11:25:13 conductor-works\n    130     100  0.0    11:25:12 MainThread\n 855439      99  0.0    08:48:50 MainThread\n1355246      99  0.0    07:09:41 python3\n1372011      99  0.0    07:06:19 python3\n1406652      99  0.0    06:58:35 python3\n1776833 1776731  0.0    05:42:53 MainThread\n1778641 1776731  0.0    05:39:44 MainThread\n1788554 1776731  0.0    05:24:55 bash\n1788568 1788554  0.0    05:24:54 python3\n1818939 1776731  0.0    05:12:52 bash\n1818942 1818939  0.0    05:12:52 python3\n1818981 1776731  0.0    05:12:51 MainThread\n1946699 1776731  0.0    04:42:48 MainThread\n1987247 1776731  0.0    04:36:54 MainThread\n1987426 1776731  0.0    04:36:53 MainThread\n2111668 1776731  0.0    04:11:18 MainThread\n2450404 1776731  0.0    02:47:38 bash\n2450413 2450404  0.0    02:47:38 python3\n2710113 1776731  0.0    01:48:25 bash\n2710166 2710113  0.0    01:48:25 MainThread\n2919041 1776731  0.0    01:16:12 bash\n2919052 2919041  0.0    01:16:12 MainThread\n2921073 1776731  0.0    01:15:52 bash\n2921074 2921073  0.0    01:15:52 MainThread\n3129530 1776731  0.0       42:30 bash\n3129531 3129530  0.0       42:30 MainThread\n3129571 1776731  0.0       42:29 bash\n3129572 3129571  0.0       42:29 MainThread\n3144954 3144844  0.0       39:44 MainThread\n3145876 3144844  0.0       39:38 codex-code-mode\n3313608 1776731  0.0       16:55 bash\n3313609 3313608  0.0       16:55 MainThread\n3313776 1776731  0.0       16:54 bash\n3313779 3313776  0.0       16:53 MainThread\n3380554 1776731  0.0       07:54 bash\n3380598 1776731  0.0       07:53 bash\n3433283      97  0.0       00:04 sleep\n3433321 3380562  0.0       00:00 ps\n",
+  "processes": [
+    {
+      "pid": 1,
+      "ppid": 0,
+      "name": "sandbox-init",
+      "utimeTicks": 3611,
+      "stimeTicks": 1623,
+      "startTicks": 8246
+    },
+    {
+      "pid": 62,
+      "ppid": 1,
+      "name": "sshd",
+      "utimeTicks": 0,
+      "stimeTicks": 0,
+      "startTicks": 8293
+    },
+    {
+      "pid": 64,
+      "ppid": 1,
+      "name": "bash",
+      "utimeTicks": 1,
+      "stimeTicks": 0,
+      "startTicks": 8301
+    },
+    {
+      "pid": 96,
+      "ppid": 64,
+      "name": "tail",
+      "utimeTicks": 91,
+      "stimeTicks": 316,
+      "startTicks": 8307
+    },
+    {
+      "pid": 97,
+      "ppid": 64,
+      "name": "bash",
+      "utimeTicks": 28,
+      "stimeTicks": 100,
+      "startTicks": 8307
+    },
+    {
+      "pid": 99,
+      "ppid": 64,
+      "name": "conductor-works",
+      "utimeTicks": 2,
+      "stimeTicks": 4,
+      "startTicks": 8307
+    },
+    {
+      "pid": 100,
+      "ppid": 99,
+      "name": "conductor-works",
+      "utimeTicks": 20654,
+      "stimeTicks": 57031,
+      "startTicks": 8309
+    },
+    {
+      "pid": 113,
+      "ppid": 100,
+      "name": "MainThread",
+      "utimeTicks": 36971,
+      "stimeTicks": 3168,
+      "startTicks": 8315
+    },
+    {
+      "pid": 130,
+      "ppid": 100,
+      "name": "MainThread",
+      "utimeTicks": 1054,
+      "stimeTicks": 136,
+      "startTicks": 8497
+    },
+    {
+      "pid": 855439,
+      "ppid": 99,
+      "name": "MainThread",
+      "utimeTicks": 238,
+      "stimeTicks": 307,
+      "startTicks": 946641
+    },
+    {
+      "pid": 1355246,
+      "ppid": 99,
+      "name": "python3",
+      "utimeTicks": 267,
+      "stimeTicks": 127,
+      "startTicks": 1541593
+    },
+    {
+      "pid": 1372011,
+      "ppid": 99,
+      "name": "python3",
+      "utimeTicks": 537,
+      "stimeTicks": 208,
+      "startTicks": 1561759
+    },
+    {
+      "pid": 1406652,
+      "ppid": 99,
+      "name": "python3",
+      "utimeTicks": 247,
+      "stimeTicks": 117,
+      "startTicks": 1608155
+    },
+    {
+      "pid": 1776731,
+      "ppid": 113,
+      "name": "codex",
+      "utimeTicks": 73641,
+      "stimeTicks": 23357,
+      "startTicks": 2062290
+    },
+    {
+      "pid": 1776833,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 52,
+      "stimeTicks": 12,
+      "startTicks": 2062337
+    },
+    {
+      "pid": 1776882,
+      "ppid": 1776731,
+      "name": "codex-code-mode",
+      "utimeTicks": 1280,
+      "stimeTicks": 1019,
+      "startTicks": 2063240
+    },
+    {
+      "pid": 1778641,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 293,
+      "stimeTicks": 442,
+      "startTicks": 2081277
+    },
+    {
+      "pid": 1788554,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 0,
+      "startTicks": 2170140
+    },
+    {
+      "pid": 1788568,
+      "ppid": 1788554,
+      "name": "python3",
+      "utimeTicks": 215,
+      "stimeTicks": 90,
+      "startTicks": 2170239
+    },
+    {
+      "pid": 1818939,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 0,
+      "startTicks": 2242470
+    },
+    {
+      "pid": 1818942,
+      "ppid": 1818939,
+      "name": "python3",
+      "utimeTicks": 213,
+      "stimeTicks": 148,
+      "startTicks": 2242471
+    },
+    {
+      "pid": 1818981,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 50,
+      "stimeTicks": 9,
+      "startTicks": 2242587
+    },
+    {
+      "pid": 1946699,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 46,
+      "stimeTicks": 9,
+      "startTicks": 2422843
+    },
+    {
+      "pid": 1987247,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 89,
+      "stimeTicks": 64,
+      "startTicks": 2458239
+    },
+    {
+      "pid": 1987426,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 65,
+      "stimeTicks": 38,
+      "startTicks": 2458358
+    },
+    {
+      "pid": 2111668,
+      "ppid": 1776731,
+      "name": "MainThread",
+      "utimeTicks": 52,
+      "stimeTicks": 6,
+      "startTicks": 2611868
+    },
+    {
+      "pid": 2450404,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 2,
+      "startTicks": 3113828
+    },
+    {
+      "pid": 2450413,
+      "ppid": 2450404,
+      "name": "python3",
+      "utimeTicks": 176,
+      "stimeTicks": 108,
+      "startTicks": 3113838
+    },
+    {
+      "pid": 2710113,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 3469108
+    },
+    {
+      "pid": 2710166,
+      "ppid": 2710113,
+      "name": "MainThread",
+      "utimeTicks": 52,
+      "stimeTicks": 20,
+      "startTicks": 3469117
+    },
+    {
+      "pid": 2919041,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 3662464
+    },
+    {
+      "pid": 2919052,
+      "ppid": 2919041,
+      "name": "MainThread",
+      "utimeTicks": 50,
+      "stimeTicks": 25,
+      "startTicks": 3662469
+    },
+    {
+      "pid": 2921073,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 3664401
+    },
+    {
+      "pid": 2921074,
+      "ppid": 2921073,
+      "name": "MainThread",
+      "utimeTicks": 90,
+      "stimeTicks": 42,
+      "startTicks": 3664403
+    },
+    {
+      "pid": 3129530,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 3864634
+    },
+    {
+      "pid": 3129531,
+      "ppid": 3129530,
+      "name": "MainThread",
+      "utimeTicks": 52,
+      "stimeTicks": 23,
+      "startTicks": 3864636
+    },
+    {
+      "pid": 3129571,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 3864753
+    },
+    {
+      "pid": 3129572,
+      "ppid": 3129571,
+      "name": "MainThread",
+      "utimeTicks": 51,
+      "stimeTicks": 23,
+      "startTicks": 3864754
+    },
+    {
+      "pid": 3144844,
+      "ppid": 113,
+      "name": "codex",
+      "utimeTicks": 3363,
+      "stimeTicks": 1747,
+      "startTicks": 3881212
+    },
+    {
+      "pid": 3144954,
+      "ppid": 3144844,
+      "name": "MainThread",
+      "utimeTicks": 49,
+      "stimeTicks": 5,
+      "startTicks": 3881230
+    },
+    {
+      "pid": 3145876,
+      "ppid": 3144844,
+      "name": "codex-code-mode",
+      "utimeTicks": 45,
+      "stimeTicks": 50,
+      "startTicks": 3881863
+    },
+    {
+      "pid": 3313608,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 4018180
+    },
+    {
+      "pid": 3313609,
+      "ppid": 3313608,
+      "name": "MainThread",
+      "utimeTicks": 48,
+      "stimeTicks": 23,
+      "startTicks": 4018182
+    },
+    {
+      "pid": 3313776,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 4018299
+    },
+    {
+      "pid": 3313779,
+      "ppid": 3313776,
+      "name": "MainThread",
+      "utimeTicks": 52,
+      "stimeTicks": 22,
+      "startTicks": 4018301
+    },
+    {
+      "pid": 3380554,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 4072236
+    },
+    {
+      "pid": 3380562,
+      "ppid": 3380554,
+      "name": "python3",
+      "utimeTicks": 106,
+      "stimeTicks": 16,
+      "startTicks": 4072238
+    },
+    {
+      "pid": 3380598,
+      "ppid": 1776731,
+      "name": "bash",
+      "utimeTicks": 0,
+      "stimeTicks": 1,
+      "startTicks": 4072354
+    },
+    {
+      "pid": 3380599,
+      "ppid": 3380598,
+      "name": "python3",
+      "utimeTicks": 2020,
+      "stimeTicks": 814,
+      "startTicks": 4072356
+    },
+    {
+      "pid": 3433283,
+      "ppid": 97,
+      "name": "sleep",
+      "utimeTicks": 0,
+      "stimeTicks": 0,
+      "startTicks": 4119237
+    }
+  ]
+}

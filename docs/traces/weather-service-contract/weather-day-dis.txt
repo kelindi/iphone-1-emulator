@@ -1,0 +1,114 @@
+
+City::setObservationTime:
+0000cacc str      r2, [r0, #0x20]                     
+0000cad0 bx       lr                                  
+
+City::observationTime
+0000cad4 ldr      r0, [r0, #0x20]                     
+0000cad8 bx       lr                                  
+
+City::setSunsetTime:
+0000cadc str      r2, [r0, #0x24]                     
+0000cae0 bx       lr                                  
+
+City::sunsetTime
+0000cae4 ldr      r0, [r0, #0x24]                     
+0000cae8 bx       lr                                  
+
+City::setSunriseTime:
+0000caec str      r2, [r0, #0x28]                     
+0000caf0 bx       lr                                  
+
+City::sunriseTime
+0000caf4 ldr      r0, [r0, #0x28]                     
+0000caf8 bx       lr                                  
+
+City::isDay
+0000cafc ldr      r1, [pc, #0x74]                     ; 0x17358 pointer 'weatherDataAge'
+0000cb00 push     {r4, r7, lr}                        
+0000cb04 add      r7, sp, #4                          
+0000cb08 ldr      r1, [r1]                            
+0000cb0c mov      r4, r0                              
+0000cb10 bl       #0x14348                            ; _objc_msgSend
+0000cb14 cmp      r0, #2                              
+0000cb18 beq      #0xcb6c                             
+0000cb1c ldr      r2, [r4, #0x20]                     
+0000cb20 cmp      r2, #0                              
+0000cb24 bne      #0xcb44                             
+0000cb28 ldr      r3, [r4, #0x28]                     
+0000cb2c cmp      r3, #0                              
+0000cb30 bne      #0xcb60                             
+0000cb34 ldr      r0, [r4, #0x24]                     
+0000cb38 cmp      r0, #0                              
+0000cb3c bne      #0xcb60                             
+0000cb40 b        #0xcb6c                             
+0000cb44 ldr      r3, [r4, #0x28]                     
+0000cb48 cmp      r2, r3                              
+0000cb4c bls      #0xcb60                             
+0000cb50 ldr      r0, [r4, #0x24]                     
+0000cb54 cmp      r2, r0                              
+0000cb58 movlo    r0, #1                              
+0000cb5c blo      #0xcb64                             
+0000cb60 mov      r0, #0                              
+0000cb64 uxtb     r0, r0                              
+0000cb68 b        #0xcb70                             
+0000cb6c mov      r0, #1                              
+0000cb70 sxtb     r0, r0                              
+0000cb74 pop      {r4, r7, pc}                        
+0000cb78 andeq    r7, r1, r8, asr r3                  
+
+City::moonPhase
+0000cb7c ldr      r0, [r0, #0x2c]                     
+0000cb80 bx       lr                                  
+
+City::setMoonPhase:
+0000cb84 str      r2, [r0, #0x2c]                     
+0000cb88 bx       lr                                  
+
+City::weatherDataAge
+0000cb8c push     {r4, r5, r7, lr}                    
+0000cb90 mov      r4, r0                              
+0000cb94 ldr      r0, [r0, #0x38]                     
+0000cb98 add      r7, sp, #8                          
+0000cb9c cmp      r0, #0                              
+0000cba0 beq      #0xcc28                             
+0000cba4 ldr      r1, [pc, #0x84]                     ; 0x17550 pointer 'timeIntervalSinceNow'
+0000cba8 ldr      r1, [r1]                            
+0000cbac bl       #0x14348                            ; _objc_msgSend
+0000cbb0 ldr      r2, [pc, #0x7c]                     ; 0x256 
+0000cbb4 vmov     d7, r0, r1                          
+0000cbb8 vcvt.s32.f64 s15, d7                             
+0000cbbc vmov     r3, s15                             
+0000cbc0 cmp      r3, #0                              
+0000cbc4 rsblt    r3, r3, #0                          
+0000cbc8 vmov     s13, r3                             
+0000cbcc vcvt.f64.s32 d7, s13                             
+0000cbd0 vcvt.s32.f64 s14, d7                             
+0000cbd4 vmov     r3, s14                             
+0000cbd8 add      r3, r3, #0x128                      
+0000cbdc add      r3, r3, #3                          
+0000cbe0 cmp      r3, r2                              
+0000cbe4 movls    r0, #0                              
+0000cbe8 popls    {r4, r5, r7, pc}                    
+0000cbec ldr      r5, [pc, #0x44]                     ; 0x17554 pointer 'dayOfCommonEra'
+0000cbf0 ldr      r0, [r4, #0x38]                     
+0000cbf4 ldr      r1, [r5]                            
+0000cbf8 bl       #0x14348                            ; _objc_msgSend
+0000cbfc ldr      r1, [pc, #0x38]                     ; 0x17398 pointer 'calendarDate'
+0000cc00 ldr      r1, [r1]                            
+0000cc04 mov      r4, r0                              
+0000cc08 ldr      r0, [pc, #0x30]                     ; 0x17714 pointer 'NSCalendarDate'
+0000cc0c ldr      r0, [r0]                            
+0000cc10 bl       #0x14348                            ; _objc_msgSend
+0000cc14 ldr      r1, [r5]                            
+0000cc18 bl       #0x14348                            ; _objc_msgSend
+0000cc1c cmp      r4, r0                              
+0000cc20 moveq    r0, #1                              
+0000cc24 popeq    {r4, r5, r7, pc}                    
+0000cc28 mov      r0, #2                              
+0000cc2c pop      {r4, r5, r7, pc}                    
+0000cc30 andeq    r7, r1, r0, asr r5                  
+0000cc34 andeq    r0, r0, r6, asr r2                  
+0000cc38 andeq    r7, r1, r4, asr r5                  
+0000cc3c muleq    r1, r8, r3                          
+0000cc40 andeq    r7, r1, r4, lsl r7                  

@@ -382,7 +382,11 @@ have not modeled yet, not a firmware patch)
      `--unmatch`.
    Separately, without a USB device controller userspace `lockdownd` logs
    `Can't find AppleUSBDeviceMux service` and is respawn-throttled by launchd;
-   that is harmless for SpringBoard and distinct from the kernel crash.
+   this was initially treated as harmless for SpringBoard. The 2026-09-05
+   [transition investigation](../plans/transition-latency.md) instead traces
+   a 30-second guest-time Home delay to retries against this absent daemon.
+   It is distinct from the historical kernel crash, but is now a performance
+   blocker. See [current USB revalidation](../plans/usb.md).
 2. Single-ramdisk root. The stock `/etc/fstab` mounts `/dev/disk0s1` and
    `/dev/disk0s2`; we boot the rootfs as `md0` with no NAND partitions, so
    `launchd` aborts in `fwexec(mount_tool)`. `tools/firmware/rootfs_work.py`

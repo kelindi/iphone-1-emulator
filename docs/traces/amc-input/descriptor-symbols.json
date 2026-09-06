@@ -1,0 +1,62 @@
+[
+  {
+    "address": "0xc0149b08",
+    "name": "__ZN18IOMemoryDescriptor18getPhysicalAddressEv"
+  },
+  {
+    "address": "0xc01431d6",
+    "name": "__ZN24IOBufferMemoryDescriptor13initWithBytesEPKvj11IODirectionb"
+  },
+  {
+    "address": "0xc0143402",
+    "name": "__ZN24IOBufferMemoryDescriptor14getBytesNoCopyEjj"
+  },
+  {
+    "address": "0xc01433f0",
+    "name": "__ZN24IOBufferMemoryDescriptor14getBytesNoCopyEv"
+  },
+  {
+    "address": "0xc0142c00",
+    "name": "__ZN24IOBufferMemoryDescriptor14initWithRangesEP14IOVirtualRangem11IODirectionP4taskb"
+  },
+  {
+    "address": "0xc0142bf0",
+    "name": "__ZN24IOBufferMemoryDescriptor15initWithAddressEPvm11IODirection"
+  },
+  {
+    "address": "0xc0142bf4",
+    "name": "__ZN24IOBufferMemoryDescriptor15initWithAddressEjm11IODirectionP4task"
+  },
+  {
+    "address": "0xc0143170",
+    "name": "__ZN24IOBufferMemoryDescriptor15initWithOptionsEmjj"
+  },
+  {
+    "address": "0xc0142c04",
+    "name": "__ZN24IOBufferMemoryDescriptor15initWithOptionsEmjjP4task"
+  },
+  {
+    "address": "0xc0142c28",
+    "name": "__ZN24IOBufferMemoryDescriptor20initWithPhysicalMaskEP4taskmjjj"
+  },
+  {
+    "address": "0xc0142bfc",
+    "name": "__ZN24IOBufferMemoryDescriptor22initWithPhysicalRangesEP15IOPhysicalRangem11IODirectionb"
+  },
+  {
+    "address": "0xc0142bf8",
+    "name": "__ZN24IOBufferMemoryDescriptor23initWithPhysicalAddressEmm11IODirection"
+  },
+  {
+    "address": "0xc0147bfe",
+    "name": "__ZN25IOGeneralMemoryDescriptor18getPhysicalSegmentEmPm"
+  },
+  {
+    "address": "0xc0143398",
+    "name": "__ZNK24IOBufferMemoryDescriptor11getCapacityEv"
+  },
+  {
+    "address": "0xc01929b4",
+    "name": "__ZTV24IOBufferMemoryDescriptor"
+  }
+]

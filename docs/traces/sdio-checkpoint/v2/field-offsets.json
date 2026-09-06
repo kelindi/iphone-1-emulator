@@ -1,0 +1,462 @@
+{
+  "totalBytes": 246287,
+  "nestedV1Bytes": 244765,
+  "fields": {
+    "config.present": {
+      "offset": 72,
+      "size": 1
+    },
+    "config.enumeration": {
+      "offset": 73,
+      "size": 1
+    },
+    "config.boot_endpoint": {
+      "offset": 74,
+      "size": 1
+    },
+    "config.data_transfer": {
+      "offset": 75,
+      "size": 1
+    },
+    "config.helper_receiver": {
+      "offset": 76,
+      "size": 1
+    },
+    "config.complete_main": {
+      "offset": 77,
+      "size": 1
+    },
+    "config.helper_semantics": {
+      "offset": 78,
+      "size": 1
+    },
+    "config.semantic_ticks": {
+      "offset": 79,
+      "size": 8
+    },
+    "config.helper_capacity": {
+      "offset": 87,
+      "size": 2
+    },
+    "config.data_ticks": {
+      "offset": 89,
+      "size": 8
+    },
+    "config.endpoint_capacity": {
+      "offset": 97,
+      "size": 2
+    },
+    "config.io_port": {
+      "offset": 99,
+      "size": 4
+    },
+    "config.function_init_ticks": {
+      "offset": 103,
+      "size": 8
+    },
+    "config.io_functions": {
+      "offset": 111,
+      "size": 1
+    },
+    "config.assigned_rca": {
+      "offset": 112,
+      "size": 2
+    },
+    "config.voltage_mask": {
+      "offset": 114,
+      "size": 4
+    },
+    "config.readable_cccr": {
+      "offset": 118,
+      "size": 2
+    },
+    "config.cccr": {
+      "offset": 120,
+      "size": 12
+    },
+    "config.command_ticks": {
+      "offset": 132,
+      "size": 8
+    },
+    "card.state": {
+      "offset": 140,
+      "size": 4
+    },
+    "card.rca": {
+      "offset": 144,
+      "size": 2
+    },
+    "card.selected_voltage": {
+      "offset": 146,
+      "size": 4
+    },
+    "card.interrupt_enable": {
+      "offset": 150,
+      "size": 1
+    },
+    "card.bus_interface": {
+      "offset": 151,
+      "size": 1
+    },
+    "card.block_size[0]": {
+      "offset": 152,
+      "size": 2
+    },
+    "card.block_size[1]": {
+      "offset": 154,
+      "size": 2
+    },
+    "endpoint.initialized": {
+      "offset": 156,
+      "size": 1
+    },
+    "endpoint.enabled": {
+      "offset": 157,
+      "size": 1
+    },
+    "endpoint.ready": {
+      "offset": 158,
+      "size": 1
+    },
+    "endpoint.initializing": {
+      "offset": 159,
+      "size": 1
+    },
+    "endpoint.host_power": {
+      "offset": 160,
+      "size": 1
+    },
+    "endpoint.ready_deadline": {
+      "offset": 161,
+      "size": 8
+    },
+    "endpoint.capacity": {
+      "offset": 169,
+      "size": 2
+    },
+    "endpoint.used": {
+      "offset": 171,
+      "size": 2
+    },
+    "endpoint.configuration": {
+      "offset": 173,
+      "size": 1
+    },
+    "endpoint.interrupt_mask": {
+      "offset": 174,
+      "size": 1
+    },
+    "endpoint.interrupt_pending": {
+      "offset": 175,
+      "size": 1
+    },
+    "endpoint.receive": {
+      "offset": 176,
+      "size": 1024
+    },
+    "data.armed": {
+      "offset": 1200,
+      "size": 1
+    },
+    "data.active": {
+      "offset": 1201,
+      "size": 1
+    },
+    "data.address": {
+      "offset": 1202,
+      "size": 4
+    },
+    "data.port": {
+      "offset": 1206,
+      "size": 4
+    },
+    "data.length": {
+      "offset": 1210,
+      "size": 2
+    },
+    "data.deadline": {
+      "offset": 1212,
+      "size": 8
+    },
+    "data.staging": {
+      "offset": 1220,
+      "size": 512
+    },
+    "helper.used": {
+      "offset": 1732,
+      "size": 2
+    },
+    "helper.frames": {
+      "offset": 1734,
+      "size": 4
+    },
+    "helper.terminated": {
+      "offset": 1738,
+      "size": 1
+    },
+    "helper.framing_stalled": {
+      "offset": 1739,
+      "size": 1
+    },
+    "helper.memory": {
+      "offset": 1740,
+      "size": 4096
+    },
+    "main_model.phase": {
+      "offset": 5836,
+      "size": 4
+    },
+    "main_model.requested": {
+      "offset": 5840,
+      "size": 2
+    },
+    "main_model.pending_length": {
+      "offset": 5842,
+      "size": 2
+    },
+    "main_model.header[0]": {
+      "offset": 5844,
+      "size": 4
+    },
+    "main_model.header[1]": {
+      "offset": 5848,
+      "size": 4
+    },
+    "main_model.header[2]": {
+      "offset": 5852,
+      "size": 4
+    },
+    "main_model.header[3]": {
+      "offset": 5856,
+      "size": 4
+    },
+    "main_model.pending": {
+      "offset": 5860,
+      "size": 512
+    },
+    "main_model.memory": {
+      "offset": 6372,
+      "size": 512
+    },
+    "main_model.low_before": {
+      "offset": 6884,
+      "size": 16
+    },
+    "main_model.low": {
+      "offset": 6900,
+      "size": 94208
+    },
+    "main_model.low_after": {
+      "offset": 101108,
+      "size": 16
+    },
+    "main_model.high_before": {
+      "offset": 101124,
+      "size": 16
+    },
+    "main_model.high": {
+      "offset": 101140,
+      "size": 24576
+    },
+    "main_model.high_after": {
+      "offset": 125716,
+      "size": 16
+    },
+    "main_model.low_coverage": {
+      "offset": 125732,
+      "size": 94208
+    },
+    "main_model.high_coverage": {
+      "offset": 219940,
+      "size": 24576
+    },
+    "main_model.deadline": {
+      "offset": 244516,
+      "size": 8
+    },
+    "main_model.publications": {
+      "offset": 244524,
+      "size": 8
+    },
+    "main_model.headers": {
+      "offset": 244532,
+      "size": 8
+    },
+    "main_model.bodies": {
+      "offset": 244540,
+      "size": 8
+    },
+    "main_model.copied": {
+      "offset": 244548,
+      "size": 8
+    },
+    "main_model.errors": {
+      "offset": 244556,
+      "size": 8
+    },
+    "main_model.length_reads[0]": {
+      "offset": 244564,
+      "size": 8
+    },
+    "main_model.length_reads[1]": {
+      "offset": 244572,
+      "size": 8
+    },
+    "main_model.waiting_deadline": {
+      "offset": 244580,
+      "size": 1
+    },
+    "main_model.diagnostic": {
+      "offset": 244581,
+      "size": 4
+    },
+    "helper_protocol_errors": {
+      "offset": 244585,
+      "size": 8
+    },
+    "data_starts": {
+      "offset": 244593,
+      "size": 8
+    },
+    "data_completions": {
+      "offset": 244601,
+      "size": 8
+    },
+    "data_errors": {
+      "offset": 244609,
+      "size": 8
+    },
+    "buffer_address": {
+      "offset": 244617,
+      "size": 4
+    },
+    "block_length": {
+      "offset": 244621,
+      "size": 4
+    },
+    "block_count": {
+      "offset": 244625,
+      "size": 4
+    },
+    "control": {
+      "offset": 244629,
+      "size": 4
+    },
+    "data_control": {
+      "offset": 244633,
+      "size": 4
+    },
+    "command": {
+      "offset": 244637,
+      "size": 4
+    },
+    "argument": {
+      "offset": 244641,
+      "size": 4
+    },
+    "events": {
+      "offset": 244645,
+      "size": 4
+    },
+    "response[0]": {
+      "offset": 244649,
+      "size": 4
+    },
+    "response[1]": {
+      "offset": 244653,
+      "size": 4
+    },
+    "response[2]": {
+      "offset": 244657,
+      "size": 4
+    },
+    "response[3]": {
+      "offset": 244661,
+      "size": 4
+    },
+    "clock_divider": {
+      "offset": 244665,
+      "size": 4
+    },
+    "csr": {
+      "offset": 244669,
+      "size": 4
+    },
+    "irq_pending": {
+      "offset": 244673,
+      "size": 4
+    },
+    "irq_mask": {
+      "offset": 244677,
+      "size": 4
+    },
+    "pending_command": {
+      "offset": 244681,
+      "size": 4
+    },
+    "pending_argument": {
+      "offset": 244685,
+      "size": 4
+    },
+    "now": {
+      "offset": 244689,
+      "size": 8
+    },
+    "deadline": {
+      "offset": 244697,
+      "size": 8
+    },
+    "busy": {
+      "offset": 244705,
+      "size": 1
+    },
+    "have_time": {
+      "offset": 244706,
+      "size": 1
+    },
+    "triggers": {
+      "offset": 244707,
+      "size": 8
+    },
+    "completions": {
+      "offset": 244715,
+      "size": 8
+    },
+    "transport_errors": {
+      "offset": 244723,
+      "size": 8
+    },
+    "rejected_writes": {
+      "offset": 244731,
+      "size": 8
+    },
+    "cccr_reads": {
+      "offset": 244739,
+      "size": 8
+    },
+    "response_reads": {
+      "offset": 244747,
+      "size": 8
+    },
+    "iorx_reads": {
+      "offset": 244755,
+      "size": 8
+    },
+    "iorx_wait_reads": {
+      "offset": 244763,
+      "size": 8
+    },
+    "iorx_ready_reads": {
+      "offset": 244771,
+      "size": 8
+    },
+    "function_reads": {
+      "offset": 244779,
+      "size": 8
+    },
+    "cccr_read_mask": {
+      "offset": 244787,
+      "size": 2
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "date": "2026-09-06T03:16:01.677Z",
+  "method": "Original guest keyboard and touch only; explicit browser Save, reload, and guest framebuffer comparison. Human screenshot review confirms contact/event content.",
+  "actions": [
+    {
+      "tap": [
+        280,
+        265
+      ],
+      "wait": 5000,
+      "shot": "01-settings",
+      "videoSeconds": 8.994
+    },
+    {
+      "tap": [
+        120,
+        350
+      ],
+      "wait": 4000,
+      "shot": "02-general",
+      "videoSeconds": 28.049
+    },
+    {
+      "note": "02-general is actually Wallpaper: initial raw coordinate was too high; no preference changed.",
+      "tap": [
+        35,
+        42
+      ],
+      "wait": 2000,
+      "videoSeconds": 57.519
+    },
+    {
+      "tap": [
+        150,
+        424
+      ],
+      "wait": 3500,
+      "shot": "03-actual-general",
+      "videoSeconds": 59.712
+    },
+    {
+      "tap": [
+        140,
+        140
+      ],
+      "wait": 3000,
+      "shot": "04-date-time",
+      "videoSeconds": 83.124
+    },
+    {
+      "tap": [
+        255,
+        196
+      ],
+      "wait": 2500,
+      "shot": "05-manual-time-controls",
+      "videoSeconds": 101.986
+    },
+    {
+      "tap": [
+        140,
+        283
+      ],
+      "wait": 2500,
+      "shot": "06-date-picker",
+      "videoSeconds": 127.892
+    },
+    {
+      "pause": true,
+      "export": "before-manual-change.snap",
+      "shot": "07-before-manual-change",
+      "videoSeconds": 166.06
+    },
+    {
+      "pause": false,
+      "tap": [
+        160,
+        416
+      ],
+      "wait": 3500,
+      "shot": "08-minute-change",
+      "videoSeconds": 169.158
+    },
+    {
+      "pause": true,
+      "export": "after-manual-change.snap",
+      "shot": "09-after-manual-change",
+      "videoSeconds": 210.022
+    },
+    {
+      "saveReload": "10-manual-time",
+      "videoSeconds": 213.194
+    },
+    {
+      "pause": true,
+      "shot": "11-restored-paused",
+      "videoSeconds": 227.225
+    }
+  ],
+  "checks": [
+    {
+      "name": "startup-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 8135969,
+        "calls": 1045810
+      }
+    },
+    {
+      "name": "10-manual-time-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 18000,
+      "exact": false
+    }
+  ],
+  "errors": [
+    "page.waitForFunction: Timeout 15000ms exceeded.\n    at verifyJit (/home/vercel-sandbox/iphone-1/web/tests/organizer.mjs:35:84)\n    at /home/vercel-sandbox/iphone-1/web/tests/organizer.mjs:167:8"
+  ],
+  "console": [],
+  "lastStatus": "Paused. Your iPhone will wait here.",
+  "lastDiagnostics": "Waiting for the emulator…",
+  "observations": [
+    "02-general is actually Wallpaper: initial raw coordinate was too high; no preference changed."
+  ],
+  "passed": false,
+  "durationSeconds": 243.577,
+  "video": "/home/vercel-sandbox/iphone-1/.context/rtc-contract/browser-2/page@14239b6996b42be3c0101b6ca9d3b840.webm"
+}

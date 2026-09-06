@@ -3,30 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iPhone 1 emulator</title>
-  <style>
-    body { background: #202124; color: #eee; font: 14px sans-serif; margin: 1rem; }
-    #screen { image-rendering: pixelated; width: 320px; height: 480px; border: 1px solid #888; }
-    #controls { align-items: center; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; max-width: 660px; }
-    button { font: inherit; padding: .45rem .7rem; }
-    #status { white-space: pre-wrap; margin-top: .7rem; min-height: 3em; }
-    @media (min-width: 700px) {
-      #screen { width: 640px; height: 960px; }
-    }
-  </style>
+  <meta name="theme-color" content="#f5f5f3">
+  <meta name="description" content="The original iPhone, running genuine iPhone OS 1.0 in your browser.">
+  <title>iPhone · 2007 in your browser</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="phone.css">
 </head>
 <body>
-  <h1>iPhone 1 emulator</h1>
-  <canvas id="screen" width="320" height="480"></canvas>
-  <div id="controls">
-    <button data-button="1">Home</button>
-    <button data-button="0">Hold</button>
-    <button data-button="2">Volume +</button>
-    <button data-button="3">Volume −</button>
-    <span>Canvas: tap/drag · Escape/H: Home · P: Hold · +/-: volume</span>
-  </div>
-  <div id="status">Loading WebAssembly emulator…</div>
-  <script src="dist/emu.js"></script>
-  <script src="app.js"></script>
+  <main class="experience">
+    <section class="device-stage" aria-label="Original iPhone emulator">
+      <div class="phone">
+        <div class="phone-rim" aria-hidden="true"></div>
+        <div class="phone-glass" aria-hidden="true"></div>
+        <div class="earpiece" aria-hidden="true"></div>
+        <button class="physical power" data-button="0" aria-label="Sleep or wake iPhone" title="Sleep / wake (P)" disabled>
+          <span class="metal" aria-hidden="true"></span>
+        </button>
+        <button class="physical ringer" data-button="4" data-toggle aria-pressed="false" aria-label="Silent mode" title="Toggle silent mode (M)" disabled>
+          <span class="metal" aria-hidden="true"></span>
+        </button>
+        <button class="physical volume volume-up" data-button="2" aria-label="Volume up" title="Volume up (+)" disabled>
+          <span class="metal" aria-hidden="true"></span>
+        </button>
+        <button class="physical volume volume-down" data-button="3" aria-label="Volume down" title="Volume down (−)" disabled>
+          <span class="metal" aria-hidden="true"></span>
+        </button>
+        <div class="display-recess">
+          <canvas id="screen" width="320" height="480" aria-label="iPhone display. Tap and drag to interact with the original apps.">
+            This emulator needs a browser with canvas and WebAssembly support.
+          </canvas>
+          <div id="boot-loader" class="boot-loader" role="status" aria-live="polite">
+            <span class="boot-spinner" aria-hidden="true"></span>
+            <span id="boot-label">Downloading iPhone OS…</span>
+          </div>
+        </div>
+        <button class="physical home" data-button="1" aria-label="Home" title="Home (Escape or H)" disabled>
+          <span class="home-symbol" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="companion" aria-label="Emulator controls" hidden>
+      <div class="loading-state">
+        <p id="status" role="status" aria-live="polite">Preparing your iPhone…</p>
+        <progress id="progress" aria-label="Loading iPhone"></progress>
+        <button id="retry" class="text-button" hidden disabled>Try again</button>
+        <button id="recover" class="text-button" hidden disabled>Restore previous save</button>
+      </div>
+      <div id="controls" class="session-controls" aria-label="Saved phone controls">
+        <button id="pause" class="text-button" disabled>Pause</button>
+        <span class="control-divider" aria-hidden="true"></span>
+        <button id="save" class="text-button" disabled>Save</button>
+        <button id="export" class="text-button" disabled>Export</button>
+        <label class="text-button import-control" for="import">
+          Import
+          <input id="import" type="file" accept=".snap,.gz,.iphone,application/octet-stream,application/gzip" aria-label="Import a saved iPhone" disabled>
+        </label>
+        <button id="reset" class="text-button" disabled>Reset</button>
+        <button id="offline" class="text-button" disabled>Keep offline</button>
+      </div>
+      <details id="help" class="help-panel">
+        <summary>Getting around <span aria-hidden="true">+</span></summary>
+        <div class="help-content">
+          <p>Tap the screen to open an app. Drag to scroll, and use the round Home button to return. The buttons along the edge control sleep, volume, and silent mode.</p>
+          <dl class="shortcuts">
+            <div><dt><kbd>Esc</kbd> / <kbd>H</kbd></dt><dd>Home</dd></div>
+            <div><dt><kbd>P</kbd></dt><dd>Sleep / wake</dd></div>
+            <div><dt><kbd>+</kbd> / <kbd>−</kbd></dt><dd>Volume</dd></div>
+            <div><dt><kbd>M</kbd></dt><dd>Silent mode</dd></div>
+          </dl>
+          <p>Save keeps a checkpoint in this browser. Export downloads a backup; Import restores one. Reset starts again from the supplied phone state.</p>
+          <p>The current starting phone fixes the long pause when returning Home and has about 6 MB of free storage. Existing saved phones keep their old configuration. Export a backup before Reset to try the updated starting phone.</p>
+          <p>Keep offline downloads the phone for later visits without a connection. Browser storage can be cleared, so export a backup of anything you want to keep.</p>
+          <p class="capability-note">This is genuine iPhone OS 1.0 running in an emulator. Hardware and app support are still being developed. Internet access, cellular service, Camera, and audio are not yet available.</p>
+          <details class="developer-panel">
+            <summary>Diagnostics</summary>
+            <pre id="diagnostics" tabindex="0" aria-label="Emulator diagnostics">Waiting for the emulator…</pre>
+          </details>
+        </div>
+      </details>
+      <p class="colophon">Genuine iPhone OS 1.0 <span aria-hidden="true">·</span> Emulated in WebAssembly</p>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

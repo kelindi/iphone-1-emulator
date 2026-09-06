@@ -750,7 +750,7 @@ static void test_stub_windows_round_trip(void) {
     s5l8900_free(a); s5l8900_free(b);
 }
 
-/* RAM has three page classes; exercise all three plus the ragged tail. */
+/* RAM has three page classes; exercise all three and the final full-page byte. */
 static void test_ram_round_trips(void) {
     s5l8900_t ma, mb;
     s5l8900_t *a = &ma, *b = &mb;
@@ -768,6 +768,52 @@ static void test_ram_round_trips(void) {
     /* And the zero pages really are zero, not left over from init. */
     CHECK(b->ram[0x3000] == 0 && b->ram[0x3fff] == 0, "zero page not restored as zero");
     s5l8900_free(a); s5l8900_free(b);
+}
+
+/* Non-page-aligned RAM sizes exercise the word scanner's short final span.
+ * Assert the existing wire classes as well as restored bytes: always storing
+ * raw pages would round-trip but would silently change the sparse format. */
+static void test_partial_ram_pages(void) {
+    const unsigned tails[] = {1, 2, 7, 8, 9, 15, 16, 17, 4095};
+    for (unsigned t = 0; t < sizeof tails / sizeof tails[0]; t++) {
+        unsigned tail = tails[t], size = 8192u + tail;
+        s5l8900_t source, restored;
+        bool source_ok = s5l8900_init(&source, 0, size);
+        bool restored_ok = s5l8900_init(&restored, 0, size);
+        CHECK(source_ok && restored_ok, "partial RAM initialization");
+        if (!source_ok || !restored_ok) {
+            if (source_ok) s5l8900_free(&source);
+            if (restored_ok) s5l8900_free(&restored);
+            continue;
+        }
+        memset(source.ram + 4096, 0xff, 4096);
+        for (unsigned kind = 0; kind < 3; kind++) {
+            memset(source.ram + 8192, kind ? 0xa5 : 0, tail);
+            if (kind == 2) source.ram[size - 1] = 0x5a;
+            uint8_t *bytes = NULL;
+            size_t length = 0;
+            CHECK(snapshot_save_mem(&source, &bytes, &length) == SNAP_OK,
+                  "save tail=%u kind=%u", tail, kind);
+            if (!bytes) continue;
+            size_t section = find_section(bytes, length, 0x204d4152u);
+            CHECK(section && section + 28u <= length, "RAM section exists");
+            if (section && section + 28u <= length) {
+                const uint8_t *ram = bytes + section + 16u;
+                uint8_t cls = kind == 0 ? 0 : (kind == 1 || tail == 1) ? 1 : 2;
+                size_t payload = cls == 0 ? 0 : cls == 1 ? 1 : tail;
+                CHECK(rd64le(ram) == 3 && ram[8] == 0 &&
+                      ram[9] == 1 && ram[10] == 0xff && ram[11] == cls &&
+                      rd64le(bytes + section + 8) == 12u + payload,
+                      "sparse classes/length tail=%u kind=%u", tail, kind);
+            }
+            CHECK(snapshot_load_mem(&restored, bytes, length) == SNAP_OK &&
+                  memcmp(source.ram, restored.ram, size) == 0,
+                  "restore partial page tail=%u kind=%u", tail, kind);
+            free(bytes);
+        }
+        s5l8900_free(&source);
+        s5l8900_free(&restored);
+    }
 }
 
 /* A guest payload can program the NOR — that is how an untethered jailbreak
@@ -1165,6 +1211,52 @@ static void test_restore_is_idempotent(void) {
     s5l8900_free(&cont); s5l8900_free(&b);
 }
 
+static void test_incremental_capture(void) {
+    s5l8900_t source, restored;
+    CHECK(s5l8900_init(&source, 0, RAMSZ), "initialize capture source");
+    CHECK(s5l8900_init(&restored, 0, RAMSZ), "initialize capture destination");
+    source.cpu.r[7] = 0x12345678u;
+    source.timer.ticks = 9876543;
+    for (unsigned i = 0; i < RAMSZ; i++) source.ram[i] = (uint8_t)(i * 37u);
+    uint8_t *expected = NULL; size_t expected_length = 0;
+    CHECK(snapshot_save_mem(&source, &expected, &expected_length) == SNAP_OK,
+          "capture reference snapshot");
+    snapshot_capture_t *capture = NULL;
+    CHECK(snapshot_capture_begin(&source, &capture) == SNAP_OK && capture,
+          "begin independent capture");
+    size_t length = 123;
+    CHECK(snapshot_capture_data(capture, &length) == NULL && length == 0,
+          "unfinished bytes cannot be exported");
+    CHECK(!snapshot_capture_advance(capture, 0), "zero-byte step cannot finish");
+    CHECK(!snapshot_capture_advance(capture, 1), "one-byte step is bounded");
+    /* Running, changing, or destroying the guest must not change its frozen
+     * checkpoint while checksum finalization is spread across host turns. */
+    source.cpu.r[7] = 0;
+    memset(source.ram, 0xaa, RAMSZ);
+    s5l8900_free(&source);
+    size_t iterations = 0;
+    while (!snapshot_capture_advance(capture, 4093)) {
+        iterations++;
+        if (iterations > expected_length / 4093 + 1) break;
+    }
+    const uint8_t *bytes = snapshot_capture_data(capture, &length);
+    CHECK(bytes && length == expected_length && memcmp(bytes, expected, length) == 0,
+          "incremental finalization is byte-identical after guest destruction");
+    CHECK(snapshot_capture_advance(capture, SIZE_MAX), "completed step is idempotent");
+    CHECK(snapshot_load_mem(&restored, bytes, length) == SNAP_OK &&
+          restored.cpu.r[7] == 0x12345678u && restored.timer.ticks == 9876543 &&
+          restored.ram[17] == (uint8_t)(17u * 37u),
+          "incremental capture restores original CPU, devices and RAM");
+    snapshot_capture_free(capture);
+    snapshot_capture_free(NULL);
+    CHECK(!snapshot_capture_advance(NULL, 10), "null capture is rejected");
+    capture = (snapshot_capture_t *)(uintptr_t)1;
+    CHECK(snapshot_capture_begin(NULL, &capture) == SNAP_ERR_IO && !capture,
+          "failed begin clears output");
+    free(expected);
+    s5l8900_free(&restored);
+}
+
 int main(void) {
     printf("S5LBox snapshot tests\n");
     test_mbx_ta_fifo_midstream_round_trip();
@@ -1173,8 +1265,10 @@ int main(void) {
     test_tvout_snapshot_invariants();
     test_stub_windows_round_trip();
     test_ram_round_trips();
+    test_partial_ram_pages();
     test_nor_round_trips();
     test_file_round_trip();
+    test_incremental_capture();
     test_bad_snapshots_are_refused();
     test_checksum_valid_malformed_snapshots_are_transactional();
     test_restore_does_not_diverge();

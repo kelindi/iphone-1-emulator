@@ -1,0 +1,2887 @@
+{
+  "traceComplete": {
+    "dataLossOccurred": false,
+    "stream": "1",
+    "traceFormat": "json",
+    "streamCompression": "none"
+  },
+  "events": 35568,
+  "markers": {
+    "navigation-start": 27439854781,
+    "C0-import-start": 27445078738,
+    "C0-import-end": 27461645776,
+    "C0-settings-start": 27462949991,
+    "C0-settings-end": 27468431407,
+    "C0-home-start": 27473309091,
+    "C0-home-end": 27474821250,
+    "H1-settings-start": 27479492818,
+    "H1-settings-end": 27482814433,
+    "H1-home-start": 27487313060,
+    "H1-home-end": 27488720755,
+    "C1-import-start": 27493116908,
+    "C1-import-end": 27510794633,
+    "C1-settings-start": 27511953158,
+    "C1-settings-end": 27516124804,
+    "C1-home-start": 27520704775,
+    "C1-home-end": 27522218942
+  },
+  "method": "Thread-CPU intervals are unioned per PID/TID; nested scopes not added. Boundary-crossing scopes contribute zero to lower CPU bound and full tdur to conservative upper bound. No function/module identity inferred from absent args.",
+  "stages": [
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 282.646,
+          "upperCpuMs": 282.646,
+          "containedCount": 250
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.377,
+          "upperCpuMs": 0.377,
+          "containedCount": 2
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 307.64,
+          "upperCpuMs": 307.64,
+          "containedCount": 250
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 10939.361,
+          "upperCpuMs": 11573.493,
+          "containedCount": 176
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 10938.445,
+          "upperCpuMs": 11572.553,
+          "containedCount": 109
+        }
+      },
+      "label": "C0-settings",
+      "readyMs": 4851,
+      "traceSpanMs": 5481.416,
+      "retired": 114258395,
+      "generated": 82483464,
+      "calls": 10352924,
+      "compileThreadCpuLowerMs": 11247.378,
+      "compileThreadCpuUpperMs": 11881.51,
+      "compileWallPerThreadSumMs": 17645.955,
+      "compileGlobalWallUnionMs": 2966.409,
+      "compileContainedScopes": {
+        "wasm.CompileLazy": 250,
+        "wasm.CompileBaseline": 250,
+        "wasm.ExecuteCompilationUnits": 176,
+        "wasm.TopTierCompilation": 109,
+        "wasm.CompileJSToWasmWrapper": 2
+      },
+      "compileCrossingScopes": 10,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 0,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 83,
+          "systemTicks": 39,
+          "newThread": false,
+          "cpuMs": 420
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 213,
+          "systemTicks": 85,
+          "newThread": false,
+          "cpuMs": 1990
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 9,
+          "systemTicks": 10,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 205,
+          "systemTicks": 66,
+          "newThread": false,
+          "cpuMs": 1850
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 26,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 80
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 187,
+          "systemTicks": 58,
+          "newThread": false,
+          "cpuMs": 1670
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 169,
+          "systemTicks": 56,
+          "newThread": false,
+          "cpuMs": 1580
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 159,
+          "systemTicks": 52,
+          "newThread": false,
+          "cpuMs": 1550
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 160,
+          "systemTicks": 46,
+          "newThread": false,
+          "cpuMs": 1530
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 146,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 1450
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 999,
+          "systemTicks": 229,
+          "newThread": false,
+          "cpuMs": 5020
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": true,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 21,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 12,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 12,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 3.01,
+          "newProcess": false,
+          "cpuMs": 179.99999999999972
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 9.999999999999998
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 43.96,
+          "newProcess": false,
+          "cpuMs": 17430
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.79,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 1.8,
+          "newProcess": false,
+          "cpuMs": 860.0000000000001
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.35,
+          "newProcess": false,
+          "cpuMs": 9.999999999999954
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.01,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 0
+        }
+      ],
+      "exitedThreads": []
+    },
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 2.35,
+          "upperCpuMs": 2.35,
+          "containedCount": 6
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 2.822,
+          "upperCpuMs": 2.822,
+          "containedCount": 6
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 108.845,
+          "upperCpuMs": 108.845,
+          "containedCount": 13
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 108.761,
+          "upperCpuMs": 108.761,
+          "containedCount": 9
+        }
+      },
+      "label": "C0-home",
+      "readyMs": 919.8999999985099,
+      "traceSpanMs": 1512.159,
+      "retired": 28309371,
+      "generated": 18461262,
+      "calls": 2577284,
+      "compileThreadCpuLowerMs": 111.667,
+      "compileThreadCpuUpperMs": 111.667,
+      "compileWallPerThreadSumMs": 116.234,
+      "compileGlobalWallUnionMs": 87.894,
+      "compileContainedScopes": {
+        "wasm.CompileLazy": 6,
+        "wasm.CompileBaseline": 6,
+        "wasm.ExecuteCompilationUnits": 13,
+        "wasm.TopTierCompilation": 9
+      },
+      "compileCrossingScopes": 0,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 0,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 112,
+          "systemTicks": 47,
+          "newThread": false,
+          "cpuMs": 90
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 219,
+          "systemTicks": 88,
+          "newThread": false,
+          "cpuMs": 70
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 9,
+          "systemTicks": 11,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 208,
+          "systemTicks": 67,
+          "newThread": false,
+          "cpuMs": 30
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 27,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 189,
+          "systemTicks": 58,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 169,
+          "systemTicks": 56,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 159,
+          "systemTicks": 52,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 160,
+          "systemTicks": 46,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 146,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 1224,
+          "systemTicks": 234,
+          "newThread": false,
+          "cpuMs": 1320
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 23,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 3.14,
+          "newProcess": false,
+          "cpuMs": 20.000000000000018
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 46.87,
+          "newProcess": false,
+          "cpuMs": 1609.9999999999995
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.85,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 2.34,
+          "newProcess": false,
+          "cpuMs": 439.99999999999994
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.35,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.01,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.04,
+          "newProcess": false,
+          "cpuMs": 0
+        }
+      ],
+      "exitedThreads": []
+    },
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 0.059,
+          "upperCpuMs": 0.059,
+          "containedCount": 1
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 0.118,
+          "upperCpuMs": 0.118,
+          "containedCount": 1
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 43.001,
+          "upperCpuMs": 43.001,
+          "containedCount": 2
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 42.986,
+          "upperCpuMs": 42.986,
+          "containedCount": 2
+        }
+      },
+      "label": "H1-settings",
+      "readyMs": 2766.800000000745,
+      "traceSpanMs": 3321.615,
+      "retired": 94931257,
+      "generated": 67949472,
+      "calls": 8025294,
+      "compileThreadCpuLowerMs": 43.119,
+      "compileThreadCpuUpperMs": 43.119,
+      "compileWallPerThreadSumMs": 43.196,
+      "compileGlobalWallUnionMs": 43.196,
+      "compileContainedScopes": {
+        "wasm.CompileLazy": 1,
+        "wasm.CompileBaseline": 1,
+        "wasm.ExecuteCompilationUnits": 2,
+        "wasm.TopTierCompilation": 2
+      },
+      "compileCrossingScopes": 0,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 0,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 141,
+          "systemTicks": 57,
+          "newThread": false,
+          "cpuMs": 150
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 223,
+          "systemTicks": 89,
+          "newThread": false,
+          "cpuMs": 50
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 9,
+          "systemTicks": 11,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 209,
+          "systemTicks": 67,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 31,
+          "systemTicks": 8,
+          "newThread": false,
+          "cpuMs": 40
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 189,
+          "systemTicks": 58,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 169,
+          "systemTicks": 56,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 159,
+          "systemTicks": 52,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 160,
+          "systemTicks": 46,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 146,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 1687,
+          "systemTicks": 237,
+          "newThread": false,
+          "cpuMs": 3100
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 23,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 3.24,
+          "newProcess": false,
+          "cpuMs": 20.000000000000018
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 52.15,
+          "newProcess": false,
+          "cpuMs": 3469.999999999999
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.86,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 3.04,
+          "newProcess": false,
+          "cpuMs": 629.9999999999999
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.35,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.01,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.04,
+          "newProcess": false,
+          "cpuMs": 0
+        }
+      ],
+      "exitedThreads": []
+    },
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        }
+      },
+      "label": "H1-home",
+      "readyMs": 865.5,
+      "traceSpanMs": 1407.695,
+      "retired": 26415646,
+      "generated": 16762569,
+      "calls": 2398452,
+      "compileThreadCpuLowerMs": 0.0,
+      "compileThreadCpuUpperMs": 0.0,
+      "compileWallPerThreadSumMs": 0.0,
+      "compileGlobalWallUnionMs": 0.0,
+      "compileContainedScopes": {},
+      "compileCrossingScopes": 0,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 0,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 166,
+          "systemTicks": 65,
+          "newThread": false,
+          "cpuMs": 70
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 224,
+          "systemTicks": 90,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 9,
+          "systemTicks": 11,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 209,
+          "systemTicks": 67,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 32,
+          "systemTicks": 9,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 189,
+          "systemTicks": 58,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 169,
+          "systemTicks": 56,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 159,
+          "systemTicks": 52,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 160,
+          "systemTicks": 46,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 147,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 1962,
+          "systemTicks": 242,
+          "newThread": false,
+          "cpuMs": 1210
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 23,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 3.33,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 55.37,
+          "newProcess": false,
+          "cpuMs": 1349.9999999999943
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.86,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 3.66,
+          "newProcess": false,
+          "cpuMs": 470.00000000000017
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.35,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.01,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.05,
+          "newProcess": false,
+          "cpuMs": 10.000000000000002
+        }
+      ],
+      "exitedThreads": []
+    },
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 2.343,
+          "upperCpuMs": 2.343,
+          "containedCount": 1
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 2.33,
+          "upperCpuMs": 2.33,
+          "containedCount": 1
+        }
+      },
+      "label": "C1-settings",
+      "readyMs": 3616.400000002235,
+      "traceSpanMs": 4171.646,
+      "retired": 115111672,
+      "generated": 82379527,
+      "calls": 10381277,
+      "compileThreadCpuLowerMs": 2.343,
+      "compileThreadCpuUpperMs": 2.343,
+      "compileWallPerThreadSumMs": 2.376,
+      "compileGlobalWallUnionMs": 2.376,
+      "compileContainedScopes": {
+        "wasm.ExecuteCompilationUnits": 1,
+        "wasm.TopTierCompilation": 1
+      },
+      "compileCrossingScopes": 0,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 1,
+          "systemTicks": 2,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 235,
+          "systemTicks": 93,
+          "newThread": false,
+          "cpuMs": 210
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 228,
+          "systemTicks": 90,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 13,
+          "systemTicks": 21,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 211,
+          "systemTicks": 68,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 50,
+          "systemTicks": 17,
+          "newThread": false,
+          "cpuMs": 60
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 190,
+          "systemTicks": 59,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 171,
+          "systemTicks": 57,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 161,
+          "systemTicks": 52,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 161,
+          "systemTicks": 47,
+          "newThread": false,
+          "cpuMs": 10
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 147,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 2759,
+          "systemTicks": 297,
+          "newThread": false,
+          "cpuMs": 4120
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2199478,
+          "comm": "MemoryInfra",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 24,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 5.82,
+          "newProcess": false,
+          "cpuMs": 140.00000000000057
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.04,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 78.53,
+          "newProcess": false,
+          "cpuMs": 4570.000000000007
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.88,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 5.26,
+          "newProcess": false,
+          "cpuMs": 919.9999999999999
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.38,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.03,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.07,
+          "newProcess": false,
+          "cpuMs": 0
+        }
+      ],
+      "exitedThreads": []
+    },
+    {
+      "byNameInclusiveDoNotSum": {
+        "wasm.CompileBaseline": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileJSToWasmWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileLazy": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.CompileWasmImportCallWrapper": {
+          "containedCpuMs": 0.0,
+          "upperCpuMs": 0.0,
+          "containedCount": 0
+        },
+        "wasm.ExecuteCompilationUnits": {
+          "containedCpuMs": 11.796,
+          "upperCpuMs": 11.796,
+          "containedCount": 1
+        },
+        "wasm.TopTierCompilation": {
+          "containedCpuMs": 11.789,
+          "upperCpuMs": 11.789,
+          "containedCount": 1
+        }
+      },
+      "label": "C1-home",
+      "readyMs": 966.5999999977648,
+      "traceSpanMs": 1514.167,
+      "retired": 35526775,
+      "generated": 22840813,
+      "calls": 3127379,
+      "compileThreadCpuLowerMs": 11.796,
+      "compileThreadCpuUpperMs": 11.796,
+      "compileWallPerThreadSumMs": 11.881,
+      "compileGlobalWallUnionMs": 11.881,
+      "compileContainedScopes": {
+        "wasm.ExecuteCompilationUnits": 1,
+        "wasm.TopTierCompilation": 1
+      },
+      "compileCrossingScopes": 0,
+      "missingThreadFields": 0,
+      "schedulerThreads": [
+        {
+          "pid": 2193104,
+          "tid": 2193104,
+          "comm": "chrome",
+          "userTicks": 1,
+          "systemTicks": 2,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193106,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193108,
+          "comm": "PerfettoTrace",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193109,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193110,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193111,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193112,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193118,
+          "comm": "Compositor",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193104,
+          "tid": 2193119,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193105,
+          "comm": "chrome",
+          "userTicks": 260,
+          "systemTicks": 100,
+          "newThread": false,
+          "cpuMs": 80
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193107,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193113,
+          "comm": "PerfettoTrace",
+          "userTicks": 2,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193114,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193115,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 230,
+          "systemTicks": 90,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193116,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 13,
+          "systemTicks": 21,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193117,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 212,
+          "systemTicks": 68,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193120,
+          "comm": "Compositor",
+          "userTicks": 52,
+          "systemTicks": 17,
+          "newThread": false,
+          "cpuMs": 20
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193122,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193134,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 191,
+          "systemTicks": 59,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193135,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 171,
+          "systemTicks": 57,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193136,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 161,
+          "systemTicks": 53,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193137,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 162,
+          "systemTicks": 47,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193138,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 147,
+          "systemTicks": 55,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193139,
+          "comm": "DedicatedWorker",
+          "userTicks": 2953,
+          "systemTicks": 300,
+          "newThread": false,
+          "cpuMs": 1410
+        },
+        {
+          "pid": 2193105,
+          "tid": 2193140,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2195017,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193105,
+          "tid": 2199478,
+          "comm": "MemoryInfra",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193095,
+          "comm": "chrome",
+          "userTicks": 24,
+          "systemTicks": 3,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193096,
+          "comm": "HangWatcher",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193097,
+          "comm": "PerfettoTrace",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193098,
+          "comm": "ThreadPoolServi",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193099,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 6,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193100,
+          "comm": "Chrome_ChildIOT",
+          "userTicks": 1,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193101,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 13,
+          "systemTicks": 7,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193102,
+          "comm": "Compositor",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193103,
+          "comm": "ThreadPoolSingl",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193123,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 2,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193124,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 3,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193125,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 1,
+          "systemTicks": 1,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193126,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        },
+        {
+          "pid": 2193095,
+          "tid": 2193127,
+          "comm": "ThreadPoolForeg",
+          "userTicks": 0,
+          "systemTicks": 0,
+          "newThread": false,
+          "cpuMs": 0
+        }
+      ],
+      "schedulerProcesses": [
+        {
+          "type": "browser",
+          "id": 2193011,
+          "cpuTime": 5.91,
+          "newProcess": false,
+          "cpuMs": 9.999999999999787
+        },
+        {
+          "type": "renderer",
+          "id": 2193104,
+          "cpuTime": 0.05,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "renderer",
+          "id": 2193105,
+          "cpuTime": 80.96,
+          "newProcess": false,
+          "cpuMs": 1609.9999999999995
+        },
+        {
+          "type": "renderer",
+          "id": 2193095,
+          "cpuTime": 0.88,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "GPU",
+          "id": 2193046,
+          "cpuTime": 5.85,
+          "newProcess": false,
+          "cpuMs": 459.99999999999994
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "id": 2193049,
+          "cpuTime": 0.4,
+          "newProcess": false,
+          "cpuMs": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "id": 2193050,
+          "cpuTime": 0.04,
+          "newProcess": false,
+          "cpuMs": 10.000000000000002
+        },
+        {
+          "type": "tracing.mojom.TracingService",
+          "id": 2193128,
+          "cpuTime": 0.08,
+          "newProcess": false,
+          "cpuMs": 0
+        }
+      ],
+      "exitedThreads": []
+    }
+  ],
+  "allScopes": {
+    "wasm.CompileLazy": 616,
+    "wasm.CompileBaseline": 616,
+    "wasm.ExecuteCompilationUnits": 291,
+    "wasm.TopTierCompilation": 212,
+    "wasm.CompileJSToWasmWrapper": 3,
+    "wasm.CompileWasmImportCallWrapper": 1
+  }
+}

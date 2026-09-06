@@ -209,7 +209,9 @@ SNAP_SIZE_GUARD(s5l_stub_t,        56,    "snap_stubs");
  * v37 replaces that one report with the complete Z1 parameter table.
  * v38 adds held-contact stream state to Z1. */
 SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
-SNAP_SIZE_GUARD(s5l8900_t,         127488, "snap_mach");
+/* +8 bytes are host-only clock carry policy/debt, explicitly excluded
+ * from snap_mach. Native byte-identity contracts pin the unchanged v39 format. */
+SNAP_SIZE_GUARD(s5l8900_t,         127496, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -240,6 +242,7 @@ typedef struct {
     size_t         in_len;
     uint64_t  pos;          /* bytes produced/consumed so far (all modes)   */
     uint64_t  hash;         /* legacy payload hash over bytes passed through */
+    bool      defer_hash;   /* capture owns a frozen copy; finish it in slices */
     snapshot_status_t err;
 } sn_io_t;
 
@@ -255,6 +258,7 @@ static bool sn_reading(const sn_io_t *io) {
 #define FNV64_PRIME  1099511628211ull
 
 static void sn_hash(sn_io_t *io, const uint8_t *p, size_t n) {
+    if (io->defer_hash) return;
     uint64_t h = io->hash;
     for (size_t i = 0; i < n; i++) { h ^= p[i]; h *= FNV64_PRIME; }
     io->hash = h;
@@ -814,7 +818,7 @@ static void snap_pmu(sn_io_t *io, s5l_pcf50635_t *p) {
         io->err = SNAP_ERR_CORRUPT;
 }
 
-static bool codec_state_valid(const s5l_wm8991_t *c) {
+static bool codec_state_valid(const s5l_wm8991_t *c, bool wm8758) {
     if (!c || c->ptr >= WM8991_NREG ||
         c->wlen > WM8991_MAX_WRITE ||
         c->unknown_reg_count > WM8991_UNKNOWN_REGS)
@@ -827,14 +831,22 @@ static bool codec_state_valid(const s5l_wm8991_t *c) {
     /* Bit 5 of register 1 is unimplemented. A stored 1 there could only come
      * from a file this model did not write, and restoring it would silently
      * turn the part into a WM1817 for every subsequent read. */
-    if ((c->regs[WM8991_REG_PWR1] & WM8991_PWR1_PROBE) != 0u) return false;
+    if (!wm8758 && (c->regs[WM8991_REG_PWR1] & WM8991_PWR1_PROBE) != 0u) return false;
     /* Same argument for bit 12 of the status register: it is a mirror of the
      * control register, never storage, so a stored 1 is a file this model did
      * not write — and restoring one would make the driver's poll observe a
      * level nothing commanded. */
-    if ((c->regs[WM8991_REG_GPSTAT] & WM8991_GP_BIT) != 0u) return false;
-    for (unsigned i = 0; i < WM8991_NREG; i++)
+    if (!wm8758 && (c->regs[WM8991_REG_GPSTAT] & WM8991_GP_BIT) != 0u) return false;
+    for (unsigned i = 0; i < WM8991_NREG; i++) {
         if (c->written[i] > 1u) return false;
+        if (wm8758 && (c->regs[i] > 0x1ffu ||
+            (!c->written[i] && c->regs[i] != 0u) ||
+            (!s5l_wm8758_register_valid(i) && c->written[i]))) return false;
+    }
+    if (wm8758 && (!s5l_wm8758_register_valid(c->ptr) ||
+        c->second_byte || c->latch || c->wide_writes ||
+        c->reg_reads || c->id_reads || c->probe_bit_writes ||
+        c->status_mirror_reads || c->unknown_reg_count)) return false;
     for (unsigned i = 0; i < c->unknown_reg_count; i++)
         if (c->unknown_reg[i] >= WM8991_NREG) return false;
     return true;
@@ -844,7 +856,7 @@ static bool i2s_state_valid(const s5l_i2s_t *s) {
     return s && s->unknown_off_count <= S5L_I2S_UNKNOWN_OFF;
 }
 
-static void snap_codec(sn_io_t *io, s5l_wm8991_t *c) {
+static void snap_codec(sn_io_t *io, s5l_wm8991_t *c, bool wm8758) {
     for (unsigned i = 0; i < WM8991_NREG; i++) F16(c->regs[i]);
     FBYTES(c->written, WM8991_NREG);
     F8(c->ptr); FB(c->reading); FB(c->second_byte); F16(c->latch);
@@ -857,7 +869,7 @@ static void snap_codec(sn_io_t *io, s5l_wm8991_t *c) {
     F64(c->unknown_reads);
     FBYTES(c->unknown_reg, WM8991_UNKNOWN_REGS);
     F32(c->unknown_reg_count);
-    if (sn_reading(io) && io->err == SNAP_OK && !codec_state_valid(c))
+    if (sn_reading(io) && io->err == SNAP_OK && !codec_state_valid(c, wm8758))
         io->err = SNAP_ERR_CORRUPT;
 }
 
@@ -1101,7 +1113,12 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
     /* The codec immediately after the PMU — the two i2c0 slaves adjacent, in
      * attach order — and the I2S windows after it. See SNAPSHOT_VERSION's v11
      * note for why inserting here is a version bump and not a free append. */
-    snap_codec(io, &m->codec);
+    /* The codec variant is host board wiring, never inferred from mutable
+     * register bytes. M68's previously unused all-zero v39 codec state is a
+     * valid WM8758 reset state. PMU keeps slot0, so old I2C selections retain
+     * their meaning when the new control endpoint occupies slot1. */
+    snap_codec(io, &m->codec, m->i2c[0].slave_count == 2u &&
+                              m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR);
     for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
         snap_i2s(io, &m->i2s[i]);
     for (unsigned i = 0; i < S5L8900_SPI_COUNT; i++)
@@ -1206,6 +1223,24 @@ static void snap_nor_sec(sn_io_t *io, s5l8900_t *m) { snap_nor(io, &m->nor); }
  *   uint8  class[npages]     0 = all zero, 1 = all one byte value, 2 = raw
  *   then, in page order: class 1 -> one byte, class 2 -> the page verbatim
  */
+/* Test equality in complete machine words, without alignment or aliasing
+ * assumptions. Repeating one byte has the same representation in either
+ * byte order. The tail never reads beyond a partial final RAM page. */
+static uint8_t snap_page_class(const uint8_t *page, size_t len) {
+    const uint8_t first = page[0];
+    const uint64_t repeated = UINT64_C(0x0101010101010101) * first;
+    size_t i = 1;
+    while (len - i >= sizeof repeated) {
+        uint64_t word;
+        memcpy(&word, page + i, sizeof word);
+        if (word != repeated) return 2;
+        i += sizeof word;
+    }
+    for (; i < len; i++)
+        if (page[i] != first) return 2;
+    return first ? 1 : 0;
+}
+
 static void snap_ram(sn_io_t *io, s5l8900_t *m) {
     uint64_t npages = ((uint64_t)m->ram_size + SNAP_PAGE - 1u) / SNAP_PAGE;
     uint64_t n = npages;
@@ -1222,11 +1257,7 @@ static void snap_ram(sn_io_t *io, s5l8900_t *m) {
         uint8_t *page = m->ram + off;
         uint8_t  cls = 0;
         if (!sn_reading(io)) {
-            uint8_t first = page[0];
-            cls = 1;
-            for (size_t i = 1; i < len; i++)
-                if (page[i] != first) { cls = 2; break; }
-            if (cls == 1 && first == 0) cls = 0;
+            cls = snap_page_class(page, len);
         }
         sn_u8(io, &cls);
         if (io->err != SNAP_OK) return;
@@ -1336,7 +1367,8 @@ static void snap_header(sn_io_t *io, uint64_t *payload_len) {
 /* ------------------------------------------------------------ save side --- */
 
 static snapshot_status_t snap_write(const s5l8900_t *cm, FILE *f,
-                                    uint8_t *buf, size_t cap, size_t *written) {
+                                    uint8_t *buf, size_t cap, size_t *written,
+                                    bool defer_hash) {
     /* Casting away const is safe and confined: the visitors take a mutable
      * pointer because the SAME code loads, and in SN_SAVE/SN_COUNT mode not
      * one of them assigns through it. */
@@ -1347,6 +1379,7 @@ static snapshot_status_t snap_write(const s5l8900_t *cm, FILE *f,
     sn_io_t io = {0};
     io.mode = SN_SAVE; io.f = f; io.buf = buf; io.cap = cap;
     io.hash = FNV64_OFFSET;
+    io.defer_hash = defer_hash;
 
     snap_header(&io, &payload_len);
     uint64_t body_start = io.pos;
@@ -1376,7 +1409,8 @@ static bool snap_machine_valid(const s5l8900_t *m) {
     for (unsigned i = 0; i < S5L8900_I2C_COUNT; i++)
         if (!i2c_state_valid(&m->i2c[i])) return false;
     if (!pmu_state_valid(&m->pmu)) return false;
-    if (!codec_state_valid(&m->codec)) return false;
+    if (!codec_state_valid(&m->codec, m->i2c[0].slave_count == 2u &&
+                                    m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR)) return false;
     for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
         if (!i2s_state_valid(&m->i2s[i])) return false;
     if (!tvout_state_valid(&m->tvout)) return false;
@@ -1392,16 +1426,19 @@ static bool snap_machine_valid(const s5l8900_t *m) {
         m->i2c[0].slaves[1].addr == WM8991_I2C_ADDR &&
         m->i2c[0].slaves[1].ctx == &m->codec;
     bool m68_wiring =
-        m->i2c[0].slave_count == 1u &&
+        m->i2c[0].slave_count == 2u &&
         m->i2c[0].slaves[0].addr == PCF50635_I2C_ADDR &&
-        m->i2c[0].slaves[0].ctx == &m->pmu;
+        m->i2c[0].slaves[0].ctx == &m->pmu &&
+        m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR &&
+        m->i2c[0].slaves[1].ctx == &m->codec;
     if ((!n82_wiring && !m68_wiring) ||
         m->i2c[1].slave_count != 0u ||
         m->pmu.tick_hz != m->tb_hz)
         return false;
     /* The SPI board wiring, for the same reason. N82 has the transport-only
      * Merlot panel on spi0 cs1 and Z2 on spi1 cs0. M68 has its Merlot panel on
-     * spi1 cs0 and Z1 on spi2 cs0. Restoring a receive FIFO into a controller
+     * spi1 cs0, its LM2512 display-link transmitter on spi0 cs0, and Z1 on
+     * spi2 cs0. Restoring a receive FIFO into a controller
      * with no device behind it would resume a transfer that can never finish,
      * and restoring either touch protocol position behind a different device
      * would resume it into the wrong one. */
@@ -1425,8 +1462,10 @@ static bool snap_machine_valid(const s5l8900_t *m) {
             if (m->spi[1].slaves[cs].transfer != NULL) return false;
         if (!mtz2_state_valid(&m->mtz2)) return false;
     } else {
-        if (m->spi[0].slaves[0].transfer != NULL ||
-            m->spi[0].slaves[S5L_SPI0_LCD_CS].transfer != NULL)
+        if (m->spi[0].slaves[0].transfer == NULL ||
+            m->spi[0].slaves[0].ctx != (void *)&m->spi[0] ||
+            (m->spi[0].cs & S5L_SPI_LCD_READ_PENDING) != 0u ||
+            m->spi[0].cs > 1u)
             return false;
         for (unsigned cs = 1; cs < S5L_SPI_SLAVES; cs++)
             if (m->spi[0].slaves[cs].transfer != NULL) return false;
@@ -1475,7 +1514,7 @@ snapshot_status_t snapshot_save(const s5l8900_t *m, const char *path) {
     if (!tmp) return SNAP_ERR_NOMEM;
     FILE *f = fopen(tmp, "wb");
     if (!f) { free(tmp); return SNAP_ERR_IO; }
-    snapshot_status_t st = snap_write(m, f, NULL, 0, NULL);
+    snapshot_status_t st = snap_write(m, f, NULL, 0, NULL, false);
     if (fclose(f) != 0 && st == SNAP_OK) st = SNAP_ERR_IO;
     if (st == SNAP_OK && !snapshot_replace_file(tmp, path)) st = SNAP_ERR_IO;
     if (st != SNAP_OK) remove(tmp);
@@ -1496,13 +1535,79 @@ snapshot_status_t snapshot_save_mem(const s5l8900_t *m,
     uint8_t *buf = malloc((size_t)total);
     if (!buf) return SNAP_ERR_NOMEM;
     size_t written = 0;
-    snapshot_status_t st = snap_write(m, NULL, buf, (size_t)total, &written);
+    snapshot_status_t st = snap_write(m, NULL, buf, (size_t)total, &written, false);
     if (st != SNAP_OK || written != (size_t)total) {
         free(buf);
         return st == SNAP_OK ? SNAP_ERR_CORRUPT : st;
     }
     *out = buf; *out_len = written;
     return SNAP_OK;
+}
+
+/* A capture copies all guest state at one instant. Only the checksum then
+ * remains: it reads this owned copy, so the machine may resume immediately.
+ * No incomplete bytes are exposed through snapshot_capture_data(). */
+struct snapshot_capture {
+    uint8_t *bytes;
+    size_t size, cursor;
+    uint64_t hash;
+};
+
+snapshot_status_t snapshot_capture_begin(const s5l8900_t *m,
+                                          snapshot_capture_t **out) {
+    if (!out) return SNAP_ERR_IO;
+    *out = NULL;
+    if (!m) return SNAP_ERR_IO;
+    if (!snap_machine_valid(m)) return SNAP_ERR_CORRUPT;
+    uint64_t length = snap_measure(snap_payload, (s5l8900_t *)(uintptr_t)m);
+    uint64_t total = SNAP_HEADER_LEN + length + 8u;
+    if (total > (uint64_t)(size_t)-1) return SNAP_ERR_NOMEM;
+    snapshot_capture_t *capture = calloc(1, sizeof *capture);
+    if (!capture) return SNAP_ERR_NOMEM;
+    capture->bytes = malloc((size_t)total);
+    if (!capture->bytes) { free(capture); return SNAP_ERR_NOMEM; }
+    capture->size = (size_t)total;
+    capture->cursor = SNAP_HEADER_LEN;
+    capture->hash = FNV64_OFFSET;
+    size_t written = 0;
+    snapshot_status_t status = snap_write(m, NULL, capture->bytes,
+                                          capture->size, &written, true);
+    if (status != SNAP_OK || written != capture->size) {
+        snapshot_capture_free(capture);
+        return status == SNAP_OK ? SNAP_ERR_CORRUPT : status;
+    }
+    *out = capture;
+    return SNAP_OK;
+}
+
+bool snapshot_capture_advance(snapshot_capture_t *capture, size_t max_bytes) {
+    if (!capture) return false;
+    size_t end = capture->size - 8u;
+    size_t count = end - capture->cursor;
+    if (count > max_bytes) count = max_bytes;
+    sn_io_t io = {0};
+    io.hash = capture->hash;
+    sn_hash(&io, capture->bytes + capture->cursor, count);
+    capture->hash = io.hash;
+    capture->cursor += count;
+    if (capture->cursor != end) return false;
+    for (unsigned i = 0; i < 8u; i++)
+        capture->bytes[end + i] = (uint8_t)(capture->hash >> (8u * i));
+    return true;
+}
+
+const uint8_t *snapshot_capture_data(const snapshot_capture_t *capture,
+                                      size_t *length) {
+    if (length) *length = 0;
+    if (!capture || capture->cursor != capture->size - 8u) return NULL;
+    if (length) *length = capture->size;
+    return capture->bytes;
+}
+
+void snapshot_capture_free(snapshot_capture_t *capture) {
+    if (!capture) return;
+    free(capture->bytes);
+    free(capture);
 }
 
 /* ------------------------------------------------------------ load side --- */
@@ -1606,10 +1711,14 @@ static snapshot_status_t snap_apply(s5l8900_t *m, FILE *f,
      * interposed bus (bootkernel's tracing wrapper) work. */
     m->cpu.bus = &m->bus;
     m->bus.ctx = m;
-    /* Old checkpoints legitimately contain zero here: before lcd0 was wired,
-     * no model ever selected a different SPI0 target. Host wiring is supplied
-     * by the current board, so resume on its proven device-tree route. */
-    m->spi[0].cs = (uint8_t)(S5L_SPI0_LCD_CS |
+    /* Old checkpoints legitimately contain zero before N82 lcd0 was wired,
+     * or one on M68 because the older loader unconditionally selected N82's
+     * route. The wiring validator accepts only those known M68 values and
+     * forbids a Merlot read phase on its transmitter. Reassert the attached
+     * board endpoint's route while retaining a genuine N82 mid-read phase. */
+    const uint8_t spi0_route = m->spi[0].slaves[0].transfer ? 0u :
+                              S5L_SPI0_LCD_CS;
+    m->spi[0].cs = (uint8_t)(spi0_route |
         (m->spi[0].cs & S5L_SPI_LCD_READ_PENDING));
     /* Every device in this machine was just replaced, so nothing the previous
      * tick derived about its levels still holds. Setting rather than restoring
@@ -1627,6 +1736,7 @@ static snapshot_status_t snap_apply(s5l8900_t *m, FILE *f,
     m->active_clock_last_host_ns = 0u;
     m->active_clock_guest_ticks_since_sync = 0u;
     m->active_clock_fraction = 0u;
+    m->active_clock_debt_ticks = 0u;
     m->active_clock_anchor_valid = false;
     return SNAP_OK;
 }
