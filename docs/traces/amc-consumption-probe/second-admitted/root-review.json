@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "Root byte comparison of queue after two actual inputs; zero PCM consumption, no third input provenance claim",
+  "queuedBytes": 32420,
+  "queueSHA256": "68435b731a9f5c66e02369e6926ad7da26263e63bf0f2fb758ca16e57d8e14f6",
+  "decodedBytes": 348,
+  "readRecords": 0
+}

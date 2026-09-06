@@ -1,0 +1,9 @@
+file:///home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/browser.mjs:90
+  await browser.close(); await writeFile(resolve(directory,'report.json'),JSON.stringify(report,null,2)+'\n');
+                                                                               ^
+
+TypeError: Do not know how to serialize a BigInt
+    at JSON.stringify (<anonymous>)
+    at file:///home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/browser.mjs:90:80
+
+Node.js v24.14.1

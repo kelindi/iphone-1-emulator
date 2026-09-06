@@ -1,0 +1,260 @@
+0xc0274880  pop      {r4, r5, r6, r7, pc}
+0xc0274884  .byte    0xb4, 0xcd, 0x27, 0xc0
+0xc0274888  andsgt   sp, r2, pc, lsl r4
+0xc027488c  and      r0, r0, r2, asr #5
+0xc0274890  eorgt    ip, r7, ip, asr #28
+0xc0274894  strh     r0, [r0], -ip
+0xc0274898  andsgt   sb, r4, sb, lsl #22
+0xc027489c  .byte    0xdc, 0xce, 0x27, 0xc0
+0xc02748a0  eorgt    ip, r7, r4, lsl pc
+0xc02748a4  .byte    0xf0, 0x80, 0x27, 0xc0
+0xc02748a8  mlagt    r7, r4, pc, ip
+0xc02748ac  eorgt    sp, r7, r4, lsl r0
+0xc02748b0  push     {r4, r5, r6, r7, lr}
+0xc02748b4  subs     r6, r1, #0
+0xc02748b8  add      r7, sp, #0xc
+0xc02748bc  mov      r4, r0
+0xc02748c0  bne      #0xc02748d8
+0xc02748c4  ldr      r0, [pc, #0x248] ; literal@c0274b14 = c027d04c 'Assertion "0 == inCodecParams" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1466'
+0xc02748c8  ldr      r3, [pc, #0x248] ; literal@c0274b18 = c012d41f
+0xc02748cc  blx      r3
+0xc02748d0  ldr      r5, [pc, #0x244] ; literal@c0274b1c = e00002c2
+0xc02748d4  b        #0xc0274b0c
+0xc02748d8  ldr      r3, [r0, #0xdc]
+0xc02748dc  cmp      r3, #0
+0xc02748e0  ldreq    r0, [pc, #0x238] ; literal@c0274b20 = c027d0d4 'Assertion "0 == mODETaskManager" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 14'
+0xc02748e4  beq      #0xc027499c
+0xc02748e8  mov      r3, #0
+0xc02748ec  str      r3, [r4, #0x158]
+0xc02748f0  bl       #0xc02746a8
+0xc02748f4  subs     r5, r0, #0
+0xc02748f8  ldrne    r0, [pc, #0x224] ; literal@c0274b24 = c027d15c 'Assertion "0 != result" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1472 goto E'
+0xc02748fc  bne      #0xc027491c
+0xc0274900  mov      r1, #1
+0xc0274904  mov      r0, r4
+0xc0274908  mov      r2, r1
+0xc027490c  bl       #0xc0271870
+0xc0274910  subs     r5, r0, #0
+0xc0274914  beq      #0xc0274928
+0xc0274918  ldr      r0, [pc, #0x208] ; literal@c0274b28 = c027d1dc 'Assertion "0 != result" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1476 goto E'
+0xc027491c  ldr      r3, [pc, #0x1f4] ; literal@c0274b18 = c012d41f
+0xc0274920  blx      r3
+0xc0274924  b        #0xc0274b0c
+0xc0274928  ldrb     r3, [r4, #0x16c]
+0xc027492c  str      r5, [r4, #0xe0]
+0xc0274930  cmp      r3, #0
+0xc0274934  beq      #0xc0274954
+0xc0274938  ldrb     r3, [r4, #0x16d]
+0xc027493c  cmp      r3, #0
+0xc0274940  beq      #0xc0274954
+0xc0274944  mov      r0, r4
+0xc0274948  bl       #0xc027130c
+0xc027494c  ldr      r3, [pc, #0x1d8] ; literal@c0274b2c = c0277e84
+0xc0274950  blx      r3
+0xc0274954  ldr      r3, [r6]
+0xc0274958  sub      r3, r3, #1
+0xc027495c  cmp      r3, #4
+0xc0274960  ldrls    pc, [pc, r3, lsl #2] ; literal@c0274968 = c027497c
+0xc0274964  b        #0xc0274a18
+0xc0274968  eorgt    r4, r7, ip, ror sb
+0xc027496c  eorgt    r4, r7, ip, lsr #19
+0xc0274970  .byte    0xf4, 0x49, 0x27, 0xc0
+0xc0274974  .byte    0xd0, 0x49, 0x27, 0xc0
+0xc0274978  .byte    0xd0, 0x49, 0x27, 0xc0
+0xc027497c  ldr      r0, [r4, #0xdc]
+0xc0274980  ldr      r1, [pc, #0x1a8] ; literal@c0274b30 = c027d25c 'Espico_mp3'
+0xc0274984  ldr      r3, [r0]
+0xc0274988  mov      lr, pc
+0xc027498c  ldr      pc, [r3, #0x18]
+0xc0274990  cmp      r0, #0
+0xc0274994  bne      #0xc0274a2c
+0xc0274998  ldr      r0, [pc, #0x194] ; literal@c0274b34 = c027d268 'Assertion "false == mODETaskManager->selectApplication("Espico_mp3")" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/'
+0xc027499c  ldr      r3, [pc, #0x174] ; literal@c0274b18 = c012d41f
+0xc02749a0  blx      r3
+0xc02749a4  ldr      r5, [pc, #0x18c] ; literal@c0274b38 = e00002bc
+0xc02749a8  b        #0xc0274b0c
+0xc02749ac  ldr      r0, [r4, #0xdc]
+0xc02749b0  ldr      r1, [pc, #0x184] ; literal@c0274b3c = c027d314 'Espico_aac'
+0xc02749b4  ldr      r3, [r0]
+0xc02749b8  mov      lr, pc
+0xc02749bc  ldr      pc, [r3, #0x18]
+0xc02749c0  cmp      r0, #0
+0xc02749c4  ldreq    r0, [pc, #0x174] ; literal@c0274b40 = c027d320 'Assertion "false == mODETaskManager->selectApplication("Espico_aac")" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/'
+0xc02749c8  bne      #0xc0274a2c
+0xc02749cc  b        #0xc027499c
+0xc02749d0  ldr      r0, [r4, #0xdc]
+0xc02749d4  ldr      r1, [pc, #0x168] ; literal@c0274b44 = c027d3cc 'Espico_acelp'
+0xc02749d8  ldr      r3, [r0]
+0xc02749dc  mov      lr, pc
+0xc02749e0  ldr      pc, [r3, #0x18]
+0xc02749e4  cmp      r0, #0
+0xc02749e8  ldreq    r0, [pc, #0x158] ; literal@c0274b48 = c027d3dc 'Assertion "false == mODETaskManager->selectApplication("Espico_acelp")" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.'
+0xc02749ec  bne      #0xc0274a2c
+0xc02749f0  b        #0xc027499c
+0xc02749f4  ldr      r0, [r4, #0xdc]
+0xc02749f8  ldr      r1, [pc, #0x14c] ; literal@c0274b4c = c027d48c 'Espico_alac'
+0xc02749fc  ldr      r3, [r0]
+0xc0274a00  mov      lr, pc
+0xc0274a04  ldr      pc, [r3, #0x18]
+0xc0274a08  cmp      r0, #0
+0xc0274a0c  ldreq    r0, [pc, #0x13c] ; literal@c0274b50 = c027d498 'Assertion "false == mODETaskManager->selectApplication("Espico_alac")" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4'
+0xc0274a10  bne      #0xc0274a2c
+0xc0274a14  b        #0xc027499c
+0xc0274a18  ldr      r0, [pc, #0x134] ; literal@c0274b54 = c027d548 'Assertion "true" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1504 goto Exit\n\n'
+0xc0274a1c  ldr      r3, [pc, #0xf4] ; literal@c0274b18 = c012d41f
+0xc0274a20  blx      r3
+0xc0274a24  ldr      r5, [pc, #0x12c] ; literal@c0274b58 = e00002c7
+0xc0274a28  b        #0xc0274b0c
+0xc0274a2c  ldr      r3, [pc, #0x128] ; literal@c0274b5c = c027744c
+0xc0274a30  blx      r3
+0xc0274a34  cmp      r0, #1
+0xc0274a38  ldrne    r0, [pc, #0x120] ; literal@c0274b60 = c027d5c0 'Assertion "ODE_SUCCESS != ode_platform_configure()" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDri'
+0xc0274a3c  bne      #0xc027499c
+0xc0274a40  mov      ip, r6
+0xc0274a44  add      lr, r4, #0xc0
+0xc0274a48  ldm      ip!, {r0, r1, r2, r3}
+0xc0274a4c  mov      r5, lr
+0xc0274a50  stm      r5!, {r0, r1, r2, r3}
+0xc0274a54  ldm      ip, {r0, r1, r2}
+0xc0274a58  stm      r5, {r0, r1, r2}
+0xc0274a5c  mov      r0, lr
+0xc0274a60  ldr      r3, [r4, #0xc0]
+0xc0274a64  cmp      r3, #3
+0xc0274a68  ldrne    r3, [r4, #0xf4]
+0xc0274a6c  ldreq    r3, [r4, #0xf8]
+0xc0274a70  strne    r3, [r4, #0x138]
+0xc0274a74  streq    r3, [r4, #0x138]
+0xc0274a78  ldrne    r3, [r4, #0xec]
+0xc0274a7c  ldreq    r3, [r4, #0xf0]
+0xc0274a80  str      r3, [r4, #0x13c]
+0xc0274a84  bl       #0xc02716dc
+0xc0274a88  cmp      r0, #0x10000
+0xc0274a8c  str      r0, [r4, #0x134]
+0xc0274a90  ldrhi    r0, [pc, #0xcc] ; literal@c0274b64 = c027d65c 'Assertion "mCurrentInputBufferSize > kSharedInputBufferCapacity" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Sourc'
+0xc0274a94  bhi      #0xc027499c
+0xc0274a98  ldrb     r3, [r4, #0xd9]
+0xc0274a9c  cmp      r3, #0
+0xc0274aa0  beq      #0xc0274ab0
+0xc0274aa4  cmp      r0, #0x4000
+0xc0274aa8  ldrhi    r0, [pc, #0xb8] ; literal@c0274b68 = c027d704 'Assertion "mCodecParams.isEncrypted && (mCurrentInputBufferSize > kUnsharedInputBufferCapacity)" failed in "/SourceCache'
+0xc0274aac  bhi      #0xc027499c
+0xc0274ab0  ldr      r3, [pc, #0xb4] ; literal@c0274b6c = c027813c
+0xc0274ab4  blx      r3
+0xc0274ab8  ldr      r0, [r4, #0xdc]
+0xc0274abc  ldr      r1, [r4, #0xc0]
+0xc0274ac0  mov      r5, #0
+0xc0274ac4  ldr      r3, [r0]
+0xc0274ac8  cmp      r1, #3
+0xc0274acc  movne    r1, #0
+0xc0274ad0  moveq    r1, #1
+0xc0274ad4  mov      lr, pc
+0xc0274ad8  ldr      pc, [r3, #8]
+0xc0274adc  ldr      r3, [pc, #0x8c] ; literal@c0274b70 = c0277198
+0xc0274ae0  blx      r3
+0xc0274ae4  mov      r0, #0
+0xc0274ae8  mov      r1, #7
+0xc0274aec  ldr      r3, [pc, #0x80] ; literal@c0274b74 = c02770ec
+0xc0274af0  blx      r3
+0xc0274af4  ldr      r3, [pc, #0x7c] ; literal@c0274b78 = c02772b8
+0xc0274af8  blx      r3
+0xc0274afc  ldr      r3, [pc, #0x78] ; literal@c0274b7c = c0278194
+0xc0274b00  blx      r3
+0xc0274b04  mov      r3, #3
+0xc0274b08  str      r3, [r4, #0xe0]
+0xc0274b0c  mov      r0, r5
+0xc0274b10  pop      {r4, r5, r6, r7, pc}
+0xc0274b14  eorgt    sp, r7, ip, asr #32
+0xc0274b18  andsgt   sp, r2, pc, lsl r4
+0xc0274b1c  and      r0, r0, r2, asr #5
+0xc0274b20  .byte    0xd4, 0xd0, 0x27, 0xc0
+0xc0274b24  eorgt    sp, r7, ip, asr r1
+0xc0274b28  .byte    0xdc, 0xd1, 0x27, 0xc0
+0xc0274b2c  eorgt    r7, r7, r4, lsl #29
+0xc0274b30  eorgt    sp, r7, ip, asr r2
+0xc0274b34  eorgt    sp, r7, r8, ror #4
+0xc0274b38  strh     r0, [r0], -ip
+0xc0274b3c  eorgt    sp, r7, r4, lsl r3
+0xc0274b40  eorgt    sp, r7, r0, lsr #6
+0xc0274b44  eorgt    sp, r7, ip, asr #7
+0xc0274b48  .byte    0xdc, 0xd3, 0x27, 0xc0
+0xc0274b4c  eorgt    sp, r7, ip, lsl #9
+0xc0274b50  mlagt    r7, r8, r4, sp
+0xc0274b54  eorgt    sp, r7, r8, asr #10
+0xc0274b58  and      r0, r0, r7, asr #5
+0xc0274b5c  eorgt    r7, r7, ip, asr #8
+0xc0274b60  eorgt    sp, r7, r0, asr #11
+0xc0274b64  eorgt    sp, r7, ip, asr r6
+0xc0274b68  eorgt    sp, r7, r4, lsl #14
+0xc0274b6c  eorgt    r8, r7, ip, lsr r1
+0xc0274b70  mlagt    r7, r8, r1, r7
+0xc0274b74  eorgt    r7, r7, ip, ror #1
+0xc0274b78  .byte    0xb8, 0x72, 0x27, 0xc0
+0xc0274b7c  mlagt    r7, r4, r1, r8
+0xc0274b80  subs     r3, r1, #0
+0xc0274b84  push     {r4, r7, lr}
+0xc0274b88  add      r7, sp, #4
+0xc0274b8c  bne      #0xc0274ba4
+0xc0274b90  ldr      r0, [pc, #0x4c] ; literal@c0274be4 = c027d7cc 'Assertion "0 == inCodecParams" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1575'
+0xc0274b94  ldr      r3, [pc, #0x4c] ; literal@c0274be8 = c012d41f
+0xc0274b98  blx      r3
+0xc0274b9c  ldr      r4, [pc, #0x48] ; literal@c0274bec = e00002c2
+0xc0274ba0  b        #0xc0274bdc
+0xc0274ba4  ldr      r2, [r0, #0xc0]
+0xc0274ba8  ldr      r3, [r3]
+0xc0274bac  cmp      r2, r3
+0xc0274bb0  beq      #0xc0274bc8
+0xc0274bb4  ldr      r0, [pc, #0x34] ; literal@c0274bf0 = c027d854 'Assertion "mCodecParams.codecType != inCodecParams->codecType" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/'
+0xc0274bb8  ldr      r3, [pc, #0x28] ; literal@c0274be8 = c012d41f
+0xc0274bbc  blx      r3
+0xc0274bc0  ldr      r4, [pc, #0x2c] ; literal@c0274bf4 = e00002bc
+0xc0274bc4  b        #0xc0274bdc
+0xc0274bc8  bl       #0xc02748b0
+0xc0274bcc  subs     r4, r0, #0
+0xc0274bd0  ldrne    r0, [pc, #0x20] ; literal@c0274bf8 = c027d8fc 'Assertion "0 != result" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 1622 goto E'
+0xc0274bd4  ldrne    r3, [pc, #0xc] ; literal@c0274be8 = c012d41f
+0xc0274bd8  blxne    r3
+0xc0274bdc  mov      r0, r4
+0xc0274be0  pop      {r4, r7, pc}
+0xc0274be4  eorgt    sp, r7, ip, asr #15
+0xc0274be8  andsgt   sp, r2, pc, lsl r4
+0xc0274bec  and      r0, r0, r2, asr #5
+0xc0274bf0  eorgt    sp, r7, r4, asr r8
+0xc0274bf4  strh     r0, [r0], -ip
+0xc0274bf8  .byte    0xfc, 0xd8, 0x27, 0xc0
+0xc0274bfc  push     {r4, r5, r6, r7, lr}
+0xc0274c00  cmp      r1, #2
+0xc0274c04  add      r7, sp, #0xc
+0xc0274c08  push     {r8, sl, fp}
+0xc0274c0c  sub      sp, sp, #0x14
+0xc0274c10  mov      r8, r0
+0xc0274c14  mov      fp, r1
+0xc0274c18  bls      #0xc0274c30
+0xc0274c1c  ldr      r0, [pc, #0x2a8] ; literal@c0274ecc = c027d97c 'Assertion "inBufferIndex >= kNumInputBuffers" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cp'
+0xc0274c20  ldr      r3, [pc, #0x2a8] ; literal@c0274ed0 = c012d41f
+0xc0274c24  blx      r3
+0xc0274c28  ldr      r0, [pc, #0x2a4] ; literal@c0274ed4 = e00002c2
+0xc0274c2c  b        #0xc0274ec0
+0xc0274c30  ldrb     r3, [r0, #0xd9]
+0xc0274c34  cmp      r3, #0
+0xc0274c38  ldreq    r0, [pc, #0x298] ; literal@c0274ed8 = c027da10 'Assertion "false == mCodecParams.isEncrypted" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cp'
+0xc0274c3c  beq      #0xc0274c54
+0xc0274c40  add      r4, r8, r1, lsl #2
+0xc0274c44  ldr      r0, [r4, #0x110]
+0xc0274c48  cmp      r0, #0
+0xc0274c4c  bne      #0xc0274c64
+0xc0274c50  ldr      r0, [pc, #0x284] ; literal@c0274edc = c027daa4 'Assertion "0 == mSharedInputBufferMemoryDescriptor[inBufferIndex]" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Sou'
+0xc0274c54  ldr      r3, [pc, #0x274] ; literal@c0274ed0 = c012d41f
+0xc0274c58  blx      r3
+0xc0274c5c  ldr      r0, [pc, #0x27c] ; literal@c0274ee0 = e00002bc
+0xc0274c60  b        #0xc0274ec0
+0xc0274c64  ldr      r3, [r4, #0x11c]
+0xc0274c68  cmp      r3, #0
+0xc0274c6c  ldreq    r0, [pc, #0x270] ; literal@c0274ee4 = c027db50 'Assertion "0 == mUnsharedInputBufferMemoryDescriptor[inBufferIndex]" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/S'
+0xc0274c70  beq      #0xc0274c54
+0xc0274c74  ldr      r3, [r4, #0x128]
+0xc0274c78  cmp      r3, #0
+0xc0274c7c  ldreq    r0, [pc, #0x264] ; literal@c0274ee8 = c027dbfc 'Assertion "0 == mInputBufferPacketDescriptionsMemoryDescriptor[inBufferIndex]" failed in "/SourceCache/AppleAMC/AppleAMC'
+0xc0274c80  beq      #0xc0274c54
+0xc0274c84  ldr      r3, [r8, #0xe8]
+0xc0274c88  cmp      r3, #0
+0xc0274c8c  ldreq    r0, [pc, #0x258] ; literal@c0274eec = c027dcb4 'Assertion "0 == mFairPlayRef" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriver.cpp" at line 2234 '

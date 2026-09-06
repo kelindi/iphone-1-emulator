@@ -1,0 +1,38 @@
+{
+  "command": [
+    ".context/amc-first/stage-j/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-j/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin",
+    ".context/amc-first/stage-g/run-1"
+  ],
+  "returncode": 10,
+  "timedOut": false,
+  "wallSeconds": 4.980582704003609,
+  "guestPass": false,
+  "firstBoundaryAuditPass": true,
+  "consumptionAuditPass": false,
+  "secondRequestAuditPass": true,
+  "sourceManifestSHA256": "f39262ecf6a9827cccd6a00a6d58531ef7ccb721ca2a48e2fcea32457d3abbf2",
+  "frozenScripts": {
+    "audit.py": "778b0b988517093512fd1f4cb25f07306e2e661e340ac046a0a12bb7ba3c1258",
+    "first-audit.py": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+    "kernel-oracle.py": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9",
+    "launch.py": "62e813b840b3e667350228a1a8e9f0b05dbd78997663446113b9182e3013c704",
+    "second-audit.py": "5f479497bd9a8aa6a208d44b95bcf66d0a437f6fd6694e44c14b66f34fe5b0f3",
+    "mp4_oracle.py": "93d25ab33f7a343d61b9a2990524f861e3200f2d4bfe5169422400d173e27f09"
+  },
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructions": 5000000,
+    "postInputInstructions": 5000000,
+    "postPublicationInstructions": 5000000,
+    "maximumPublications": 2
+  }
+}

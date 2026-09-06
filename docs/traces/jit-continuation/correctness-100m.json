@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "scope": "Both original fixture interpreter and original-seed candidate runs; exact complete raw SHA and TLB counters, no normalization. Generated retirement/calls differ explicitly by continuation policy. Functional runs overlap unrelated work, no timing claim.",
+  "fixtures": [
+    {
+      "fixture": "mbx",
+      "runs": [
+        {
+          "enabled": 0,
+          "done": 100000000,
+          "hash": "d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c",
+          "tlb": [
+            "2354163240",
+            "75506320",
+            "462707"
+          ],
+          "originalGenerated": 73093840,
+          "originalCalls": 9273308,
+          "originalRegions": 509,
+          "generated": 0,
+          "calls": 0,
+          "regions": 0,
+          "runMs": 4537.577467999997,
+          "ms": 5785.718698999999
+        },
+        {
+          "enabled": 1,
+          "done": 100000000,
+          "hash": "d4ca9be92fc97409eef7e93545c4ac1cb2963eacb079a405181840ea6a41e38c",
+          "tlb": [
+            "2354163240",
+            "75506320",
+            "462707"
+          ],
+          "originalGenerated": 73093840,
+          "originalCalls": 9273308,
+          "originalRegions": 509,
+          "generated": 75581442,
+          "calls": 9553944,
+          "regions": 509,
+          "runMs": 4743.560502000004,
+          "ms": 5773.735940999999
+        }
+      ]
+    },
+    {
+      "fixture": "software",
+      "runs": [
+        {
+          "enabled": 0,
+          "done": 100000000,
+          "hash": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+          "tlb": [
+            "2416294936",
+            "58979021",
+            "387578"
+          ],
+          "originalGenerated": 87140487,
+          "originalCalls": 8561513,
+          "originalRegions": 511,
+          "generated": 0,
+          "calls": 0,
+          "regions": 0,
+          "runMs": 4371.817457,
+          "ms": 5521.632395
+        },
+        {
+          "enabled": 1,
+          "done": 100000000,
+          "hash": "1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8",
+          "tlb": [
+            "2416294936",
+            "58979021",
+            "387578"
+          ],
+          "originalGenerated": 87140487,
+          "originalCalls": 8561513,
+          "originalRegions": 511,
+          "generated": 90051305,
+          "calls": 8772595,
+          "regions": 511,
+          "runMs": 2751.513473000008,
+          "ms": 3893.924896999999
+        }
+      ]
+    }
+  ]
+}

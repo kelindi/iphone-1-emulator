@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "focusedGroupCases": 358,
+  "originalRuntimeGuardCases": 404,
+  "fullReplay": {
+    "mbx-600m": {
+      "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+      "rawComparisons": 6,
+      "finalRawSha256": "642bd79aa34ec60617b745f2eceeff4c5f7c9e64ccf694cbf4b1f439adc958b4",
+      "generated": 460306256,
+      "publicCalls": 64437078
+    },
+    "software-600m": {
+      "fixtureSha256": "28591a3003b8677469b2e506185792e26ac128ba9383b7f110959f4f4fb0c82d",
+      "rawComparisons": 6,
+      "finalRawSha256": "bfcde2adfff879343c437ef0d0b55fb689525a2178e080c16b95f7956c77c7f5",
+      "generated": 496605837,
+      "publicCalls": 56932774
+    }
+  },
+  "snapshotOutputs": 24,
+  "negativeBudget": "Rejected:67 retired versus65 allowed",
+  "negativeRawGuard": "Rejected: stale earlier operation on tail entry changes full state",
+  "scope": "Correctness and structural measurements only. Concurrent functional runtimes are not timing evidence. Production files unchanged."
+}

@@ -1,0 +1,12 @@
+c014c674 80b5     push     {r7, lr}
+c014c676 011c     adds     r1, r0, #0
+c014c678 0448     ldr      r0, [pc, #0x10]
+c014c67a 00af     add      r7, sp, #0
+c014c67c 0068     ldr      r0, [r0]
+c014c67e 0028     cmp      r0, #0
+c014c680 03d0     beq      #0xc014c68a
+c014c682 0368     ldr      r3, [r0]
+c014c684 024a     ldr      r2, [pc, #8]
+c014c686 9b58     ldr      r3, [r3, r2]
+c014c688 9847     blx      r3
+c014c68a 80bd     pop      {r7, pc}

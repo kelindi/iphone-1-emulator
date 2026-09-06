@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "files": {
+    "compiler.cjs": "0e53310a0a1a9ae25920bc4ad7d982a46e1eddecd9477d14cc3779830fdb324d",
+    "oracle.c": "f68c130a77f3fc93509a0f275a51cb9f95bef3aa8d66d69e764f67b5f880e63d",
+    "test.cjs": "3f3614be0f96add972db5bb031a136f4d83c897be96137d59560e8220bffe951",
+    "focused-report.json": "8f79b183fc837fd1def98adb674a532dabb43c78e4de0bc2f3a397584c40ee81",
+    "negative-summary.json": "1054dd7b1e743251c82f60b8c2ab9d863dc286f9f39c34a43cdb60192ff663c1",
+    "relocation-proof.json": "c94b514d2c87fef0e1ca0c05e1c1e2b161503d9201ec88116faf1744c42e609b",
+    "guest-proof.json": "3802751405eec537f6d27338cea0518855cdd8bf1acb1bcf5310e9aa6b1c69ef",
+    "software-proof.json": "c99e8551c6a349c0cf87e5727b2287e45cfb485627d84de125ac3ed9fb54a003",
+    "generate.mjs": "a30b9344c0e55a27a0f827463881f8389e45f1ebaa63604ffae9a4f620250675"
+  },
+  "runtimeSha256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+  "coreArchiveSha256": "04d8b33bb6af9e87c3cf332aa7039c32cd8f3fdf285380aac92503195ffc1d77",
+  "originalSeedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "candidateSeedSha256": "342e3ab994c55e3c3baa63c070f1b35179dba0b1243fa7947b6ab9d1a64d0d86",
+  "regionsByteIdentical": true,
+  "fullRawChecks": 36
+}

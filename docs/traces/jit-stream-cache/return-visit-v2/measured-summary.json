@@ -1,0 +1,683 @@
+{
+  "scope": "CONTAMINATED diagnostic: external browser/encoding work overlapped later arms. No quiet speed acceptance or production promotion. Frozen no-cache/ETag V2, all orders retained, first visits never called p95.",
+  "completedSeries": true,
+  "quietAcceptance": false,
+  "contamination": {
+    "time": "2026-09-06T04:49:32.834300+00:00",
+    "classification": "Contaminated diagnostic; no quiet timing acceptance. No automatic retry.",
+    "rootObservation": "Root verified independent codex3144844 owns node3262304/3262305, Chrome3262388/3262390 and ffmpeg3262755 at04:48:19 UTC, summed ps lifetime CPU percentages about300% (not interval utilization). Frozen source pins unaffected; external process ownership investigation remains root-owned.",
+    "processes": [
+      {
+        "pid": 3144844,
+        "name": "codex",
+        "ppid": 113,
+        "utimeTicks": 1937,
+        "stimeTicks": 875,
+        "startTicks": 3881212
+      },
+      {
+        "pid": 3262304,
+        "closedBeforeThisReceipt": true
+      },
+      {
+        "pid": 3262305,
+        "closedBeforeThisReceipt": true
+      },
+      {
+        "pid": 3262388,
+        "closedBeforeThisReceipt": true
+      },
+      {
+        "pid": 3262390,
+        "closedBeforeThisReceipt": true
+      },
+      {
+        "pid": 3262755,
+        "closedBeforeThisReceipt": true
+      },
+      {
+        "pid": 3217764,
+        "name": "python3",
+        "ppid": 3217746,
+        "utimeTicks": 1951,
+        "stimeTicks": 745,
+        "startTicks": 3943533
+      },
+      {
+        "pid": 3264881,
+        "name": "MainThread",
+        "ppid": 3217764,
+        "utimeTicks": 338,
+        "stimeTicks": 44,
+        "startTicks": 3979672
+      }
+    ],
+    "externalSession": "Separate Web UI Minimalist Redesign Conductor session; root coordination pending.",
+    "rootEvidence": "external-overlap-root.json"
+  },
+  "failure": null,
+  "rows": [
+    {
+      "index": 1,
+      "variant": "original",
+      "elapsedSeconds": 111.09536337852478,
+      "exitCode": 0,
+      "passed": true,
+      "strictStages": 22,
+      "failedStages": [],
+      "first": {
+        "settings": [
+          5001.9000000059605
+        ],
+        "home": [
+          866
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 10,
+          "valuesMs": [
+            3216.6999999955297,
+            2666.7000000029802,
+            3267,
+            3516.3000000044703,
+            2616.39999999851,
+            3366.7000000029802,
+            3467.0999999940395,
+            2666.89999999851,
+            3166.9000000059605,
+            3066.10000000149
+          ],
+          "medianMs": 3191.800000000745,
+          "p95NearestRankMs": 3516.3000000044703,
+          "meanMs": 3101.680000000447
+        },
+        "home": {
+          "n": 10,
+          "valuesMs": [
+            866.8000000044703,
+            866.9000000059605,
+            916.7999999970198,
+            964.7000000029802,
+            916.2999999970198,
+            863.6000000014901,
+            863.0999999940395,
+            866.3999999985099,
+            822.3999999985099,
+            867
+          ],
+          "medianMs": 866.8500000052154,
+          "p95NearestRankMs": 964.7000000029802,
+          "meanMs": 881.4
+        }
+      },
+      "cacheAccepted": false,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8189/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:42:21 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8189/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:42:21 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "scopedProcessesClosed": 12,
+      "validationPhaseMs": {
+        "n": 22,
+        "valuesMs": [
+          1227.844057000002,
+          1243.6921680000014,
+          1185.7721380000003,
+          1208.965145999995,
+          1188.9789909999963,
+          1211.887146000001,
+          1179.9361009999993,
+          1201.3813230000014,
+          1192.8719650000057,
+          1188.6693539999978,
+          1196.4506409999885,
+          1214.229766999997,
+          1184.3339190000115,
+          1199.1287509999966,
+          1187.346808000002,
+          1208.6980279999989,
+          1204.4438229999942,
+          1188.0046469999943,
+          1193.268425000002,
+          1197.0542480000004,
+          1195.7032130000007,
+          1198.3025259999995
+        ],
+        "medianMs": 1196.7524444999945,
+        "p95NearestRankMs": 1227.844057000002,
+        "meanMs": 1199.8619629545449
+      }
+    },
+    {
+      "index": 2,
+      "variant": "candidate",
+      "elapsedSeconds": 109.458327293396,
+      "exitCode": 0,
+      "passed": true,
+      "strictStages": 22,
+      "failedStages": [],
+      "first": {
+        "settings": [
+          3516
+        ],
+        "home": [
+          916.8999999985099
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 10,
+          "valuesMs": [
+            3867.10000000149,
+            2867.5,
+            3266,
+            3013.7999999970198,
+            2963.5,
+            3166.7999999970198,
+            3415.5999999940395,
+            2667.1999999955297,
+            3217.2000000029802,
+            2966.0999999940395
+          ],
+          "medianMs": 3090.2999999970198,
+          "p95NearestRankMs": 3867.10000000149,
+          "meanMs": 3141.079999998212
+        },
+        "home": {
+          "n": 10,
+          "valuesMs": [
+            870,
+            917.8999999985099,
+            867.1999999955297,
+            916.7000000029802,
+            866.7999999970198,
+            913.9000000059605,
+            966.1999999955297,
+            866.8999999985099,
+            866.8999999985099,
+            916.9000000059605
+          ],
+          "medianMs": 891.9500000029802,
+          "p95NearestRankMs": 966.1999999955297,
+          "meanMs": 896.939999999851
+        }
+      },
+      "cacheAccepted": true,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8190/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:44:17 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8190/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:44:18 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "scopedProcessesClosed": 12,
+      "validationPhaseMs": {
+        "n": 22,
+        "valuesMs": [
+          1205.9347510000007,
+          1220.370371000001,
+          1194.5754989999987,
+          1210.964850000004,
+          1195.5098500000022,
+          1211.5237100000013,
+          1190.9156399999993,
+          1188.4252480000068,
+          1186.9393299999938,
+          1210.362957999998,
+          1217.0432839999994,
+          1195.6728919999878,
+          1190.6134030000103,
+          1217.686606000003,
+          1196.584189000001,
+          1273.0807179999974,
+          1189.6865529999923,
+          1234.9661190000043,
+          1192.644994999995,
+          1207.4549030000053,
+          1188.6459529999993,
+          1188.3840280000004
+        ],
+        "medianMs": 1196.1285404999944,
+        "p95NearestRankMs": 1234.9661190000043,
+        "meanMs": 1204.9084477272727
+      }
+    },
+    {
+      "index": 3,
+      "variant": "candidate",
+      "elapsedSeconds": 112.24295663833618,
+      "exitCode": 0,
+      "passed": true,
+      "strictStages": 22,
+      "failedStages": [],
+      "first": {
+        "settings": [
+          3359.39999999851
+        ],
+        "home": [
+          914.7000000029802
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 10,
+          "valuesMs": [
+            4065.9000000059605,
+            2967.2000000029802,
+            3067,
+            3217.2999999970198,
+            2617.5,
+            3116.6999999955297,
+            3117.10000000149,
+            2818.3000000044703,
+            3265.39999999851,
+            4176.20000000298
+          ],
+          "medianMs": 3116.89999999851,
+          "p95NearestRankMs": 4176.20000000298,
+          "meanMs": 3242.860000000894
+        },
+        "home": {
+          "n": 10,
+          "valuesMs": [
+            958.6999999955297,
+            866.7000000029802,
+            918,
+            866.5,
+            866.9000000059605,
+            867.8999999985099,
+            916.8999999985099,
+            867.0999999940395,
+            866.8999999985099,
+            1080.8000000044703
+          ],
+          "medianMs": 867.4999999962747,
+          "p95NearestRankMs": 1080.8000000044703,
+          "meanMs": 907.6399999998509
+        }
+      },
+      "cacheAccepted": true,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8190/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:46:14 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8190/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:46:15 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "scopedProcessesClosed": 12,
+      "validationPhaseMs": {
+        "n": 22,
+        "valuesMs": [
+          1248.4531779999998,
+          1295.522513,
+          1215.4219039999953,
+          1195.3824430000022,
+          1193.2506809999977,
+          1211.7221260000006,
+          1293.1216310000018,
+          1190.198074,
+          1188.5318380000026,
+          1195.147954,
+          1196.9626179999905,
+          1197.0288700000092,
+          1196.9939749999903,
+          1198.2323929999984,
+          1194.4608320000116,
+          1198.0363429999998,
+          1184.092042999997,
+          1186.4993380000087,
+          1193.2321050000028,
+          1188.5127149999898,
+          1373.7246770000056,
+          1313.3674000000028
+        ],
+        "medianMs": 1196.9782964999904,
+        "p95NearestRankMs": 1313.3674000000028,
+        "meanMs": 1220.358893227273
+      }
+    },
+    {
+      "index": 4,
+      "variant": "original",
+      "elapsedSeconds": 115.14752125740051,
+      "exitCode": 0,
+      "passed": true,
+      "strictStages": 22,
+      "failedStages": [],
+      "first": {
+        "settings": [
+          5714.70000000298
+        ],
+        "home": [
+          916.3000000044703
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 10,
+          "valuesMs": [
+            3317,
+            2966.60000000149,
+            3517.7000000029802,
+            3316.7000000029802,
+            3016.60000000149,
+            3117.2000000029802,
+            3266.89999999851,
+            3016.5999999940395,
+            3317.5,
+            3514.0999999940395
+          ],
+          "medianMs": 3291.800000000745,
+          "p95NearestRankMs": 3517.7000000029802,
+          "meanMs": 3236.689999999851
+        },
+        "home": {
+          "n": 10,
+          "valuesMs": [
+            866.8999999985099,
+            866.1000000014901,
+            916.9000000059605,
+            816.7000000029802,
+            866.8000000044703,
+            868,
+            917,
+            866.7999999970198,
+            867.1000000014901,
+            867
+          ],
+          "medianMs": 866.9499999992549,
+          "p95NearestRankMs": 917,
+          "meanMs": 871.9300000011921
+        }
+      },
+      "cacheAccepted": false,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8189/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:48:16 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8189/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 04:48:17 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "scopedProcessesClosed": 12,
+      "validationPhaseMs": {
+        "n": 22,
+        "valuesMs": [
+          1220.858490999999,
+          1201.3700450000033,
+          1187.0955200000026,
+          1188.208179000001,
+          1202.984682000002,
+          1215.9311129999987,
+          1180.2858820000038,
+          1199.1689420000039,
+          1201.2710789999983,
+          1212.230012999993,
+          1188.380588,
+          1199.8795390000014,
+          1190.5264279999974,
+          1193.3045830000046,
+          1185.2712610000017,
+          1197.8612989999965,
+          1187.0235340000072,
+          1200.1911680000048,
+          1212.6363280000078,
+          1254.8016759999882,
+          1234.090320000003,
+          1202.7906680000015
+        ],
+        "medianMs": 1200.035353500003,
+        "p95NearestRankMs": 1234.090320000003,
+        "meanMs": 1202.55278809091
+      }
+    }
+  ],
+  "combined": {
+    "original": {
+      "first": {
+        "settings": [
+          5001.9000000059605,
+          5714.70000000298
+        ],
+        "home": [
+          866,
+          916.3000000044703
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 20,
+          "valuesMs": [
+            3216.6999999955297,
+            2666.7000000029802,
+            3267,
+            3516.3000000044703,
+            2616.39999999851,
+            3366.7000000029802,
+            3467.0999999940395,
+            2666.89999999851,
+            3166.9000000059605,
+            3066.10000000149,
+            3317,
+            2966.60000000149,
+            3517.7000000029802,
+            3316.7000000029802,
+            3016.60000000149,
+            3117.2000000029802,
+            3266.89999999851,
+            3016.5999999940395,
+            3317.5,
+            3514.0999999940395
+          ],
+          "medianMs": 3241.7999999970198,
+          "p95NearestRankMs": 3516.3000000044703,
+          "meanMs": 3169.185000000149
+        },
+        "home": {
+          "n": 20,
+          "valuesMs": [
+            866.8000000044703,
+            866.9000000059605,
+            916.7999999970198,
+            964.7000000029802,
+            916.2999999970198,
+            863.6000000014901,
+            863.0999999940395,
+            866.3999999985099,
+            822.3999999985099,
+            867,
+            866.8999999985099,
+            866.1000000014901,
+            916.9000000059605,
+            816.7000000029802,
+            866.8000000044703,
+            868,
+            917,
+            866.7999999970198,
+            867.1000000014901,
+            867
+          ],
+          "medianMs": 866.9000000022352,
+          "p95NearestRankMs": 917,
+          "meanMs": 876.665000000596
+        }
+      }
+    },
+    "candidate": {
+      "first": {
+        "settings": [
+          3516,
+          3359.39999999851
+        ],
+        "home": [
+          916.8999999985099,
+          914.7000000029802
+        ]
+      },
+      "warm": {
+        "settings": {
+          "n": 20,
+          "valuesMs": [
+            3867.10000000149,
+            2867.5,
+            3266,
+            3013.7999999970198,
+            2963.5,
+            3166.7999999970198,
+            3415.5999999940395,
+            2667.1999999955297,
+            3217.2000000029802,
+            2966.0999999940395,
+            4065.9000000059605,
+            2967.2000000029802,
+            3067,
+            3217.2999999970198,
+            2617.5,
+            3116.6999999955297,
+            3117.10000000149,
+            2818.3000000044703,
+            3265.39999999851,
+            4176.20000000298
+          ],
+          "medianMs": 3116.89999999851,
+          "p95NearestRankMs": 4065.9000000059605,
+          "meanMs": 3191.969999999553
+        },
+        "home": {
+          "n": 20,
+          "valuesMs": [
+            870,
+            917.8999999985099,
+            867.1999999955297,
+            916.7000000029802,
+            866.7999999970198,
+            913.9000000059605,
+            966.1999999955297,
+            866.8999999985099,
+            866.8999999985099,
+            916.9000000059605,
+            958.6999999955297,
+            866.7000000029802,
+            918,
+            866.5,
+            866.9000000059605,
+            867.8999999985099,
+            916.8999999985099,
+            867.0999999940395,
+            866.8999999985099,
+            1080.8000000044703
+          ],
+          "medianMs": 868.9499999992549,
+          "p95NearestRankMs": 966.1999999955297,
+          "meanMs": 902.289999999851
+        }
+      }
+    }
+  }
+}

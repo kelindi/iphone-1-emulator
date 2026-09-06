@@ -1,0 +1,183 @@
+--- stage-l/admission.h
++++ stage-m/admission.h
+@@ -8,4 +8,10 @@
+  s->staged_address==0x14ac1000u&&s->staged_words==4096&&s->dma_start==0x14a8b000u&&s->dma_words==4096&&s->copied_words==4096&&
+  s->copied_bytes==16384&&s->queue_used==16036&&s->queue_used+16384<=AMC_QUEUE_BYTES&&s->decoded_bytes==348&&s->decoded_frames==2&&s->published_frames==1&&s->events==0x600&&s->mask==0x2000;
+ }
++static bool admit_third(const amc_engine*s,uint64_t cycles,uint64_t first,uint32_t pc,uint32_t lr,uint32_t cpsr){
++ return s&&(cpsr&0x3fu)==0x13u&&cycles==9873362515ull&&first==9873234585ull&&pc==0xc0278130u&&lr==0xc0274874u&&
++ s->initialized&&s->configured&&!s->fault&&!s->dma_active&&!s->input_pending&&s->input_phase==5&&s->transport_enabled&&
++ s->staged_address==0x14ae1000u&&s->staged_words==4096&&s->dma_start==0x14ac1000u&&s->dma_words==4096&&s->copied_words==4096&&
++ s->copied_bytes==32768&&s->queue_used==32420&&s->queue_used+16384<=AMC_QUEUE_BYTES&&s->decoded_bytes==348&&s->decoded_frames==2&&s->published_frames==1&&s->events==0x600&&s->mask==0x2000;
++}
+ #endif
+--- stage-l/continuation.inc
++++ stage-m/continuation.inc
+@@ -35,7 +35,7 @@
+  char block[4096];size_t count;while((count=fread(block,1,sizeof block,from)))if(fwrite(block,1,count,to)!=count)stop("prefix trace write",0,0,0);
+  if(ferror(from)||fclose(from)||fclose(to))stop("prefix trace close",0,0,0);
+  first_saved=true;first_publication_cycles=machine.cpu.cycles;consume_begin(&consumed,sram.bytes+AMC_OUTPUT0);
+- uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084,0xc027602c,0xc0276030,0xc0276040,0xc027604c,0xc0274778,0xc0274878};
++ uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084,0xc027602c,0xc027604c,0xc0274778,0xc0274878,0xc0272224,0xc0277284};
+  if(!s5l8900_set_pre_step_hook(&machine,continuation_hook,NULL,targets,sizeof targets/sizeof targets[0]))stop("continuation hook install",0,0,0);
+  puts("CONTINUE frozen075 boundary matched; real pending IRQ and normal guest execution follow");
+ }
+--- stage-l/ordering.c
++++ stage-m/ordering.c
+@@ -1,12 +1,12 @@
+ #include "ordering.h"
+ #include <string.h>
+-bool order_target(uint32_t pc){switch(pc){case 0xc027602c:case 0xc0276030:case 0xc0276040:case 0xc027604c:case 0xc0274778:case 0xc0274878:return true;default:return false;}}
++bool order_target(uint32_t pc){switch(pc){case 0xc027602c:case 0xc0272224:case 0xc0277284:case 0xc027604c:case 0xc0274778:case 0xc0274878:return true;default:return false;}}
+ static uint32_t u32(const uint8_t*b){return b[0]|(uint32_t)b[1]<<8|(uint32_t)b[2]<<16|(uint32_t)b[3]<<24;}
+ order_result order_begin(order_log*log,const arm_cpu_t*cpu,const uint8_t*ram,uint32_t base,uint32_t size,uint32_t driver){
+  if(!log||!cpu||!ram||log->pending||log->count>=ORDER_CAP||!order_target(cpu->r[15])||(cpu->cpsr&0x3fu)!=0x13u||(uint64_t)driver+0x24f>0x100000000ull)return ORDER_REJECT;
+- unsigned actual=cpu->r[15]==0xc0274778?0:cpu->r[15]==0xc0274878?4:5;
+- if(cpu->r[actual]!=driver)return ORDER_REJECT;
+- if(cpu->r[15]==0xc0274778&&cpu->r[1]>2)return ORDER_REJECT;
++ unsigned actual=(cpu->r[15]==0xc0274778||cpu->r[15]==0xc0272224)?0:cpu->r[15]==0xc0274878?4:5;
++ if(cpu->r[15]!=0xc0277284&&cpu->r[actual]!=driver)return ORDER_REJECT;
++ if(cpu->r[15]==0xc0274778&&cpu->r[1]>3)return ORDER_REJECT;
+  uint8_t state[4],output[8],flags[2];
+  if(!amc_peek_ram(cpu,ram,base,size,driver+0xe0,state,sizeof state)||!amc_peek_ram(cpu,ram,base,size,driver+0x15c,output,sizeof output)||!amc_peek_ram(cpu,ram,base,size,driver+0x24d,flags,sizeof flags))return ORDER_REJECT;
+  order_record record={0};record.pc=cpu->r[15];record.cpsr=cpu->cpsr;memcpy(record.regs,cpu->r,sizeof record.regs);record.driver=driver;record.state=u32(state);record.output[0]=u32(output);record.output[1]=u32(output+4);record.flags=flags[0]|(uint32_t)flags[1]<<8;record.cycles=cpu->cycles;
+@@ -21,7 +21,6 @@
+  if(!log||!cpu||!log->pending||log->count>=ORDER_CAP||cpu->cycles!=log->staged.cycles+1)return ORDER_REJECT;
+  order_record record=log->staged;record.after_pc=cpu->r[15];record.after_cpsr=cpu->cpsr;record.after_cycles=cpu->cycles;
+  uint32_t expected=record.pc+4,mode=0x13;
+- if(record.pc==0xc0276030u)expected=record.cpsr&(1u<<30)?0xc0276040u:0xc0276034u;
+  if(record.pc==0xc027604cu){mode|=(record.saved_lr&1u)<<5;expected=record.saved_lr&((record.saved_lr&1u)?~1u:~3u);}
+  record.retired=(cpu->cpsr&0x3fu)==mode&&cpu->r[15]==expected;
+  log->records[log->count++]=record;log->pending=false;return ORDER_OK;
+--- stage-l/probe.c
++++ stage-m/probe.c
+@@ -23,7 +23,7 @@
+ static amc_physical_ram physical;
+ static bool engine_started, touch_released, in_guest, layout_seen;
+ static uint32_t layout_pointers[4];
+-static uint64_t first_input_cycles, second_input_cycles, start_cycles, service_calls;
++static uint64_t first_input_cycles, second_input_cycles, third_input_cycles, start_cycles, service_calls;
+ static unsigned publication_buffer;
+ static consume_observer consumed;
+ typedef struct {uint32_t address,width,value,pc,cpsr,owner;uint64_t cycles;} read_record;
+@@ -92,8 +92,9 @@
+   dependencies(c);
+   if(engine_started){
+    bool starting=a==0x3850100c&&w==4&&v==1;
+-   if(starting&&second_input_cycles)stop("third input request cap",a,v,w);
+-   if(starting&&first_saved){
++   if(starting&&third_input_cycles)stop("fourth input request cap",a,v,w);
++   bool third=starting&&second_input_cycles&&!third_input_cycles;
++   if(starting&&first_saved&&!third){
+     if(!admit_second(&engine,machine.cpu.cycles,first_publication_cycles,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr))stop("second input admission witness differs",a,v,w);
+     /* Observation only. No MMIO read, engine admission, or guest mutation. */
+     size_t offset=0,bytes=0;
+@@ -105,8 +106,19 @@
+     printf("CAPTURE second address%08x words%u bytes%zu cycles%llu ticks%llu pc%08x lr%08x cpsr%08x firstPublication%llu\n",engine.staged_address,engine.staged_words,bytes,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr,(unsigned long long)first_publication_cycles);
+     printf("CAPTURE preadmission initialized%u configured%u dmaActive%u dmaStart%08x dmaWords%u copiedWords%u copiedBytes%llu queueBytes%zu inputPending%u inputPhase%u transport%u events%08x mask%08x decodedBytes%llu published%llu\n",engine.initialized,engine.configured,engine.dma_active,engine.dma_start,engine.dma_words,engine.copied_words,(unsigned long long)engine.copied_bytes,engine.queue_used,engine.input_pending,engine.input_phase,engine.transport_enabled,engine.events,engine.mask,(unsigned long long)engine.decoded_bytes,(unsigned long long)engine.published_frames);
+    }
++   if(third){
++    if(!admit_third(&engine,machine.cpu.cycles,first_publication_cycles,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr))stop("third input admission witness differs",a,v,w);
++    size_t offset=0,bytes=0;if(!capture_span(&physical,engine.staged_address,engine.staged_words,&offset,&bytes)||bytes!=16384)stop("third input capture bounds",a,v,w);
++    dumpfile("third-input.bin",physical.bytes+offset,bytes);
++    printf("CAPTURE third address%08x words%u bytes%zu cycles%llu ticks%llu pc%08x lr%08x cpsr%08x\n",engine.staged_address,engine.staged_words,bytes,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr);
++    printf("CAPTURE third-preadmission copiedBytes%llu copiedWords%u queueBytes%zu decodedBytes%llu decodedFrames%llu published%llu events%08x mask%08x inputPending%u dmaActive%u phase%u\n",(unsigned long long)engine.copied_bytes,engine.copied_words,engine.queue_used,(unsigned long long)engine.decoded_bytes,(unsigned long long)engine.decoded_frames,(unsigned long long)engine.published_frames,engine.events,engine.mask,engine.input_pending,engine.dma_active,engine.input_phase);
++    dumpfile("third-request/sram.bin",sram.bytes,AMC_SRAM_SIZE);dumpfile("third-request/written.bin",written,AMC_SRAM_SIZE);
++    dumpfile("third-request/init-written.bin",engine.init_writes,AMC_SRAM_SIZE);dumpfile("third-request/pcm-written.bin",engine.pcm_writes,AMC_SRAM_SIZE);dumpfile("third-request/host-written.bin",engine.host_writes,AMC_SRAM_SIZE);
++    dumpfile("third-request/owned-queue.bin",engine.queue,engine.queue_used);dumpfile("third-request/first-pcm.bin",consumed.expected,CONSUME_BYTES);dumpfile("third-request/registers.bin",machine.cpu.r,sizeof machine.cpu.r);
++    dumpfile("third-request/read-coverage.bin",consumed.coverage,CONSUME_BYTES);dumpfile("third-request/read-bytes.bin",consumed.seen,CONSUME_BYTES);dumpfile("third-request/read-ledger.bin",read_ledger,consumed.reads*sizeof(read_record));
++   }
+    if(starting&&!first_saved&&(!input_seen||first_input_cycles||engine.staged_address!=input_address||engine.staged_words!=input_words))stop("unexpected first DMA request",a,v,w);
+-   if(starting&&first_saved){
++   if(starting&&first_saved&&!third){
+     /* Preserve the observed Stage I pre-admission bytes without a guest read. */
+     dumpfile("second-request/sram.bin",sram.bytes,AMC_SRAM_SIZE);dumpfile("second-request/written.bin",written,AMC_SRAM_SIZE);
+     dumpfile("second-request/init-written.bin",engine.init_writes,AMC_SRAM_SIZE);dumpfile("second-request/pcm-written.bin",engine.pcm_writes,AMC_SRAM_SIZE);dumpfile("second-request/host-written.bin",engine.host_writes,AMC_SRAM_SIZE);
+@@ -118,7 +130,8 @@
+    if(starting&&!first_saved)dumpfile("input-final.bin",physical.bytes+input_address-physical.base,4u*input_words);
+    bool acknowledged=first_saved&&a==0x38500b04&&w==4&&(v&engine.events&0x400u);
+    if(amc_engine_write(&engine,&physical,a-0x38500000,w,v)!=AMC_ENGINE_OK)stop("unsupported engine write",a,v,w);
+-   if(starting&&first_saved){second_input_cycles=machine.cpu.cycles;printf("ACCEPT second request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)second_input_cycles);}
++   if(third){third_input_cycles=machine.cpu.cycles;printf("ACCEPT third request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)third_input_cycles);}
++   if(starting&&first_saved&&!third){second_input_cycles=machine.cpu.cycles;printf("ACCEPT second request physical%08x words%u cycles%llu; actual live RAM DMA only\n",engine.staged_address,engine.staged_words,(unsigned long long)second_input_cycles);}
+    if(starting&&!first_saved){first_input_cycles=machine.cpu.cycles;printf("ACCEPT input request physical%08x bytes%u words%u cycles%llu ticks%llu pc%08x\n",input_address,input_bytes,input_words,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15]);}
+    if(acknowledged)output_ack=true;
+    if(first_saved&&a==0x38500b0c&&(engine.mask&0x400u))output_enabled=true;
+--- stage-l/test_ordering.c
++++ stage-m/test_ordering.c
+@@ -9,16 +9,16 @@
+  arm_cpu_t*cpu=calloc(1,sizeof*cpu),*before=malloc(sizeof*cpu);uint8_t*ram=calloc(1,0x200000);CHECK(cpu&&before&&ram);arm_bus_t bus={0};bus.read32=forbidden;cpu->bus=&bus;cpu->cp15.sctlr=1;cpu->cp15.ttbr0=0x10000000;cpu->cp15.dacr=3;cpu->cpsr=0xa0000013;cpu->cycles=100;
+  uint32_t section=0x10000c02;memcpy(ram+0x400*4,&section,4);uint32_t driver=0x40008000;uint32_t values[3]={3,1,0};memcpy(ram+0x80e0,values,4);memcpy(ram+0x815c,values+1,8);ram[0x824d]=1;ram[0x824e]=0;
+  uint32_t saved_return=0xc01400ed;memcpy(ram+0x9004,&saved_return,4);cpu->r[7]=0x40009000;
+- uint32_t pcs[]={0xc027602c,0xc0276030,0xc0276040,0xc027604c,0xc0274778,0xc0274878};
++ uint32_t pcs[]={0xc027602c,0xc0272224,0xc0277284,0xc027604c,0xc0274778,0xc0274878};
+  for(unsigned i=0;i<6;i++){
+   cpu->cpsr=0x60000013;cpu->r[15]=pcs[i];cpu->r[0]=cpu->r[4]=cpu->r[5]=driver;cpu->r[1]=2;*before=*cpu;
+   CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);CHECK(logstate.pending&&logstate.count==i);CHECK(!memcmp(cpu,before,sizeof*cpu)&&!device_reads);
+   CHECK(logstate.staged.state==3&&logstate.staged.output[0]==1&&logstate.staged.output[1]==0&&logstate.staged.flags==1);
+-  cpu->cycles++;cpu->r[15]=pcs[i]==0xc0276030?0xc0276040:pcs[i]==0xc027604c?saved_return&~1u:pcs[i]+4;if(pcs[i]==0xc027604c)cpu->cpsr=0x33;CHECK(order_finish(&logstate,cpu)==ORDER_OK);CHECK(logstate.records[i].retired&&logstate.count==i+1&&!logstate.pending);
++  cpu->cycles++;cpu->r[15]=pcs[i]==0xc027604c?saved_return&~1u:pcs[i]+4;if(pcs[i]==0xc027604c)cpu->cpsr=0x33;CHECK(order_finish(&logstate,cpu)==ORDER_OK);CHECK(logstate.records[i].retired&&logstate.count==i+1&&!logstate.pending);
+  }
+  cpu->r[15]=0xc0274778;cpu->r[0]=driver;before_log=logstate;
+  cpu->cpsr=0x33;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);cpu->cpsr=0x12;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);cpu->cpsr=0x13;
+- cpu->r[1]=3;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);cpu->r[1]=0;
++ cpu->r[1]=4;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);cpu->r[1]=0;
+  CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver+4)==ORDER_REJECT);CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x1000,driver)==ORDER_REJECT);CHECK(!memcmp(&logstate,&before_log,sizeof logstate));
+  CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);before_log=logstate;CHECK(order_finish(&logstate,cpu)==ORDER_REJECT);CHECK(!memcmp(&logstate,&before_log,sizeof logstate));
+  cpu->cycles++;cpu->r[15]=0xffff0018;cpu->cpsr=0x92;CHECK(order_finish(&logstate,cpu)==ORDER_OK);CHECK(!logstate.records[6].retired&&logstate.count==7);
+@@ -30,7 +30,10 @@
+   CHECK(order_finish(&logstate,cpu)==ORDER_OK);CHECK(!logstate.records[logstate.count-1].retired);
+  }
+ 
+- cpu->r[15]=0xc0276030;cpu->cpsr=0x13;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);cpu->cycles++;cpu->r[15]=0xc0276034;CHECK(order_finish(&logstate,cpu)==ORDER_OK&&logstate.records[logstate.count-1].retired);
++ cpu->r[15]=0xc0274778;cpu->r[0]=driver;cpu->r[1]=3;cpu->cpsr=0x13;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);cpu->cycles++;cpu->r[15]=0xc027477c;CHECK(order_finish(&logstate,cpu)==ORDER_OK&&logstate.records[logstate.count-1].retired);
++ /* Wrapper entry does not receive a driver argument. Observe only real registers. */
++ cpu->r[15]=0xc0277284;cpu->r[0]=driver+8;cpu->r[5]=0;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);CHECK(!logstate.staged.frame&&!logstate.staged.saved_lr);cpu->cycles++;cpu->r[15]=0xc0277288;CHECK(order_finish(&logstate,cpu)==ORDER_OK&&logstate.records[logstate.count-1].retired);
++ cpu->r[15]=0xc0272224;cpu->r[0]=driver+8;before_log=logstate;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);CHECK(!memcmp(&logstate,&before_log,sizeof logstate));cpu->r[0]=driver;cpu->r[5]=driver;
+  saved_return=0xc027619c;memcpy(ram+0x9004,&saved_return,4);cpu->r[15]=0xc027604c;cpu->cpsr=0x13;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_OK);cpu->cycles++;cpu->r[15]=saved_return;CHECK(order_finish(&logstate,cpu)==ORDER_OK&&logstate.records[logstate.count-1].retired);
+  cpu->r[15]=0xc027602c;cpu->r[7]=0xfffffffc;before_log=logstate;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);CHECK(!memcmp(&logstate,&before_log,sizeof logstate));cpu->r[7]=0x40009000;
+  logstate.count=ORDER_CAP;before_log=logstate;cpu->r[15]=0xc0274778;cpu->cpsr=0x13;CHECK(order_begin(&logstate,cpu,ram,0x10000000,0x200000,driver)==ORDER_REJECT);CHECK(!memcmp(&logstate,&before_log,sizeof logstate));CHECK(!device_reads);
+--- stage-l/test_service.c
++++ stage-m/test_service.c
+@@ -27,5 +27,9 @@
+  sram.bytes[AMC_HEADER+8]=0;writebus(&machine,0x2200f208,2,1);
+  CHECK(release_pending&&release_cycles==200&&release_pc==0xc02726a8);CHECK(sram.bytes[AMC_HEADER+8]==1);CHECK(engine.host_writes[AMC_HEADER+8]);
+  reject_boundary("actual store still unretired");machine.cpu.cycles=201;result=0;service_boundary();CHECK(result==6&&service_calls==0&&engine.published_frames==2);
++ /* A fourth request is rejected before device/SRAM/ownership mutation. */
++ third_input_cycles=9873362515ull;before_engine=engine;before_sram=sram;result=0;
++ if(!setjmp(finish)){writebus(&machine,0x3850100c,4,1);CHECK(false);}
++ CHECK(result==1);CHECK(!memcmp(&engine,&before_engine,sizeof engine));CHECK(!memcmp(&sram,&before_sram,sizeof sram));CHECK(service_calls==0);
+  printf("retirement/refill wrapper: %u checks passed; synthetic bytes, no guest execution\n",checks);return 0;
+ }
+--- /dev/null
++++ stage-m/test_third.c
+@@ -0,0 +1,29 @@
++#include "admission.h"
++#include <assert.h>
++#include <stdio.h>
++#include <string.h>
++static amc_engine e,copy;
++static amc_sram_t mem;
++static uint8_t bytes[16384],queue[AMC_QUEUE_BYTES];
++static unsigned checks;
++#define CHECK(x) do{checks++;assert(x);}while(0)
++#define ALLOWED() admit_third(&e,9873362515ull,9873234585ull,0xc0278130,0xc0274874,0x13)
++int main(void){
++ e.initialized=e.configured=e.transport_enabled=true;e.input_phase=5;e.staged_address=0x14ae1000;e.staged_words=4096;e.dma_start=0x14ac1000;e.dma_words=e.copied_words=4096;e.copied_bytes=32768;e.queue_used=32420;e.decoded_bytes=348;e.decoded_frames=2;e.published_frames=1;e.events=0x600;e.mask=0x2000;
++ CHECK(ALLOWED());copy=e;
++#define NEG(field,value) do{e.field=value;CHECK(!ALLOWED());e=copy;}while(0)
++ NEG(dma_active,true);NEG(input_pending,true);NEG(staged_address,0x14ae1004);NEG(staged_words,4095);NEG(input_phase,6);NEG(queue_used,65536);NEG(events,0x200);NEG(published_frames,2);NEG(fault,true);NEG(initialized,false);NEG(configured,false);NEG(transport_enabled,false);NEG(dma_start,0x14ac1004);NEG(dma_words,4095);NEG(copied_words,4095);NEG(copied_bytes,32764);NEG(decoded_bytes,347);NEG(decoded_frames,3);NEG(mask,0x2400);
++ CHECK(!admit_third(NULL,9873362515ull,9873234585ull,0xc0278130,0xc0274874,0x13));CHECK(!admit_third(&e,9873362515ull,9873234586ull,0xc0278130,0xc0274874,0x13));CHECK(!admit_third(&e,9873362515ull,9873234585ull,0xc0278130,0xc0274878,0x13));CHECK(!memcmp(&e,&copy,sizeof e));
++ CHECK(!admit_third(&e,9873362516ull,9873234585ull,0xc0278130,0xc0274874,0x13));CHECK(!admit_third(&e,9873362515ull,9873234585ull,0xc0278134,0xc0274874,0x13));
++ CHECK(!admit_third(&e,9873362515ull,9873234585ull,0xc0278130,0xc0274874,0x33));CHECK(!admit_third(&e,9873362515ull,9873234585ull,0xc0278130,0xc0274874,0x12));
++ amc_idle_t idle={0};idle.enabled=idle.de_complete=true;e.idle=&idle;e.sram=&mem;e.queue=queue;e.setup_phase=4;e.service=true;e.input_mask=1;
++ mem.bytes[AMC_HEADER+8]=0;mem.bytes[AMC_HEADER+10]=1;mem.bytes[AMC_HEADER+16]=0x10;mem.bytes[AMC_HEADER+18]=0x10;mem.bytes[AMC_HEADER+19]=0x10;
++ for(unsigned i=0;i<sizeof bytes;i++)bytes[i]=(uint8_t)(i*7);memset(queue,0x99,32420);
++ amc_physical_ram ram={bytes,0x14ae1000,sizeof bytes};
++ CHECK(amc_engine_write(&e,&ram,0x100c,4,1)==AMC_ENGINE_OK);CHECK(e.dma_active&&e.copied_words==0&&e.copied_bytes==32768&&e.queue_used==32420);
++ copy=e;CHECK(amc_engine_write(&e,&ram,0x100c,4,0)==AMC_ENGINE_REJECT);CHECK(!memcmp(&e,&copy,sizeof e));CHECK(amc_engine_write(&e,&ram,0x1000,4,1)==AMC_ENGINE_REJECT);CHECK(!memcmp(&e,&copy,sizeof e));
++ for(unsigned i=1;i<=4;i++){CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(e.copied_words==1024*i&&e.copied_bytes==32768+4096*i&&e.queue_used==32420+4096*i);CHECK(e.input_pending==(i==4));CHECK(e.dma_active==(i!=4));CHECK(!memcmp(queue+32420,bytes,4096*i));uint32_t current;CHECK(amc_engine_read(&e,0x1010,4,&current)==AMC_ENGINE_OK&&current==ram.base+4096*i);CHECK(e.decoded_bytes==348&&e.published_frames==1&&e.events==0x600);}
++ CHECK(amc_engine_irq(&e));CHECK(amc_engine_write(&e,&ram,0x101c,4,1)==AMC_ENGINE_OK&&!e.input_pending);
++ e.input_phase=5;e.queue_used=AMC_QUEUE_BYTES;CHECK(amc_engine_write(&e,&ram,0x100c,4,1)==AMC_ENGINE_OK);copy=e;CHECK(amc_engine_step(&e,&ram)==AMC_ENGINE_WAIT);CHECK(!memcmp(&e,&copy,sizeof e));
++ printf("third input admission/DMA: %u checks passed; synthetic live RAM only\n",checks);
++}

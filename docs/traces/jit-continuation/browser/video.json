@@ -1,0 +1,27 @@
+{
+  "scope": "Complete candidate browser arm2, all11Settings/Home rounds. Original timeline preserved: no cuts, concatenation, speed change or frame-rate override. H264 transcode uses fps_mode passthrough and one decoder/encoder thread. Duration metadata tolerance50ms.",
+  "files": [
+    {
+      "path": ".context/jit-continuation/browser/quiet-navigation/2-candidate/page@e997b2148a5155ee25b9ab78d44401cd.webm",
+      "sha256": "4dc61963a6750ce6c955ec776706c11e165f1db7d34a56c127f95628ae0e5236",
+      "bytes": 9595953,
+      "durationSeconds": 106.36,
+      "streamMetadata": "Input #0, matroska,webm, from '.context/jit-continuation/browser/quiet-navigation/2-candidate/page@e997b2148a5155ee25b9ab78d44401cd.webm':\n  Metadata:\n    creation_time   : 2026-09-06T02:29:13.751000Z\n    ENCODER         : Lavf61.1.100\n  Duration: 00:01:46.36, start: 0.000000, bitrate: 721 kb/s\n  Stream #0:0(eng): Video: vp8, yuv420p(progressive), 1280x1000, SAR 1:1 DAR 32:25, 25 fps, 25 tbr, 1k tbn (default)\n    Metadata:\n      ENCODER         : Lavc61.3.100 libvpx\n      DURATION        : 00:01:46.360000000\nAt least one output file must be specified\n"
+    },
+    {
+      "path": "tweets/videos/region_continuation_diagnostic.mp4",
+      "sha256": "7d297a9f8e3ddaa62b4a2596fa84a965e3b146176327fb34ea8e86c45a110cc4",
+      "bytes": 2942615,
+      "durationSeconds": 106.36,
+      "streamMetadata": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'tweets/videos/region_continuation_diagnostic.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf60.3.100\n  Duration: 00:01:46.36, start: 0.000000, bitrate: 221 kb/s\n  Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], 218 kb/s, 25 fps, 25 tbr, 12800 tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      vendor_id       : [0][0][0][0]\n      encoder         : Lavc60.3.100 libx264\nAt least one output file must be specified\n"
+    }
+  ],
+  "thumbnail": {
+    "path": "tweets/thumbnails/region_continuation_diagnostic.jpg",
+    "sha256": "9f5487da79b67fa1cbae42feae289eeb704dd7f8e9619588d1ef72aaa267996a",
+    "atSeconds": 18,
+    "manuallyViewed": true,
+    "finding": "Complete genuine Home within clickable phone frame."
+  },
+  "passed": true
+}

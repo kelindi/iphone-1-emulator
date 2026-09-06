@@ -1,0 +1,78 @@
+{
+  "command": [
+    ".context/amc-first/stage-m/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-m/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin",
+    ".context/amc-first/stage-g/run-1"
+  ],
+  "returncode": 10,
+  "timedOut": false,
+  "wallSeconds": 5.336437647994899,
+  "guestPass": false,
+  "firstBoundaryAuditPass": true,
+  "secondRequestAuditPass": true,
+  "thirdRequestAuditPass": true,
+  "queueAuditPass": true,
+  "orderingAuditPass": true,
+  "consumptionAuditPass": false,
+  "frozenScripts": {
+    "audit.py": "eb20785818faccb54035c731d1ca11261aee0280012b70c1b95e99de2084af98",
+    "second-audit.py": "6bb317c1615a49f904acfc5db431d9b4bf4917797051af4bd3cd79dcfd93af54",
+    "third-audit.py": "03c7c7964719433a8e79e6746167c9950e610eeefded3879b915020c524cd348",
+    "queue-audit.py": "f7ecb656b6d44ff1c1b876da13b623f3287912a72d0edab23b44aa87fdbef107",
+    "ordering-audit.py": "a2008d16e16d7f3d853b359ac801b111560126f051efc9ded0cb030b27d67986",
+    "original-return-oracle.py": "1f7bb02b1564e315393c73f2f874a93618fa7b4bc2a345020449973655ed63eb",
+    "mp4_oracle.py": "93d25ab33f7a343d61b9a2990524f861e3200f2d4bfe5169422400d173e27f09",
+    "commands.py": "b5d12ac6f7c5dadd99976c23a001abea68c17359570002a134baa14ce2fea9db",
+    "launch.py": "062d537b564fb3f376273147eb402c309f050cbe88dda2916715e1e260a9cf64",
+    "first-audit.py": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+    "kernel-oracle.py": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9"
+  },
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructions": 5000000,
+    "postInputInstructions": 5000000,
+    "postPublicationInstructions": 5000000,
+    "maximumPublications": 2,
+    "maximumAdmittedInputs": 3
+  },
+  "artifactNegatives": [
+    {
+      "label": "third-input",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-m/run-1/third-audit.py",
+        ".context/amc-first/stage-m/run-1/negative-third-input"
+      ],
+      "returncode": 1,
+      "expectedFailure": "actual third input lacks unique original provenance"
+    },
+    {
+      "label": "queue",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-m/run-1/queue-audit.py",
+        ".context/amc-first/stage-m/run-1/negative-queue"
+      ],
+      "returncode": 1,
+      "expectedFailure": "owned queue differs from actual copied inputs"
+    },
+    {
+      "label": "record",
+      "command": [
+        "/usr/bin/python3",
+        ".context/amc-first/stage-m/run-1/ordering-audit.py",
+        ".context/amc-first/stage-m/run-1/negative-record"
+      ],
+      "returncode": 1,
+      "expectedFailure": "record/log bytes differ"
+    }
+  ]
+}

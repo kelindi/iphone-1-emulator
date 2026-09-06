@@ -1,0 +1,11 @@
+251811694 ticks=3667160 pc=c0431760 W4 38d00030=00000004 accepted=1 card=0 busy=0 triggers=0 complete=0
+251811700 ticks=3667160 pc=c0431794 W4 38d00004=00000003 accepted=1 card=0 busy=0 triggers=0 complete=0
+251811703 ticks=3667160 pc=c04317a0 W4 38d00004=00000000 accepted=1 card=0 busy=0 triggers=0 complete=0
+251811710 ticks=3667160 pc=c04317bc W4 38d00000=00000001 accepted=1 card=0 busy=0 triggers=0 complete=0
+251811713 ticks=3667160 pc=c04317c8 W4 38d00014=ffffffff accepted=1 card=0 busy=0 triggers=0 complete=0
+251811715 ticks=3667160 pc=c04317d0 W4 38d00038=ffffffff accepted=1 card=0 busy=0 triggers=0 complete=0
+304815811 ticks=4634373 pc=c04317ec W4 38d0003c=00000003 accepted=1 card=0 busy=0 triggers=0 complete=0
+304815814 ticks=4634373 pc=c04317f8 W4 38d00034=00000002 accepted=1 card=0 busy=0 triggers=0 complete=0
+304815847 ticks=4634373 pc=c04314b4 W4 38d0000c=00000000 accepted=1 card=0 busy=0 triggers=0 complete=0
+304815849 ticks=4634373 pc=c04314bc W4 38d00008=00040045 accepted=1 card=0 busy=0 triggers=0 complete=0
+304815853 ticks=4634373 pc=c04314cc R4 38d00018=00000000 accepted=1 card=0 busy=0 triggers=0 complete=0

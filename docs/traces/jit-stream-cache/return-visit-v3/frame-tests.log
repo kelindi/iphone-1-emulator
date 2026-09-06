@@ -1,0 +1,19 @@
+✔ all256 byte values roundtrip exactly (2.578656ms)
+✔ actual originalRGBA roundtrip C0 settings (73.966301ms)
+✔ actual originalRGBA roundtrip C0 home (70.236214ms)
+✔ actual originalRGBA roundtrip H1 settings (90.204802ms)
+✔ actual originalRGBA roundtrip H1 home (113.948869ms)
+✔ legal-base64 byte corruption fails full identity even in statusrow (125.417229ms)
+✔ wronghash and shape reject (60.036729ms)
+✔ malformedbase64 rejects instead of permissive decoder truncation (47.880478ms)
+✔ fixed full-content screen oracle accepts exact and two-level RGB, rejects three-level even in scrollbar (15.887087ms)
+✔ statusrow exclusion ends exactly at rawrow30; alpha below cutoff stays exact (4.471485ms)
+✔ shape changes cannot silently pass (1.069057ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 675.875486

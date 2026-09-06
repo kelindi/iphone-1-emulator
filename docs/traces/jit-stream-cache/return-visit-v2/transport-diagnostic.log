@@ -1,0 +1,49 @@
+{
+  "scope": "Immutable actual RGBA protocol diagnostic; no guest/app/firmware execution, no phone speed claim",
+  "inputSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+  "inputBytes": 614400,
+  "cases": [
+    {
+      "mode": "array",
+      "evalWallMs": 8569.300958,
+      "decodeMs": 10.960227999999915,
+      "outsideInPageBodyMs": 8483.90095799404,
+      "copyMs": 0.8000000044703484,
+      "encodingMs": 84.60000000149012,
+      "inPageMs": 85.40000000596046,
+      "exact": true
+    },
+    {
+      "mode": "base64",
+      "evalWallMs": 160.84428000000116,
+      "decodeMs": 36.237874999998894,
+      "outsideInPageBodyMs": 47.24427999851105,
+      "copyMs": 1.7000000029802322,
+      "encodingMs": 111.89999999850988,
+      "inPageMs": 113.60000000149012,
+      "exact": true
+    },
+    {
+      "mode": "base64",
+      "evalWallMs": 112.47664600000098,
+      "decodeMs": 45.09303799999907,
+      "outsideInPageBodyMs": 47.176646002981215,
+      "copyMs": 0.8999999985098839,
+      "encodingMs": 64.39999999850988,
+      "inPageMs": 65.29999999701977,
+      "exact": true
+    },
+    {
+      "mode": "array",
+      "evalWallMs": 7062.287410000001,
+      "decodeMs": 8.59771499999988,
+      "outsideInPageBodyMs": 7016.787410000001,
+      "copyMs": 0.7999999970197678,
+      "encodingMs": 44.70000000298023,
+      "inPageMs": 45.5,
+      "exact": true
+    }
+  ],
+  "passed": true,
+  "browserClosed": true
+}

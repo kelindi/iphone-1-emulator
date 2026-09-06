@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc",
+    "-O3",
+    "-DNDEBUG",
+    "-sALLOW_TABLE_GROWTH=1",
+    "-O3",
+    "-sALLOW_MEMORY_GROWTH=1",
+    "-sINITIAL_MEMORY=536870912",
+    "-sSTACK_SIZE=4194304",
+    "-sMODULARIZE=1",
+    "-sEXPORT_ES6=0",
+    "-sEXPORT_NAME=createEmu",
+    "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_malloc','_free']",
+    "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8','HEAPU32','addFunction','removeFunction']",
+    "CMakeFiles/emu.dir/web/emu_api.c.o",
+    "CMakeFiles/emu.dir/web/jit-runtime.c.o",
+    "-o",
+    "/home/vercel-sandbox/iphone-1/.context/jit-attribution/symbols/emu.js",
+    "core/libemucore.a",
+    "-lm",
+    "--emit-symbol-map"
+  ],
+  "cwd": "/home/vercel-sandbox/iphone-1/web/build",
+  "inputSha256": {
+    "web/build/CMakeFiles/emu.dir/web/emu_api.c.o": "b0b6e27ff00d9e642df24b33355af108f240750067e44d62aa61d33ebd66c95c",
+    "web/build/CMakeFiles/emu.dir/web/jit-runtime.c.o": "4924da2ac28fd443a7a2a59dc287ba56cacfe705627becda6c87be57f0e44d9d",
+    "web/build/core/libemucore.a": "04d8b33bb6af9e87c3cf332aa7039c32cd8f3fdf285380aac92503195ffc1d77"
+  },
+  "productionSha256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f"
+}

@@ -1,0 +1,7 @@
+normal fresh073 start pc=c0379684 cycles=17517070017 ticks=256764208 mode=control runtimeAdmitted=0; ARM SVC required; semantic model only, no firmware CPU
+completed R5 read cycles=17517137155 ticks=256765186 pc=c0431594 reg=20 value=1008 success=1
+completed R5 read cycles=17517179046 ticks=256765796 pc=c0431594 reg=20 value=1008 success=1
+completed R5 read cycles=17517220928 ticks=256766406 pc=c0431594 reg=20 value=1008 success=1
+completed R5 read cycles=17558974802 ticks=257374472 pc=c0431594 reg=20 value=1008 success=1
+completed R5 read cycles=17559016756 ticks=257375083 pc=c0431594 reg=20 value=1008 success=1
+normal outside-run stop pc=c038a8ec r0=1 r4=1000 cycles=17559017221 ticks=257375090 instructions=41947204 passed=1 request-only; register6 R5 error retained; no runtime response/DMA or firmwareCPU

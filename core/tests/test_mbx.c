@@ -3863,6 +3863,321 @@ static void test_pointer_selected_solid_quad(void) {
     s5l8900_free(&m);
 }
 
+/* Genuine OS1 Safari object captured at the first rejected solid submission.
+ * Main pointer +0x2a0, world y410.074..826.074, integer clip y410..411.
+ * Only two framebuffer-address fields are relocated into this test GART. */
+static const uint32_t os1_safari_solid_capture[384] = {
+    0xe0000000u, 0xa7718000u, 0x0e5303a0u, 0xd6887610u, 0x22220e80u, 0x00000000u, 0x00000000u, 0x45000000u,
+    0x00000000u, 0x00000000u, 0x45000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+    0x3f800000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x40000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x40000000u, 0x60200020u, 0x6020002du, 0x612000a8u, 0xf0000000u, 0x00000000u, 0x00000000u,
+    0x22206f80u, 0x00000000u, 0x45800000u, 0x00000000u, 0x00000000u, 0x45800000u, 0x45800000u, 0x45800000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x22207f80u, 0x00000000u, 0x43cd8000u,
+    0x00000000u, 0x43cd0000u, 0x43a00000u, 0x43cd8000u, 0x43a00000u, 0x43cd0000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0xe0000000u, 0xa6318000u, 0x8e535b61u, 0xa6887610u, 0x22220e80u, 0x00000000u,
+    0x43b7097au, 0x43a00000u, 0x43b7097au, 0x00000000u, 0x43cd097au, 0x43a00000u, 0x43cd097au, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0xff000000u,
+    0x00000000u, 0x3c000000u, 0xff000000u, 0x3f200000u, 0x3c000000u, 0xff000000u, 0x00000000u, 0x3f2e0000u,
+    0xff000000u, 0x3f200000u, 0x3f2e0000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0xe0000000u, 0x22200e80u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0xe0000000u, 0xa3218001u, 0x8e0f5d81u, 0xcd206c40u,
+    0xa7718000u, 0x0e5303a0u, 0xae504ea0u, 0x22250e80u, 0x43848000u, 0x43ba897au, 0x439d8000u, 0x43ba897au,
+    0x43848000u, 0x43c9897au, 0x439d8000u, 0x43c9897au, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0xff000000u, 0x00000000u, 0x3c800000u, 0x3e848000u,
+    0x3eba897au, 0xff000000u, 0x3f480000u, 0x3c800000u, 0x3e9d8000u, 0x3eba897au, 0xff000000u, 0x00000000u,
+    0x3f6c0000u, 0x3e848000u, 0x3ec9897au, 0xff000000u, 0x3f480000u, 0x3f6c0000u, 0x3e9d8000u, 0x3ec9897au,
+    0xe0000000u, 0xa7718000u, 0x0e5303a0u, 0xa6106673u, 0x22220e80u, 0x00000000u, 0x43cd097au, 0x43a00000u,
+    0x43cd097au, 0x00000000u, 0x444e84bdu, 0x43a00000u, 0x444e84bdu, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0xffffffffu, 0x00000000u, 0x3ecd097au,
+    0xffffffffu, 0x3ea00000u, 0x3ecd097au, 0xffffffffu, 0x00000000u, 0x3f4e84bdu, 0xffffffffu, 0x3ea00000u,
+    0x3f4e84bdu, 0xe0000000u, 0x00000000u, 0x00000000u, 0x86084610u, 0x22620ea0u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0xffffffffu, 0x00000000u,
+    0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu,
+    0x00000000u, 0x00000000u, 0xe0000000u, 0x00000000u, 0x00000000u, 0x86084610u, 0x46622ea0u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0xffffffffu,
+    0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u,
+    0xffffffffu, 0x00000000u, 0x00000000u, 0xe0000000u, 0x00000000u, 0x00000000u, 0x86084610u, 0x66622ea0u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+    0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u,
+    0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xe0000000u, 0x00000000u, 0x00000000u, 0x86084610u,
+    0x82622ea0u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+    0x3f800000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0xffffffffu,
+    0x00000000u, 0x00000000u, 0xffffffffu, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+    0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+};
+#define SAFARI_REGION 0x1000u
+#define SAFARI_OBJECT 0x14000u
+#define SAFARI_TARGET 0xa41000u
+#define SAFARI_TARGET_PA 0x8040000u
+#define SAFARI_TABLE2 0x8004000u
+static void safari_solid_setup(s5l8900_t *m) {
+    test_write_solid_quad(m, SAFARI_REGION, SAFARI_OBJECT, SAFARI_TARGET,
+                          0x2a0u, 0, 410, 320, 411, 0xffffffffu);
+    for (unsigned i = 0; i < 384; i++)
+        test_gpu_write32(m, SAFARI_OBJECT + i * 4u,
+                         i == 2u || i == (0x2a0u / 4u + 2u)
+                         ? 0x0e500000u | (SAFARI_TARGET >> 7)
+                         : os1_safari_solid_capture[i]);
+    uint32_t *pixels = (uint32_t *)(m->ram + SAFARI_TARGET_PA - RAM_BASE);
+    for (unsigned i = 0; i < 320u * 480u; i++) pixels[i] = 0xff123456u;
+    m->bus.write32(m->bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+}
+static bool safari_solid_pixels(s5l8900_t *m, unsigned left, unsigned top,
+                                unsigned right, unsigned bottom, uint32_t colour) {
+    uint32_t *pixels = (uint32_t *)(m->ram + SAFARI_TARGET_PA - RAM_BASE);
+    for (unsigned y = 0; y < 480u; y++)
+        for (unsigned x = 0; x < 320u; x++)
+            if (pixels[y * 320u + x] !=
+                (x >= left && x < right && y >= top && y < bottom
+                 ? colour : 0xff123456u)) return false;
+    return true;
+}
+static void safari_solid_world(s5l8900_t *m, float x0, float y0, float x1, float y1) {
+    const float vertices[8] = {x0,y0,x1,y0,x0,y1,x1,y1};
+    for (unsigned i = 0; i < 8; i++)
+        test_gpu_write32(m, SAFARI_OBJECT + 0x2a0u + (5u + i) * 4u,
+                         test_float_word(vertices[i]));
+    for (unsigned v = 0; v < 4; v++) {
+        test_gpu_write32(m, SAFARI_OBJECT + 0x2a0u + (22u + v * 3u) * 4u,
+                         test_float_word(vertices[v * 2u] / 1024.0f));
+        test_gpu_write32(m, SAFARI_OBJECT + 0x2a0u + (23u + v * 3u) * 4u,
+                         test_float_word(vertices[v * 2u + 1u] / 1024.0f));
+    }
+}
+static void safari_solid_reject(s5l8900_t *m, const char *name) {
+    m->bus.write32(m->bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m->bus.read32(m->bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+          safari_solid_pixels(m, 0, 0, 0, 0, 0),
+          "OS1 opaque solid %s was not rejected atomically", name);
+}
+static void test_os1_clipped_solid(void) {
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m, RAM_BASE, RAM_SIZE), "OS1 solid init failed");
+    if (!m.ram) return;
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_GART0, 0x08003000u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_GART2, SAFARI_TABLE2);
+    test_map_gpu_page(&m, 0x08003000u, SAFARI_REGION, 0x08010000u);
+    test_map_gpu_page(&m, 0x08003000u, SAFARI_OBJECT, 0x08014000u);
+    for (unsigned off = 0; off < 320u * 480u * 4u; off += 4096u)
+        test_map_gpu_page(&m, SAFARI_TABLE2, SAFARI_TARGET + off,
+                          SAFARI_TARGET_PA + off);
+    safari_solid_setup(&m);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 0, 410, 320, 411, 0xffffffffu),
+          "captured Safari solid must fill only row410, preserving all other pixels");
+
+    /* Opaque channel order is independent of the observed white colour. */
+    safari_solid_setup(&m);
+    for (unsigned v = 0; v < 4; v++)
+        test_gpu_write32(&m, SAFARI_OBJECT + 0x2a0u + (21u + v * 3u) * 4u,
+                         0xff336699u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 0, 410, 320, 411, 0xff336699u),
+          "OS1 solid opaque channel order is incorrect");
+
+    safari_solid_setup(&m);
+    safari_solid_world(&m, -20, 410.074f, 340, 826.074f);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 0, 410, 320, 411, 0xffffffffu),
+          "negative/offscreen world escaped its validated integer clip");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 400, 410, 420, 826);
+    safari_solid_reject(&m, "fully offscreen world intersection");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, test_float_value(0x7fc00000u), 320, 826);
+    safari_solid_reject(&m, "coherent NaN world with matching corner words");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, 410, 320, test_float_value(0x7f800000u));
+    safari_solid_reject(&m, "coherent infinite world with matching corner words");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, -4097, 410, 320, 826);
+    safari_solid_reject(&m, "world lower bound");
+
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 300, 479.1f, 340, 500);
+    const float screen_edges[8] = {300,500,300,479,340,500,340,479};
+    for (unsigned i = 0; i < 8; i++)
+        test_gpu_write32(&m, SAFARI_OBJECT + 0xb8u + i * 4u,
+                         test_float_word(screen_edges[i]));
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x01400128u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBYCLIP, 0x01e001d0u);
+    for (unsigned x = 37; x < 40; x++) {
+        test_gpu_write32(&m, SAFARI_REGION + (x - 37) * 8u,
+                         0x1d00u | x | (x == 39 ? 0x80000000u : 0));
+        test_gpu_write32(&m, SAFARI_REGION + (x - 37) * 8u + 4u,
+                         SAFARI_OBJECT + 0x68u);
+    }
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 300, 479, 320, 480, 0xffffffffu),
+          "world/boundary intersection escaped the screen dimensions");
+
+    /* Fractional world coverage can round to an empty pixel interval while
+     * the genuine producer still submits a nonempty coarse tile list. */
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, 410.75f, 320, 826.75f);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 0, 0, 0, 0, 0),
+          "zero-coverage OS1 solid must complete without any framebuffer write");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, 410.75f, 320, 826.75f);
+    for (unsigned v = 0; v < 4; v++)
+        test_gpu_write32(&m, SAFARI_OBJECT + 0x2a0u + (21u + v * 3u) * 4u,
+                         0xcc141414u);
+    test_gpu_write32(&m, SAFARI_OBJECT + 0x52cu, 0x12345678u);
+    safari_solid_reject(&m, "fractional zero-coverage late parameter");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, 410.75f, 320, 826.75f);
+    test_gpu_write32(&m, SAFARI_REGION + 39u * 8u, 0x00001927u);
+    safari_solid_reject(&m, "zero-coverage missing tile terminator");
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 0, 410.75f, 320, 826.75f);
+    uint32_t empty_page = SAFARI_TABLE2 +
+        ((((SAFARI_TARGET + 410u * 1280u) >> 12) & 1023u) * 4u);
+    uint32_t empty_saved = m.bus.read32(m.bus.ctx, empty_page);
+    m.bus.write32(m.bus.ctx, empty_page, 0u);
+    safari_solid_reject(&m, "zero-coverage unmapped boundary");
+    m.bus.write32(m.bus.ctx, empty_page, empty_saved);
+    /* OS1 software-reference source-over. Independently use division, not the
+     * packed ARM shift identity in the renderer. Every alpha and destination
+     * byte is covered; untouched pixels and alpha endpoints are exact. */
+    for (unsigned a = 0; a < 256; a++) {
+        safari_solid_setup(&m);
+        uint32_t colour = (a << 24) | ((a / 2u) << 16) | ((a / 3u) << 8) | a;
+        if (a == 204u) colour = 0xcc141414u; /* actual Photos animation colour */
+        for (unsigned v = 0; v < 4; v++)
+            test_gpu_write32(&m, SAFARI_OBJECT + 0x2a0u + (21u + v * 3u) * 4u,
+                             colour);
+        uint32_t *frame = (uint32_t *)(m.ram + SAFARI_TARGET_PA - RAM_BASE);
+        uint32_t expected[320];
+        for (unsigned x = 0; x < 320; x++) {
+            unsigned d = x & 255u;
+            uint32_t dst = (d << 24) | (d << 16) | ((255u-d) << 8) |
+                           ((d * 37u) & 255u);
+            frame[410u * 320u + x] = dst;
+            expected[x] = 0;
+            for (unsigned sh = 0; sh < 32; sh += 8) {
+                unsigned value = ((colour >> sh) & 255u) +
+                    (((dst >> sh) & 255u) * (255u-a)) / 255u;
+                expected[x] |= (value > 255u ? 255u : value) << sh;
+            }
+        }
+        m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+        bool exact = true;
+        for (unsigned y = 0; y < 480; y++)
+            for (unsigned x = 0; x < 320; x++)
+                if (frame[y * 320u + x] != (y == 410 ? expected[x] : 0xff123456u))
+                    exact = false;
+        CHECK(exact && m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu,
+              "OS1 solid source-over/clip mismatch at alpha %u", a);
+    }
+
+    /* Producer comparisons reject disjoint bounds with BGT, preserving the
+     * exact touching-edge no-op with an empty aligned tile span. */
+    safari_solid_setup(&m);
+    safari_solid_world(&m, 320, 410, 340, 826);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x01400140u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 0, 0, 0, 0, 0),
+          "touching-edge solid did not complete as a validated no-op");
+
+    /* A smaller independent clip bounds both x and y inside the same tile. */
+    safari_solid_setup(&m);
+    for (unsigned i = 0; i < 8; i++) {
+        const float edges[8] = {8,414,8,409,24,414,24,409};
+        test_gpu_write32(&m, SAFARI_OBJECT + 0xb8u + i * 4u,
+                         test_float_word(edges[i]));
+    }
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x00180008u);
+    test_gpu_write32(&m, SAFARI_REGION, 0x1901u);
+    test_gpu_write32(&m, SAFARI_REGION + 4u, SAFARI_OBJECT + 0x68u);
+    test_gpu_write32(&m, SAFARI_REGION + 8u, 0x80001902u);
+    test_gpu_write32(&m, SAFARI_REGION + 12u, SAFARI_OBJECT + 0x68u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          safari_solid_pixels(&m, 8, 410, 24, 414, 0xffffffffu),
+          "OS1 solid independent clip ignored world or boundary intersection");
+
+    /* The clipped multi-row destination crosses a page. A missing final page
+     * must preserve even earlier rows whose translations are already valid. */
+    uint32_t *pixels = (uint32_t *)(m.ram + SAFARI_TARGET_PA - RAM_BASE);
+    for (unsigned i = 0; i < 320u * 480u; i++) pixels[i] = 0xff123456u;
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+    uint32_t clipped_first = SAFARI_TARGET + 410u * 1280u + 8u * 4u;
+    uint32_t clipped_last = SAFARI_TARGET + 413u * 1280u + 23u * 4u;
+    CHECK((clipped_first >> 12) != (clipped_last >> 12),
+          "late-PTE fixture must span different destination pages");
+    uint32_t clipped_entry = SAFARI_TABLE2 + (((clipped_last >> 12) & 1023u) * 4u);
+    uint32_t clipped_saved = m.bus.read32(m.bus.ctx, clipped_entry);
+    m.bus.write32(m.bus.ctx, clipped_entry, 0u);
+    for (unsigned v = 0; v < 4; v++)
+        test_gpu_write32(&m, SAFARI_OBJECT + 0x2a0u + (21u + v * 3u) * 4u,
+                         0xcc141414u);
+    safari_solid_reject(&m, "fractional late multi-row destination PTE");
+    m.bus.write32(m.bus.ctx, clipped_entry, clipped_saved);
+
+    const struct {unsigned off; uint32_t value; const char *name;} bad[] = {
+        {0x2acu, 0xa6106672u, "unknown blend control"},
+        {0x2b8u, 0x7fc00000u, "NaN geometry"},
+        {0x2b8u, 0x7f800000u, "infinite geometry"},
+        {0x2c8u, 0x45800800u, "unbounded world"},
+        {0x2bcu, 0x00000000u, "repeated main corner"},
+        {0x2bcu, 0x3f800000u, "nonrectangular main"},
+        {0x2f4u, 0xfeffffffu, "nonpremultiplied alpha"},
+        {0x300u, 0xff123456u, "nonuniform colour"},
+        {0x308u, 0x00000000u, "wrong normalized y"},
+        {0x2d4u, 0x3f800000u, "perspective coefficient"},
+        {0x2e4u, 0x40000000u, "perspective divisor"},
+        {0x0b8u, 0x7f800000u, "infinite boundary"},
+        {0x0b8u, 0x7fc00000u, "NaN boundary"},
+        {0x0b8u, 0x3f000000u, "fractional boundary"},
+        {0x0b8u, 0xbf800000u, "negative boundary"},
+        {0x0bcu, 0x45800800u, "unbounded boundary"},
+        {0x0c4u, 0x43ce0000u, "reversed boundary"},
+        {0x0d4u, 0x43cd8000u, "wrong boundary corner order"},
+        {0x0b4u, 0x22207f81u, "boundary control"},
+        {0x080u, 0x22206f81u, "world boundary control"},
+        {0x074u, 0u, "missing list terminator"},
+        {0x008u, 0x0e500000u, "background target"},
+        {0x52cu, 0xfffffffeu, "late parameter"},
+    };
+    for (unsigned i = 0; i < sizeof bad / sizeof bad[0]; i++) {
+        safari_solid_setup(&m);
+        test_gpu_write32(&m, SAFARI_OBJECT + bad[i].off, bad[i].value);
+        safari_solid_reject(&m, bad[i].name);
+    }
+    safari_solid_setup(&m);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBYCLIP, 0x01b00190u);
+    safari_solid_reject(&m, "wrong coarse FB tile");
+    safari_solid_setup(&m);
+    test_gpu_write32(&m, SAFARI_REGION + 39u * 8u + 4u, SAFARI_OBJECT);
+    safari_solid_reject(&m, "late tile pointer");
+    safari_solid_setup(&m);
+    uint32_t last = SAFARI_TARGET + 410u * 1280u + 319u * 4u;
+    uint32_t pte = SAFARI_TABLE2 + (((last >> 12) & 1023u) * 4u);
+    uint32_t saved = m.bus.read32(m.bus.ctx, pte);
+    m.bus.write32(m.bus.ctx, pte, 0u);
+    safari_solid_reject(&m, "destination PTE");
+    m.bus.write32(m.bus.ctx, pte, saved);
+    s5l8900_free(&m);
+}
+
 struct mbx_test_status_form {
     const char *name;
     uint32_t xclip, yclip;
@@ -3871,6 +4186,10 @@ struct mbx_test_status_form {
     bool affine_sprite;
     bool scaled_sprite;
     bool column_resample;
+    bool constant_v_row;
+    bool safari_address_scale;
+    bool clock_column;
+    bool text_wide_stretch;
     bool row_resample;
     bool variable_vertex_alpha;
     bool boundary_override;
@@ -3895,7 +4214,8 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
     const uint32_t target = form->target ? form->target : 0x00897000u;
     const uint32_t region_pa = 0x08010000u;
     const uint32_t object_pa = 0x08014000u;
-    const uint32_t source_pa = 0x08020000u;
+    const bool tall_source = ((form->quad[1] >> 20) & 15u) >= 7u;
+    const uint32_t source_pa = tall_source ? 0x08200000u : 0x08020000u;
     const uint32_t target_pa = 0x080c0000u;
     const uint32_t tile_count =
         (form->tile_x1 - form->tile_x0 + 1u) *
@@ -3903,7 +4223,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
     const bool filtered_sprite = form->semantic_sprite &&
         (form->source_control & 0x80000000u) != 0u;
     const uint32_t filtered_texture_height =
-        8u << ((form->quad[1] >> 20) & 7u);
+        8u << ((form->quad[1] >> 20) & 15u);
     const uint32_t filtered_pitch_pixels = form->source_stride / 4u;
     const uint32_t mapped_source_x0 =
         filtered_sprite ? 0u : form->source_x0;
@@ -3915,7 +4235,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
         filtered_sprite ? filtered_texture_height : form->height;
 
     s5l8900_t m;
-    CHECK(s5l8900_init(&m, RAM_BASE, RAM_SIZE), "%s machine init failed",
+    CHECK(s5l8900_init(&m, RAM_BASE, tall_source ? 0x00400000u : RAM_SIZE), "%s machine init failed",
           form->name);
     if (!m.ram) return;
 
@@ -4079,7 +4399,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                 filter_affine.u_y * filter_affine.v_x;
         }
         uint32_t texture_width = 8u << ((form->quad[1] >> 24) & 7u);
-        uint32_t texture_height = 8u << ((form->quad[1] >> 20) & 7u);
+        uint32_t texture_height = 8u << ((form->quad[1] >> 20) & 15u);
         filter_u_start = test_float_value(form->quad[25]) * texture_width;
         filter_v_start = test_float_value(form->quad[26]) * texture_height;
         float filter_u_end =
@@ -4278,6 +4598,137 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
     uint32_t last_destination = target +
         (form->top + last_covered_offset / form->width) * TARGET_STRIDE +
         (form->left + last_covered_offset % form->width) * 4u;
+    if (form->clock_column) {
+        const unsigned us[4] = {25u,30u,35u,40u};
+        const float bad_u[] = {0.0f, 1.0f, 1.5f, 8.0f};
+        for (unsigned k = 0; k < 4u; k++) {
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            for (unsigned i = 0; i < 4u; i++)
+                test_gpu_write32(&m, object + 0x1f0u + us[i] * 4u,
+                                 test_float_word(bad_u[k] / 8.0f));
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+                  test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u,
+                  "%s unmeasured column U=%g committed", form->name,
+                  (double)bad_u[k]);
+        }
+        for (unsigned i = 0; i < 4u; i++)
+            test_gpu_write32(&m, object + 0x1f0u + us[i] * 4u, form->quad[us[i]]);
+        const unsigned changed[4][4] = {
+            {10u,14u,32u,42u}, {13u,15u,38u,43u},
+            {12u,14u,37u,42u}, {9u,11u,28u,33u},
+        };
+        /* Coherent width/height, shear and reversed-axis-height edits retain
+         * the parallelogram and normalized duplicates but leave this family. */
+        for (unsigned k = 0; k < 4u; k++) {
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            for (unsigned i = 0; i < 2u; i++) {
+                float value = test_float_value(form->quad[changed[k][i]]) + 1.0f;
+                test_gpu_write32(&m, object + 0x1f0u + changed[k][i] * 4u,
+                                 test_float_word(value));
+                test_gpu_write32(&m, object + 0x1f0u + changed[k][i+2u] * 4u,
+                                 test_float_word(value / 1024.0f));
+            }
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+                  test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u,
+                  "%s unsupported coherent affine edit %u committed", form->name, k);
+            for (unsigned i = 0; i < 4u; i++)
+                test_gpu_write32(&m, object + 0x1f0u + changed[k][i] * 4u,
+                                 form->quad[changed[k][i]]);
+        }
+        m.bus.write32(m.bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+    }
+    if (form->safari_address_scale || form->text_wide_stretch) {
+        /* Coherent UV edits preserve rectangularity/allocation yet leave the
+         * newly measured scale families. They must not touch either sentinel. */
+        const unsigned uv_words[4] = {25u,35u,26u,31u};
+        for (unsigned axis = 0; axis < 2; axis++) {
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            unsigned first_word = uv_words[axis * 2u];
+            unsigned second_word = uv_words[axis * 2u + 1u];
+            float extent = (float)(8u << ((form->quad[1] >> (axis ? 20u : 24u)) & (axis ? 15u : 7u)));
+            float value = test_float_value(form->quad[first_word]) + 0.5f / extent;
+            test_gpu_write32(&m, object + 0x1f0u + first_word * 4u, test_float_word(value));
+            test_gpu_write32(&m, object + 0x1f0u + second_word * 4u, test_float_word(value));
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+                  test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u,
+                  "%s coherent cropped UV axis %u committed", form->name, axis);
+            test_gpu_write32(&m, object + 0x1f0u + first_word * 4u, form->quad[first_word]);
+            test_gpu_write32(&m, object + 0x1f0u + second_word * 4u, form->quad[second_word]);
+        }
+        if (form->quad[3] == 0xcd206c40u) {
+            float altered_bottom = test_float_value(form->quad[13]) - 1.0f;
+            test_gpu_write32(&m, object + 0x1f0u + 13u * 4u, test_float_word(altered_bottom));
+            test_gpu_write32(&m, object + 0x1f0u + 15u * 4u, test_float_word(altered_bottom));
+            test_gpu_write32(&m, object + 0x1f0u + 38u * 4u, test_float_word(altered_bottom / 1024.0f));
+            test_gpu_write32(&m, object + 0x1f0u + 43u * 4u, test_float_word(altered_bottom / 1024.0f));
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+                  test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u,
+                  "%s changed vertical scale committed", form->name);
+            const unsigned restore_words[4] = {13u,15u,38u,43u};
+            for(unsigned i=0;i<4;i++)test_gpu_write32(&m,
+                object+0x1f0u+restore_words[i]*4u,form->quad[restore_words[i]]);
+        }
+    }
+    if (form->text_wide_stretch) {
+        const unsigned x_words[4] = {10u,14u,32u,42u};
+        const float outside = 4097.0f;
+        for(unsigned i=0;i<4;i++) test_gpu_write32(&m,
+            object+0x1f0u+x_words[i]*4u,
+            test_float_word(i<2u?outside:outside/1024.0f));
+        test_gpu_write32(&m, first, 0x89abcdefu);
+        test_gpu_write32(&m, last_destination, 0x76543210u);
+        m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+        CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u &&
+              test_gpu_read32(&m, first) == 0x89abcdefu &&
+              test_gpu_read32(&m, last_destination) == 0x76543210u,
+              "%s exceeded coordinate envelope", form->name);
+        for(unsigned i=0;i<4;i++)test_gpu_write32(&m,
+            object+0x1f0u+x_words[i]*4u,form->quad[x_words[i]]);
+    }
+    if (form->constant_v_row) {
+        const unsigned vs[4] = {26u,31u,36u,41u};
+        const float invalid_centres[] = {0.0f, 1.0f, 1.5f, 8.0f};
+        for (unsigned k=0;k<4u;k++) {
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            for (unsigned v=0;v<4u;v++)
+                test_gpu_write32(&m, object+0x1f0u+vs[v]*4u,
+                    test_float_word(invalid_centres[k]/8.0f));
+            m.bus.write32(m.bus.ctx, MBX_BASE+REG_RENDER, 1u);
+            CHECK(m.bus.read32(m.bus.ctx, MBX_BASE+REG_STATUS)==0u &&
+                  test_gpu_read32(&m, first)==0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination)==0x76543210u,
+                  "%s unmeasured constant V=%g committed", form->name,
+                  (double)invalid_centres[k]);
+        }
+        for (unsigned v=0;v<4u;v++)
+            test_gpu_write32(&m, object+0x1f0u+vs[v]*4u, form->quad[vs[v]]);
+        /* A coherent cropped U rectangle remains unsupported even though
+         * both sides still fit the allocation and all redundant UVs agree. */
+        const unsigned us[2] = {25u,35u};
+        for(unsigned v=0;v<2u;v++)
+            test_gpu_write32(&m,object+0x1f0u+us[v]*4u,test_float_word(0.5f/512.0f));
+        m.bus.write32(m.bus.ctx, MBX_BASE+REG_RENDER, 1u);
+        CHECK(m.bus.read32(m.bus.ctx, MBX_BASE+REG_STATUS)==0u &&
+              test_gpu_read32(&m, first)==0x89abcdefu &&
+              test_gpu_read32(&m, last_destination)==0x76543210u,
+              "%s cropped constant-V row committed", form->name);
+        for(unsigned v=0;v<2u;v++)
+            test_gpu_write32(&m,object+0x1f0u+us[v]*4u,form->quad[us[v]]);
+    }
     if (form->variable_vertex_alpha) {
         test_gpu_write32(&m, first, 0x89abcdefu);
         test_gpu_write32(&m, object + 0x264u, form->quad[29] ^ 0x01000000u);
@@ -4343,7 +4794,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
             uint32_t first_v = test_gpu_read32(&m, first_v_word);
             uint32_t second_v = test_gpu_read32(&m, second_v_word);
             uint32_t texture_height =
-                8u << ((form->quad[1] >> 20) & 7u);
+                8u << ((form->quad[1] >> 20) & 15u);
             uint32_t fractional_v = test_float_word(
                 test_float_value(first_v) + 0.5f / (float)texture_height);
             test_gpu_write32(&m, first, 0x89abcdefu);
@@ -4379,6 +4830,55 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                 test_gpu_write32(&m, sampler_word, form->quad[3]);
                 test_gpu_write32(&m, companion_word, form->quad[6]);
             }
+        }
+
+        if (form->row_resample && !form->safari_address_scale && !form->text_wide_stretch &&
+            form->quad[3] == 0xcd206c40u) {
+            /* The new gradient form covers the complete texture width.
+             * A coherent cropped horizontal origin remains unsupported. */
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            const uint32_t crop = test_float_word(0.5f /
+                (float)(8u << ((form->quad[1] >> 24) & 7u)));
+            test_gpu_write32(&m, object + 0x1f0u + 25u*4u, crop);
+            test_gpu_write32(&m, object + 0x1f0u + 35u*4u, crop);
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u &&
+                  m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+                  "%s cropped gradient silently entered full-width family",
+                  form->name);
+            test_gpu_write32(&m, object + 0x1f0u + 25u*4u, form->quad[25]);
+            test_gpu_write32(&m, object + 0x1f0u + 35u*4u, form->quad[35]);
+        }
+
+        if (tall_source) {
+            uint32_t header_address = object + 0x1f4u;
+            uint32_t saved_header = test_gpu_read32(&m, header_address);
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            test_gpu_write32(&m, header_address,
+                (saved_header & ~0x00f00000u) | 0x00900000u);
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u &&
+                  m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+                  "%s unmeasured 4096-row allocation committed", form->name);
+            test_gpu_write32(&m, header_address, saved_header);
+            /* Shift the complete integer UV crop beyond the allocation,
+             * keeping redundant corners and the original extent coherent. */
+            const unsigned vs[4] = {26u,31u,36u,41u};
+            for (unsigned k=0;k<4u;k++)
+                test_gpu_write32(&m, object + 0x1f0u + vs[k]*4u,
+                    test_float_word(test_float_value(form->quad[vs[k]])+1.0f));
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u &&
+                  m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+                  "%s out-of-allocation tall crop committed", form->name);
+            for (unsigned k=0;k<4u;k++)
+                test_gpu_write32(&m, object + 0x1f0u + vs[k]*4u,
+                    form->quad[vs[k]]);
         }
 
         /* Allocation width and linear row pitch are independent, but the
@@ -4496,7 +4996,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                              form->quad[42]);
         }
 
-        if (form->scaled_sprite) {
+        if (form->scaled_sprite || tall_source) {
             if (form->column_resample) {
                 /* The measured mixed-axis exception has a one-texel-or-less
                  * horizontal UV span. Preserve both redundant UV corners
@@ -4531,7 +5031,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                  * while extending that extent by one texel; a generic
                  * two-axis minifier must remain an atomic rejection. */
                 uint32_t texture_height =
-                    8u << ((form->quad[1] >> 20) & 7u);
+                    8u << ((form->quad[1] >> 20) & 15u);
                 uint32_t changed_v1 = test_float_word(
                     test_float_value(form->quad[36]) +
                     1.0f / (float)texture_height);
@@ -4607,7 +5107,7 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                   form->name);
             m.bus.write32(m.bus.ctx, source_pte_address, source_pte);
 
-            if (form->column_resample || form->row_resample) {
+            if (form->column_resample || form->row_resample || tall_source) {
                 uint32_t target_table = m.bus.read32(m.bus.ctx,
                     MBX_BASE + REG_GART0 + (last_destination >> 22) * 4u);
                 uint32_t target_pte_address = target_table +
@@ -6251,7 +6751,841 @@ static void test_later_tiled_status_sprites(void) {
     test_captured_status_form(&relocated_zero);
 }
 
+static void test_os1_empty_clip(void) {
+    enum {
+        LEFT = 319u, TOP = 380u, RIGHT = 320u, BOTTOM = 396u,
+        SOURCE_STRIDE = 0x100u, TEXTURE_HEIGHT = 16u,
+        TARGET_STRIDE = 0x500u,
+    };
+    const uint32_t table0 = 0x08003000u;
+    const uint32_t table2 = 0x08004000u;
+    const uint32_t region = 0x00001000u;
+    const uint32_t object = 0x00014000u;
+    const uint32_t source = 0x00b56080u;
+    const uint32_t target = 0x00998000u;
+    const uint32_t region_pa = 0x08010000u;
+    const uint32_t object_pa = 0x08014000u;
+    const uint32_t source_pa = 0x08020000u;
+    const uint32_t target_pa = 0x080c0000u;
+
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m, RAM_BASE, RAM_SIZE),
+          "clipped zero-coverage machine init failed");
+    if (!m.ram) return;
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_GART0, table0);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_GART2, table2);
+    test_map_gpu_page(&m, table0, region, region_pa);
+    test_map_gpu_page(&m, table0, object, object_pa);
+
+    uint32_t source_page0 = source & ~0xfffu;
+    uint32_t source_last = source + TEXTURE_HEIGHT * SOURCE_STRIDE - 1u;
+    for (uint32_t page = source_page0;
+         page <= (source_last & ~0xfffu); page += 0x1000u)
+        test_map_gpu_page(&m, table2, page,
+                          source_pa + (page - source_page0));
+
+    uint32_t first = target + TOP * TARGET_STRIDE + LEFT * 4u;
+    uint32_t last = target + (BOTTOM - 1u) * TARGET_STRIDE +
+                    (RIGHT - 1u) * 4u;
+    uint32_t target_page0 = first & ~0xfffu;
+    for (uint32_t page = target_page0;
+         page <= (last & ~0xfffu); page += 0x1000u)
+        test_map_gpu_page(&m, table2, page,
+                          target_pa + (page - target_page0));
+
+    for (uint32_t off = 0u; off < 0x500u; off += 4u)
+        test_gpu_write32(&m, object + off, 0u);
+    for (unsigned i = 0; i < 26u; i++)
+        test_gpu_write32(&m, object + i * 4u, 0x5a000000u ^ i);
+
+    uint32_t list = object + 0x68u;
+    test_gpu_write32(&m, list, 0x60200020u);
+    test_gpu_write32(&m, list + 4u, 0x6020002du);
+    test_gpu_write32(&m, list + 8u, 0x6120003au);
+    test_gpu_write32(&m, list + 12u, 0xf0000000u);
+
+    static const struct {
+        uint16_t off;
+        uint32_t value;
+    } boundary_fixed[] = {
+        {0x080u, 0x22206f80u}, {0x088u, 0x45800000u},
+        {0x094u, 0x45800000u}, {0x098u, 0x45800000u},
+        {0x09cu, 0x45800000u}, {0x0b4u, 0x22207f80u},
+    };
+    for (unsigned i = 0;
+         i < sizeof boundary_fixed / sizeof boundary_fixed[0]; i++)
+        test_gpu_write32(&m, object + boundary_fixed[i].off,
+                         boundary_fixed[i].value);
+    const uint32_t boundary[8] = {
+        LEFT, BOTTOM, LEFT, TOP, RIGHT, BOTTOM, RIGHT, TOP,
+    };
+    for (unsigned i = 0; i < 8u; i++)
+        test_gpu_write32(&m, object + 0x0b8u + i * 4u,
+                         test_float_word((float)boundary[i]));
+
+    const uint32_t record_offset = 0x0e8u;
+    const uint32_t record[33] = {
+        0xe0000000u, 0xa3118000u, 0x8e100000u | (source >> 7), 0xa6887610u,
+        0x22220e80u, 0x439fc688u, 0x43be4e57u, 0x43bd4688u,
+        0x43be4e57u, 0x439fc688u, 0x43c5ce57u, 0x43bd4688u,
+        0x43c5ce57u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x00000000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0x3f800000u, 0xff000000u, 0x3c000000u, 0x3d000000u,
+        0xff000000u, 0x3f6a0000u, 0x3d000000u, 0xff000000u,
+        0x3c000000u, 0x3f680000u, 0xff000000u, 0x3f6a0000u,
+        0x3f680000u,
+    };
+    for (unsigned i = 0; i < 33u; i++)
+        test_gpu_write32(&m, object + record_offset + i * 4u, record[i]);
+
+    /* Empty x clip emits no tiles; stale region storage is not drawing work. */
+    test_gpu_write32(&m, region, 0xdeadbeefu);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RGNBASE, region);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_OBJBASE, object);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_PIXSAMP, 0x00020007u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBCTL, 6u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x01400140u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBYCLIP, 0x01900170u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBSTART, target);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBSTRIDE, 320u);
+
+    test_gpu_write32(&m, first, 0x89abcdefu);
+    test_gpu_write32(&m, last, 0x76543210u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+          test_gpu_read32(&m, last) == 0x76543210u,
+          "clipped zero-coverage draw changed its target row");
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu,
+          "clipped zero-coverage draw did not raise all completion events");
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_ACK, 0x4cu);
+
+    uint32_t late_source_page = source_last & ~0xfffu;
+    uint32_t source_pte_address = table2 +
+        (((late_source_page >> 12) & 0x3ffu) * 4u);
+    uint32_t source_pte = m.bus.read32(m.bus.ctx, source_pte_address);
+    m.bus.write32(m.bus.ctx, source_pte_address, 0u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    m.bus.write32(m.bus.ctx, source_pte_address, source_pte);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+          "missing zero-coverage source PTE raised completion");
+
+    uint32_t target_pte_address = table2 +
+        (((target_page0 >> 12) & 0x3ffu) * 4u);
+    uint32_t target_pte = m.bus.read32(m.bus.ctx, target_pte_address);
+    m.bus.write32(m.bus.ctx, target_pte_address, 0u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    m.bus.write32(m.bus.ctx, target_pte_address, target_pte);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+          "missing zero-coverage target PTE raised completion");
+
+    CHECK(test_gpu_read32(&m, region) == 0xdeadbeefu,
+          "empty clip changed stale tile storage");
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x01380138u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+          "unrelated empty scissor bypassed producer validation");
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_FBXCLIP, 0x01400140u);
+    test_gpu_write32(&m, object + record_offset + 4u, record[1] ^ 0x8000u);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+          "unknown texture header bypassed empty-clip validation");
+    test_gpu_write32(&m, object + record_offset + 4u, record[1]);
+    m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+    CHECK(m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0x4cu &&
+          test_gpu_read32(&m, first) == 0x89abcdefu &&
+          test_gpu_read32(&m, last) == 0x76543210u,
+          "valid empty clip failed after malformed submissions");
+    s5l8900_free(&m);
+}
+
+static void test_os1_settings_clip(void) {
+    struct mbx_test_status_form form = {
+        .name = "OS1 captured Settings nearest-centre clip",
+        .xclip = 0x00780070u, .yclip = 0x00c000a0u,
+        .semantic_sprite = true, .scaled_sprite = true,
+        .variable_vertex_alpha = true, .boundary_override = true,
+        .tile_x0 = 14u, .tile_x1 = 14u, .tile_y0 = 10u, .tile_y1 = 11u,
+        .left = 112u, .top = 174u, .width = 5u, .height = 6u,
+        .expected_covered_pixels = 30u,
+        .source = 0x00970000u, .source_stride = 96u,
+        .source_control = 0x8e040000u, .source_width = 19u, .source_height = 20u,
+        .quad = {
+            0xe0000000u, 0xa2218001u, 0x8e0718e1u, 0xcd206c40u,
+            0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+            0x42df023fu, 0x432df40bu, 0x42ead262u, 0x432df40bu,
+            0x42df023fu, 0x43342bb2u, 0x42ead262u, 0x43342bb2u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0x14000000u, 0x3c800000u, 0x3c800000u, 0x3ddf023fu,
+            0x3e2df40bu, 0x14000000u, 0x3f140000u, 0x3c800000u,
+            0x3dead262u, 0x3e2df40bu, 0x14000000u, 0x3c800000u,
+            0x3f1c0000u, 0x3ddf023fu, 0x3e342bb2u, 0x14000000u,
+            0x3f140000u, 0x3f1c0000u, 0x3dead262u, 0x3e342bb2u,
+        },
+    };
+    const float boundary[8] = {111,181,111,173,118,181,118,173};
+    for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+    test_captured_status_form(&form);
+}
+
+/* Exact failed OS1 Settings copy, from the three-command ring+dcf0 batch. */
+static const uint32_t clipped_capture[14] = {
+    0xa0060500u, 0x018d7000u, 0x94060500u, 0x01adb080u, 0x30000000u,
+    1u,          0x01400000u, 0x01e00014u, 0x60800200u, 0x8004ccccu,
+    0xffffffffu, 0x00000014u, 0x014001e0u, 0x70000000u};
+#define CLIP_TARGET 0x018d7000u
+#define CLIP_SOURCE 0x01adb080u
+#define CLIP_TABLE 0x08003000u
+#define CLIP_SOURCE_PA 0x08010000u
+#define CLIP_TARGET_PA 0x080c0000u
+#define CLIP_BYTES (320u * 480u * 4u)
+static uint32_t clip_colour(unsigned x, unsigned y) {
+    return 0xff000000u | (y << 12) | x;
+}
+static void clip_clear(s5l8900_t *m) {
+    memset(m->ram + CLIP_TARGET_PA - RAM_BASE, 0x5a, CLIP_BYTES);
+    m->bus.write32(m->bus.ctx, MBX_BASE + REG_ACK, 0x400u);
+}
+static bool clip_untouched(s5l8900_t *m) {
+    uint8_t *p = m->ram + CLIP_TARGET_PA - RAM_BASE;
+    for (unsigned i = 0; i < CLIP_BYTES; i++)
+        if (p[i] != 0x5a)
+            return false;
+    return true;
+}
+static void clip_submit(s5l8900_t *m, uint32_t *packet, unsigned count) {
+    write_packet(m, RING + 0xdd30u, packet, count);
+    m->bus.write32(m->bus.ctx, MBX_BASE + RING, 0xf0000000u);
+}
+static bool clip_complete(s5l8900_t *m) {
+    return (m->bus.read32(m->bus.ctx, MBX_BASE + REG_STATUS) & 0x400u) != 0;
+}
+static void clip_expect_rejected(s5l8900_t *m, uint32_t *packet, const char *name) {
+    clip_clear(m);
+    clip_submit(m, packet, 14u);
+    CHECK(clip_untouched(m), "%s changed destination on rejection", name);
+    CHECK(!clip_complete(m), "%s completed unsupported command", name);
+}
+static void test_clipped_os1_copy(void) {
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m, RAM_BASE, RAM_SIZE), "clipped-copy init");
+    if (!m.ram)
+        return;
+    m.bus.write32(m.bus.ctx, MBX_BASE + 0x1018u,
+                  CLIP_TABLE); /* both captured VAs select root6 */
+    for (unsigned off = 0; off < CLIP_BYTES + 0x1000u; off += 0x1000u)
+        test_map_gpu_page(&m, CLIP_TABLE, (CLIP_SOURCE & ~0xfffu) + off,
+                          CLIP_SOURCE_PA + off);
+    for (unsigned off = 0; off < CLIP_BYTES; off += 0x1000u)
+        test_map_gpu_page(&m, CLIP_TABLE, CLIP_TARGET + off, CLIP_TARGET_PA + off);
+    for (unsigned y = 0; y < 480; y++)
+        for (unsigned x = 0; x < 320; x++)
+            test_gpu_write32(&m, CLIP_SOURCE + y * 1280u + x * 4u, clip_colour(x, y));
+    uint32_t p[19];
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    clip_clear(&m);
+    write_packet(&m, RING + 0xdd30u, p, 14u);
+    CHECK(clip_untouched(&m) && !clip_complete(&m),
+          "captured clipped copy executed before doorbell");
+    m.bus.write32(m.bus.ctx, MBX_BASE + RING, 0xf0000000u);
+    bool exact = true;
+    for (unsigned y = 0; y < 480; y++)
+        for (unsigned x = 0; x < 320; x++)
+            if (test_gpu_read32(&m, CLIP_TARGET + y * 1280u + x * 4u) !=
+                (y < 20 ? 0x5a5a5a5au : clip_colour(x, y - 20)))
+                exact = false;
+    CHECK(exact, "captured copy differs across full framebuffer/status guards");
+    CHECK(clip_complete(&m), "captured clipped copy did not complete");
+    CHECK(m.mbx_telemetry.completed_2d == 1 && m.mbx_telemetry.rejected_2d == 0,
+          "captured copy telemetry");
+
+    /* Intersect an interior viewport while retaining source offset in both axes. */
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    p[4] = 0x30008003u;
+    p[6] = 0x0011000bu;
+    p[7] = 0x00180010u;
+    p[11] = 0x0008000cu;
+    p[12] = 0x0014001cu;
+    clip_clear(&m);
+    clip_submit(&m, p, 14u);
+    exact = true;
+    for (unsigned y = 0; y < 480; y++)
+        for (unsigned x = 0; x < 320; x++) {
+            bool in = x >= 11 && x < 17 && y >= 16 && y < 24;
+            uint32_t want = in ? clip_colour(x - 6, y - 9) : 0x5a5a5a5au;
+            if (test_gpu_read32(&m, CLIP_TARGET + y * 1280u + x * 4u) != want)
+                exact = false;
+        }
+    CHECK(exact && clip_complete(&m),
+          "inset clipping did not preserve source/destination offset and guards");
+
+    /* An original destination can extend beyond scanout; only the clipped source
+     * footprint is addressed, so an unobserved off-screen row must not be read. */
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    p[7] = 0x01e00000u;
+    p[11] = 0;
+    p[12] = 0x01900258u;
+    clip_clear(&m);
+    clip_submit(&m, p, 14u);
+    exact = true;
+    for (unsigned y = 0; y < 480; y++)
+        for (unsigned x = 0; x < 320; x++)
+            if (test_gpu_read32(&m, CLIP_TARGET + y * 1280u + x * 4u) !=
+                clip_colour(x, y))
+                exact = false;
+    CHECK(exact && clip_complete(&m),
+          "clip failed to bound off-screen destination/source footprint");
+
+    /* Equality survives the producer's strict > nonintersection branches. */
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    p[6] = 0x00080008u;
+    clip_clear(&m);
+    clip_submit(&m, p, 14u);
+    CHECK(clip_untouched(&m) && clip_complete(&m),
+          "valid empty clip moved pixels or failed completion");
+    p[3] = 0x01bff000u;
+    clip_expect_rejected(&m, p, "empty clip unmapped source");
+
+    static const struct {
+        unsigned index;
+        uint32_t value;
+        const char *name;
+    } bad[] = {{2, 0x9c060500u, "unknown source descriptor state"},
+               {5, 2, "unknown clip tag"},
+               {9, 0x8000ccccu, "clip without mode bit"},
+               {9, 0x8006ccccu, "unknown clipped blend mode"},
+               {9, 0x8204ccccu, "rotated clip"},
+               {8, 0x60800400u, "non-unity clip"},
+               {10, 0xfffffffeu, "unknown colour"},
+               {6, 0x01410000u, "clip outside scanout"},
+               {6, 0x000b000cu, "reversed clip"},
+               {7, 0x01e00013u, "clip outside destination intersection"},
+               {4, 0x307f8000u, "clipped source footprint overflows row"},
+               {13, 0, "missing clipped terminator"},
+               {1, CLIP_TARGET + 1u, "unaligned target"},
+               {3, CLIP_SOURCE + 1u, "unaligned source"}};
+    for (unsigned i = 0; i < sizeof bad / sizeof bad[0]; i++) {
+        memcpy(p, clipped_capture, sizeof clipped_capture);
+        p[bad[i].index] = bad[i].value;
+        clip_expect_rejected(&m, p, bad[i].name);
+    }
+
+    /* A late source or destination page hole must reject before any earlier
+     * row reaches guest RAM. Test both translated ranges independently. */
+    uint32_t late_pages[] = {(CLIP_SOURCE + 459u * 1280u) & ~0xfffu,
+                             (CLIP_TARGET + 479u * 1280u) & ~0xfffu};
+    for (unsigned i = 0; i < 2; i++) {
+        uint32_t entry = CLIP_TABLE + ((late_pages[i] >> 12) & 0x3ffu) * 4u;
+        uint32_t saved = m.bus.read32(m.bus.ctx, entry);
+        m.bus.write32(m.bus.ctx, entry, 0);
+        memcpy(p, clipped_capture, sizeof clipped_capture);
+        clip_expect_rejected(&m, p, i ? "late destination PTE" : "late source PTE");
+        m.bus.write32(m.bus.ctx, entry, saved);
+    }
+
+    /* Adjacent compact14/11-word commands must advance to the real next head;
+     * the clipped copy may be followed by either an old packet or another clip. */
+    uint32_t q[19] = {0xa0060500u, CLIP_TARGET, 0x94060500u, CLIP_SOURCE,
+                      0x30004001u, 0x60800200u, 0x8000ccccu, 0xffffffffu,
+                      0x00010014u, 0x00020015u, 0x70000000u};
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    clip_clear(&m);
+    write_packet(&m, RING + 0x100u, p, 14);
+    write_packet(&m, RING + 0x138u, q, 11);
+    CHECK(clip_untouched(&m), "mixed clipped batch wrote before submit");
+    m.bus.write32(m.bus.ctx, MBX_BASE + RING, 0xf0000000u);
+    CHECK(clip_complete(&m) &&
+              test_gpu_read32(&m, CLIP_TARGET + 20 * 1280u + 4u) == clip_colour(1, 1),
+          "compact clipped/old batch length/order incorrect");
+    CHECK(test_gpu_read32(&m, CLIP_TARGET + 20 * 1280u) == clip_colour(0, 0),
+          "second compact command corrupted prior pixels");
+
+    clip_clear(&m);
+    q[6] ^= 1u;
+    write_packet(&m, RING + 0x100u, p, 14);
+    write_packet(&m, RING + 0x138u, q, 11);
+    m.bus.write32(m.bus.ctx, MBX_BASE + RING, 0xf0000000u);
+    CHECK(clip_untouched(&m) && !clip_complete(&m),
+          "late malformed old packet committed earlier clipped job");
+    q[6] ^= 1u;
+
+    /* Preserve the existing fail-closed target-as-source batch policy. */
+    clip_clear(&m);
+    q[3] = CLIP_TARGET;
+    write_packet(&m, RING + 0x100u, p, 14);
+    write_packet(&m, RING + 0x138u, q, 11);
+    m.bus.write32(m.bus.ctx, MBX_BASE + RING, 0xf0000000u);
+    CHECK(clip_untouched(&m) && !clip_complete(&m),
+          "aliased batch source committed clipped job");
+    q[3] = CLIP_SOURCE;
+
+    /* A 19-word padded clipped copy can cross the 64 KiB cursor boundary. The next
+     * command begins at ring0; its head is replaced by the actual doorbell. */
+    for (unsigned i = 14; i < 19; i++)
+        p[i] = 0x70000000u;
+    clip_clear(&m);
+    write_packet(&m, RING + 0xfff8u, p, 19);
+    write_packet(&m, RING, q, 11);
+    m.bus.write32(m.bus.ctx, MBX_BASE + RING, 0xf0000000u);
+    CHECK(clip_complete(&m) &&
+              test_gpu_read32(&m, CLIP_TARGET + 20 * 1280u + 4u) == clip_colour(1, 1),
+          "padded clipped command ring wrap failed");
+
+    /* The decoded clip extension preserves the already proved ARGB1555 layout,
+     * using two-byte source offsets rather than the BGRA8 destination stride. */
+    memcpy(p, clipped_capture, sizeof clipped_capture);
+    p[2] = 0x94048008u;
+    p[6] = 0x00030001u;
+    p[7] = 0x00160015u;
+    p[11] = 0x00000014u;
+    p[12] = 0x00040016u;
+    test_gpu_write16(&m, CLIP_SOURCE + 10u, 0xfc00u);
+    test_gpu_write16(&m, CLIP_SOURCE + 12u, 0x03e0u);
+    clip_clear(&m);
+    clip_submit(&m, p, 14);
+    CHECK(clip_complete(&m) &&
+              test_gpu_read32(&m, CLIP_TARGET + 21u * 1280u + 4u) == 0xffff0000u &&
+              test_gpu_read32(&m, CLIP_TARGET + 21u * 1280u + 8u) == 0x0000ff00u,
+          "clipped ARGB1555 sampling/conversion differs from original layout");
+    CHECK(test_gpu_read32(&m, CLIP_TARGET + 21u * 1280u) == 0x5a5a5a5au &&
+              test_gpu_read32(&m, CLIP_TARGET + 21u * 1280u + 12u) == 0x5a5a5a5au,
+          "clipped ARGB1555 wrote outside its bounds");
+    s5l8900_free(&m);
+}
+
+
+static void test_os1_calendar_tall_crop(void) {
+    struct mbx_test_status_form form = {
+        .name = "OS1 captured Calendar 2048-row day texture",
+        .xclip = 0x01400000u, .yclip = 0x01e00060u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 6u, .tile_y1 = 29u,
+        .left = 0u, .top = 109u, .width = 320u, .height = 371u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x0e500000u, .source_width = 320u,
+        .source_height = 371u, .source_row0 = 694u,
+        .quad = {
+            0xe0000000u, 0xa6818000u, 0x0e537421u, 0xcd206c40u,
+            0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43f00000u, 0x00000000u, 0x42da0000u,
+            0x43a00000u, 0x43f00000u, 0x43a00000u, 0x42da0000u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x3f052000u, 0x00000000u,
+            0x3ef00000u, 0xff000000u, 0x00000000u, 0x3ead8000u,
+            0x00000000u, 0x3dda0000u, 0xff000000u, 0x3f200000u,
+            0x3f052000u, 0x3ea00000u, 0x3ef00000u, 0xff000000u,
+            0x3f200000u, 0x3ead8000u, 0x3ea00000u, 0x3dda0000u,
+        },
+    };
+    test_captured_status_form(&form);
+    form.name = "OS1 captured Calendar 1024-row resized day texture";
+    form.yclip = 0x01b00060u;
+    form.tile_y1 = 26u;
+    form.height = form.source_height = 323u;
+    const uint32_t resized[44] = {
+        0xe0000000u, 0xa6718000u, 0x0e537421u, 0xcd206c40u,
+        0xa7718000u, 0x0e5303a0u, 0xae504ea0u, 0x22250e80u,
+        0x00000000u, 0x43d80000u, 0x00000000u, 0x42da0000u,
+        0x43a00000u, 0x43d80000u, 0x43a00000u, 0x42da0000u,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0xff000000u, 0x00000000u, 0x3f7e4000u, 0x00000000u,
+        0x3ed80000u, 0xff000000u, 0x00000000u, 0x3f2d8000u,
+        0x00000000u, 0x3dda0000u, 0xff000000u, 0x3f200000u,
+        0x3f7e4000u, 0x3ea00000u, 0x3ed80000u, 0xff000000u,
+        0x3f200000u, 0x3f2d8000u, 0x3ea00000u, 0x3dda0000u,
+    };
+    memcpy(form.quad, resized, sizeof resized);
+    test_captured_status_form(&form);
+
+}
+
+static void test_os1_calendar_month_gradient(void) {
+    struct mbx_test_status_form form = {
+        .name = "OS1 captured Calendar Month horizontal gradient",
+        .xclip = 0x01400000u, .yclip = 0x01600140u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true, .row_resample = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 20u, .tile_y1 = 21u,
+        .left = 0u, .top = 329u, .width = 320u, .height = 18u,
+        .source = 0x00980000u, .source_stride = 32u,
+        .source_control = 0x8e000000u, .source_width = 8u,
+        .source_height = 18u,
+        .quad = {
+            0xe0000000u, 0xa0218001u, 0x8e036c00u, 0xcd206c40u,
+            0xa7718000u, 0x0e532e40u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43a48000u, 0x43a00000u, 0x43a48000u,
+            0x00000000u, 0x43ad8000u, 0x43a00000u, 0x43ad8000u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3ea48000u, 0xff000000u, 0x3f800000u, 0x00000000u,
+            0x3ea00000u, 0x3ea48000u, 0xff000000u, 0x00000000u,
+            0x3f100000u, 0x00000000u, 0x3ead8000u, 0xff000000u,
+            0x3f800000u, 0x3f100000u, 0x3ea00000u, 0x3ead8000u,
+        },
+    };
+    const float boundary[8] = {0,347,0,329,320,347,320,329};
+    for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+    test_captured_status_form(&form);
+}
+static void test_os1_safari_constant_v_rows(void) {
+    {
+      struct mbx_test_status_form form = {
+        .constant_v_row = true, .name = "OS1 Safari constant-V row 1",
+        .xclip = 0x01400000u, .yclip = 0x01800170u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 23u, .tile_y1 = 23u,
+        .left = 0u, .top = 375u, .width = 320u, .height = 1u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x8e500000u, .source_width = 320u, .source_height = 1u,
+        .quad = {
+            0xe0000000u, 0xa6018000u, 0x8e536080u, 0xcd206c40u,
+            0xa7718000u, 0x0e5303a0u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43bb5f70u, 0x43a00000u, 0x43bb5f70u,
+            0x00000000u, 0x43bbdf70u, 0x43a00000u, 0x43bbdf70u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x3d800000u, 0x00000000u,
+            0x3ebb5f70u, 0xff000000u, 0x3f200000u, 0x3d800000u,
+            0x3ea00000u, 0x3ebb5f70u, 0xff000000u, 0x00000000u,
+            0x3d800000u, 0x00000000u, 0x3ebbdf70u, 0xff000000u,
+            0x3f200000u, 0x3d800000u, 0x3ea00000u, 0x3ebbdf70u,
+        },
+      };
+      const float boundary[8] = {0,376,0,374,320,376,320,374};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .constant_v_row = true, .name = "OS1 Safari constant-V row 2",
+        .xclip = 0x01400000u, .yclip = 0x01b001a0u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 26u, .tile_y1 = 26u,
+        .left = 0u, .top = 423u, .width = 320u, .height = 1u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x8e500000u, .source_width = 320u, .source_height = 1u,
+        .quad = {
+            0xe0000000u, 0xa6018000u, 0x8e5360a0u, 0xcd206c40u,
+            0xa7718000u, 0x0e5303a0u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43d35f70u, 0x43a00000u, 0x43d35f70u,
+            0x00000000u, 0x43d3df70u, 0x43a00000u, 0x43d3df70u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x3d800000u, 0x00000000u,
+            0x3ed35f70u, 0xff000000u, 0x3f200000u, 0x3d800000u,
+            0x3ea00000u, 0x3ed35f70u, 0xff000000u, 0x00000000u,
+            0x3d800000u, 0x00000000u, 0x3ed3df70u, 0xff000000u,
+            0x3f200000u, 0x3d800000u, 0x3ea00000u, 0x3ed3df70u,
+        },
+      };
+      const float boundary[8] = {0,424,0,422,320,424,320,422};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .constant_v_row = true, .name = "OS1 Safari constant-V row 3",
+        .xclip = 0x01400000u, .yclip = 0x01700160u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 22u, .tile_y1 = 22u,
+        .left = 0u, .top = 362u, .width = 320u, .height = 1u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x8e500000u, .source_width = 320u, .source_height = 1u,
+        .quad = {
+            0xe0000000u, 0xa6018000u, 0x8e536080u, 0xcd206c40u,
+            0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43b5321cu, 0x43a00000u, 0x43b5321cu,
+            0x00000000u, 0x43b5b21cu, 0x43a00000u, 0x43b5b21cu,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x3d800000u, 0x00000000u,
+            0x3eb5321cu, 0xff000000u, 0x3f200000u, 0x3d800000u,
+            0x3ea00000u, 0x3eb5321cu, 0xff000000u, 0x00000000u,
+            0x3d800000u, 0x00000000u, 0x3eb5b21cu, 0xff000000u,
+            0x3f200000u, 0x3d800000u, 0x3ea00000u, 0x3eb5b21cu,
+        },
+      };
+      const float boundary[8] = {0,364,0,362,320,364,320,362};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .constant_v_row = true, .name = "OS1 Safari constant-V row 4",
+        .xclip = 0x01400000u, .yclip = 0x01a00190u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 25u, .tile_y1 = 25u,
+        .left = 0u, .top = 410u, .width = 320u, .height = 1u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x8e500000u, .source_width = 320u, .source_height = 1u,
+        .quad = {
+            0xe0000000u, 0xa6018000u, 0x8e5360a0u, 0xcd206c40u,
+            0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+            0x00000000u, 0x43cd321cu, 0x43a00000u, 0x43cd321cu,
+            0x00000000u, 0x43cdb21cu, 0x43a00000u, 0x43cdb21cu,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x3d800000u, 0x00000000u,
+            0x3ecd321cu, 0xff000000u, 0x3f200000u, 0x3d800000u,
+            0x3ea00000u, 0x3ecd321cu, 0xff000000u, 0x00000000u,
+            0x3d800000u, 0x00000000u, 0x3ecdb21cu, 0xff000000u,
+            0x3f200000u, 0x3d800000u, 0x3ea00000u, 0x3ecdb21cu,
+        },
+      };
+      const float boundary[8] = {0,412,0,410,320,412,320,410};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+}
+/* Exact captured main records; relocatable GART and conservative integer
+ * boundaries exercise the unchanged sampler, staging, and blend reference. */
+static void test_os1_safari_address_scales(void) {
+    {
+      struct mbx_test_status_form form = {
+        .safari_address_scale = true, .row_resample = true, .name = "OS1 Safari address scale 1",
+        .xclip = 0x01180028u, .yclip = 0x00500020u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 5u, .tile_x1 = 34u,
+        .tile_y0 = 2u, .tile_y1 = 4u,
+        .left = 42u, .top = 47u, .width = 236u, .height = 31u,
+        .source = 0x00980000u, .source_stride = 1184u,
+        .source_control = 0x8e480000u,
+        .source_width = 290u,
+        .source_height = 31u,
+        .quad = {
+        0xe0000000u, 0xa6218001u, 0x8e4b5b61u, 0xcd206c40u,
+        0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+        0x4229a0e6u, 0x423b29b9u, 0x438acbe3u, 0x423b29b9u,
+        0x4229a0e6u, 0x429b94dcu, 0x438acbe3u, 0x429b94dcu,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0x16000000u, 0x3a800000u, 0x3c800000u, 0x3d29a0e6u,
+        0x3d3b29b9u, 0x16000000u, 0x3f10c000u, 0x3c800000u,
+        0x3e8acbe3u, 0x3d3b29b9u, 0x16000000u, 0x3a800000u,
+        0x3f740000u, 0x3d29a0e6u, 0x3d9b94dcu, 0x16000000u,
+        0x3f10c000u, 0x3f740000u, 0x3e8acbe3u, 0x3d9b94dcu,
+        },
+      };
+      const float boundary[8] = {42,78,42,46,278,78,278,46};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .safari_address_scale = true, .row_resample = true, .name = "OS1 Safari address scale 2",
+        .xclip = 0x01180028u, .yclip = 0x00500020u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 5u, .tile_x1 = 34u,
+        .tile_y0 = 2u, .tile_y1 = 4u,
+        .left = 42u, .top = 47u, .width = 236u, .height = 31u,
+        .source = 0x00980000u, .source_stride = 1184u,
+        .source_control = 0x8e480000u,
+        .source_width = 290u,
+        .source_height = 31u,
+        .quad = {
+        0xe0000000u, 0xa6218001u, 0x8e4b5ce1u, 0xcd206c40u,
+        0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+        0x4229a0e6u, 0x423b29b9u, 0x438acbe3u, 0x423b29b9u,
+        0x4229a0e6u, 0x429b94dcu, 0x438acbe3u, 0x429b94dcu,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0x16000000u, 0x3a800000u, 0x3c800000u, 0x3d29a0e6u,
+        0x3d3b29b9u, 0x16000000u, 0x3f10c000u, 0x3c800000u,
+        0x3e8acbe3u, 0x3d3b29b9u, 0x16000000u, 0x3a800000u,
+        0x3f740000u, 0x3d29a0e6u, 0x3d9b94dcu, 0x16000000u,
+        0x3f10c000u, 0x3f740000u, 0x3e8acbe3u, 0x3d9b94dcu,
+        },
+      };
+      const float boundary[8] = {42,78,42,46,278,78,278,46};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .safari_address_scale = true, .row_resample = true, .name = "OS1 Safari address scale 3",
+        .xclip = 0x01180028u, .yclip = 0x00500020u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 5u, .tile_x1 = 34u,
+        .tile_y0 = 2u, .tile_y1 = 4u,
+        .left = 42u, .top = 44u, .width = 236u, .height = 31u,
+        .source = 0x00980000u, .source_stride = 1184u,
+        .source_control = 0x8e480000u,
+        .source_width = 290u,
+        .source_height = 31u,
+        .quad = {
+        0xe0000000u, 0xa6218001u, 0x8e4b5e21u, 0xcd206c40u,
+        0xa7718000u, 0x0e531ae0u, 0xae504ea0u, 0x22250e80u,
+        0x4229a0e6u, 0x422e5f1au, 0x438acbe3u, 0x422e5f1au,
+        0x4229a0e6u, 0x42952f8du, 0x438acbe3u, 0x42952f8du,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0xff000000u, 0x3a800000u, 0x3c800000u, 0x3d29a0e6u,
+        0x3d2e5f1au, 0xff000000u, 0x3f10c000u, 0x3c800000u,
+        0x3e8acbe3u, 0x3d2e5f1au, 0xff000000u, 0x3a800000u,
+        0x3f740000u, 0x3d29a0e6u, 0x3d952f8du, 0xff000000u,
+        0x3f10c000u, 0x3f740000u, 0x3e8acbe3u, 0x3d952f8du,
+        },
+      };
+      const float boundary[8] = {42,75,42,43,278,75,278,43};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .safari_address_scale = true, .row_resample = true, .name = "OS1 Safari address scale 4",
+        .xclip = 0x01400000u, .yclip = 0x00300020u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 0u, .tile_x1 = 39u,
+        .tile_y0 = 2u, .tile_y1 = 2u,
+        .left = 0u, .top = 43u, .width = 320u, .height = 2u,
+        .source = 0x00980000u, .source_stride = 1280u,
+        .source_control = 0x8e500000u,
+        .source_width = 320u,
+        .source_height = 2u,
+        .quad = {
+        0xe0000000u, 0xa6018000u, 0x8e5360e0u, 0xd6887610u,
+        0xa7718000u, 0x0e531ae0u, 0xa3104620u, 0x22250e80u,
+        0x00000000u, 0x422b9b13u, 0x43a00000u, 0x422b9b13u,
+        0x00000000u, 0x42339b13u, 0x43a00000u, 0x42339b13u,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0x16000000u, 0x00000000u, 0x3d800000u, 0x00000000u,
+        0x3d2b9b13u, 0x16000000u, 0x3f200000u, 0x3d800000u,
+        0x3ea00000u, 0x3d2b9b13u, 0x16000000u, 0x00000000u,
+        0x3e400000u, 0x00000000u, 0x3d339b13u, 0x16000000u,
+        0x3f200000u, 0x3e400000u, 0x3ea00000u, 0x3d339b13u,
+        },
+      };
+      const float boundary[8] = {0,45,0,42,320,45,320,42};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+    {
+      struct mbx_test_status_form form = {
+        .safari_address_scale = true, .row_resample = true, .name = "OS1 Safari address scale 5",
+        .xclip = 0x01200020u, .yclip = 0x00600030u,
+        .semantic_sprite = true, .variable_vertex_alpha = true,
+        .boundary_override = true, .scaled_sprite = true,
+        .tile_x0 = 4u, .tile_x1 = 35u,
+        .tile_y0 = 3u, .tile_y1 = 5u,
+        .left = 38u, .top = 56u, .width = 244u, .height = 31u,
+        .source = 0x00980000u, .source_stride = 1184u,
+        .source_control = 0x8e480000u,
+        .source_width = 290u,
+        .source_height = 31u,
+        .quad = {
+        0xe0000000u, 0xa6218001u, 0x8e4b5b61u, 0xcd206c40u,
+        0xa7718000u, 0x0e532e40u, 0xae504ea0u, 0x22250e80u,
+        0x42192624u, 0x425ff79du, 0x438cdb3cu, 0x425ff79du,
+        0x42192624u, 0x42adfbceu, 0x438cdb3cu, 0x42adfbceu,
+        0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+        0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+        0x39000000u, 0x3a800000u, 0x3c800000u, 0x3d192624u,
+        0x3d5ff79du, 0x39000000u, 0x3f10c000u, 0x3c800000u,
+        0x3e8cdb3cu, 0x3d5ff79du, 0x39000000u, 0x3a800000u,
+        0x3f740000u, 0x3d192624u, 0x3dadfbceu, 0x39000000u,
+        0x3f10c000u, 0x3f740000u, 0x3e8cdb3cu, 0x3dadfbceu,
+        },
+      };
+      const float boundary[8] = {38,87,38,55,282,87,282,55};
+      for(unsigned i=0;i<8;i++) form.boundary[i]=test_float_word(boundary[i]);
+      test_captured_status_form(&form);
+    }
+}
+static void test_os1_text_wide_stretch(void) {
+    struct mbx_test_status_form form = {
+        .name = "OS1 Text 214x clipped horizontal texture stretch",
+        .text_wide_stretch = true, .row_resample = true,
+        .xclip = 0x00f00010u, .yclip = 0x01d001c0u,
+        .semantic_sprite = true, .scaled_sprite = true,
+        .variable_vertex_alpha = true, .boundary_override = true,
+        .tile_x0 = 2u, .tile_x1 = 29u, .tile_y0 = 28u, .tile_y1 = 28u,
+        .left = 19u, .top = 450u, .width = 214u, .height = 13u,
+        .source = 0x00980000u, .source_stride = 128u,
+        .source_control = 0x8e080000u, .source_width = 32u, .source_height = 26u,
+        .boundary = {0x41980000u,0x43e78000u,0x41980000u,0x43e10000u,0x43690000u,0x43e78000u,0x43690000u,0x43e10000u},
+        .quad = {
+            0xe0000000u, 0xa2218000u, 0x8e0b5e20u, 0xcd206c40u,
+            0xa7718000u, 0x0e5303a0u, 0xae504ea0u, 0x22250e80u,
+            0xc52cb000u, 0x43e10000u, 0x457f5000u, 0x43e10000u,
+            0xc52cb000u, 0x43ee0000u, 0x457f5000u, 0x43ee0000u,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x00000000u, 0x00000000u, 0xc02cb000u,
+            0x3ee10000u, 0xff000000u, 0x3f800000u, 0x00000000u,
+            0x407f5000u, 0x3ee10000u, 0xff000000u, 0x00000000u,
+            0x3f500000u, 0xc02cb000u, 0x3eee0000u, 0xff000000u,
+            0x3f800000u, 0x3f500000u, 0x407f5000u, 0x3eee0000u,
+        },
+    };
+    test_captured_status_form(&form);
+}
+
+/* Original Clock World Clock launch capture, repeated on three blend targets.
+ * The 44 words are unchanged here; the shared fixture relocates source/target
+ * addresses into a synthetic GART and supplies an independently valid integer
+ * boundary. Raw command and register witness: clock-mbx/quad.bin and witnesses.log
+ * in the investigation artifacts. */
+static void test_os1_clock_mirrored_column(void) {
+    struct mbx_test_status_form form = {
+        .name = "OS1 Clock mirrored constant-column gradient",
+        .semantic_sprite = true, .affine_sprite = true,
+        .scaled_sprite = true, .column_resample = true,
+        .clock_column = true, .boundary_override = true,
+        .xclip = 0x01400000u, .yclip = 0x00c00090u,
+        .tile_x0 = 0u, .tile_x1 = 39u, .tile_y0 = 9u, .tile_y1 = 11u,
+        .left = 0u, .top = 156u, .width = 320u, .height = 30u,
+        .source = 0x0093fe00u, .source_stride = 32u,
+        .source_control = 0x8e000000u,
+        .source_width = 1u, .source_height = 30u,
+        .expected_covered_pixels = 9600u,
+        .boundary = {
+            0u, 0x433a0000u, 0u, 0x431c0000u,
+            0x43a00000u, 0x433a0000u, 0x43a00000u, 0x431c0000u,
+        },
+        .quad = {
+            0xe0000000u, 0xa0218001u, 0x8e038b40u, 0xcd206c40u,
+            0xa7718000u, 0x0e532e40u, 0xae504ea0u, 0x22250e80u,
+            0x43af0000u, 0x433a0000u, 0xc1f00000u, 0x4339fffeu,
+            0x43af0000u, 0x431c0000u, 0xc1f00000u, 0x431bfffeu,
+            0x00000000u, 0x00000000u, 0x00000000u, 0x00000000u,
+            0x3f800000u, 0x3f800000u, 0x3f800000u, 0x3f800000u,
+            0xff000000u, 0x3d800000u, 0x3c800000u, 0x3eaf0000u,
+            0x3e3a0000u, 0xff000000u, 0x3d800000u, 0x3c800000u,
+            0xbcf00000u, 0x3e39fffeu, 0xff000000u, 0x3d800000u,
+            0x3f6c0000u, 0x3eaf0000u, 0x3e1c0000u, 0xff000000u,
+            0x3d800000u, 0x3f6c0000u, 0xbcf00000u, 0x3e1bfffeu,
+        },
+    };
+    test_captured_status_form(&form);
+    /* The exact 180-degree limit has no float rotation residual. It must
+     * still pass the same family gate, rather than enter generic reversed
+     * axis-aligned rendering. */
+    form.name = "OS1 Clock exact 180-degree constant-column limit";
+    form.quad[11] = form.quad[9];
+    form.quad[15] = form.quad[13];
+    form.quad[33] = form.quad[28];
+    form.quad[43] = form.quad[38];
+    test_captured_status_form(&form);
+}
+
 int main(void) {
+    test_os1_clock_mirrored_column();
+    test_os1_text_wide_stretch();
+    test_os1_safari_address_scales();
+    test_os1_safari_constant_v_rows();
+    test_clipped_os1_copy();
     printf("PowerVR MBX2D tests\n");
     test_translated_copy_and_completion_boundary();
     test_unknown_packet_and_bad_gart_are_atomic();
@@ -6280,7 +7614,12 @@ int main(void) {
     test_compact_full_extent_uniform_minification();
     test_compact_clipped_zero_coverage();
     test_pointer_selected_solid_quad();
+    test_os1_clipped_solid();
     test_later_tiled_status_sprites();
+    test_os1_empty_clip();
+    test_os1_calendar_month_gradient();
+    test_os1_calendar_tall_crop();
+    test_os1_settings_clip();
     printf("\n%d passed, %d failed\n", g_pass, g_fail);
     return g_fail == 0 ? 0 : 1;
 }

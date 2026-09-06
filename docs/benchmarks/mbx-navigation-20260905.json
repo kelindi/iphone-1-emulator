@@ -1,0 +1,1116 @@
+{
+  "method": "Quiet ABBA, fresh browser and normal UI import for each run, same production engine and seed. Eleven rounds per run: first separate, ten warm. Both configurations receive twenty warm observations over two independent sessions. Raw pointer-release timestamps and screenshots retained. This VM only, not reference laptop acceptance.",
+  "wasmSha256": "da43870dab0e151d6a31597bb8ddbbfb3a480f7398ddb88a9334bea9b1314c6d",
+  "seedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "fixtureSha256": {
+    "software": "28591a3003b8677469b2e506185792e26ac128ba9383b7f110959f4f4fb0c82d",
+    "mbx": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244"
+  },
+  "software": {
+    "settings": {
+      "firstReleaseToReadyMs": [
+        4714.0999999996275,
+        4764.5999999996275
+      ],
+      "warmSamples": 20,
+      "warmReleaseToReadyMs": [
+        3881.800000000745,
+        3466.7999999988824,
+        2966.5,
+        3466.0999999996275,
+        3514,
+        3467,
+        3516.2999999988824,
+        3916.9000000003725,
+        3167,
+        2816.7000000011176,
+        3439.199999999255,
+        3516.5,
+        3116.7000000011176,
+        3467,
+        3466.9000000003725,
+        3216.699999999255,
+        3416.5,
+        3216.800000000745,
+        3217.5,
+        3317.0999999996275
+      ],
+      "p95Ms": 3881.800000000745,
+      "medianMs": 3452.649999999441
+    },
+    "home": {
+      "firstReleaseToReadyMs": [
+        1032.7000000011176,
+        1031.2000000011176
+      ],
+      "warmSamples": 20,
+      "warmReleaseToReadyMs": [
+        966.7999999988824,
+        1166.4000000003725,
+        1166.7000000011176,
+        1066.699999999255,
+        1067.4000000003725,
+        1267.1000000014901,
+        1366.2999999988824,
+        1066,
+        1016.9000000003725,
+        1116.9000000003725,
+        1216.5999999996275,
+        1166.9000000003725,
+        1117,
+        1017.9000000003725,
+        1218,
+        1266.0999999996275,
+        1167.7000000011176,
+        1066.7000000011176,
+        1166.7999999988824,
+        1066.4000000003725
+      ],
+      "p95Ms": 1267.1000000014901,
+      "medianMs": 1141.7000000001863
+    }
+  },
+  "mbx": {
+    "settings": {
+      "firstReleaseToReadyMs": [
+        4208.5999999996275,
+        3864.5
+      ],
+      "warmSamples": 20,
+      "warmReleaseToReadyMs": [
+        3053.5,
+        3415.800000000745,
+        3316.0999999996275,
+        3616.699999999255,
+        3271.5,
+        3366.9000000003725,
+        3566.800000000745,
+        2767.699999999255,
+        3518.199999999255,
+        3118.0999999996275,
+        2716.0999999996275,
+        3416.5,
+        3315.699999999255,
+        2667.2000000011176,
+        3467.0999999996275,
+        3265.5999999996275,
+        2916.4000000003725,
+        3316.9000000003725,
+        3116.7999999988824,
+        2667.199999999255
+      ],
+      "p95Ms": 3566.800000000745,
+      "medianMs": 3293.5999999996275
+    },
+    "home": {
+      "firstReleaseToReadyMs": [
+        934.1999999992549,
+        916.5
+      ],
+      "warmSamples": 20,
+      "warmReleaseToReadyMs": [
+        866.5,
+        1065.1000000014901,
+        866.4000000003725,
+        852,
+        867.8000000007451,
+        866.1999999992549,
+        866.4000000003725,
+        916.4000000003725,
+        866.8000000007451,
+        867.1999999992549,
+        866.3000000007451,
+        866.8000000007451,
+        916.7999999988824,
+        866.5,
+        867.2000000011176,
+        868.0999999996275,
+        867.4000000003725,
+        867.0999999996275,
+        867.1999999992549,
+        918.2999999988824
+      ],
+      "p95Ms": 918.2999999988824,
+      "medianMs": 867.1499999994412
+    }
+  },
+  "visualReview": {
+    "reviewed": true,
+    "method": "Root reviewed genuine Settings and Home references for each of four runs; all88screen captures differ from same-run references by at most3 channel levels below20CSS pixels. Complete app identity, rows and Home icons confirmed.",
+    "screenComparison": "screen-comparison.json"
+  },
+  "runs": [
+    {
+      "kind": "software",
+      "order": 1,
+      "elapsedSeconds": 117.40882062911987,
+      "date": "2026-09-05T20:44:50.532Z",
+      "host": {
+        "platform": "linux",
+        "release": "6.18.40",
+        "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+        "logicalCpus": 8,
+        "memoryBytes": 17452048384
+      },
+      "browser": "152.0.7977.82",
+      "client": {
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemory": 16
+      },
+      "passed": true,
+      "errors": [],
+      "actions": [
+        {
+          "kind": "settings",
+          "round": 0,
+          "firstVisibleMs": 1300.199999999255,
+          "readyMs": 4750.199999999255,
+          "releaseOffsetMs": 36.09999999962747,
+          "releaseToFirstVisibleMs": 1264.0999999996275,
+          "releaseToReadyMs": 4714.0999999996275,
+          "observedAtMs": 5250.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 0,
+          "firstVisibleMs": 629.0999999996275,
+          "readyMs": 1122.9000000003725,
+          "releaseOffsetMs": 90.19999999925494,
+          "releaseToFirstVisibleMs": 538.9000000003725,
+          "releaseToReadyMs": 1032.7000000011176,
+          "observedAtMs": 1666
+        },
+        {
+          "kind": "settings",
+          "round": 1,
+          "firstVisibleMs": 503.09999999962747,
+          "readyMs": 3950.0999999996275,
+          "releaseOffsetMs": 68.29999999888241,
+          "releaseToFirstVisibleMs": 434.80000000074506,
+          "releaseToReadyMs": 3881.800000000745,
+          "observedAtMs": 4450.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 1,
+          "firstVisibleMs": 550.1999999992549,
+          "readyMs": 1000.1999999992549,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 516.7999999988824,
+          "releaseToReadyMs": 966.7999999988824,
+          "observedAtMs": 1550.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 2,
+          "firstVisibleMs": 100.09999999962747,
+          "readyMs": 3500.199999999255,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 66.69999999925494,
+          "releaseToReadyMs": 3466.7999999988824,
+          "observedAtMs": 4050.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 2,
+          "firstVisibleMs": 550.0999999996275,
+          "readyMs": 1200.0999999996275,
+          "releaseOffsetMs": 33.69999999925494,
+          "releaseToFirstVisibleMs": 516.4000000003725,
+          "releaseToReadyMs": 1166.4000000003725,
+          "observedAtMs": 1700.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 3,
+          "firstVisibleMs": 100.09999999962747,
+          "readyMs": 3000.199999999255,
+          "releaseOffsetMs": 33.69999999925494,
+          "releaseToFirstVisibleMs": 66.40000000037253,
+          "releaseToReadyMs": 2966.5,
+          "observedAtMs": 3550.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 3,
+          "firstVisibleMs": 600.3000000007451,
+          "readyMs": 1200.2000000011176,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 566.8000000007451,
+          "releaseToReadyMs": 1166.7000000011176,
+          "observedAtMs": 1700.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 4,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3500.0999999996275,
+          "releaseOffsetMs": 34,
+          "releaseToFirstVisibleMs": 66.19999999925494,
+          "releaseToReadyMs": 3466.0999999996275,
+          "observedAtMs": 4000.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 4,
+          "firstVisibleMs": 550.2999999988824,
+          "readyMs": 1100.199999999255,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 516.7999999988824,
+          "releaseToReadyMs": 1066.699999999255,
+          "observedAtMs": 1600.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 5,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3550.0999999996275,
+          "releaseOffsetMs": 36.09999999962747,
+          "releaseToFirstVisibleMs": 64.09999999962747,
+          "releaseToReadyMs": 3514,
+          "observedAtMs": 4050.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 5,
+          "firstVisibleMs": 600.5999999996275,
+          "readyMs": 1100.199999999255,
+          "releaseOffsetMs": 32.79999999888241,
+          "releaseToFirstVisibleMs": 567.8000000007451,
+          "releaseToReadyMs": 1067.4000000003725,
+          "observedAtMs": 1650.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 6,
+          "firstVisibleMs": 100.29999999888241,
+          "readyMs": 3500.2999999988824,
+          "releaseOffsetMs": 33.29999999888241,
+          "releaseToFirstVisibleMs": 67,
+          "releaseToReadyMs": 3467,
+          "observedAtMs": 4050.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 6,
+          "firstVisibleMs": 650.2000000011176,
+          "readyMs": 1300.2000000011176,
+          "releaseOffsetMs": 33.09999999962747,
+          "releaseToFirstVisibleMs": 617.1000000014901,
+          "releaseToReadyMs": 1267.1000000014901,
+          "observedAtMs": 1800.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 7,
+          "firstVisibleMs": 500.19999999925494,
+          "readyMs": 3550.199999999255,
+          "releaseOffsetMs": 33.90000000037253,
+          "releaseToFirstVisibleMs": 466.2999999988824,
+          "releaseToReadyMs": 3516.2999999988824,
+          "observedAtMs": 4050.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 7,
+          "firstVisibleMs": 750.0999999996275,
+          "readyMs": 1400.199999999255,
+          "releaseOffsetMs": 33.90000000037253,
+          "releaseToFirstVisibleMs": 716.1999999992549,
+          "releaseToReadyMs": 1366.2999999988824,
+          "observedAtMs": 1900.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 8,
+          "firstVisibleMs": 100.20000000111759,
+          "readyMs": 3950.2000000011176,
+          "releaseOffsetMs": 33.30000000074506,
+          "releaseToFirstVisibleMs": 66.90000000037253,
+          "releaseToReadyMs": 3916.9000000003725,
+          "observedAtMs": 4450.200000001118
+        },
+        {
+          "kind": "home",
+          "round": 8,
+          "firstVisibleMs": 550.2999999988824,
+          "readyMs": 1100.199999999255,
+          "releaseOffsetMs": 34.19999999925494,
+          "releaseToFirstVisibleMs": 516.0999999996275,
+          "releaseToReadyMs": 1066,
+          "observedAtMs": 1600.2999999988824
+        },
+        {
+          "kind": "settings",
+          "round": 9,
+          "firstVisibleMs": 450.19999999925494,
+          "readyMs": 3200.199999999255,
+          "releaseOffsetMs": 33.19999999925494,
+          "releaseToFirstVisibleMs": 417,
+          "releaseToReadyMs": 3167,
+          "observedAtMs": 3700.2999999988824
+        },
+        {
+          "kind": "home",
+          "round": 9,
+          "firstVisibleMs": 600.2000000011176,
+          "readyMs": 1050.2000000011176,
+          "releaseOffsetMs": 33.30000000074506,
+          "releaseToFirstVisibleMs": 566.9000000003725,
+          "releaseToReadyMs": 1016.9000000003725,
+          "observedAtMs": 1550.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 10,
+          "firstVisibleMs": 450.2000000011176,
+          "readyMs": 2850.2000000011176,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 416.7000000011176,
+          "releaseToReadyMs": 2816.7000000011176,
+          "observedAtMs": 3350.2000000011176
+        },
+        {
+          "kind": "home",
+          "round": 10,
+          "firstVisibleMs": 550.5,
+          "readyMs": 1150.300000000745,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 517.0999999996275,
+          "releaseToReadyMs": 1116.9000000003725,
+          "observedAtMs": 1700.199999999255
+        }
+      ]
+    },
+    {
+      "kind": "mbx",
+      "order": 2,
+      "elapsedSeconds": 113.74252533912659,
+      "date": "2026-09-05T20:46:47.978Z",
+      "host": {
+        "platform": "linux",
+        "release": "6.18.40",
+        "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+        "logicalCpus": 8,
+        "memoryBytes": 17452048384
+      },
+      "browser": "152.0.7977.82",
+      "client": {
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemory": 16
+      },
+      "passed": true,
+      "errors": [],
+      "actions": [
+        {
+          "kind": "settings",
+          "round": 0,
+          "firstVisibleMs": 1050.4000000003725,
+          "readyMs": 4250.199999999255,
+          "releaseOffsetMs": 41.59999999962747,
+          "releaseToFirstVisibleMs": 1008.8000000007451,
+          "releaseToReadyMs": 4208.5999999996275,
+          "observedAtMs": 4800.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 0,
+          "firstVisibleMs": 579.4000000003725,
+          "readyMs": 1019,
+          "releaseOffsetMs": 84.80000000074506,
+          "releaseToFirstVisibleMs": 494.59999999962747,
+          "releaseToReadyMs": 934.1999999992549,
+          "observedAtMs": 1568.4000000003725
+        },
+        {
+          "kind": "settings",
+          "round": 1,
+          "firstVisibleMs": 361.30000000074506,
+          "readyMs": 3115,
+          "releaseOffsetMs": 61.5,
+          "releaseToFirstVisibleMs": 299.80000000074506,
+          "releaseToReadyMs": 3053.5,
+          "observedAtMs": 3651
+        },
+        {
+          "kind": "home",
+          "round": 1,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 900.0999999996275,
+          "releaseOffsetMs": 33.59999999962747,
+          "releaseToFirstVisibleMs": 416.5,
+          "releaseToReadyMs": 866.5,
+          "observedAtMs": 1400.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 2,
+          "firstVisibleMs": 100.20000000111759,
+          "readyMs": 3450.2000000011176,
+          "releaseOffsetMs": 34.40000000037253,
+          "releaseToFirstVisibleMs": 65.80000000074506,
+          "releaseToReadyMs": 3415.800000000745,
+          "observedAtMs": 3950.300000000745
+        },
+        {
+          "kind": "home",
+          "round": 2,
+          "firstVisibleMs": 750.2000000011176,
+          "readyMs": 1100.2000000011176,
+          "releaseOffsetMs": 35.09999999962747,
+          "releaseToFirstVisibleMs": 715.1000000014901,
+          "releaseToReadyMs": 1065.1000000014901,
+          "observedAtMs": 1600.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 3,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3350.0999999996275,
+          "releaseOffsetMs": 34,
+          "releaseToFirstVisibleMs": 66.19999999925494,
+          "releaseToReadyMs": 3316.0999999996275,
+          "observedAtMs": 3850.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 3,
+          "firstVisibleMs": 500.19999999925494,
+          "readyMs": 900.1999999992549,
+          "releaseOffsetMs": 33.79999999888241,
+          "releaseToFirstVisibleMs": 466.40000000037253,
+          "releaseToReadyMs": 866.4000000003725,
+          "observedAtMs": 1400.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 4,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3650.2999999988824,
+          "releaseOffsetMs": 33.59999999962747,
+          "releaseToFirstVisibleMs": 66.59999999962747,
+          "releaseToReadyMs": 3616.699999999255,
+          "observedAtMs": 4200.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 4,
+          "firstVisibleMs": 501.5,
+          "readyMs": 918,
+          "releaseOffsetMs": 66,
+          "releaseToFirstVisibleMs": 435.5,
+          "releaseToReadyMs": 852,
+          "observedAtMs": 1442.699999999255
+        },
+        {
+          "kind": "settings",
+          "round": 5,
+          "firstVisibleMs": 108,
+          "readyMs": 3350.199999999255,
+          "releaseOffsetMs": 78.69999999925494,
+          "releaseToFirstVisibleMs": 29.300000000745058,
+          "releaseToReadyMs": 3271.5,
+          "observedAtMs": 3900.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 5,
+          "firstVisibleMs": 450.19999999925494,
+          "readyMs": 900.1999999992549,
+          "releaseOffsetMs": 32.399999998509884,
+          "releaseToFirstVisibleMs": 417.80000000074506,
+          "releaseToReadyMs": 867.8000000007451,
+          "observedAtMs": 1400.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 6,
+          "firstVisibleMs": 400.2000000011176,
+          "readyMs": 3400.4000000003725,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 366.7000000011176,
+          "releaseToReadyMs": 3366.9000000003725,
+          "observedAtMs": 3950.2000000011176
+        },
+        {
+          "kind": "home",
+          "round": 6,
+          "firstVisibleMs": 450.19999999925494,
+          "readyMs": 900.1999999992549,
+          "releaseOffsetMs": 34,
+          "releaseToFirstVisibleMs": 416.19999999925494,
+          "releaseToReadyMs": 866.1999999992549,
+          "observedAtMs": 1450.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 7,
+          "firstVisibleMs": 100.29999999888241,
+          "readyMs": 3600.199999999255,
+          "releaseOffsetMs": 33.399999998509884,
+          "releaseToFirstVisibleMs": 66.90000000037253,
+          "releaseToReadyMs": 3566.800000000745,
+          "observedAtMs": 4100.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 7,
+          "firstVisibleMs": 500.09999999962747,
+          "readyMs": 900.0999999996275,
+          "releaseOffsetMs": 33.69999999925494,
+          "releaseToFirstVisibleMs": 466.40000000037253,
+          "releaseToReadyMs": 866.4000000003725,
+          "observedAtMs": 1400.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 8,
+          "firstVisibleMs": 350.19999999925494,
+          "readyMs": 2800.199999999255,
+          "releaseOffsetMs": 32.5,
+          "releaseToFirstVisibleMs": 317.69999999925494,
+          "releaseToReadyMs": 2767.699999999255,
+          "observedAtMs": 3300.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 8,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 950.2000000011176,
+          "releaseOffsetMs": 33.80000000074506,
+          "releaseToFirstVisibleMs": 416.2999999988824,
+          "releaseToReadyMs": 916.4000000003725,
+          "observedAtMs": 1450.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 9,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3550.199999999255,
+          "releaseOffsetMs": 32,
+          "releaseToFirstVisibleMs": 68.19999999925494,
+          "releaseToReadyMs": 3518.199999999255,
+          "observedAtMs": 4050.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 9,
+          "firstVisibleMs": 450.1000000014901,
+          "readyMs": 900.2000000011176,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 416.7000000011176,
+          "releaseToReadyMs": 866.8000000007451,
+          "observedAtMs": 1400.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 10,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3150.199999999255,
+          "releaseOffsetMs": 32.09999999962747,
+          "releaseToFirstVisibleMs": 68.09999999962747,
+          "releaseToReadyMs": 3118.0999999996275,
+          "observedAtMs": 3650.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 10,
+          "firstVisibleMs": 500.19999999925494,
+          "readyMs": 900.2999999988824,
+          "releaseOffsetMs": 33.09999999962747,
+          "releaseToFirstVisibleMs": 467.09999999962747,
+          "releaseToReadyMs": 867.1999999992549,
+          "observedAtMs": 1450.199999999255
+        }
+      ]
+    },
+    {
+      "kind": "mbx",
+      "order": 3,
+      "elapsedSeconds": 108.53237438201904,
+      "date": "2026-09-05T20:48:41.740Z",
+      "host": {
+        "platform": "linux",
+        "release": "6.18.40",
+        "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+        "logicalCpus": 8,
+        "memoryBytes": 17452048384
+      },
+      "browser": "152.0.7977.82",
+      "client": {
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemory": 16
+      },
+      "passed": true,
+      "errors": [],
+      "actions": [
+        {
+          "kind": "settings",
+          "round": 0,
+          "firstVisibleMs": 850.1999999992549,
+          "readyMs": 3900.199999999255,
+          "releaseOffsetMs": 35.69999999925494,
+          "releaseToFirstVisibleMs": 814.5,
+          "releaseToReadyMs": 3864.5,
+          "observedAtMs": 4400.5999999996275
+        },
+        {
+          "kind": "home",
+          "round": 0,
+          "firstVisibleMs": 550.1999999992549,
+          "readyMs": 950.0999999996275,
+          "releaseOffsetMs": 33.59999999962747,
+          "releaseToFirstVisibleMs": 516.5999999996275,
+          "releaseToReadyMs": 916.5,
+          "observedAtMs": 1450.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 1,
+          "firstVisibleMs": 350.09999999962747,
+          "readyMs": 2750.0999999996275,
+          "releaseOffsetMs": 34,
+          "releaseToFirstVisibleMs": 316.09999999962747,
+          "releaseToReadyMs": 2716.0999999996275,
+          "observedAtMs": 3250.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 1,
+          "firstVisibleMs": 450.2000000011176,
+          "readyMs": 900.2000000011176,
+          "releaseOffsetMs": 33.90000000037253,
+          "releaseToFirstVisibleMs": 416.30000000074506,
+          "releaseToReadyMs": 866.3000000007451,
+          "observedAtMs": 1400.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 2,
+          "firstVisibleMs": 100.10000000149012,
+          "readyMs": 3450.300000000745,
+          "releaseOffsetMs": 33.80000000074506,
+          "releaseToFirstVisibleMs": 66.30000000074506,
+          "releaseToReadyMs": 3416.5,
+          "observedAtMs": 3952.4000000003725
+        },
+        {
+          "kind": "home",
+          "round": 2,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 900.1999999992549,
+          "releaseOffsetMs": 33.399999998509884,
+          "releaseToFirstVisibleMs": 416.7000000011176,
+          "releaseToReadyMs": 866.8000000007451,
+          "observedAtMs": 1400.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 3,
+          "firstVisibleMs": 300.09999999962747,
+          "readyMs": 3350.0999999996275,
+          "releaseOffsetMs": 34.40000000037253,
+          "releaseToFirstVisibleMs": 265.69999999925494,
+          "releaseToReadyMs": 3315.699999999255,
+          "observedAtMs": 3850.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 3,
+          "firstVisibleMs": 450.19999999925494,
+          "readyMs": 950.1999999992549,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 416.7999999988824,
+          "releaseToReadyMs": 916.7999999988824,
+          "observedAtMs": 1450.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 4,
+          "firstVisibleMs": 400.09999999962747,
+          "readyMs": 2700.300000000745,
+          "releaseOffsetMs": 33.09999999962747,
+          "releaseToFirstVisibleMs": 367,
+          "releaseToReadyMs": 2667.2000000011176,
+          "observedAtMs": 3250.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 4,
+          "firstVisibleMs": 500.09999999962747,
+          "readyMs": 900.0999999996275,
+          "releaseOffsetMs": 33.59999999962747,
+          "releaseToFirstVisibleMs": 466.5,
+          "releaseToReadyMs": 866.5,
+          "observedAtMs": 1400.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 5,
+          "firstVisibleMs": 350.09999999962747,
+          "readyMs": 3500.199999999255,
+          "releaseOffsetMs": 33.09999999962747,
+          "releaseToFirstVisibleMs": 317,
+          "releaseToReadyMs": 3467.0999999996275,
+          "observedAtMs": 4000.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 5,
+          "firstVisibleMs": 450.2000000011176,
+          "readyMs": 900.2000000011176,
+          "releaseOffsetMs": 33,
+          "releaseToFirstVisibleMs": 417.2000000011176,
+          "releaseToReadyMs": 867.2000000011176,
+          "observedAtMs": 1450.1000000014901
+        },
+        {
+          "kind": "settings",
+          "round": 6,
+          "firstVisibleMs": 350.19999999925494,
+          "readyMs": 3300.199999999255,
+          "releaseOffsetMs": 34.59999999962747,
+          "releaseToFirstVisibleMs": 315.59999999962747,
+          "releaseToReadyMs": 3265.5999999996275,
+          "observedAtMs": 3850.2999999988824
+        },
+        {
+          "kind": "home",
+          "round": 6,
+          "firstVisibleMs": 450.19999999925494,
+          "readyMs": 900.1999999992549,
+          "releaseOffsetMs": 32.09999999962747,
+          "releaseToFirstVisibleMs": 418.09999999962747,
+          "releaseToReadyMs": 868.0999999996275,
+          "observedAtMs": 1400.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 7,
+          "firstVisibleMs": 400.19999999925494,
+          "readyMs": 2950.199999999255,
+          "releaseOffsetMs": 33.79999999888241,
+          "releaseToFirstVisibleMs": 366.40000000037253,
+          "releaseToReadyMs": 2916.4000000003725,
+          "observedAtMs": 3500.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 7,
+          "firstVisibleMs": 450.1000000014901,
+          "readyMs": 900.2000000011176,
+          "releaseOffsetMs": 32.80000000074506,
+          "releaseToFirstVisibleMs": 417.30000000074506,
+          "releaseToReadyMs": 867.4000000003725,
+          "observedAtMs": 1400.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 8,
+          "firstVisibleMs": 400,
+          "readyMs": 3350.199999999255,
+          "releaseOffsetMs": 33.29999999888241,
+          "releaseToFirstVisibleMs": 366.7000000011176,
+          "releaseToReadyMs": 3316.9000000003725,
+          "observedAtMs": 3850.2999999988824
+        },
+        {
+          "kind": "home",
+          "round": 8,
+          "firstVisibleMs": 450.1000000014901,
+          "readyMs": 900.2000000011176,
+          "releaseOffsetMs": 33.100000001490116,
+          "releaseToFirstVisibleMs": 417,
+          "releaseToReadyMs": 867.0999999996275,
+          "observedAtMs": 1450.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 9,
+          "firstVisibleMs": 350,
+          "readyMs": 3150.0999999996275,
+          "releaseOffsetMs": 33.30000000074506,
+          "releaseToFirstVisibleMs": 316.69999999925494,
+          "releaseToReadyMs": 3116.7999999988824,
+          "observedAtMs": 3650.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 9,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 900.0999999996275,
+          "releaseOffsetMs": 32.90000000037253,
+          "releaseToFirstVisibleMs": 417.19999999925494,
+          "releaseToReadyMs": 867.1999999992549,
+          "observedAtMs": 1450
+        },
+        {
+          "kind": "settings",
+          "round": 10,
+          "firstVisibleMs": 350.19999999925494,
+          "readyMs": 2700.199999999255,
+          "releaseOffsetMs": 33,
+          "releaseToFirstVisibleMs": 317.19999999925494,
+          "releaseToReadyMs": 2667.199999999255,
+          "observedAtMs": 3201.2999999988824
+        },
+        {
+          "kind": "home",
+          "round": 10,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 950.1999999992549,
+          "releaseOffsetMs": 31.90000000037253,
+          "releaseToFirstVisibleMs": 418.19999999925494,
+          "releaseToReadyMs": 918.2999999988824,
+          "observedAtMs": 1450.199999999255
+        }
+      ]
+    },
+    {
+      "kind": "software",
+      "order": 4,
+      "elapsedSeconds": 116.34953355789185,
+      "date": "2026-09-05T20:50:30.387Z",
+      "host": {
+        "platform": "linux",
+        "release": "6.18.40",
+        "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+        "logicalCpus": 8,
+        "memoryBytes": 17452048384
+      },
+      "browser": "152.0.7977.82",
+      "client": {
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "hardwareConcurrency": 8,
+        "deviceMemory": 16
+      },
+      "passed": true,
+      "errors": [],
+      "actions": [
+        {
+          "kind": "settings",
+          "round": 0,
+          "firstVisibleMs": 1400.199999999255,
+          "readyMs": 4800.199999999255,
+          "releaseOffsetMs": 35.59999999962747,
+          "releaseToFirstVisibleMs": 1364.5999999996275,
+          "releaseToReadyMs": 4764.5999999996275,
+          "observedAtMs": 5300.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 0,
+          "firstVisibleMs": 577,
+          "readyMs": 1121.800000000745,
+          "releaseOffsetMs": 90.59999999962747,
+          "releaseToFirstVisibleMs": 486.40000000037253,
+          "releaseToReadyMs": 1031.2000000011176,
+          "observedAtMs": 1662.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 1,
+          "firstVisibleMs": 113.69999999925494,
+          "readyMs": 3500.0999999996275,
+          "releaseOffsetMs": 60.90000000037253,
+          "releaseToFirstVisibleMs": 52.79999999888241,
+          "releaseToReadyMs": 3439.199999999255,
+          "observedAtMs": 4000.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 1,
+          "firstVisibleMs": 650.0999999996275,
+          "readyMs": 1250.0999999996275,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 616.5999999996275,
+          "releaseToReadyMs": 1216.5999999996275,
+          "observedAtMs": 1750.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 2,
+          "firstVisibleMs": 400.09999999962747,
+          "readyMs": 3550.199999999255,
+          "releaseOffsetMs": 33.69999999925494,
+          "releaseToFirstVisibleMs": 366.40000000037253,
+          "releaseToReadyMs": 3516.5,
+          "observedAtMs": 4100.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 2,
+          "firstVisibleMs": 600.2000000011176,
+          "readyMs": 1200.2000000011176,
+          "releaseOffsetMs": 33.30000000074506,
+          "releaseToFirstVisibleMs": 566.9000000003725,
+          "releaseToReadyMs": 1166.9000000003725,
+          "observedAtMs": 1750.1000000014901
+        },
+        {
+          "kind": "settings",
+          "round": 3,
+          "firstVisibleMs": 450.1000000014901,
+          "readyMs": 3150.2000000011176,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 416.6000000014901,
+          "releaseToReadyMs": 3116.7000000011176,
+          "observedAtMs": 3700.4000000003725
+        },
+        {
+          "kind": "home",
+          "round": 3,
+          "firstVisibleMs": 600.2000000011176,
+          "readyMs": 1150.2000000011176,
+          "releaseOffsetMs": 33.20000000111759,
+          "releaseToFirstVisibleMs": 567,
+          "releaseToReadyMs": 1117,
+          "observedAtMs": 1650.2000000011176
+        },
+        {
+          "kind": "settings",
+          "round": 4,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 3500.199999999255,
+          "releaseOffsetMs": 33.19999999925494,
+          "releaseToFirstVisibleMs": 416.90000000037253,
+          "releaseToReadyMs": 3467,
+          "observedAtMs": 4000.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 4,
+          "firstVisibleMs": 600.1999999992549,
+          "readyMs": 1050.0999999996275,
+          "releaseOffsetMs": 32.19999999925494,
+          "releaseToFirstVisibleMs": 568,
+          "releaseToReadyMs": 1017.9000000003725,
+          "observedAtMs": 1550.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 5,
+          "firstVisibleMs": 500.09999999962747,
+          "readyMs": 3500.0999999996275,
+          "releaseOffsetMs": 33.19999999925494,
+          "releaseToFirstVisibleMs": 466.90000000037253,
+          "releaseToReadyMs": 3466.9000000003725,
+          "observedAtMs": 4000.0999999996275
+        },
+        {
+          "kind": "home",
+          "round": 5,
+          "firstVisibleMs": 550.0999999996275,
+          "readyMs": 1250.199999999255,
+          "releaseOffsetMs": 32.19999999925494,
+          "releaseToFirstVisibleMs": 517.9000000003725,
+          "releaseToReadyMs": 1218,
+          "observedAtMs": 1750.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 6,
+          "firstVisibleMs": 400.19999999925494,
+          "readyMs": 3250.199999999255,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 366.69999999925494,
+          "releaseToReadyMs": 3216.699999999255,
+          "observedAtMs": 3750.2999999988824
+        },
+        {
+          "kind": "home",
+          "round": 6,
+          "firstVisibleMs": 600.1999999992549,
+          "readyMs": 1300.199999999255,
+          "releaseOffsetMs": 34.09999999962747,
+          "releaseToFirstVisibleMs": 566.0999999996275,
+          "releaseToReadyMs": 1266.0999999996275,
+          "observedAtMs": 1800.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 7,
+          "firstVisibleMs": 450.09999999962747,
+          "readyMs": 3450.2000000011176,
+          "releaseOffsetMs": 33.70000000111759,
+          "releaseToFirstVisibleMs": 416.3999999985099,
+          "releaseToReadyMs": 3416.5,
+          "observedAtMs": 4000.2000000011176
+        },
+        {
+          "kind": "home",
+          "round": 7,
+          "firstVisibleMs": 950.2000000011176,
+          "readyMs": 1200.2000000011176,
+          "releaseOffsetMs": 32.5,
+          "releaseToFirstVisibleMs": 917.7000000011176,
+          "releaseToReadyMs": 1167.7000000011176,
+          "observedAtMs": 1750.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 8,
+          "firstVisibleMs": 450.1000000014901,
+          "readyMs": 3250.2000000011176,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 416.7000000011176,
+          "releaseToReadyMs": 3216.800000000745,
+          "observedAtMs": 3750.2000000011176
+        },
+        {
+          "kind": "home",
+          "round": 8,
+          "firstVisibleMs": 600.0999999996275,
+          "readyMs": 1100.2000000011176,
+          "releaseOffsetMs": 33.5,
+          "releaseToFirstVisibleMs": 566.5999999996275,
+          "releaseToReadyMs": 1066.7000000011176,
+          "observedAtMs": 1650.0999999996275
+        },
+        {
+          "kind": "settings",
+          "round": 9,
+          "firstVisibleMs": 100.19999999925494,
+          "readyMs": 3250.199999999255,
+          "releaseOffsetMs": 32.69999999925494,
+          "releaseToFirstVisibleMs": 67.5,
+          "releaseToReadyMs": 3217.5,
+          "observedAtMs": 3750.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 9,
+          "firstVisibleMs": 600.1999999992549,
+          "readyMs": 1200.199999999255,
+          "releaseOffsetMs": 33.40000000037253,
+          "releaseToFirstVisibleMs": 566.7999999988824,
+          "releaseToReadyMs": 1166.7999999988824,
+          "observedAtMs": 1700.199999999255
+        },
+        {
+          "kind": "settings",
+          "round": 10,
+          "firstVisibleMs": 500.19999999925494,
+          "readyMs": 3350.199999999255,
+          "releaseOffsetMs": 33.09999999962747,
+          "releaseToFirstVisibleMs": 467.09999999962747,
+          "releaseToReadyMs": 3317.0999999996275,
+          "observedAtMs": 3850.199999999255
+        },
+        {
+          "kind": "home",
+          "round": 10,
+          "firstVisibleMs": 550.1999999992549,
+          "readyMs": 1100.2999999988824,
+          "releaseOffsetMs": 33.899999998509884,
+          "releaseToFirstVisibleMs": 516.3000000007451,
+          "releaseToReadyMs": 1066.4000000003725,
+          "observedAtMs": 1650.199999999255
+        }
+      ]
+    }
+  ]
+}

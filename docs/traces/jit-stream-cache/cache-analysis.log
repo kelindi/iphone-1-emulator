@@ -1,0 +1,26 @@
+{
+  "nativeReuseProved": true,
+  "counts": [
+    {
+      "v8.wasm.compileConsume": 3,
+      "v8.wasm.compileConsumeDone": 2,
+      "wasm.FinishAsyncCompile": 2,
+      "wasm.OnCompilationSucceeded": 2,
+      "v8.wasm.compiledModule": 15,
+      "v8.wasm.cachedModule": 15
+    },
+    {
+      "v8.wasm.compileConsume": 8,
+      "v8.wasm.moduleCacheHit": 1,
+      "v8.wasm.compileConsumeDone": 2,
+      "v8.wasm.compileDigestForConsume": 1,
+      "wasm.Deserialize": 1,
+      "wasm.FinishAsyncCompile": 2,
+      "wasm.OnCompilationSucceeded": 2
+    }
+  ],
+  "seedAccepted": [
+    0,
+    1
+  ]
+}

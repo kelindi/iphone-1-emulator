@@ -1,0 +1,15 @@
+test_city_count_and_identifier_bounds (test_weather.WeatherContract) ... ok
+test_malformed_and_unsupported_inputs (test_weather.WeatherContract) ... ok
+test_original_forecast_shape_and_fixed_values (test_weather.WeatherContract) ... ok
+test_search_normalization_and_no_fabricated_results (test_weather.WeatherContract) ... ok
+test_search_uses_text_fields_and_forecast_identity (test_weather.WeatherContract) ... ok
+test_unknown_id_is_not_replaced_by_a_default_city (test_weather.WeatherContract) ... ok
+test_actual_http_response (test_weather.WeatherHTTP) ... ok
+test_ambiguous_http_framing_is_rejected (test_weather.WeatherHTTP) ... ok
+test_http_failure_statuses (test_weather.WeatherHTTP) ... ok
+test_invalid_url_and_transfer_encoding (test_weather.WeatherHTTP) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.511s
+
+OK

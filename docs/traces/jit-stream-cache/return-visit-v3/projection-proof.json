@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "scope": "V2 final frozen measured/training sources identical after directory normalization; sites identical except explicit new origins metadata.",
+  "files": [
+    {
+      "name": "cache-server.mjs",
+      "sourceSha256": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+      "sha256": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "analyze-cache.py",
+      "sourceSha256": "a099c8b3a8c8f5c41705c221e677636813f459940abbcda3eb3a5c2b2318f909",
+      "sha256": "a099c8b3a8c8f5c41705c221e677636813f459940abbcda3eb3a5c2b2318f909",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "check-receipt.py",
+      "sourceSha256": "ff7cc550ef142d97ffbe932302477b25071c020cabc72bc4770a920fa5907d8e",
+      "sha256": "ff7cc550ef142d97ffbe932302477b25071c020cabc72bc4770a920fa5907d8e",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "frames.mjs",
+      "sourceSha256": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+      "sha256": "f2695cd1cd3cd0992ac571cd3f42d2933f1aed6370970f88ba6ea3ca942a7f7c",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "frames.test.mjs",
+      "sourceSha256": "5eb8cbd3bdefffd04fe946fc4326a087b2665f54cd241ba569312617115cb551",
+      "sha256": "5eb8cbd3bdefffd04fe946fc4326a087b2665f54cd241ba569312617115cb551",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "frame-packet.mjs",
+      "sourceSha256": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+      "sha256": "7cb2be2d05046d9db949b843048904a48ef99df9bb30ccfd5f4987dc78069314",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "frame-packet.test.mjs",
+      "sourceSha256": "b2d64a4e849adef5e8ef8604aee8da977559c9c52315a14b602ee2e501153813",
+      "sha256": "b2d64a4e849adef5e8ef8604aee8da977559c9c52315a14b602ee2e501153813",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "transport-diagnostic.mjs",
+      "sourceSha256": "0c6f579eeb5e32e9d10efdba2bd6b579515fc603c4d215792f4d8d7a41b3d28d",
+      "sha256": "5f1319bed6228455b91661d065e3e19a2f59c504ddb350a82b08960192e9104e",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "run-series.py",
+      "sourceSha256": "a70c9cd3de3d71ce4a5a126ae6dda7572f37301b68c29cf93e0a6e74989d2c58",
+      "sha256": "9d8e0935d70a62d4e822dff47d087e04c5b14742f7cca21e1324ebf92dda826c",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "run-browser.mjs",
+      "sourceSha256": "256f8295e5e5872be4050f0bad74bc07753044683c41d6a386869da654ec5630",
+      "sha256": "709abe5a5b8ffc380e2ab81bc886c77c74d7ee2f9be852237e9eec3896f1e327",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "training-review.py",
+      "sourceSha256": "89cff4966b412076c34f4fb4eb0ea4ef7baee733bc7d44b3defa9649195ba888",
+      "sha256": "89cff4966b412076c34f4fb4eb0ea4ef7baee733bc7d44b3defa9649195ba888",
+      "directoryOnlyProjectionExact": true
+    },
+    {
+      "name": "audit-screens.mjs",
+      "sourceSha256": "e5276afd5eb8c479e8db0748cc68446e0d0093f5afe677aca354bf30882ac649",
+      "sha256": "e5276afd5eb8c479e8db0748cc68446e0d0093f5afe677aca354bf30882ac649",
+      "directoryOnlyProjectionExact": true
+    }
+  ]
+}

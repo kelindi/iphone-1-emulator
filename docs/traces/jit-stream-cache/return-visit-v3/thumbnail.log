@@ -1,0 +1,34 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'tweets/videos/seed_cache_return_settings.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.3.100
+  Duration: 00:01:49.08, start: 0.000000, bitrate: 143 kb/s
+  Stream #0:0[0x1](eng): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], 141 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x2b51f980] deprecated pixel format used, make sure you did set range correctly
+    Last message repeated 3 times
+Output #0, image2, to 'tweets/thumbnails/seed_cache_return_settings.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf60.3.100
+  Stream #0:0(eng): Video: mjpeg, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], q=2-31, 200 kb/s, 25 fps, 25 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=2.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    [image2 @ 0x2ab51940] The specified filename 'tweets/thumbnails/seed_cache_return_settings.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0x2ab51940] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+frame=    1 fps=0.0 q=2.0 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
+video:55kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

@@ -1,0 +1,222 @@
+
+WeatherUpdater::updateWeatherForCity:
+0000e014 push     {r4, r5, r6, r7, lr}                
+0000e018 add      r7, sp, #0xc                        
+0000e01c ldr      r1, [pc, #0x2e4]                    ; 0x17558 pointer 'isUpdatingCity:'
+0000e020 push     {r8, sl, fp}                        
+0000e024 sub      sp, sp, #0xc                        
+0000e028 mov      fp, r0                              
+0000e02c ldr      r1, [r1]                            
+0000e030 str      r2, [sp]                            
+0000e034 bl       #0x14348                            ; _objc_msgSend
+0000e038 uxtb     r4, r0                              
+0000e03c cmp      r4, #0                              
+0000e040 bne      #0xe2fc                             
+0000e044 ldr      sl, [pc, #0x2c0]                    ; 0x171c4 pointer 'count'
+0000e048 ldr      r0, [fp, #0x10]                     
+0000e04c ldr      r1, [sl]                            
+0000e050 bl       #0x14348                            ; _objc_msgSend
+0000e054 ldr      r1, [pc, #0x2b4]                    ; 0x175b4 pointer 'isLoading'
+0000e058 ldr      r1, [r1]                            
+0000e05c mov      r5, r0                              
+0000e060 mov      r0, fp                              
+0000e064 bl       #0x14348                            ; _objc_msgSend
+0000e068 tst      r0, #0xff                           
+0000e06c beq      #0xe0a8                             
+0000e070 cmp      r5, #0                              
+0000e074 ble      #0xe0a8                             
+0000e078 ldr      r8, [pc, #0x294]                    ; 0x171c8 pointer 'objectAtIndex:'
+0000e07c ldr      r6, [pc, #0x294]                    ; 0x175bc pointer 'finishedUpdating:'
+0000e080 mov      r2, r4                              
+0000e084 ldr      r1, [r8]                            
+0000e088 ldr      r0, [fp, #0x10]                     
+0000e08c bl       #0x14348                            ; _objc_msgSend
+0000e090 add      r4, r4, #1                          
+0000e094 ldr      r1, [r6]                            
+0000e098 mov      r2, #2                              
+0000e09c bl       #0x14348                            ; _objc_msgSend
+0000e0a0 cmp      r5, r4                              
+0000e0a4 bne      #0xe080                             
+0000e0a8 ldr      r1, [pc, #0x26c]                    ; 0x172b0 pointer 'removeAllObjects'
+0000e0ac ldr      r5, [pc, #0x26c]                    ; 0x1729c pointer 'addObject:'
+0000e0b0 ldr      r0, [fp, #0x10]                     
+0000e0b4 ldr      r1, [r1]                            
+0000e0b8 bl       #0x14348                            ; _objc_msgSend
+0000e0bc ldr      r2, [sp]                            
+0000e0c0 ldr      r0, [fp, #0x10]                     
+0000e0c4 ldr      r1, [r5]                            
+0000e0c8 bl       #0x14348                            ; _objc_msgSend
+0000e0cc ldr      r2, [pc, #0x250]                    ; 0x15758 CFString 'country'
+0000e0d0 ldrsb    r3, [r2]                            
+0000e0d4 cmp      r3, #0                              
+0000e0d8 movne    r3, #0                              
+0000e0dc strbne   r3, [r2]                            
+0000e0e0 bne      #0xe158                             
+0000e0e4 b        #0xe144                             
+0000e0e8 ldr      r1, [pc, #0x224]                    ; 0x171c8 pointer 'objectAtIndex:'
+0000e0ec mov      r2, #0                              
+0000e0f0 ldr      r0, [fp, #0x14]                     
+0000e0f4 ldr      r1, [r1]                            
+0000e0f8 bl       #0x14348                            ; _objc_msgSend
+0000e0fc ldr      r1, [pc, #0x224]                    ; 0x17358 pointer 'weatherDataAge'
+0000e100 ldr      r1, [r1]                            
+0000e104 mov      r4, r0                              
+0000e108 bl       #0x14348                            ; _objc_msgSend
+0000e10c cmp      r0, #0                              
+0000e110 beq      #0xe130                             
+0000e114 ldr      r3, [sp]                            
+0000e118 cmp      r3, r4                              
+0000e11c beq      #0xe130                             
+0000e120 ldr      r0, [fp, #0x10]                     
+0000e124 ldr      r1, [r5]                            
+0000e128 mov      r2, r4                              
+0000e12c bl       #0x14348                            ; _objc_msgSend
+0000e130 ldr      r1, [pc, #0x1f4]                    ; 0x172b4 pointer 'removeObjectAtIndex:'
+0000e134 ldr      r0, [fp, #0x14]                     
+0000e138 mov      r2, #0                              
+0000e13c ldr      r1, [r1]                            
+0000e140 bl       #0x14348                            ; _objc_msgSend
+0000e144 ldr      r0, [fp, #0x14]                     
+0000e148 ldr      r1, [sl]                            
+0000e14c bl       #0x14348                            ; _objc_msgSend
+0000e150 cmp      r0, #0                              
+0000e154 bne      #0xe0e8                             
+0000e158 bl       #0xff5c                             
+0000e15c ldr      r3, [pc, #0x1cc]                    ; 0x1771c pointer 'NSString'
+0000e160 mov      r6, #0                              
+0000e164 ldr      r5, [r3]                            
+0000e168 ldr      r3, [pc, #0x1c4]                    ; 0x172e4 pointer 'stringWithFormat:'
+0000e16c ldr      r4, [r3]                            
+0000e170 str      r0, [sp, #4]                        
+0000e174 bl       #0x1018c                            
+0000e178 mov      r1, r4                              
+0000e17c ldr      r2, [pc, #0x1b4]                    ; 0x15cd4 CFString '<?xml version="1.0" encoding="utf-8"?><request %@><query id="30" timestamp="0" type="getforecastbylocationid"><list>'
+0000e180 mov      r3, r0                              
+0000e184 mov      r0, r5                              
+0000e188 bl       #0x14348                            ; _objc_msgSend
+0000e18c ldr      r1, [sl]                            
+0000e190 mov      r8, r0                              
+0000e194 ldr      r0, [fp, #0x10]                     
+0000e198 bl       #0x14348                            ; _objc_msgSend
+0000e19c str      r0, [sp, #8]                        
+0000e1a0 b        #0xe208                             
+0000e1a4 ldr      r3, [pc, #0x190]                    ; 0x17304 pointer 'stringByAppendingString:'
+0000e1a8 mov      r2, r6                              
+0000e1ac ldr      r0, [fp, #0x10]                     
+0000e1b0 ldr      sl, [r3]                            
+0000e1b4 ldr      r3, [pc, #0x174]                    ; 0x1771c pointer 'NSString'
+0000e1b8 add      r6, r6, #1                          
+0000e1bc ldr      r5, [r3]                            
+0000e1c0 ldr      r3, [pc, #0x16c]                    ; 0x172e4 pointer 'stringWithFormat:'
+0000e1c4 ldr      r4, [r3]                            
+0000e1c8 ldr      r3, [pc, #0x144]                    ; 0x171c8 pointer 'objectAtIndex:'
+0000e1cc ldr      r1, [r3]                            
+0000e1d0 bl       #0x14348                            ; _objc_msgSend
+0000e1d4 ldr      r3, [pc, #0x164]                    ; 0x17434 pointer 'zip'
+0000e1d8 ldr      r1, [r3]                            
+0000e1dc bl       #0x14348                            ; _objc_msgSend
+0000e1e0 mov      r1, r4                              
+0000e1e4 ldr      r2, [pc, #0x158]                    ; 0x15ce4 CFString '<id>%@</id>'
+0000e1e8 mov      r3, r0                              
+0000e1ec mov      r0, r5                              
+0000e1f0 bl       #0x14348                            ; _objc_msgSend
+0000e1f4 mov      r1, sl                              
+0000e1f8 mov      r2, r0                              
+0000e1fc mov      r0, r8                              
+0000e200 bl       #0x14348                            ; _objc_msgSend
+0000e204 mov      r8, r0                              
+0000e208 ldr      r3, [sp, #8]                        
+0000e20c cmp      r6, r3                              
+0000e210 blt      #0xe1a4                             
+0000e214 ldr      r3, [pc, #0x120]                    ; 0x17304 pointer 'stringByAppendingString:'
+0000e218 ldr      r2, [pc, #0x128]                    ; 0x15cf4 CFString '</list><language>en</language><unit>f</unit></query></request>'
+0000e21c mov      r0, r8                              
+0000e220 ldr      r1, [r3]                            
+0000e224 bl       #0x14348                            ; _objc_msgSend
+0000e228 ldr      r1, [pc, #0x11c]                    ; 0x1707c pointer 'alloc'
+0000e22c ldr      r4, [pc, #0x11c]                    ; 0x17610 pointer 'setValue:forHTTPHeaderField:'
+0000e230 ldr      r1, [r1]                            
+0000e234 mov      r6, r0                              
+0000e238 ldr      r0, [pc, #0x114]                    ; 0x17778 pointer 'NSMutableURLRequest'
+0000e23c ldr      r0, [r0]                            
+0000e240 bl       #0x14348                            ; _objc_msgSend
+0000e244 ldr      r1, [pc, #0x10c]                    ; 0x17608 pointer 'initWithURL:'
+0000e248 ldr      r2, [sp, #4]                        
+0000e24c ldr      r1, [r1]                            
+0000e250 bl       #0x14348                            ; _objc_msgSend
+0000e254 ldr      r1, [pc, #0x100]                    ; 0x1760c pointer 'setHTTPMethod:'
+0000e258 ldr      r2, [pc, #0x100]                    ; 0x15d04 CFString 'POST'
+0000e25c ldr      r1, [r1]                            
+0000e260 mov      r5, r0                              
+0000e264 bl       #0x14348                            ; _objc_msgSend
+0000e268 ldr      r1, [r4]                            
+0000e26c ldr      r2, [pc, #0xf0]                     ; 0x15d14 CFString 'text/xml'
+0000e270 ldr      r3, [pc, #0xf0]                     ; 0x15d24 CFString 'Content-Type'
+0000e274 mov      r0, r5                              
+0000e278 bl       #0x14348                            ; _objc_msgSend
+0000e27c ldr      r4, [r4]                            
+0000e280 bl       #0x100d8                            
+0000e284 ldr      r3, [pc, #0xe0]                     ; 0x15d34 CFString 'User-Agent'
+0000e288 mov      r1, r4                              
+0000e28c mov      r2, r0                              
+0000e290 mov      r0, r5                              
+0000e294 bl       #0x14348                            ; _objc_msgSend
+0000e298 ldr      r1, [pc, #0xd0]                     ; 0x17618 pointer 'setHTTPBody:'
+0000e29c mov      r2, #4                              
+0000e2a0 mov      r0, r6                              
+0000e2a4 ldr      r4, [r1]                            
+0000e2a8 ldr      r1, [pc, #0xc4]                     ; 0x17614 pointer 'dataUsingEncoding:'
+0000e2ac ldr      r1, [r1]                            
+0000e2b0 bl       #0x14348                            ; _objc_msgSend
+0000e2b4 mov      r1, r4                              
+0000e2b8 mov      r2, r0                              
+0000e2bc mov      r0, r5                              
+0000e2c0 bl       #0x14348                            ; _objc_msgSend
+0000e2c4 ldr      r1, [pc, #0xac]                     ; 0x1761c pointer 'setHTTPShouldHandleCookies:'
+0000e2c8 mov      r0, r5                              
+0000e2cc mov      r2, #0                              
+0000e2d0 ldr      r1, [r1]                            
+0000e2d4 bl       #0x14348                            ; _objc_msgSend
+0000e2d8 ldr      r1, [pc, #0x9c]                     ; 0x17620 pointer 'loadRequest:'
+0000e2dc mov      r0, fp                              
+0000e2e0 mov      r2, r5                              
+0000e2e4 ldr      r1, [r1]                            
+0000e2e8 bl       #0x14348                            ; _objc_msgSend
+0000e2ec ldr      r1, [pc, #0x8c]                     ; 0x17088 pointer 'release'
+0000e2f0 mov      r0, r5                              
+0000e2f4 ldr      r1, [r1]                            
+0000e2f8 bl       #0x14348                            ; _objc_msgSend
+0000e2fc sub      sp, r7, #0x18                       
+0000e300 pop      {r8, sl, fp}                        
+0000e304 pop      {r4, r5, r6, r7, pc}                
+0000e308 andeq    r7, r1, r8, asr r5                  
+0000e30c andeq    r7, r1, r4, asr #3                  
+0000e310 strheq   r7, [r1], -r4                       
+0000e314 andeq    r7, r1, r8, asr #3                  
+0000e318 strheq   r7, [r1], -ip                       
+0000e31c strheq   r7, [r1], -r0                       
+0000e320 muleq    r1, ip, r2                          
+0000e324 andeq    r5, r1, r8, asr r7                  
+0000e328 andeq    r7, r1, r8, asr r3                  
+0000e32c strheq   r7, [r1], -r4                       
+0000e330 andeq    r7, r1, ip, lsl r7                  
+0000e334 andeq    r7, r1, r4, ror #5                  
+0000e338 ldrdeq   r5, r6, [r1], -r4                   
+0000e33c andeq    r7, r1, r4, lsl #6                  
+0000e340 andeq    r7, r1, r4, lsr r4                  
+0000e344 andeq    r5, r1, r4, ror #25                 
+0000e348 strdeq   r5, r6, [r1], -r4                   
+0000e34c andeq    r7, r1, ip, ror r0                  
+0000e350 andeq    r7, r1, r0, lsl r6                  
+0000e354 andeq    r7, r1, r8, ror r7                  
+0000e358 andeq    r7, r1, r8, lsl #12                 
+0000e35c andeq    r7, r1, ip, lsl #12                 
+0000e360 andeq    r5, r1, r4, lsl #26                 
+0000e364 andeq    r5, r1, r4, lsl sp                  
+0000e368 andeq    r5, r1, r4, lsr #26                 
+0000e36c andeq    r5, r1, r4, lsr sp                  
+0000e370 andeq    r7, r1, r8, lsl r6                  
+0000e374 andeq    r7, r1, r4, lsl r6                  
+0000e378 andeq    r7, r1, ip, lsl r6                  
+0000e37c andeq    r7, r1, r0, lsr #12                 
+0000e380 andeq    r7, r1, r8, lsl #1                  

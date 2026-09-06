@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "name": "compiled seed executes before controls",
+      "atSeconds": 7.69031694
+    },
+    {
+      "name": "silent switch latched",
+      "atSeconds": 11.570600951
+    },
+    {
+      "name": "sleep disables the real LCD",
+      "atSeconds": 13.569069899
+    },
+    {
+      "name": "wake restores live display pixels",
+      "atSeconds": 16.734791665
+    },
+    {
+      "name": "real slide-to-unlock returns to Home",
+      "atSeconds": 21.543242631000002
+    },
+    {
+      "name": "compiled seed executes after controls",
+      "atSeconds": 24.046758749000002
+    }
+  ],
+  "startedAt": "2026-09-05T21:25:48.440Z",
+  "jit": {
+    "before controls": {
+      "enabled": true,
+      "generation": 1,
+      "regions": 511,
+      "bytes": 12341313,
+      "retired": 292968,
+      "calls": 35815
+    },
+    "after controls": {
+      "enabled": true,
+      "generation": 1,
+      "regions": 510,
+      "bytes": 12341313,
+      "retired": 109857537,
+      "calls": 15254973
+    }
+  },
+  "result": "pass",
+  "diagnostics": "6.30 M instructions/s\n0.0 changed frames/s · 1.00× guest time\nInstruction 11,369,468,874 · WASM heap 613 MiB\nSnapshot capture: — ms\n\nAppleMerlotLCD::_lcdEnable: enable: 0\n\rAppleMultitouchSPI: downloaded 44752 bytes of firmware data (\"0x0086\") in 39ms (4ms stage 1, 35ms stage 2).\n\rAppleMerlotLCD::_lcdEnable: enable: 1\n\r"
+}

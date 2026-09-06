@@ -1,0 +1,73 @@
+{
+  "scope": "Isolated SRAM storage only; no readiness transition, production edits or snapshot ABI change",
+  "files": {
+    ".context/amc-first/stage-a/amc_sram.h": {
+      "sha256": "502274efa96b262a3ebf149338641a717b47230007e0bd8d26dbfb00ddf22e46",
+      "bytes": 787
+    },
+    ".context/amc-first/stage-a/amc_sram.c": {
+      "sha256": "d4f6b21bf2f06f666a6841f5227355812a4382e1234876a054b629781d2157ec",
+      "bytes": 1103
+    },
+    ".context/amc-first/stage-a/test_sram.c": {
+      "sha256": "fed51fd762a88c0aff52f40d6e66998c2be13d1d146671b86bd7f8d353c79c9d",
+      "bytes": 5111
+    },
+    ".context/amc-first/stage-a/test_bus.c": {
+      "sha256": "da050370ee4469acf81f007a327012d7627d681f8da607f11a0079c4fc68b4b3",
+      "bytes": 2294
+    },
+    ".context/amc-first/stage-a/reset-probe.c": {
+      "sha256": "6d931ff12f0ef1684320c2700cafee5e7ea74c190932286e0eb402f2fdaafde1",
+      "bytes": 5162
+    },
+    ".context/amc-first/stage-a/emu_api.c": {
+      "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1",
+      "bytes": 22190
+    },
+    ".context/amc-first/stage-a/contracts.log": {
+      "sha256": "9b033679a3770fef4b191c459940f2d25cd5d31fd1dd5e4e88fae68240249d55",
+      "bytes": 37
+    },
+    ".context/amc-first/stage-a/bus-contracts.log": {
+      "sha256": "6d77ead3bb6d23c1dd94b4ef60f6e916de231e183d364686c6e3c83bb6c1380c",
+      "bytes": 852
+    },
+    ".context/amc-first/stage-a/reset-0.log": {
+      "sha256": "23a6040e544cf00608321109dc40a50ce02a584ddf337be0ce8ba1b2dc20d893",
+      "bytes": 4366
+    },
+    ".context/amc-first/stage-a/reset-1.log": {
+      "sha256": "1e872421419a9f54c133cdd69d622743b6c3e17b0d1809b4fc2d119aa240e9fb",
+      "bytes": 4366
+    },
+    ".context/amc-first/stage-a/first-contract-failure.txt": {
+      "sha256": "665fe3e23010b837dfdf57127f6401007f8eb4886f699383e12f36eb716016a3",
+      "bytes": 277
+    },
+    ".context/build-native/core/libemucore.a": {
+      "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2",
+      "bytes": 1854772
+    },
+    ".context/audio/ringtone-page.snap": {
+      "sha256": "385aead20010aaf796be93423dade4afb5dc13c824d59c7857a452f7fbafd2e6",
+      "bytes": 245096418
+    },
+    "web/firmware/kernel_1A543a.macho": {
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+      "bytes": 5888896
+    }
+  },
+  "storageChecks": 279,
+  "busChecks": 14,
+  "startInstructions": 9825000000,
+  "endInstructions": 9880300000,
+  "endTicks": 1756877905,
+  "amcReads": 12,
+  "amcWrites": 1,
+  "sramReads": 0,
+  "sramWrites": 0,
+  "sramRefused": 0,
+  "ramFNV64": "f312103de8cc00b0",
+  "traceIdenticalExceptMode": true
+}

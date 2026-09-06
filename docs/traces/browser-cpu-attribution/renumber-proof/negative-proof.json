@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "instruction",
+      "rejected": true,
+      "failure": "AssertionError: Non-call instruction structure differs"
+    },
+    {
+      "case": "direct-call",
+      "rejected": true,
+      "failure": "AssertionError: ('Body mismatch', 8, 8)"
+    },
+    {
+      "case": "table-element",
+      "rejected": true,
+      "failure": "AssertionError: Non-function module structure differs after bijection"
+    },
+    {
+      "case": "export",
+      "rejected": true,
+      "failure": "AssertionError: Non-function module structure differs after bijection"
+    },
+    {
+      "case": "memory",
+      "rejected": true,
+      "failure": "AssertionError: Non-function module structure differs after bijection"
+    },
+    {
+      "case": "host-import",
+      "rejected": true,
+      "failure": "AssertionError"
+    },
+    {
+      "case": "javascript-glue",
+      "rejected": true,
+      "failure": "AssertionError: JS glue changes beyond import binding dictionary"
+    }
+  ]
+}

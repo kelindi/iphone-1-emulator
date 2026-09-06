@@ -1,0 +1,31 @@
+✔ actual HTTP serves frozen seed bytes, stable strong ETag, conditional304 and correct MIME/cache headers (59.349659ms)
+✔ actual tiny WASM streams only after both hashes; original Response consumed, clone verified (42.173756ms)
+✔ verified binary fallback: unavailable (3.30553ms)
+✔ verified binary fallback: wrongMime (2.969787ms)
+✔ verified binary fallback: absentClone (2.504233ms)
+✔ verified binary fallback: cloneFailure (2.593996ms)
+✔ streaming TypeError falls back using already verified bytes without refetch (4.144485ms)
+✔ real streaming CompileError is retained, no duplicate compilation (2.952951ms)
+✔ reject before compilation: binaryHash (2.22483ms)
+✔ reject before compilation: definitionsHash (2.205315ms)
+✔ reject before compilation: corruptBytes (2.177896ms)
+✔ reject before compilation: invalidDefinitionsJson (2.385895ms)
+✔ reject before compilation: HTTP404 (1.646569ms)
+✔ reject before compilation: contentLengthCap (1.430853ms)
+✔ disabled engine performs no fetch/compile and owns no responses (0.954124ms)
+✔ eight-second production bound aborts all stalled fetches (16.237553ms)
+✔ late digest after timeout cannot start compilation (27.480268ms)
+✔ late fetch after timeout is canceled instead of retained (28.01572ms)
+✔ late native compilation cannot replace timeout or trigger binary fallback (27.728061ms)
+✔ stream byte cap does not wait forever on an unread tee branch (1.889562ms)
+✔ chunked bounded reader accepts the exact cap without trusting Content-Length (1.943141ms)
+✔ stream error releases its reader and owned response (1.835524ms)
+✔ integrity failure cancels the unread original streaming branch (2.988473ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.281024

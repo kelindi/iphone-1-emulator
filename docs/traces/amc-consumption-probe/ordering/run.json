@@ -1,0 +1,52 @@
+{
+  "command": [
+    ".context/amc-first/stage-k/probe",
+    ".context/audio/ringtone-page.snap",
+    "1",
+    ".context/amc-first/stage-k/run-1",
+    ".context/amc-first/stage-d/verified/sram.bin",
+    ".context/amc-first/stage-d/verified/written.bin",
+    ".context/amc-first/stage-g/run-1"
+  ],
+  "returncode": 10,
+  "timedOut": false,
+  "wallSeconds": 4.879905981004413,
+  "guestPass": false,
+  "firstBoundaryAuditPass": true,
+  "consumptionAuditPass": false,
+  "secondRequestAuditPass": true,
+  "orderingAuditPass": true,
+  "sourceManifestSHA256": "a26de4f1c2ed5eb4ef1fd440a83d4e029986a88049fd794cb1828d3269f59608",
+  "frozenScripts": {
+    "audit.py": "778b0b988517093512fd1f4cb25f07306e2e661e340ac046a0a12bb7ba3c1258",
+    "first-audit.py": "000f15848bd119d408894cec3e3816b6f0d1bdf57ebed6393d095aa05485297f",
+    "kernel-oracle.py": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9",
+    "launch.py": "2a1cbdc2faa44ae7a1b41252c11d5baac2c2a3f6a658ee47d3f33a921a385bf1",
+    "second-audit.py": "6bb317c1615a49f904acfc5db431d9b4bf4917797051af4bd3cd79dcfd93af54",
+    "mp4_oracle.py": "93d25ab33f7a343d61b9a2990524f861e3200f2d4bfe5169422400d173e27f09",
+    "ordering-audit.py": "80ae5b3f10fa30749f8516132becc96ff03ae79643e01ff3086379d8211e1246"
+  },
+  "limits": {
+    "wallSeconds": 240,
+    "cpuSeconds": 180,
+    "addressSpaceBytes": 1073741824,
+    "perFileBytes": 8388608,
+    "totalRetiredInstructions": 155300000,
+    "preInputInstructions": 5000000,
+    "postInputInstructions": 5000000,
+    "postPublicationInstructions": 5000000,
+    "maximumPublications": 2
+  },
+  "artifactNegatives": [
+    {
+      "label": "record",
+      "returncode": 1,
+      "expectedFailure": "record/log bytes differ"
+    },
+    {
+      "label": "queue",
+      "returncode": 1,
+      "expectedFailure": "guest artifact differs"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/sdio-first/handoff-ready/run.py", line 46, in <module>
+    if __name__=='__main__':main()
+  File "/home/vercel-sandbox/iphone-1/.context/sdio-first/handoff-ready/run.py", line 41, in main
+    assert process['exitCode']==0 and not process['outerTimeout'],process
+AssertionError: {'exitCode': 1, 'outerSeconds': 13.309533354004088, 'outerTimeout': False}

@@ -1,0 +1,14 @@
+-- The C compiler identification is GNU 11.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- FAAD PACKAGE_VERSION: 2.11.3
+-- Looking for lrintf in m
+-- Looking for lrintf in m - found
+-- Looking for lrintf
+-- Looking for lrintf - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/build

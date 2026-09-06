@@ -1,0 +1,20 @@
+c0432108 push     {r4, r5, r7, lr}
+c043210c mov      r5, r0
+c0432110 ldr      r2, [r0, #0xb8]
+c0432114 ldr      r3, [r0, #0xbc]
+c0432118 add      r7, sp, #8
+c043211c ldr      r4, [r2]
+c0432120 ldr      r3, [r3]
+c0432124 tst      r4, r3
+c0432128 popeq    {r4, r5, r7, pc}
+c043212c tst      r4, #1
+c0432130 str      r4, [r2]
+c0432134 ldrne    r3, [r0]
+c0432138 movne    lr, pc
+c043213c ldrne    pc, [r3, #0x4d4]
+c0432140 tst      r4, #2
+c0432144 movne    r0, r5
+c0432148 ldrne    r3, [r5]
+c043214c movne    lr, pc
+c0432150 ldrne    pc, [r3, #0x4f0]
+c0432154 ldrb     r3, [r5, #0xe4]

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "expectedExitCode": 3,
+  "actualExitCode": 3,
+  "scope": "old zero-initialized Z1 decode loses native contact padding; new dirty-padding clone fails canonical admission before continuation"
+}

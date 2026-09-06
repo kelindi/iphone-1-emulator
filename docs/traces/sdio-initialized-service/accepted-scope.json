@@ -1,0 +1,13 @@
+{
+  "acceptedScope": "Exact frozen control and original-driver initialized-service verification branch; no firmwareCPU/runtimecommands/interface",
+  "controlPassed": true,
+  "positivePassed": true,
+  "positiveRootReviewPassed": true,
+  "fullNoMarkerNegativePassed": false,
+  "noMarkerPrefixArtifactChecksPassed": true,
+  "noMarkerCompletedZeroPairs": 3,
+  "noMarkerInstructionCap": 100000000,
+  "noRepeat": true,
+  "sourcePinsSha256": "eeb485e9c1407807a020c79625cf7011c6875a12a51099555be66ce1441a902f",
+  "probeSha256": "068cec0f37a309e32e6980599870ba0cf4a313e4f750b9bc64a321c8a8206fc4"
+}

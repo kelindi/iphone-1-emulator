@@ -24,6 +24,195 @@ static uint32_t frame_ms(const uint8_t *rx) {
            ((uint32_t)rx[9] << 16) | ((uint32_t)rx[10] << 24);
 }
 
+static unsigned read_frame(s5l_spi_slave_t *slave, uint8_t *rx) {
+    const uint8_t length[8] = {0x46u};
+    uint8_t request[MTZ2_PAYLOAD_LIMIT + 3u] = {0x47u};
+    txn(slave, length, rx, sizeof length);
+    unsigned n = ((unsigned)rx[1] << 8) | rx[2];
+    CHECK(n <= MTZ2_PAYLOAD_LIMIT + 2u, "result length fits transfer");
+    if (n > MTZ2_PAYLOAD_LIMIT + 2u) return 0u;
+    txn(slave, request, rx, n + 1u);
+    return n;
+}
+
+static void test_contact_lifecycle(void) {
+    s5l_mtz1_t d = {0};
+    s5l_spi_slave_t slave;
+    uint8_t rx[MTZ2_PAYLOAD_LIMIT + 3u];
+    s5l_mtz1_reset(&d);
+    s5l_mtz1_bind(&d, &slave);
+    d.firmware = true;
+    s5l_mtz1_tick(&d, 6000000u);
+    s5l_mt_contact_t contacts[MTZ2_CONTACT_MAX] = {
+        {1u, MTZ2_PHASE_MAKE_TOUCH, 40u, 80u, 255u, 8u, 8u},
+        {2u, MTZ2_PHASE_MAKE_TOUCH, 200u, 300u, 230u, 7u, 7u}
+    };
+    CHECK(s5l_mtz1_set_contacts(&d, contacts, 1u), "start lifecycle contact");
+    s5l_mtz1_t before = d;
+    contacts[0].x = 50u;
+    CHECK(!s5l_mtz1_set_contacts(&d, contacts, 1u) &&
+          !memcmp(&before, &d, sizeof d), "busy move cannot replace make report");
+    uint8_t report[4] = {0xd0u};
+    txn(&slave, report, rx, sizeof report);
+    CHECK(d.pending_len == before.pending_len && d.atn &&
+          d.frames_read == before.frames_read,
+          "interface read preserves queued contact");
+    uint8_t short_data[4] = {0x47u};
+    txn(&slave, short_data, rx, sizeof short_data);
+    CHECK(d.pending_len == before.pending_len && d.atn &&
+          d.frames_read == before.frames_read,
+          "short data read preserves unread make and checksum");
+    CHECK(s5l_mtz1_set_contacts(&d, NULL, 0u), "release accepted behind pending make");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    CHECK(d.lift_pending && d.pending[17] == MTZ2_PHASE_MAKE_TOUCH,
+          "release waits for make consumption");
+    read_frame(&slave, rx);
+    CHECK(rx[18] == MTZ2_PHASE_MAKE_TOUCH, "first report remains make");
+    CHECK(!s5l_mtz1_set_contacts(&d, contacts, 1u), "new gesture waits for old break");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    read_frame(&slave, rx);
+    CHECK(rx[18] == MTZ2_PHASE_BREAK_TOUCH && rx[33] == 0u && !d.held_n,
+          "backpressured release eventually emits break");
+    CHECK(s5l_mtz1_set_contacts(&d, NULL, 0u), "idle release is idempotent");
+
+    CHECK(s5l_mtz1_set_contacts(&d, contacts, 1u), "new gesture after break");
+    read_frame(&slave, rx);
+    CHECK(rx[18] == MTZ2_PHASE_MAKE_TOUCH, "reused ID makes a new contact");
+    contacts[0].x = 60u;
+    CHECK(s5l_mtz1_set_contacts(&d, contacts, 2u), "second finger joins gesture");
+    read_frame(&slave, rx);
+    CHECK(rx[4] == 2u && rx[17] == 1u && rx[18] == MTZ2_PHASE_TOUCHING &&
+          rx[49] == 2u && rx[50] == MTZ2_PHASE_MAKE_TOUCH,
+          "old finger moves while new finger makes");
+    uint32_t stamp = frame_ms(rx);
+    contacts[1].x = 210u;
+    CHECK(s5l_mtz1_set_contacts(&d, contacts + 1u, 1u), "remove only first finger");
+    read_frame(&slave, rx);
+    CHECK(rx[4] == 2u && rx[17] == 1u && rx[18] == MTZ2_PHASE_BREAK_TOUCH &&
+          rx[33] == 0u && rx[37] == 0u &&
+          rx[49] == 2u && rx[50] == MTZ2_PHASE_TOUCHING && rx[65] == 230u,
+          "removed ID breaks with zero density; surviving ID keeps touching");
+    CHECK(frame_ms(rx) > stamp, "successive host events have monotonic timestamps");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    read_frame(&slave, rx);
+    CHECK(rx[4] == 1u && rx[17] == 2u && rx[18] == MTZ2_PHASE_TOUCHING,
+          "periodic report excludes lifted finger");
+
+    before = d;
+    s5l_mt_contact_t bad[2] = {contacts[1], contacts[1]};
+    CHECK(!s5l_mtz1_set_contacts(&d, bad, 2u) && !memcmp(&before, &d, sizeof d),
+          "duplicate IDs rejected without mutating state");
+    bad[0].x = S5L_MT_PANEL_W;
+    CHECK(!s5l_mtz1_set_contacts(&d, bad, 1u) && !memcmp(&before, &d, sizeof d),
+          "off-panel contact rejected without mutating state");
+    CHECK(!s5l_mtz1_set_contacts(&d, NULL, 1u) && !memcmp(&before, &d, sizeof d),
+          "null nonempty state rejected");
+
+    for (unsigned i = 0u; i < MTZ2_CONTACT_MAX; i++) {
+        contacts[i] = (s5l_mt_contact_t){(uint8_t)(i + 1u), MTZ2_PHASE_MAKE_TOUCH,
+            (uint16_t)(20u + 40u * i), 160u, 255u, 8u, 8u};
+    }
+    CHECK(s5l_mtz1_set_contacts(&d, contacts, MTZ2_CONTACT_MAX), "all five contacts fit CE frame");
+    read_frame(&slave, rx);
+    CHECK(rx[4] == MTZ2_CONTACT_MAX && rx[50] == MTZ2_PHASE_TOUCHING &&
+          rx[18] == MTZ2_PHASE_MAKE_TOUCH && rx[146] == MTZ2_PHASE_MAKE_TOUCH,
+          "five-contact frame preserves existing ID");
+    CHECK(s5l_mtz1_set_contacts(&d, NULL, 0u), "release five contacts");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    read_frame(&slave, rx);
+    bool all_broken = rx[4] == MTZ2_CONTACT_MAX;
+    for (unsigned i = 0u; i < MTZ2_CONTACT_MAX; i++)
+        all_broken = all_broken && rx[18u + 32u * i] == MTZ2_PHASE_BREAK_TOUCH &&
+                     rx[33u + 32u * i] == 0u;
+    CHECK(all_broken && !d.held_n, "all five fingers receive break reports");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS * 3u);
+    CHECK(!d.pending_len && !d.atn, "released gesture remains idle");
+}
+
+static unsigned raw16(const uint8_t *p) {
+    return p[0] | ((unsigned)p[1] << 8);
+}
+
+static void test_motion_velocity(void) {
+    s5l_mtz1_t d = {0};
+    s5l_spi_slave_t slave;
+    uint8_t rx[MTZ2_PAYLOAD_LIMIT + 3u];
+    s5l_mtz1_reset(&d);
+    s5l_mtz1_bind(&d, &slave);
+    d.firmware = true;
+    d.uptime_ms = 1000u;
+    s5l_mt_contact_t c = {1u, MTZ2_PHASE_MAKE_TOUCH, 80u, 400u, 255u, 8u, 8u};
+    CHECK(s5l_mtz1_set_contacts(&d, &c, 1u), "motion test make accepted");
+    read_frame(&slave, rx);
+    CHECK(raw16(rx + 25u) == 0u && raw16(rx + 27u) == 0u,
+          "new finger has no fabricated velocity");
+    int x0 = (int16_t)raw16(rx + 21u), y0 = (int16_t)raw16(rx + 23u);
+    d.uptime_ms += 100u;
+    c.x = 120u; c.y = 300u;
+    CHECK(s5l_mtz1_set_contacts(&d, &c, 1u), "motion test move accepted");
+    read_frame(&slave, rx);
+    int dx = (int16_t)raw16(rx + 21u) - x0;
+    int dy = (int16_t)raw16(rx + 23u) - y0;
+    CHECK((int16_t)raw16(rx + 25u) == dx * 80 / 100 &&
+          (int16_t)raw16(rx + 27u) == dy * 80 / 100 && dx > 0 && dy > 0,
+          "right/up movement carries guest velocity in 1/8 mm per second");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    read_frame(&slave, rx);
+    CHECK(raw16(rx + 25u) == 0u && raw16(rx + 27u) == 0u,
+          "stationary held report stops motion");
+    d.uptime_ms += 1u;
+    c.x = 0u; c.y = 479u;
+    CHECK(s5l_mtz1_set_contacts(&d, &c, 1u), "fast reverse move accepted");
+    read_frame(&slave, rx);
+    CHECK((int16_t)raw16(rx + 25u) == INT16_MIN &&
+          (int16_t)raw16(rx + 27u) == INT16_MIN,
+          "fast reverse velocity saturates without signed wrap");
+    CHECK(s5l_mtz1_set_contacts(&d, NULL, 0u), "motion release accepted");
+    s5l_mtz1_tick(&d, MTZ1_FRAME_TICKS);
+    read_frame(&slave, rx);
+    CHECK(raw16(rx + 25u) == 0u && raw16(rx + 27u) == 0u &&
+          rx[18] == MTZ2_PHASE_BREAK_TOUCH,
+          "release carries zero velocity and break phase");
+}
+
+static void test_os1_coordinates(void) {
+    s5l_mtz1_t d = {0};
+    uint8_t frame[MTZ2_PAYLOAD_LIMIT];
+    s5l_mtz1_reset(&d);
+    s5l_mt_contact_t c = {1u, MTZ2_PHASE_MAKE_TOUCH, 0u, 0u, 255u, 8u, 8u};
+    /* Independently measured bounds of the loaded 1A543a family-1 grid.
+     * Invert the genuine guest normalizer, not a second copy of our encoder. */
+    for (unsigned x = 0u; x < 320u; x++) {
+        c.x = (uint16_t)x;
+        unsigned n = s5l_mt_frame_encode_ce(&d.geom, &c, 1u, 1u, 1000u, frame);
+        CHECK(n == 48u && raw16(frame + 20u) * 320u / 4511u == x,
+              "OS1 X coordinate %u reaches its own pixel", x);
+    }
+    for (unsigned y = 0u; y < 480u; y++) {
+        c.y = (uint16_t)y;
+        unsigned n = s5l_mt_frame_encode_ce(&d.geom, &c, 1u, 1u, 1000u, frame);
+        CHECK(n == 48u && (6926u - raw16(frame + 22u)) * 480u / 6926u == y,
+              "OS1 Y coordinate %u reaches its own pixel", y);
+    }
+    static const struct { unsigned x, y, wire_x, wire_y; } samples[] = {
+        {0u, 0u, 7u, 6919u}, {319u, 479u, 4503u, 8u},
+        {45u, 65u, 641u, 5981u}, {275u, 250u, 3883u, 3312u},
+        {192u, 348u, 2713u, 1898u}
+    };
+    for (unsigned i = 0u; i < sizeof samples / sizeof samples[0]; i++) {
+        c.x = (uint16_t)samples[i].x; c.y = (uint16_t)samples[i].y;
+        CHECK(s5l_mt_frame_encode_ce(&d.geom, &c, 1u, 1u, 1000u, frame) == 48u &&
+              raw16(frame + 20u) == samples[i].wire_x && raw16(frame + 22u) == samples[i].wire_y,
+              "OS1 golden wire coordinates at %u,%u", samples[i].x, samples[i].y);
+    }
+    /* Keep the inherited N82/CC encoding intact at the old golden position. */
+    c.x = 48u; c.y = 60u;
+    CHECK(s5l_mt_frame_encode(&d.geom, &c, 1u, 1u, 1000u, frame) == 42u &&
+          frame[14] == 0u && frame[15] == 0x82u && frame[16] == 2u &&
+          frame[18] == 0u && frame[19] == 0xcdu && frame[20] == 0x18u,
+          "N82 CC coordinates remain unchanged");
+}
+
 int main(void) {
     s5l_mtz1_t d;
     s5l_spi_slave_t s;
@@ -154,8 +343,8 @@ int main(void) {
     CHECK(rx[1] == MTZ1_FRAME_TYPE && rx[4] == 1u &&
           rx[11] == MTZ1_FRAME_HEADER &&
           rx[18] == MTZ2_PHASE_MAKE_TOUCH &&
-          rx[21] == 0x82u && rx[22] == 0x02u &&
-          rx[23] == 0xcdu && rx[24] == 0x18u &&
+          rx[21] == 0xabu && rx[22] == 0x02u &&
+          rx[23] == 0xa6u && rx[24] == 0x17u &&
           rx[33] == 0xffu && rx[34] == 0u &&
           rx[37] == 0xffu && rx[38] == 0u,
           "CE contact data/phase/density");
@@ -218,6 +407,9 @@ int main(void) {
 
     s5l_mtz1_power_pin(&d, false);
     CHECK(!d.firmware && !d.atn, "power off resets");
+    test_contact_lifecycle();
+    test_os1_coordinates();
+    test_motion_velocity();
     printf("%d passed, %d failed\n", pass, fail);
     return fail != 0;
 }

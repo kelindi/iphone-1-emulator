@@ -1,0 +1,4 @@
+0xc03ff964 08309fe5 ldr      r3, [pc, #8]
+0xc03ff968 011081e2 add      r1, r1, #1
+0xc03ff96c bc3493e5 ldr      r3, [r3, #0x4bc]
+0xc03ff970 13ff2fe1 bx       r3

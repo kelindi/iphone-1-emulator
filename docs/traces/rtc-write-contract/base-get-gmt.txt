@@ -1,0 +1,15 @@
+0xc015dea4 80b5     push     {r7, lr}
+0xc015dea6 00af     add      r7, sp, #0
+0xc015dea8 83b0     sub      sp, #0xc
+0xc015deaa 9523     movs     r3, #0x95
+0xc015deac 0268     ldr      r2, [r0]
+0xc015deae db00     lsls     r3, r3, #3
+0xc015deb0 6946     mov      r1, sp
+0xc015deb2 d358     ldr      r3, [r2, r3]
+0xc015deb4 9847     blx      r3
+0xc015deb6 0028     cmp      r0, #0
+0xc015deb8 02d0     beq      #0xc015dec0
+0xc015deba 6846     mov      r0, sp
+0xc015debc fff724ff bl       #0xc015dd08
+0xc015dec0 03b0     add      sp, #0xc
+0xc015dec2 80bd     pop      {r7, pc}

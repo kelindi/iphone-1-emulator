@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify copy-only HFSX compaction
+        run: python3 -m unittest discover -s tools/firmware -p test_hfsx_compact.py -v
+      - name: Verify original Weather demo backend
+        run: python3 -m unittest discover -s tools/legacy_services -p 'test_*.py' -v
       - name: Build native emulator
         run: |
           cmake -S . -B build
@@ -19,12 +23,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:unit
       - uses: mymindstorm/setup-emsdk@v14
         with:
-          version: latest
+          version: '4.0.16'
       - name: Build WebAssembly emulator
         run: |
           emcmake cmake -S . -B web/build -DIPHONE1_WEB=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build web/build
       - name: Run WebAssembly smoke test
         run: node web/smoke.mjs
+      - name: Verify generated execution against complete interpreter snapshots
+        run: INSTRUCTIONS=100000000 npm run test:jit-replay
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium ffmpeg
+      - name: Verify checkpoint workers and offline recovery in Chromium
+        run: |
+          export CHROME_PATH="$(node --input-type=module -e 'import { chromium } from "playwright"; console.log(chromium.executablePath())')"
+          npm run serve > /tmp/iphone-web.log 2>&1 &
+          iphone_server_pid=$!
+          trap 'kill "$iphone_server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://localhost:8080/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:checkpoint-worker
+          npm run test:offline -- --record
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: offline-browser-evidence
+          path: |
+            .context/offline-report/
+            .context/checkpoint-worker-report/
+          include-hidden-files: true
+          retention-days: 7

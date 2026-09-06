@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-l/run-1/ordering-audit.py", line 44, in <module>
+    if __name__=='__main__':run(sys.argv[1])
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-l/run-1/ordering-audit.py", line 36, in run
+    data=(out/'ordering.bin').read_bytes();rows=records(data,trace)
+  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-l/run-1/ordering-audit.py", line 23, in records
+    assert line==wanted, 'record/log bytes differ'
+AssertionError: record/log bytes differ

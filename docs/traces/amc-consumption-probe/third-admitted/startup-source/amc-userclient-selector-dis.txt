@@ -1,0 +1,136 @@
+0xc0276b80  ldrhi    r0, [pc, #0x58] ; literal@c0276be0 = c0281240 'Assertion "inIndex >= sIOExternalTrapCount" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUserC'
+0xc0276b84  bhi      #0xc0276bb8
+0xc0276b88  ldr      r4, [r0, #0x78]
+0xc0276b8c  cmp      r4, #0
+0xc0276b90  bne      #0xc0276ba8
+0xc0276b94  ldr      r0, [pc, #0x48] ; literal@c0276be4 = c02812dc 'Assertion "0 == mDriver" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUserClient.cpp" at line '
+0xc0276b98  ldr      r3, [pc, #0x48] ; literal@c0276be8 = c012d41f
+0xc0276b9c  blx      r3
+0xc0276ba0  mov      r0, r4
+0xc0276ba4  pop      {r4, r7, pc}
+0xc0276ba8  ldr      r3, [r4, #0xe0]
+0xc0276bac  cmp      r3, #2
+0xc0276bb0  bne      #0xc0276bc8
+0xc0276bb4  ldr      r0, [pc, #0x30] ; literal@c0276bec = c0281364 'Assertion "mDriver->getPowerSuspended()" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUserClie'
+0xc0276bb8  ldr      r3, [pc, #0x28] ; literal@c0276be8 = c012d41f
+0xc0276bbc  blx      r3
+0xc0276bc0  mov      r0, #0
+0xc0276bc4  pop      {r4, r7, pc}
+0xc0276bc8  lsl      r3, r2, #4
+0xc0276bcc  str      r4, [r1]
+0xc0276bd0  sub      r0, r3, r2, lsl #2
+0xc0276bd4  ldr      r2, [pc, #0x14] ; literal@c0276bf0 = c0282a80
+0xc0276bd8  add      r0, r0, r2
+0xc0276bdc  pop      {r4, r7, pc}
+0xc0276be0  eorgt    r1, r8, r0, asr #4
+0xc0276be4  .byte    0xdc, 0x12, 0x28, 0xc0
+0xc0276be8  andsgt   sp, r2, pc, lsl r4
+0xc0276bec  eorgt    r1, r8, r4, ror #6
+0xc0276bf0  eorgt    r2, r8, r0, lsl #21
+0xc0276bf4  ldr      r3, [pc, #0x14] ; literal@c0276c10 = c0282a0c
+0xc0276bf8  push     {r7, lr}
+0xc0276bfc  add      r7, sp, #0
+0xc0276c00  str      r3, [r0]
+0xc0276c04  ldr      r3, [pc, #8] ; literal@c0276c14 = c0121779
+0xc0276c08  blx      r3
+0xc0276c0c  pop      {r7, pc}
+0xc0276c10  eorgt    r2, r8, ip, lsl #20
+0xc0276c14  andsgt   r1, r2, sb, ror r7
+0xc0276c18  ldr      r3, [pc, #0x14] ; literal@c0276c34 = c0282a0c
+0xc0276c1c  push     {r7, lr}
+0xc0276c20  add      r7, sp, #0
+0xc0276c24  str      r3, [r0]
+0xc0276c28  ldr      r3, [pc, #8] ; literal@c0276c38 = c0121779
+0xc0276c2c  blx      r3
+0xc0276c30  pop      {r7, pc}
+0xc0276c34  eorgt    r2, r8, ip, lsl #20
+0xc0276c38  andsgt   r1, r2, sb, ror r7
+0xc0276c3c  cmp      r2, #0xb
+0xc0276c40  push     {r4, r7, lr}
+0xc0276c44  add      r7, sp, #4
+0xc0276c48  ldrhi    r0, [pc, #0x58] ; literal@c0276ca8 = c02813fc 'Assertion "inIndex >= sIOExternalMethodCount" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUse'
+0xc0276c4c  bhi      #0xc0276c80
+0xc0276c50  ldr      r4, [r0, #0x78]
+0xc0276c54  cmp      r4, #0
+0xc0276c58  bne      #0xc0276c70
+0xc0276c5c  ldr      r0, [pc, #0x48] ; literal@c0276cac = c028149c 'Assertion "0 == mDriver" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUserClient.cpp" at line '
+0xc0276c60  ldr      r3, [pc, #0x48] ; literal@c0276cb0 = c012d41f
+0xc0276c64  blx      r3
+0xc0276c68  mov      r0, r4
+0xc0276c6c  pop      {r4, r7, pc}
+0xc0276c70  ldr      r3, [r4, #0xe0]
+0xc0276c74  cmp      r3, #2
+0xc0276c78  bne      #0xc0276c90
+0xc0276c7c  ldr      r0, [pc, #0x30] ; literal@c0276cb4 = c0281524 'Assertion "mDriver->getPowerSuspended()" failed in "/SourceCache/AppleAMC/AppleAMC-102.1.4/Source/AppleAMCDriverUserClie'
+0xc0276c80  ldr      r3, [pc, #0x28] ; literal@c0276cb0 = c012d41f
+0xc0276c84  blx      r3
+0xc0276c88  mov      r0, #0
+0xc0276c8c  pop      {r4, r7, pc}
+0xc0276c90  lsl      r3, r2, #5
+0xc0276c94  str      r4, [r1]
+0xc0276c98  sub      r0, r3, r2, lsl #3
+0xc0276c9c  ldr      r2, [pc, #0x14] ; literal@c0276cb8 = c0282abc
+0xc0276ca0  add      r0, r0, r2
+0xc0276ca4  pop      {r4, r7, pc}
+0xc0276ca8  .byte    0xfc, 0x13, 0x28, 0xc0
+0xc0276cac  mlagt    r8, ip, r4, r1
+0xc0276cb0  andsgt   sp, r2, pc, lsl r4
+0xc0276cb4  eorgt    r1, r8, r4, lsr #10
+0xc0276cb8  .byte    0xbc, 0x2a, 0x28, 0xc0
+0xc0276cbc  ldr      r3, [pc, #0x70] ; literal@c0276d34 = 0000ffff
+0xc0276cc0  push     {r4, r5, r6, r7, lr}
+0xc0276cc4  cmp      r1, r3
+0xc0276cc8  movne    r5, #0
+0xc0276ccc  moveq    r5, #1
+0xc0276cd0  cmp      r0, #1
+0xc0276cd4  cmpeq    r1, r3
+0xc0276cd8  add      r7, sp, #0xc
+0xc0276cdc  mov      r4, r0
+0xc0276ce0  bne      #0xc0276d0c
+0xc0276ce4  ldr      r2, [pc, #0x4c] ; literal@c0276d38 = c0282bdc
+0xc0276ce8  ldr      r6, [pc, #0x4c] ; literal@c0276d3c = c02ba440
+0xc0276cec  mov      r3, #0x7c
+0xc0276cf0  mov      r0, r6
+0xc0276cf4  ldr      r1, [pc, #0x44] ; literal@c0276d40 = c0279de8 'AppleAMCDriverUserClient'
+0xc0276cf8  ldr      r2, [r2]
+0xc0276cfc  ldr      ip, [pc, #0x40] ; literal@c0276d44 = c0120d73
+0xc0276d00  blx      ip
+0xc0276d04  ldr      r3, [pc, #0x3c] ; literal@c0276d48 = c0282a0c
+0xc0276d08  str      r3, [r6]
+0xc0276d0c  cmp      r4, #0
+0xc0276d10  movne    r0, #0
+0xc0276d14  andeq    r0, r5, #1
+0xc0276d18  cmp      r0, #0
+0xc0276d1c  popeq    {r4, r5, r6, r7, pc}
+0xc0276d20  ldr      r3, [pc, #0x20] ; literal@c0276d48 = c0282a0c
+0xc0276d24  ldr      r0, [pc, #0x10] ; literal@c0276d3c = c02ba440
+0xc0276d28  ldr      r3, [r3, #8]
+0xc0276d2c  pop      {r4, r5, r6, r7, lr}
+0xc0276d30  bx       r3
+0xc0276d34  .byte    0xff, 0xff, 0x00, 0x00
+0xc0276d38  .byte    0xdc, 0x2b, 0x28, 0xc0
+0xc0276d3c  eorgt    sl, fp, r0, asr #8
+0xc0276d40  eorgt    sb, r7, r8, ror #27
+0xc0276d44  andsgt   r0, r2, r3, ror sp
+0xc0276d48  eorgt    r2, r8, ip, lsl #20
+0xc0276d4c  mov      r0, #0
+0xc0276d50  ldr      r1, [pc] ; literal@c0276d58 = 0000ffff
+0xc0276d54  b        #0xc0276cbc
+0xc0276d58  .byte    0xff, 0xff, 0x00, 0x00
+0xc0276d5c  mov      r0, #1
+0xc0276d60  ldr      r1, [pc] ; literal@c0276d68 = 0000ffff
+0xc0276d64  b        #0xc0276cbc
+0xc0276d68  .byte    0xff, 0xff, 0x00, 0x00
+0xc0276d6c  push     {r4, r7, lr}
+0xc0276d70  mov      r0, #0x7c
+0xc0276d74  add      r7, sp, #4
+0xc0276d78  ldr      r3, [pc, #0x38] ; literal@c0276db8 = c0121e81
+0xc0276d7c  blx      r3
+0xc0276d80  subs     r4, r0, #0
+0xc0276d84  beq      #0xc0276db0
+0xc0276d88  ldr      r1, [pc, #0x2c] ; literal@c0276dbc = c02ba440
+0xc0276d8c  ldr      r3, [pc, #0x2c] ; literal@c0276dc0 = c0151905
+0xc0276d90  blx      r3
+0xc0276d94  ldr      r3, [pc, #0x28] ; literal@c0276dc4 = c02824e0
+0xc0276d98  ldr      r0, [pc, #0x1c] ; literal@c0276dbc = c02ba440
+0xc0276d9c  str      r3, [r4]

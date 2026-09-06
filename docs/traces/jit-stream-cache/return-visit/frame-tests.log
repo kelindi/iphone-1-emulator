@@ -1,0 +1,11 @@
+✔ fixed full-content screen oracle accepts exact and two-level RGB, rejects three-level even in scrollbar (15.322557ms)
+✔ statusrow exclusion ends exactly at rawrow30; alpha below cutoff stays exact (4.641679ms)
+✔ shape changes cannot silently pass (0.892919ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 98.274132

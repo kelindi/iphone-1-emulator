@@ -1,0 +1,5 @@
+{"label":"C0","kind":"settings","readyMs":5614.39999999851,"retired":114203111,"generated":82677607,"validation":true}
+{"label":"C0","kind":"home","readyMs":853.6999999955297,"retired":29179363,"generated":19279548,"validation":true}
+{"label":"H1","kind":"settings","readyMs":3216.2999999970198,"retired":104166922,"generated":74979158,"validation":true}
+{"label":"H1","kind":"home","readyMs":866.2000000029802,"retired":26660850,"generated":17141148,"validation":true}
+{"finished":true,"passed":true,"errors":[]}

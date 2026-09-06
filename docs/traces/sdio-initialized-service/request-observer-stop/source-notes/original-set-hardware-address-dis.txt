@@ -1,0 +1,87 @@
+c038ac94 push     {r4, r5, r6, r7, lr}
+c038ac98 add      r7, sp, #0xc
+c038ac9c push     {r8, sl}
+c038aca0 mov      r8, r0
+c038aca4 ldrb     r3, [r0, #0x629]
+c038aca8 mov      r6, r1
+c038acac cmp      r3, #0
+c038acb0 bne      #0xc038accc
+c038acb4 ldr      r0, [pc, #0x128] ; =c038e00c b'%s: WiFi not powered on\n'
+c038acb8 ldr      r1, [pc, #0x128] ; =c0391910 b'virtual IOReturn AppleMRVL868x::setHardwareAddress(const void*, UInt32)'
+c038acbc ldr      r3, [pc, #0x128] ; =c012d41f
+c038acc0 blx      r3
+c038acc4 ldr      r0, [pc, #0x124] ; =e00002d7
+c038acc8 b        #0xc038addc
+c038accc cmp      r2, #6
+c038acd0 bne      #0xc038acf0
+c038acd4 bl       #0xc0383144
+c038acd8 subs     sl, r0, #0
+c038acdc bne      #0xc038acf8
+c038ace0 ldr      r0, [pc, #0x10c] ; =c038e91c b'%s: Unable to get TxCommand.\n'
+c038ace4 ldr      r1, [pc, #0xfc] ; =c0391910 b'virtual IOReturn AppleMRVL868x::setHardwareAddress(const void*, UInt32)'
+c038ace8 ldr      r3, [pc, #0xfc] ; =c012d41f
+c038acec blx      r3
+c038acf0 ldr      r0, [pc, #0x100] ; =e00002bc
+c038acf4 b        #0xc038addc
+c038acf8 mov      r1, #4
+c038acfc ldr      r3, [pc, #0xf8] ; =c038c104
+c038ad00 blx      r3
+c038ad04 mov      r1, #0
+c038ad08 ldr      r3, [pc, #0xf0] ; =c038c148
+c038ad0c mov      r5, #0
+c038ad10 mov      r4, r0
+c038ad14 mov      r0, sl
+c038ad18 blx      r3
+c038ad1c mov      r0, sl
+c038ad20 mov      r1, #0x10
+c038ad24 ldr      r3, [pc, #0xd8] ; =c038c158
+c038ad28 blx      r3
+c038ad2c mov      r0, sl
+c038ad30 mov      r1, #1
+c038ad34 ldr      r3, [pc, #0xcc] ; =c038c138
+c038ad38 blx      r3
+c038ad3c mov      r2, r8
+c038ad40 ldrb     r3, [r5, r6]
+c038ad44 add      r5, r5, #1
+c038ad48 cmp      r5, #6
+c038ad4c strb     r3, [r2, #0x344]
+c038ad50 add      r2, r2, #1
+c038ad54 bne      #0xc038ad40
+c038ad58 mov      r1, #0
+c038ad5c mov      r2, #0x10
+c038ad60 ldr      r3, [pc, #0xa4] ; =c0060a00
+c038ad64 mov      r0, r4
+c038ad68 blx      r3
+c038ad6c add      r1, r8, #0x300
+c038ad70 mov      r3, #0x4d
+c038ad74 mov      r6, #0
+c038ad78 strb     r3, [r4]
+c038ad7c sub      r3, r3, #0x3d
+c038ad80 strb     r6, [r4, #1]
+c038ad84 strb     r3, [r4, #2]
+c038ad88 strb     r6, [r4, #3]
+c038ad8c ldrh     r3, [r1, #0x14]
+c038ad90 add      r0, r4, #0xa
+c038ad94 strb     r3, [r4, #4]
+c038ad98 lsr      r2, r3, #8
+c038ad9c add      r3, r3, #1
+c038ada0 strb     r2, [r4, #5]
+c038ada4 strh     r3, [r1, #0x14]
+c038ada8 mov      r3, #1
+c038adac strb     r3, [r4, #8]
+c038adb0 add      r1, r8, #0x344
+c038adb4 mov      r2, r5
+c038adb8 ldr      r3, [pc, #0x50] ; =c00606d8
+c038adbc strb     r6, [r4, #6]
+c038adc0 strb     r6, [r4, #7]
+c038adc4 strb     r6, [r4, #9]
+c038adc8 blx      r3
+c038adcc mov      r0, r8
+c038add0 mov      r1, sl
+c038add4 bl       #0xc03822e4
+c038add8 mov      r0, r6
+c038addc pop      {r8, sl}
+c038ade0 pop      {r4, r5, r6, r7, pc}
+c038ade4 eorsgt   lr, r8, ip
+c038ade8 eorsgt   r1, sb, r0, lsl sb
+c038adec andsgt   sp, r2, pc, lsl r4

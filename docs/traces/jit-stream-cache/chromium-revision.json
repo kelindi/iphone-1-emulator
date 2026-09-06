@@ -1,0 +1,29 @@
+{
+  "commit": "d04cdb24d67b081f6cf80200ffc5233f44b61109",
+  "tree": "a1234efb76bffd5133c982cac4bef312c411da6a",
+  "parents": [
+    "bb62f5c8c8345489d09a3db7d74b922cc9745359"
+  ],
+  "author": {
+    "name": "chromium-release-autoroll@skia-public.iam.gserviceaccount.com",
+    "email": "chromium-release-autoroll@skia-public.iam.gserviceaccount.com",
+    "time": "Wed Sep 02 20:40:03 2026"
+  },
+  "committer": {
+    "name": "Chromium LUCI CQ",
+    "email": "chromium-scoped@luci-project-accounts.iam.gserviceaccount.com",
+    "time": "Wed Sep 02 20:40:03 2026"
+  },
+  "message": "Roll Chrome Android ARM64 Orderfile from CTwtEk-cwESgTeKVl... to fn9Pq-T1k4lfuQngW...\n\nIf this roll has caused a breakage, revert this CL and stop the roller\nusing the controls here:\nhttps://autoroll.skia.org/r/orderfile-android-arm64-chromium-stable\nPlease CC clank-build@google.com,clank-library-failures@google.com on the revert to ensure that a human\nis aware of the problem.\n\nTo file a bug in Chromium stable branch: https://bugs.chromium.org/p/chromium/issues/entry\n\nTo report a problem with the AutoRoller itself, please file a bug:\nhttps://issues.skia.org/issues/new?component=1389291&template=1850622\n\nDocumentation for the AutoRoller is here:\nhttps://skia.googlesource.com/buildbot/+doc/main/autoroll/README.md\n\nTbr: clank-library-failures@google.com\nMerge-Approval-Bypass: Chrome autoroller\nChange-Id: I5045cc3cb9055ce275a70ddf3728a6663e033839\nReviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8339102\nCommit-Queue: chromium-release-autoroll@skia-public.iam.gserviceaccount.com <chromium-release-autoroll@skia-public.iam.gserviceaccount.com>\nBot-Commit: chromium-release-autoroll@skia-public.iam.gserviceaccount.com <chromium-release-autoroll@skia-public.iam.gserviceaccount.com>\nCr-Commit-Position: refs/branch-heads/7977@{#2322}\nCr-Branched-From: b7fe14017379ddffae396d944fb8b59a5896c261-refs/heads/main@{#1669021}\n",
+  "tree_diff": [
+    {
+      "type": "modify",
+      "old_id": "ea0f249675f260fbfb2b71d6fdcbf0cd2cb07057",
+      "old_mode": 33188,
+      "old_path": "chrome/build/android-arm64.orderfile.txt",
+      "new_id": "242605f6f73da636ea7d94f1a64941b1ab323a93",
+      "new_mode": 33188,
+      "new_path": "chrome/build/android-arm64.orderfile.txt"
+    }
+  ]
+}

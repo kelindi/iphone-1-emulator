@@ -1,0 +1,7 @@
+{"label":"C0","kind":"settings","readyMs":4934.400000002235,"retired":114069256,"generated":82393948}
+{"label":"C0","kind":"home","readyMs":915.7999999970198,"retired":28684156,"generated":18672426}
+{"label":"H1","kind":"settings","readyMs":2767.099999997765,"retired":95222333,"generated":68369315}
+{"label":"H1","kind":"home","readyMs":866.7999999970198,"retired":26724659,"generated":17046839}
+{"label":"C1","kind":"settings","readyMs":3414.39999999851,"retired":111274862,"generated":79814635}
+{"label":"C1","kind":"home","readyMs":916.8999999985099,"retired":32300931,"generated":21457250}
+{"finished":true,"passed":true,"errors":[]}

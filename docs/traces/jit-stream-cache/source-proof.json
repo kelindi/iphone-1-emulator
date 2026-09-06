@@ -1,0 +1,9 @@
+{
+  "originalSha256": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
+  "candidateSha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+  "controllerClassByteIdentical": true,
+  "productionUnchanged": true,
+  "productionCoreSha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+  "seedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "originalABIsha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+}

@@ -1,0 +1,800 @@
+{
+  "passed": true,
+  "scope": "Training/settled references and serialization only; no-cache/304 accepted reuse remains enforced before each candidate measured resume. No training timing claim.",
+  "overlap": "Graphics final single-thread CPSR rebuild overlapped about10seconds of original training startup. Retained, not a speed measurement.",
+  "runs": [
+    {
+      "variant": "original",
+      "seedURL": "http://127.0.0.1:8187/jit/seed.wasm",
+      "seedSerializations": [],
+      "allCompiledURLCounts": {},
+      "nativeHits": [],
+      "passedRuntime": true,
+      "validationPassed": true,
+      "traceComplete": {
+        "dataLossOccurred": false,
+        "stream": "1",
+        "traceFormat": "json",
+        "streamCompression": "none"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8187/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "12341313",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 03:56:31 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8187/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 03:56:35 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "manualScreensPassed": true,
+      "actions": [
+        {
+          "label": "C0",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.70000000298023,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true
+          }
+        },
+        {
+          "label": "C0",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 66.60000000149012,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.70000000298023,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.80000000447035,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "role": "independent original training reference",
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true
+          }
+        }
+      ]
+    },
+    {
+      "variant": "candidate",
+      "seedURL": "http://127.0.0.1:8188/jit/seed.wasm",
+      "seedSerializations": [
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 1155934
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936831,
+            "ts": 36794145863,
+            "tts": 150808,
+            "eventIndex": 39600
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936831,
+            "ts": 36794144933,
+            "tts": 149879,
+            "eventIndex": 39578
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 2535686
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36811237042,
+            "tts": 580404,
+            "eventIndex": 83908
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36811234420,
+            "tts": 578030,
+            "eventIndex": 83881
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 3872480
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36811285686,
+            "tts": 623239,
+            "eventIndex": 84085
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36811282498,
+            "tts": 620080,
+            "eventIndex": 84080
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 5079553
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36811426335,
+            "tts": 966314,
+            "eventIndex": 84330
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36811422021,
+            "tts": 962001,
+            "eventIndex": 84318
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 6427186
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36812214310,
+            "tts": 1375781,
+            "eventIndex": 88714
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36812207606,
+            "tts": 1370216,
+            "eventIndex": 88697
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 7656887
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36812631034,
+            "tts": 988368,
+            "eventIndex": 89434
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36812619845,
+            "tts": 977181,
+            "eventIndex": 89405
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 8949317
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36812708559,
+            "tts": 1049484,
+            "eventIndex": 91566
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36812700525,
+            "tts": 1041451,
+            "eventIndex": 91562
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 10426619
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936831,
+            "ts": 36813291258,
+            "tts": 1487539,
+            "eventIndex": 92538
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936831,
+            "ts": 36813281231,
+            "tts": 1477514,
+            "eventIndex": 92496
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 11886391
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36813410050,
+            "tts": 1984370,
+            "eventIndex": 93388
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936710,
+            "ts": 36813392653,
+            "tts": 1974059,
+            "eventIndex": 93343
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 13140688
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936828,
+            "ts": 36813718652,
+            "tts": 1654881,
+            "eventIndex": 93934
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936828,
+            "ts": 36813707319,
+            "tts": 1643638,
+            "eventIndex": 93890
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 14482786
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36814383107,
+            "tts": 1958016,
+            "eventIndex": 105847
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936712,
+            "ts": 36814369804,
+            "tts": 1944723,
+            "eventIndex": 105814
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 15705568
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936829,
+            "ts": 36814670527,
+            "tts": 1909385,
+            "eventIndex": 111134
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936829,
+            "ts": 36814647306,
+            "tts": 1895233,
+            "eventIndex": 107833
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 17101591
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36814772738,
+            "tts": 1895335,
+            "eventIndex": 122341
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936830,
+            "ts": 36814757008,
+            "tts": 1880096,
+            "eventIndex": 122321
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 18346514
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36815072779,
+            "tts": 2288933,
+            "eventIndex": 122857
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36815055972,
+            "tts": 2273128,
+            "eventIndex": 122805
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 20191063
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36815137820,
+            "tts": 2353845,
+            "eventIndex": 123024
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36815121878,
+            "tts": 2337904,
+            "eventIndex": 123005
+          }
+        },
+        {
+          "event": {
+            "args": {
+              "producedCacheSize": 21317339
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.cachedModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36816583251,
+            "tts": 2537214,
+            "eventIndex": 125465
+          },
+          "source": {
+            "args": {
+              "url": "http://127.0.0.1:8188/jit/seed.wasm"
+            },
+            "cat": "disabled-by-default-devtools.timeline",
+            "name": "v8.wasm.compiledModule",
+            "ph": "I",
+            "pid": 2936699,
+            "s": "t",
+            "tid": 2936827,
+            "ts": 36816564449,
+            "tts": 2518542,
+            "eventIndex": 125431
+          }
+        }
+      ],
+      "allCompiledURLCounts": {
+        "http://127.0.0.1:8188/jit/seed.wasm": 16
+      },
+      "nativeHits": [],
+      "passedRuntime": true,
+      "validationPassed": true,
+      "traceComplete": {
+        "dataLossOccurred": false,
+        "stream": "1",
+        "traceFormat": "json",
+        "streamCompression": "none"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:8188/jit/seed.wasm",
+          "length": 12341313,
+          "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "12341313",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 03:58:05 GMT",
+            "etag": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\"",
+            "keep-alive": "timeout=5",
+            "last-modified": "Sun, 06 Sep 2026 00:43:01 GMT",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        },
+        {
+          "url": "http://127.0.0.1:8188/dist/emu.wasm",
+          "length": 249414,
+          "sha256": "b3237ef3843412aea164d3db111299650ea8433bf16311417116799959ab6606",
+          "headers": {
+            "cache-control": "no-cache",
+            "connection": "keep-alive",
+            "content-length": "249414",
+            "content-type": "application/wasm",
+            "date": "Sun, 06 Sep 2026 03:58:08 GMT",
+            "keep-alive": "timeout=5",
+            "x-content-type-options": "nosniff"
+          },
+          "fromServiceWorker": false
+        }
+      ],
+      "manualScreensPassed": true,
+      "actions": [
+        {
+          "label": "C0",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.600000001490116,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true
+          }
+        },
+        {
+          "label": "C0",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 60.79999999701977,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+            "passed": true
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "settings",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.70000000298023,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+            },
+            "rawSha256": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+            "passed": true
+          }
+        },
+        {
+          "label": "H1",
+          "kind": "home",
+          "validation": {
+            "fixedIdleMs": 1000,
+            "requestedPairDelayMs": 50,
+            "actualPairDelayMs": 50.5,
+            "stable": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null
+            },
+            "reference": {
+              "passed": true,
+              "pixelsOver2": 0,
+              "alphaDifferences": 0,
+              "maxRGBDifference": 0,
+              "bounds": null,
+              "sha256": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129"
+            },
+            "rawSha256": "543a61f42dd050da1b224fe3690b50443da1d704244b59766709e48767bb30a9",
+            "passed": true
+          }
+        }
+      ]
+    }
+  ],
+  "referencePins": {
+    "C0-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "C0-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    "C0-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "C0-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091",
+    "H1-home.png": "a688cd418b17aac2fe7ef3c49d777bb18aab97991f83abb4957c93416ca10f3c",
+    "H1-home.rgba": "7669cdc0b1566f8886dcc4ed293a2608a0d03797ff0ee262607e01304aef9129",
+    "H1-settings.png": "9c6bcc16398a92b627575b717011f85f57bb5ac7e3aa22ddbbc37d8459541d5c",
+    "H1-settings.rgba": "29d49c289365b2393074a2e5de8b98a7a7738ce6f19c8587be6aadffb00f8091"
+  }
+}

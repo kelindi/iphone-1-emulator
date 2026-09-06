@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-06T00:38:50.734Z",
+  "url": "http://localhost:8170",
+  "checks": [
+    {
+      "name": "Save is in progress and Pause stays enabled",
+      "passed": true
+    },
+    {
+      "name": "acknowledge Resume request",
+      "passed": true,
+      "milliseconds": 328.3280670000004
+    },
+    {
+      "name": "paused guest does not advance during checkpoint work",
+      "passed": true,
+      "ticks": 4106544567,
+      "cycles": 11211745982
+    },
+    {
+      "name": "checkpoint remains in progress during pause",
+      "passed": true
+    },
+    {
+      "name": "acknowledge Pause request",
+      "passed": true,
+      "milliseconds": 60.31349500000033
+    },
+    {
+      "name": "resumed guest advances while checkpoint finishes",
+      "passed": true
+    },
+    {
+      "name": "Save still runs while Resume takes effect",
+      "passed": true
+    },
+    {
+      "name": "acknowledge Resume request",
+      "passed": true,
+      "milliseconds": 52.916935000001104
+    },
+    {
+      "name": "Save finishes successfully while paused",
+      "passed": true
+    },
+    {
+      "name": "Save completion preserves paused status",
+      "passed": true
+    },
+    {
+      "name": "Save completion does not resume guest time",
+      "passed": true
+    },
+    {
+      "name": "acknowledge Pause request",
+      "passed": true,
+      "milliseconds": 65.42540399999962
+    },
+    {
+      "name": "normal Resume still works after Save",
+      "passed": true
+    },
+    {
+      "name": "saved snapshot reloads as the real phone",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "jitBefore": {
+    "enabled": true,
+    "generation": 1,
+    "regions": 511,
+    "bytes": 12341313,
+    "retired": 3069060,
+    "calls": 392710
+  },
+  "captureMetrics": {
+    "type": "metrics",
+    "mips": 3.8701449130464054,
+    "fps": 0,
+    "guestRate": 0.9963110467038265,
+    "cycles": "11208872467",
+    "memory": 643039232,
+    "jit": {
+      "enabled": true,
+      "generation": 1,
+      "regions": 511,
+      "bytes": 12341313,
+      "retired": 3069060,
+      "calls": 392710
+    },
+    "serial": "",
+    "captureMs": 272.6000000014901,
+    "captureChunkMs": 5.100000001490116,
+    "finalizeMs": 529
+  },
+  "passed": true,
+  "video": "/home/vercel-sandbox/iphone-1/.context/snapshot-page-scan/browser-1-baseline/page@82e6f6ef7f1c82080bde9aa7bf78dba5.webm"
+}

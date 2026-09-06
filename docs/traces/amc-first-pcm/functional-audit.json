@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "Original media sample parser + prior independently packetized decoder PCM + exact upload and intentional SRAM write masks. One buffer, before host consumption; no playback or sample-clock claim.",
+  "mediaSHA256": "56dece4e074bf622e0eb815331c65fb6c4e653e33b827e9a1ef30c4e0063136e",
+  "inputBytes": 16384,
+  "inputSHA256": "49aea839363fa9d716f314882fbf4bd466f27a0d6affe8e7339bd59a15fe51a9",
+  "decodedFrames": 2,
+  "decodedBytes": 348,
+  "queuedBytes": 16036,
+  "pcmBytes": 4096,
+  "pcmSHA256": "2ce90c8f574188134ae90dc6a79e045c8e75c99c05ed28a466669d381f7ec372",
+  "nonzeroPCMBytes": 178,
+  "unchangedSRAMBytes": 176108,
+  "maskByteCounts": [
+    12,
+    4100,
+    8
+  ],
+  "negativeControls": "Separate artifact-mutant executions are reported by launch.py"
+}

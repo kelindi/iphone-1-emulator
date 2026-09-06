@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "scope": "Root independent parser: exact ordered actual successful CMD52 responses, monotonic complete events; no register6/runtime transfer/interface claim",
+  "events": 22919,
+  "sha256": "c92482f0414171909c7f453e322e8015263f5e6038eb42769eb6c03b794eac82",
+  "responses": [
+    {
+      "register": "0x20",
+      "value": "0x1009",
+      "cycles": 17517137155
+    },
+    {
+      "register": "0x10",
+      "value": "0x1000",
+      "cycles": 17517179045
+    },
+    {
+      "register": "0x11",
+      "value": "0x1000",
+      "cycles": 17517220929
+    },
+    {
+      "register": "0x34",
+      "value": "0x10dc",
+      "cycles": 17517263365
+    },
+    {
+      "register": "0x35",
+      "value": "0x10fe",
+      "cycles": 17517305259
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+--- stage-h/run-1/source/probe.c
++++ stage-i/source/probe.c
+@@ -10,6 +10,7 @@
+ #include "amc_engine.h"
+ #include "consume.h"
+ #include "peek.h"
++#include "capture.h"
+ #include <setjmp.h>
+ static arm_bus_t original;
+ static amc_sram_t sram, expected;
+@@ -88,6 +89,17 @@
+   dependencies(c);
+   if(engine_started){
+    bool starting=a==0x3850100c&&w==4&&v==1;
++   if(starting&&first_saved){
++    /* Observation only. No MMIO read, engine admission, or guest mutation. */
++    size_t offset=0,bytes=0;
++    if(!capture_span(&physical,engine.staged_address,engine.staged_words,&offset,&bytes)||bytes!=16384)
++     stop("second input observation bounds",a,v,w);
++    if(machine.cpu.cycles!=9873247421ull||first_publication_cycles!=9873234585ull||machine.cpu.r[15]!=0xc0278130u||machine.cpu.r[14]!=0xc0274874u)
++     stop("second input observation prefix differs",a,v,w);
++    dumpfile("second-input.bin",physical.bytes+offset,bytes);
++    printf("CAPTURE second address%08x words%u bytes%zu cycles%llu ticks%llu pc%08x lr%08x cpsr%08x firstPublication%llu\n",engine.staged_address,engine.staged_words,bytes,(unsigned long long)machine.cpu.cycles,(unsigned long long)machine.timer.ticks,machine.cpu.r[15],machine.cpu.r[14],machine.cpu.cpsr,(unsigned long long)first_publication_cycles);
++    printf("CAPTURE preadmission initialized%u configured%u dmaActive%u dmaStart%08x dmaWords%u copiedWords%u copiedBytes%llu queueBytes%zu inputPending%u inputPhase%u transport%u events%08x mask%08x decodedBytes%llu published%llu\n",engine.initialized,engine.configured,engine.dma_active,engine.dma_start,engine.dma_words,engine.copied_words,(unsigned long long)engine.copied_bytes,engine.queue_used,engine.input_pending,engine.input_phase,engine.transport_enabled,engine.events,engine.mask,(unsigned long long)engine.decoded_bytes,(unsigned long long)engine.published_frames);
++   }
+    if(starting&&(!input_seen||first_input_cycles||engine.staged_address!=input_address||engine.staged_words!=input_words))stop("unexpected first DMA request",a,v,w);
+    /* Capture the actual physical span immediately before acceptance. Private
+     * guest descriptor/packet objects are evidence only, never decoder inputs. */
