@@ -1,0 +1,62 @@
+--- stage-j/source/probe.c
++++ stage-k/source/probe.c
+@@ -12,6 +12,7 @@
+ #include "peek.h"
+ #include "capture.h"
+ #include "admission.h"
++#include "ordering.h"
+ #include <setjmp.h>
+ static arm_bus_t original;
+ static amc_sram_t sram, expected;
+@@ -33,6 +34,7 @@
+ static uint64_t first_publication_cycles,release_cycles;
+ static uint32_t release_pc,release_cpsr,release_index,release_driver,copy_dst,copy_src,copy_count,copy_cpsr;
+ static const char *reference;
++static order_log ordering;
+ static void first_boundary(void);
+ static void continuation_read(uint32_t,unsigned,uint32_t);
+ static bool continuation_hook(void*);
+@@ -343,6 +345,12 @@
+    if(first_saved&&machine.cpu.cycles-first_publication_cycles>=5000000)stop("post-publication retirement cap",0,0,0);
+    uint64_t before=machine.cpu.cycles;in_guest=true;emu_run(1);in_guest=false;
+    if(machine.cpu.cycles!=before+1)stop("unexpected one-step retirement",0,0,0);
++   if(ordering.pending){
++    if(order_finish(&ordering,&machine.cpu)!=ORDER_OK)stop("ordering retirement boundary differs",0,ordering.count,0);
++    const order_record*r=&ordering.records[ordering.count-1];
++    printf("ORDER record%u retired%u pc%08x cpsr%08x cycles%llu afterPC%08x afterCPSR%08x afterCycles%llu driver%08x state%08x output0%08x output1%08x flags%04x",ordering.count,r->retired,r->pc,r->cpsr,(unsigned long long)r->cycles,r->after_pc,r->after_cpsr,(unsigned long long)r->after_cycles,r->driver,r->state,r->output[0],r->output[1],r->flags);
++    for(unsigned n=0;n<16;n++)printf(" r%u=%08x",n,r->regs[n]);putchar('\n');
++   }
+    service_boundary();if(result==6)break;
+   }
+   if(result!=6)stop("run call cap",0,0,0);
+@@ -361,5 +369,7 @@
+  printf("BOUNDARY result%u interruptedInstruction%u startCycles%llu commandCycles%llu firstInputCycles%llu totalRetired%llu\n",result,in_guest,(unsigned long long)start_cycles,(unsigned long long)command_cycles,(unsigned long long)first_input_cycles,(unsigned long long)(machine.cpu.cycles-start_cycles));
+  dumpfile("read-coverage.bin",consumed.coverage,CONSUME_BYTES);dumpfile("read-bytes.bin",consumed.seen,CONSUME_BYTES);dumpfile("read-ledger.bin",read_ledger,consumed.reads*sizeof(read_record));
+  printf("CONSUMPTION result%u covered%u reads%u ipc%u copy%u acknowledged%u enabled%u service%u releasePending%u releaseCycles%llu retiredCycles%llu releasePC%08x releaseCPSR%08x index%u driver%08x published%llu\n",result,consumed.covered,consumed.reads,ipc_complete,copy_complete,output_ack,output_enabled,service_requested,release_pending,(unsigned long long)release_cycles,(unsigned long long)machine.cpu.cycles,release_pc,release_cpsr,release_index,release_driver,(unsigned long long)engine.published_frames);
++ dumpfile("ordering.bin",ordering.records,ordering.count*sizeof(order_record));
++ printf("ORDER summary records%u cap%u\n",ordering.count,ORDER_CAP);
+  amc_engine_destroy(&engine);machine.bus=original;release_machine();return result==6?0:10;
+ }
+--- stage-j/source/continuation.inc
++++ stage-k/source/continuation.inc
+@@ -35,7 +35,7 @@
+  char block[4096];size_t count;while((count=fread(block,1,sizeof block,from)))if(fwrite(block,1,count,to)!=count)stop("prefix trace write",0,0,0);
+  if(ferror(from)||fclose(from)||fclose(to))stop("prefix trace close",0,0,0);
+  first_saved=true;first_publication_cycles=machine.cpu.cycles;consume_begin(&consumed,sram.bytes+AMC_OUTPUT0);
+- uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084};
++ uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084,0xc027602c,0xc027619c,0xc02761c0,0xc02761c4,0xc0274778,0xc0274878};
+  if(!s5l8900_set_pre_step_hook(&machine,continuation_hook,NULL,targets,sizeof targets/sizeof targets[0]))stop("continuation hook install",0,0,0);
+  puts("CONTINUE frozen075 boundary matched; real pending IRQ and normal guest execution follow");
+ }
+@@ -49,6 +49,11 @@
+  }
+ }
+ static bool continuation_hook(void*ctx){(void)ctx;uint32_t pc=machine.cpu.r[15];
++ if(order_target(pc)){
++  if(order_begin(&ordering,&machine.cpu,machine.ram,machine.ram_base,machine.ram_size,verified_driver)!=ORDER_OK)stop("ordering observer invalid/cap/peek",pc,ordering.count,4);
++  return false;
++ }
++
+  printf("CONSUMER HOOK pc%08x r0%08x r1%08x r2%08x r3%08x cpsr%08x\n",pc,machine.cpu.r[0],machine.cpu.r[1],machine.cpu.r[2],machine.cpu.r[3],machine.cpu.cpsr);
+  if(pc==0xc0278084)stop("second input requires new witness",machine.cpu.r[0],machine.cpu.r[1],4);
+  if(pc==0xc0271ee0){ipc_pending=machine.cpu.r[0]==verified_driver&&machine.cpu.r[1]==1&&machine.cpu.r[2]==0&&machine.cpu.r[3]==2048;}

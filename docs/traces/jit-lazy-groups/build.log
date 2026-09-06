@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "groupSize": 32,
+  "sourcePins": {
+    "originalCompilerSha256": "b68ddff5c7b0a5aa52b87ba1ba8ae3b72457ec74e2b1cfe9dc4d33ae3f22c170",
+    "candidateCompilerSha256": "9dd27ab14e35f2cf23120d58e430815c7d0ce0acbd6e052b3c2c7996a41cb762",
+    "scope": "isolated seed emitter only; exact original basic-block construction and instruction bodies"
+  },
+  "variants": {
+    "original": {
+      "moduleBytes": 12341313,
+      "moduleSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "definitionsSha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "publicFunctions": 512,
+      "definedFunctions": 512,
+      "functionBodies": {
+        "sum": 12335495,
+        "median": 22589,
+        "p95": 50596,
+        "max": 67111
+      },
+      "splitRegions": 0
+    },
+    "candidate": {
+      "moduleBytes": 12700227,
+      "moduleSha256": "712bca3af641916c88bbdc19dbbc47ca9761d7cc038c68d89f2e4fbcf0938881",
+      "definitionsSha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+      "publicFunctions": 512,
+      "definedFunctions": 1100,
+      "functionBodies": {
+        "sum": 12692531,
+        "median": 10762,
+        "p95": 26640,
+        "max": 41235
+      },
+      "splitRegions": 265
+    }
+  },
+  "scope": "Exact original seed reproduction and identical public admission masks; structural body-size measurements only, no execution or speed result"
+}

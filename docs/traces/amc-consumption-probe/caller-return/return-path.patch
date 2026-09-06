@@ -1,0 +1,67 @@
+--- stage-k/source/probe.c
++++ stage-l/source/probe.c
+@@ -348,7 +348,7 @@
+    if(ordering.pending){
+     if(order_finish(&ordering,&machine.cpu)!=ORDER_OK)stop("ordering retirement boundary differs",0,ordering.count,0);
+     const order_record*r=&ordering.records[ordering.count-1];
+-    printf("ORDER record%u retired%u pc%08x cpsr%08x cycles%llu afterPC%08x afterCPSR%08x afterCycles%llu driver%08x state%08x output0%08x output1%08x flags%04x",ordering.count,r->retired,r->pc,r->cpsr,(unsigned long long)r->cycles,r->after_pc,r->after_cpsr,(unsigned long long)r->after_cycles,r->driver,r->state,r->output[0],r->output[1],r->flags);
++    printf("ORDER record%u retired%u pc%08x cpsr%08x cycles%llu afterPC%08x afterCPSR%08x afterCycles%llu driver%08x state%08x output0%08x output1%08x flags%04x frame%08x savedLR%08x",ordering.count,r->retired,r->pc,r->cpsr,(unsigned long long)r->cycles,r->after_pc,r->after_cpsr,(unsigned long long)r->after_cycles,r->driver,r->state,r->output[0],r->output[1],r->flags,r->frame,r->saved_lr);
+     for(unsigned n=0;n<16;n++)printf(" r%u=%08x",n,r->regs[n]);putchar('\n');
+    }
+    service_boundary();if(result==6)break;
+--- stage-k/source/continuation.inc
++++ stage-l/source/continuation.inc
+@@ -35,7 +35,7 @@
+  char block[4096];size_t count;while((count=fread(block,1,sizeof block,from)))if(fwrite(block,1,count,to)!=count)stop("prefix trace write",0,0,0);
+  if(ferror(from)||fclose(from)||fclose(to))stop("prefix trace close",0,0,0);
+  first_saved=true;first_publication_cycles=machine.cpu.cycles;consume_begin(&consumed,sram.bytes+AMC_OUTPUT0);
+- uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084,0xc027602c,0xc027619c,0xc02761c0,0xc02761c4,0xc0274778,0xc0274878};
++ uint32_t targets[]={0xc0271fa4,0xc0273898,0xc0271ee0,0xc0271f30,0xc027249c,0xc027251c,0xc02726d4,0xc0273a50,0xc0273a54,0xc0278084,0xc027602c,0xc0276030,0xc0276040,0xc027604c,0xc0274778,0xc0274878};
+  if(!s5l8900_set_pre_step_hook(&machine,continuation_hook,NULL,targets,sizeof targets/sizeof targets[0]))stop("continuation hook install",0,0,0);
+  puts("CONTINUE frozen075 boundary matched; real pending IRQ and normal guest execution follow");
+ }
+--- stage-k/source/ordering.c
++++ stage-l/source/ordering.c
+@@ -1,6 +1,6 @@
+ #include "ordering.h"
+ #include <string.h>
+-bool order_target(uint32_t pc){switch(pc){case 0xc027602c:case 0xc027619c:case 0xc02761c0:case 0xc02761c4:case 0xc0274778:case 0xc0274878:return true;default:return false;}}
++bool order_target(uint32_t pc){switch(pc){case 0xc027602c:case 0xc0276030:case 0xc0276040:case 0xc027604c:case 0xc0274778:case 0xc0274878:return true;default:return false;}}
+ static uint32_t u32(const uint8_t*b){return b[0]|(uint32_t)b[1]<<8|(uint32_t)b[2]<<16|(uint32_t)b[3]<<24;}
+ order_result order_begin(order_log*log,const arm_cpu_t*cpu,const uint8_t*ram,uint32_t base,uint32_t size,uint32_t driver){
+  if(!log||!cpu||!ram||log->pending||log->count>=ORDER_CAP||!order_target(cpu->r[15])||(cpu->cpsr&0x3fu)!=0x13u||(uint64_t)driver+0x24f>0x100000000ull)return ORDER_REJECT;
+@@ -10,13 +10,19 @@
+  uint8_t state[4],output[8],flags[2];
+  if(!amc_peek_ram(cpu,ram,base,size,driver+0xe0,state,sizeof state)||!amc_peek_ram(cpu,ram,base,size,driver+0x15c,output,sizeof output)||!amc_peek_ram(cpu,ram,base,size,driver+0x24d,flags,sizeof flags))return ORDER_REJECT;
+  order_record record={0};record.pc=cpu->r[15];record.cpsr=cpu->cpsr;memcpy(record.regs,cpu->r,sizeof record.regs);record.driver=driver;record.state=u32(state);record.output[0]=u32(output);record.output[1]=u32(output+4);record.flags=flags[0]|(uint32_t)flags[1]<<8;record.cycles=cpu->cycles;
++ if(cpu->r[15]>=0xc027602cu&&cpu->r[15]<=0xc027604cu){
++  uint8_t saved[4];if((uint64_t)cpu->r[7]+8>0x100000000ull||!amc_peek_ram(cpu,ram,base,size,cpu->r[7]+4,saved,4))return ORDER_REJECT;
++  record.frame=cpu->r[7];record.saved_lr=u32(saved);
++ }
+  log->staged=record;log->pending=true;return ORDER_OK;
+ }
+ 
+ order_result order_finish(order_log*log,const arm_cpu_t*cpu){
+  if(!log||!cpu||!log->pending||log->count>=ORDER_CAP||cpu->cycles!=log->staged.cycles+1)return ORDER_REJECT;
+  order_record record=log->staged;record.after_pc=cpu->r[15];record.after_cpsr=cpu->cpsr;record.after_cycles=cpu->cycles;
+- uint32_t expected=record.pc==0xc02761c0u?0xc0277284u:record.pc+4;
+- record.retired=(cpu->cpsr&0x3fu)==0x13u&&cpu->r[15]==expected;
++ uint32_t expected=record.pc+4,mode=0x13;
++ if(record.pc==0xc0276030u)expected=record.cpsr&(1u<<30)?0xc0276040u:0xc0276034u;
++ if(record.pc==0xc027604cu){mode|=(record.saved_lr&1u)<<5;expected=record.saved_lr&((record.saved_lr&1u)?~1u:~3u);}
++ record.retired=(cpu->cpsr&0x3fu)==mode&&cpu->r[15]==expected;
+  log->records[log->count++]=record;log->pending=false;return ORDER_OK;
+ }
+--- stage-k/source/ordering.h
++++ stage-l/source/ordering.h
+@@ -2,8 +2,8 @@
+ #define AMC_ORDERING_H
+ #include "peek.h"
+ enum {ORDER_CAP=128};
+-typedef struct {uint32_t pc,cpsr,regs[16],driver,state,output[2],flags,retired;uint64_t cycles;uint32_t after_pc,after_cpsr;uint64_t after_cycles;} order_record;
+-_Static_assert(sizeof(order_record)==120,"fixed observation record ABI");
++typedef struct {uint32_t pc,cpsr,regs[16],driver,state,output[2],flags,retired,frame,saved_lr;uint64_t cycles;uint32_t after_pc,after_cpsr;uint64_t after_cycles;} order_record;
++_Static_assert(sizeof(order_record)==128,"fixed observation record ABI");
+ typedef struct {unsigned count;bool pending;order_record staged;order_record records[ORDER_CAP];} order_log;
+ typedef enum {ORDER_OK,ORDER_REJECT} order_result;
+ bool order_target(uint32_t);

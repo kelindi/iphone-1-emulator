@@ -1,0 +1,13 @@
+{
+  "command": [
+    ".context/rtc-contract/setter-observer/probe",
+    ".context/rtc-contract/browser-2/before-manual-change.snap"
+  ],
+  "exitCode": 10,
+  "timedOut": false,
+  "wallSeconds": 33.46181079099915,
+  "instructionLimit": 400000000,
+  "wallLimit": 60,
+  "cpuLimit": 50,
+  "automaticRetry": false
+}

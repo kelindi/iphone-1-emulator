@@ -180,16 +180,19 @@ static void finish_transaction(s5l_mtz1_t *d) {
                 if (id == 0xabu) d->operating_mode = d->rx[4];
             }
         }
-        if (op != 0x46u && op != 0x64u && op != 0x65u) {
-            if (d->pending_len) {
-                d->pending_len = 0u;
-                d->frames_read++;
-            }
-            d->atn = false;
-        } else {
-            d->atn_pulse = false;
-            if (!d->pending_len) d->atn = false;
+        /* A length probe or an unrelated report transaction must not eat
+         * the only queued contact frame. Nor may a short data read consume
+         * it: the guest must receive the complete payload and checksum. The
+         * default opcode path in firmware_byte is also a result-data read. */
+        bool length_read = op == 0x46u || op == 0x64u || op == 0x65u;
+        bool report = op == 0xd0u || op == 0x8fu || op == 0x82u || op == 0x92u;
+        if (!length_read && !report && d->pending_len &&
+            d->rx_len >= (unsigned)d->pending_len + 3u) {
+            d->pending_len = 0u;
+            d->frames_read++;
         }
+        d->atn_pulse = false;
+        d->atn = d->pending_len != 0u;
         if (d->trace)
             fprintf(stderr, "[mtz1] firmware op=%02x id=%02x len=%u pending=%u\n",
                     op, d->rx_len > 1u ? d->rx[1] : 0u,
@@ -363,32 +366,79 @@ bool s5l_mtz1_irq(const s5l_mtz1_t *dev) {
     return dev && dev->atn;
 }
 
-bool s5l_mtz1_set_contacts(s5l_mtz1_t *d, const s5l_mt_contact_t *c,
-                           unsigned n) {
-    s5l_mt_contact_t first[MTZ2_CONTACT_MAX];
-    unsigned len;
-    if (!d || !d->firmware) return false;
-    if (!n) {
-        if (!d->held_n) return false;
-        d->lift_pending = true;
-        return true;
-    }
-    if (!c || n > MTZ2_CONTACT_MAX) return false;
+/* last_contacts is the immutable most recently queued report; held is the
+ * complete current physical contact set. Both already travel in snapshots.
+ * Contact IDs, rather than array positions, determine the lifecycle. */
+static const s5l_mt_contact_t *find_contact(const s5l_mt_contact_t *c,
+                                           unsigned n, unsigned id) {
+    for (unsigned i = 0; i < n; i++)
+        if (c[i].id == id && c[i].phase != MTZ2_PHASE_BREAK_TOUCH)
+            return &c[i];
+    return NULL;
+}
+
+static bool queue_contact_frame(s5l_mtz1_t *d,
+                                 const s5l_mt_contact_t *contacts, unsigned n) {
+    s5l_mt_contact_t frame[MTZ2_CONTACT_MAX];
+    uint8_t payload[MTZ2_PAYLOAD_LIMIT];
+    unsigned count = 0u;
     if (d->pending_len) return false;
-    memcpy(first, c, n * sizeof first[0]);
-    for (unsigned i = 0; i < n; i++) first[i].phase = MTZ2_PHASE_MAKE_TOUCH;
+    /* The encoder restricts IDs to 1..5, so the old/new union fits a frame. */
+    for (unsigned id = 1u; id <= MTZ2_CONTACT_MAX; id++) {
+        const s5l_mt_contact_t *old = find_contact(d->last_contacts, d->last_n, id);
+        const s5l_mt_contact_t *next = find_contact(contacts, n, id);
+        if (!old && !next) continue;
+        frame[count] = next ? *next : *old;
+        frame[count].phase = next ? (old ? MTZ2_PHASE_TOUCHING :
+                                         MTZ2_PHASE_MAKE_TOUCH) :
+                                   MTZ2_PHASE_BREAK_TOUCH;
+        if (!next) frame[count].pressure = 0u;
+        count++;
+    }
+    if (!count) return false;
     uint32_t stamp = d->uptime_ms;
+    if (!stamp) stamp = 1u;
     if (d->frames_queued && stamp <= d->frame_ms) stamp = d->frame_ms + 1u;
-    len = s5l_mt_frame_encode_ce(&d->geom, first, n,
-                                 (uint8_t)(d->frame_seq + 1u),
-                                 stamp, d->pending);
+    unsigned len = s5l_mt_frame_encode_ce(&d->geom, frame, count,
+                                         (uint8_t)(d->frame_seq + 1u),
+                                         stamp, payload);
     if (!len) return false;
-    memcpy(d->held, first, n * sizeof d->held[0]);
-    d->held_n = (uint8_t)n;
-    d->lift_pending = false;
-    d->tick_acc = 0u;
-    memcpy(d->last_contacts, first, n * sizeof d->last_contacts[0]);
-    d->last_n = (uint8_t)n;
+    /* OS1 reconstructs motion from the CE velocity fields, not successive
+     * positions alone (_mt_FillPathTrajectoriesFromBinaryFrame). Its signed
+     * halfwords are doubled then scaled by 1/16 mm/s; positions use 1/100 mm.
+     * Therefore wire velocity is position_delta * 80 / elapsed_ms. Keeping
+     * these fields zero makes a drag look stationary and selects its endpoint.
+     * Encode the previous contacts through the same geometry so this remains
+     * correct for each sensor grid without another coordinate transform. */
+    if (d->last_n && stamp != d->frame_ms) {
+        uint8_t previous[MTZ2_PAYLOAD_LIMIT];
+        unsigned previous_len = s5l_mt_frame_encode_ce(&d->geom,
+            d->last_contacts, d->last_n, d->frame_seq, d->frame_ms, previous);
+        uint32_t elapsed = stamp - d->frame_ms;
+        for (unsigned i = 0u; previous_len && i < count; i++) {
+            if (frame[i].phase != MTZ2_PHASE_TOUCHING) continue;
+            for (unsigned j = 0u; j < d->last_n; j++) {
+                if (d->last_contacts[j].id != frame[i].id) continue;
+                uint8_t *r = payload + MTZ1_FRAME_HEADER + i * MTZ2_CONTACT_STRIDE;
+                const uint8_t *old = previous + MTZ1_FRAME_HEADER + j * MTZ2_CONTACT_STRIDE;
+                for (unsigned axis = 0u; axis < 2u; axis++) {
+                    unsigned at = 4u + axis * 2u;
+                    int32_t delta = (int16_t)(r[at] | (r[at + 1u] << 8)) -
+                                    (int16_t)(old[at] | (old[at + 1u] << 8));
+                    int64_t velocity = (int64_t)delta * 80 / elapsed;
+                    if (velocity > INT16_MAX) velocity = INT16_MAX;
+                    if (velocity < INT16_MIN) velocity = INT16_MIN;
+                    uint16_t wire = (uint16_t)(int16_t)velocity;
+                    r[at + 4u] = (uint8_t)wire;
+                    r[at + 5u] = (uint8_t)(wire >> 8);
+                }
+                break;
+            }
+        }
+    }
+    memcpy(d->pending, payload, len);
+    memcpy(d->last_contacts, frame, count * sizeof frame[0]);
+    d->last_n = (uint8_t)count;
     d->pending_len = (uint8_t)len;
     d->frame_seq++;
     d->frame_ms = stamp;
@@ -397,30 +447,34 @@ bool s5l_mtz1_set_contacts(s5l_mtz1_t *d, const s5l_mt_contact_t *c,
     return true;
 }
 
-static bool queue_held_frame(s5l_mtz1_t *d, uint8_t phase,
-                             bool clear_pressure) {
-    s5l_mt_contact_t frame[MTZ2_CONTACT_MAX];
-    unsigned len;
-    if (!d || !d->held_n || d->pending_len) return false;
-    memcpy(frame, d->held, d->held_n * sizeof frame[0]);
-    for (unsigned i = 0; i < d->held_n; i++) {
-        frame[i].phase = phase;
-        if (clear_pressure) frame[i].pressure = 0u;
+bool s5l_mtz1_set_contacts(s5l_mtz1_t *d, const s5l_mt_contact_t *c,
+                           unsigned n) {
+    if (!d || !d->firmware || n > MTZ2_CONTACT_MAX || (n && !c))
+        return false;
+    if (!n) {
+        /* Releases are never lost under backpressure. The pending make/move
+         * must be consumed before its break report can replace it. */
+        if (d->held_n) d->lift_pending = true;
+        return true;
     }
-    uint32_t stamp = d->uptime_ms;
-    if (d->frames_queued && stamp <= d->frame_ms) stamp = d->frame_ms + 1u;
-    len = s5l_mt_frame_encode_ce(&d->geom, frame, d->held_n,
-                                 (uint8_t)(d->frame_seq + 1u),
-                                 stamp,
-                                 d->pending);
-    if (!len) return false;
-    memcpy(d->last_contacts, frame, d->held_n * sizeof d->last_contacts[0]);
-    d->last_n = d->held_n;
-    d->pending_len = (uint8_t)len;
-    d->frame_seq++;
-    d->frame_ms = stamp;
-    d->frames_queued++;
-    d->atn = true;
+    unsigned ids = 0u;
+    for (unsigned i = 0; i < n; i++) {
+        if (!c[i].id || c[i].id > MTZ2_CONTACT_MAX ||
+            c[i].x >= S5L_MT_PANEL_W || c[i].y >= S5L_MT_PANEL_H ||
+            c[i].phase > MTZ2_PHASE_OUT_OF_RANGE ||
+            (ids & (1u << c[i].id))) return false;
+        ids |= 1u << c[i].id;
+    }
+    if (d->pending_len || d->lift_pending) return false;
+    /* Treat this API as the full active set; callers' phases cannot turn an
+     * ordinary move into a second make or omit another finger's break. */
+    s5l_mt_contact_t active[MTZ2_CONTACT_MAX];
+    memcpy(active, c, n * sizeof active[0]);
+    for (unsigned i = 0; i < n; i++) active[i].phase = MTZ2_PHASE_TOUCHING;
+    if (!queue_contact_frame(d, active, n)) return false;
+    memcpy(d->held, active, n * sizeof d->held[0]);
+    d->held_n = (uint8_t)n;
+    d->tick_acc = 0u;
     return true;
 }
 
@@ -446,11 +500,11 @@ void s5l_mtz1_tick(s5l_mtz1_t *d, uint32_t tb_ticks) {
     d->tick_acc = 0u;
     if (d->pending_len) return;
     if (d->lift_pending) {
-        if (queue_held_frame(d, MTZ2_PHASE_BREAK_TOUCH, true)) {
+        if (queue_contact_frame(d, NULL, 0u)) {
             d->held_n = 0u;
             d->lift_pending = false;
         }
     } else if (d->held_n) {
-        (void)queue_held_frame(d, MTZ2_PHASE_TOUCHING, false);
+        (void)queue_contact_frame(d, d->held, d->held_n);
     }
 }

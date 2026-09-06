@@ -1,0 +1,68 @@
+{
+  "observedUTC": "2026-09-06 04:48:19 UTC",
+  "source": "Root actual ps -eo pid,ppid,pcpu,etime,comm --sort=-pcpu output",
+  "externalCodexPID": 3144844,
+  "rows": [
+    {
+      "pid": 3262696,
+      "ppid": 3262518,
+      "cpuPercent": 121,
+      "elapsed": "00:24",
+      "comm": "chrome"
+    },
+    {
+      "pid": 3262707,
+      "ppid": 3262517,
+      "cpuPercent": 121,
+      "elapsed": "00:24",
+      "comm": "chrome"
+    },
+    {
+      "pid": 3262566,
+      "ppid": 3262513,
+      "cpuPercent": 52.6,
+      "elapsed": "00:24",
+      "comm": "chrome"
+    },
+    {
+      "pid": 3262755,
+      "ppid": 3262304,
+      "cpuPercent": 32.7,
+      "elapsed": "00:24",
+      "comm": "ffmpeg-linux"
+    },
+    {
+      "pid": 3262304,
+      "ppid": 3144844,
+      "cpuPercent": 14.1,
+      "elapsed": "00:25",
+      "comm": "MainThread"
+    },
+    {
+      "pid": 3262305,
+      "ppid": 3144844,
+      "cpuPercent": 3.4,
+      "elapsed": "00:25",
+      "comm": "MainThread"
+    },
+    {
+      "pid": 3262388,
+      "ppid": 3262304,
+      "cpuPercent": 16.4,
+      "elapsed": "00:24",
+      "comm": "chrome"
+    },
+    {
+      "pid": 3262390,
+      "ppid": 3262305,
+      "cpuPercent": 12.4,
+      "elapsed": "00:24",
+      "comm": "chrome"
+    }
+  ],
+  "separateV2Parent": 3217764,
+  "separateV2Node": 3264881,
+  "externalSessionName": "Web UI Minimalist Redesign",
+  "externalSessionID": "a582a202-22a8-496e-91e0-7b33759d9f50",
+  "scope": "Verified external browser/encoding workload during V2. Percentages are process lifetime averages from ps, not interval samples. Full overlap start/end pending external agent receipt. Whole ABBA cannot establish quiet speed acceptance."
+}

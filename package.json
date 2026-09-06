@@ -1,0 +1,28 @@
+{
+  "name": "iphone-1-browser",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node tools/web-server.mjs",
+    "test:web": "node web/smoke.mjs",
+    "test:unit": "node --test web/tests/*.test.mjs",
+    "test:browser": "node web/tests/browser.mjs",
+    "test:persistence": "node web/tests/persistence.mjs",
+    "test:offline": "node web/tests/offline.mjs",
+    "test:capture": "node web/tests/capture.mjs",
+    "test:controls": "node web/tests/controls.mjs",
+    "test:performance": "node web/tests/performance.mjs",
+    "test:clock": "node web/tests/clock-lifecycle.mjs",
+    "test:offline-update": "node web/tests/offline-update.mjs",
+    "test:save-pause": "node web/tests/save-pause.mjs",
+    "test:calculator": "node web/tests/calculator.mjs",
+    "test:notes": "node web/tests/organizer.mjs --notes",
+    "test:jit-replay": "node tools/jit/replay.mjs",
+    "test:checkpoint-worker": "node web/tests/checkpoint-worker.mjs"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "5.2.0",
+    "playwright": "1.63.0",
+    "wabt": "1.0.39"
+  }
+}

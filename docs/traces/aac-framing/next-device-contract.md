@@ -1,0 +1,68 @@
+# After070: bounded functional audio-engine contract for review
+
+2026-09-06. Source investigation only. No decoder was built or run, no register admission was extended, and no production file or snapshot was changed. The accepted070 stop remains the original input-enable STR reaching the handler without acceptance or retirement. That disposable state is not resumable. This document separates established host ABI, proposed functional policy, and remaining prerequisites.
+
+## Concrete source findings
+
+The original IOAudio2 dictionary-to-record routine at `c022a840` names each format field. AppleAMC's validator at `c0272ebc` requires `lpcm`, flags `0xc`, 16 bits/channel, two channels/frame, one frame/packet, and four bytes/frame and bytes/packet. Apple's published PCM flag values make this **signed 16-bit little-endian interleaved stereo**, not an assumed desktop IOAudioFamily structure. The validator accepts 48 kHz among several rates. Its rate record is two words; this investigation does not reinterpret that as a desktop Float64. See [Apple's format flag definitions](https://developer.apple.com/documentation/quicktime-file-format/sound_sample_description_version_2), `ioaudio2-format-fields-dis.txt`, and `output-format-validator-dis.txt`.
+
+The actual output copy at `c0273994..c0273a50` reads header+c/e as a halfword, doubles it, and copies that many bytes using the original memcpy. A published count therefore represents **16-bit sample units**, not bytes or stereo frames: 1,024 stereo frames would occupy 2,048 units / 4,096 bytes. This does not claim every compressed packet necessarily produces that amount; actual decoder results must determine publication. Evidence: `output-copy-units-dis.txt` and original symbol map.
+
+`output-ownership-dis.txt` preserves release and resume paths. The assertion at `c0272558` names the ownership pointer (and checks the pointer itself, not a zero ownership value). Release at `c0272694..26a8` and resume at `c02764bc..64d4` write ownership halfwords to1 before service. The output handler converts nonzero ownership to private state1 and zero to state2. Together these support **1 = available to engine; 0 = returned to host**. Initial DSP publication was not captured. Initial ownership1 / count0 is a proposed functional initialization consistent with these consumers, not a silicon observation.
+
+## Explicit SRAM allocation policy
+
+Only the exact verified normal AAC program/configuration is in scope. Other codecs, including the different codec3 header, stop before mutation. This software implementation may select its own compatible buffer locations; it must not claim those are the original DSP's allocation choices.
+
+| SRAM offset range, end exclusive | Proposed role |
+|---|---|
+| `f200..f220` | Conservatively reserve the entire normal output header |
+| `f220..11220` | Output0, 8,192 bytes |
+| `11220..13220` | Output1, 8,192 bytes |
+| `14000..1c000` | Reserve entire RAM_MC1 bank |
+| `1c000..28000` | Reserve entire program bank |
+| `28000..2c000` | Reserve entire RAM_MC2/session bank |
+
+The header's unsigned 16-bit relative halfword offsets would be `0x10` and `0x1010`. The original host computes physical addresses `2200f220` and `22011220` and equal capacity `0x2000`. Both buffers are aligned, disjoint, within actual SRAM, clear of all uploaded write coverage and whole-bank reservations, and leave 3,552 bytes before RAM_MC1. `allocator-arithmetic.json` records these checks against the accepted full SRAM hash and write map. Unwritten memory alone is not evidence that arbitrary DSP programs never use it; compatibility comes from restricting this to the identified software engine implementation and reserving its original banks.
+
+Pure allocation tests should cover relative-offset overflow, overlap, boundary adjacency, changed program identity, count4096 halfwords as the capacity limit, odd/non-stereo counts, and unexpected header writes. Initialization must have a precise byte write mask; it must not clear the whole SRAM or overwrite session/program data. Unknown header fields remain untouched until a consumer establishes their role.
+
+## Configuration must arrive through the device contract
+
+Normal session control is physical `2202a000`. Original type2 code at `c0273eec..40a0` maps the requested 48,000 Hz to halfword+a=3 and writes +0=`1b`, +2=2, +4=the caller argument (zero for initial input). The sample-rate enum is grounded by the original assertion and comparisons. The meanings of +0's individual bits, +2, and later nonzero +4 values are not yet established. In particular, +2=2 must not be relabeled as a channel count simply because the output is stereo.
+
+These session writes occur **after** the original bit9 wait and output-address retrieval. A later complete functional model must therefore distinguish allocated/waiting-for-configuration from decoding. It cannot require the post-ready session configuration before allocating the buffers that allow the host to supply that configuration. Conversely, allocation alone does not justify adding a ready response to the current incomplete model.
+
+The media's original DecoderSpecificInfo `1190` provides an independent offline test configuration. It is not present in the captured raw DMA prefix and must not be loaded from the file, packet descriptor, or private driver RAM by the hardware model. Device-visible sample rate is established; raw syntax can validate channel elements; exact original program identity can select an explicitly supported decoder implementation. **The supported AAC object/profile mode and channel configuration still need a complete derivation from those device-visible inputs.** A generic AAC program name is insufficient. An offline `1190` experiment can establish decoder/framing feasibility while this remains unresolved, but cannot establish a guest-configured functional engine.
+
+## Raw frame discovery without a private packet-table side channel
+
+Pinned upstream source and hashes are in `upstream/sources.json`. FAAD's public frame-info API reports consumption and decoded format. Its implementation has a state-changing error path and suppresses initial output in one startup path, so attempting incomplete input on the live decoder is unsafe. A disposable probe can discover successful boundaries while a separate persistent decoder preserves history. See [FAAD API](https://github.com/knik0/faad2/blob/3fbf62c5823d51b933d5127e8ea3b607d86f8f95/include/neaacdec.h) and [implementation](https://github.com/knik0/faad2/blob/3fbf62c5823d51b933d5127e8ea3b607d86f8f95/libfaad/decoder.c). This is a proposed experiment, not an adopted production dependency.
+
+The competing FFmpeg implementation also parses raw elements, but its internal callback can absorb trailing zero bytes; modern public packet submission does not directly provide this boundary contract. That makes a straightforward public FAAD consumption probe a narrower initial experiment. See [upstream AAC decoder](https://github.com/FFmpeg/FFmpeg/blob/c6e28adabac09745f3406ffbf3833b8ac7f3f46a/libavcodec/aac/aacdec.c).
+
+Proposed offline framing gate:
+
+1. Configure a persistent decoder and a newly disposable probe from the independently parsed original ASC, explicitly as an offline oracle test. Record this provenance in every result. No guest/MMIO integration in this phase.
+2. Give the probe only bytes actually available in a bounded input queue. Require successful raw AAC parsing, positive consumed bytes no greater than supplied length, unchanged supported profile/rate/channels, and a valid frame end before committing that range to the live decoder. Reject metadata-skip success, transport-header changes, PCE/config changes, SBR/PS, unexpected channel elements, or any unsupported mode. A decoded error is **unresolved**, not automatically NeedMore.
+3. On unresolved input, discard the probe; keep queue offset and live state unchanged. Retry only when actual new bytes arrive. Exhausted byte/attempt/time limits or explicit end-of-input produce a stopped diagnostic with the retained prefix, not consumption, zero padding or fake output. Even success is only a candidate boundary until the independent packet oracle and truncation negatives validate it.
+4. Compare consumed offsets against all 1,069 original MP4 sample sizes. Compare persistent decoded output with the same decoder fed the independently packetized control. Packet metadata is available only in that separate test oracle. Framing code receives neither sample sizes nor their count.
+5. Replay the actual first16 KiB: require exactly49 complete frames and no frame50 commit from its319/371 bytes. In this offline test only, append the independently verified missing52 original bytes and require one correct frame50 boundary. Test every truncation of this371-byte packet, bytewise and chunked delivery, garbage, trailing zeros, malformed config, no-progress success and output backpressure. A real guest continuation must later supply those bytes through its own DMA; the test must never fill a guest buffer from the file.
+
+Proposed experiment limits: one input queue of at most64 KiB, two output spans of8 KiB, at most1,069 valid frames, at most372 truncation probes for the selected boundary (empty through full), at most2,200 streaming probe attempts, and a180-second wall timeout per corpus mode. Run each mode in a disposable process with256 MiB address-space and120-second CPU limits. Allocation failure, backend bounds violation or timeout is an explicit failure. Limits are diagnostic policy, not hardware capacities inferred from the fixture. A live decoder must never be called until the scratch result passes; scratch history independence for this restricted mode is itself a test requirement. Decoder initialization/allocation and scratch synthesis cost are unmeasured.
+
+## DMA ownership, events and clock contract still to prove
+
+Input bytes accepted into model-owned storage and compressed bytes actually decoded are different counters. Current-address advancement can follow actual bounded DMA copying only; packet consumption follows successful decoding only. The original remaining-word calculation grounds start/count/current units. A completed transfer may set input pending only when its requested data has genuinely moved. With49 compressed frames and only16 KiB of output storage, output backpressure is necessary: do not overwrite ownership0 buffers, drop encoded data or mark a partially copied DMA complete to encourage another request.
+
+Output publication must first finish writing genuine decoded PCM, then write its validated halfword count, then return ownership0, and finally raise the corresponding pending event. Host release1 makes space available again. Empty startup output, decode failure, a zero-sized queue and an unserviced command cannot produce a filled-buffer event. Preserve decoder overlap/history across ordinary chunk and buffer boundaries; reset only through an accepted lifecycle.
+
+The original device tree establishes AMC's interrupt as **VIC line18**. +101c bit0 is a write1 acknowledgement; +1018 is enabled1 and disabled0 by original paths. Output handlers test +b1c bit`400` and acknowledge through +b04; service writes +b0c=`400`, while disabling writes +b10=`400`. These support a proposed masked-pending IRQ aggregation, but the full set/clear/read semantics and first actual event ordering are not yet captured. The separate startup `2000` event path must remain unproduced. A focused future event contract must prove mask versus pending storage, selective acknowledgement, coalescing, no lost pending event when masked, and IRQ deassertion without clearing unrelated sources. These cannot be supplied by a periodic fake interrupt.
+
+All progress requires the established clock gates3/4, power4, and valid idle-reset lifecycle. Decode work may be performed synchronously in bounded functional steps once the contract is complete; unknown silicon execution latency alone is not a blocker. PCM frame time is `frames / validated sample rate`, with integer fractional carry and no time advance while the relevant device clock is stopped. **Decode availability and speaker consumption are distinct clocks**: AMC may prepare buffers ahead, while the real I2S/DMA sink consumes samples. The existing ringtone route is I2S1/baseband and still lacks a modeled external frame clock. Publishing decoded data must not claim audible playback or advance speaker time by host wall time. Active reset/+0c, +10 state, BSU save/restore, session flush/end, and downstream I2S consumption remain separate unresolved contracts.
+
+## Next review boundary
+
+The immediately useful next experiment is the offline raw-framing/partial-input gate and pure allocator contracts, with the provenance limitation above. No bit9, DMA completion, output IRQ, PCM injection or core/snapshot change is proposed for that experiment. A later guest model needs: device-derived supported decoder configuration; demonstrated boundary recovery without private metadata; owned input/output resources; a reviewed mask/ack/event lifecycle; and explicit reset/clock/partial-input handling. Stop on any unproved control rather than extending the model merely to make the host proceed.
+
+Local evidence: `output-ownership-dis.txt`, `output-copy-units-dis.txt`, `output-format-validator-dis.txt`, `ioaudio2-format-fields-dis.txt`, `device-tree.txt`, `allocator-arithmetic.json`, `codec-configuration-source.json`, and the accepted070 original-kernel/media/packet audits under `../stage-d/verified/`. The frozen070 capture remains the authoritative runtime boundary; everything beyond it here is source evidence or explicitly proposed policy.

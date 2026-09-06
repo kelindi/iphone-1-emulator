@@ -1,0 +1,10 @@
+AssertionError [ERR_ASSERTION]: stale-earlier-op-on-tail-entry full state
+    at check (/home/vercel-sandbox/iphone-1/.context/jit-lazy-groups/test.cjs:55:93)
+    at async /home/vercel-sandbox/iphone-1/.context/jit-lazy-groups/test.cjs:66:41 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

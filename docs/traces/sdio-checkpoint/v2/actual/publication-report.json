@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "manifest": "private-package/manifest.json",
+  "generation": "6ef08b30e66247338f55cb9d6de853c8",
+  "machineSha256": "2cf3a7391b2972cea6e152672693b9028b4707765937b8344018d0f5929ea0d5",
+  "sidecarSha256": "9b91cff0fd310e457df7850424260cd6307e39ec08467f4e0c935725953507d8",
+  "gate": {
+    "normalRunExit": true,
+    "pc": "c0379684",
+    "instructions": 17517070017,
+    "ticks": 256764208,
+    "machineBytes": 191881187,
+    "sidecarBytes": 246287,
+    "serializationSeconds": 1,
+    "serializationLimitSeconds": 120,
+    "published": false
+  },
+  "continuation": {
+    "passed": true,
+    "stopReached": true,
+    "pc": "c038a8ec",
+    "r4": 1000,
+    "additionalInstructions": 41947204,
+    "instructionLimit": 100000000,
+    "transactionsCompared": 4581748,
+    "irqEdges": 0,
+    "architecturalStateComparisons": 5,
+    "timerTicks": 257375090,
+    "totalInstructions": 17559017221,
+    "commandCompletions": 4414,
+    "dmaCompletions": 504,
+    "mainPhase": 7,
+    "requested": 0
+  },
+  "sourcePinsVerified": 36,
+  "scope": "private checkpoint only; no production snapshot/model change or firmware readiness"
+}

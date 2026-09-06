@@ -1,0 +1,47 @@
+c0382640 push     {r4, r5, r6, r7, lr}
+c0382644 add      r7, sp, #0xc
+c0382648 str      r8, [sp, #-4]!
+c038264c sub      sp, sp, #0xc
+c0382650 mov      r4, r0
+c0382654 ldr      r2, [pc, #0x254] ; =c01d6304
+c0382658 ldr      r0, [r0, #0x2e0]
+c038265c ldr      r1, [pc, #0x250] ; =c038e400 b'local-mac-address'
+c0382660 ldr      r2, [r2]
+c0382664 ldr      ip, [r0]
+c0382668 mov      r3, #3
+c038266c mov      lr, pc
+c0382670 ldr      pc, [ip, #0x158]
+c0382674 ldr      r1, [pc, #0x23c] ; =c018dae4
+c0382678 ldr      r3, [pc, #0x23c] ; =c0120cf7
+c038267c mov      r8, #0
+c0382680 ldr      r1, [r1]
+c0382684 blx      r3
+c0382688 ldr      r1, [pc, #0x230] ; =c038e980 b'IOMACAddress'
+c038268c ldr      r3, [r4]
+c0382690 mov      r5, r0
+c0382694 mov      r2, r5
+c0382698 mov      r0, r4
+c038269c mov      lr, pc
+c03826a0 ldr      pc, [r3, #0x124]
+c03826a4 mov      r0, r4
+c03826a8 ldr      r3, [pc, #0x214] ; =c038aaf4
+c03826ac strb     r8, [r4, #0x625]
+c03826b0 blx      r3
+c03826b4 ldr      r3, [r4]
+c03826b8 mov      r0, r5
+c03826bc ldr      r6, [r3, #0x4dc]
+c03826c0 ldr      r3, [r5]
+c03826c4 mov      lr, pc
+c03826c8 ldr      pc, [r3, #0xc4]
+c03826cc mov      r2, #6
+c03826d0 ldr      r5, [pc, #0x1f0] ; =c038a094
+c03826d4 mov      r1, r0
+c03826d8 mov      r0, r4
+c03826dc blx      r6
+c03826e0 mov      r0, r4
+c03826e4 ldr      r3, [pc, #0x1e0] ; =c0389484
+c03826e8 blx      r3
+c03826ec mov      r0, r4
+c03826f0 ldr      r3, [pc, #0x1d8] ; =c0383af0
+c03826f4 blx      r3
+c03826f8 mov      r0, r4

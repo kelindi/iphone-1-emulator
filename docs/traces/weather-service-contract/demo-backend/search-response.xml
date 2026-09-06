@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<response demo="true" dataset="original-iphone-weather-demo-v1"><result id="3"><list><item><id>USCA0273|12797509</id><city>Cupertino</city><region>CA</region><regionname>California</regionname><country>US</country><countryname>United States</countryname></item></list></result></response>

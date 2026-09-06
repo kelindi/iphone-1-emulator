@@ -1,0 +1,165 @@
+c038a70c push     {r4, r5, r6, r7, lr}
+c038a710 add      r7, sp, #0xc
+c038a714 push     {r8, sl, fp}
+c038a718 sub      sp, sp, #4
+c038a71c mov      r8, r0
+c038a720 mov      r6, #0
+c038a724 ldr      r0, [r8, #0x2e0]
+c038a728 mov      r1, #0x10
+c038a72c add      r2, sp, #3
+c038a730 ldr      r3, [r0]
+c038a734 mov      lr, pc
+c038a738 ldr      pc, [r3, #0x4b0]
+c038a73c ldr      r0, [r8, #0x2e0]
+c038a740 add      r2, sp, #4
+c038a744 mov      r1, #0x11
+c038a748 ldrb     r4, [r2, #-1]!
+c038a74c ldr      r3, [r0]
+c038a750 mov      lr, pc
+c038a754 ldr      pc, [r3, #0x4b0]
+c038a758 ldrb     r3, [sp, #3]
+c038a75c add      r6, r6, #1
+c038a760 orrs     sl, r4, r3, lsl #8
+c038a764 movne    r4, #0
+c038a768 moveq    r4, #1
+c038a76c cmp      r6, #0x63
+c038a770 movgt    r5, #0
+c038a774 andle    r5, r4, #1
+c038a778 cmp      r5, #0
+c038a77c bne      #0xc038a724
+c038a780 cmp      r4, #0
+c038a784 beq      #0xc038a79c
+c038a788 ldr      r0, [pc, #0x1e8] ; =c0391658 b'%s: No transmit length from helper image.\n'
+c038a78c ldr      r1, [pc, #0x1e8] ; =c0391630 b'bool AppleMRVL868x::loadMainProgram()'
+c038a790 ldr      r3, [pc, #0x1e8] ; =c012d41f
+c038a794 blx      r3
+c038a798 b        #0xc038a960
+c038a79c add      r3, sl, #0x1f
+c038a7a0 ldr      r0, [r8, #0x2e0]
+c038a7a4 lsr      r1, r3, #5
+c038a7a8 mov      fp, r4
+c038a7ac lsl      r5, r1, #5
+c038a7b0 ldr      r3, [r0]
+c038a7b4 mov      r1, #0x20
+c038a7b8 mov      lr, pc
+c038a7bc ldr      pc, [r3, #0x4c0]
+c038a7c0 ldr      r3, [pc, #0x1bc] ; =0001deef
+c038a7c4 sub      r2, sl, #1
+c038a7c8 cmp      fp, r3
+c038a7cc cmpls    r2, #0x800
+c038a7d0 bhs      #0xc038a968
+c038a7d4 ldr      r0, [r8, #0x2f8]
+c038a7d8 mov      r1, r5
+c038a7dc mov      r2, #3
+c038a7e0 ldr      r3, [pc, #0x1a0] ; =c0147125
+c038a7e4 blx      r3
+c038a7e8 subs     r6, r0, #0
+c038a7ec beq      #0xc038a928
+c038a7f0 mov      r1, #9
+c038a7f4 mov      r0, r8
+c038a7f8 bl       #0xc0382c2c
+c038a7fc cmp      r0, #0
+c038a800 ldreq    r0, [pc, #0x184] ; =c0391684 b'AppleMRVL868x: Card status did not change to expected value.\n'
+c038a804 ldreq    r3, [pc, #0x174] ; =c012d41f
+c038a808 blxeq    r3
+c038a80c ldr      r1, [pc, #0x17c] ; =c0392d1c
+c038a810 mov      r2, sl
+c038a814 add      r1, fp, r1
+c038a818 ldr      r3, [pc, #0x174] ; =c00606d8
+c038a81c ldr      r0, [r8, #0x2f4]
+c038a820 blx      r3
+c038a824 ldr      r0, [r8, #0x2e0]
+c038a828 ldr      r1, [r8, #0x2e4]
+c038a82c mov      r2, #1
+c038a830 ldr      ip, [r0]
+c038a834 mov      r3, r6
+c038a838 mov      lr, pc
+c038a83c ldr      pc, [ip, #0x4bc]
+c038a840 subs     r5, r0, #0
+c038a844 beq      #0xc038a93c
+c038a848 add      fp, fp, sl
+c038a84c mov      r4, #0
+c038a850 ldr      r0, [r8, #0x2e0]
+c038a854 mov      r1, #0x20
+c038a858 add      r2, sp, #2
+c038a85c ldr      r3, [r0]
+c038a860 add      r4, r4, #1
+c038a864 mov      lr, pc
+c038a868 ldr      pc, [r3, #0x4b0]
+c038a86c cmp      r4, #0x3e8
+c038a870 beq      #0xc038a8ec
+c038a874 ldrb     r3, [sp, #2]
+c038a878 tst      r3, #8
+c038a87c beq      #0xc038a850
+c038a880 tst      r3, #1
+c038a884 beq      #0xc038a850
+c038a888 ldr      r0, [r8, #0x2e0]
+c038a88c mov      r1, #0x10
+c038a890 add      r2, sp, #3
+c038a894 ldr      r3, [r0]
+c038a898 mov      lr, pc
+c038a89c ldr      pc, [r3, #0x4b0]
+c038a8a0 ldr      r0, [r8, #0x2e0]
+c038a8a4 add      r2, sp, #4
+c038a8a8 mov      r1, #0x11
+c038a8ac ldrb     sl, [r2, #-1]!
+c038a8b0 ldr      r3, [r0]
+c038a8b4 mov      lr, pc
+c038a8b8 ldr      pc, [r3, #0x4b0]
+c038a8bc ldrb     r2, [sp, #3]
+c038a8c0 mov      r0, r6
+c038a8c4 orr      sl, sl, r2, lsl #8
+c038a8c8 add      r3, sl, #0x1f
+c038a8cc lsr      r1, r3, #5
+c038a8d0 ldr      r3, [r6]
+c038a8d4 lsl      r5, r1, #5
+c038a8d8 mov      lr, pc
+c038a8dc ldr      pc, [r3, #0x1c]
+c038a8e0 tst      sl, #1
+c038a8e4 beq      #0xc038a7c0
+c038a8e8 b        #0xc038a914
+c038a8ec ldr      r0, [pc, #0xa4] ; =c0391710 b'%s: Card did not become ready. cardReady %d\n'
+c038a8f0 ldr      r1, [pc, #0x84] ; =c0391630 b'bool AppleMRVL868x::loadMainProgram()'
+c038a8f4 ldrb     r2, [sp, #2]
+c038a8f8 ldr      r3, [pc, #0x80] ; =c012d41f
+c038a8fc blx      r3
+c038a900 ldr      r3, [r6]
+c038a904 mov      r0, r6
+c038a908 mov      lr, pc
+c038a90c ldr      pc, [r3, #0x1c]
+c038a910 b        #0xc038a920
+c038a914 ldr      r0, [pc, #0x80] ; =c0391740 b'AppleMRVL868x: Helper image reports CRC error in Main Program image.\n'
+c038a918 ldr      r3, [pc, #0x60] ; =c012d41f
+c038a91c blx      r3
+c038a920 mov      r0, #0
+c038a924 b        #0xc038a96c
+c038a928 ldr      r0, [pc, #0x70] ; =c038da80 b'AppleMRVL868x: Unable to create memory descriptor.\n'
+c038a92c ldr      r3, [pc, #0x4c] ; =c012d41f
+c038a930 blx      r3
+c038a934 mov      r0, r6
+c038a938 b        #0xc038a96c
+c038a93c ldr      r0, [pc, #0x60] ; =c03916c4 b'AppleMRVL868x: Failed to download main program.  Completed %d of %d bytes\n'
+c038a940 ldr      r3, [pc, #0x38] ; =c012d41f
+c038a944 mov      r1, fp
+c038a948 ldr      r2, [pc, #0x58] ; =0001def0
+c038a94c blx      r3
+c038a950 ldr      r3, [r6]
+c038a954 mov      r0, r6
+c038a958 mov      lr, pc
+c038a95c ldr      pc, [r3, #0x1c]
+c038a960 mov      r0, r5
+c038a964 b        #0xc038a96c
+c038a968 mov      r0, #1
+c038a96c sub      sp, r7, #0x18
+c038a970 pop      {r8, sl, fp}
+c038a974 pop      {r4, r5, r6, r7, pc}
+c038a978 eorsgt   r1, sb, r8, asr r6
+c038a97c eorsgt   r1, sb, r0, lsr r6
+c038a980 andsgt   sp, r2, pc, lsl r4
+c038a984 andeq    sp, r1, pc, ror #29
+c038a988 andsgt   r7, r4, r5, lsr #2
+c038a98c eorsgt   r1, sb, r4, lsl #13
+c038a990 eorsgt   r2, sb, ip, lsl sp
+c038a994 ldrdgt   r0, r1, [r6], -r8
+c038a998 eorsgt   r1, sb, r0, lsl r7
+c038a99c eorsgt   r1, sb, r0, asr #14

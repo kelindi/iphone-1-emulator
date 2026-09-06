@@ -1,0 +1,130 @@
+START cycles9825000000 ticks1756068015 enabled1
+AMC W 38502000 width4 value00000003 pcc0277e94 tick1756762413
+RESET W 3c500050 width4 value0000a000 pcc0410668
+RESET W 3c500050 width4 value00000a00 pcc0410668
+HOOK pcc0277ea0 lrc02718f8 r000000000 r100000050 r200000a00 r3c0277ea0
+AMC R 38500010 width4 value00000000 pcc0277eb8 tick1756762414
+AMC R 38500b18 width4 value00000100 pcc027718c tick1756762414
+HOOK pcc02718f8 lrc0277ec8 r000000001 r100000050 r2edc1f000 r300000000
+AMC W 38502000 width4 value00000003 pcc0277e94 tick1756762419
+HOOK pcc027744c lrc0274a34 r000000001 r1c027d31f r2c02ba344 r3c027744c
+AMC W 38500a00 width4 value00000000 pcc0277464 tick1756762423
+AMC W 38500184 width4 value00000000 pcc02770f8 tick1756762423
+AMC W 38500180 width4 value00000001 pcc027712c tick1756762423
+AMC W 38500b10 width4 valueffffffff pcc02771fc tick1756762423
+AMC W 38500b04 width4 valueffffffff pcc02771b8 tick1756762424
+HOOK pcc0277844 lrc0277e70 r000000000 r100000000 r200000001 r3c0277844
+AMC W 38500340 width4 value00000000 pcc02778a8 tick1756762424
+HOOK pcc02778b8 lrc02778b8 r000000001 r100000000 r200000001 r3c029c844
+HOOK pcc0277908 lrc02778f4 r0c02ba418 r1c02a4100 r200000004 r300000000
+DESCRIPTOR 0 pcc0277908 cellc02ba418 descriptorc02a4100 baseVAedc3e000 basePA2201c000 datac02a419c mapc02a4114 lanes8
+LANE 0 dataHeader1259 sourcec02acb88 segmentCount1 segmentsc02a4194
+SEGMENT lane0 index0 start0 count1259 sourceOffset0
+LANE 1 dataHeader1259 sourcec02ab7dc segmentCount1 segmentsc02a418c
+SEGMENT lane1 index0 start0 count1259 sourceOffset0
+LANE 2 dataHeader1259 sourcec02aa430 segmentCount1 segmentsc02a4184
+SEGMENT lane2 index0 start0 count1259 sourceOffset0
+LANE 3 dataHeader1259 sourcec02a9084 segmentCount1 segmentsc02a417c
+SEGMENT lane3 index0 start0 count1259 sourceOffset0
+LANE 4 dataHeader1258 sourcec02a7cdc segmentCount1 segmentsc02a4174
+SEGMENT lane4 index0 start0 count1258 sourceOffset0
+LANE 5 dataHeader1258 sourcec02a6934 segmentCount1 segmentsc02a416c
+SEGMENT lane5 index0 start0 count1258 sourceOffset0
+LANE 6 dataHeader1258 sourcec02a558c segmentCount1 segmentsc02a4164
+SEGMENT lane6 index0 start0 count1258 sourceOffset0
+LANE 7 dataHeader1258 sourcec02a41e4 segmentCount1 segmentsc02a415c
+SEGMENT lane7 index0 start0 count1258 sourceOffset0
+SRAM W 2201c000 width4 value00000001 pcc0277594
+SRAM W 2201c020 width4 value00005060 pcc0277594
+SRAM W 2201c040 width4 value000004c2 pcc0277594
+SRAM W 2201c060 width4 value100000c2 pcc0277594
+SRAM W 2201c080 width4 value8c000012 pcc0277594
+SRAM W 2201c0a0 width4 valuee0300801 pcc0277594
+SRAM W 2201c0c0 width4 value00080002 pcc0277594
+SRAM W 2201c0e0 width4 value0040000a pcc0277594
+SRAM W 2201c100 width4 value00000000 pcc0277594
+HOOK pcc0277930 lrc0277920 r0c02ba410 r1c029c884 r200000007 r300000000
+DESCRIPTOR 1 pcc0277930 cellc02ba410 descriptorc029c884 baseVAedc4a000 basePA22028000 datac029c958 mapc029c898 lanes1
+LANE 0 dataHeader5563 sourcec029c968 segmentCount22 segmentsc029c8a8
+SEGMENT lane0 index0 start2329 count18 sourceOffset0
+SEGMENT lane0 index1 start2347 count1152 sourceOffset72
+SEGMENT lane0 index2 start3499 count13 sourceOffset4680
+SEGMENT lane0 index3 start3512 count13 sourceOffset4732
+SEGMENT lane0 index4 start3525 count13 sourceOffset4784
+SEGMENT lane0 index5 start3538 count13 sourceOffset4836
+SEGMENT lane0 index6 start0 count2304 sourceOffset4888
+SEGMENT lane0 index7 start3556 count4 sourceOffset14104
+SEGMENT lane0 index8 start3560 count4 sourceOffset14120
+SEGMENT lane0 index9 start3564 count4 sourceOffset14136
+SEGMENT lane0 index10 start3568 count4 sourceOffset14152
+SEGMENT lane0 index11 start4108 count1025 sourceOffset14168
+SEGMENT lane0 index12 start3578 count49 sourceOffset18268
+SEGMENT lane0 index13 start3627 count17 sourceOffset18464
+SEGMENT lane0 index14 start3644 count32 sourceOffset18532
+SEGMENT lane0 index15 start3676 count16 sourceOffset18660
+SEGMENT lane0 index16 start3692 count16 sourceOffset18724
+SEGMENT lane0 index17 start3708 count16 sourceOffset18788
+SEGMENT lane0 index18 start3724 count16 sourceOffset18852
+SEGMENT lane0 index19 start3740 count16 sourceOffset18916
+SEGMENT lane0 index20 start3756 count16 sourceOffset18980
+SEGMENT lane0 index21 start5133 count802 sourceOffset19044
+SRAM R 22029230 width4 value00000000
+SRAM R 22029234 width4 value00000000
+SRAM R 22029234 width4 value00000400
+SRAM R 22029238 width4 value00000000
+SRAM R 22029238 width4 value00000100
+SRAM R 2202923c width4 value00000000
+SRAM R 2202923c width4 value00000000
+SRAM R 22029240 width4 value00000000
+SRAM R 22029240 width4 value00000000
+HOOK pcc027795c lrc027794c r0c02ba414 r1c02a2054 r200000007 r300000000
+DESCRIPTOR 2 pcc027795c cellc02ba414 descriptorc02a2054 baseVAedc36000 basePA22014000 datac02a20d0 mapc02a2068 lanes1
+LANE 0 dataHeader2056 sourcec02a20e0 segmentCount11 segmentsc02a2078
+SEGMENT lane0 index0 start4597 count2 sourceOffset0
+SEGMENT lane0 index1 start4599 count2 sourceOffset8
+SEGMENT lane0 index2 start4601 count1350 sourceOffset16
+SEGMENT lane0 index3 start5952 count256 sourceOffset5416
+SEGMENT lane0 index4 start6208 count256 sourceOffset6440
+SEGMENT lane0 index5 start6464 count16 sourceOffset7464
+SEGMENT lane0 index6 start6480 count4 sourceOffset7528
+SEGMENT lane0 index7 start6484 count4 sourceOffset7544
+SEGMENT lane0 index8 start6488 count128 sourceOffset7560
+SEGMENT lane0 index9 start6616 count6 sourceOffset8072
+SEGMENT lane0 index10 start6622 count32 sourceOffset8096
+AMC W 38500340 width4 value00000001 pcc0277998 tick1756767241
+PASS original upload bytes59622 descriptors3 SRAMwrites17687 bit9zero synchronous-reset-approximation
+OBSERVE upload marker verified; returning callback without execution/status/event transition
+HOOK pcc0274a34 lr007f4c7f r000000001 r10000000b r2c02ae138 r3edc1f000
+CALLER driverccaa2c00 paramsccd39a90 p0:00000002 p1:00000002 p2:0000bb80 p3:0001f400 p4:00000000 p5:00000000 p6:00000000
+AMC W 3850101c width4 value00000001 pcc027814c tick1756767242
+AMC W 3850100c width4 value00000000 pcc027815c tick1756767242
+AMC W 38501000 width4 value00000000 pcc0278168 tick1756767242
+AMC W 38501004 width4 value00000000 pcc0278174 tick1756767242
+AMC W 38501008 width4 value00000000 pcc0278180 tick1756767242
+AMC W 38500a00 width4 value00000000 pcc0278188 tick1756767242
+HOOK pcc0274ad8 lrc0274adc r0cc999ee4 r100000000 r200000000 r3c029c844
+TASK objectcc999ee4 vtablec029c844 methodc02782fc argument0
+AMC W 38500300 width4 value00000000 pcc0278320 tick1756767242
+AMC W 38500310 width4 value00000000 pcc0278330 tick1756767242
+AMC W 38500304 width4 value00000000 pcc0278320 tick1756767242
+AMC W 38500314 width4 value00000000 pcc0278330 tick1756767242
+AMC W 38500308 width4 value00000000 pcc0278320 tick1756767242
+AMC W 38500318 width4 value00000000 pcc0278330 tick1756767243
+AMC W 3850030c width4 value00000000 pcc0278320 tick1756767243
+AMC W 3850031c width4 value00000000 pcc0278330 tick1756767243
+AMC W 38500320 width4 value00000000 pcc027834c tick1756767243
+AMC W 38500324 width4 value00000000 pcc027834c tick1756767243
+AMC W 38500300 width4 value07000001 pcc0278398 tick1756767243
+AMC W 38500304 width4 value3f081603 pcc02783a4 tick1756767243
+AMC W 38500d0c width4 value00000040 pcc02783b4 tick1756767243
+HOOK pcc0277f94 lrc02783c0 r000000000 r100000000 r200000040 r3c0277f94
+AMC W 38500000 width4 value00000001 pcc0277fa0 tick1756767243
+VERIFY original run request cycles9873013642 ticks1756767243 pcc0277fa0 address38500000 width4 value00000001 postWrites19 status00000100 inputPending0
+OBSERVE command armed/unserviced only; returning without status/SRAM/event effect
+AMC W 38500204 width4 value00000001 pcc02771a4 tick1756767243
+AMC W 38500184 width4 value00000007 pcc02770f8 tick1756767243
+AMC W 38500b0c width4 value00002000 pcc02771e8 tick1756767244
+STOP unsupported AMC write cycles9873013670 ticks1756767244 pcc02771e8 lrc02772cc address38500b0c width4 value00002000
+SERIAL
+
+FINAL result1 cycles9873013670 ticks1756767244 amcR2 amcW32 sramR5563 sramW17687 resets2 descriptors3 expectedBytes59622 initialByteReads11132

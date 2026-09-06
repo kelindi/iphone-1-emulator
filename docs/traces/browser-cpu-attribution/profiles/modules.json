@@ -1,0 +1,14 @@
+[
+  {
+    "role": "worker",
+    "scriptId": "7",
+    "url": "wasm://wasm/02f14106",
+    "error": "CDP timeout Debugger.getScriptSource"
+  },
+  {
+    "role": "worker",
+    "scriptId": "8",
+    "url": "http://localhost:8080/dist/emu.wasm",
+    "error": "CDP timeout Debugger.getScriptSource"
+  }
+]

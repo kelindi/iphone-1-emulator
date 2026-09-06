@@ -1,0 +1,5 @@
+# Preserved first harness failure
+
+The negative loop incorrectly mutated all512 bytes of main.pending even though only its first32 bytes are the retained physical handoff frame. Mutations beyond32 are unused padding of the storage array and do not change the admitted image. Six legitimately accepted mutations were incorrectly expected to fail; the failure helper then left pointers to expired stack runtime objects in the test registry, producing a later sanitizer invalid-bool/null-access cascade. The exact source/log is retained. No guest run occurred.
+
+Correction limits this semantic negative to the actual32-byte committed frame and always destroys temporary runtimes even when an expected-negative assertion fails. Positive activation now stops on failed setup before dereferencing its allocations. Runtime admission implementation is unchanged. All512 pending bytes remain part of the frozen canonical snapshot binding; this unit contract tests actual supported frame semantics after load, not a relaxation of package identity.

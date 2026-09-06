@@ -1,0 +1,787 @@
+{
+  "host": {
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.50GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "date": "2026-09-06T02:31:01.318Z",
+  "browser": "152.0.7977.82",
+  "url": "http://localhost:8185",
+  "pulseMs": 30,
+  "actions": [
+    {
+      "kind": "settings",
+      "round": 0,
+      "firstVisibleMs": 1350.199999999255,
+      "readyMs": 3950.199999999255,
+      "releaseOffsetMs": 33.69999999925494,
+      "releaseToFirstVisibleMs": 1316.5,
+      "releaseToReadyMs": 3916.5,
+      "observedAtMs": 4500.099999997765,
+      "metrics": {
+        "type": "metrics",
+        "mips": 28.652080237741455,
+        "fps": 7.9247152055473,
+        "guestRate": 1.0000013207858676,
+        "cycles": "11351490986",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 112636354,
+          "calls": 13444277
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 0,
+      "firstVisibleMs": 500.1000000014901,
+      "readyMs": 900.2000000029802,
+      "releaseOffsetMs": 33.900000002235174,
+      "releaseToFirstVisibleMs": 466.19999999925494,
+      "releaseToReadyMs": 866.3000000007451,
+      "observedAtMs": 1400.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 15.532055572188742,
+        "fps": 1.9918334827252784,
+        "guestRate": 1.0000159346700879,
+        "cycles": "11378153479",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 132257361,
+          "calls": 16082126
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 1,
+      "firstVisibleMs": 350.19999999925494,
+      "readyMs": 2600.300000000745,
+      "releaseOffsetMs": 39.599999997764826,
+      "releaseToFirstVisibleMs": 310.6000000014901,
+      "releaseToReadyMs": 2560.7000000029802,
+      "observedAtMs": 3150.099999997765,
+      "metrics": {
+        "type": "metrics",
+        "mips": 23.841778841395477,
+        "fps": 8.973975471147044,
+        "guestRate": 1.000002326587719,
+        "cycles": "11498742918",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 221381640,
+          "calls": 26794824
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 1,
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 950.1999999992549,
+      "releaseOffsetMs": 33.600000001490116,
+      "releaseToFirstVisibleMs": 416.5,
+      "releaseToReadyMs": 916.5999999977648,
+      "observedAtMs": 1500.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 14.85845730854936,
+        "fps": 7.99840031994197,
+        "guestRate": 1.0000101646344848,
+        "cycles": "11527817838",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 240686901,
+          "calls": 29405258
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 2,
+      "firstVisibleMs": 100.30000000074506,
+      "readyMs": 3150.2000000029802,
+      "releaseOffsetMs": 36.30000000074506,
+      "releaseToFirstVisibleMs": 64,
+      "releaseToReadyMs": 3113.900000002235,
+      "observedAtMs": 3650.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 30.607149990059526,
+        "fps": 0,
+        "guestRate": 1.0000000000014881,
+        "cycles": "11646229606",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 331036141,
+          "calls": 40559422
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 2,
+      "firstVisibleMs": 400.19999999925494,
+      "readyMs": 900.3000000007451,
+      "releaseOffsetMs": 34.599999997764826,
+      "releaseToFirstVisibleMs": 365.6000000014901,
+      "releaseToReadyMs": 865.7000000029802,
+      "observedAtMs": 1400.300000000745,
+      "metrics": {
+        "type": "metrics",
+        "mips": 20.53430498652473,
+        "fps": 18.986709303501694,
+        "guestRate": 1.0000013324013974,
+        "cycles": "11686717947",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 357056256,
+          "calls": 44240585
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 3,
+      "firstVisibleMs": 400.19999999925494,
+      "readyMs": 3200.099999997765,
+      "releaseOffsetMs": 32.399999998509884,
+      "releaseToFirstVisibleMs": 367.80000000074506,
+      "releaseToReadyMs": 3167.699999999255,
+      "observedAtMs": 3700.099999997765,
+      "metrics": {
+        "type": "metrics",
+        "mips": 25.471669159475475,
+        "fps": 17.94795094229409,
+        "guestRate": 1.0000046531739524,
+        "cycles": "11804336602",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 444317735,
+          "calls": 55017371
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 3,
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 950.1000000014901,
+      "releaseOffsetMs": 33.900000002235174,
+      "releaseToFirstVisibleMs": 416.19999999925494,
+      "releaseToReadyMs": 916.1999999992549,
+      "observedAtMs": 1450.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 15.959977128118213,
+        "fps": 12.927605409734385,
+        "guestRate": 1.0000064638049277,
+        "cycles": "11827982731",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 460463861,
+          "calls": 57271612
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 4,
+      "firstVisibleMs": 100.19999999925494,
+      "readyMs": 2650.199999999255,
+      "releaseOffsetMs": 33,
+      "releaseToFirstVisibleMs": 67.19999999925494,
+      "releaseToReadyMs": 2617.199999999255,
+      "observedAtMs": 3150.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 35.057930483445986,
+        "fps": 0,
+        "guestRate": 1.0000000000007443,
+        "cycles": "11921131152",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 531186091,
+          "calls": 65571145
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 4,
+      "firstVisibleMs": 400.1000000014901,
+      "readyMs": 850.2000000029802,
+      "releaseOffsetMs": 33.20000000298023,
+      "releaseToFirstVisibleMs": 366.8999999985099,
+      "releaseToReadyMs": 817,
+      "observedAtMs": 1350.2000000029802,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.68542466032147,
+        "fps": 13.988808952879385,
+        "guestRate": 1.0000046629392954,
+        "cycles": "11972598519",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 564994110,
+          "calls": 70275168
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 5,
+      "firstVisibleMs": 100.19999999925494,
+      "readyMs": 3100.199999999255,
+      "releaseOffsetMs": 33,
+      "releaseToFirstVisibleMs": 67.19999999925494,
+      "releaseToReadyMs": 3067.199999999255,
+      "observedAtMs": 3600.300000000745,
+      "metrics": {
+        "type": "metrics",
+        "mips": 28.669938086614657,
+        "fps": 6.990213700803251,
+        "guestRate": 1.0000011650333849,
+        "cycles": "12093129740",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 655503031,
+          "calls": 81623143
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 5,
+      "firstVisibleMs": 450.0999999977648,
+      "readyMs": 900.1999999992549,
+      "releaseOffsetMs": 32.899999998509884,
+      "releaseToFirstVisibleMs": 417.19999999925494,
+      "releaseToReadyMs": 867.3000000007451,
+      "observedAtMs": 1450.0999999977648,
+      "metrics": {
+        "type": "metrics",
+        "mips": 13.434164593462008,
+        "fps": 7.960991143379645,
+        "guestRate": 1.0000069658650261,
+        "cycles": "12116324311",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 671349724,
+          "calls": 83791934
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 6,
+      "firstVisibleMs": 100.19999999925494,
+      "readyMs": 3100.199999999255,
+      "releaseOffsetMs": 33.5,
+      "releaseToFirstVisibleMs": 66.69999999925494,
+      "releaseToReadyMs": 3066.699999999255,
+      "observedAtMs": 3600.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 33.320071613337625,
+        "fps": 0,
+        "guestRate": 1.0000000000014821,
+        "cycles": "12227338591",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 753456366,
+          "calls": 93474908
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 6,
+      "firstVisibleMs": 450.0999999977648,
+      "readyMs": 900.1999999992549,
+      "releaseOffsetMs": 32.899999998509884,
+      "releaseToFirstVisibleMs": 417.19999999925494,
+      "releaseToReadyMs": 867.3000000007451,
+      "observedAtMs": 1450.0999999977648,
+      "metrics": {
+        "type": "metrics",
+        "mips": 22.882643471322783,
+        "fps": 18.99620075986218,
+        "guestRate": 1.0000009998007848,
+        "cycles": "12272402852",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 783436068,
+          "calls": 97807479
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 7,
+      "firstVisibleMs": 300.19999999925494,
+      "readyMs": 2850.10000000149,
+      "releaseOffsetMs": 32.69999999925494,
+      "releaseToFirstVisibleMs": 267.5,
+      "releaseToReadyMs": 2817.400000002235,
+      "observedAtMs": 3350.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 32.89277551423581,
+        "fps": 0,
+        "guestRate": 0.9999999999992595,
+        "cycles": "12366429359",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 855375186,
+          "calls": 106211212
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 7,
+      "firstVisibleMs": 400,
+      "readyMs": 900.1999999992549,
+      "releaseOffsetMs": 32.80000000074506,
+      "releaseToFirstVisibleMs": 367.19999999925494,
+      "releaseToReadyMs": 867.3999999985099,
+      "observedAtMs": 1400.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 20.188953280318092,
+        "fps": 17.892644135188867,
+        "guestRate": 1.0000014910536779,
+        "cycles": "12418020225",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 889064199,
+          "calls": 111144134
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 8,
+      "firstVisibleMs": 100.10000000149012,
+      "readyMs": 2950.10000000149,
+      "releaseOffsetMs": 32.900000002235174,
+      "releaseToFirstVisibleMs": 67.19999999925494,
+      "releaseToReadyMs": 2917.199999999255,
+      "observedAtMs": 3450.10000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 33.746006389851665,
+        "fps": 0,
+        "guestRate": 1.0000000000022318,
+        "cycles": "12513260541",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 962166234,
+          "calls": 119790953
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 8,
+      "firstVisibleMs": 450.19999999925494,
+      "readyMs": 900.0999999977648,
+      "releaseOffsetMs": 33,
+      "releaseToFirstVisibleMs": 417.19999999925494,
+      "releaseToReadyMs": 867.0999999977648,
+      "observedAtMs": 1400.0999999977648,
+      "metrics": {
+        "type": "metrics",
+        "mips": 17.560189785334607,
+        "fps": 14.904610492812683,
+        "guestRate": 1.0001046634847952,
+        "cycles": "12559458886",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 993091932,
+          "calls": 124300569
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 9,
+      "firstVisibleMs": 300.0999999977648,
+      "readyMs": 2850.099999997765,
+      "releaseOffsetMs": 32.69999999925494,
+      "releaseToFirstVisibleMs": 267.3999999985099,
+      "releaseToReadyMs": 2817.39999999851,
+      "observedAtMs": 3350.099999997765,
+      "metrics": {
+        "type": "metrics",
+        "mips": 23.700445688036034,
+        "fps": 21.984610772475648,
+        "guestRate": 1.000006662004009,
+        "cycles": "12679404989",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1081268662,
+          "calls": 134974129
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 9,
+      "firstVisibleMs": 450.3999999985099,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 33.19999999925494,
+      "releaseToFirstVisibleMs": 417.19999999925494,
+      "releaseToReadyMs": 866.9000000022352,
+      "observedAtMs": 1400.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.344726387947517,
+        "fps": 13.90406197241108,
+        "guestRate": 1.0000054623115404,
+        "cycles": "12702651096",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1097037767,
+          "calls": 137199960
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 10,
+      "firstVisibleMs": 350.0999999977648,
+      "readyMs": 2950.199999999255,
+      "releaseOffsetMs": 32.69999999925494,
+      "releaseToFirstVisibleMs": 317.3999999985099,
+      "releaseToReadyMs": 2917.5,
+      "observedAtMs": 3450.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 27.59533193572982,
+        "fps": 8.984725965864724,
+        "guestRate": 0.9999015007827478,
+        "cycles": "12821914650",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1186473312,
+          "calls": 148482342
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    },
+    {
+      "kind": "home",
+      "round": 10,
+      "firstVisibleMs": 750.1000000014901,
+      "readyMs": 950.1000000014901,
+      "releaseOffsetMs": 33.600000001490116,
+      "releaseToFirstVisibleMs": 716.5,
+      "releaseToReadyMs": 916.5,
+      "observedAtMs": 1500.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 16.86697314566494,
+        "fps": 0,
+        "guestRate": 1.0000051578989837,
+        "cycles": "12845156579",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 2,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 1202172624,
+          "calls": 150510227
+        },
+        "serial": "",
+        "captureMs": 97.89999999850988,
+        "captureChunkMs": 1.6000000014901161,
+        "finalizeMs": 662.1000000014901
+      }
+    }
+  ],
+  "errors": [],
+  "method": "50 ms canvas sampling; changed pixels exclude status bar; readiness must remain visually stable 500 ms. Ready time starts that stable interval. Legacy readyMs/firstVisibleMs start before mouse-down; release-relative fields use the actual browser pointerup event. First/warm are separate; at least20 warm samples are required for a per-action p95.",
+  "fixture": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/fixed-dismiss.snap",
+  "servedAssets": [
+    {
+      "name": "dist/emu.js",
+      "url": "http://localhost:8185/dist/emu.js",
+      "status": 200,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+      "bytes": 17756,
+      "fromServiceWorker": false
+    },
+    {
+      "name": "jit/seed.wasm",
+      "url": "http://localhost:8185/jit/seed.wasm",
+      "status": 200,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+      "bytes": 12341313,
+      "fromServiceWorker": false
+    },
+    {
+      "name": "dist/emu.wasm",
+      "url": "http://localhost:8185/dist/emu.wasm",
+      "status": 200,
+      "sha256": "9220380b7a2a45b33ed965796d252af33b65ec6cae5129be34111c5d18ebcce3",
+      "bytes": 249962,
+      "fromServiceWorker": false
+    }
+  ],
+  "client": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 8,
+    "deviceMemory": 16
+  },
+  "summary": {
+    "settings": {
+      "first": {
+        "kind": "settings",
+        "round": 0,
+        "firstVisibleMs": 1350.199999999255,
+        "readyMs": 3950.199999999255,
+        "releaseOffsetMs": 33.69999999925494,
+        "releaseToFirstVisibleMs": 1316.5,
+        "releaseToReadyMs": 3916.5,
+        "observedAtMs": 4500.099999997765,
+        "metrics": {
+          "type": "metrics",
+          "mips": 28.652080237741455,
+          "fps": 7.9247152055473,
+          "guestRate": 1.0000013207858676,
+          "cycles": "11351490986",
+          "memory": 643039232,
+          "jit": {
+            "enabled": true,
+            "generation": 2,
+            "regions": 509,
+            "bytes": 12341313,
+            "retired": 112636354,
+            "calls": 13444277
+          },
+          "serial": "",
+          "captureMs": 97.89999999850988,
+          "captureChunkMs": 1.6000000014901161,
+          "finalizeMs": 662.1000000014901
+        }
+      },
+      "warmSamples": 10,
+      "releaseToReadyP95Ms": null,
+      "navigationTargetMs": 2000,
+      "meetsSampledNavigationTarget": null,
+      "note": "Insufficient warm samples for the20-run navigation gate."
+    },
+    "home": {
+      "first": {
+        "kind": "home",
+        "round": 0,
+        "firstVisibleMs": 500.1000000014901,
+        "readyMs": 900.2000000029802,
+        "releaseOffsetMs": 33.900000002235174,
+        "releaseToFirstVisibleMs": 466.19999999925494,
+        "releaseToReadyMs": 866.3000000007451,
+        "observedAtMs": 1400.2000000029802,
+        "metrics": {
+          "type": "metrics",
+          "mips": 15.532055572188742,
+          "fps": 1.9918334827252784,
+          "guestRate": 1.0000159346700879,
+          "cycles": "11378153479",
+          "memory": 643039232,
+          "jit": {
+            "enabled": true,
+            "generation": 2,
+            "regions": 509,
+            "bytes": 12341313,
+            "retired": 132257361,
+            "calls": 16082126
+          },
+          "serial": "",
+          "captureMs": 97.89999999850988,
+          "captureChunkMs": 1.6000000014901161,
+          "finalizeMs": 662.1000000014901
+        }
+      },
+      "warmSamples": 10,
+      "releaseToReadyP95Ms": null,
+      "navigationTargetMs": 2000,
+      "meetsSampledNavigationTarget": null,
+      "note": "Insufficient warm samples for the20-run navigation gate."
+    }
+  },
+  "passed": true,
+  "video": "/home/vercel-sandbox/iphone-1/.context/jit-continuation/browser/quiet-navigation/3-candidate/page@6a206841d631f9e367cae6c0c56885a6.webm"
+}

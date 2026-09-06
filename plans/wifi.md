@@ -1,5 +1,7 @@
 # Plan: Marvell 88W8686 SDIO Wi-Fi + host bridging
 
+> Current evidence: [networking investigation](networking.md) corrects the physical address, prelinked-driver location, and exact first command gate. The files below are a proposal; no SDIO model exists yet.
+
 ## Goal
 Emulate the original iPhone’s Marvell 88W8686 SDIO Wi-Fi module well enough that the genuine iPhone OS 1.0 SDIO host driver, Marvell driver, `wifid`, and `configd` bring up an `en0` interface, join a fake access point, and let MobileSafari load real HTTP pages over a host NAT.
 

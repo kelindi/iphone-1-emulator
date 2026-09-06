@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "recorded": 3209650,
+    "regionPresent": 2934390,
+    "entryAdmitted": 2601329
+  },
+  "entryPercent": 81.04712351814061,
+  "scope": "Historical original-seed100M MBX census; no new runtime or timing measurement",
+  "originalRuntime": "da43870dab0e151d6a31597bb8ddbbfb3a480f7398ddb88a9334bea9b1314c6d",
+  "originalSeed": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+}

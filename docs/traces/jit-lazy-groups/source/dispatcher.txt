@@ -1,0 +1,37 @@
+// Split by original basic blocks, never by re-decoding subsets of guest code.
+// Helpers retain the original load/guard/execute/writeback logic. Their extra
+// result is private to this module; the public region export keeps ABI1.
+function compileRegion(e) {
+ const full=compileRegionOriginal(e);
+ if(!full)return null;
+ const groupSize=32,groups=Math.ceil(full.blockEntries.length/groupSize);
+ if(groups===1)return {...full,groups:1,internalFunctions:0};
+ const helpers=[],targets=new Map(),width=e.thumb?2:4;
+ for(let g=0;g<groups;g++){
+  const built=compileRegionOriginal(e,{start:g*groupSize,end:(g+1)*groupSize});
+  const signature=`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32)`;
+  if(!built.wat.startsWith(signature))throw Error('Unexpected helper signature');
+  const wat=`(func $b${e.index}g${g}(param $c i32)(param $budget i32)(result i32 i32)`+built.wat.slice(signature.length,-1)+L('why')+')';
+  helpers.push(wat);
+ }
+ full.blockEntries.forEach((ops,b)=>ops.forEach(pc=>targets.set((pc-e.pc)/width,Math.floor(b/groupSize))));
+ let body=`(block $done(loop $dispatch
+ (br_if $done(i32.ge_u ${L('total')}${L('budget')}))
+ ${set('pc',`(i32.load offset=${R+60} ${L('c')})`)}
+ (br_if $done(i32.ne(i32.and ${L('pc')}${C(~1023)})${C(e.pc)}))
+ (br_if $done(i32.ne(i32.and(i32.load offset=${F} ${L('c')})${C(32)})${C(e.thumb?32:0)}))
+ (block $unsupported `;
+ for(let g=groups-1;g>=0;g--)body+=`(block $g${g} `;
+ body+=`(br_table ${Array.from({length:1024/width},(_,i)=>targets.has(i)?'$g'+targets.get(i):'$unsupported').join(' ')} $unsupported(i32.shr_u(i32.and ${L('pc')}${C(1023)})${C(e.thumb?1:2)}))`;
+ for(let g=0;g<groups;g++){
+  // last is group+1 so zero-initialization means "no previous group".
+  body+=`) (br_if $done(i32.eq ${L('last')}${C(g+1)}))`;
+  body+=`(call $b${e.index}g${g} ${L('c')}(i32.sub ${L('budget')}${L('total')}))`;
+  body+='(local.set $why)(local.set $part)';
+  body+=set('total',add(L('total'),L('part')))+set('last',C(g+1));
+  body+=`(br_if $done(i32.or(i32.eqz ${L('part')})(i32.ne ${L('why')}${C(4)})))(br $dispatch)`;
+ }
+ body+=')(br $done)))'+L('total');
+ const wat=`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32)(local $total i32)(local $part i32)(local $why i32)(local $pc i32)(local $last i32)${body})`+helpers.join('');
+ return {...full,wat,groups,internalFunctions:groups};
+}

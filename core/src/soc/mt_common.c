@@ -116,10 +116,19 @@ unsigned s5l_mt_frame_encode_ce(const s5l_mt_geom_t *g,
             c[i].phase > MTZ2_PHASE_OUT_OF_RANGE ||
             c[i].x >= S5L_MT_PANEL_W || c[i].y >= S5L_MT_PANEL_H)
             return 0u;
-        int32_t sx = to_surface(c[i].x, S5L_MT_PANEL_W, -75,
-                                axis_max(g->columns, 5600u, 11u), false);
-        int32_t sy = to_surface(c[i].y, S5L_MT_PANEL_H, -75,
-                                axis_max(g->rows, 3600u, 7u), true);
+        /* 1A543a's family-1 Z1 grid has zero edge margins and pitches
+         * 38100/76 (columns), 9400/19 (rows). See MultitouchSupport:
+         * _alg_InitGridPitchAndEdgeOptions 0x3130a35c..0x3130a3a8 and
+         * _alg_InitRowColXYConvert 0x3130a11c..0x3130a238. The loaded
+         * home snapshot confirms grid+0x150 bounds {4511,0,6926,0}
+         * for ten columns/fifteen rows. N82's 75-unit margins and different
+         * pitches belong only to the CC encoder above; reusing them shifts
+         * a top-row tap (45,65) to approximately (42,45) in the real guest.
+         * Map pixel centers into the bounds the guest actually normalizes. */
+        int32_t xmax = g->columns ? (int32_t)((g->columns - 1u) * 38100u / 76u) : 0;
+        int32_t ymax = g->rows ? (int32_t)((g->rows - 1u) * 9400u / 19u) : 0;
+        int32_t sx = to_surface(c[i].x, S5L_MT_PANEL_W, 0, xmax, false);
+        int32_t sy = to_surface(c[i].y, S5L_MT_PANEL_H, 0, ymax, true);
         r[0] = c[i].id;
         r[1] = c[i].phase;
         r[2] = c[i].id;

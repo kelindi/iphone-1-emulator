@@ -1,0 +1,3 @@
+Error: State mismatch stale-identical-source-destination-mapping
+    at compare (/home/vercel-sandbox/iphone-1/.context/jit-continuation/test.cjs:22:366)
+    at /home/vercel-sandbox/iphone-1/.context/jit-continuation/test.cjs:50:2

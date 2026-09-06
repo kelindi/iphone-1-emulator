@@ -1,0 +1,140 @@
+{
+  "date": "2026-09-06T01:43:32.720Z",
+  "method": "Original guest keyboard and touch only; explicit browser Save, reload, and guest framebuffer comparison. Human screenshot review confirms contact/event content.",
+  "actions": [
+    {
+      "tap": [
+        275,
+        155
+      ],
+      "wait": 12000,
+      "shot": "01-weather",
+      "videoSeconds": 10.057
+    },
+    {
+      "tap": [
+        287,
+        424
+      ],
+      "wait": 4000,
+      "shot": "02-cities-f",
+      "videoSeconds": 22.743
+    },
+    {
+      "tap": [
+        235,
+        386
+      ],
+      "wait": 2500,
+      "shot": "03-celsius",
+      "videoSeconds": 51.785
+    },
+    {
+      "saveReload": "04-celsius",
+      "videoSeconds": 55.011
+    },
+    {
+      "tap": [
+        30,
+        143
+      ],
+      "wait": 2000,
+      "shot": "05-delete-new-york",
+      "videoSeconds": 74.309
+    },
+    {
+      "wait": 4000,
+      "shot": "06-delete-control-settled",
+      "videoSeconds": 109.824
+    },
+    {
+      "tap": [
+        272,
+        143
+      ],
+      "wait": 6000,
+      "shot": "07-new-york-removed",
+      "videoSeconds": 181.666
+    },
+    {
+      "saveReload": "08-city-removed",
+      "videoSeconds": 188.428
+    },
+    {
+      "tap": [
+        80,
+        386
+      ],
+      "wait": 4000,
+      "shot": "09-fahrenheit",
+      "videoSeconds": 204.244
+    },
+    {
+      "saveReload": "10-fahrenheit",
+      "videoSeconds": 209.059
+    }
+  ],
+  "checks": [
+    {
+      "name": "startup-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 8698965,
+        "calls": 1121270
+      }
+    },
+    {
+      "name": "04-celsius-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "08-city-removed-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "10-fahrenheit-reload-frame",
+      "passed": true,
+      "changedPixelFraction": 0,
+      "pixelsCompared": 144000,
+      "exact": true
+    },
+    {
+      "name": "completed-workflow-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 4376352,
+        "calls": 560514
+      }
+    }
+  ],
+  "errors": [],
+  "console": [
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    },
+    {
+      "type": "warning",
+      "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+    }
+  ],
+  "lastStatus": "Paused. Your iPhone will wait here.",
+  "lastDiagnostics": "Waiting for the emulator…",
+  "passed": true,
+  "durationSeconds": 227.837,
+  "video": "/home/vercel-sandbox/iphone-1/.context/weather-workflow/page@53ba710d5b3dde91742759e48dc3405f.webm"
+}

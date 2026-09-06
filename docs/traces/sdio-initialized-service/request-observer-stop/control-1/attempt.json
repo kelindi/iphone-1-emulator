@@ -1,0 +1,609 @@
+{
+  "mode": "control",
+  "sourcePins": {
+    ".context/build-native/core/libemucore.a": {
+      "bytes": 1854772,
+      "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+    },
+    ".context/organizer-debug/rootfs-compact168-checked.img": {
+      "bytes": 176160768,
+      "sha256": "0b544d47fb67603167099e658d50e3c284c28233d489263b269682c4f9ac53b0"
+    },
+    ".context/sdio-first/checkpoint-v2/checkpoint.h": {
+      "bytes": 1913,
+      "sha256": "7750c3b754ea605a01922bef7b54c4fb1b991e05432d22fd99ad2f01bacf7309"
+    },
+    ".context/sdio-first/checkpoint-v2/codec.c": {
+      "bytes": 4779,
+      "sha256": "9c4997853714fbf5a7ce13ed43a4260c733c9ea365191f1f8fdc0ffc6ac62704"
+    },
+    ".context/sdio-first/checkpoint-v2/compare.c": {
+      "bytes": 1592,
+      "sha256": "982079ebd94e8a16813566ae38004b8ec244f099a70f823d300c234f4bcecb05"
+    },
+    ".context/sdio-first/checkpoint-v2/continue.c": {
+      "bytes": 5601,
+      "sha256": "5bbd4807528dd470e37b99ef1881d6f02265ec7b68fda5592292f8ff851242d5"
+    },
+    ".context/sdio-first/checkpoint-v2/field_coverage.py": {
+      "bytes": 2369,
+      "sha256": "997190943c1df06da10d36213ae190533cf525a0a42861bfbea6ab70a54f8696"
+    },
+    ".context/sdio-first/checkpoint-v2/fields.inc": {
+      "bytes": 2555,
+      "sha256": "7fe417c2329a78433c607b2f1b12276a4ac2813c3d08ad82dffc0e2f7312bbb7"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-handoff-frame.bin": {
+      "bytes": 32,
+      "sha256": "80d7fa7330c242c81159bffeb7a5d1cc772363f84c5ba43df2a1779cc13ec42c"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-high-mask.bin": {
+      "bytes": 24576,
+      "sha256": "38026258afbc5a4ead3855e4574a880730551baff6bc1ac293ba75f20a3b9db6"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-high.bin": {
+      "bytes": 24576,
+      "sha256": "e5909201e884b0d1e3648d1005c333ccf43cf920514e87acfb0ca1d450e0c7c6"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-low-mask.bin": {
+      "bytes": 94208,
+      "sha256": "a87614985973b62550f56a062ec4072fcab3a8afc7a8d0b3023ada074f974b48"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-low.bin": {
+      "bytes": 94208,
+      "sha256": "125a14829cf24771837c868d9110dd8c22475a93d88e2bc9141869d939750a99"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/full-received-helper.bin": {
+      "bytes": 2140,
+      "sha256": "f1404eaae9b12a4858ac7440567de187de78dc0b8704bd693ee7de94dec74211"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/private-package/6ef08b30e66247338f55cb9d6de853c8.side": {
+      "bytes": 246287,
+      "sha256": "9b91cff0fd310e457df7850424260cd6307e39ec08467f4e0c935725953507d8"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/private-package/6ef08b30e66247338f55cb9d6de853c8.snap": {
+      "bytes": 191881187,
+      "sha256": "2cf3a7391b2972cea6e152672693b9028b4707765937b8344018d0f5929ea0d5"
+    },
+    ".context/sdio-first/checkpoint-v2/full-attempt-1/private-package/manifest.json": {
+      "bytes": 4695,
+      "sha256": "911b4b85c3f984c736edbb51b882c68be6ef1b8788a9b343b9b1d9eaeac11787"
+    },
+    ".context/sdio-first/checkpoint-v2/independent_fields.inc": {
+      "bytes": 7486,
+      "sha256": "401bcb58e9da9d5e674797dce0448e726d624efc127b20bfc4a9aaa549c3af12"
+    },
+    ".context/sdio-first/checkpoint-v2/main_model.inc": {
+      "bytes": 6152,
+      "sha256": "6f294f33075d5befc2076bcbbc4f142b7385d6be75a55303ac3aeb5ee83dee13"
+    },
+    ".context/sdio-first/checkpoint-v2/package.py": {
+      "bytes": 3826,
+      "sha256": "cd48ceb1f266a530e3ec686cd506ef536991bd181236e943dbd543fcc3d61b44"
+    },
+    ".context/sdio-first/checkpoint-v2/phone.c": {
+      "bytes": 4969,
+      "sha256": "96d335acefb3c04c0a412971b9f4db2a48c8f3e09f5012f028d3bb82ae46f4e3"
+    },
+    ".context/sdio-first/checkpoint-v2/probe-checkpoint": {
+      "bytes": 339128,
+      "sha256": "31ff85d953aaf8f025f096b3ac1fa0a537039dce15e43abce0ccbf5adffbe994"
+    },
+    ".context/sdio-first/checkpoint-v2/probe-checkpoint.c": {
+      "bytes": 29325,
+      "sha256": "7ef72dd1b389cb77816edd0d0d3ad28e1449c62f05acbd67e911850ad27680a6"
+    },
+    ".context/sdio-first/checkpoint-v2/publish_actual.py": {
+      "bytes": 4284,
+      "sha256": "6aa6b24c0a5fe5697478ea9e59bbe4f534dd69909315b12e01f3d123eb39b731"
+    },
+    ".context/sdio-first/checkpoint-v2/sdio.c": {
+      "bytes": 22668,
+      "sha256": "297484dd20098721cc8ed2be5660fa0428fc325e7d3bf26d0cdc2b855459c689"
+    },
+    ".context/sdio-first/checkpoint-v2/sdio.h": {
+      "bytes": 5516,
+      "sha256": "e3a18c481bfe032ea34350d8e6b216ef9e728b6b8714c4d01b3026a01c0c4762"
+    },
+    ".context/sdio-first/checkpoint-v2/source-pins.json": {
+      "bytes": 5551,
+      "sha256": "c58f599e3929bb0c6bd0d93f3d6b72266f0d548f5b242f37b839cb851ece68c7"
+    },
+    ".context/sdio-first/checkpoint-v2/supported_helper.inc": {
+      "bytes": 11495,
+      "sha256": "cb04170c1a81cbc2832f1afcf3cd96fe9e12f6ab3b0cd8d2661dc2348b27e5d2"
+    },
+    ".context/sdio-first/checkpoint-v2/test.c": {
+      "bytes": 12207,
+      "sha256": "08a5507fdbdebdb1db0bf500cd15a58672747cd24674e5b15425234867930164"
+    },
+    ".context/sdio-first/checkpoint-v2/test_package.py": {
+      "bytes": 5363,
+      "sha256": "4106c649914693b3bc85c649978ae6af59e5ddadf94f46000c9bfbf1ad116309"
+    },
+    ".context/sdio-first/checkpoint-v2/test_z1.c": {
+      "bytes": 9695,
+      "sha256": "9f7013c808b30a8402c1f4cb6802d8ef1b95d8a43266c6f988edb5825624d3ff"
+    },
+    ".context/sdio-first/checkpoint-v2/validate": {
+      "bytes": 234584,
+      "sha256": "d46f7525db67ac66f00fb84b3ba07f373a8718f7288aa8ab787f9c305142d407"
+    },
+    ".context/sdio-first/checkpoint-v2/validate.c": {
+      "bytes": 918,
+      "sha256": "8bf5853b2ef2773d463bf3cd0521faec4112de492735ef93f3ccee020af8b237"
+    },
+    ".context/sdio-first/checkpoint-v2/z1-codec.c": {
+      "bytes": 4040,
+      "sha256": "0f752bb4aa9750e83de674040ac887eca4c7066438c3c0f04147a6c719e62c84"
+    },
+    ".context/sdio-first/checkpoint-v2/z1-fields.inc": {
+      "bytes": 2300,
+      "sha256": "fab54fcd4a5ad1ea5f674dda7693c6e2f13b9415a1e6a904ae15c9c95e16690c"
+    },
+    ".context/sdio-first/checkpoint-v2/z1-independent-equal.inc": {
+      "bytes": 5410,
+      "sha256": "d04f631af3ce81a98c18ca6d6bd3d825aa49bfb5a4d9446146e1ed8a3901e4af"
+    },
+    ".context/sdio-first/checkpoint-v2/z1-negative-offsets.inc": {
+      "bytes": 769,
+      "sha256": "5e10980cb924e0d123b7e131815f459246287e48dc5ab5640422991d8907e7e9"
+    },
+    ".context/sdio-first/checkpoint-v2/z1_inventory.py": {
+      "bytes": 2466,
+      "sha256": "1e956e9c23083c6a780173af9286eba75d80ac03cf6ce9f7a933b83991f8fc0c"
+    },
+    ".context/sdio-first/handoff-ready/audit.py": {
+      "bytes": 4200,
+      "sha256": "41a90fd7464e67058e7c473709e38e2f2dc9958bb1945a3c498e94e47ea64106"
+    },
+    ".context/sdio-first/handoff-ready/baseline-test.c": {
+      "bytes": 12207,
+      "sha256": "08a5507fdbdebdb1db0bf500cd15a58672747cd24674e5b15425234867930164"
+    },
+    ".context/sdio-first/handoff-ready/checkpoint.h": {
+      "bytes": 1913,
+      "sha256": "7750c3b754ea605a01922bef7b54c4fb1b991e05432d22fd99ad2f01bacf7309"
+    },
+    ".context/sdio-first/handoff-ready/codec.c": {
+      "bytes": 4779,
+      "sha256": "9c4997853714fbf5a7ce13ed43a4260c733c9ea365191f1f8fdc0ffc6ac62704"
+    },
+    ".context/sdio-first/handoff-ready/compare.c": {
+      "bytes": 1592,
+      "sha256": "982079ebd94e8a16813566ae38004b8ec244f099a70f823d300c234f4bcecb05"
+    },
+    ".context/sdio-first/handoff-ready/continue.c": {
+      "bytes": 5601,
+      "sha256": "5bbd4807528dd470e37b99ef1881d6f02265ec7b68fda5592292f8ff851242d5"
+    },
+    ".context/sdio-first/handoff-ready/fields.inc": {
+      "bytes": 2555,
+      "sha256": "7fe417c2329a78433c607b2f1b12276a4ac2813c3d08ad82dffc0e2f7312bbb7"
+    },
+    ".context/sdio-first/handoff-ready/gates.h": {
+      "bytes": 880,
+      "sha256": "a24d804a60a914bf18b75a52d9fbddec0986c0104cecc70dbc5d546ac612f675"
+    },
+    ".context/sdio-first/handoff-ready/independent_fields.inc": {
+      "bytes": 7486,
+      "sha256": "401bcb58e9da9d5e674797dce0448e726d624efc127b20bfc4a9aaa549c3af12"
+    },
+    ".context/sdio-first/handoff-ready/main_model.inc": {
+      "bytes": 6152,
+      "sha256": "6f294f33075d5befc2076bcbbc4f142b7385d6be75a55303ac3aeb5ee83dee13"
+    },
+    ".context/sdio-first/handoff-ready/phone.c": {
+      "bytes": 4969,
+      "sha256": "96d335acefb3c04c0a412971b9f4db2a48c8f3e09f5012f028d3bb82ae46f4e3"
+    },
+    ".context/sdio-first/handoff-ready/probe": {
+      "bytes": 274184,
+      "sha256": "068cec0f37a309e32e6980599870ba0cf4a313e4f750b9bc64a321c8a8206fc4"
+    },
+    ".context/sdio-first/handoff-ready/probe.c": {
+      "bytes": 9723,
+      "sha256": "1bbe7675c5370a3524db273e6ee8622698acace02ac467ad5958f2ff33fce37c"
+    },
+    ".context/sdio-first/handoff-ready/run.py": {
+      "bytes": 3416,
+      "sha256": "bdc1d025ca21cbeeebd88ede01c5f6ec1115f61892b1ba4eb300c164377b670f"
+    },
+    ".context/sdio-first/handoff-ready/runs/positive-1/report.json": {
+      "bytes": 740,
+      "sha256": "d8fa4499049d3497a561dd1ba339446ebdc1f1c3bd48384749ae3f2ac8ae556d"
+    },
+    ".context/sdio-first/handoff-ready/runs/positive-1/transactions.bin": {
+      "bytes": 733408,
+      "sha256": "c92482f0414171909c7f453e322e8015263f5e6038eb42769eb6c03b794eac82"
+    },
+    ".context/sdio-first/handoff-ready/runtime.c": {
+      "bytes": 9259,
+      "sha256": "813b0ea54c1a5f84f2ea2e7dc1ebc15f08774002d0ee203c3d39b06fe65602fb"
+    },
+    ".context/sdio-first/handoff-ready/runtime.h": {
+      "bytes": 2085,
+      "sha256": "9d7935d3fa4697ece83aee7e109ec3981c055116379eafbd7eceadeec87043fa"
+    },
+    ".context/sdio-first/handoff-ready/sdio.c": {
+      "bytes": 22853,
+      "sha256": "afab53c6f5c6af760845f377a206d12fbb33648f01734db069b67873baa74545"
+    },
+    ".context/sdio-first/handoff-ready/sdio.h": {
+      "bytes": 5516,
+      "sha256": "e3a18c481bfe032ea34350d8e6b216ef9e728b6b8714c4d01b3026a01c0c4762"
+    },
+    ".context/sdio-first/handoff-ready/source-pins.json": {
+      "bytes": 13440,
+      "sha256": "eeb485e9c1407807a020c79625cf7011c6875a12a51099555be66ce1441a902f"
+    },
+    ".context/sdio-first/handoff-ready/supported_helper.inc": {
+      "bytes": 11495,
+      "sha256": "cb04170c1a81cbc2832f1afcf3cd96fe9e12f6ab3b0cd8d2661dc2348b27e5d2"
+    },
+    ".context/sdio-first/handoff-ready/test": {
+      "bytes": 913968,
+      "sha256": "c4df59e3655b9a185b4bf77a31ca62dfe86bc5653f2087ed6d57a214e569d2e7"
+    },
+    ".context/sdio-first/handoff-ready/test-baseline": {
+      "bytes": 2255944,
+      "sha256": "cf347c2927f8b604eaa4caa21526b9c6a952b73a0722ff930202ccfedcab9c73"
+    },
+    ".context/sdio-first/handoff-ready/test-frozen": {
+      "bytes": 106848,
+      "sha256": "69e587f10187565401fe5ba167255064e18655ff173be24d9ad5ca94cf8ffb75"
+    },
+    ".context/sdio-first/handoff-ready/test-gates": {
+      "bytes": 16840,
+      "sha256": "e4370a04cf45d3e4556015f660a60c5510e73a6af62ad38382fc26e6aa7c5728"
+    },
+    ".context/sdio-first/handoff-ready/test.c": {
+      "bytes": 13604,
+      "sha256": "7d89b85d76700d249313613613389b20c5d93ea4ca7eaf70f9031fdd7d8b7cbe"
+    },
+    ".context/sdio-first/handoff-ready/test_audit.py": {
+      "bytes": 3293,
+      "sha256": "7aae7d030501f2ac98238cc8cace68cb52572a6bea864e14ee50550df32b18ac"
+    },
+    ".context/sdio-first/handoff-ready/test_data.c": {
+      "bytes": 6734,
+      "sha256": "70e4761235b0b8c7a813d8e94fac7c676d6a8235a83ac9808987fac086ca038e"
+    },
+    ".context/sdio-first/handoff-ready/test_endpoint.c": {
+      "bytes": 7265,
+      "sha256": "bf8b9267deccef14cc58b5259997fee519657ce26baec7d7d23e187c55e9995d"
+    },
+    ".context/sdio-first/handoff-ready/test_full.c": {
+      "bytes": 7833,
+      "sha256": "30189e1b0130971ad487acae29b17cb64e9caaa7dd8d3dc8ac7e3eeeacba92a6"
+    },
+    ".context/sdio-first/handoff-ready/test_gates.c": {
+      "bytes": 1374,
+      "sha256": "0d203e71bd63157a41236574115fefb572c07aae3c25e618070b3298deb3b0fc"
+    },
+    ".context/sdio-first/handoff-ready/test_helper.c": {
+      "bytes": 6958,
+      "sha256": "c50b7dcc7f2430541f977161f01608a3cc7bdf07b7003adda121caacdd4d006e"
+    },
+    ".context/sdio-first/handoff-ready/test_main.c": {
+      "bytes": 12325,
+      "sha256": "80008745a643418c477c0b2e785b7d4d116da8e66412928d242bdb3535dcc91e"
+    },
+    ".context/sdio-first/handoff-ready/test_sdio.c": {
+      "bytes": 9113,
+      "sha256": "2272fabdcaf3a3484041152f758127114037ae6ecda556e7830296d9b7ee6cbd"
+    },
+    ".context/sdio-first/handoff-ready/validate": {
+      "bytes": 205544,
+      "sha256": "9d020823a458f46f04efa0446c851694bef91aa0efca9d3817d7d7d86bd2cf94"
+    },
+    ".context/sdio-first/handoff-ready/validate.c": {
+      "bytes": 918,
+      "sha256": "8bf5853b2ef2773d463bf3cd0521faec4112de492735ef93f3ccee020af8b237"
+    },
+    ".context/sdio-first/handoff-ready/verify_checkpoint.py": {
+      "bytes": 1568,
+      "sha256": "b2021615007948162f7adf49b2f903a1cd16e49f8774b30c6ab5f74b997d8428"
+    },
+    ".context/sdio-first/handoff-ready/z1-codec.c": {
+      "bytes": 4040,
+      "sha256": "0f752bb4aa9750e83de674040ac887eca4c7066438c3c0f04147a6c719e62c84"
+    },
+    ".context/sdio-first/handoff-ready/z1-fields.inc": {
+      "bytes": 2300,
+      "sha256": "fab54fcd4a5ad1ea5f674dda7693c6e2f13b9415a1e6a904ae15c9c95e16690c"
+    },
+    ".context/sdio-first/runtime-write-plan/README.md": {
+      "bytes": 12436,
+      "sha256": "ec366e6d6dfb46ca45056c49099b378d818ab27f658e5e7d728fef24ec151448"
+    },
+    ".context/sdio-first/runtime-write-plan/original-command-submit-dis.txt": {
+      "bytes": 1312,
+      "sha256": "7ea2f763e9959babff300c62c50041aa720328ae7650e23df598dd904c08781d"
+    },
+    ".context/sdio-first/runtime-write-plan/original-controller-trigger-dis.txt": {
+      "bytes": 5373,
+      "sha256": "c706c42c1be53220cb69fd8b18f2dcab510602922e6c827b72065cfa00d7b127"
+    },
+    ".context/sdio-first/runtime-write-plan/original-frame-builder-dis.txt": {
+      "bytes": 1331,
+      "sha256": "d216baf94a6b6093b98ead8e433fa04cc38eff2bd7321ff1439760e490439b9a"
+    },
+    ".context/sdio-first/runtime-write-plan/original-post-verify-dis.txt": {
+      "bytes": 2091,
+      "sha256": "05db360a3ff05697ebb47754c996a9ed1210839c8e88d90391da30cba5e52e6b"
+    },
+    ".context/sdio-first/runtime-write-plan/original-pull-command-dis.txt": {
+      "bytes": 2141,
+      "sha256": "606048cfb5c2a33e10c37b4403a1deb680b158a302a272fab15d1f3e1b6f377a"
+    },
+    ".context/sdio-first/runtime-write-plan/original-sdio-argument-dis.txt": {
+      "bytes": 3151,
+      "sha256": "c9dc7cd3e94a5354731c40db5098f52dd4aac4573919fe5f15415a9fa1479699"
+    },
+    ".context/sdio-first/runtime-write-plan/original-sleep-command-dis.txt": {
+      "bytes": 1998,
+      "sha256": "eb04ac00f08fe25c36e8ee0778b0753c1a38ddda3188edcbfe1caceb00fcf55c"
+    },
+    ".context/sdio-first/runtime-write-plan/original-verifier-dis.txt": {
+      "bytes": 919,
+      "sha256": "e00bc6d853d14b9c888c452de5f7a4d889c43ba08f45c4d54a72be8ad8fbd150"
+    },
+    ".context/sdio-first/runtime-write-plan/source-contract.json": {
+      "bytes": 9600,
+      "sha256": "c26129028cbdeb90faf046d6eb517c8d10e2099eeb96c92d3b7abfeb54b57e20"
+    },
+    ".context/sdio-first/runtime-write-plan/source-pins.json": {
+      "bytes": 1219,
+      "sha256": "a178b1bb2a411381977675680f4afb5c4a8a35805ad2b3197cb4b7fde04cd8df"
+    },
+    ".context/sdio-first/runtime-write-plan/source_contract.py": {
+      "bytes": 5611,
+      "sha256": "bdbaacc0a74091132c318de08921c9a150f0cc200897c68928d888e965f3986f"
+    },
+    ".context/sdio-first/runtime-write/NEXT_RESPONSE.md": {
+      "bytes": 4648,
+      "sha256": "5089294056e121ead3143c3632c12d8c3221164085ccac95c631d0a970b58e65"
+    },
+    ".context/sdio-first/runtime-write/README.md": {
+      "bytes": 7260,
+      "sha256": "2c329d91a197e722c76a12f3f8b8409edf01249a1927cc85ac4236a881b6e65f"
+    },
+    ".context/sdio-first/runtime-write/actual-canonical.json": {
+      "bytes": 577,
+      "sha256": "1f3eb1bd940ef39cdee013ed4c8b4e5a54e312a631325f29b02c51f77115c891"
+    },
+    ".context/sdio-first/runtime-write/audit.py": {
+      "bytes": 8658,
+      "sha256": "5db14cd3361b5c2d5fe3ac2a9b5fcf77f62b0841784be300fed4334b74a3069e"
+    },
+    ".context/sdio-first/runtime-write/baseline-test.c": {
+      "bytes": 12207,
+      "sha256": "08a5507fdbdebdb1db0bf500cd15a58672747cd24674e5b15425234867930164"
+    },
+    ".context/sdio-first/runtime-write/build.sh": {
+      "bytes": 878,
+      "sha256": "c03fea057b7272733ffd687e7a48715742aefffa73ab3a0b483886456855ae64"
+    },
+    ".context/sdio-first/runtime-write/checkpoint.h": {
+      "bytes": 1913,
+      "sha256": "7750c3b754ea605a01922bef7b54c4fb1b991e05432d22fd99ad2f01bacf7309"
+    },
+    ".context/sdio-first/runtime-write/codec.c": {
+      "bytes": 4779,
+      "sha256": "9c4997853714fbf5a7ce13ed43a4260c733c9ea365191f1f8fdc0ffc6ac62704"
+    },
+    ".context/sdio-first/runtime-write/compare.c": {
+      "bytes": 1592,
+      "sha256": "982079ebd94e8a16813566ae38004b8ec244f099a70f823d300c234f4bcecb05"
+    },
+    ".context/sdio-first/runtime-write/continue.c": {
+      "bytes": 5601,
+      "sha256": "5bbd4807528dd470e37b99ef1881d6f02265ec7b68fda5592292f8ff851242d5"
+    },
+    ".context/sdio-first/runtime-write/fields.inc": {
+      "bytes": 2555,
+      "sha256": "7fe417c2329a78433c607b2f1b12276a4ac2813c3d08ad82dffc0e2f7312bbb7"
+    },
+    ".context/sdio-first/runtime-write/final-preflight.sh": {
+      "bytes": 621,
+      "sha256": "24bbe01a7f1d721bbe8101b4d44cc2a74c233aecf404dad356e642a859ae329c"
+    },
+    ".context/sdio-first/runtime-write/freeze.py": {
+      "bytes": 1492,
+      "sha256": "bc2ca7dc3e16f285331c3e67d46c21c4083e9ed4f6233294591e76be1cf34f82"
+    },
+    ".context/sdio-first/runtime-write/gates.h": {
+      "bytes": 880,
+      "sha256": "a24d804a60a914bf18b75a52d9fbddec0986c0104cecc70dbc5d546ac612f675"
+    },
+    ".context/sdio-first/runtime-write/independent_fields.inc": {
+      "bytes": 7486,
+      "sha256": "401bcb58e9da9d5e674797dce0448e726d624efc127b20bfc4a9aaa549c3af12"
+    },
+    ".context/sdio-first/runtime-write/main_model.inc": {
+      "bytes": 6152,
+      "sha256": "6f294f33075d5befc2076bcbbc4f142b7385d6be75a55303ac3aeb5ee83dee13"
+    },
+    ".context/sdio-first/runtime-write/peek.c": {
+      "bytes": 1563,
+      "sha256": "dd612a66c8109bafb970d737200d0836189df3af313aee2843d08e03cf516500"
+    },
+    ".context/sdio-first/runtime-write/peek.h": {
+      "bytes": 155,
+      "sha256": "b4ed792d24cafea5a9d2ac7585bd41ad7731b45780ef04aed93d038d49a2eeb5"
+    },
+    ".context/sdio-first/runtime-write/phone.c": {
+      "bytes": 4969,
+      "sha256": "96d335acefb3c04c0a412971b9f4db2a48c8f3e09f5012f028d3bb82ae46f4e3"
+    },
+    ".context/sdio-first/runtime-write/prefix_audit.py": {
+      "bytes": 4200,
+      "sha256": "41a90fd7464e67058e7c473709e38e2f2dc9958bb1945a3c498e94e47ea64106"
+    },
+    ".context/sdio-first/runtime-write/preflight-report.json": {
+      "bytes": 1944,
+      "sha256": "2ef7054ad73de26fd80b3e9d41b6e1a97d27cad833cafeac85dca42fc06e324c"
+    },
+    ".context/sdio-first/runtime-write/probe": {
+      "bytes": 713016,
+      "sha256": "4a1b2c5e563be01528885e4c08549388dca6de355a11238b3f1ebebb2407fb30"
+    },
+    ".context/sdio-first/runtime-write/probe.c": {
+      "bytes": 10206,
+      "sha256": "72be5a6ece4e286e431e15923f368f92f4927901c61d55633cca4c4aabc36178"
+    },
+    ".context/sdio-first/runtime-write/request-observer.inc": {
+      "bytes": 8873,
+      "sha256": "41f4ffb4b7daaf8c5a316fff38fe4d57732d61a89ca238888a13647ef4a01c7b"
+    },
+    ".context/sdio-first/runtime-write/request-output.inc": {
+      "bytes": 4176,
+      "sha256": "30db91b394a97111f4afce677e75336a2b4c581af546519f06f9e939ee78d2ba"
+    },
+    ".context/sdio-first/runtime-write/request.h": {
+      "bytes": 3238,
+      "sha256": "0466bf338a17c92cab8ffb96a0f94bf3113fff807debf0bfec21b0623e56fa00"
+    },
+    ".context/sdio-first/runtime-write/run.py": {
+      "bytes": 3300,
+      "sha256": "1ac65991668f5817b24dd68b7bdc20471a2d44b3ad036591e5208cce752b5faa"
+    },
+    ".context/sdio-first/runtime-write/runtime.c": {
+      "bytes": 9259,
+      "sha256": "813b0ea54c1a5f84f2ea2e7dc1ebc15f08774002d0ee203c3d39b06fe65602fb"
+    },
+    ".context/sdio-first/runtime-write/runtime.h": {
+      "bytes": 2085,
+      "sha256": "9d7935d3fa4697ece83aee7e109ec3981c055116379eafbd7eceadeec87043fa"
+    },
+    ".context/sdio-first/runtime-write/sdio.c": {
+      "bytes": 22853,
+      "sha256": "afab53c6f5c6af760845f377a206d12fbb33648f01734db069b67873baa74545"
+    },
+    ".context/sdio-first/runtime-write/sdio.h": {
+      "bytes": 5516,
+      "sha256": "e3a18c481bfe032ea34350d8e6b216ef9e728b6b8714c4d01b3026a01c0c4762"
+    },
+    ".context/sdio-first/runtime-write/supported_helper.inc": {
+      "bytes": 11495,
+      "sha256": "cb04170c1a81cbc2832f1afcf3cd96fe9e12f6ab3b0cd8d2661dc2348b27e5d2"
+    },
+    ".context/sdio-first/runtime-write/test-peek": {
+      "bytes": 1366656,
+      "sha256": "b6f2af1e86a85aa17214cbf921b75e07404dea1c77227320ff8854c76b9efcfd"
+    },
+    ".context/sdio-first/runtime-write/test-request": {
+      "bytes": 128648,
+      "sha256": "1ebfd80ca6b5f9a15629d4644ab2f0f86d7c4af75550df827bf4195ee83c0fe3"
+    },
+    ".context/sdio-first/runtime-write/test.c": {
+      "bytes": 13604,
+      "sha256": "7d89b85d76700d249313613613389b20c5d93ea4ca7eaf70f9031fdd7d8b7cbe"
+    },
+    ".context/sdio-first/runtime-write/test_audit.py": {
+      "bytes": 7726,
+      "sha256": "c80f4cf5f1668befe3ddccd584b8004d79af769359386bae96ff210320f633b6"
+    },
+    ".context/sdio-first/runtime-write/test_data.c": {
+      "bytes": 6734,
+      "sha256": "70e4761235b0b8c7a813d8e94fac7c676d6a8235a83ac9808987fac086ca038e"
+    },
+    ".context/sdio-first/runtime-write/test_endpoint.c": {
+      "bytes": 7265,
+      "sha256": "bf8b9267deccef14cc58b5259997fee519657ce26baec7d7d23e187c55e9995d"
+    },
+    ".context/sdio-first/runtime-write/test_full.c": {
+      "bytes": 7833,
+      "sha256": "30189e1b0130971ad487acae29b17cb64e9caaa7dd8d3dc8ac7e3eeeacba92a6"
+    },
+    ".context/sdio-first/runtime-write/test_gates.c": {
+      "bytes": 1374,
+      "sha256": "0d203e71bd63157a41236574115fefb572c07aae3c25e618070b3298deb3b0fc"
+    },
+    ".context/sdio-first/runtime-write/test_helper.c": {
+      "bytes": 6958,
+      "sha256": "c50b7dcc7f2430541f977161f01608a3cc7bdf07b7003adda121caacdd4d006e"
+    },
+    ".context/sdio-first/runtime-write/test_main.c": {
+      "bytes": 12325,
+      "sha256": "80008745a643418c477c0b2e785b7d4d116da8e66412928d242bdb3535dcc91e"
+    },
+    ".context/sdio-first/runtime-write/test_peek.c": {
+      "bytes": 3376,
+      "sha256": "5feb3384af771d47da99b990d22764f39fe36ed022dc8fc7b603160705796abb"
+    },
+    ".context/sdio-first/runtime-write/test_request.c": {
+      "bytes": 4918,
+      "sha256": "3c898b20f8a006fda290ea873ec1d87840479ab5035469323d4f23e93a5f12b7"
+    },
+    ".context/sdio-first/runtime-write/test_sdio.c": {
+      "bytes": 9113,
+      "sha256": "2272fabdcaf3a3484041152f758127114037ae6ecda556e7830296d9b7ee6cbd"
+    },
+    ".context/sdio-first/runtime-write/validate": {
+      "bytes": 504856,
+      "sha256": "1e999d22a1ba1f483865cabee3973862b01c736bf7ec70121aa918da5172aec4"
+    },
+    ".context/sdio-first/runtime-write/validate.c": {
+      "bytes": 918,
+      "sha256": "8bf5853b2ef2773d463bf3cd0521faec4112de492735ef93f3ccee020af8b237"
+    },
+    ".context/sdio-first/runtime-write/verify_checkpoint.py": {
+      "bytes": 1568,
+      "sha256": "b2021615007948162f7adf49b2f903a1cd16e49f8774b30c6ab5f74b997d8428"
+    },
+    ".context/sdio-first/runtime-write/z1-codec.c": {
+      "bytes": 4040,
+      "sha256": "0f752bb4aa9750e83de674040ac887eca4c7066438c3c0f04147a6c719e62c84"
+    },
+    ".context/sdio-first/runtime-write/z1-fields.inc": {
+      "bytes": 2300,
+      "sha256": "fab54fcd4a5ad1ea5f674dda7693c6e2f13b9415a1e6a904ae15c9c95e16690c"
+    },
+    "/lib64/libcrypto.so.3": {
+      "bytes": 6225280,
+      "sha256": "db2a23b510a1ac467ce3ce4e953da741119112af41b380c81e371e3ef0867f24"
+    },
+    "core/include/arm.h": {
+      "bytes": 32106,
+      "sha256": "4ff01dc4656756557f7409571136039a6b581f69a9198e07b32acd93db265c00"
+    },
+    "core/include/board.h": {
+      "bytes": 749,
+      "sha256": "58c8352093bbaa53ecb1a35b8aa04321f11b2c049eaa084bacf7b2a2b62390ef"
+    },
+    "core/include/snapshot.h": {
+      "bytes": 15652,
+      "sha256": "770798b9b419cc6b8df7fe7de69a2e8b4f749862656e3613d7856ae1363b1799"
+    },
+    "core/include/soc.h": {
+      "bytes": 245839,
+      "sha256": "2d034d6aad2d9194e64821177b5764b1ff5557544503aade484e879bdf4f23d3"
+    },
+    "core/src/snapshot.c": {
+      "bytes": 80287,
+      "sha256": "30ebacf922057a00c833ffdb6a922e43d6b8b0f3392ca3ce08edb9ca99363c01"
+    },
+    "core/src/soc/mtz1.c": {
+      "bytes": 19180,
+      "sha256": "a4620f3592a9a50f2cba699db5b084abb91abc4dd13e4b9d9a4437eb058def0e"
+    },
+    "web/firmware/devicetree_m68ap.bin": {
+      "bytes": 36864,
+      "sha256": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10"
+    },
+    "web/firmware/kernel_1A543a.macho": {
+      "bytes": 5888896,
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9"
+    }
+  },
+  "manifestSha256": "911b4b85c3f984c736edbb51b882c68be6ef1b8788a9b343b9b1d9eaeac11787",
+  "inputMachineSha256": "2cf3a7391b2972cea6e152672693b9028b4707765937b8344018d0f5929ea0d5",
+  "inputSidecarSha256": "9b91cff0fd310e457df7850424260cd6307e39ec08467f4e0c935725953507d8",
+  "loadLimitSeconds": 120,
+  "guestLimitSeconds": 90,
+  "outerProcessLimitSeconds": 240,
+  "guestInstructionLimit": 100000000,
+  "scope": "One isolated continuation from unchanged073, no automatic retries or package publication"
+}

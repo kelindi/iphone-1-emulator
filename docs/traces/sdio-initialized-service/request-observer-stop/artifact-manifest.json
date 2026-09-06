@@ -1,0 +1,145 @@
+{
+  "scope": "Documentation manifest of copied existing artifacts and explanatory notes only; no new run, reverse engineering or acceptance test",
+  "files": {
+    "README.md": {
+      "bytes": 6000,
+      "sha256": "495c447660d1ab60ac8299d193fc98c2ae6c6b77ce251cb234da8428a5087b14"
+    },
+    "actual-canonical.json": {
+      "bytes": 577,
+      "sha256": "1f3eb1bd940ef39cdee013ed4c8b4e5a54e312a631325f29b02c51f77115c891"
+    },
+    "audit.py": {
+      "bytes": 8658,
+      "sha256": "5db14cd3361b5c2d5fe3ac2a9b5fcf77f62b0841784be300fed4334b74a3069e"
+    },
+    "control-1/attempt.json": {
+      "bytes": 25754,
+      "sha256": "bfe7b202992c55ee15fbcc6b85cdad529836391078a0b8a970e58670e93aef5f"
+    },
+    "control-1/audit.json": {
+      "bytes": 1246,
+      "sha256": "7901880ed37a5668f33405c9a0379968b075a83907a40787f7e1a482c905c2f3"
+    },
+    "control-1/gate-mode-pair.json": {
+      "bytes": 76,
+      "sha256": "812e061fee1eea735bfe511013475175e264dc84b140ee84fa0d448e067d87e3"
+    },
+    "control-1/milestones.log": {
+      "bytes": 818,
+      "sha256": "019e74d76915565e08428e6a56fdf1219080bbb9bb319c82bfafad7c17bf579c"
+    },
+    "control-1/process.json": {
+      "bytes": 82,
+      "sha256": "75fe6eceec916e0ac1b912aabc1d849915f0804cfc4c2d8835975168d933c147"
+    },
+    "control-1/report.json": {
+      "bytes": 758,
+      "sha256": "9bdb2a22389470b99e3341749393cc46a5a0a4a674a1f2e34672550bb5723d5c"
+    },
+    "control-1/transaction-reference.json": {
+      "bytes": 376,
+      "sha256": "b90617c11ab2302c34f260be582a41446ece6f701a96714cf7b7ec0f51c4a31b"
+    },
+    "control-launch.log": {
+      "bytes": 1246,
+      "sha256": "7901880ed37a5668f33405c9a0379968b075a83907a40787f7e1a482c905c2f3"
+    },
+    "peek.c": {
+      "bytes": 1563,
+      "sha256": "dd612a66c8109bafb970d737200d0836189df3af313aee2843d08e03cf516500"
+    },
+    "peek.h": {
+      "bytes": 155,
+      "sha256": "b4ed792d24cafea5a9d2ac7585bd41ad7731b45780ef04aed93d038d49a2eeb5"
+    },
+    "positive-1/attempt.json": {
+      "bytes": 25755,
+      "sha256": "3ec341e092833d7e63d27a4b99cd7ee9c2e6ccb2a0c1d557898e03ec04f8f2af"
+    },
+    "positive-1/gate-mode-pair.json": {
+      "bytes": 76,
+      "sha256": "812e061fee1eea735bfe511013475175e264dc84b140ee84fa0d448e067d87e3"
+    },
+    "positive-1/milestones.log": {
+      "bytes": 1387,
+      "sha256": "9b3ad03781f4a835426ff46ad34ea6dd22376f80800ba2031a18a7a77b2b4e59"
+    },
+    "positive-1/process.json": {
+      "bytes": 83,
+      "sha256": "cf98a3565e3ad782060e7e7bfbceaf9b4c9787c9a94f16384b8298b37444fb1d"
+    },
+    "positive-1/report.json": {
+      "bytes": 759,
+      "sha256": "7759d2299ad617d72b0b9ddcee18a7d0870a5d0875eadcd9f77e62b9113edaa1"
+    },
+    "positive-1/request.json": {
+      "bytes": 1793,
+      "sha256": "4ed597bb3abdb39a19970eede34a377c897073455fdf00e12b13b4c2f311d505"
+    },
+    "positive-1/transactions.bin": {
+      "bytes": 1320352,
+      "sha256": "42c5f1e9191759e122fa1f84d20559f06b14756d2227903e8017e9df920e8d59"
+    },
+    "positive-launch.log": {
+      "bytes": 435,
+      "sha256": "e7ba03221f2ea206f9d0977dd5dd8feef48747aab91232dc45eaeccb8d4382b3"
+    },
+    "prefix_audit.py": {
+      "bytes": 4200,
+      "sha256": "41a90fd7464e67058e7c473709e38e2f2dc9958bb1945a3c498e94e47ea64106"
+    },
+    "preflight-report.json": {
+      "bytes": 1944,
+      "sha256": "2ef7054ad73de26fd80b3e9d41b6e1a97d27cad833cafeac85dca42fc06e324c"
+    },
+    "probe.c": {
+      "bytes": 10206,
+      "sha256": "72be5a6ece4e286e431e15923f368f92f4927901c61d55633cca4c4aabc36178"
+    },
+    "request-observer.inc": {
+      "bytes": 8873,
+      "sha256": "41f4ffb4b7daaf8c5a316fff38fe4d57732d61a89ca238888a13647ef4a01c7b"
+    },
+    "request-output.inc": {
+      "bytes": 4176,
+      "sha256": "30db91b394a97111f4afce677e75336a2b4c581af546519f06f9e939ee78d2ba"
+    },
+    "request.h": {
+      "bytes": 3238,
+      "sha256": "0466bf338a17c92cab8ffb96a0f94bf3113fff807debf0bfec21b0623e56fa00"
+    },
+    "run.py": {
+      "bytes": 3300,
+      "sha256": "1ac65991668f5817b24dd68b7bdc20471a2d44b3ad036591e5208cce752b5faa"
+    },
+    "source-notes/README.md": {
+      "bytes": 4897,
+      "sha256": "5968ba6a88b1ba3ae06749c9e6e2aaf7918266bc407e374c3168e8b0a376b875"
+    },
+    "source-notes/direct-caller-candidates.json": {
+      "bytes": 410,
+      "sha256": "28ea77651123da54e431a54a5142c46772a4b8892bb202e12524ff9876097332"
+    },
+    "source-notes/original-enqueue-header-dis.txt": {
+      "bytes": 692,
+      "sha256": "1c25fc2dac218ed2ae39227dd2b3900a2742432f84adab88198e7f8bbecaae6f"
+    },
+    "source-notes/original-power-on-loader-dis.txt": {
+      "bytes": 1495,
+      "sha256": "9518598b4792b2a492d0dd660b48b66748189b6a05e366a5bc039bc914a1f36c"
+    },
+    "source-notes/original-set-hardware-address-dis.txt": {
+      "bytes": 2920,
+      "sha256": "d93b053b3c8a21c6f870059901f84bd3c633af133f66e97e0aa61fc720698d5e"
+    },
+    "source-notes/set-address-literal-candidates.json": {
+      "bytes": 247,
+      "sha256": "d8fb9c8384832fb4edf3ae6d131d4bca425b2082009e53876eea8769e60cb2c0"
+    },
+    "source-pins.json": {
+      "bytes": 24017,
+      "sha256": "7c32565acb1bffa4ee1621131e9c70da0389a2e1ac19fb7fa08cb276132a9ce5"
+    }
+  }
+}

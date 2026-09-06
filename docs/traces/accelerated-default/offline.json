@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-09-05T21:24:04.197Z",
+  "checks": [
+    {
+      "name": "offline bundle installed and controls current page",
+      "atSeconds": 12.326632719
+    },
+    {
+      "name": "browser network disconnected",
+      "atSeconds": 12.331186403
+    },
+    {
+      "name": "genuine guest starts after disconnected reload",
+      "atSeconds": 16.397515742000003
+    },
+    {
+      "name": "corrupt offline firmware fails visibly",
+      "atSeconds": 19.511332233
+    },
+    {
+      "name": "corrupt cache entry was removed",
+      "atSeconds": 19.51404574
+    },
+    {
+      "name": "retry downloads verified firmware and restores guest",
+      "atSeconds": 24.574482781
+    }
+  ],
+  "result": "pass"
+}

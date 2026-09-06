@@ -1,0 +1,59 @@
+[  0%] Building C object CMakeFiles/faad.dir/libfaad/bits.c.o
+[  4%] Building C object CMakeFiles/faad.dir/libfaad/cfft.c.o
+[  4%] Building C object CMakeFiles/faad.dir/libfaad/common.c.o
+[  8%] Building C object CMakeFiles/faad.dir/libfaad/decoder.c.o
+[ 12%] Building C object CMakeFiles/faad.dir/libfaad/drc.c.o
+[ 12%] Building C object CMakeFiles/faad.dir/libfaad/drm_dec.c.o
+[ 16%] Building C object CMakeFiles/faad.dir/libfaad/error.c.o
+[ 20%] Building C object CMakeFiles/faad.dir/libfaad/filtbank.c.o
+[ 20%] Building C object CMakeFiles/faad.dir/libfaad/hcr.c.o
+[ 24%] Building C object CMakeFiles/faad.dir/libfaad/huffman.c.o
+[ 28%] Building C object CMakeFiles/faad.dir/libfaad/ic_predict.c.o
+[ 28%] Building C object CMakeFiles/faad.dir/libfaad/is.c.o
+[ 32%] Building C object CMakeFiles/faad.dir/libfaad/lt_predict.c.o
+[ 32%] Building C object CMakeFiles/faad.dir/libfaad/mdct.c.o
+[ 36%] Building C object CMakeFiles/faad.dir/libfaad/mp4.c.o
+[ 40%] Building C object CMakeFiles/faad.dir/libfaad/ms.c.o
+[ 40%] Building C object CMakeFiles/faad.dir/libfaad/output.c.o
+[ 44%] Building C object CMakeFiles/faad.dir/libfaad/pns.c.o
+[ 48%] Building C object CMakeFiles/faad.dir/libfaad/ps_dec.c.o
+[ 48%] Building C object CMakeFiles/faad.dir/libfaad/ps_syntax.c.o
+[ 52%] Building C object CMakeFiles/faad.dir/libfaad/pulse.c.o
+[ 56%] Building C object CMakeFiles/faad.dir/libfaad/rvlc.c.o
+[ 56%] Building C object CMakeFiles/faad.dir/libfaad/sbr_dct.c.o
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c: In function ‘ps_decode’:
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1376:36: warning: ‘temp_delay_ser[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 1376 |         ps->delay_buf_index_ser[n] = temp_delay_ser[n];
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1046:13: note: ‘temp_delay_ser[2]’ was declared here
+ 1046 |     uint8_t temp_delay_ser[NO_ALLPASS_LINKS];
+      |             ^~~~~~~~~~~~~~
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1376:36: warning: ‘temp_delay_ser[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 1376 |         ps->delay_buf_index_ser[n] = temp_delay_ser[n];
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1046:13: note: ‘temp_delay_ser[1]’ was declared here
+ 1046 |     uint8_t temp_delay_ser[NO_ALLPASS_LINKS];
+      |             ^~~~~~~~~~~~~~
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1376:36: warning: ‘temp_delay_ser[0]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+ 1376 |         ps->delay_buf_index_ser[n] = temp_delay_ser[n];
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+/home/vercel-sandbox/iphone-1/.context/amc-first/stage-e/framing/source/libfaad/ps_dec.c:1046:13: note: ‘temp_delay_ser[0]’ was declared here
+ 1046 |     uint8_t temp_delay_ser[NO_ALLPASS_LINKS];
+      |             ^~~~~~~~~~~~~~
+[ 60%] Building C object CMakeFiles/faad.dir/libfaad/sbr_dec.c.o
+[ 64%] Building C object CMakeFiles/faad.dir/libfaad/sbr_e_nf.c.o
+[ 64%] Building C object CMakeFiles/faad.dir/libfaad/sbr_fbt.c.o
+[ 68%] Building C object CMakeFiles/faad.dir/libfaad/sbr_hfadj.c.o
+[ 68%] Building C object CMakeFiles/faad.dir/libfaad/sbr_hfgen.c.o
+[ 72%] Building C object CMakeFiles/faad.dir/libfaad/sbr_huff.c.o
+[ 76%] Building C object CMakeFiles/faad.dir/libfaad/sbr_qmf.c.o
+[ 76%] Building C object CMakeFiles/faad.dir/libfaad/sbr_syntax.c.o
+[ 80%] Building C object CMakeFiles/faad.dir/libfaad/sbr_tf_grid.c.o
+[ 84%] Building C object CMakeFiles/faad.dir/libfaad/specrec.c.o
+[ 84%] Building C object CMakeFiles/faad.dir/libfaad/ssr.c.o
+[ 88%] Building C object CMakeFiles/faad.dir/libfaad/ssr_fb.c.o
+[ 92%] Building C object CMakeFiles/faad.dir/libfaad/ssr_ipqf.c.o
+[ 92%] Building C object CMakeFiles/faad.dir/libfaad/syntax.c.o
+[ 96%] Building C object CMakeFiles/faad.dir/libfaad/tns.c.o
+[100%] Linking C static library libfaad.a
+[100%] Built target faad

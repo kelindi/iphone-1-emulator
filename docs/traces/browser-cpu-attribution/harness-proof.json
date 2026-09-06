@@ -1,0 +1,13 @@
+{
+  "source": "web/tests/performance.mjs",
+  "sourceSha256": "237fc8ea9f62161622c84036c748e767e88bcc8cdcef55aea339afc356c2e2da",
+  "preparedSha256": "03236f1de831362d4c9d070a35a0c9d87ee69117bcfe7fb3752c7ca171030ae2",
+  "changes": [
+    "CDP worker/main sampling around existing navigation",
+    "three-second Home idle stage",
+    "explicit ordinary Save stage",
+    "video disabled; screenshots after profiler stops",
+    "Debugger bytecode collection only after all profiles"
+  ],
+  "notRun": true
+}

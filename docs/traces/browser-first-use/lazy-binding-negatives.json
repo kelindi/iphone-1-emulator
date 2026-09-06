@@ -1,0 +1,36 @@
+{
+  "positiveWitness": {
+    "stage": "C0-settings",
+    "index": 285,
+    "bodySize": 67111,
+    "matchingModules": [
+      "seed"
+    ],
+    "resolved": "seed",
+    "threadCpuUs": 3204,
+    "wallUs": 3311
+  },
+  "checks": [
+    {
+      "name": "wrong-body-size",
+      "matches": [],
+      "expected": []
+    },
+    {
+      "name": "ambiguous-module-pair",
+      "matches": [
+        "core",
+        "seed"
+      ],
+      "expected": [
+        "core",
+        "seed"
+      ]
+    },
+    {
+      "name": "wrong-function-index",
+      "matches": [],
+      "expected": []
+    }
+  ]
+}

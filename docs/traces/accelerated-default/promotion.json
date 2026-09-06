@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "path": "firmware/rootfs_1A543a_act.img.gz.part0",
+      "before": "3a30bb06db730ac51548527fb2f6ec4dbe81d6cd75dcd3b50c7ea26732a4de54",
+      "after": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
+      "oldInode": 102256176,
+      "newInode": 104943736
+    },
+    {
+      "path": "firmware/rootfs_1A543a_act.img.gz.part1",
+      "before": "0dc9c9ac5e38de25abf74bd12d22c2e06d22cd40ed6bb12958deb19f164f3305",
+      "after": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
+      "oldInode": 102256177,
+      "newInode": 104943737
+    },
+    {
+      "path": "firmware/home_1A543a.snap.gz.part0",
+      "before": "2d0df629b27e7d2b9beb34fbd91fe217a6bb8bd9cb0a2aa15512b10d560edc9d",
+      "after": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
+      "oldInode": 101955228,
+      "newInode": 104943738
+    },
+    {
+      "path": "firmware/home_1A543a.snap.gz.part1",
+      "before": "4fcbe2b3ad98100b94b80cb85014f9cb6b9b05886bcfe895f3d87858bac95bfa",
+      "after": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6",
+      "oldInode": 101955235,
+      "newInode": 104943739
+    }
+  ],
+  "preservedPreviousAssets": true
+}

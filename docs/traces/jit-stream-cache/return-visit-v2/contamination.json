@@ -1,0 +1,53 @@
+{
+  "time": "2026-09-06T04:49:32.834300+00:00",
+  "classification": "Contaminated diagnostic; no quiet timing acceptance. No automatic retry.",
+  "rootObservation": "Root verified independent codex3144844 owns node3262304/3262305, Chrome3262388/3262390 and ffmpeg3262755 at04:48:19 UTC, summed ps lifetime CPU percentages about300% (not interval utilization). Frozen source pins unaffected; external process ownership investigation remains root-owned.",
+  "processes": [
+    {
+      "pid": 3144844,
+      "name": "codex",
+      "ppid": 113,
+      "utimeTicks": 1937,
+      "stimeTicks": 875,
+      "startTicks": 3881212
+    },
+    {
+      "pid": 3262304,
+      "closedBeforeThisReceipt": true
+    },
+    {
+      "pid": 3262305,
+      "closedBeforeThisReceipt": true
+    },
+    {
+      "pid": 3262388,
+      "closedBeforeThisReceipt": true
+    },
+    {
+      "pid": 3262390,
+      "closedBeforeThisReceipt": true
+    },
+    {
+      "pid": 3262755,
+      "closedBeforeThisReceipt": true
+    },
+    {
+      "pid": 3217764,
+      "name": "python3",
+      "ppid": 3217746,
+      "utimeTicks": 1951,
+      "stimeTicks": 745,
+      "startTicks": 3943533
+    },
+    {
+      "pid": 3264881,
+      "name": "MainThread",
+      "ppid": 3217764,
+      "utimeTicks": 338,
+      "stimeTicks": 44,
+      "startTicks": 3979672
+    }
+  ],
+  "externalSession": "Separate Web UI Minimalist Redesign Conductor session; root coordination pending.",
+  "rootEvidence": "external-overlap-root.json"
+}

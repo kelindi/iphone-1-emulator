@@ -1,0 +1,5 @@
+# Isolated unused register transfer candidate
+
+The original emitter/input/runtime are unchanged. A post-emission pass identifies region-wide register reads and writes after removing known unconditional entry loads and exit spills from its analysis. It omits a spill only if the register is never written anywhere in the region, and omits an entry load only if it is neither read nor written. Loads for write-only destinations remain because zero budgets, conditions and early exits can leave their original values intact. Every raw-code/memory/alias/budget guard and all instruction bodies remain unchanged.
+
+The focused 2,335-case oracle, independent structural proof and both full 600M raw snapshot/counter replays pass. Quiet ABBA timing reverses its small gain with order (combined −0.042%): the candidate is parked without production promotion. See quiet-pair.json and the durable README for all retained evidence. The preceding entry census measures nominal operations only; the host optimizer may already eliminate some. No production change or promised speedup.

@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "command": [
+        "cc",
+        "-std=c11",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        "-Ds5l_pcf50635_civil=baseline_s5l_pcf50635_civil",
+        "-Ds5l_pcf50635_reset=baseline_s5l_pcf50635_reset",
+        "-Ds5l_pcf50635_set_time=baseline_s5l_pcf50635_set_time",
+        "-Ds5l_pcf50635_tick=baseline_tick",
+        "-Ds5l_pcf50635_bind=baseline_s5l_pcf50635_bind",
+        "-Ds5l_pcf50635_irq=baseline_s5l_pcf50635_irq",
+        "-Ds5l_pcf50635_in_standby=baseline_s5l_pcf50635_in_standby",
+        "-Ds5l_pcf50635_wake_onkey=baseline_s5l_pcf50635_wake_onkey",
+        "-c",
+        "core/src/soc/pcf50635.c",
+        "-o",
+        ".context/rtc-second/baseline.o"
+      ],
+      "exitCode": 0,
+      "log": "baseline-build.log"
+    },
+    {
+      "command": [
+        "cc",
+        "-std=c11",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        ".context/rtc-second/test.c",
+        ".context/rtc-second/pcf50635.c",
+        ".context/rtc-second/baseline.o",
+        "-o",
+        ".context/rtc-second/test"
+      ],
+      "exitCode": 0,
+      "log": "test-build.log"
+    },
+    {
+      "command": [
+        ".context/rtc-second/test"
+      ],
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "command": [
+        "cc",
+        "-std=c11",
+        "-O1",
+        "-g",
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer",
+        "-Icore/include",
+        ".context/rtc-second/test.c",
+        "core/src/soc/pcf50635.c",
+        ".context/rtc-second/baseline.o",
+        "-o",
+        ".context/rtc-second/test-missing-event"
+      ],
+      "exitCode": 0,
+      "log": "negative-build.log"
+    },
+    {
+      "command": [
+        "cc",
+        "-std=c11",
+        "-O3",
+        "-Icore/include",
+        "-I.context/rtc-contract",
+        "-I.context/emu-api-test",
+        "-I.context/amc-first/stage-h/source",
+        ".context/rtc-second/probe.c",
+        ".context/rtc-second/pcf50635.c",
+        ".context/amc-first/stage-h/source/peek.c",
+        ".context/build-native/core/libemucore.a",
+        "-lm",
+        "-o",
+        ".context/rtc-second/probe"
+      ],
+      "exitCode": 1,
+      "log": "probe-build.log"
+    }
+  ],
+  "missingEventNegative": {
+    "exitCode": 1,
+    "expectedFailure": true
+  },
+  "probeBuildRecovery": {
+    "exitCode": 0,
+    "correction": "Use complete native emscripten header (get_now stub) from accepted Stage G instead of obsolete KEEPALIVE-only stub. Probe and PCF source unchanged. Original linker failure preserved.",
+    "log": "probe-build.log"
+  },
+  "pins": {
+    ".context/rtc-second/probe.c": {
+      "bytes": 5490,
+      "sha256": "714329d6eceae4a9f5207177d2afaf5c7e141e4c877d18eacb7976b4675a81d4"
+    },
+    ".context/rtc-second/pcf50635.c": {
+      "bytes": 8790,
+      "sha256": "0381b01a5464544d1ca38a9f7a0b6f73b4549ceda8e80cdf1e2c23d457666d20"
+    },
+    ".context/rtc-second/test.c": {
+      "bytes": 3741,
+      "sha256": "1710be20edbcccb1382b6deb743088a904ee9d8d3b36340c7d8a49e369bd79b8"
+    },
+    ".context/rtc-second/build.py": {
+      "bytes": 2735,
+      "sha256": "a5e117772b87f99931ed57d21c578d85f755cd8ebc87ff5abdf2f985b11de5a7"
+    },
+    ".context/rtc-second/run.py": {
+      "bytes": 1319,
+      "sha256": "45317e5e0d14f96464902105305e0296e086847e36cbb2c0a498b355745e4a2d"
+    },
+    ".context/rtc-second/audit.py": {
+      "bytes": 4133,
+      "sha256": "bfa458bf12dabd882e04e9a164f5ac61fed3343096d82275a011c149347ed587"
+    },
+    ".context/rtc-second/probe": {
+      "bytes": 297360,
+      "sha256": "e375d2cce4494c50298a02e4db9c10bc57212f5dc25d8b0908f4e14144d2dd54"
+    },
+    ".context/build-native/core/libemucore.a": {
+      "bytes": 1854772,
+      "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+    },
+    ".context/rtc-contract/emu_api.c": {
+      "bytes": 22190,
+      "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1"
+    },
+    ".context/amc-first/stage-h/source/peek.c": {
+      "bytes": 1946,
+      "sha256": "50577c62beb22c08e8b365bf16f566704226f7efd768732043461fee91ff7153"
+    },
+    ".context/amc-first/stage-h/source/peek.h": {
+      "bytes": 269,
+      "sha256": "246d25d6e11affe5ae60c910ccdf0c6ba8022b15da6844627fa9fa1ee0b52dd6"
+    },
+    ".context/amc-first/stage-g/native-include/emscripten/emscripten.h": {
+      "bytes": 377,
+      "sha256": "c1405e5e3548e49c725787f67fd969e47286d706e06f5c4f20017e6652161bef"
+    },
+    ".context/rtc-contract/browser-2/before-manual-change.snap": {
+      "bytes": 255983586,
+      "sha256": "d478cf35dbebaf45319c75175df29c743e9f21929eea36b3b63827de454bfb5d"
+    }
+  }
+}

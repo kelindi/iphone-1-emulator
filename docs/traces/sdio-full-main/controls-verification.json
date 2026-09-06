@@ -1,0 +1,3260 @@
+{
+  "passed": true,
+  "scope": "first modeled helper header/body consumed by original Apple host; no helper CPU or firmware-ready claim",
+  "checks": 1012343,
+  "preservedChecks": 549969,
+  "newChecks": 462374,
+  "inputsUnchanged": {
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    "web/firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
+    ".context/organizer-debug/rootfs-compact168-checked.img": "0b544d47fb67603167099e658d50e3c284c28233d489263b269682c4f9ac53b0",
+    ".context/build-native/core/libemucore.a": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+  },
+  "sourceHashes": {
+    ".context/sdio-first/main-full/sdio.c": "297484dd20098721cc8ed2be5660fa0428fc325e7d3bf26d0cdc2b855459c689",
+    ".context/sdio-first/main-full/sdio.h": "e3a18c481bfe032ea34350d8e6b216ef9e728b6b8714c4d01b3026a01c0c4762",
+    ".context/sdio-first/main-full/main_model.inc": "6f294f33075d5befc2076bcbbc4f142b7385d6be75a55303ac3aeb5ee83dee13",
+    ".context/sdio-first/main-full/supported_helper.inc": "cb04170c1a81cbc2832f1afcf3cd96fe9e12f6ab3b0cd8d2661dc2348b27e5d2",
+    ".context/sdio-first/main-full/probe.c": "502d63b46687b1ca9d8436fd1515292bac52f36afade1f0720d42b62a6b2e78c",
+    ".context/sdio-first/main-full/test_sdio.c": "2272fabdcaf3a3484041152f758127114037ae6ecda556e7830296d9b7ee6cbd",
+    ".context/sdio-first/main-full/test_endpoint.c": "bf8b9267deccef14cc58b5259997fee519657ce26baec7d7d23e187c55e9995d",
+    ".context/sdio-first/main-full/test_data.c": "70e4761235b0b8c7a813d8e94fac7c676d6a8235a83ac9808987fac086ca038e",
+    ".context/sdio-first/main-full/test_helper.c": "c50b7dcc7f2430541f977161f01608a3cc7bdf07b7003adda121caacdd4d006e",
+    ".context/sdio-first/main-full/test_main.c": "80008745a643418c477c0b2e785b7d4d116da8e66412928d242bdb3535dcc91e",
+    ".context/sdio-first/main-full/test_full.c": "30189e1b0130971ad487acae29b17cb64e9caaa7dd8d3dc8ac7e3eeeacba92a6"
+  },
+  "runs": {
+    "positive": {
+      "report": {
+        "baseline": false,
+        "gateReached": true,
+        "cccrInitializerEntered": true,
+        "pc": "c038a8c8",
+        "instructions": 1741652858,
+        "ticks": 25834959,
+        "cpuHz": 412000000,
+        "commandTicks": 600,
+        "accesses": 734084,
+        "statusReads": 732070,
+        "triggers": 162,
+        "completedResponses": 162,
+        "transportErrors": 0,
+        "rejectedWrites": 0,
+        "cardErrorResponses": 0,
+        "cccrReads": 2,
+        "cccrMask": 257,
+        "cardState": 3,
+        "rca": 1,
+        "irq": false,
+        "forwarded": [
+          36593605,
+          8129,
+          1551470,
+          194797230,
+          102391,
+          2409497
+        ]
+      },
+      "data": {
+        "dataStarts": 39,
+        "dataCompletions": 39,
+        "dataErrors": 0,
+        "dmaSourceLookups": 39,
+        "irqHandlerEntered": true,
+        "completeDMAEntered": true,
+        "dataTicks": 600,
+        "used": 0,
+        "irqPending": 0,
+        "events": 0
+      },
+      "helper": {
+        "noConsume": false,
+        "mainNegative": false,
+        "helperBytes": 2140,
+        "helperFrames": 37,
+        "terminated": true,
+        "protocolErrors": 0,
+        "completionReturns": 39,
+        "sourceWireBytes": 2880,
+        "wireOK": true,
+        "allTransfersOK": true
+      },
+      "wireBytes": 2880,
+      "wireSha256": "db9c5514eea1ffa5ec3f3809fec85a51949b3d6f9cf2699235a272dee27d7ab2",
+      "lengthReads": [
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24786862,
+          "response": [
+            4112,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24787462,
+          "ackTicks": 24787462
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24787472,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24788072,
+          "ackTicks": 24788072
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 25310474,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 25311074,
+          "ackTicks": 25311074
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 25311084,
+          "response": [
+            4098,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 25311684,
+          "ackTicks": 25311684
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 25833742,
+          "response": [
+            4112,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 25834342,
+          "ackTicks": 25834342
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 25834352,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 25834952,
+          "ackTicks": 25834952
+        }
+      ],
+      "completeDMAAcknowledgements": 39,
+      "loadedDTSha256": "fc41b23596717d1457f072a88b92ded10c0067f2b7ffb9fa80de1fe5d433421e"
+    },
+    "main-negative": {
+      "report": {
+        "baseline": false,
+        "gateReached": true,
+        "cccrInitializerEntered": true,
+        "pc": "c038a788",
+        "instructions": 1678065205,
+        "ticks": 24908925,
+        "cpuHz": 412000000,
+        "commandTicks": 600,
+        "accesses": 1576914,
+        "statusReads": 1573272,
+        "triggers": 346,
+        "completedResponses": 346,
+        "transportErrors": 0,
+        "rejectedWrites": 0,
+        "cardErrorResponses": 0,
+        "cccrReads": 2,
+        "cccrMask": 257,
+        "cardState": 3,
+        "rca": 1,
+        "irq": false,
+        "forwarded": [
+          34909224,
+          8291,
+          1467376,
+          186408314,
+          102390,
+          2333759
+        ]
+      },
+      "data": {
+        "dataStarts": 37,
+        "dataCompletions": 37,
+        "dataErrors": 0,
+        "dmaSourceLookups": 37,
+        "irqHandlerEntered": true,
+        "completeDMAEntered": true,
+        "dataTicks": 600,
+        "used": 0,
+        "irqPending": 0,
+        "events": 0
+      },
+      "helper": {
+        "noConsume": false,
+        "mainNegative": true,
+        "helperBytes": 2140,
+        "helperFrames": 37,
+        "terminated": true,
+        "protocolErrors": 0,
+        "completionReturns": 37,
+        "sourceWireBytes": 2336,
+        "wireOK": true,
+        "allTransfersOK": true
+      },
+      "wireBytes": 2336,
+      "wireSha256": "2580e629b83e3c101f0826dacfb2182db01e6d36a547bfa4433da5c0a110c33e",
+      "lengthReads": [
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24786862,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24787462,
+          "ackTicks": 24787462
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24787472,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24788072,
+          "ackTicks": 24788072
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24788083,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24788683,
+          "ackTicks": 24788683
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24788693,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24789293,
+          "ackTicks": 24789293
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24789304,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24789904,
+          "ackTicks": 24789904
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24789914,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24790514,
+          "ackTicks": 24790514
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24790525,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24791125,
+          "ackTicks": 24791125
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24791135,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24791735,
+          "ackTicks": 24791735
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24791745,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24792345,
+          "ackTicks": 24792345
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24792355,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24792955,
+          "ackTicks": 24792955
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24792966,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24793566,
+          "ackTicks": 24793566
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24793576,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24794176,
+          "ackTicks": 24794176
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24794187,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24794787,
+          "ackTicks": 24794787
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24794797,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24795397,
+          "ackTicks": 24795397
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24795407,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24796007,
+          "ackTicks": 24796007
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24796017,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24796617,
+          "ackTicks": 24796617
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24796628,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24797228,
+          "ackTicks": 24797228
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24797238,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24797838,
+          "ackTicks": 24797838
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24797849,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24798449,
+          "ackTicks": 24798449
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24798459,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24799059,
+          "ackTicks": 24799059
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24799069,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24799669,
+          "ackTicks": 24799669
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24799679,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24800279,
+          "ackTicks": 24800279
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24800290,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24800890,
+          "ackTicks": 24800890
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24800900,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24801500,
+          "ackTicks": 24801500
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24801511,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24802111,
+          "ackTicks": 24802111
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24802121,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24802721,
+          "ackTicks": 24802721
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24802731,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24803331,
+          "ackTicks": 24803331
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24803341,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24803941,
+          "ackTicks": 24803941
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24803952,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24804552,
+          "ackTicks": 24804552
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24804562,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24805162,
+          "ackTicks": 24805162
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24805173,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24805773,
+          "ackTicks": 24805773
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24805783,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24806383,
+          "ackTicks": 24806383
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24806393,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24806993,
+          "ackTicks": 24806993
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24807003,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24807603,
+          "ackTicks": 24807603
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24807614,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24808214,
+          "ackTicks": 24808214
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24808224,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24808824,
+          "ackTicks": 24808824
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24808835,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24809435,
+          "ackTicks": 24809435
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24809445,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24810045,
+          "ackTicks": 24810045
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24810055,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24810655,
+          "ackTicks": 24810655
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24810665,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24811265,
+          "ackTicks": 24811265
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24811276,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24811876,
+          "ackTicks": 24811876
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24811886,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24812486,
+          "ackTicks": 24812486
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24812497,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24813097,
+          "ackTicks": 24813097
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24813107,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24813707,
+          "ackTicks": 24813707
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24813717,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24814317,
+          "ackTicks": 24814317
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24814327,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24814927,
+          "ackTicks": 24814927
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24814938,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24815538,
+          "ackTicks": 24815538
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24815548,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24816148,
+          "ackTicks": 24816148
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24816159,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24816759,
+          "ackTicks": 24816759
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24816769,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24817369,
+          "ackTicks": 24817369
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24817380,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24817980,
+          "ackTicks": 24817980
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24817990,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24818590,
+          "ackTicks": 24818590
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24818601,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24819201,
+          "ackTicks": 24819201
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24819211,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24819811,
+          "ackTicks": 24819811
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24819821,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24820421,
+          "ackTicks": 24820421
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24820431,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24821031,
+          "ackTicks": 24821031
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24821042,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24821642,
+          "ackTicks": 24821642
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24821652,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24822252,
+          "ackTicks": 24822252
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24822263,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24822863,
+          "ackTicks": 24822863
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24822873,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24823473,
+          "ackTicks": 24823473
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24823483,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24824083,
+          "ackTicks": 24824083
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24824093,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24824693,
+          "ackTicks": 24824693
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24824704,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24825304,
+          "ackTicks": 24825304
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24825314,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24825914,
+          "ackTicks": 24825914
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24825925,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24826525,
+          "ackTicks": 24826525
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24826535,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24827135,
+          "ackTicks": 24827135
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24827145,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24827745,
+          "ackTicks": 24827745
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24827755,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24828355,
+          "ackTicks": 24828355
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24828366,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24828966,
+          "ackTicks": 24828966
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24828976,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24829576,
+          "ackTicks": 24829576
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24829587,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24830187,
+          "ackTicks": 24830187
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24830197,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24830797,
+          "ackTicks": 24830797
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24830807,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24831407,
+          "ackTicks": 24831407
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24831417,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24832017,
+          "ackTicks": 24832017
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24832028,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24832628,
+          "ackTicks": 24832628
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24832638,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24833238,
+          "ackTicks": 24833238
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24833248,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24833848,
+          "ackTicks": 24833848
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24833858,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24834458,
+          "ackTicks": 24834458
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24834469,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24835069,
+          "ackTicks": 24835069
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24835079,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24835679,
+          "ackTicks": 24835679
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24835690,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24836290,
+          "ackTicks": 24836290
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24836300,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24836900,
+          "ackTicks": 24836900
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24836910,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24837510,
+          "ackTicks": 24837510
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24837520,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24838120,
+          "ackTicks": 24838120
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24838131,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24838731,
+          "ackTicks": 24838731
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24838741,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24839341,
+          "ackTicks": 24839341
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24839352,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24839952,
+          "ackTicks": 24839952
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24839962,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24840562,
+          "ackTicks": 24840562
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24840572,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24841172,
+          "ackTicks": 24841172
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24841182,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24841782,
+          "ackTicks": 24841782
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24841793,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24842393,
+          "ackTicks": 24842393
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24842403,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24843003,
+          "ackTicks": 24843003
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24843014,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24843614,
+          "ackTicks": 24843614
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24843624,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24844224,
+          "ackTicks": 24844224
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24844234,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24844834,
+          "ackTicks": 24844834
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24844844,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24845444,
+          "ackTicks": 24845444
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24845455,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24846055,
+          "ackTicks": 24846055
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24846065,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24846665,
+          "ackTicks": 24846665
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24846676,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24847276,
+          "ackTicks": 24847276
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24847286,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24847886,
+          "ackTicks": 24847886
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24847896,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24848496,
+          "ackTicks": 24848496
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24848506,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24849106,
+          "ackTicks": 24849106
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24849117,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24849717,
+          "ackTicks": 24849717
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24849727,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24850327,
+          "ackTicks": 24850327
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24850338,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24850938,
+          "ackTicks": 24850938
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24850948,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24851548,
+          "ackTicks": 24851548
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24851558,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24852158,
+          "ackTicks": 24852158
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24852168,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24852768,
+          "ackTicks": 24852768
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24852779,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24853379,
+          "ackTicks": 24853379
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24853389,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24853989,
+          "ackTicks": 24853989
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24853999,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24854599,
+          "ackTicks": 24854599
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24854609,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24855209,
+          "ackTicks": 24855209
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24855220,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24855820,
+          "ackTicks": 24855820
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24855830,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24856430,
+          "ackTicks": 24856430
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24856441,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24857041,
+          "ackTicks": 24857041
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24857051,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24857651,
+          "ackTicks": 24857651
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24857661,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24858261,
+          "ackTicks": 24858261
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24858271,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24858871,
+          "ackTicks": 24858871
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24858882,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24859482,
+          "ackTicks": 24859482
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24859492,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24860092,
+          "ackTicks": 24860092
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24860103,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24860703,
+          "ackTicks": 24860703
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24860713,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24861313,
+          "ackTicks": 24861313
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24861323,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24861923,
+          "ackTicks": 24861923
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24861933,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24862533,
+          "ackTicks": 24862533
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24862544,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24863144,
+          "ackTicks": 24863144
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24863154,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24863754,
+          "ackTicks": 24863754
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24863765,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24864365,
+          "ackTicks": 24864365
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24864375,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24864975,
+          "ackTicks": 24864975
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24864986,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24865586,
+          "ackTicks": 24865586
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24865596,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24866196,
+          "ackTicks": 24866196
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24866206,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24866806,
+          "ackTicks": 24866806
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24866816,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24867416,
+          "ackTicks": 24867416
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24867427,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24868027,
+          "ackTicks": 24868027
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24868037,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24868637,
+          "ackTicks": 24868637
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24868648,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24869248,
+          "ackTicks": 24869248
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24869258,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24869858,
+          "ackTicks": 24869858
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24869868,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24870468,
+          "ackTicks": 24870468
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24870478,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24871078,
+          "ackTicks": 24871078
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24871089,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24871689,
+          "ackTicks": 24871689
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24871699,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24872299,
+          "ackTicks": 24872299
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24872310,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24872910,
+          "ackTicks": 24872910
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24872920,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24873520,
+          "ackTicks": 24873520
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24873530,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24874130,
+          "ackTicks": 24874130
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24874140,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24874740,
+          "ackTicks": 24874740
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24874751,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24875351,
+          "ackTicks": 24875351
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24875361,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24875961,
+          "ackTicks": 24875961
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24875971,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24876571,
+          "ackTicks": 24876571
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24876581,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24877181,
+          "ackTicks": 24877181
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24877192,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24877792,
+          "ackTicks": 24877792
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24877802,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24878402,
+          "ackTicks": 24878402
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24878413,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24879013,
+          "ackTicks": 24879013
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24879023,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24879623,
+          "ackTicks": 24879623
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24879634,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24880234,
+          "ackTicks": 24880234
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24880244,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24880844,
+          "ackTicks": 24880844
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24880854,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24881454,
+          "ackTicks": 24881454
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24881464,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24882064,
+          "ackTicks": 24882064
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24882075,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24882675,
+          "ackTicks": 24882675
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24882685,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24883285,
+          "ackTicks": 24883285
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24883296,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24883896,
+          "ackTicks": 24883896
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24883906,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24884506,
+          "ackTicks": 24884506
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24884516,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24885116,
+          "ackTicks": 24885116
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24885126,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24885726,
+          "ackTicks": 24885726
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24885737,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24886337,
+          "ackTicks": 24886337
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24886347,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24886947,
+          "ackTicks": 24886947
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24886957,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24887557,
+          "ackTicks": 24887557
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24887567,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24888167,
+          "ackTicks": 24888167
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24888178,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24888778,
+          "ackTicks": 24888778
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24888788,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24889388,
+          "ackTicks": 24889388
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24889399,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24889999,
+          "ackTicks": 24889999
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24890009,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24890609,
+          "ackTicks": 24890609
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24890619,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24891219,
+          "ackTicks": 24891219
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24891229,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24891829,
+          "ackTicks": 24891829
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24891840,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24892440,
+          "ackTicks": 24892440
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24892450,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24893050,
+          "ackTicks": 24893050
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24893061,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24893661,
+          "ackTicks": 24893661
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24893671,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24894271,
+          "ackTicks": 24894271
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24894281,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24894881,
+          "ackTicks": 24894881
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24894891,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24895491,
+          "ackTicks": 24895491
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24895502,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24896102,
+          "ackTicks": 24896102
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24896112,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24896712,
+          "ackTicks": 24896712
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24896723,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24897323,
+          "ackTicks": 24897323
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24897333,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24897933,
+          "ackTicks": 24897933
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24897943,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24898543,
+          "ackTicks": 24898543
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24898553,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24899153,
+          "ackTicks": 24899153
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24899164,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24899764,
+          "ackTicks": 24899764
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24899774,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24900374,
+          "ackTicks": 24900374
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24900385,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24900985,
+          "ackTicks": 24900985
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24900995,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24901595,
+          "ackTicks": 24901595
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24901605,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24902205,
+          "ackTicks": 24902205
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24902215,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24902815,
+          "ackTicks": 24902815
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24902826,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24903426,
+          "ackTicks": 24903426
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24903436,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24904036,
+          "ackTicks": 24904036
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24904047,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24904647,
+          "ackTicks": 24904647
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24904657,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24905257,
+          "ackTicks": 24905257
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24905267,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24905867,
+          "ackTicks": 24905867
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24905877,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24906477,
+          "ackTicks": 24906477
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24906488,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24907088,
+          "ackTicks": 24907088
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24907098,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24907698,
+          "ackTicks": 24907698
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268443648,
+          "triggerTicks": 24907708,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24908308,
+          "ackTicks": 24908308
+        },
+        {
+          "index": 52,
+          "descriptor": 327796,
+          "argument": 268444160,
+          "triggerTicks": 24908318,
+          "response": [
+            4096,
+            0,
+            0,
+            0
+          ],
+          "observationElapsedTicks": 600,
+          "completeTicks": 24908918,
+          "ackTicks": 24908918
+        }
+      ],
+      "completeDMAAcknowledgements": 37,
+      "loadedDTSha256": "fc41b23596717d1457f072a88b92ded10c0067f2b7ffb9fa80de1fe5d433421e"
+    }
+  },
+  "model": {
+    "semanticModelOnly": true,
+    "phase": 2,
+    "requested": 16,
+    "headers": 1,
+    "bodies": 1,
+    "copied": 508,
+    "errors": 0,
+    "publications": 3,
+    "mainCallReturns": 2,
+    "mainLengthPairs": 2,
+    "mainSequenceOK": true,
+    "mainCallsOK": true
+  },
+  "cardRamSha256": "b998586995ad751456abc7dcfb060b0289383e13c3d3fb9e835cd27e07609b0a",
+  "copied508Sha256": "085ac8e5f2fa4d8e2e144a580fcccb9404d8d4e174cd064bf2aa12de98081c3b",
+  "requestCoherence": "Actual three low/high pairs are16,512,16; independent command-completion samples, no atomic latch",
+  "dtAudit": "Exact approved calibration record removal/count change and six-byte local MAC; no other input-file changes"
+}

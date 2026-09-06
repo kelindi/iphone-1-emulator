@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "scope": "New isolated initialized-storage successor preflight only. No actual OS continuation yet, no production changes, runtimeCMD53, register6, opcode success, firmwareCPU or networkinterface.",
+  "focusedChecks": 48451,
+  "frozenSDIOChecks": 1012343,
+  "baselineLifecycleChecks": 36578,
+  "modePairChecks": 16396,
+  "auditorFixtureTests": 13,
+  "omittedImageNegativeFailures": 110,
+  "actualCanonicalLoad": {
+    "passed": true,
+    "scope": "Exact immutable073 manifest and all36 original pins; unchanged Python package loader and successor C canonical loader with runtime unattached; no guest instruction executed",
+    "manifestSha256": "911b4b85c3f984c736edbb51b882c68be6ef1b8788a9b343b9b1d9eaeac11787",
+    "generation": "6ef08b30e66247338f55cb9d6de853c8",
+    "machineBytes": 191881187,
+    "sidecarBytes": 246287,
+    "machineSha256": "2cf3a7391b2972cea6e152672693b9028b4707765937b8344018d0f5929ea0d5",
+    "sidecarSha256": "9b91cff0fd310e457df7850424260cd6307e39ec08467f4e0c935725953507d8"
+  },
+  "unchanged073Files": [
+    "sdio.h",
+    "main_model.inc",
+    "supported_helper.inc",
+    "checkpoint.h",
+    "phone.c",
+    "codec.c",
+    "fields.inc",
+    "z1-codec.c",
+    "z1-fields.inc",
+    "compare.c",
+    "continue.c",
+    "validate.c",
+    "independent_fields.inc"
+  ],
+  "sourcePinCount": 84,
+  "sourcePins": "source-pins.json",
+  "preservedHarnessFailure": "first-test-failure/README.md",
+  "guestStatus": "not run; final source and launcher review required",
+  "limits": {
+    "loadSeconds": 120,
+    "guestInstructions": 100000000,
+    "guestSeconds": 90,
+    "outerSeconds": 240
+  }
+}

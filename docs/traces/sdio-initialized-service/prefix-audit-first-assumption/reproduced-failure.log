@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/vercel-sandbox/iphone-1/.context/sdio-first/handoff-ready/prefix-audit-first-assumption/no_marker_prefix_audit.py", line 8, in <module>
+    assert g['armSVC'] and not g['orderedFEDCPair']
+AssertionError

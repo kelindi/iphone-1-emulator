@@ -236,6 +236,18 @@ static int input_compare(const void *a, const void *b) {
     return x->step < y->step ? -1 : x->step != y->step;
 }
 
+static bool input_touch(s5l8900_t *m, const input_event_t *event) {
+    /* Z1 accepts the complete active contact set and derives its own phases.
+     * Supplying a BREAK record there keeps the finger active. Z2 instead
+     * accepts explicit phase records, and its empty encoding is unsupported. */
+    if (event->kind == INPUT_LIFT ||
+        (m->mtz1.present && event->phase == MTZ2_PHASE_BREAK_TOUCH))
+        return s5l8900_set_touch(m, NULL, 0u);
+    s5l_mt_contact_t contact = {1u, (uint8_t)event->phase,
+                               event->x, event->y, 255u, 8u, 8u};
+    return s5l8900_set_touch(m, &contact, 1u);
+}
+
 int main(int argc,char **argv) {
     const char *board_name=NULL,*kp=NULL,*dp=NULL,*rp=NULL,*cmd=NULL,*serial=NULL,*shot=NULL;
     uint64_t steps=200000000ull; unsigned ram_mb=0,vd=0,cpi=1; bool fb=true,debug=false,trace=false;
@@ -436,13 +448,10 @@ int main(int argc,char **argv) {
             input_event_t *e = &events[next_event++];
             fprintf(stderr, "input step=%llu ", (unsigned long long)total);
             if (e->kind == INPUT_TOUCH || e->kind == INPUT_LIFT) {
-                s5l_mt_contact_t c = { 1u, (uint8_t)e->phase, e->x, e->y,
-                                       255u, 8u, 8u };
-                bool ok = e->kind == INPUT_LIFT ?
-                          s5l8900_set_touch(&m, NULL, 0u) :
-                          s5l8900_set_touch(&m, &c, 1u);
+                bool ok = input_touch(&m, e);
                 fprintf(stderr, "%s %u %u -> %s\n",
-                        e->kind == INPUT_LIFT ? "touch up" : "touch",
+                        e->kind == INPUT_LIFT || e->phase == MTZ2_PHASE_BREAK_TOUCH ?
+                            "touch up" : "touch",
                         e->x, e->y, ok ? "accepted" : "rejected");
                 if (ok && e->auto_lift) {
                     tap_pending = true;

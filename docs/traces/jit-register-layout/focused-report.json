@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": 2335,
+  "zeroChecks": 480,
+  "aliasChecks": 12,
+  "policyDifferences": 0,
+  "examples": [],
+  "scope": "Original interpreter versus original/candidate compilers: exact packed architectural bytes, host TLB/read/write/status counters and full1MiBRAM hash. ARM+Thumb stale prefix/suffix/current instruction, tail entry, prior work, undefined fallback, split mutation, conditional branches, budgets and physical code-write aliases. Host JIT retirement/calls/regions must match exactly. Additional all-register ARM conditional and Thumb write-only cases preserve initial values across skipped paths."
+}

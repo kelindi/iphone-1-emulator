@@ -1,0 +1,30 @@
+{
+  ".context/rtc-contract/setter-observer/probe.c": {
+    "bytes": 5490,
+    "sha256": "714329d6eceae4a9f5207177d2afaf5c7e141e4c877d18eacb7976b4675a81d4"
+  },
+  ".context/rtc-contract/setter-observer/probe": {
+    "bytes": 292992,
+    "sha256": "b1a90572246875ef22455adf3bc34b358f740b05a2090ec827d3c7680de2a141"
+  },
+  ".context/rtc-contract/emu_api.c": {
+    "bytes": 22190,
+    "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1"
+  },
+  ".context/amc-first/stage-h/source/peek.c": {
+    "bytes": 1946,
+    "sha256": "50577c62beb22c08e8b365bf16f566704226f7efd768732043461fee91ff7153"
+  },
+  ".context/amc-first/stage-h/source/peek.h": {
+    "bytes": 269,
+    "sha256": "246d25d6e11affe5ae60c910ccdf0c6ba8022b15da6844627fa9fa1ee0b52dd6"
+  },
+  ".context/build-native/core/libemucore.a": {
+    "bytes": 1854772,
+    "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2"
+  },
+  ".context/rtc-contract/browser-2/before-manual-change.snap": {
+    "bytes": 255983586,
+    "sha256": "d478cf35dbebaf45319c75175df29c743e9f21929eea36b3b63827de454bfb5d"
+  }
+}

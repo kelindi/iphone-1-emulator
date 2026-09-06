@@ -1,0 +1,86 @@
+{
+  "original": [
+    {
+      "time": "2026-09-06T04:29:28.033Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 200,
+      "bytes": 12341313,
+      "ifNoneMatch": null
+    },
+    {
+      "time": "2026-09-06T04:29:28.109Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    },
+    {
+      "time": "2026-09-06T04:30:53.700Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 200,
+      "bytes": 12341313,
+      "ifNoneMatch": null
+    },
+    {
+      "time": "2026-09-06T04:42:21.204Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    },
+    {
+      "time": "2026-09-06T04:48:16.674Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    }
+  ],
+  "candidate": [
+    {
+      "time": "2026-09-06T04:29:28.133Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 200,
+      "bytes": 12341313,
+      "ifNoneMatch": null
+    },
+    {
+      "time": "2026-09-06T04:29:28.208Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    },
+    {
+      "time": "2026-09-06T04:32:00.122Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 200,
+      "bytes": 12341313,
+      "ifNoneMatch": null
+    },
+    {
+      "time": "2026-09-06T04:44:17.731Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    },
+    {
+      "time": "2026-09-06T04:46:14.983Z",
+      "method": "GET",
+      "url": "/jit/seed.wasm",
+      "status": 304,
+      "bytes": 0,
+      "ifNoneMatch": "\"d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881\""
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "scope": "Mapped original code, bounded actual return records and exact unchanged Stage M trace/state. No additional input or playback claim.",
+  "records": [
+    {
+      "pc": "c01533c2",
+      "cycles": 9873234592,
+      "cpsr": "60000033",
+      "retired": true,
+      "afterPC": "c01533c4",
+      "afterCPSR": "60000033",
+      "afterLR": "c027602c",
+      "r0": 0,
+      "object": "00000000",
+      "linked": "00000000",
+      "codeSHA256": "9bf52d7125c6966fc3bd5674c043147c52809b66536a9a3e54a84eb8c6fde970"
+    }
+  ],
+  "stateSHA256": {
+    "sram.bin": "6980f3359392b84914470bb262e12f62dcb6b63c04e91a3edd6ee0ce62a7cff6",
+    "expected.bin": "011452fdff9699442c49115354c9b0bced1b98265ba64ee5b95c1c48bbb01583",
+    "predicted.bin": "a5a5970ef918548e3291b76ba54e47c498333ddc90faefec6d808700ba0d4d66",
+    "written.bin": "5f15b3ccf7ff3acdd8494c7deb8dc2dc550bc950c2e15abc58625c606f24dad9",
+    "init-written.bin": "2dedf5c3d5724191e7332faa267bb495f5c5fe3caafb189ba01769801a8a87fc",
+    "pcm-written.bin": "086037d9e53f76e6212eeef40a6bcb06d825c07f7785782af8b8ec454aa9c904",
+    "host-written.bin": "5b35cbe181b235c3c2b14c2ae8526399950c06f6b69c9356cbb078dd16c8248b",
+    "owned-queue.bin": "b67a7afe3dc1a7003a3293223a5828cde0aea6df1ded1a86fa63135441b1a914",
+    "registers.bin": "01898c738bc070d4ac87f2bdffb7d62d51dbcd6af7f7c40871379d16ae6aebba",
+    "first-pcm.bin": "2ce90c8f574188134ae90dc6a79e045c8e75c99c05ed28a466669d381f7ec372",
+    "second-input.bin": "7205c99a864329de5e1f14308d6aed889f7617535d6385220ce1d5c939c871ae",
+    "third-input.bin": "d37d70971aeb96a7a26c014be3e855ca9d2aa9cc9b17430bd9323c84021cb8f5",
+    "read-coverage.bin": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+    "read-bytes.bin": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+    "read-ledger.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "observedRetiredSites": [
+    "c01533c2"
+  ]
+}

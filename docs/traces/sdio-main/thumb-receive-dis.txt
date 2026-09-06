@@ -1,0 +1,349 @@
+c0000358 file0500 bx      r0
+c000035a file0502 movs    r0, r0
+c000035c file0504 push    {r1, r2, r3, r4, r5, r6, r7, lr}
+c000035e file0506 movs    r0, #0
+c0000360 file0508 str     r0, [sp, #8]
+c0000362 file050a str     r0, [sp, #4]
+c0000364 file050c ldr     r0, [pc, #0x134] ; literal[c000049c]=0000ffc0
+c0000366 file050e movs    r6, #1
+c0000368 file0510 ldr     r0, [r0, #0x3c]
+c000036a file0512 cmp     r0, #5
+c000036c file0514 bhs     #0xc00003a2
+c000036e file0516 adr     r3, #8
+c0000370 file0518 ldrb    r3, [r3, r0]
+c0000372 file051a lsls    r3, r3, #1
+c0000374 file051c add     pc, r3
+c0000376 file051e movs    r0, r0
+c0000378 file0520 lsls    r3, r0, #0x10
+c000037a file0522 lsls    r4, r0, #0x10
+c000037c file0524 movs    r4, r0
+c000037e file0526 movs    r6, #0
+c0000380 file0528 ldr     r2, [pc, #0x11c] ; literal[c00004a0]=c0000878
+c0000382 file052a movs    r1, #0
+c0000384 file052c str     r1, [r2]
+c0000386 file052e lsls    r4, r0, #2
+c0000388 file0530 ldr     r0, [pc, #0x118] ; literal[c00004a4]=c0000814
+c000038a file0532 str     r1, [r2, #4]
+c000038c file0534 str     r1, [r2, #8]
+c000038e file0536 ldr     r5, [pc, #0x118] ; literal[c00004a8]=c0000a00
+c0000390 file0538 ldr     r1, [r0, r4]
+c0000392 file053a adds    r0, r5, #0
+c0000394 file053c bl      #0xc0000006
+c0000398 file0540 ldr     r0, [pc, #0x110] ; literal[c00004ac]=c0000800
+c000039a file0542 ldr     r0, [r0, r4]
+c000039c file0544 bl      #0xc0000004
+c00003a0 file0548 b       #0xc00003a4
+c00003a2 file054a b       #0xc00003a2
+c00003a4 file054c ldr     r0, [sp, #4]
+c00003a6 file054e cmp     r0, #0
+c00003a8 file0550 beq     #0xc00003be
+c00003aa file0552 ldr     r0, [pc, #0x104] ; literal[c00004b0]=80002000
+c00003ac file0554 ldr     r0, [r0, #0x18]
+c00003ae file0556 lsrs    r0, r0, #0x10
+c00003b0 file0558 lsls    r0, r0, #8
+c00003b2 file055a movs    r1, #0x10
+c00003b4 file055c orrs    r0, r1
+c00003b6 file055e adds    r5, r0, #0
+c00003b8 file0560 movs    r0, #0
+c00003ba file0562 str     r0, [sp, #4]
+c00003bc file0564 b       #0xc00003c0
+c00003be file0566 movs    r5, #0x10
+c00003c0 file0568 ldr     r7, [pc, #0xf0] ; literal[c00004b4]=c0000864
+c00003c2 file056a adds    r0, r5, #0
+c00003c4 file056c ldr     r1, [r7, r4]
+c00003c6 file056e bl      #0xc0000006
+c00003ca file0572 cmp     r6, #0
+c00003cc file0574 beq     #0xc00003d8
+c00003ce file0576 ldr     r0, [pc, #0xe8] ; literal[c00004b8]=c000083c
+c00003d0 file0578 ldr     r0, [r0, r4]
+c00003d2 file057a bl      #0xc0000004
+c00003d6 file057e movs    r6, #0
+c00003d8 file0580 movs    r0, #0
+c00003da file0582 str     r0, [sp]
+c00003dc file0584 ldr     r0, [pc, #0xdc] ; literal[c00004bc]=c0000828
+c00003de file0586 ldr     r0, [r0, r4]
+c00003e0 file0588 bl      #0xc0000004
+c00003e4 file058c ldr     r0, [pc, #0xc0] ; literal[c00004a8]=c0000a00
+c00003e6 file058e ldr     r7, [pc, #0xb8] ; literal[c00004a0]=c0000878
+c00003e8 file0590 ldm     r0, {r0, r1, r2, r3}
+c00003ea file0592 stm     r7!, {r0, r1, r2, r3}
+c00003ec file0594 subs    r7, #0x10
+c00003ee file0596 ldr     r0, [r7]
+c00003f0 file0598 cmp     r0, #1
+c00003f2 file059a beq     #0xc0000414
+c00003f4 file059c cmp     r0, #4
+c00003f6 file059e beq     #0xc0000414
+c00003f8 file05a0 movs    r0, #1
+c00003fa file05a2 ldr     r7, [pc, #0xb8] ; literal[c00004b4]=c0000864
+c00003fc file05a4 orrs    r5, r0
+c00003fe file05a6 adds    r0, r5, #0
+c0000400 file05a8 ldr     r1, [r7, r4]
+c0000402 file05aa bl      #0xc0000006
+c0000406 file05ae ldr     r0, [pc, #0xb0] ; literal[c00004b8]=c000083c
+c0000408 file05b0 ldr     r0, [r0, r4]
+c000040a file05b2 bl      #0xc0000004
+c000040e file05b6 ldr     r0, [sp]
+c0000410 file05b8 cmp     r0, #0
+c0000412 file05ba beq     #0xc00003dc
+c0000414 file05bc ldr     r0, [pc, #0x88] ; literal[c00004a0]=c0000878
+c0000416 file05be ldr     r0, [r0]
+c0000418 file05c0 cmp     r0, #1
+c000041a file05c2 beq     #0xc000044e
+c000041c file05c4 cmp     r0, #4
+c000041e file05c6 bne     #0xc000043a
+c0000420 file05c8 ldr     r7, [pc, #0x90] ; literal[c00004b4]=c0000864
+c0000422 file05ca movs    r0, #0
+c0000424 file05cc ldr     r1, [r7, r4]
+c0000426 file05ce bl      #0xc0000006
+c000042a file05d2 ldr     r0, [pc, #0x8c] ; literal[c00004b8]=c000083c
+c000042c file05d4 ldr     r0, [r0, r4]
+c000042e file05d6 bl      #0xc0000004
+c0000432 file05da ldr     r0, [pc, #0x6c] ; literal[c00004a0]=c0000878
+c0000434 file05dc ldr     r0, [r0, #4]
+c0000436 file05de bl      #0xc0000358
+c000043a file05e2 ldr     r1, [pc, #0x64] ; literal[c00004a0]=c0000878
+c000043c file05e4 movs    r0, #0
+c000043e file05e6 str     r0, [r1]
+c0000440 file05e8 str     r0, [r1, #4]
+c0000442 file05ea str     r0, [r1, #8]
+c0000444 file05ec str     r0, [r1, #0xc]
+c0000446 file05ee ldr     r0, [sp, #8]
+c0000448 file05f0 cmp     r0, #0
+c000044a file05f2 beq     #0xc00003a4
+c000044c file05f4 pop     {r1, r2, r3, r4, r5, r6, r7, pc}
+c000044e file05f6 ldr     r7, [pc, #0x64] ; literal[c00004b4]=c0000864
+c0000450 file05f8 ldr     r0, [pc, #0x4c] ; literal[c00004a0]=c0000878
+c0000452 file05fa ldr     r1, [r7, r4]
+c0000454 file05fc ldr     r5, [r0, #8]
+c0000456 file05fe adds    r0, r5, #0
+c0000458 file0600 bl      #0xc0000006
+c000045c file0604 ldr     r0, [pc, #0x58] ; literal[c00004b8]=c000083c
+c000045e file0606 ldr     r0, [r0, r4]
+c0000460 file0608 bl      #0xc0000004
+c0000464 file060c movs    r0, #0
+c0000466 file060e str     r0, [sp]
+c0000468 file0610 ldr     r0, [pc, #0x50] ; literal[c00004bc]=c0000828
+c000046a file0612 ldr     r0, [r0, r4]
+c000046c file0614 bl      #0xc0000004
+c0000470 file0618 ldr     r0, [pc, #0x4c] ; literal[c00004c0]=c0000850
+c0000472 file061a ldr     r0, [r0, r4]
+c0000474 file061c bl      #0xc0000004
+c0000478 file0620 cmp     r0, #0
+c000047a file0622 bne     #0xc0000480
+c000047c file0624 movs    r6, #1
+c000047e file0626 b       #0xc000043a
+c0000480 file0628 movs    r0, #1
+c0000482 file062a orrs    r5, r0
+c0000484 file062c adds    r0, r5, #0
+c0000486 file062e ldr     r1, [r7, r4]
+c0000488 file0630 bl      #0xc0000006
+c000048c file0634 ldr     r0, [pc, #0x28] ; literal[c00004b8]=c000083c
+c000048e file0636 ldr     r0, [r0, r4]
+c0000490 file0638 bl      #0xc0000004
+c0000494 file063c ldr     r0, [sp]
+c0000496 file063e cmp     r0, #0
+c0000498 file0640 bne     #0xc000043a
+c000049a file0642 b       #0xc0000468
+c000049c file0644 vaddl.u8 q8, d0, d0
+c00004a0 file0648 lsrs    r0, r7, #1
+c00004a2 file064a .byte   0x00, 0xc0
+c00004a4 file064c lsrs    r4, r2, #0x20
+c00004a6 file064e .byte   0x00, 0xc0
+c00004a8 file0650 lsrs    r0, r0, #8
+c00004aa file0652 .byte   0x00, 0xc0
+c00004ac file0654 lsrs    r0, r0, #0x20
+c00004ae file0656 .byte   0x00, 0xc0
+c00004b0 file0658 movs    r0, #0
+c00004b2 file065a strh    r0, [r0]
+c00004b4 file065c lsrs    r4, r4, #1
+c00004b6 file065e .byte   0x00, 0xc0
+c00004b8 file0660 lsrs    r4, r7, #0x20
+c00004ba file0662 .byte   0x00, 0xc0
+c00004bc file0664 lsrs    r0, r5, #0x20
+c00004be file0666 .byte   0x00, 0xc0
+c00004c0 file0668 lsrs    r0, r2, #1
+c00004c2 file066a .byte   0x00, 0xc0
+c00004c4 file066c movs    r4, r0
+c00004c6 file066e b       #0xc0000008
+c00004c8 file0670 adds    r0, r0, #5
+c00004ca file0672 b       #0xc00009ce
+c00004cc file0674 blx     #0xc040e810
+c00004d0 file0678 asrs    r0, r0, #0x20
+c00004d2 file067a lsls    r0, r0, #0x10
+c00004d4 file067c ldr     r1, [pc, #4] ; literal[c00004dc]=80000c00
+c00004d6 file067e movs    r0, #5
+c00004d8 file0680 str     r0, [r1, #0x14]
+c00004da file0682 bx      lr
+c00004dc file0684 lsrs    r0, r0, #0x10
+c00004de file0686 strh    r0, [r0]
+c00004e0 file0688 bx      lr
+c00004e2 file068a movs    r0, r0
+c00004e4 file068c movs    r0, #0
+c00004e6 file068e bx      lr
+c00004e8 file0690 bx      lr
+c00004ea file0692 movs    r0, r0
+c00004ec file0694 bx      lr
+c00004ee file0696 movs    r0, r0
+c00004f0 file0698 bx      lr
+c00004f2 file069a movs    r0, r0
+c00004f4 file069c ldr     r0, [pc, #0xc] ; literal[c0000504]=00008004
+c00004f6 file069e ldr     r1, [pc, #0x10] ; literal[c0000508]=80000020
+c00004f8 file06a0 strh    r0, [r1]
+c00004fa file06a2 lsls    r0, r0, #0x1d
+c00004fc file06a4 ldrh    r1, [r0, #2]
+c00004fe file06a6 strh    r1, [r0, #2]
+c0000500 file06a8 bx      lr
+c0000502 file06aa movs    r0, r0
+c0000504 file06ac strh    r4, [r0]
+c0000506 file06ae movs    r0, r0
+c0000508 file06b0 movs    r0, r4
+c000050a file06b2 strh    r0, [r0]
+c000050c file06b4 movs    r1, #1
+c000050e file06b6 lsls    r1, r1, #0x1f
+c0000510 file06b8 ldrh    r0, [r1, #2]
+c0000512 file06ba lsls    r0, r0, #0x1d
+c0000514 file06bc bpl     #0xc0000510
+c0000516 file06be bx      lr
+c0000518 file06c0 ldr     r1, [pc, #8] ; literal[c0000524]=00008004
+c000051a file06c2 ldr     r0, [pc, #0xc] ; literal[c0000528]=80000020
+c000051c file06c4 strh    r1, [r0]
+c000051e file06c6 movs    r1, #0x8f
+c0000520 file06c8 strh    r1, [r0, #0x1e]
+c0000522 file06ca bx      lr
+c0000524 file06cc strh    r4, [r0]
+c0000526 file06ce movs    r0, r0
+c0000528 file06d0 movs    r0, r4
+c000052a file06d2 strh    r0, [r0]
+c000052c file06d4 movs    r1, #1
+c000052e file06d6 lsls    r1, r1, #0x1f
+c0000530 file06d8 str     r0, [r1, #0x28]
+c0000532 file06da bx      lr
+c0000534 file06dc movs    r1, #1
+c0000536 file06de lsls    r1, r1, #0x1f
+c0000538 file06e0 str     r0, [r1, #0x38]
+c000053a file06e2 bx      lr
+c000053c file06e4 ldr     r2, [pc, #0x14] ; literal[c0000554]=c0000878
+c000053e file06e6 push    {r7, lr}
+c0000540 file06e8 adds    r2, r2, #4
+c0000542 file06ea ldm     r2, {r0, r2}
+c0000544 file06ec ldr     r1, [pc, #8] ; literal[c0000550]=c0000a00
+c0000546 file06ee subs    r2, #4
+c0000548 file06f0 blx     #0xc0000018
+c000054c file06f4 movs    r0, #0
+c000054e file06f6 pop     {r7, pc}
+c0000550 file06f8 lsrs    r0, r0, #8
+c0000552 file06fa .byte   0x00, 0xc0
+c0000554 file06fc lsrs    r0, r7, #1
+c0000556 file06fe .byte   0x00, 0xc0
+c0000558 file0700 push    {r7, lr}
+c000055a file0702 bl      #0xc000035c
+c000055e file0706 movs    r0, #0
+c0000560 file0708 pop     {r7, pc}
+c0000562 file070a movs    r0, r0
+c0000564 file070c movs    r1, #4
+c0000566 file070e lsls    r0, r1, #0x1d
+c0000568 file0710 str     r1, [r0, #0x34]
+c000056a file0712 movs    r1, #0
+c000056c file0714 str     r1, [r0, #0x24]
+c000056e file0716 bx      lr
+c0000570 file0718 movs    r1, #1
+c0000572 file071a lsls    r1, r1, #0x1f
+c0000574 file071c ldr     r0, [r1, #0x24]
+c0000576 file071e lsls    r0, r0, #0x1d
+c0000578 file0720 bpl     #0xc0000574
+c000057a file0722 bx      lr
+c000057c file0724 movs    r1, #1
+c000057e file0726 lsls    r0, r1, #0x1f
+c0000580 file0728 str     r1, [r0, #0x20]
+c0000582 file072a movs    r1, #4
+c0000584 file072c str     r1, [r0, #0x34]
+c0000586 file072e bx      lr
+c0000588 file0730 movs    r1, #1
+c000058a file0732 lsls    r1, r1, #0x1f
+c000058c file0734 strh    r0, [r1, #0xc]
+c000058e file0736 bx      lr
+c0000590 file0738 movs    r1, #1
+c0000592 file073a lsls    r1, r1, #0x1f
+c0000594 file073c str     r0, [r1, #0x3c]
+c0000596 file073e bx      lr
+c0000598 file0740 ldr     r0, [pc, #8] ; literal[c00005a4]=80000120
+c000059a file0742 movs    r1, #0
+c000059c file0744 strh    r1, [r0, #8]
+c000059e file0746 movs    r1, #0xd
+c00005a0 file0748 strh    r1, [r0]
+c00005a2 file074a bx      lr
+c00005a4 file074c lsls    r0, r4, #4
+c00005a6 file074e strh    r0, [r0]
+c00005a8 file0750 ldr     r1, [pc, #8] ; literal[c00005b4]=80000120
+c00005aa file0752 ldrh    r0, [r1, #8]
+c00005ac file0754 lsls    r0, r0, #0x1f
+c00005ae file0756 bpl     #0xc00005aa
+c00005b0 file0758 bx      lr
+c00005b2 file075a movs    r0, r0
+c00005b4 file075c lsls    r0, r4, #4
+c00005b6 file075e strh    r0, [r0]
+c00005b8 file0760 ldr     r0, [pc, #0xc] ; literal[c00005c8]=80000120
+c00005ba file0762 movs    r1, #0xd
+c00005bc file0764 strh    r1, [r0]
+c00005be file0766 movs    r1, #0
+c00005c0 file0768 strh    r1, [r0, #0xc]
+c00005c2 file076a movs    r1, #1
+c00005c4 file076c strh    r1, [r0, #4]
+c00005c6 file076e bx      lr
+c00005c8 file0770 lsls    r0, r4, #4
+c00005ca file0772 strh    r0, [r0]
+c00005cc file0774 ldr     r1, [pc, #4] ; literal[c00005d4]=80000100
+c00005ce file0776 str     r0, [r1, #0x10]
+c00005d0 file0778 bx      lr
+c00005d2 file077a movs    r0, r0
+c00005d4 file077c lsls    r0, r0, #4
+c00005d6 file077e strh    r0, [r0]
+c00005d8 file0780 ldr     r1, [pc, #4] ; literal[c00005e0]=80000100
+c00005da file0782 str     r0, [r1, #0x14]
+c00005dc file0784 bx      lr
+c00005de file0786 movs    r0, r0
+c00005e0 file0788 lsls    r0, r0, #4
+c00005e2 file078a strh    r0, [r0]
+c00005e4 file078c ldr     r1, [pc, #4] ; literal[c00005ec]=80000040
+c00005e6 file078e movs    r0, #4
+c00005e8 file0790 strh    r0, [r1, #0x18]
+c00005ea file0792 bx      lr
+c00005ec file0794 lsls    r0, r0, #1
+c00005ee file0796 strh    r0, [r0]
+c00005f0 file0798 ldr     r1, [pc, #0xc] ; literal[c0000600]=80000040
+c00005f2 file079a ldrh    r0, [r1, #8]
+c00005f4 file079c lsls    r0, r0, #0x1d
+c00005f6 file079e bpl     #0xc00005f2
+c00005f8 file07a0 movs    r0, #0
+c00005fa file07a2 strh    r0, [r1, #8]
+c00005fc file07a4 bx      lr
+c00005fe file07a6 movs    r0, r0
+c0000600 file07a8 lsls    r0, r0, #1
+c0000602 file07aa strh    r0, [r0]
+c0000604 file07ac ldr     r1, [pc, #4] ; literal[c000060c]=80000040
+c0000606 file07ae movs    r0, #4
+c0000608 file07b0 strh    r0, [r1, #0x18]
+c000060a file07b2 bx      lr
+c000060c file07b4 lsls    r0, r0, #1
+c000060e file07b6 strh    r0, [r0]
+c0000610 file07b8 movs    r1, #1
+c0000612 file07ba lsls    r1, r1, #0x1f
+c0000614 file07bc str     r0, [r1, #0x28]
+c0000616 file07be bx      lr
+c0000618 file07c0 movs    r1, #1
+c000061a file07c2 lsls    r1, r1, #0x1f
+c000061c file07c4 str     r0, [r1, #0x14]
+c000061e file07c6 bx      lr
+c0000620 file07c8 bx      pc
+c0000622 file07ca movs    r0, r0
+c0000624 file07cc ands    r0, r2
+c0000626 file07ce .byte   0x2d, 0xe9
+c0000628 file07d0 .byte   0x45, 0xff
+c000062a file07d2 .byte   0xff, 0xeb
+c000062c file07d4 asrs    r0, r0, #0x20
+c000062e file07d6 b       #0xc0000d72
+c0000630 file07d8 asrs    r0, r0, #0x20
+c0000632 file07da b       #0xc0000136
+c0000634 file07dc ands    r0, r2
+c0000636 file07de pop.w   {r1, r2, r3, r4, r8, sb, sl, fp, ip, sp, lr, pc}
+c000063a file07e2 b       #0xc000089c

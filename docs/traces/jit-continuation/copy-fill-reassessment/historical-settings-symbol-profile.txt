@@ -1,0 +1,30 @@
+.context/speed-next/CoreGraphics [(810627072, 813346816)] 7154
+.context/organizer-debug/UIKit [(842706944, 844054528)] 5125
+.context/organizer-debug/CoreFoundation [(809398272, 809897984)] 1962
+.context/organizer-debug/libSystem.B.dylib [(805306368, 806346752)] 4175
+CoreGraphics 0x30678b14 _layer_blit_stack 154041807 27.635
+libSystem.B.dylib 0x300430c0 _lstep 8455410 1.517
+libSystem.B.dylib 0x30003328 _szone_free 4713138 0.846
+libSystem.B.dylib 0x3009a1bc _memmove 3374975 0.605
+libSystem.B.dylib 0x3008e00c _tiny_malloc_from_free_list 3370459 0.605
+libSystem.B.dylib 0x300de510 ___divsi3 2921136 0.524
+CoreGraphics 0x30571424 _CGSARGB8888OverXRGB8888 2382744 0.427
+libSystem.B.dylib 0x300871fa _CHIN 2281500 0.409
+libSystem.B.dylib 0x300018f0 _pthread_mutex_lock 2169442 0.389
+CoreFoundation 0x303f914c ___CFSetDeallocate 1827944 0.328
+CoreGraphics 0x3058003c _argb32_image_argb32 1744446 0.313
+CoreGraphics 0x30591924 _argb32_mark 1725867 0.31
+libSystem.B.dylib 0x300016de _pthread_mutex_unlock 1722056 0.309
+CoreFoundation 0x303f23cc ___CFStringHash 1721950 0.309
+libSystem.B.dylib 0x30093a10 _memcmp 1614027 0.29
+CoreFoundation 0x303e83c4 ___CFStringCreateImmutableFunnel3 1515377 0.272
+libSystem.B.dylib 0x30094b88 __st_localsub 1449542 0.26
+CoreFoundation 0x303f8a44 ___CFSetGrow 1363187 0.245
+libSystem.B.dylib 0x30096b48 _bzero 1308392 0.235
+libSystem.B.dylib 0x300dfd18 ___aeabi_dadd 1275655 0.229
+libSystem.B.dylib 0x300de6c0 ___modsi3 1269131 0.228
+libSystem.B.dylib 0x30094920 _timesub 1256943 0.225
+libSystem.B.dylib 0x30024010 _floor 1251963 0.225
+libSystem.B.dylib 0x30002294 _szone_malloc 1131976 0.203
+CoreGraphics 0x306fdf34 _png_read_filter_row 1113730 0.2
+image shares [('CoreGraphics', 30.423), ('libSystem.B.dylib', 9.293), ('CoreFoundation', 5.376), ('UIKit', 0.043)]

@@ -20,6 +20,7 @@ add_library(emucore STATIC
     src/soc/i2c.c
     src/soc/pcf50635.c
     src/soc/wm8991.c
+    src/soc/wm8758.c
     src/soc/i2s.c
     src/soc/spi.c
     src/soc/gpioic.c
@@ -61,9 +62,15 @@ if(NOT IPHONE1_WEB)
     foreach(t test_arm test_soc test_devicetree test_macho test_lzss test_loader test_vfp
               test_spi test_i2c test_gpioic test_buttons test_mtz2 test_mtz1 test_pl080
               test_mbx test_nand test_snapshot test_ksyms test_img3 test_aes
-              test_board test_bringup_os1)
+              test_board test_bringup_os1 test_wm8758 test_clock_carry)
         add_executable(${t} tests/${t}.c)
         target_link_libraries(${t} emucore)
         add_test(NAME ${t} COMMAND ${t})
     endforeach()
+    # Exercise the browser C API natively against real device models. The
+    # Emscripten annotation stub is scoped to this test target only.
+    add_executable(test_web_api ../web/tests/native_api.c)
+    target_include_directories(test_web_api PRIVATE ../web/tests/include)
+    target_link_libraries(test_web_api PRIVATE emucore)
+    add_test(NAME test_web_api COMMAND test_web_api)
 endif()

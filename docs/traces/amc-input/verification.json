@@ -1,0 +1,262 @@
+{
+  "scope": "Original encoded ringtone input captured; transfer request unaccepted, no engine execution/ready/PCM/production changes",
+  "final": {
+    "pc": "0xc02780e4",
+    "cycles": 9873233416,
+    "ticks": 1756770444,
+    "instructionsAfter067": 219774,
+    "status": "0x100",
+    "engineState": 0,
+    "inputPending": false,
+    "unacceptedTransferAddress": "0x3850100c",
+    "unacceptedTransferValue": 1
+  },
+  "checks": {
+    "idle": 20265,
+    "armedConfigurationIncluding418EarlierChecks": 41560,
+    "inputConfiguration": 57927,
+    "inputCaptureGuards": 44,
+    "uploadObservation": 13,
+    "writeFootprint": 30,
+    "originalKernelNegativeControls": 8,
+    "inputOracleNegativeControls": 13,
+    "independentRootInputAudit": true
+  },
+  "provenance": {
+    ".context/audio/ringtone-page.snap": {
+      "sha256": "385aead20010aaf796be93423dade4afb5dc13c824d59c7857a452f7fbafd2e6",
+      "bytes": 245096418
+    },
+    "web/firmware/kernel_1A543a.macho": {
+      "sha256": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+      "bytes": 5888896
+    },
+    ".context/fw/rootfs.img": {
+      "sha256": "b414e48efd3ce5c436f08981c2a73b818ba0b457e78a171f3f55aa7bc18e87d8",
+      "bytes": 193613824
+    },
+    ".context/amc-first/stage-d/Alarm.original.m4a": {
+      "sha256": "56dece4e074bf622e0eb815331c65fb6c4e653e33b827e9a1ef30c4e0063136e",
+      "bytes": 415959
+    },
+    ".context/build-native/core/libemucore.a": {
+      "sha256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2",
+      "bytes": 1854772
+    },
+    ".context/amc-first/stage-d/source/emu_api.c": {
+      "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1",
+      "bytes": 22190
+    }
+  },
+  "source": {
+    "amc_idle.c": {
+      "sha256": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+      "bytes": 6827
+    },
+    "amc_idle.h": {
+      "sha256": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441",
+      "bytes": 1373
+    },
+    "amc_sram.c": {
+      "sha256": "d4f6b21bf2f06f666a6841f5227355812a4382e1234876a054b629781d2157ec",
+      "bytes": 1103
+    },
+    "amc_sram.h": {
+      "sha256": "502274efa96b262a3ebf149338641a717b47230007e0bd8d26dbfb00ddf22e46",
+      "bytes": 787
+    },
+    "emu_api.c": {
+      "sha256": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1",
+      "bytes": 22190
+    },
+    "probe.c": {
+      "sha256": "bc9219e1fe72f439e586e15de234ce6295623ad685cd30fcb5b1615a6de796cd",
+      "bytes": 16834
+    },
+    "kernel-oracle.py": {
+      "sha256": "18cfc4a2e1afdf5d18f3c510a666b641d128f350923d29e01287d11eb119f9f9",
+      "bytes": 5112
+    },
+    "test_idle.c": {
+      "sha256": "7261e19f938df914e1b1e41385f5f42742e87ea3752cb5aaa9a60296b497f46a",
+      "bytes": 3633
+    },
+    "test_post.c": {
+      "sha256": "304fa8bb4817ab12389d71905ece3895c13316084f769a8c2713b84d64c4a384",
+      "bytes": 2727
+    },
+    "test_observation.c": {
+      "sha256": "480ca7668b4e18cfca5f3c5f2c9e505ad044ed14c98c4add9e686f8f9722ead8",
+      "bytes": 1586
+    },
+    "test_probe_bus.c": {
+      "sha256": "fe9d57592fe440af4c635e6a4b82d16dc43e2291c33ed043766d732d25c86937",
+      "bytes": 1434
+    },
+    "test_command.c": {
+      "sha256": "bbf0dceec55d2e4f6c4ee98adbbd920f9e5bc03a54ed086e37843ba5b689dcd7",
+      "bytes": 1369
+    },
+    "test_armed.c": {
+      "sha256": "e0f4cd2fb522d7069f5ae2378e38f4ad37418e0c5b32853e7a7e45d5537acf05",
+      "bytes": 1405
+    },
+    "test_input.c": {
+      "sha256": "8c44cf613ac9f1f000c87e15ffc785a5f8ec61d9337a48a282956ddaf9242f20",
+      "bytes": 2653
+    },
+    "input-oracle.py": {
+      "sha256": "2258d1c43e49ddb2504c27fffa7fcda6c32b41eee2f5ac8ca88c90036da007a3",
+      "bytes": 7436
+    },
+    "test_input_capture.c": {
+      "sha256": "b70f681fb9de3791f0cc0a2f999624dcc93cbf2b37c38a26c7a89f98331b3ae8",
+      "bytes": 1840
+    },
+    "root-input-audit.py": {
+      "sha256": "e610715392503b4d05bf784836d857429603eee84d045b93122984017583a4f1",
+      "bytes": 4237
+    }
+  },
+  "runs": [
+    {
+      "name": "first-post-command",
+      "stop": "STOP unsupported AMC write cycles9873013650 ticks1756767243 pcc02771a4 lrc0274ae4 address38500204 width4 value00000001",
+      "traceSHA256": "7b22c857cbf8b62a2ededcef226d20c930b49b7ea504e9b55532f731a2ab0ff8",
+      "sourceSHA256": {
+        "probe.c": "6f325fd7516c70515f14924f3bb8c062b7d8ff255ec8b286e56a5f3bba1cca45",
+        "amc_idle.c": "8eaa69e1257e973e9a04f069312268cf47c27e5ef53017a5eb08ab69e0bda523",
+        "amc_idle.h": "4400f1363888c36d7a735777991b1a7068899551df4c7740f19c2a8620d52c48"
+      }
+    },
+    {
+      "name": "prefix-1",
+      "stop": "STOP unsupported AMC write cycles9873013659 ticks1756767243 pcc02770f8 lrc0274af4 address38500184 width4 value00000007",
+      "traceSHA256": "03900859d5f3ee84019ff7b95f176a0be26ac06d9dbb9e25001780606f8e45cd",
+      "sourceSHA256": {
+        "probe.c": "6f325fd7516c70515f14924f3bb8c062b7d8ff255ec8b286e56a5f3bba1cca45",
+        "amc_idle.c": "c9e17389b99ed0decfbba1a6cf791af1c5148a505f57948c35c8b70e3f1c2903",
+        "amc_idle.h": "db2a98fa6d65bdbea4744f82d2d324cf10f81eff2c62cfa350213c5cb2f138c5"
+      }
+    },
+    {
+      "name": "prefix-2",
+      "stop": "STOP unsupported AMC write cycles9873013670 ticks1756767244 pcc02771e8 lrc02772cc address38500b0c width4 value00002000",
+      "traceSHA256": "a0b5bef3f2a4c25632f0fa96e9b6cac8f676c2bfdabb5db7235beb2c5f1d6af2",
+      "sourceSHA256": {
+        "probe.c": "6f325fd7516c70515f14924f3bb8c062b7d8ff255ec8b286e56a5f3bba1cca45",
+        "amc_idle.c": "c9e17389b99ed0decfbba1a6cf791af1c5148a505f57948c35c8b70e3f1c2903",
+        "amc_idle.h": "db2a98fa6d65bdbea4744f82d2d324cf10f81eff2c62cfa350213c5cb2f138c5"
+      }
+    },
+    {
+      "name": "prefix-3",
+      "stop": "STOP unsupported AMC write cycles9873013679 ticks1756767244 pcc02781a4 lrc0274b04 address38501018 width4 value00000001",
+      "traceSHA256": "aed04253a816830d503c01226cc8dbb4db91bf8ee52db67ec8726b1750c97238",
+      "sourceSHA256": {
+        "probe.c": "6f325fd7516c70515f14924f3bb8c062b7d8ff255ec8b286e56a5f3bba1cca45",
+        "amc_idle.c": "c9e17389b99ed0decfbba1a6cf791af1c5148a505f57948c35c8b70e3f1c2903",
+        "amc_idle.h": "db2a98fa6d65bdbea4744f82d2d324cf10f81eff2c62cfa350213c5cb2f138c5"
+      }
+    },
+    {
+      "name": "prefix-4",
+      "stop": "STOP start/transfer boundary cycles9873233391 ticks1756770443 pcc0278084 lrc0275f58 addressc0278084 width0 value00000000",
+      "traceSHA256": "2ff5f9131a842d80b1810390f31aae18ce1d82f1c12440d57f704e9863f7b326",
+      "sourceSHA256": {
+        "probe.c": "ff4516842b7e731d9faa5b790f42260320077e56496c10d0e20c2cccf683f90a",
+        "amc_idle.c": "c13a1de96fbb9a51a30ef6d09bfc0095d927af5c832f3b68d88012761a03d465",
+        "amc_idle.h": "db2a98fa6d65bdbea4744f82d2d324cf10f81eff2c62cfa350213c5cb2f138c5"
+      }
+    },
+    {
+      "name": "input-0",
+      "stop": "STOP unsupported AMC write cycles9873233399 ticks1756770444 pcc02780a0 lr00000001 address3850101c width4 value00000001",
+      "traceSHA256": "26a74c5935fef9c87bbde4beaae9c8b3353d4e14c1fbeed8f907916e61c5cd53",
+      "sourceSHA256": {
+        "probe.c": "e198ea6a61ee1c574c9c8ec17ceced35f81eb91723c098417aba20f49be4a3d9",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-1",
+      "stop": "STOP unsupported AMC write cycles9873233402 ticks1756770444 pcc02780ac lr00000001 address3850100c width4 value00000000",
+      "traceSHA256": "914538c29377c2b08fb4a6e64c89945cd8d04d85cd9ad13c158884af39ae0223",
+      "sourceSHA256": {
+        "probe.c": "e198ea6a61ee1c574c9c8ec17ceced35f81eb91723c098417aba20f49be4a3d9",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-2",
+      "stop": "STOP unsupported AMC write cycles9873233405 ticks1756770444 pcc02780b8 lr00000001 address38501000 width4 value00000001",
+      "traceSHA256": "8cce40fb4744b3619713a73dac2c836e623fde2997bb33b9f109de6ef99c60ed",
+      "sourceSHA256": {
+        "probe.c": "e198ea6a61ee1c574c9c8ec17ceced35f81eb91723c098417aba20f49be4a3d9",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-3",
+      "stop": "STOP unsupported AMC write cycles9873233408 ticks1756770444 pcc02780c4 lr00000001 address38501004 width4 value14a8b000",
+      "traceSHA256": "d20e7a8570e71eace2678ed452f308f8fcba3a90f1697ec3427574828aeb4452",
+      "sourceSHA256": {
+        "probe.c": "4abf9fa3c7e13cff8232734cb98a28e37ecfce7f4ce67ba2fe464b81dab85709",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-4",
+      "stop": "STOP unsupported AMC write cycles9873233411 ticks1756770444 pcc02780d0 lr00000001 address38501008 width4 value00001000",
+      "traceSHA256": "aeb65fc1430d2a40b3c75e9dd77245752d71cc629dd7c168a7daa286868ef291",
+      "sourceSHA256": {
+        "probe.c": "4abf9fa3c7e13cff8232734cb98a28e37ecfce7f4ce67ba2fe464b81dab85709",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-5",
+      "stop": "STOP unsupported AMC write cycles9873233413 ticks1756770444 pcc02780d8 lr00000001 address38500a00 width4 value00000001",
+      "traceSHA256": "3b59990ee136c61c85e21547945fdc6130677b801a41caa52e3db19bb6f5c6ef",
+      "sourceSHA256": {
+        "probe.c": "0e3766ab834d19aa856a5d78d5b6c00b926756b8007a716baa4220b8e7ebb966",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "input-6",
+      "stop": "PASS unaccepted input request physical14a8b000 bytes16384 words4096 cycles9873233416 ticks1756770444 pcc02780e4 status00000100 state0 prefix6",
+      "traceSHA256": "6f291136352b16ff1c4b993b25ab50fb1be1162b90f657a5f6ca875eb4002959",
+      "sourceSHA256": {
+        "probe.c": "0e3766ab834d19aa856a5d78d5b6c00b926756b8007a716baa4220b8e7ebb966",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    },
+    {
+      "name": "verified",
+      "stop": "PASS unaccepted input request physical14a8b000 bytes16384 words4096 cycles9873233416 ticks1756770444 pcc02780e4 status00000100 state0 prefix6",
+      "traceSHA256": "6f291136352b16ff1c4b993b25ab50fb1be1162b90f657a5f6ca875eb4002959",
+      "sourceSHA256": {
+        "probe.c": "bc9219e1fe72f439e586e15de234ce6295623ad685cd30fcb5b1615a6de796cd",
+        "amc_idle.c": "34a7326f55ea03e11c4cd72fe795ec2d2058bc750732da248218eab9e8be8d5d",
+        "amc_idle.h": "31edde61ed29e5b64747046850a450c2ac45c1a6f3843ccee34707c9cda60441"
+      }
+    }
+  ],
+  "finalTraceMatchesPriorInput6": true,
+  "limitations": [
+    "Disposable pre-retirement longjmp stop is not resumable and was not saved",
+    "Original program upload unchanged; marked armed/unserviced observation does not execute it",
+    "Metadata covers50packets but only49complete+319of371bytes are present",
+    "52-byte continuation absent; no synthetic padding presented as media",
+    "No progress address/IRQ/start-enable/output buffer/PCM/audio effect modeled"
+  ],
+  "rawArtifactDirectory": ".context/amc-first/stage-d/verified"
+}

@@ -1,0 +1,21 @@
+STOP third publication work cap cycles0 ticks0 pc00000000 lr00000000 address00000000 width0 value00000000
+STOP context between-instructions
+STOP release store not retired cycles100 ticks0 pc00000000 lr00000000 address00000000 width0 value00000000
+STOP context between-instructions
+STOP release store not retired cycles101 ticks0 pc00000000 lr00000000 address00000000 width0 value00000000
+STOP context inside-unretired-instruction
+STOP release without complete handoff evidence cycles101 ticks0 pc00000000 lr00000000 addressc02726a8 width0 value00001000
+STOP context between-instructions
+PASS first PCM read and ownership returned cycles101 releaseStoreCycles100 pcc02726a8 reads4096 covered4096 ipc1 copy0 published2; no next guest instruction or service
+ENGINE SRAM W 2200f208 width2 value00000001 pcc02726a8
+OWNER WRITE accepted address2200f208 width2 value00000001 before1 after1 cycles200 pcc02726a8 cpsr00000013
+ENGINE SRAM W 2200f208 width2 value00000001 pcc02726a8
+OWNER WRITE accepted address2200f208 width2 value00000001 before0 after1 cycles200 pcc02726a8 cpsr00000013
+RELEASE storePending cycles200 pcc02726a8 cpsr00000013 covered4096 path1 index0 driver00000000
+STOP release store not retired cycles200 ticks0 pcc02726a8 lr00000000 address00000000 width0 value00000000
+STOP context between-instructions
+PASS first PCM read and ownership returned cycles201 releaseStoreCycles200 pcc02726a8 reads4096 covered4096 ipc1 copy0 published2; no next guest instruction or service
+AMC W 3850100c width4 value00000001 pcc02726a8 tick0
+STOP fourth input request cap cycles201 ticks0 pcc02726a8 lr00000000 address3850100c width4 value00000001
+STOP context between-instructions
+retirement/refill wrapper: 4126 checks passed; synthetic bytes, no guest execution

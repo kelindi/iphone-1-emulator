@@ -1,5 +1,39 @@
 # Plan: remove the `--unmatch arm-io/usb-otg` workaround
 
+## Current investigation (2026-09-05)
+
+This is now a direct app-speed dependency. [Transition measurements](transition-latency.md)
+trace the long Home black interval to about 30 seconds of guest-time connection
+retries against the absent lockdownd service. The genuine daemon exits when
+`AppleUSBDeviceMux` is absent. The older statement that its failure is harmless
+for SpringBoard does not hold for app-close behavior.
+
+Revalidation with the current core, compact work image and **unmodified device
+tree**, without USB unmatching, passes 500 million instructions and starts
+`AppleUSBDeviceMux` at 168.6 million. The subsequent full cold boot reaches Home. lockdownd stays PID 17 across
+Settings/Home, and browser Home readiness improves to 3.4–4.0 seconds.
+[Milestone 036](../tweets/036_home_service_recovery.md) contains the evidence. Four reordered-tree probes
+also passed, but the unmodified control establishes that reordering is not
+required for this observed early-startup success. Do not promote a device-tree
+ordering workaround from those probes.
+
+The USB kexts and matching personalities are prelinked in the actual kernel's
+`__PRELINK` segment. Its `__info` is an XML array using ID/IDREF references.
+The provider chain is AppleARMIODevice → USBWrangler → USBNub →
+AppleS5L8900XIpodHAL → IOIpodUSBDevice → IOUSBDeviceInterface → AppleUSBDeviceMux.
+Removing only the wrangler would not produce a working mux.
+
+Evidence: `.context/lockdown-root/original-dt-serial.log`, parsed personalities
+in `.context/lockdown-root/prelink.json`, and the independent daemon lifecycle
+trace in `.context/clock/lifecycle-resume.log`. The historical diagnosis and
+possible later controller work below remain useful context, not current proof
+that the early crash still occurs. The preserved origin/main native baseline
+also passes this early startup gate with the original 184 MiB work image.
+Thus this task retires an obsolete workaround; it does not claim to have
+implemented the earlier registration fix. Both the default browser boot API
+and supplied starting checkpoint now retain the original USB service.
+Existing saved phones retain their old registry until explicitly reset.
+
 ## Goal
 Emulate enough of the S5L8900 USB OTG controller and PHY so the genuine iPhone OS 1.0 USB stack (`AppleS5L8900XUSBWrangler` → `AppleS5L8900XUSBPhy` → `AppleUSBDeviceMux`) starts without the device-tree `compatible` workaround, and the kernel reaches SpringBoard with the USB stack registered.
 
@@ -53,4 +87,5 @@ The true root cause is most likely service-registration/timing ordering — the 
 - WASM build still compiles and smoke test passes.
 
 ## Deliverable
-A PR from a branch `devin/<timestamp>-usb` targeting `devin/1788299483-m68-os1-boot`.
+A tested change targeting `origin/main`, with genuine guest navigation and
+daemon-liveness evidence. Do not rename the Conductor workspace branch.

@@ -1,0 +1,1 @@
+Initial isolated contract run exited1 at test_sram.c:88: s5l8900_ram_conflict(AMC_SRAM_BASE, 0x1000u) != NULL. Existing guard intentionally excludes unmodeled SOC_REGIONS; registering modeled SRAM/explicit attachment overlap rejection is required. No production fault claimed.

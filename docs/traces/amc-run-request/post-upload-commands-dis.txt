@@ -1,0 +1,196 @@
+0xc0277f18  ldr      r0, [pc, #0x70] ; literal@c0277f90 = c02ae138
+0xc0277f1c  mov      r1, #0
+0xc0277f20  ldr      r3, [r0]
+0xc0277f24  add      r2, r3, #0x5000
+0xc0277f28  mov      r3, #0x3c00
+0xc0277f2c  subs     r3, r3, #1
+0xc0277f30  str      r1, [r2], #4
+0xc0277f34  bne      #0xc0277f2c
+0xc0277f38  ldr      r2, [r0]
+0xc0277f3c  mov      r1, #0x2000
+0xc0277f40  add      r2, r2, #0x14000
+0xc0277f44  subs     r1, r1, #1
+0xc0277f48  str      r3, [r2], #4
+0xc0277f4c  bne      #0xc0277f44
+0xc0277f50  ldr      r3, [r0]
+0xc0277f54  add      r2, r3, #0x1c000
+0xc0277f58  ldr      r3, [r0, #4]
+0xc0277f5c  str      r1, [r3, #0x340]
+0xc0277f60  mov      r3, #0x3000
+0xc0277f64  subs     r3, r3, #1
+0xc0277f68  str      r1, [r2], #4
+0xc0277f6c  bne      #0xc0277f64
+0xc0277f70  ldr      r2, [r0]
+0xc0277f74  mov      r1, r3
+0xc0277f78  add      r2, r2, #0x28000
+0xc0277f7c  add      r3, r3, #1
+0xc0277f80  cmp      r3, #0x1000
+0xc0277f84  str      r1, [r2], #4
+0xc0277f88  bne      #0xc0277f7c
+0xc0277f8c  bx       lr
+0xc0277f90  eorgt    lr, sl, r8, lsr r1
+0xc0277f94  ldr      r3, [pc, #0xc] ; literal@c0277fa8 = c02ae138
+0xc0277f98  mov      r2, #1
+0xc0277f9c  ldr      r3, [r3, #4]
+0xc0277fa0  str      r2, [r3]
+0xc0277fa4  bx       lr
+0xc0277fa8  eorgt    lr, sl, r8, lsr r1
+0xc0277fac  ldr      r3, [pc, #0xc] ; literal@c0277fc0 = c02ae138
+0xc0277fb0  mov      r2, #1
+0xc0277fb4  ldr      r3, [r3, #4]
+0xc0277fb8  str      r2, [r3, #4]
+0xc0277fbc  bx       lr
+0xc0277fc0  eorgt    lr, sl, r8, lsr r1
+0xc0277fc4  ldr      r3, [pc, #0xc] ; literal@c0277fd8 = c02ae138
+0xc0277fc8  mov      r2, #1
+0xc0277fcc  ldr      r3, [r3, #4]
+0xc0277fd0  str      r2, [r3, #8]
+0xc0277fd4  bx       lr
+0xc0277fd8  eorgt    lr, sl, r8, lsr r1
+0xc0277fdc  ldr      r3, [pc, #8] ; literal@c0277fec = c02ae138
+0xc0277fe0  ldr      r3, [r3, #4]
+0xc0277fe4  ldr      r0, [r3, #0x10]
+0xc0277fe8  bx       lr
+0xc0277fec  eorgt    lr, sl, r8, lsr r1
+0xc0277ff0  ldr      r3, [pc, #0xc] ; literal@c0278004 = c02ae138
+0xc0277ff4  mov      r2, #1
+0xc0277ff8  ldr      r3, [r3, #4]
+0xc0277ffc  str      r2, [r3, #0xc]
+0xc0278000  bx       lr
+0xc0278004  eorgt    lr, sl, r8, lsr r1
+0xc0278008  ldr      r3, [pc, #0xc] ; literal@c027801c = c02ae138
+0xc027800c  mov      r2, #1
+0xc0278010  ldr      r3, [r3, #4]
+0xc0278014  str      r2, [r3, #0xd04]
+0xc0278018  bx       lr
+0xc027801c  eorgt    lr, sl, r8, lsr r1
+0xc0278020  ldr      r3, [pc, #0xc] ; literal@c0278034 = c02ae138
+0xc0278024  mov      r2, #0
+0xc0278028  ldr      r3, [r3, #4]
+0xc027802c  str      r2, [r3, #0xd04]
+0xc0278030  bx       lr
+0xc0278034  eorgt    lr, sl, r8, lsr r1
+0xc0278038  ldr      r3, [pc, #8] ; literal@c0278048 = c02ae138
+0xc027803c  ldr      r3, [r3, #4]
+0xc0278040  ldr      r0, [r3, #0xd00]
+0xc0278044  bx       lr
+0xc0278048  eorgt    lr, sl, r8, lsr r1
+0xc027804c  ldr      r3, [pc, #0x2c] ; literal@c0278080 = c02ae138
+0xc0278050  push     {r7, lr}
+0xc0278054  add      r7, sp, #0
+0xc0278058  ldr      r3, [r3, #4]
+0xc027805c  add      r3, r3, #0x1000
+0xc0278060  ldr      ip, [r3, #8]
+0xc0278064  ldr      lr, [r3, #4]
+0xc0278068  ldr      r2, [r3, #0x10]
+0xc027806c  rsb      r3, lr, r2
+0xc0278070  sub      r3, ip, r3, lsr #2
+0xc0278074  str      r2, [r0]
+0xc0278078  str      r3, [r1]
+0xc027807c  pop      {r7, pc}
+0xc0278080  eorgt    lr, sl, r8, lsr r1
+0xc0278084  ldr      r2, [pc, #0x60] ; literal@c02780ec = c02ae138
+0xc0278088  push     {r7, lr}
+0xc027808c  mov      lr, #1
+0xc0278090  ldr      r3, [r2, #4]
+0xc0278094  mov      ip, #0
+0xc0278098  add      r3, r3, #0x1000
+0xc027809c  add      r7, sp, #0
+0xc02780a0  str      lr, [r3, #0x1c]
+0xc02780a4  ldr      r3, [r2, #4]
+0xc02780a8  add      r3, r3, #0x1000
+0xc02780ac  str      ip, [r3, #0xc]
+0xc02780b0  ldr      r3, [r2, #4]
+0xc02780b4  add      r3, r3, #0x1000
+0xc02780b8  str      lr, [r3]
+0xc02780bc  ldr      r3, [r2, #4]
+0xc02780c0  add      r3, r3, #0x1000
+0xc02780c4  str      r0, [r3, #4]
+0xc02780c8  ldr      r3, [r2, #4]
+0xc02780cc  add      r3, r3, #0x1000
+0xc02780d0  str      r1, [r3, #8]
+0xc02780d4  ldr      r3, [r2, #4]
+0xc02780d8  str      lr, [r3, #0xa00]
+0xc02780dc  ldr      r3, [r2, #4]
+0xc02780e0  add      r3, r3, #0x1000
+0xc02780e4  str      lr, [r3, #0xc]
+0xc02780e8  pop      {r7, pc}
+0xc02780ec  eorgt    lr, sl, r8, lsr r1
+0xc02780f0  ldr      r2, [pc, #0x40] ; literal@c0278138 = c02ae138
+0xc02780f4  mov      ip, #1
+0xc02780f8  ldr      r3, [r2, #4]
+0xc02780fc  add      r3, r3, #0x1000
+0xc0278100  str      ip, [r3, #0x1c]
+0xc0278104  ldr      r3, [r2, #4]
+0xc0278108  add      r3, r3, #0x1000
+0xc027810c  str      ip, [r3]
+0xc0278110  ldr      r3, [r2, #4]
+0xc0278114  add      r3, r3, #0x1000
+0xc0278118  str      r0, [r3, #4]
+0xc027811c  ldr      r3, [r2, #4]
+0xc0278120  add      r3, r3, #0x1000
+0xc0278124  str      r1, [r3, #8]
+0xc0278128  ldr      r3, [r2, #4]
+0xc027812c  add      r3, r3, #0x1000
+0xc0278130  str      ip, [r3, #0xc]
+0xc0278134  bx       lr
+0xc0278138  eorgt    lr, sl, r8, lsr r1
+0xc027813c  ldr      r1, [pc, #0x4c] ; literal@c0278190 = c02ae138
+0xc0278140  mov      r2, #1
+0xc0278144  ldr      r3, [r1, #4]
+0xc0278148  add      r3, r3, #0x1000
+0xc027814c  str      r2, [r3, #0x1c]
+0xc0278150  ldr      r3, [r1, #4]
+0xc0278154  sub      r2, r2, #1
+0xc0278158  add      r3, r3, #0x1000
+0xc027815c  str      r2, [r3, #0xc]
+0xc0278160  ldr      r3, [r1, #4]
+0xc0278164  add      r3, r3, #0x1000
+0xc0278168  str      r2, [r3]
+0xc027816c  ldr      r3, [r1, #4]
+0xc0278170  add      r3, r3, #0x1000
+0xc0278174  str      r2, [r3, #4]
+0xc0278178  ldr      r3, [r1, #4]
+0xc027817c  add      r3, r3, #0x1000
+0xc0278180  str      r2, [r3, #8]
+0xc0278184  ldr      r3, [r1, #4]
+0xc0278188  str      r2, [r3, #0xa00]
+0xc027818c  bx       lr
+0xc0278190  eorgt    lr, sl, r8, lsr r1
+0xc0278194  ldr      r3, [pc, #0x10] ; literal@c02781ac = c02ae138
+0xc0278198  mov      r2, #1
+0xc027819c  ldr      r3, [r3, #4]
+0xc02781a0  add      r3, r3, #0x1000
+0xc02781a4  str      r2, [r3, #0x18]
+0xc02781a8  bx       lr
+0xc02781ac  eorgt    lr, sl, r8, lsr r1
+0xc02781b0  ldr      r3, [pc, #0x10] ; literal@c02781c8 = c02ae138
+0xc02781b4  mov      r2, #1
+0xc02781b8  ldr      r3, [r3, #4]
+0xc02781bc  add      r3, r3, #0x1000
+0xc02781c0  str      r2, [r3, #0x1c]
+0xc02781c4  bx       lr
+0xc02781c8  eorgt    lr, sl, r8, lsr r1
+0xc02781cc  ldr      r3, [pc, #0x10] ; literal@c02781e4 = c02ae138
+0xc02781d0  ldr      r3, [r3, #4]
+0xc02781d4  add      r3, r3, #0x1000
+0xc02781d8  ldr      r0, [r3, #0x1c]
+0xc02781dc  and      r0, r0, #1
+0xc02781e0  bx       lr
+0xc02781e4  eorgt    lr, sl, r8, lsr r1
+0xc02781e8  ldr      r3, [pc, #0x10] ; literal@c0278200 = c02ae138
+0xc02781ec  mov      r2, #0
+0xc02781f0  ldr      r3, [r3, #4]
+0xc02781f4  add      r3, r3, #0x1000
+0xc02781f8  str      r2, [r3, #0x18]
+0xc02781fc  bx       lr
+0xc0278200  eorgt    lr, sl, r8, lsr r1
+0xc0278204  ldr      r1, [pc, #0x1c] ; literal@c0278228 = c02ae138
+0xc0278208  mov      r2, #0
+0xc027820c  mov      r0, #1
+0xc0278210  ldr      r3, [r1, #4]
+0xc0278214  add      r3, r3, #0x1000
+0xc0278218  str      r2, [r3]
+0xc027821c  ldr      r3, [r1, #4]
+0xc0278220  str      r2, [r3, #0xa00]
+0xc0278224  bx       lr

@@ -1,0 +1,13 @@
+In file included from .context/rtc-second/probe.c:2:
+.context/rtc-contract/emu_api.c: In function ‘browser_host_now’:
+.context/rtc-contract/emu_api.c:96:22: warning: implicit declaration of function ‘emscripten_get_now’ [-Wimplicit-function-declaration]
+   96 |     *ns = (uint64_t)(emscripten_get_now() * 1000000.0);
+      |                      ^~~~~~~~~~~~~~~~~~
+lto-wrapper: warning: using serial compilation of 4 LTRANS jobs
+/usr/bin/ld: /tmp/cc0bMuNF.o: in function `browser_defer_wait':
+probe.c:(.text+0x47): undefined reference to `emscripten_get_now'
+/usr/bin/ld: /tmp/cc0bMuNF.o: in function `browser_host_now':
+probe.c:(.text+0xa7): undefined reference to `emscripten_get_now'
+/usr/bin/ld: /tmp/cc0bMuNF.o: in function `emu_clock_delay':
+probe.c:(.text+0x17f5): undefined reference to `emscripten_get_now'
+collect2: error: ld returned 1 exit status

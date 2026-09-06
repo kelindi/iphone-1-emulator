@@ -1,0 +1,70 @@
+FAIL fields_equal:40 a->device.data.active==b->device.data.active
+FAIL fields_equal:41 a->device.data.address==b->device.data.address
+FAIL fields_equal:42 a->device.data.port==b->device.data.port
+FAIL fields_equal:43 a->device.data.length==b->device.data.length
+FAIL fields_equal:44 a->device.data.deadline==b->device.data.deadline
+FAIL fields_equal:45 !memcmp(a->device.data.staging,b->device.data.staging,sizeof a->device.data.staging)
+FAIL fields_equal:82 a->device.data_control==b->device.data_control
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:40 a->device.data.active==b->device.data.active
+FAIL fields_equal:41 a->device.data.address==b->device.data.address
+FAIL fields_equal:42 a->device.data.port==b->device.data.port
+FAIL fields_equal:43 a->device.data.length==b->device.data.length
+FAIL fields_equal:44 a->device.data.deadline==b->device.data.deadline
+FAIL fields_equal:45 !memcmp(a->device.data.staging,b->device.data.staging,sizeof a->device.data.staging)
+FAIL fields_equal:82 a->device.data_control==b->device.data_control
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:40 a->device.data.active==b->device.data.active
+FAIL fields_equal:41 a->device.data.address==b->device.data.address
+FAIL fields_equal:42 a->device.data.port==b->device.data.port
+FAIL fields_equal:43 a->device.data.length==b->device.data.length
+FAIL fields_equal:44 a->device.data.deadline==b->device.data.deadline
+FAIL fields_equal:45 !memcmp(a->device.data.staging,b->device.data.staging,sizeof a->device.data.staging)
+FAIL fields_equal:82 a->device.data_control==b->device.data_control
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:40 a->device.data.active==b->device.data.active
+FAIL fields_equal:41 a->device.data.address==b->device.data.address
+FAIL fields_equal:42 a->device.data.port==b->device.data.port
+FAIL fields_equal:43 a->device.data.length==b->device.data.length
+FAIL fields_equal:44 a->device.data.deadline==b->device.data.deadline
+FAIL fields_equal:45 !memcmp(a->device.data.staging,b->device.data.staging,sizeof a->device.data.staging)
+FAIL fields_equal:82 a->device.data_control==b->device.data_control
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:34 a->device.endpoint.used==b->device.endpoint.used
+FAIL fields_equal:38 !memcmp(a->device.endpoint.receive,b->device.endpoint.receive,sizeof a->device.endpoint.receive)
+FAIL fields_equal:76 a->device.data_completions==b->device.data_completions
+FAIL fields_equal:85 a->device.events==b->device.events
+FAIL fields_equal:89 a->device.irq_pending==b->device.irq_pending
+FAIL equal:39 an==bn&&memcmp(am,bm,an)==0
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL scenario:50 sdio_irq_level(&a.device)==sdio_irq_level(&b->device)
+FAIL scenario:51 ar==br
+FAIL fields_equal:34 a->device.endpoint.used==b->device.endpoint.used
+FAIL fields_equal:38 !memcmp(a->device.endpoint.receive,b->device.endpoint.receive,sizeof a->device.endpoint.receive)
+FAIL fields_equal:76 a->device.data_completions==b->device.data_completions
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:34 a->device.endpoint.used==b->device.endpoint.used
+FAIL fields_equal:38 !memcmp(a->device.endpoint.receive,b->device.endpoint.receive,sizeof a->device.endpoint.receive)
+FAIL fields_equal:76 a->device.data_completions==b->device.data_completions
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:76 a->device.data_completions==b->device.data_completions
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL fields_equal:72 a->device.main_model.waiting_deadline==b->device.main_model.waiting_deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL fields_equal:72 a->device.main_model.waiting_deadline==b->device.main_model.waiting_deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+FAIL fields_equal:65 a->device.main_model.deadline==b->device.main_model.deadline
+FAIL equal:39 al==bl&&memcmp(as,bs,al)==0
+Private checkpoint synthetic: 36365 checks, 69 failures
