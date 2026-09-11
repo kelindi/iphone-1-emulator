@@ -1,0 +1,75 @@
+{
+  "scope": "Read-only qualified original instruction observations, maximum32 hits per site. Both control and probe install same targets and hook; control builds -DMEDIA_OBSERVE=0. Contact padding zeroed identically in shared private source. No maintained source edits.",
+  "sites": [
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31227e58",
+      "label": "mixer_device_start_call",
+      "bytes": "0cf093e50040a0e1dd7200eb006a00eb"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31227e5c",
+      "label": "mixer_device_start_return",
+      "bytes": "0040a0e1dd7200eb006a00eb000054e2"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31234618",
+      "label": "coreaudio_device_start",
+      "bytes": "90402de904708de204d04de20040a0e1"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31236650",
+      "label": "coreaudio_startio",
+      "bytes": "b0402de908708de208d04de20040a0e1"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31236680",
+      "label": "add_ioproc_return",
+      "bytes": "005050e21300001a0130a0e35830c4e5"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x312366a0",
+      "label": "audio_device_start_return",
+      "bytes": "005050e20b00000a3c309fe53c009fe5"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x3124db54",
+      "label": "telephony_startio",
+      "bytes": "f0402de90c708de204d04de20060a0e1"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x31238368",
+      "label": "mixer_start_return",
+      "bytes": "005050e20b00000a8c309fe58c009fe5"
+    },
+    {
+      "binary": ".context/youtube-services/rotation-v2/media-readback/Celestial",
+      "pc": "0x302830e0",
+      "label": "mecca_play_return",
+      "bytes": "0030a0e32f30c5e5008050e24100001a"
+    },
+    {
+      "binary": ".context/app-services-opportunities/YouTube",
+      "pc": "0xf1a4",
+      "label": "youtube_switch_video",
+      "bytes": "f0402de90c708de204802de5038b2ded"
+    }
+  ],
+  "sha256": {
+    ".context/youtube-services/rotation-v2/media-readback/Celestial": "62776431b40b73f006086b8ffb739c78775d39436be9afa28dc2e0fa3e8134db",
+    ".context/youtube-services/celestial-audit/H264H1.videodecoder": "5c0632ec60b0760061acf73c61a782048c14606ec6e9f32ad059d361d7800569",
+    ".context/app-services-opportunities/YouTube": "3b72f4c26177244594687c4843eae7a9c8908c5197233e0dcc6ce3fcf6d15993",
+    ".context/youtube-services/celestial-audit/MoviePlayerUI": "2250218e530f6f5979ff1d721dfecef7404529dbe51a613ae54aaf5ceb48ab59",
+    ".context/youtube-services/celestial-audit/MeCCA": "15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec",
+    ".context/youtube-services/audio-start-probe/probe.c": "727fa908c90a61028f2a3e8645062218981bad24157a0085f7b716e62da45a34",
+    ".context/youtube-services/audio-start-probe/peek.c": "3422b867a683f99eab3dfba4d9ef770a513bf29f7a408f48a0e1181d21c8e606",
+    ".context/youtube-services/audio-start-probe/peek.h": "8dd62541e3aee37467451c87bf4bc04d5427f93f6f814b2ce70ef688541576ef"
+  }
+}

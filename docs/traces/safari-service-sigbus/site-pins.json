@@ -1,0 +1,66 @@
+{
+  "index.html": {
+    "sha256": "15191077adf6cdfcc5ee3876de2039e299271210a9f012792017ec4b6f72aa06",
+    "bytes": 5564
+  },
+  "phone.css": {
+    "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a",
+    "bytes": 9396
+  },
+  "app.js": {
+    "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b",
+    "bytes": 18595
+  },
+  "assets.js": {
+    "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e",
+    "bytes": 2397
+  },
+  "storage.js": {
+    "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2",
+    "bytes": 9079
+  },
+  "checkpoint-worker.js": {
+    "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58",
+    "bytes": 615
+  },
+  "emu-worker.js": {
+    "sha256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8",
+    "bytes": 13003
+  },
+  "seed-jit.js": {
+    "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
+    "bytes": 9613
+  },
+  "manifest.json": {
+    "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f",
+    "bytes": 1222
+  },
+  "icon.svg": {
+    "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa",
+    "bytes": 379
+  },
+  "service-worker.js": {
+    "sha256": "b3049273e7a6e068ba73c0a79f4461d04a184d8ae10b78edc3117cde33dcb866",
+    "bytes": 3228
+  },
+  "dist/emu.js": {
+    "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+    "bytes": 17756
+  },
+  "dist/emu.wasm": {
+    "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+    "bytes": 250531
+  },
+  "jit/abi.json": {
+    "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698",
+    "bytes": 364
+  },
+  "jit/regions.json": {
+    "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+    "bytes": 74901
+  },
+  "jit/seed.wasm": {
+    "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "bytes": 12341313
+  }
+}

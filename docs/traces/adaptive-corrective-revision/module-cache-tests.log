@@ -1,0 +1,13 @@
+✔ owner caches only modules; cache hits still capture, instantiate and strictly install (15.857532ms)
+✔ exact keys, no accidental equivalence and LRU entry eviction (1.40823ms)
+✔ byte limit accounts WAT and binary; oversize artifacts are not retained (0.174295ms)
+✔ replacement accounting, clear and owner isolation (0.164439ms)
+✔ reject invalid limits and nonmodule artifacts (0.314678ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.490575

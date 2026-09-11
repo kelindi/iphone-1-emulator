@@ -1,0 +1,18 @@
+{
+  "source": ".context/trace-optimizer-profile/run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
+  "output": "tweets/videos/trace_optimizer_profile.mp4",
+  "thumbnail": "tweets/thumbnails/trace_optimizer_profile.jpg",
+  "method": "Full source video reencoded libx264/presetfast/crf23/threads1, no cuts or speed changes. Thumbnail is actual final Settings frame. Initial system ffmpeg executable absent; used repository ffmpeg-static binary without guest rerun.",
+  "files": [
+    {
+      "path": "tweets/videos/trace_optimizer_profile.mp4",
+      "bytes": 430857,
+      "sha256": "770ecaa4780b2dcecc969fe2c7709c6067b9ba2aa092d556481549ae705df3f6"
+    },
+    {
+      "path": "tweets/thumbnails/trace_optimizer_profile.jpg",
+      "bytes": 35189,
+      "sha256": "17996840e5e90af80d40d4042273697126c1c7c01770328ca9496074d89f7277"
+    }
+  ]
+}

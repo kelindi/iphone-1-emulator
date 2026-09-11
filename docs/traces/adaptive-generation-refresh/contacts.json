@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "scope": "Adaptive real-app correctness pilot against frozen complete checkpoints. Diagnostic timings only; not ABBA throughput acceptance.",
+  "workload": {
+    "name": "contacts",
+    "events": [
+      {
+        "at": 0,
+        "type": "touch",
+        "down": 1,
+        "x": 43,
+        "y": 425
+      },
+      {
+        "at": 5000000,
+        "type": "touch",
+        "down": 0,
+        "x": 43,
+        "y": 425
+      },
+      {
+        "at": 200000000,
+        "type": "touch",
+        "down": 1,
+        "x": 160,
+        "y": 454
+      },
+      {
+        "at": 205000000,
+        "type": "touch",
+        "down": 0,
+        "x": 160,
+        "y": 454
+      },
+      {
+        "at": 400000000,
+        "type": "button",
+        "id": 1,
+        "down": 1
+      },
+      {
+        "at": 405000000,
+        "type": "button",
+        "id": 1,
+        "down": 0
+      }
+    ],
+    "credits": 600000000,
+    "checkpoints": [
+      100000000,
+      300000000,
+      600000000
+    ]
+  },
+  "stop": 600000000,
+  "wasmSha256": "f5473d363843ce3cda69ddc7accee60751c9cb486c18b239c74b3906f7fc51d4",
+  "credits": 600000000,
+  "cpuMs": 50959.38999999994,
+  "wallMs": 47965.922686000034,
+  "checkpoints": [
+    {
+      "credits": 100000000,
+      "bytes": 246702050,
+      "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+    },
+    {
+      "credits": 300000000,
+      "bytes": 247132234,
+      "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+    },
+    {
+      "credits": 600000000,
+      "bytes": 247669007,
+      "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+    }
+  ],
+  "validatedCheckpoints": 3,
+  "fullWorkload": true,
+  "sources": {
+    "tools/jit/adaptive/replay-workload.mjs": "41b8d9b31d746feb405d859c7d14500e26f849b4adb6ca2ff7967254b3c34c57",
+    "tools/jit/adaptive/workload-compiler.mjs": "6960c15d56238e66c4347fce7a9f025116a90c3ada09209db69ea0ffdde8bd29",
+    "tools/jit/adaptive/workloads.mjs": "d17a24af0fc8897536d6799e86afcffeb7ca97bb9ffad30c310318deecc30eb6",
+    "tools/jit/adaptive/unit.mjs": "3b87c6b62a46a9db3b48870a6f5680f0a436fb6fb41e4acffdd916b98628cf3a",
+    "tools/jit/adaptive/decode.mjs": "d18da7dc9fdc54c984c5291fcfbba1decf6af96f8c625f282121a16e114a6606",
+    "tools/jit/adaptive/emit.mjs": "d453a9d741c82b33293554dd21a5ffa3697ab165fb1940321ca25a2b906fb91f"
+  },
+  "compiler": {
+    "attempts": 10107,
+    "captureRefusals": 328,
+    "unsupported": 3347,
+    "compiled": 6760,
+    "installed": 6760,
+    "rejected": 0,
+    "binaryBytes": 19668526,
+    "compileCpuMs": 9411.772000000288,
+    "compileWallMs": 8423.264244999718
+  },
+  "runtime": [
+    135309174,
+    20988593,
+    446361637,
+    0,
+    1980280,
+    448128,
+    18228662,
+    1,
+    0,
+    331522,
+    47241373,
+    98951,
+    47142422
+  ],
+  "attempts": 10107
+}

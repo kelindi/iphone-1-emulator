@@ -1,0 +1,58 @@
+{
+  "scope": "Read-only qualified original instruction observations, maximum32 hits per site. Both control and probe install same targets and hook; control builds -DMEDIA_OBSERVE=0. Contact padding zeroed identically in shared private source. No maintained source edits.",
+  "sites": [
+    {
+      "binary": "web/firmware/kernel_1A543a.macho",
+      "pc": "0xc040ba58",
+      "label": "i2s_configure",
+      "bytes": "f0402de90060a0e38860c0e58960c0e5"
+    },
+    {
+      "binary": "web/firmware/kernel_1A543a.macho",
+      "pc": "0xc040bb60",
+      "label": "i2s_start",
+      "bytes": "f0402de90c708de204d04de20040a0e1"
+    },
+    {
+      "binary": "web/firmware/kernel_1A543a.macho",
+      "pc": "0xc040bea8",
+      "label": "i2s_write_register",
+      "bytes": "783090e5012083e71eff2fe114309fe5"
+    },
+    {
+      "binary": "web/firmware/kernel_1A543a.macho",
+      "pc": "0xc040be44",
+      "label": "i2s_gpio_callback",
+      "bytes": "90402de90040a0e10310a0e18cc094e5"
+    },
+    {
+      "binary": "web/firmware/kernel_1A543a.macho",
+      "pc": "0xc040bcec",
+      "label": "i2s_start_return_boundary",
+      "bytes": "0600a0e10cd047e2f080bde8ffc99a3b"
+    },
+    {
+      "binary": ".context/youtube-services/celestial-audit/MeCCA",
+      "pc": "0x312366a0",
+      "label": "audio_device_start_return",
+      "bytes": "005050e20b00000a3c309fe53c009fe5"
+    },
+    {
+      "binary": ".context/app-services-opportunities/YouTube",
+      "pc": "0xf1a4",
+      "label": "youtube_switch_video",
+      "bytes": "f0402de90c708de204802de5038b2ded"
+    }
+  ],
+  "sha256": {
+    ".context/youtube-services/rotation-v2/media-readback/Celestial": "62776431b40b73f006086b8ffb739c78775d39436be9afa28dc2e0fa3e8134db",
+    ".context/youtube-services/celestial-audit/H264H1.videodecoder": "5c0632ec60b0760061acf73c61a782048c14606ec6e9f32ad059d361d7800569",
+    ".context/app-services-opportunities/YouTube": "3b72f4c26177244594687c4843eae7a9c8908c5197233e0dcc6ce3fcf6d15993",
+    ".context/youtube-services/celestial-audit/MoviePlayerUI": "2250218e530f6f5979ff1d721dfecef7404529dbe51a613ae54aaf5ceb48ab59",
+    ".context/youtube-services/celestial-audit/MeCCA": "15f8f049239e64f88660aeb1ce99aa07273ccd19ca636e624ff19e9a68e7f4ec",
+    "web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    ".context/youtube-services/i2s-start-probe/probe.c": "14c878c967490ed208f66bfe7478348f15bb523f8075c8d7c484cf24a3d355e9",
+    ".context/youtube-services/i2s-start-probe/peek.c": "3422b867a683f99eab3dfba4d9ef770a513bf29f7a408f48a0e1181d21c8e606",
+    ".context/youtube-services/i2s-start-probe/peek.h": "8dd62541e3aee37467451c87bf4bc04d5427f93f6f814b2ce70ef688541576ef"
+  }
+}

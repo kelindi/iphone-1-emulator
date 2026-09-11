@@ -1,0 +1,2 @@
+[LinkError: WebAssembly.instantiate(): Import #0 "env" "memory": memory import must be a WebAssembly.Memory object]
+{"passed":true,"checks":272,"selectedEntryCases":256,"selectedGenerated":175,"extraGuardCases":16}

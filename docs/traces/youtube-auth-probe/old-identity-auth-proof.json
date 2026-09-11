@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "authenticationSucceeded": false,
+  "scope": "Retained challenge/signature diagnostic; HTTP503 is not authentication success. No certificate trust-chain validation.",
+  "logSHA256": "050bb6dbc87e35ffda467145f910024baec1f1b9cf929aa013989d2f9ccf8129",
+  "completeExchanges": 2,
+  "nonceChecks": {
+    "hr1MatchesSHA1r1": true,
+    "r2MatchesChallenge": true,
+    "hmackr2MatchesChallenge": true
+  },
+  "certificatePEM_SHA256": "e04f7d43cbd2542bf66a85ef29e0afc448da8799290e40b4f1a760e66357b669",
+  "certificateDER_SHA256": "dae31d26a9761fedaf44536e87aa78eda3523615eac842eb3660de2d9e078549",
+  "signatureSHA256": "eb41ca877b704a44c674d53fa2cdc9cc0ad29415d1bd8b27b88e565b17dc0d6a",
+  "signedDigestSHA256": "4f6f14bbd818964f9ca3f5f3043d6223fa5ef8408807d86877a29b641d2c2573",
+  "certificateProof": {
+    "bits": 2048,
+    "spkiSHA256": "cd31a82fc6703a42d4c60ebfd8324bbff4b3b69564bc096eccbf1af93a15d020",
+    "signatureLengthValid": false,
+    "rawPKCS1DigestMatches": false,
+    "recoveredBlockSHA256": null
+  },
+  "guestKeyProof": null,
+  "authExchanges": [
+    {
+      "serial": 1,
+      "requestSHA256": "884ee53ec4daa4f58b26dfd3a84ecdfd3f4bf91978db376d9a6ad8e0ecb117cc",
+      "responseSHA256": "4d3dc1b31c7438148f73c363b5492e8303579ed875d5e398d6c149c1796e60c9"
+    },
+    {
+      "serial": 2,
+      "requestSHA256": "ded51318562b737aeea66822795a863bcf764b1233e783a015adcd526dbbd1cf",
+      "responseSHA256": "d8702fc99f510179666d0a16044bc53f3d68b13061a8d15061efc3e0644f4a52"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "host": {
+    "macModel": null,
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "date": "2026-09-08T14:28:47.186Z",
+  "browser": null,
+  "url": "http://localhost:8080",
+  "pulseMs": 30,
+  "actions": [],
+  "errors": [
+    "Error: ENOENT: no such file or directory, open '/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/does-not-exist.json'\n    at async open (node:internal/fs/promises:640:25)\n    at async readFile (node:internal/fs/promises:1283:14)\n    at async file:///home/vercel-sandbox/iphone-1/web/tests/performance.mjs:23:52"
+  ],
+  "method": "50 ms canvas sampling; changed pixels exclude status bar; readiness must remain visually stable 500 ms. Ready time starts that stable interval. Legacy readyMs/firstVisibleMs start before mouse-down; release-relative fields use the actual browser pointerup event. First/warm are separate; at least30 warm samples are required for a per-action p95.",
+  "passed": false,
+  "cleanup": [
+    {
+      "stage": "context.close",
+      "status": "not-created"
+    },
+    {
+      "stage": "browser.close",
+      "status": "not-created"
+    }
+  ],
+  "servedAssets": []
+}

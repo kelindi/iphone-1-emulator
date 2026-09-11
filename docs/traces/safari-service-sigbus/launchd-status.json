@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "scope": "Artifact-only original snapshot loading and RAM-only cloned-CPU translations; no guest instructions or input changes.",
+  "pins": {
+    ".context/guest-hello/original-readonly/sbin__launchd": "2dc478a1beaa24d79feaa8f05ad7df8caba2a9bacbb381832b0a500f241a358f",
+    ".context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+    ".context/app-services-current/browser-run-2/final-home.snap": "be1c7f12b93a817a823b97ce0fcf127aeb8061ae18923fdc6b3b24df55d99c08",
+    ".context/app-services-current/launchd-status/read.c": "23b55fbe7ae75fbe4414f48b2ac5bb36644dafdb84b8fc5a91e8ec46f1821623",
+    ".context/app-services-current/launchd-status/read": "99fec3560efdeaed8e931c348db48e95bb79ca6b78b8b15a2997658cf58488c3",
+    ".context/guest-http-default/probe-source/peek.c": "42ae1093996359771228d0b1ccf08ff87eae0529602adb297d5a59621d5c3d2c",
+    ".context/guest-http-default/probe-source/peek.h": "246d25d6e11affe5ae60c910ccdf0c6ba8022b15da6844627fa9fa1ee0b52dd6"
+  },
+  "originalLaunchdMatchedBytes": 1516,
+  "launchdTTBR": "13b9d000",
+  "rootJobGlobal": "00014044",
+  "rootJob": "00100220",
+  "job": "00101c20",
+  "label": "com.iphone1.local-demo.http",
+  "pid": 0,
+  "rawLastExitStatus": 10,
+  "signal": 10,
+  "originalLibSystemSignalName": "bus",
+  "originalLibSystemSignalDescription": "Bus error",
+  "causeLimit": "SIGBUS termination is established, not its faulting instruction/address or whether emulator/guest/service behavior caused the exception.",
+  "jobTraversal": {
+    "complete": true,
+    "nodes": 18,
+    "matchingJobs": 1
+  },
+  "loadedCPUUnchanged": true,
+  "throttle": {
+    "configurableThrottleIntervalProven": false,
+    "builtInGuestSeconds": 10,
+    "instructions": "0x8170 sets log value10;0x8178 sets timer value10;0x8194 calls timer setup"
+  }
+}

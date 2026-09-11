@@ -1,0 +1,20 @@
+[
+  {
+    "label": "old",
+    "actualSha256": "603679fbc7961ddad95ac8822257074fecde5940bc013246d520ea3b6240c84f",
+    "roundtripSha256": "148966a091231899b3fe184f617893f1a90e813126ec025353ef0b124143bdcd",
+    "firstStrictRoundtripFailed": true,
+    "onlyOmittedSection": 12,
+    "omittedPayload": "69",
+    "allOtherRawSectionsIdentical": true
+  },
+  {
+    "label": "current",
+    "actualSha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+    "roundtripSha256": "8fbbc9f2d33cf005ac7010a49dc8be7b5c47ded1de50edb44b1a5d3e7d538283",
+    "firstStrictRoundtripFailed": true,
+    "onlyOmittedSection": 12,
+    "omittedPayload": "69",
+    "allOtherRawSectionsIdentical": true
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "snapshot": ".context/youtube-services/auth-matched-browser/final-home.snap",
+  "snapshotSHA256": "01014691ac23f8bac3bbaf2442b1d9d2acb4ab2f98c044466e43044776e68445",
+  "logBytes": 5180,
+  "logSHA256": "7effbda634a29735e1b76ca2f625abd7b091bfeab457257542d2d1b0f684c060",
+  "guestPublicKeySHA256": "7f07ca3e8d342680dcd9706072ff6acdb2db6ba189fa0ebd448ed4e4cee51752",
+  "certificateSHA256": "064ff17faf15dcd389b3ca7fd95aa33edf762888fec0c980fae2cf3f220f26b5",
+  "certificateMatchesGuestPublicKey": true,
+  "scope": "Snapshot backing-file readback only; dirty caches may be absent. No private key read or guest execution."
+}

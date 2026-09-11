@@ -1,0 +1,53 @@
+ffmpeg version 6.0-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 8 (Debian 8.3.0-6)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gmp --enable-libgme --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libdav1d --enable-libxvid --enable-libzvbi --enable-libzimg
+  libavutil      58.  2.100 / 58.  2.100
+  libavcodec     60.  3.100 / 60.  3.100
+  libavformat    60.  3.100 / 60.  3.100
+  libavdevice    60.  1.100 / 60.  1.100
+  libavfilter     9.  3.100 /  9.  3.100
+  libswscale      7.  1.100 /  7.  1.100
+  libswresample   4. 10.100 /  4. 10.100
+  libpostproc    57.  1.100 / 57.  1.100
+Input #0, matroska,webm, from '/home/vercel-sandbox/iphone-1/.context/runtime-comparison/browser-b1/page@039bb0318b12a69a509dbc6cd5f38e81.webm':
+  Metadata:
+    creation_time   : 2026-09-06T14:15:09.982000Z
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:34.52, start: 0.000000, bitrate: 724 kb/s
+  Stream #0:0(eng): Video: vp8, yuv420p(progressive), 1280x1000, SAR 1:1 DAR 32:25, 25 fps, 25 tbr, 1k tbn (default)
+    Metadata:
+      ENCODER         : Lavc61.3.100 libvpx
+      DURATION        : 00:00:34.520000000
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (native) -> h264 (libx264))
+[libx264 @ 0x213da240] using SAR=1/1
+[libx264 @ 0x213da240] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x213da240] profile High, level 3.2, 4:2:0, 8-bit
+[libx264 @ 0x213da240] 264 - core 164 r3106 eaa68fa - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=1 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=2 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=0 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=0 threads=1 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=10 rc=crf mbtree=1 crf=22.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'tweets/videos/native_browser_comparison.mp4':
+  Metadata:
+    encoder         : Lavf60.3.100
+  Stream #0:0(eng): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x1000 [SAR 1:1 DAR 32:25], q=2-31, 25 fps, 12800 tbn (default)
+    Metadata:
+      DURATION        : 00:00:34.520000000
+      encoder         : Lavc60.3.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0kB time=-577014:32:22.77 bitrate=  -0.0kbits/s speed=N/A    frame=   59 fps=0.0 q=27.0 size=       0kB time=00:00:02.28 bitrate=   0.2kbits/s speed=4.47x    frame=  144 fps=142 q=27.0 size=       0kB time=00:00:05.68 bitrate=   0.1kbits/s speed=5.62x    frame=  233 fps=154 q=27.0 size=       0kB time=00:00:09.24 bitrate=   0.0kbits/s speed= 6.1x    frame=  310 fps=154 q=27.0 size=       0kB time=00:00:12.32 bitrate=   0.0kbits/s speed=6.11x    frame=  380 fps=151 q=27.0 size=     256kB time=00:00:15.12 bitrate= 138.7kbits/s speed=6.01x    frame=  460 fps=152 q=27.0 size=     256kB time=00:00:18.32 bitrate= 114.5kbits/s speed=6.07x    frame=  525 fps=149 q=27.0 size=     512kB time=00:00:20.92 bitrate= 200.5kbits/s speed=5.94x    frame=  600 fps=149 q=27.0 size=     512kB time=00:00:23.92 bitrate= 175.4kbits/s speed=5.93x    frame=  667 fps=147 q=27.0 size=     512kB time=00:00:26.60 bitrate= 157.7kbits/s speed=5.86x    frame=  755 fps=150 q=27.0 size=     768kB time=00:00:30.12 bitrate= 208.9kbits/s speed=5.97x    frame=  820 fps=147 q=27.0 size=     768kB time=00:00:32.72 bitrate= 192.3kbits/s speed=5.88x    [mp4 @ 0x213d91c0] Starting second pass: moving the moov atom to the beginning of the file
+frame=  863 fps=149 q=27.0 Lsize=    1011kB time=00:00:34.40 bitrate= 240.8kbits/s speed=5.93x    
+video:1001kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.049547%
+[libx264 @ 0x213da240] frame I:10    Avg QP: 7.17  size: 16139
+[libx264 @ 0x213da240] frame P:276   Avg QP:15.13  size:  2595
+[libx264 @ 0x213da240] frame B:577   Avg QP:15.35  size:   254
+[libx264 @ 0x213da240] consecutive B-frames:  8.8%  4.6%  4.5% 82.0%
+[libx264 @ 0x213da240] mb I  I16..4: 89.5%  4.2%  6.3%
+[libx264 @ 0x213da240] mb P  I16..4: 11.5%  0.9%  0.6%  P16..4:  1.0%  0.3%  0.1%  0.0%  0.0%    skip:85.5%
+[libx264 @ 0x213da240] mb B  I16..4:  0.4%  0.0%  0.0%  B16..8:  0.5%  0.1%  0.0%  direct: 1.5%  skip:97.5%  L0:43.7% L1:52.3% BI: 3.9%
+[libx264 @ 0x213da240] 8x8 transform intra:6.5% inter:24.8%
+[libx264 @ 0x213da240] coded y,uvDC,uvAC intra: 8.6% 4.4% 2.7% inter: 0.2% 1.2% 0.0%
+[libx264 @ 0x213da240] i16 v,h,dc,p: 90%  8%  2%  0%
+[libx264 @ 0x213da240] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 48% 26% 18%  2%  1%  1%  1%  1%  2%
+[libx264 @ 0x213da240] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 30% 35% 14%  3%  4%  3%  4%  3%  4%
+[libx264 @ 0x213da240] i8c dc,h,v,p: 88%  7%  5%  0%
+[libx264 @ 0x213da240] Weighted P-Frames: Y:1.4% UV:0.0%
+[libx264 @ 0x213da240] kb/s:237.34

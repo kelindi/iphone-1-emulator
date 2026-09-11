@@ -10,6 +10,9 @@ The recordings and thumbnails live in `videos/` and `thumbnails/`.
 
 | # | Update | Recording | Thumbnail |
 |---|--------|-----------|-----------|
+| 137 | [YouTube audio startup blocker](137_youtube_audio_start.md) | [Reused player recording](videos/youtube_player_rotation.mp4) | [Thumbnail](thumbnails/youtube_player_rotation.jpg) |
+| 136 | [YouTube player rotation](136_youtube_player_rotation.md) | [Video](videos/youtube_player_rotation.mp4) | [Thumbnail](thumbnails/youtube_player_rotation.jpg) |
+| 135 | [YouTube downloads the movie](135_youtube_movie_delivery.md) | [MP4 attempt](videos/youtube_movie_delivery.mp4) · [MJPEG attempt](videos/youtube_mjpeg_attempt.mp4) | [MP4](thumbnails/youtube_movie_delivery.jpg) · [MJPEG](thumbnails/youtube_mjpeg_attempt.jpg) |
 | 001 | [Genuine 2007 home screen](001_home_screen.md) | `browser_home_settings_safari_cpi1.mp4` | [thumb](thumbnails/browser_home_settings_safari_cpi1.jpg) |
 | 002 | [Touch input opens real apps](002_touch_input.md) | `browser_home_settings_safari_cpi1.mp4` | [thumb](thumbnails/browser_home_settings_safari_cpi1.jpg) |
 | 003 | [Home button returns from Safari](003_home_button.md) | `browser_home_settings_safari_cpi1.mp4` | [thumb](thumbnails/browser_home_settings_safari_cpi1.jpg) |
@@ -101,6 +104,16 @@ The recordings and thumbnails live in `videos/` and `thumbnails/`.
 | 091 | [Original Safari local demo, form and persistent bookmark](091_safari_local_demo.md) | [Full recording](videos/091_safari_local_demo.mp4) | [thumb](thumbnails/091_safari_local_demo.jpg) |
 | 093 | [Default local demo qualification failure](093_default_local_demo_qualification_failure.md) | [Full recording](videos/default_local_demo_qualification_failure.mp4) | [Thumbnail](thumbnails/default_local_demo_qualification_failure.jpg) |
 | 094 | [Original Photos first workflow failure](094_photos_first_workflow_failure.md) | [Full recording](videos/photos_first_workflow_failure.mp4) | [Thumbnail](thumbnails/photos_first_workflow_failure.jpg) |
+| 123 | [First compiler speed gate: correct, but slower](123_first_compiler_speed_gate.md) | [recording](videos/compiler_first_gate.mp4) | [thumb](thumbnails/compiler_first_gate.jpg) |
+| 124 | [Second compiler gate: review required](124_second_compiler_gate_review.md) | [recording](videos/compiler_second_gate.mp4) | [thumb](thumbnails/compiler_second_gate.jpg) |
+| 125 | [Safari service exit identified](125_safari_service_exit_identified.md) | [recording](videos/safari_service_sigbus.mp4) | [thumb](thumbnails/safari_service_sigbus.jpg) |
+| 127 | [Combined local app gateway](127_combined_app_gateway.md) | [video](videos/combined_app_gateway.mp4) | [thumb](thumbnails/combined_app_gateway.jpg) |
+| 129 | [Safari gateway persistence](129_safari_gateway_persistence.md) | [video](videos/safari_gateway_persistence.mp4) | [thumb](thumbnails/safari_gateway_persistence.jpg) |
+| 130 | [Original Stocks demo quotes](130_stocks_local_quotes.md) | [video](videos/stocks_local_quotes.mp4) | [thumb](thumbnails/stocks_local_quotes.jpg) |
+| 131 | [Weather and Stocks local services](131_weather_stocks_local.md) | [video](videos/weather_stocks_local.mp4) | [thumb](thumbnails/weather_stocks_local.jpg) |
+| 132 | [YouTube authentication gate](132_youtube_authentication_gate.md) | [video](videos/youtube_service_check.mp4) | [thumb](thumbnails/youtube_service_check.jpg) |
+| 133 | [Original YouTube device signature](133_youtube_device_signature.md) | [video](videos/youtube_device_signature.mp4) | [thumb](thumbnails/youtube_device_signature.jpg) |
+| 134 | [Original YouTube local catalog](134_youtube_local_catalog.md) | [video](videos/youtube_local_catalog.mp4) | [thumb](thumbnails/youtube_local_catalog.jpg) |
 
 Audio follow-up (2026-09-06): [isolated functional-engine contracts](../docs/traces/amc-functional-contracts/README.md) now exercise actual decoded buffers, physical DMA byte addresses, partial input, ownership, interrupts and reviewed rejection paths. The current adapter matches the full original raw corpus. This is native model verification only; no new guest playback or visual milestone is claimed.
 
@@ -242,3 +255,159 @@ Executed-work measurement update: the single100M count-only observer passes four
 
 
 **096 — [Graphics fix in the default local phone](096_graphics_fix_default_release.md):** actual saved-phone upgrade passes30 checks and final unmarked bundle passes21, including real autosave/offline restore. Previous audit failure retained. This fixes rendering, not app-launch speed. [Full recording](videos/mbx_stride_default_release.mp4) · [thumbnail](thumbnails/mbx_stride_default_release.jpg).
+
+
+**Project status clarification — 2026-09-06:** [Completion checklist and plain-English explanation](../plans/completion-checklist.md) separates integrated frame/saves/offline-editor work from remaining speed, media, services and release gates. Warm Settings remains roughly3–3.6s in recorded cloud Chrome tests; recent CPU candidates are parked, and the next warm census is unaccepted. This is a summary of existing evidence, not a new visual milestone or benchmark; recordings remain linked in080,090 and096. Speed takes priority over additional audio/network research.
+
+
+**098 — [Native versus browser architecture check](098_native_browser_performance.md):** same-VM native/Chrome/Chrome/native pilot,32 actual actions and reviewed frames. First Settings3.56→2.27s, warm2.243→2.045s, Home0.842→0.806s. Native is modestly faster; total streaming overhead above36ms erases its Home advantage. Local H264 CPU/throughput test passes, but no internet stream or Mac benchmark. Keep browser architecture for now. [Full browser-arm recording](videos/native_browser_comparison.mp4) · [thumbnail](thumbnails/native_browser_comparison.jpg).
+
+
+### 099 — Compiler loop hypothesis rejected before implementation
+
+[Milestone](099_compiler_hot_path_profile.md) · [Recording](videos/trace_optimizer_profile.mp4) · [Thumbnail](thumbnails/trace_optimizer_profile.jpg) · [Evidence](../docs/traces/trace-optimizer-profile/README.md). One current-default warm Settings profile places all eligible loop regions at only 4.5% of sampled worker time. Insufficient support for the 20% target; no compiler prototype or production speedup.
+
+
+### 100 — Core decoder rearrangement does not improve warm navigation
+
+[Milestone](100_core_decoder_experiment.md) · [Recording](videos/core_decoder_comparison.mp4) · [Thumbnail](thumbnails/core_decoder_comparison.jpg) · [Evidence](../docs/traces/core-decoder-experiment/README.md). Current interpreter hotspot identified; one candidate preserves tested full state but yields effectively tied Settings/Home medians across88 actions. Candidate rejected; no production speedup.
+
+
+### 101 — Prior art opens architectural speed options
+
+[Research milestone](101_browser_emulation_prior_art.md) · [Detailed report](../docs/research/browser-emulation-strategies.md). Primary-source review of v86, QEMU-WASM, CheerpX, PCem, static recompilation and ARM/browser projects. No physics ceiling established; prioritize connected compilation plus correct memory/code invalidation. Research-only update; existing100 recording illustrates the unchanged phone, not a new result.
+
+
+### 102 — Connected compiler pilot is correct but slower
+
+[Milestone](102_connected_compiler_experiment.md) · [Full candidate recording](videos/connected_compiler_experiment.mp4) · [Thumbnail](thumbnails/connected_compiler_experiment.jpg) · [Evidence](../docs/traces/connected-compiler-experiment/README.md). 32 generator checks,403 focused CPU/MMU checks and complete replay states pass. Quiet400M ABBA is4.07% slower despite7.77% fewer compiled entries. Candidate rejected; production unchanged. Browser clip demonstrates four actions, not comparative navigation performance.
+
+
+### 103 — Exact compiled-exit census identifies missing seed coverage
+
+[Milestone](103_compiled_exit_census.md) · [Recording](videos/compiled_exit_census.mp4) · [Thumbnail](thumbnails/compiled_exit_census.jpg) · [Evidence](../docs/traces/compiled-exit-census/README.md). Two warm Settings windows agree:40.1% of generated exits lack an emitted position,38.6% cross regions,18.2% hit memory checks,3.1% exhaust budget. Separately74.3% of rejected entries encounter emitter-supported opcodes. Counts are not time shares. State validation and six browser action/counter checks pass; no production change.
+
+### 104 — Open with slide to unlock
+
+[Milestone](104_open_with_slide_to_unlock.md) · [Recording](videos/open_with_slide_to_unlock.mp4) · [Thumbnail](thumbnails/open_with_slide_to_unlock.jpg). The real lock screen now greets fresh and saved phones. Seven Chrome checks and 58 JavaScript unit tests pass.
+
+
+### 105 — Filling measured seed gaps gives a modest gain
+
+[Milestone](105_measured_seed_gap_trial.md) · [Recording](videos/seed_gap_comparison.mp4) · [Thumbnail](thumbnails/seed_gap_comparison.jpg) · [Evidence](../docs/traces/seed-gap-experiment/README.md).256positions added within512regions;272focused checks and full replay states pass. Clean88-action ABBA:Settings median2.293→2.167s,p952.667→2.218s;Home p95 unchanged. Below10%median threshold, candidate stays isolated. Earlier lock-screen precondition failure from shared-file mutation is retained separately; concurrent product work preserved.
+
+### 106 — Adaptive compiler baseline and correctness contracts
+
+[Milestone](106_adaptive_compiler_baseline.md) · [Recording](videos/adaptive_compiler_baseline.mp4) · [Thumbnail](thumbnails/adaptive_compiler_baseline.jpg) · [Evidence](../docs/traces/adaptive-compiler-baseline/README.md). Independent frozen inputs, real unlock, and 62 cloud navigation actions. Warm Settings median 2.318s / p95 2.567s; Home median 0.866s / p95 0.868s. Baseline only; adaptive engine and Mac qualification remain pending.
+
+### 107 — Compiler instruction representation and repeatable workloads
+
+[Milestone](107_compiler_instruction_foundation.md) · [Evidence](../docs/traces/adaptive-workloads/README.md). First explicit branch/immediate-arithmetic decoder; three real-app trajectories replayed twice with identical complete checkpoints. 79 unit tests pass. Nonvisual compiler foundation; no adaptive execution or speed claim. Existing 106 footage is contextual only.
+
+### 108 — Connected instruction units
+
+[Milestone](108_connected_instruction_units.md) · [Evidence](../docs/traces/adaptive-connected-units/README.md). Immutable connected graphs with loop/join splitting, physical alias checks and the accepted 32-block / 512-instruction / eight-granule limits. Pure compiler foundation, not executable adaptive code or a speed result; 106 footage is contextual only.
+
+### 109 — First executable compiler slice
+
+[Milestone](109_executable_compiler_slice.md) · [Evidence](../docs/traces/adaptive-emitter/README.md). Connected IR emits actual WASM; 4,098 comparisons against the retained C interpreter and 95 unit tests pass. Integer/branch slice only; real runtime integration and performance qualification remain. Nonvisual execution milestone; existing 106 footage is contextual.
+
+### 110 — Checked C result bridge
+
+[Milestone](110_compiler_c_result_bridge.md) · [Evidence](../docs/traces/adaptive-result-contract/README.md). ABI2 layout/result validation and exact cycle ownership implemented; native negative tests and actual WASM through the C wrapper pass. Scheduler/admission integration remains ahead. Nonvisual interface milestone; 106 footage is contextual only.
+
+### Compiler guard work in progress — 2026-09-08
+
+Implemented the initial fetch-witness guard and native contract tests in
+`core/include/arm_adaptive_guard.h` and `tools/jit/adaptive/tests/guard-contract.c`.
+**Tweet idea:** “The compiler now checks that captured code still belongs to the same CPU context and still contains the expected instructions.”
+**What you're seeing:** nonvisual guard-contract work; the Settings/Home section of [106's recording](videos/adaptive_compiler_baseline.mp4) remains contextual only.
+**ELI5:** a remembered code address can become stale after a mapping change or restored phone. The guard checks lifetime, translation context, interrupt eligibility and current bytes before accepting it. Tests construct cache state and verify refusals leave CPU state unchanged.
+**Why it matters:** this supplies the next admission building block, but real interpreter-created mappings and scheduler integration still need qualification. No speed improvement is claimed.
+
+### 111 — Interpreter-backed guards and scheduler protocol
+
+[Milestone](111_guard_and_scheduler_qualification.md) · [Evidence](../docs/traces/adaptive-dispatch/README.md). Real interpreter/MMU mappings qualify guard refusal and fault handoff; opt-in scheduler protocol preserves full native snapshots across tested exit policies. Actual WASM/full-machine integration remains next. Nonvisual integration; 106 footage is contextual.
+
+### 112 — Compiler and machine runtime connected
+
+[Milestone](112_compiler_runtime_connected.md) · [Evidence](../docs/traces/adaptive-runtime/README.md). Actual emitted WASM through guarded registry and scheduler matches full machine snapshots on three synthetic workloads; fatal single-step bypass is blocked. 8,473 lifecycle checks and 1,067 interpreter tests pass. Product activation and real-app speed gate remain pending; 106 footage is contextual only.
+
+### 113 — MMU and timer execution
+
+[Milestone](113_mmu_and_timer_execution.md) · [Evidence](../docs/traces/adaptive-mmu-timer/README.md). Nine integrated cases pass with complete snapshots, including nonidentity MMU mappings, guarded load fallback and exactly69 generated instructions before real Timer4 IRQ delivery. Initial TLB-accounting mismatch retained and fixed. No real-app speed claim; nonvisual execution milestone.
+
+### 114 — Register operand compilation
+
+[Milestone](114_register_operand_compilation.md) · [Evidence](../docs/traces/adaptive-register-alu/README.md). ARM register/immediate shifts and ALUs pass 12,731 interpreter comparisons, 97 unit tests and ten integrated cases. Bounded dispatch preserves512-instruction units. 6,333 newly admitted static seed positions; no execution-time claim. Nonvisual compiler work; 106 footage is contextual.
+
+### 115 — Thumb instructions and memory handoffs
+
+[Milestone](115_thumb_and_memory_handoffs.md) · [Evidence](../docs/traces/adaptive-thumb-memory/README.md). Thumb arithmetic now emits WASM; 32,631 interpreter comparisons, 100 unit tests and 19 integrated cases pass, including MMU Thumb execution, precise fault/writeback handoff, partial stores, MMIO and guest code modification. Memory uses reference fallback; no app-speed claim. Nonvisual compiler work.
+
+### 116 — Physical code versions
+
+[Milestone](116_physical_code_versions.md) · [Evidence](../docs/traces/adaptive-code-versions/README.md). Physical 1 KiB versions reject stale captures and installed code, including same-byte ABA writes. 24 integrated cases pass; CPU/DMA/MBX committed-write observers pass 652 checks; 8,511 registry checks and all 30 native suites pass. Literal guards remain; legacy generated writes and lifecycle coverage are unfinished. Nonvisual runtime work.
+
+### 117 — Compiler lifetime barriers
+
+[Milestone](117_compiler_lifetime_barriers.md) · [Evidence](../docs/traces/adaptive-lifecycle/README.md). Restore/free/disable invalidate old compiled ownership, including queued capture-only work. Actual WASM restore/continuation passes; 25 integrated cases, 172 lifecycle checks and all 30 native suites pass. Boot/load barriers implemented; broader writer/tier qualification remains. Nonvisual runtime work.
+
+### 118 — Compiled warm RAM loads
+
+[Milestone](118_compiled_ram_loads.md) · [Evidence](../docs/traces/adaptive-ram-loads/README.md). ARM/Thumb byte and word loads now stay in generated code on valid warm RAM hits. 37 integrated cases, 33,043 interpreter comparisons, 107 unit tests, 52 native cache checks and 30 native suites pass. Actual MMU helper hits/refusals preserve complete machine state and exact cache accounting. No real-app speed result; nonvisual compiler work.
+
+### Progress check — compiler stores in qualification (2026-09-08)
+
+**Tweet idea:** The browser iPhone compiler now handles arithmetic, branches and validated RAM reads. Writes are implemented, but integration tests are still catching cases where the fast path is not taken. No new app-speed result yet.
+
+**What you're seeing:** Nonvisual engineering status. The Settings/Home section of [106's recording](videos/adaptive_compiler_baseline.mp4) and [thumbnail](thumbnails/adaptive_compiler_baseline.jpg) shows the baseline only, not this compiler.
+
+**ELI5 technical explanation:** The compiler translates batches of old iPhone instructions into browser-executable code. Memory writes need extra care: writing to an address can also change the very instructions being executed. Store instruction comparisons pass (33,455 total), and 446 runtime checks pass, but the integrated warm-store test currently fails its expected fast-path-hit assertion. A native cache test also fails; the cause is under investigation. Review additionally identified a zero-retirement stale-exit case that needs rejection after a committed code write. Stores are not qualified yet.
+
+**Why it matters:** The compiler is executable and connected to the isolated emulator scheduler, with previously qualified reads and lifetime protection. Next: resolve store failures, finish required correctness qualification, then measure frozen Settings/Contacts/Notes workloads against the agreed 2× CPU-throughput gate. Background compilation, browser activation and real-device UX qualification remain. The new compiler has not demonstrated or delivered a user-visible speedup.
+
+### 119 — Compiled RAM stores
+
+[Milestone](119_compiled_ram_stores.md) · [Evidence](../docs/traces/adaptive-ram-stores/README.md). 51 integrated cases preserve full snapshots; 33,455 instruction comparisons, 115 unit tests, 150 native cache checks, 529 runtime checks and 30 native suites pass. Code-writing stores force immediate exit and retirement, including aliases. Prior fixture failures and zero-retirement replay fix retained. Nonvisual compiler milestone; no real-app speed claim.
+
+### 120 — Real-phone compiler harness
+
+[Milestone](120_real_phone_compiler_harness.md) · [Evidence](../docs/traces/adaptive-workload-runtime/README.md). Pure mapping capture passes 287 checks. A separate real-browser-API build preserves all 244,887,522 saved bytes after identical initialized interpreter/empty-adaptive runs. Initial derived-MMU-state fixture mismatch retained. No generated app coverage or speed claim; hot-entry collection and frozen workload qualification are next.
+
+### 121 — Full compiler app replays
+
+[Milestone](121_full_compiler_app_replays.md) · [Evidence](../docs/traces/adaptive-app-replay/README.md). All three600M-credit Settings/Contacts/Notes trajectories match all nine frozen full-state checkpoints with actual generated execution. Fixed entry index passes6,417 checks plus8,511 registry/2,700 observer checks. Coverage stalls after the prototype attempt cutoff; no speed claim or ABBA gate yet. Nonvisual compiler qualification.
+
+### 122 — Reuse code after TLB changes
+
+[Milestone](122_reuse_compiled_code_after_tlb_changes.md) · [Evidence](../docs/traces/adaptive-generation-refresh/README.md). Atomic generation-only installed-unit re-admission and continued collection pass18,178 native checks and all nine full600M-workload checkpoints.135–145M generated instructions per trajectory; installed caps and strict pending-install rejection remain. No speed claim; declared ABBA gate is next.
+
+
+## Online-app status after the compiler review
+
+Safari has a verified isolated local-page/link/form/bookmark/reload workflow
+([091](091_safari_local_demo.md)); default-phone integration failed with graphics
+hangs and a missing server process ([093](093_default_local_demo_qualification_failure.md)).
+The current-renderer retest reaches a form response, then fails; original launchd
+records SIGBUS ([125](125_safari_service_exit_identified.md)).
+Weather has a standalone compatible demo backend and persistent controls, but no
+verified forecast delivery to the guest app. Stocks quote protocol discovery and a bounded demo adapter are now implemented;
+original-app quote delivery remains unverified. See [legacy services](../plans/legacy-services.md).
+These app-service tasks can proceed independently of the blocked compiler redesign.
+Suggested order: stabilize default Safari local service, deliver a deterministic
+Weather forecast through the original app, then investigate Stocks. External
+connectivity/live data remain separate, unimplemented steps.
+
+
+### 126 — Rotatable first-generation iPhone
+
+[Milestone](126_rotatable_iphone_3d.md) · [Recording](videos/rotatable_iphone_3d.mp4) · [Thumbnail](thumbnails/rotatable_iphone_3d.jpg). A 2D/3D switch reveals a rotatable model with the live guest screen, case dragging, zoom, keyboard rotation and working Home input. Twelve Chrome checks and 115 JavaScript unit tests pass; includes WebGL-loss fallback and a mobile viewport check.
+
+### 127 — Original-app service gateway and hostname diagnosis
+
+[Milestone](127_combined_app_gateway.md) · [Gateway recording](videos/combined_app_gateway.mp4) · [Gateway thumbnail](thumbnails/combined_app_gateway.jpg) · [Hostname recording](videos/app_hostname_failure.mp4) · [Hostname thumbnail](thumbnails/app_hostname_failure.jpg). Safari submits a local form; Weather/Stocks data remains blocked. Original Weather reports cannot-find-host, and its observed asynchronous resolver skips the monitored hosts-file path. No default promotion or live-data claim.
+
+### 128 — 3D opens during startup
+
+[Milestone](128_3d_startup_click.md) · [Recording](videos/3d_startup_click.mp4) · [Thumbnail](thumbnails/3d_startup_click.jpg). Removed the silent emulator-readiness gate, added model-loading feedback, and verified 15 Chrome checks with deliberately delayed downloads. Online model replacement remains separate.

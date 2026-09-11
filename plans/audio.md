@@ -238,3 +238,7 @@ A future high-level engine may initialize valid buffers and consume genuine comp
 
 
 **Audio083 follow-up — original prefetch abort and mapped retry:** the single Stage AA run lets the unmodified CPU take the actual missing-code fault, then returns 1,636 core steps later to the same full user context with original MeCCA bytes mapped. It stops before the original StartIO entry instruction at `0x31236650`, not HALOutputProc. Exact fresh Z/083 prefixes, all retained SRAM/queue/ownership and suspension proofs pass; 23 native targets and 70 actual artifact negatives pass. No HAL, reset/restore or sound claim. [Evidence and bounds](../docs/traces/amc-first-consumption/original-prefetch-retry/README.md).
+
+## YouTube silent-clip startup diagnosis (2026-09-10)
+
+Qualified original media-process observation proves `AudioDeviceAddIOProc` succeeds, then `AudioDeviceStart` returns `0xe00002d8`. AppleBasebandOutput reports DMA not ready immediately before that return. The mixer maps the failure to MeCCA result 1 and the generic movie error. All 252,624,866 saved bytes match the same-schedule control. A second qualified replay directly confirms the original I2S synchronization timeout: matching configuration writes, no callback hits, state 4 at return and r6=`e00002d8`. A real external-clock/FIFO/DMA model remains next; clock rate/gating and FIFO behavior are still unproven. Silent video does not bypass audio startup. [Evidence](../docs/traces/youtube-audio-start/README.md) · [milestone 137](../tweets/137_youtube_audio_start.md).

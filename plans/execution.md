@@ -592,3 +592,56 @@ completed package verification.
 The bounded Safari source-row fix is now the local default core3b43, offline generationc145cb.30native suites,58JS tests and WASM smoke pass; actual old/new saved-phone upgrade30 and final unmarked bundle21 pass, with exact autosave/offline preservation. Both upgrade attempts are retained; first body audit failed despite functional success. [096](../tweets/096_graphics_fix_default_release.md) records full final video and evidence. No public deployment or app-launch speedup is claimed.
 
 The user called out roughly ten hours of work without adequate responsiveness. Finish the already-running Photos/daemon diagnostic outcomes, defer further audio/network expansion, and focus on a concrete measured app-launch improvement. Full product goal remains open.
+
+
+### 2026-09-06 — Native/browser decision checkpoint
+
+[098](../tweets/098_native_browser_performance.md) completes a32-action current-core architecture pilot on the same2.90GHz Vercel VM. Native saves1.294s on fresh first Settings,198ms on warm Settings and36ms on Home medians. All32 actual screens reviewed; two sessions/option, six warm samples/action/option, no p95 acceptance. A separate600-frame H264 test uses~0.90ms CPU/frame and0.553Mbps for retained motion; no internet streaming or client latency proof. Decision: keep browser execution, prioritize CPU execution improvements; native hosting has insufficient established repeat-use gain to justify migration. No product core/seed changes, deployment or paid resource creation.
+
+
+### 2026-09-06 — Focused compiler speed experiment started
+
+User authorizes one profile-led attempt at at least 20% faster warm Settings, with no meaningful Home or first-launch regression. Profile the current default after one unprofiled Settings/Home warmup; build one isolated candidate only if the measured time share supports the goal. If built, compare at least 20 warm observations per version and verify guest state, rendering, input and saves before promotion.
+
+Source inspection confirms registers and flags already stay local across a generated region. Static analysis finds 95 supported short backward ARM loops across 47 seed regions; this is eligibility, not runtime frequency or demonstrated benefit. The candidate hypothesis is avoiding repeated generic dispatch within a hot loop while preserving instruction retirement, memory guards and event budgets. Existing register-transfer, instruction-guard, coverage and continuation experiments must not be repeated without new evidence. Current profiling and static evidence are staged in `.context/trace-optimizer-profile/` and `.context/trace-optimizer-feasibility/`. No production compiler change or speedup yet.
+
+
+### 2026-09-06 — Focused compiler experiment closes at the profiling gate
+
+The single current-default profile completes Settings/Home/warm Settings without errors and verifies served core/seed hashes. Exclusive worker residency is 59.69% core, 27.76% generated code and 11.00% idle; the entire 47 eligible loop regions account for 4.50%, an upper envelope for candidate loop work, not an exact eliminable fraction. The interval includes readiness confirmation and profiler overhead. This does not justify the 20% target. Per the agreed stop rule, reject the loop prototype before implementation; do not launch a 20-sample comparison of an unchanged candidate. No production changes or speed gain. [099](../tweets/099_compiler_hot_path_profile.md) preserves the recording and profile. Disk preparation losslessly compressed six closed historical artifacts, checking decompression SHA-256 before removing raw copies; the cleanup receipt is retained with the profile evidence.
+
+
+### 2026-09-06 16:00 UTC — Final bounded core-hotspot attempt
+
+User authorizes up to two hours to map current internal function81 (24.37% exclusive sampled residency), identify one credible change and test it. Root inspects an isolated coarse ARM decoder partition; original opcode predicates, handler bodies and precedence are retained within top-three-bit buckets. Exhaustive routing comparison passes 536,870,912 cases. This only verifies routing equivalence, not CPU execution or performance. Independent current-binary symbol binding is pending. Production remains unchanged; stop by18:00UTC with measured result or explicit unresolved limitation.
+
+
+### 2026-09-06 — Core decoder attempt rejected after actual navigation comparison
+
+Current function81 binds to `arm_step`;24.37% sampled share includes inlined work beyond decoding. Isolated top-three-bit dispatch preserves536,870,912 routing cases and all complete25/50/75/100M checkpoint states in interpreter/seeded modes;400M seeded final states also match. Fresh control is byte-identical3b43, candidate6b549c12. Initial Node screen is3.01% worse but overlaps source-analysis CPU and is preliminary.
+
+Actual current/candidate/candidate/current sessions complete88 Settings/Home actions,20 warm samples per action/version, with served core/seed hashes checked. Settings medians2317.30→2317.65ms; Home866.95→867.30ms. Settings p95 improves56.1ms, Home differs0.2ms; no meaningful demonstrated gain or20% target achievement. Reject candidate, leave production untouched, do not broaden into another rewrite. [100](../tweets/100_core_decoder_experiment.md) retains complete recordings, source patch, profile binding and checks, including exact image mismatches.
+
+
+### 2026-09-06 — Research before further engine changes
+
+User requests creative strategies and prior work before assuming a physics constraint. Primary-source review is recorded in [the research report](../docs/research/browser-emulation-strategies.md) and [101](../tweets/101_browser_emulation_prior_art.md). It separates existing512-region code from adaptive/connected compilation; distinguishes previous C-loop continuation from actual resident generated control flow; notes the historical27:26 and latest27:25 decoder partitions are the same broad failed hypothesis.
+
+Derived existing metrics show69,053,832 retirements/8,040,880 generated calls (~8.59), including zero-progress attempts and sampling-boundary uncertainty. No new guest runs. QEMU-WASM reuse and connected compilation deserve a feasibility comparison; native pilot used an interpreter and did not establish an optimized-native ceiling. No whole-system migration, paid resources or production changes authorized/inferred from this research.
+
+
+### 2026-09-06 — Connected compilation feasibility authorized
+
+User authorizes the101 recommendation. Targeted pinned QEMU-WASM source review confirms ARM1176/ARMv6 MMU implementation but tightly coupled CPUARMState, software TLB and exception machinery. First experiment therefore extends the current compiler rather than porting the whole CPU/MMU. Candidate groups connected original seed regions into shared generated functions, retains registers across page/ISA boundaries, and uses a nonwalking admitted-fetch helper. No new opcode support or weaker raw-code/memory guards. Existing real Settings/Home snapshots and focused fault/interworking tests precede throughput screening. Prototype remains isolated under `.context/connected-engine`; no production promotion or speed claim.
+
+### 2026-09-06 — Connected compilation pilot closed
+
+Assessed pinned QEMU-WASM ARM1176/MMU implementation; CPU/MMU adoption and device/snapshot adapters required. Built isolated connected-region emitter and fetch helper instead. Final32 generator and403 actual CPU/MMU oracle checks pass; complete real Settings/Home replay snapshots match. Warmed400M ABBA mean CPU11.160→11.614s (4.07% worse), compiled entries42,050,405→38,783,557. Reject candidate; no production change. Raw source/results retained in docs/traces/connected-compiler-experiment. Small static clusters do not settle larger optimizing-compiler feasibility. Next investigation should measure exact exit reasons and frequent edges before selecting another implementation. Milestone102 documents the outcome and browser recording.
+
+### 2026-09-07 — Exact exit census completed
+
+User authorized diagnosis after connected compiler regression. Added isolated generated-exit and ordered admission-rejection observer, memory-subreason labels, safe opcode observations and bounded frequency table.512 original-WAT projections and7 observer checks pass;100M four checkpoints and400M final state plus original compiled counts match. One browser session completes three Settings/Home pairs, with independently reconciled raw/aggregate counts and zero overflows in all six windows. Two warm Settings windows agree. Main lead:74.27% of rejected compiled entries observe opcodes already supported by the current emitter; many are absent from the fixed seed. Generated-exit shares:missingposition40.14%,regionboundary38.59%,memory18.16%,budget3.11%. These are counts, not CPU-time shares or a speedup. Recommend filling hot supported positions within current512 regions before expanding coverage/architecture, with uninstrumented state/navigation gates. Scheduler bypasses and cost attribution remain unmeasured. Evidence docs/traces/compiled-exit-census; milestone103 full actual recording. Production unchanged.
+
+### 2026-09-07 — Measured seed-gap experiment complete
+
+User authorized trying the103coverage diagnosis. Single top256supported absent positions from four warm Settings/Home windows, within existing512regions;23regions change, original CPU/compiler/positions/guards preserved.272focused comparisons pass (175selected entries generate,81fallback in fixture), full100Mcheckpoints and400Mstates match. FixedABBA CPUgain0.71% only. Initial browsercontrol completed, candidate timedout because concurrent openLocked edit propagated through hardlinkedworker: lockscreenvisible in failedvideo10s, sourceedit02:31:29 between sessions. Retain allfailureevidence; no compilerfault established. Replaced stagedshell links with independent original-shell copies; preserve concurrent production edits. FreshABBA88actions all endpoints complete,20warm peraction/version. Settings median2292.6→2167.3ms,p952667.4→2218.3;Home median867.3→818.05,p95867.8→868.0. All44Homeframesexact;41Settingspixelmismatches onlyexistingrightscrollbarfade, strictfailureretained. Below predeclared10%Settingsmedian threshold; retain promising isolatedcandidate, no productionseedchange or lifecycleclaim. Milestone105, fullrecording and docs/traces/seed-gap-experiment preserve source/results. Historicalclosed snapshots losslesslycompressed with verifiedreceipts to maintain browserreserve.

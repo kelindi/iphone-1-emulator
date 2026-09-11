@@ -1,0 +1,44 @@
+[
+  {
+    "request": "POST /youtube/accounts/applelogin1 HTTP/1.1",
+    "range": "",
+    "status": "HTTP/1.0 200 OK",
+    "bytes": 65,
+    "bodySHA256": "f39fb4b24cc8cefd0c933142aec4872474c2a1845692d82b406f6d33bb3befe9"
+  },
+  {
+    "request": "POST /youtube/accounts/applelogin2 HTTP/1.1",
+    "range": "",
+    "status": "HTTP/1.0 200 OK",
+    "bytes": 30,
+    "bodySHA256": "440b8c82890030c573c7a109c8769e92bb173b86cc6ac41a4ddf68c4ffa3a044"
+  },
+  {
+    "request": "GET /feeds/standardfeeds/recently_featured?start-index=1&max-results=25&format=2,3 HTTP/1.1",
+    "range": "",
+    "status": "HTTP/1.0 200 OK",
+    "bytes": 975,
+    "bodySHA256": "1216dec912b6730a95a18efbbc4f34d85f4719b948f57895383cf656c6178f6c"
+  },
+  {
+    "request": "GET /demo/clip-1.jpg HTTP/1.1",
+    "range": "",
+    "status": "HTTP/1.0 200 OK",
+    "bytes": 1575,
+    "bodySHA256": "69916756ae1e8e035076fff44b0033f7fb8e544c50d07bc6555a03b6ddee6768"
+  },
+  {
+    "request": "GET /demo/clip-1.mov HTTP/1.1",
+    "range": "bytes=0-1",
+    "status": "HTTP/1.0 206 Partial Content",
+    "bytes": 2,
+    "bodySHA256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+  },
+  {
+    "request": "GET /demo/clip-1.mov HTTP/1.1",
+    "range": "bytes=0-6841",
+    "status": "HTTP/1.0 206 Partial Content",
+    "bytes": 6842,
+    "bodySHA256": "016c2d0fd3b51dbcc1e2fa72a54986db406a8a91a3e29d9e83a12ec6fea18093"
+  }
+]

@@ -1,0 +1,8 @@
+{"round":0,"kind":"settings","releaseToReadyMs":2245.063,"releaseToFirstVisibleMs":20.651,"observedMs":2781.040,"instructions":109274299}
+{"round":0,"kind":"home","releaseToReadyMs":831.704,"releaseToFirstVisibleMs":374.002,"observedMs":1374.233,"instructions":30968720}
+{"round":1,"kind":"settings","releaseToReadyMs":1891.638,"releaseToFirstVisibleMs":20.141,"observedMs":2427.617,"instructions":101884236}
+{"round":1,"kind":"home","releaseToReadyMs":780.865,"releaseToFirstVisibleMs":323.448,"observedMs":1315.162,"instructions":37383636}
+{"round":2,"kind":"settings","releaseToReadyMs":1993.864,"releaseToFirstVisibleMs":20.854,"observedMs":2533.347,"instructions":97492063}
+{"round":2,"kind":"home","releaseToReadyMs":783.843,"releaseToFirstVisibleMs":323.573,"observedMs":1317.531,"instructions":28017868}
+{"round":3,"kind":"settings","releaseToReadyMs":2096.332,"releaseToFirstVisibleMs":70.634,"observedMs":2633.283,"instructions":107511834}
+{"round":3,"kind":"home","releaseToReadyMs":827.942,"releaseToFirstVisibleMs":374.540,"observedMs":1363.605,"instructions":37454467}

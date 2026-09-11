@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "Actual generated WASM versus existing C arm_step: complete pre-cycle CPU header (registers/CPSR/CP15/banked registers), and separately cycle ownership. Guard is a pure identity-RAM test stub, not production MMU qualification. No scheduler or whole-phone performance claim.",
+  "oracleSha256": "31db472b000859d7b2a14129dc07e3942e5b27a1540d3a19c19b0b2ddef3890a",
+  "checks": 4098,
+  "groups": {
+    "ARM immediate ALU": 3584,
+    "ARM conditions": 240,
+    "Thumb immediate ALU": 256,
+    "architectural PC operand": 1,
+    "backward loop budget": 6,
+    "mid-block entry": 1,
+    "cross-window loop": 1,
+    "external linked edge": 1,
+    "unsupported prefix exit": 1,
+    "stale first instruction": 1,
+    "stale after prefix": 1,
+    "BX Thumb boundary": 1,
+    "BX invalid alignment": 1,
+    "conditional BX false": 1,
+    "conditional BX true": 1,
+    "unexpected trap propagates": 1
+  },
+  "sources": {
+    "decode.mjs": "fa4b851ed8dfaadf1e9b3e5b9448f0ca4974c63db5419797acc85d7c5bdcb4c4",
+    "unit.mjs": "c94a1a70ac47fa5aaf2bb7e1a52c03c13a36bf9a11803d98cab0afcc33af38dd",
+    "emit.mjs": "34284e29bdc29fdf4905623f5127dd5bb369787142577e31e0c199ede4740c04",
+    "test-emitter.mjs": "62a8e8da2346bb877826b52573269d95c176c923e92e75d42419a2879b122a36"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2945,
+      "sha256": "6c74f77bbb1594b6782cca25f7cb1baa45d883fcaeddfc609fd1b8ea34eeb8bd"
+    },
+    {
+      "path": "analysis.json",
+      "bytes": 931240,
+      "sha256": "88ccf8396a8f1e93f8fefb50e8987d5eb1af4e7bb70b589ec035642b82fa674d"
+    },
+    {
+      "path": "analyze.py",
+      "bytes": 5213,
+      "sha256": "0992a53edc3046476303e5a56f329b07b51b4e28f1671da6024785c0db1e3ebd"
+    },
+    {
+      "path": "cache-cleanup.json",
+      "bytes": 907,
+      "sha256": "9a1f9317b829c8f1909db7489895c6977cc2660228485152e5b8d570cbce9f00"
+    },
+    {
+      "path": "cdp.mjs",
+      "bytes": 6363,
+      "sha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40"
+    },
+    {
+      "path": "core-export-map.json",
+      "bytes": 945,
+      "sha256": "aee6ea0bd4c29a423d3b670d77c40c5ba806b3b6b4e27841fafed245bd362bdf"
+    },
+    {
+      "path": "eligible-loops.json",
+      "bytes": 60954,
+      "sha256": "dec5bd02d9ca7709d5ac0c87799afe44842094b368beb73d07af494c0ff78b10"
+    },
+    {
+      "path": "frame-review.json",
+      "bytes": 585,
+      "sha256": "39f0f296a4a0d5d2b1588cd7a1b78de498bda2e8e76caad95f7ac0671e534b6d"
+    },
+    {
+      "path": "frozen-inputs/.context/jit-fallback-census/cache-server.mjs",
+      "bytes": 3201,
+      "sha256": "41f13eba58f07605dd264835379d70890aa95ed6ab5a2fc01762bab85b1c8e9f"
+    },
+    {
+      "path": "frozen-inputs/.context/trace-optimizer-profile/cdp.mjs",
+      "bytes": 6363,
+      "sha256": "c7c2dddf98087be802b0be9a0440b689d5682fa18f2730adcdeb363ff2ee7c40"
+    },
+    {
+      "path": "frozen-inputs/.context/trace-optimizer-profile/profile.mjs",
+      "bytes": 7610,
+      "sha256": "66d91e679fef50c69ce351c30a38a150dbca7eb5411a73379f0afcf06acc1edf"
+    },
+    {
+      "path": "frozen-inputs/.context/trace-optimizer-profile/run-once.py",
+      "bytes": 3270,
+      "sha256": "efef82690be97fdba565e4e659916d02e0576834c239d80d7bd65cfc32dda14b"
+    },
+    {
+      "path": "frozen-inputs/web/app.js",
+      "bytes": 18595,
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "path": "frozen-inputs/web/assets.js",
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "path": "frozen-inputs/web/dist/emu.js",
+      "bytes": 17756,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "path": "frozen-inputs/web/dist/emu.wasm",
+      "bytes": 250531,
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    {
+      "path": "frozen-inputs/web/emu-worker.js",
+      "bytes": 11426,
+      "sha256": "19b2020662604a34fdc685f478b753327ef3d4920f154088be3eda8133b4fb65"
+    },
+    {
+      "path": "frozen-inputs/web/index.html",
+      "bytes": 5521,
+      "sha256": "70f51afdfd4e6e6d69c982d2f163a82a5a2c2475c0b8260b171d671b34706883"
+    },
+    {
+      "path": "frozen-inputs/web/jit/abi.json",
+      "bytes": 364,
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "path": "frozen-inputs/web/jit/regions.json",
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "path": "frozen-inputs/web/jit/seed.wasm",
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "path": "frozen-inputs/web/phone.css",
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "path": "frozen-inputs/web/seed-jit.js",
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "path": "frozen-inputs/web/storage.js",
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "path": "lossless-cleanup.json",
+      "bytes": 1973,
+      "sha256": "b8e79163a3c4f83b36b5b36f31dc1cade0f96946855dda9efb8762d2743bd5ec"
+    },
+    {
+      "path": "media.json",
+      "bytes": 842,
+      "sha256": "3b3d4bd207654db1194f237977e6a6f7bb2a20f5f836c241c046bb71e83d352c"
+    },
+    {
+      "path": "pins.json",
+      "bytes": 2725,
+      "sha256": "855331ee58b2735fc3c07d9bbf5ff888c21e766f615d3aece5460932fcd0b676"
+    },
+    {
+      "path": "profile.mjs",
+      "bytes": 7610,
+      "sha256": "66d91e679fef50c69ce351c30a38a150dbca7eb5411a73379f0afcf06acc1edf"
+    },
+    {
+      "path": "run-1/0-home.png",
+      "bytes": 98738,
+      "sha256": "f6d764d9c116138ebab698d823602c9faf723b8d777c4b27b4b480bfa1508bc3"
+    },
+    {
+      "path": "run-1/0-home.rgba.gz",
+      "bytes": 111928,
+      "sha256": "80db883a146c03ba146fe9614bd6ae68ee377e4c43a4af9c3e5bd729b6e79e96"
+    },
+    {
+      "path": "run-1/0-settings.png",
+      "bytes": 32335,
+      "sha256": "fc27799ab0daa8f5f38fffe226a5e03408a921a2236cf0bdf94416c82b9ca9c2"
+    },
+    {
+      "path": "run-1/0-settings.rgba.gz",
+      "bytes": 31855,
+      "sha256": "713039fe5688d8a736e031efe154d7e8c0702a321df14e2c39fc70e4aae9b42b"
+    },
+    {
+      "path": "run-1/1-settings.png",
+      "bytes": 32335,
+      "sha256": "fc27799ab0daa8f5f38fffe226a5e03408a921a2236cf0bdf94416c82b9ca9c2"
+    },
+    {
+      "path": "run-1/1-settings.rgba.gz",
+      "bytes": 31855,
+      "sha256": "713039fe5688d8a736e031efe154d7e8c0702a321df14e2c39fc70e4aae9b42b"
+    },
+    {
+      "path": "run-1/controller-processes.json",
+      "bytes": 1224,
+      "sha256": "14b9aa8f77e198bbef350e854e889c175ab96c4cb2d55840c112d25b17332373"
+    },
+    {
+      "path": "run-1/controller.json",
+      "bytes": 1826,
+      "sha256": "af462bbd30b09a5c5499fa21353ee13c817c452c16b2ba652a934978899c5ecf"
+    },
+    {
+      "path": "run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
+      "bytes": 1575045,
+      "sha256": "e45e65c018b4858f64d0e5268fd0f43b6b7fcd5b7631866f03ae295844fd8e29"
+    },
+    {
+      "path": "run-1/process-after.txt",
+      "bytes": 820,
+      "sha256": "34249747f35eb3abc74de968900064b9ce731a646600313bc08aedd84dc6a56b"
+    },
+    {
+      "path": "run-1/process-before.txt",
+      "bytes": 820,
+      "sha256": "41357bd0d4e105546cfa4d9e028ad53284166afd372981418f1b85a22dfb91b7"
+    },
+    {
+      "path": "run-1/profiles/1-settings-main.cpuprofile",
+      "bytes": 22456,
+      "sha256": "b0226cdf8618c79bcec8a5a8d2e1e5405166173505de063047c1a140884c2fc7"
+    },
+    {
+      "path": "run-1/profiles/1-settings-worker.cpuprofile",
+      "bytes": 125375,
+      "sha256": "09c25af19afe5343a15d26a96cac4725f91c1b38083516673b1e648d9915088b"
+    },
+    {
+      "path": "run-1/profiles/stages.json",
+      "bytes": 29057,
+      "sha256": "5b6c32e442143de7a1eb0969ea8b61e24cfb0c8ce8990149f0b8899403664b9d"
+    },
+    {
+      "path": "run-1/report.json",
+      "bytes": 3988,
+      "sha256": "c00a00f22e472d14b067734d34a5bf6d5331a75d338fa228ff547a676c81e441"
+    },
+    {
+      "path": "run-1/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "run-1/stdout.log",
+      "bytes": 494,
+      "sha256": "10460e7a47ab81ade2ae2eaa19d87ea55d05d7fa7b6683f0aaf50dd254c32843"
+    },
+    {
+      "path": "run-once.py",
+      "bytes": 3270,
+      "sha256": "efef82690be97fdba565e4e659916d02e0576834c239d80d7bd65cfc32dda14b"
+    },
+    {
+      "path": "seed-export-map.json",
+      "bytes": 7467,
+      "sha256": "b17026eb798ad91638b51be83793df672f49ebc6e461b33fbb9539f6966baac1"
+    }
+  ],
+  "media": {
+    "source": ".context/trace-optimizer-profile/run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
+    "output": "tweets/videos/trace_optimizer_profile.mp4",
+    "thumbnail": "tweets/thumbnails/trace_optimizer_profile.jpg",
+    "method": "Full source video reencoded libx264/presetfast/crf23/threads1, no cuts or speed changes. Thumbnail is actual final Settings frame. Initial system ffmpeg executable absent; used repository ffmpeg-static binary without guest rerun.",
+    "files": [
+      {
+        "path": "tweets/videos/trace_optimizer_profile.mp4",
+        "bytes": 430857,
+        "sha256": "770ecaa4780b2dcecc969fe2c7709c6067b9ba2aa092d556481549ae705df3f6"
+      },
+      {
+        "path": "tweets/thumbnails/trace_optimizer_profile.jpg",
+        "bytes": 35189,
+        "sha256": "17996840e5e90af80d40d4042273697126c1c7c01770328ca9496074d89f7277"
+      }
+    ]
+  }
+}

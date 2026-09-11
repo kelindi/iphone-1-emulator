@@ -12,6 +12,9 @@
 #ifdef S5LBOX_WASM_JIT
 #include "arm_wasm_jit.h"
 #endif
+#ifdef S5LBOX_ADAPTIVE_JIT
+#include "arm_adaptive_dispatch.h"
+#endif
 #include <stdio.h>
 #include "board.h"
 #include "../arm/a64_static_engine.h"
@@ -465,6 +468,8 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
 
     if (in_ram(m, addr, bytes)) {
         memcpy(&m->ram[addr - m->ram_base], &val, bytes);
+        if (m->bus.ram_written)
+            m->bus.ram_written(m->bus.ctx, &m->ram[addr - m->ram_base], bytes);
         return;
     }
     m->level_dirty = true;      /* a device store; see bus_read() */
@@ -1245,6 +1250,9 @@ static bool g_tick_eager_read;
 
 bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     if (!m) return false;
+#ifdef S5LBOX_ADAPTIVE_JIT
+    if (!arm_adaptive_forget(&m->cpu)) return false;
+#endif
     memset(m, 0, sizeof *m);
 
     /*
@@ -1420,6 +1428,9 @@ bool s5l8900_init(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
 
 void s5l8900_free(s5l8900_t *m) {
     if (!m) return;
+#ifdef S5LBOX_ADAPTIVE_JIT
+    if (!arm_adaptive_forget(&m->cpu)) return;
+#endif
 #if defined(S5LBOX_STATIC_A64_ENGINE)
     s5l8900_static_a64_dispose(m);
 #endif
@@ -1452,6 +1463,8 @@ void s5l8900_load(s5l8900_t *m, uint32_t addr, const void *data, size_t len) {
     if (len > 0xffffffffu) return;
     if (!in_ram(m, addr, (uint32_t)len)) return;
     memcpy(&m->ram[addr - m->ram_base], data, len);
+    if (m->bus.ram_written)
+        m->bus.ram_written(m->bus.ctx, &m->ram[addr - m->ram_base], (uint32_t)len);
 }
 
 /*
@@ -2082,6 +2095,16 @@ unsigned s5l8900_static_a64_fallback_step(s5l8900_t *m,
 }
 
 unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
+#ifdef S5LBOX_ADAPTIVE_JIT
+    /* A latched fatal result must also block single-step and hook paths.
+     * Healthy zero-budget admission is required to have no guest effects. */
+    arm_adaptive_result_t adaptive_probe;
+    if (arm_adaptive_enabled &&
+        arm_adaptive_try(&m->cpu, 0u, &adaptive_probe) < 0) {
+        if (status) *status = ARM_HALT;
+        return 0u;
+    }
+#endif
     arm_status_t st = ARM_OK;
     unsigned n = 0;
     unsigned active_pending_retired = 0u;
@@ -2123,7 +2146,11 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
          * expensive timebase/input eligibility gate: the old order paid a
          * 64-bit divide and several scattered loads on every interpreted guest
          * instruction even though no signed state had ever been allocated. */
-        if (s5l8900_static_a64_is_enabled(m)) {
+        if (
+#ifdef S5LBOX_ADAPTIVE_JIT
+            !arm_adaptive_enabled &&
+#endif
+            s5l8900_static_a64_is_enabled(m)) {
             bool known_negative = false;
             arm_status_t engine_status = ARM_OK;
             unsigned boundary_retired = 0u;
@@ -2185,6 +2212,53 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
             unsigned retired = 0u;
             unsigned total_retired = 0u;
             bool flushed = false;
+#ifdef S5LBOX_ADAPTIVE_JIT
+            bool adaptive_boundary = false;
+            if (arm_adaptive_enabled) {
+            do {
+                /* Never enlarge the original batch after an internal edge.
+                 * Repeat machine admission before trying the successor; CPU,
+                 * fetch and code admission remain the runtime's ownership. */
+                unsigned remaining = interpreter_tick_batch_limit(
+                    m, limit - retired, active_clock);
+                if (!remaining) break;
+                arm_adaptive_result_t result;
+                int invoked = arm_adaptive_try(&m->cpu, remaining, &result);
+                if (invoked < 0) {
+                    st = ARM_HALT;
+                    m->batch_pending = 0u;
+                    break;
+                }
+                if (invoked > 0) {
+                    retired += result.retired;
+                    total_retired += result.retired;
+                    if (result.reason == ADAPT_EXIT_BOUNDARY) {
+                        adaptive_boundary = true;
+                        break;
+                    }
+                    if (result.reason == ADAPT_EXIT_BUDGET || retired == limit)
+                        break;
+                    if (result.reason == ADAPT_EXIT_EDGE)
+                        continue;
+                }
+                /* Refusal is BEFORE the instruction. The complete original
+                 * step owns fetch, faults, cycles and partial memory effects. */
+                unsigned retired_before = retired;
+                m->batch_pending = retired_before;
+                st = arm_step(&m->cpu);
+                if (st != ARM_OK) {
+                    m->batch_pending = 0u;
+                    break;
+                }
+                flushed = m->batch_pending != retired_before;
+                retired = m->batch_pending + 1u;
+                total_retired++;
+                if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
+                    flushed || m->wfi_pace_yield)
+                    break;
+            } while (retired < limit);
+            } else
+#endif
 #ifdef S5LBOX_WASM_JIT
             if (arm_wasm_jit_enabled) {
             do {
@@ -2235,6 +2309,9 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                                   st != ARM_OK || m->wfi_pace_yield,
                                   m->level_dirty ||
                                   ext_inputs(m) != m->ext_seen ||
+#ifdef S5LBOX_ADAPTIVE_JIT
+                                  adaptive_boundary ||
+#endif
                                   flushed || m->wfi_pace_yield);
             }
             if (st != ARM_OK) break;

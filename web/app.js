@@ -40,6 +40,7 @@ function controls() {
 }
 function fail(error) {
   ready = false;
+  canvas.dataset.ready = 'false'; document.body.dataset.ready = 'false';
   $('boot-loader').hidden = false;
   $('boot-loader').dataset.state = 'error';
   setStatus(describeError(error));
@@ -167,6 +168,25 @@ function toggleSilent() {
   document.querySelector('[data-toggle]').setAttribute('aria-pressed', String(silent));
   setButton(4, silent);
 }
+// The 3D raycast supplies coordinates in the same 320 × 480 guest space.
+window.addEventListener('iphone-3d-input', ({detail}) => {
+  if (detail.kind === 'release') { releaseInputs().catch(inputError); return; }
+  if (!ready || paused) return;
+  if (detail.kind === 'button') {
+    if (detail.which === 4) { if (detail.pressed) toggleSilent(); }
+    else setButton(detail.which, detail.pressed);
+    return;
+  }
+  const key = `3d-${detail.id}`;
+  if (detail.phase === 'up') contacts.delete(key);
+  else {
+    const used = new Set([...contacts.values()].map(c => c.id));
+    const id = contacts.get(key)?.id ?? [1,2,3,4,5].find(n => !used.has(n));
+    if (!id) return;
+    contacts.set(key, {id, x:Math.floor(detail.x), y:Math.floor(detail.y)});
+  }
+  sendContacts();
+});
 document.querySelectorAll('[data-button]').forEach(button => {
   const which = Number(button.dataset.button);
   if (button.hasAttribute('data-toggle')) { button.addEventListener('click', toggleSilent); return; }

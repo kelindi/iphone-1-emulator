@@ -1,0 +1,50 @@
+[
+  {
+    "original": ".context/touch-calibration/home-ram.bin",
+    "compressed": ".context/touch-calibration/home-ram.bin.gz",
+    "originalBytes": 268435456,
+    "compressedBytes": 105465552,
+    "originalSha256": "5596272eebe96d90ffbe550c46a23c726e0d899534966f97719c857378f4cfc8",
+    "verifiedDecompression": true
+  },
+  {
+    "original": ".context/clock/usb-ready.ram",
+    "compressed": ".context/clock/usb-ready.ram.gz",
+    "originalBytes": 268435456,
+    "compressedBytes": 106664452,
+    "originalSha256": "cf8393257efd2004daadc49b46c88bbb4d95250b969bea8ea74bef03ad32befc",
+    "verifiedDecompression": true
+  },
+  {
+    "original": ".context/organizer-debug/compact-ada-edit.snap",
+    "compressed": ".context/organizer-debug/compact-ada-edit.snap.gz",
+    "originalBytes": 256622574,
+    "compressedBytes": 110171218,
+    "originalSha256": "906e5816229050b5f28d5773b791f65e9245b39379b301f1bbeb25f55438743f",
+    "verifiedDecompression": true
+  },
+  {
+    "original": ".context/organizer-debug/compact-ada.snap",
+    "compressed": ".context/organizer-debug/compact-ada.snap.gz",
+    "originalBytes": 255815662,
+    "compressedBytes": 109850892,
+    "originalSha256": "1fe42bac4b70ea5f2587b9ea121f88da569c1736852abcc6af0dde3715d83fda",
+    "verifiedDecompression": true
+  },
+  {
+    "original": ".context/organizer-debug/compact-contact-name.snap",
+    "compressed": ".context/organizer-debug/compact-contact-name.snap.gz",
+    "originalBytes": 254660590,
+    "compressedBytes": 109331338,
+    "originalSha256": "16b408fa3f5dcfc9f5736fd161c2845a9d37c16ed44ce81cfa896a294f2780b4",
+    "verifiedDecompression": true
+  },
+  {
+    "original": ".context/organizer-debug/compact-contact-new.snap",
+    "compressed": ".context/organizer-debug/compact-contact-new.snap.gz",
+    "originalBytes": 249692130,
+    "compressedBytes": 107448891,
+    "originalSha256": "d0beb5af41314244c4d08548d5e96a3edf0ff92217e5e430bc228274fecd12ca",
+    "verifiedDecompression": true
+  }
+]

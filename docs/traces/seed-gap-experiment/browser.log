@@ -1,0 +1,2 @@
+{'arm': 'control', 'directory': '.context/seed-gap/browser-0-control', 'exit': 0}
+{'arm': 'candidate', 'directory': '.context/seed-gap/browser-1-candidate', 'exit': 1}

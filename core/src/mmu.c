@@ -312,6 +312,26 @@ uint32_t arm_mmu_translate(arm_cpu_t *c, uint32_t va, arm_access_t acc,
     return fsr;
 }
 
+/* Permission-safe, nonwalking observation of the CURRENT cached mapping.
+ * host_ram is a mapping query, never a device read. No cache/counter writes. */
+const uint8_t *arm_fetch_cache_peek(const arm_cpu_t *c, uint32_t va, bool priv) {
+    const uint32_t block = va & ~UINT32_C(0x3ff);
+    if (!c || !c->bus || !c->bus->host_ram) return NULL;
+    if (c->fetch_host && c->fetch_blk == block &&
+        c->fetch_gen == c->tlb_gen && c->fetch_priv == priv)
+        return c->fetch_host;
+    uint32_t pa = block;
+    if (c->cp15.sctlr & ARM_SCTLR_M) {
+        const unsigned slot = mmu_tlb_slot(va, ARM_ACCESS_FETCH);
+        const uint32_t tag = mmu_tlb_tag(va, ARM_ACCESS_FETCH, priv);
+        if (!c->tlb_gen || !mmu_stamp_matches(c) ||
+            c->tlb[slot].gen != c->tlb_gen || c->tlb[slot].tag != tag ||
+            c->tlb[slot].fsr) return NULL;
+        pa = c->tlb[slot].pa;
+    }
+    return c->bus->host_ram(c->bus->ctx, pa, 0x400u);
+}
+
 bool arm_fetch_cache_try_refill(arm_cpu_t *c, uint32_t va, bool priv) {
     uint32_t pa_block;
     const uint32_t va_block = va & ~UINT32_C(0x3ff);

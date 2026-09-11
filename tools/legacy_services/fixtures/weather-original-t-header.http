@@ -1,0 +1,10 @@
+POST /dgw?imei=00000000-0000-4000-8000-000000000000&apptype=weather&t=3 HTTP/1.1
+Accept: */*
+Accept-Language: en
+Accept-Encoding: gzip, deflate
+User-Agent: Apple iPhone v1.0 Weather v1.0.0.1A543a
+Content-Type: text/xml
+Content-Length: 355
+Connection: keep-alive
+Host: iphone-wu.apple.com
+

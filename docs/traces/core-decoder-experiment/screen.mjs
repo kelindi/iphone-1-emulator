@@ -1,0 +1,20 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const dir=resolve('.context/core-hotspot'),sha=b=>createHash('sha256').update(b).digest('hex');
+const fixture=await readFile('.context/graphics-speed/fixed-dismiss.snap'),kernel=await readFile('web/firmware/kernel_1A543a.macho'),tree=await readFile('web/firmware/devicetree_m68ap.bin');
+const seedBytes=await readFile('web/jit/seed.wasm'),seed=await WebAssembly.compile(seedBytes),defs=JSON.parse(await readFile('web/jit/regions.json')),abi=JSON.parse(await readFile('web/jit/abi.json'));
+const report={passed:false,scope:'Current-core relative state verification and Node fixed-work screening; no browser speed claim.',fixtureSha256:sha(fixture),seedSha256:sha(seedBytes),runs:[]};
+const save=()=>writeFile(dir+'/screen-result.json',JSON.stringify(report,null,2));
+async function setup(label){const {default:create}=await import(pathToFileURL(`${dir}/${label}/emu.js`));const m=await create({locateFile:p=>`${dir}/${label}/${p}`});const alloc=b=>{const p=m._malloc(b.length);assert(p);m.HEAPU8.set(b,p);return p;};let k=alloc(kernel),d=alloc(tree);assert.equal(m._emu_init(k,kernel.length,d,tree.length,0,0,256),0);m._free(k);m._free(d);assert.deepEqual(Array.from({length:16},(_,i)=>m._emu_jit_offset(i)),abi.offsets);return {label,m,snap:alloc(fixture),mask:m._malloc(64),ids:[]};}
+async function run(e,steps,mode){const {m}=e;m._emu_jit_reset();for(const id of e.ids.splice(0))m.removeFunction(id);assert.equal(m._emu_load_snapshot(e.snap,fixture.length),0);const inst=await WebAssembly.instantiate(seed,{env:{memory:m.jitMemory,stale:m._emu_jit_stale,span:m._emu_jit_span}});for(const r of defs){const id=m.addFunction(inst.exports['b'+r.index],'iii');e.ids.push(id);m.HEAPU32.set(r.masks,e.mask>>>2);assert.equal(m._emu_jit_install(r.pc,+r.thumb,id,e.mask),1);}m._emu_jit_enable(mode==='interpreter'?0:1);m._emu_touch(1,275,250);
+ const row={label:e.label,mode,steps,cpuMs:0,wallMs:0,checkpoints:[]};report.runs.push(row);await save();
+ for(let n=0;n<steps;){const cpu=process.cpuUsage(),start=performance.now();assert.equal(m._emu_run(1000000),1000000);row.wallMs+=performance.now()-start;const delta=process.cpuUsage(cpu);row.cpuMs+=(delta.user+delta.system)/1000;n+=1000000;if(n===5000000)m._emu_touch(0,275,250);if(n===200000000)m._emu_button(1,1);if(n===205000000)m._emu_button(1,0);
+  if((steps===100000000&&n%25000000===0)||n===steps){const p=m._emu_save_snapshot(),bytes=m._emu_snapshot_size();assert(p&&bytes);row.checkpoints.push({n,bytes,sha256:sha(m.HEAPU8.subarray(p,p+bytes)),retired:m._emu_jit_stat(0),calls:m._emu_jit_stat(1),regions:m._emu_jit_stat(2)});m._emu_free_snapshot();await save();}
+ }console.log(JSON.stringify(row));return row;}
+try{const a=await setup('control'),b=await setup('candidate');for(const mode of ['interpreter','seeded']){const x=await run(a,100000000,mode),y=await run(b,100000000,mode);assert.deepEqual(y.checkpoints,x.checkpoints,'complete state '+mode);}
+ let ref;for(const e of [a,b,b,a]){const r=await run(e,400000000,'timed-seeded');if(ref)assert.deepEqual(r.checkpoints,ref,'timed state');else ref=r.checkpoints;}
+ const timed=report.runs.filter(x=>x.mode==='timed-seeded');const avg=label=>timed.filter(x=>x.label===label).reduce((s,x)=>s+x.cpuMs,0)/2;report.cpuReductionPercent=100*(1-avg('candidate')/avg('control'));report.passed=true;
+}catch(e){report.error=e.stack;process.exitCode=1;}finally{await save();console.log(JSON.stringify({passed:report.passed,cpuReductionPercent:report.cpuReductionPercent,error:report.error}));}

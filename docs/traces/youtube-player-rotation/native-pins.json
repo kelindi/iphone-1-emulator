@@ -1,0 +1,6 @@
+{
+  "control": "b22198ea56d18c5b54c41dc4e58071435b7c0d072fddba8bfbff49bfbc5b16b4",
+  "libemucore.a": "bab2e8e52b973fae10d0dca1fe688220f2b3a37a659d4284ae996166cdc44812",
+  "source/core/src/soc/mbx.c": "d147c1857b56fff394e0a02d89c3bbcbdea428e09da015256c0f45774e68d074",
+  "source/core/tests/test_mbx.c": "61386cb61c022ad54b354ba87594651014a338301b8a4d35e6e4b60d9638afa7"
+}

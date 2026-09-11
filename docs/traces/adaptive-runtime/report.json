@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "scope": "Actual emitted WASM, guarded C registry and real machine scheduler; full snapshots on synthetic integer loops. Not real-phone workloads, MMU-on execution or performance acceptance.",
+  "cases": [
+    {
+      "name": "connected loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "snapshotBytes": 17887393,
+      "sha256": "0a2677d2143af999ff4626995a58fe2b5b8c02744883cb8c6402881d82c92343",
+      "retired": 0
+    },
+    {
+      "name": "cross-window loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "snapshotBytes": 17887393,
+      "sha256": "b2d364d15946a08fcd6f8b496daf4f976362bbd0c917ef47ab183b115599c1ac",
+      "retired": 0
+    },
+    {
+      "name": "stale literal fallback",
+      "credits": 128,
+      "guardCalls": 1,
+      "snapshotBytes": 17887393,
+      "sha256": "c4b983cc9c9bc23caae686c4ed57de905552f2882690cad0fe3173f33daf22a7",
+      "retired": 1
+    },
+    {
+      "name": "fatal latch blocks repeated single-step",
+      "passed": true
+    }
+  ],
+  "runtimeSha256": "1761250fe1608de55c568211509eaf1e84e42d3934f28cc67f3285e4f3cc40b3"
+}
