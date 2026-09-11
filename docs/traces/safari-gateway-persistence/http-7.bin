@@ -1,0 +1,7 @@
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 304
+Connection: close
+Cache-Control: no-store
+
+<!DOCTYPE html><html><head><meta name="viewport" content="width=320, initial-scale=1"><title>Local Demo Form</title></head><body><h1>Form received</h1><p>Local demo: fixed content served inside this emulated phone.</p><p>Page: ECHO-1</p><p>Message: ok</p><p><a href="/">Back to demo</a></p></body></html>

@@ -1,0 +1,37 @@
+{
+  "argv": [
+    ".context/youtube-services/rotation-v4/control",
+    "--board",
+    "m68",
+    "--kernel",
+    "web/firmware/kernel_1A543a.macho",
+    "--devicetree",
+    "web/firmware/devicetree_m68ap.bin",
+    "--ram-mb",
+    "256",
+    "--cmdline",
+    "debug=0x8 serial=3 rd=md0 -v",
+    "--load",
+    ".context/youtube-services/local-clip-browser/final-home.snap",
+    "--at",
+    "11175473379",
+    "tap",
+    "60",
+    "105",
+    "--steps",
+    "12175373379",
+    "--screenshot",
+    ".context/youtube-services/rotation-v4/control-1b-trace/final.ppm",
+    "--serial",
+    ".context/youtube-services/rotation-v4/control-1b-trace/serial.log",
+    "--mmio-watch",
+    "0x39800000"
+  ],
+  "env": {
+    "S5LBOX_MBX_TRACE": "1"
+  },
+  "startUnix": 1789062564.438934,
+  "scope": "Unmodified control with existing bounded MMIO/MBX diagnostics; no timing or playback success claim",
+  "exitCode": 0,
+  "endUnix": 1789062590.176734
+}

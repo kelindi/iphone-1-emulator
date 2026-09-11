@@ -1,0 +1,96 @@
+{
+  "native": {
+    "settings": {
+      "firstMs": [
+        2245.063,
+        2294.083
+      ],
+      "firstMedianMs": 2269.5730000000003,
+      "warmMs": [
+        1891.638,
+        1993.864,
+        2096.332,
+        1993.391,
+        2146.371,
+        2095.981
+      ],
+      "warmMedianMs": 2044.9225000000001,
+      "warmSamples": 6
+    },
+    "home": {
+      "firstMs": [
+        831.704,
+        833.624
+      ],
+      "firstMedianMs": 832.664,
+      "warmMs": [
+        780.865,
+        783.843,
+        827.942,
+        829.988,
+        832.215,
+        780.14
+      ],
+      "warmMedianMs": 805.8924999999999,
+      "warmSamples": 6
+    }
+  },
+  "browser": {
+    "settings": {
+      "firstMs": [
+        3561.899999999441,
+        3564.4000000003725
+      ],
+      "firstMedianMs": 3563.149999999907,
+      "warmMs": [
+        2268.800000000745,
+        2367.7999999998137,
+        2317.899999999441,
+        2217.7000000001863,
+        2217.5999999996275,
+        2217.2000000001863
+      ],
+      "warmMedianMs": 2243.2500000004657,
+      "warmSamples": 6
+    },
+    "home": {
+      "firstMs": [
+        866.9000000003725,
+        866.5
+      ],
+      "firstMedianMs": 866.7000000001863,
+      "warmMs": [
+        817.5,
+        817.5,
+        868.5999999996275,
+        817.2000000001863,
+        866.5,
+        866.8999999994412
+      ],
+      "warmMedianMs": 842.0,
+      "warmSamples": 6
+    }
+  },
+  "nativeWarmReductionPercent": {
+    "settings": 8.841078791950263,
+    "home": 4.28830166270785
+  },
+  "additionalStreamingLatencyBreakEvenMs": {
+    "settings": 198.32750000046553,
+    "home": 36.10750000000007
+  },
+  "model": "Break-even is total added transport/encoding/decoding/display latency, not just network RTT. No streamed user session measured.",
+  "visualReview": {
+    "passed": true,
+    "frames": 32,
+    "scope": "Root reviewed actual native/browser contact sheets; all show intended Settings/Home contents. No cross-engine full-state equivalence claimed."
+  },
+  "host": {
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "browserVersion": "152.0.7977.82"
+}

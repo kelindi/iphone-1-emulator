@@ -28,6 +28,9 @@
  * Copyright (c) 2026 j0shua-SYSON. MIT licensed.
  */
 #include "bringup.h"
+#ifdef S5LBOX_ADAPTIVE_JIT
+#include "arm_adaptive_dispatch.h"
+#endif
 #include "dt_patch.h"
 
 #include "arm.h"
@@ -309,6 +312,11 @@ s5l_bringup_status_t s5l_bringup(s5l8900_t *machine,
                            S5L_BRINGUP_STAGE_ARGUMENTS,
                            "no machine or no request");
 
+#ifdef S5LBOX_ADAPTIVE_JIT
+    if (!arm_adaptive_forget(&machine->cpu))
+        return result_fail(result, S5L_BRINGUP_INVALID_ARGUMENT,
+            S5L_BRINGUP_STAGE_ARGUMENTS, "compiled runtime is busy or failed");
+#endif
     const uint32_t virt_base = S5L_BRINGUP_VIRT_BASE;
     const uint32_t phys_base = machine->ram_base;
     const uint32_t ram_size  = machine->ram_size;

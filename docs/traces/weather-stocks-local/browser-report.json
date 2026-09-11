@@ -1,0 +1,933 @@
+{
+  "startedUTC": "2026-09-08T20:18:48.133Z",
+  "actions": [
+    {
+      "tap": [
+        160,
+        300
+      ],
+      "wait": 2000,
+      "elapsedSeconds": 43.485
+    },
+    {
+      "tap": [
+        275,
+        155
+      ],
+      "wait": 6000,
+      "shot": "02-weather",
+      "elapsedSeconds": 45.681
+    },
+    {
+      "assert": "weather-forecast",
+      "frame": "02-weather-guest.png",
+      "expected": "Original Cupertino72F with sun, high74 low55, six daily rows74/55,73/54,75/56,76/55,72/53,71/54 and Updated text.",
+      "elapsedSeconds": 67.666
+    },
+    {
+      "swipe": {
+        "from": [
+          270,
+          265
+        ],
+        "to": [
+          45,
+          265
+        ],
+        "steps": 20,
+        "duration": 800
+      },
+      "wait": 4000,
+      "shot": "03-new-york",
+      "elapsedSeconds": 67.668
+    },
+    {
+      "assert": "weather-second-city",
+      "frame": "03-new-york-guest.png",
+      "expected": "Original swipe changes to New York64F, high66 low50, six rows66/50,67/52,65/49,68/51,70/54,69/53.",
+      "elapsedSeconds": 88.375
+    },
+    {
+      "home": true,
+      "wait": 2000,
+      "elapsedSeconds": 88.376
+    },
+    {
+      "tap": [
+        123,
+        155
+      ],
+      "wait": 5000,
+      "shot": "04-stocks",
+      "elapsedSeconds": 90.573
+    },
+    {
+      "assert": "stocks-quotes",
+      "frame": "04-stocks-guest.png",
+      "expected": "Original Stocks on same corrected gateway shows AAPL120.00, GOOG500.00, YHOO25.00, T40.00; chart unqualified.",
+      "elapsedSeconds": 108.92
+    },
+    {
+      "home": true,
+      "wait": 2000,
+      "elapsedSeconds": 108.923
+    },
+    {
+      "tap": [
+        275,
+        155
+      ],
+      "wait": 3000,
+      "shot": "05-weather-revisit",
+      "elapsedSeconds": 111.116
+    },
+    {
+      "tap": [
+        288,
+        425
+      ],
+      "wait": 2000,
+      "shot": "06-weather-settings",
+      "elapsedSeconds": 131.427
+    },
+    {
+      "tap": [
+        225,
+        389
+      ],
+      "wait": 600,
+      "elapsedSeconds": 144.506
+    },
+    {
+      "tap": [
+        290,
+        43
+      ],
+      "wait": 4000,
+      "shot": "07-weather-celsius",
+      "elapsedSeconds": 145.297
+    },
+    {
+      "assert": "weather-celsius",
+      "frame": "07-weather-celsius-guest.png",
+      "expected": "Original unit control converts Cupertino72F to22C, high23 low13, daily values converted.",
+      "elapsedSeconds": 162.807
+    },
+    {
+      "finalExport": true,
+      "captureBoundary": "After successful Cupertino and NewYork forecast, Stocks quotes, Weather Home/revisit and original Celsius switch",
+      "shot": "08-exported",
+      "elapsedSeconds": 162.81
+    }
+  ],
+  "checks": [
+    {
+      "name": "fresh-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 510,
+        "bytes": 12341313,
+        "retired": 46799628,
+        "calls": 6787358
+      }
+    },
+    {
+      "name": "imported-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 24874501,
+        "calls": 3158380
+      }
+    },
+    {
+      "name": "weather-forecast",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "02-weather-guest.png",
+      "frameSHA256": "cab7b1d22b4cdc0b48af1e17138dbeeb2e4c7d707bda339b324e0b2092972c87",
+      "expected": "Original Cupertino72F with sun, high74 low55, six daily rows74/55,73/54,75/56,76/55,72/53,71/54 and Updated text.",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "weather-second-city",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "03-new-york-guest.png",
+      "frameSHA256": "126e06885f2836340ade6d32f6a73c75a8c60f4e2f0fd3a77d78da0ae1c06fae",
+      "expected": "Original swipe changes to New York64F, high66 low50, six rows66/50,67/52,65/49,68/51,70/54,69/53.",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "stocks-quotes",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "04-stocks-guest.png",
+      "frameSHA256": "7de5e116988b980306d8989b46bbe55f029c95f7d5802652d2433b4d3605e518",
+      "expected": "Original Stocks on same corrected gateway shows AAPL120.00, GOOG500.00, YHOO25.00, T40.00; chart unqualified.",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "weather-celsius",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "07-weather-celsius-guest.png",
+      "frameSHA256": "88635ad8ac10339043968eae1540bce0524c583704073158dabba3dbf54dc12a",
+      "expected": "Original unit control converts Cupertino72F to22C, high23 low13, daily values converted.",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "diagnostic-final-export",
+      "passed": true,
+      "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/weather-t-browser/final-home.snap",
+      "bytes": 254078946,
+      "sha256": "cae763b95e4ef87e7915b36a520a0d8f5f5d924a937889b28aaa7339643e97c4"
+    },
+    {
+      "name": "final-unpaused-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 995343408,
+        "calls": 126125230
+      }
+    }
+  ],
+  "observations": [
+    {
+      "name": "weather-forecast",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "02-weather-guest.png",
+      "frameSHA256": "cab7b1d22b4cdc0b48af1e17138dbeeb2e4c7d707bda339b324e0b2092972c87",
+      "expected": "Original Cupertino72F with sun, high74 low55, six daily rows74/55,73/54,75/56,76/55,72/53,71/54 and Updated text."
+    },
+    {
+      "name": "weather-second-city",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "03-new-york-guest.png",
+      "frameSHA256": "126e06885f2836340ade6d32f6a73c75a8c60f4e2f0fd3a77d78da0ae1c06fae",
+      "expected": "Original swipe changes to New York64F, high66 low50, six rows66/50,67/52,65/49,68/51,70/54,69/53."
+    },
+    {
+      "name": "stocks-quotes",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "04-stocks-guest.png",
+      "frameSHA256": "7de5e116988b980306d8989b46bbe55f029c95f7d5802652d2433b4d3605e518",
+      "expected": "Original Stocks on same corrected gateway shows AAPL120.00, GOOG500.00, YHOO25.00, T40.00; chart unqualified."
+    },
+    {
+      "name": "weather-celsius",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "07-weather-celsius-guest.png",
+      "frameSHA256": "88635ad8ac10339043968eae1540bce0524c583704073158dabba3dbf54dc12a",
+      "expected": "Original unit control converts Cupertino72F to22C, high23 low13, daily values converted."
+    }
+  ],
+  "frames": [
+    {
+      "name": "00-default-home",
+      "guest": "00-default-home-guest.png",
+      "page": "00-default-home.png",
+      "elapsedSeconds": 11.946
+    },
+    {
+      "name": "01-imported",
+      "guest": "01-imported-guest.png",
+      "page": "01-imported.png",
+      "elapsedSeconds": 30.473
+    },
+    {
+      "name": "02-weather",
+      "guest": "02-weather-guest.png",
+      "page": "02-weather.png",
+      "elapsedSeconds": 52.066
+    },
+    {
+      "name": "03-new-york",
+      "guest": "03-new-york-guest.png",
+      "page": "03-new-york.png",
+      "elapsedSeconds": 72.998
+    },
+    {
+      "name": "04-stocks",
+      "guest": "04-stocks-guest.png",
+      "page": "04-stocks.png",
+      "elapsedSeconds": 95.944
+    },
+    {
+      "name": "05-weather-revisit",
+      "guest": "05-weather-revisit-guest.png",
+      "page": "05-weather-revisit.png",
+      "elapsedSeconds": 114.515
+    },
+    {
+      "name": "06-weather-settings",
+      "guest": "06-weather-settings-guest.png",
+      "page": "06-weather-settings.png",
+      "elapsedSeconds": 133.854
+    },
+    {
+      "name": "07-weather-celsius",
+      "guest": "07-weather-celsius-guest.png",
+      "page": "07-weather-celsius.png",
+      "elapsedSeconds": 149.677
+    },
+    {
+      "name": "08-exported",
+      "guest": "08-exported-guest.png",
+      "page": "08-exported.png",
+      "elapsedSeconds": 164.844
+    }
+  ],
+  "errors": [],
+  "console": [],
+  "requests": [
+    {
+      "seconds": 1.19,
+      "url": "http://127.0.0.1:8243/",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.206,
+      "url": "http://127.0.0.1:8243/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.206,
+      "url": "http://127.0.0.1:8243/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.212,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.258,
+      "url": "http://127.0.0.1:8243/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.261,
+      "url": "http://127.0.0.1:8243/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.269,
+      "url": "http://127.0.0.1:8243/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.273,
+      "url": "http://127.0.0.1:8243/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.283,
+      "url": "http://127.0.0.1:8243/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.283,
+      "url": "http://127.0.0.1:8243/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.283,
+      "url": "http://127.0.0.1:8243/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.284,
+      "url": "http://127.0.0.1:8243/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.298,
+      "url": "http://127.0.0.1:8243/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.311,
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.734,
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.798,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "method": "GET"
+    },
+    {
+      "seconds": 2.661,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "method": "GET"
+    },
+    {
+      "seconds": 4.554,
+      "url": "http://127.0.0.1:8243/dist/emu.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 13.641,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 13.649,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 21.12,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 21.127,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.848,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 31.854,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.829,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.836,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 122.331,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 122.34,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.797,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.804,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 181.798,
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 181.805,
+      "url": "http://127.0.0.1:8243/storage.js",
+      "method": "GET"
+    }
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8243/",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 5825,
+      "bodySHA256": "59f35fab544eb8c17a2127f7d834371c8c3af3fbdd9e5dfdb68d1ecfd75c0e39"
+    },
+    {
+      "url": "http://127.0.0.1:8243/phone.css",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9396,
+      "bodySHA256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "url": "http://127.0.0.1:8243/app.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 18595,
+      "bodySHA256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/icon.svg",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 379,
+      "bodySHA256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "url": "http://127.0.0.1:8243/emu-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 13003,
+      "bodySHA256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8"
+    },
+    {
+      "url": "http://127.0.0.1:8243/dist/emu.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 17756,
+      "bodySHA256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/seed-jit.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9613,
+      "bodySHA256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "url": "http://127.0.0.1:8243/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 12341313,
+      "bodySHA256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "url": "http://127.0.0.1:8243/jit/regions.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 74901,
+      "bodySHA256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "url": "http://127.0.0.1:8243/jit/abi.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 364,
+      "bodySHA256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "url": "http://127.0.0.1:8243/assets.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 2397,
+      "bodySHA256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "url": "http://127.0.0.1:8243/manifest.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 1222,
+      "bodySHA256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8243/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 250531,
+      "bodySHA256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8243/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8243/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    }
+  ],
+  "requestFailures": [],
+  "serial": [
+    {
+      "seconds": 11.615,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\rAppleMultitouchSPI: downloaded 44752 bytes of firmware data (\"0x0086\") in 31ms (8ms stage 1, 23ms stage 2).\n\rAppleMerlotLCD::_lcdEnable: enable: 1\n\r"
+    },
+    {
+      "seconds": 17.633,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\rAppleMerlotLCD::_lcdEnable: enable: 0\n\r"
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "context",
+      "status": "closed"
+    },
+    {
+      "name": "browser",
+      "status": "closed"
+    },
+    {
+      "name": "server",
+      "status": "closed"
+    }
+  ],
+  "scope": "Diagnostic snapshot import followed by original touchscreen input; separate native boot qualification required. No speed or offline claim.",
+  "siteRoot": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-site",
+  "origin": "http://127.0.0.1:8243",
+  "capSeconds": 900,
+  "minFreeBytes": 1073741824,
+  "requirements": [
+    "weather-forecast",
+    "stocks-quotes"
+  ],
+  "mode": "explicit-workflow-assertions",
+  "initialAvailableBytes": 1763352576,
+  "fixture": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/weather-t-boot/home.snap",
+    "bytes": 245100514,
+    "sha256": "28ff8e11bb717bc86c8bbb44fcc188a0750da147e6beea4d23052c408d345314"
+  },
+  "upload": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/weather-t-browser/import-home.snap",
+    "ownedCopy": true,
+    "removed": true,
+    "importComplete": true,
+    "prepared": {
+      "bytes": 245100514,
+      "sha256": "28ff8e11bb717bc86c8bbb44fcc188a0750da147e6beea4d23052c408d345314"
+    },
+    "beforeImport": {
+      "bytes": 245100514,
+      "sha256": "28ff8e11bb717bc86c8bbb44fcc188a0750da147e6beea4d23052c408d345314"
+    },
+    "afterImport": {
+      "bytes": 245100514,
+      "sha256": "28ff8e11bb717bc86c8bbb44fcc188a0750da147e6beea4d23052c408d345314"
+    },
+    "beforeCleanup": {
+      "bytes": 245100514,
+      "sha256": "28ff8e11bb717bc86c8bbb44fcc188a0750da147e6beea4d23052c408d345314"
+    }
+  },
+  "fixtureScope": "Exact imported file bytes; native listener/process health must be independently qualified.",
+  "projection": {
+    "index.html": {
+      "bytes": 5825,
+      "sha256": "59f35fab544eb8c17a2127f7d834371c8c3af3fbdd9e5dfdb68d1ecfd75c0e39"
+    },
+    "phone.css": {
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    "app.js": {
+      "bytes": 18595,
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    "assets.js": {
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    "storage.js": {
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    "checkpoint-worker.js": {
+      "bytes": 615,
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    "emu-worker.js": {
+      "bytes": 13003,
+      "sha256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8"
+    },
+    "seed-jit.js": {
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    "manifest.json": {
+      "bytes": 1222,
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    "icon.svg": {
+      "bytes": 379,
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    "dist/emu.js": {
+      "bytes": 17756,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    "dist/emu.wasm": {
+      "bytes": 250531,
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    "jit/abi.json": {
+      "bytes": 364,
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    "jit/regions.json": {
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    "jit/seed.wasm": {
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    "service-worker.js": {
+      "bytes": 3228,
+      "sha256": "b3049273e7a6e068ba73c0a79f4461d04a184d8ae10b78edc3117cde33dcb866"
+    }
+  },
+  "sourcePins": {
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/qualify-browser.mjs": {
+      "bytes": 21623,
+      "sha256": "26b5bba3768bb41cc6648079fd12d4234bd33feaaa6ce348d72e969e4b9182e7"
+    },
+    "/home/vercel-sandbox/iphone-1/web/tests/helpers/performance-lifecycle.mjs": {
+      "bytes": 2780,
+      "sha256": "b9313757389eb78f976c2940f7b29daf4c8f510c743cf5eeb8da5e3484a4bd49"
+    }
+  },
+  "lastState": {
+    "savedAt": 1788898885372,
+    "paused": false,
+    "metrics": {
+      "type": "metrics",
+      "mips": 11.357408366533864,
+      "fps": 0,
+      "guestRate": 1.000109561752988,
+      "cycles": "11299906559",
+      "memory": 643039232,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 909171411,
+        "calls": 115705881
+      },
+      "serial": "",
+      "captureMs": 75.69999999925494,
+      "captureChunkMs": 1.4000000022351742,
+      "finalizeMs": 672.6999999992549
+    },
+    "status": "Backup downloaded. Keep it somewhere safe."
+  },
+  "swipes": [
+    {
+      "from": [
+        270,
+        265
+      ],
+      "to": [
+        45,
+        265
+      ],
+      "steps": 20,
+      "duration": 800,
+      "elapsedMs": 1135,
+      "scope": "Original page mouse/touch path; requested duration plus scheduling overhead, not a latency measurement"
+    }
+  ],
+  "exportDiagnostic": {
+    "scope": "Hidden existing Export button, enabled wait, native DOM click; separate from real autosave",
+    "before": {
+      "disabled": false,
+      "status": "Saved at 08:21 PM",
+      "savedAt": 1788898885372,
+      "paused": false
+    },
+    "click": {
+      "disabled": false,
+      "status": "Saved at 08:21 PM",
+      "savedAt": 1788898885372
+    },
+    "suggestedFilename": "iphone-2026-09-08.snap",
+    "file": {
+      "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/weather-t-browser/final-home.snap",
+      "bytes": 254078946,
+      "sha256": "cae763b95e4ef87e7915b36a520a0d8f5f5d924a937889b28aaa7339643e97c4"
+    }
+  },
+  "finished": true,
+  "rawHTTPWireCaptured": false,
+  "finalState": {
+    "ready": true,
+    "paused": false,
+    "savedAt": 1788898885372,
+    "metrics": {
+      "type": "metrics",
+      "mips": 2.9553092680942683,
+      "fps": 0,
+      "guestRate": 1.000009778571841,
+      "cycles": "11410617667",
+      "memory": 643039232,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 509,
+        "bytes": 12341313,
+        "retired": 995343408,
+        "calls": 126125230
+      },
+      "serial": "",
+      "captureMs": 73.5,
+      "captureChunkMs": 4.699999999254942,
+      "finalizeMs": 493.69999999925494
+    },
+    "status": "Backup downloaded. Keep it somewhere safe."
+  },
+  "video": "/home/vercel-sandbox/iphone-1/.context/app-services-current/weather-t-browser/page@3eb5a8ac42723d7500f922af49a7ed14.webm",
+  "videoFile": {
+    "bytes": 10608938,
+    "sha256": "762c1533d0b444914597281b04940c0fb53b5cea9dc762df57b414ff540a6437"
+  },
+  "responseAudit": {
+    "passed": true,
+    "requiredAssets": [
+      "index.html",
+      "phone.css",
+      "app.js",
+      "assets.js",
+      "storage.js",
+      "checkpoint-worker.js",
+      "emu-worker.js",
+      "seed-jit.js",
+      "manifest.json",
+      "icon.svg",
+      "dist/emu.js",
+      "dist/emu.wasm",
+      "jit/abi.json",
+      "jit/regions.json",
+      "jit/seed.wasm"
+    ],
+    "acceptedLocalResponses": 28,
+    "scope": "Actual received local bodies equal pinned site bytes; no offline/native-cache/guest HTTP claim."
+  },
+  "projectionUnchanged": true,
+  "elapsedSeconds": 187.004,
+  "runCompleted": true,
+  "missingRequirements": [],
+  "passed": true
+}

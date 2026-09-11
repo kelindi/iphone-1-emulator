@@ -1,0 +1,241 @@
+{
+  "passed": true,
+  "scope": "Current-core relative state verification and Node fixed-work screening; no browser speed claim.",
+  "fixtureSha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "seedSha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+  "runs": [
+    {
+      "label": "control",
+      "mode": "interpreter",
+      "steps": 100000000,
+      "cpuMs": 3365.1149999999984,
+      "wallMs": 3251.292707999991,
+      "checkpoints": [
+        {
+          "n": 25000000,
+          "bytes": 244965346,
+          "sha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 50000000,
+          "bytes": 245731298,
+          "sha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 75000000,
+          "bytes": 246837218,
+          "sha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "mode": "interpreter",
+      "steps": 100000000,
+      "cpuMs": 3399.155,
+      "wallMs": 3302.115387999991,
+      "checkpoints": [
+        {
+          "n": 25000000,
+          "bytes": 244965346,
+          "sha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 50000000,
+          "bytes": 245731298,
+          "sha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 75000000,
+          "bytes": 246837218,
+          "sha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        },
+        {
+          "n": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+          "retired": 0,
+          "calls": 0,
+          "regions": 512
+        }
+      ]
+    },
+    {
+      "label": "control",
+      "mode": "seeded",
+      "steps": 100000000,
+      "cpuMs": 11920.284000000005,
+      "wallMs": 3347.69932400001,
+      "checkpoints": [
+        {
+          "n": 25000000,
+          "bytes": 244965346,
+          "sha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+          "retired": 17508815,
+          "calls": 2625228,
+          "regions": 510
+        },
+        {
+          "n": 50000000,
+          "bytes": 245731298,
+          "sha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+          "retired": 35745609,
+          "calls": 5073162,
+          "regions": 510
+        },
+        {
+          "n": 75000000,
+          "bytes": 246837218,
+          "sha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+          "retired": 54992020,
+          "calls": 7228006,
+          "regions": 510
+        },
+        {
+          "n": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+          "retired": 73093840,
+          "calls": 9273308,
+          "regions": 509
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "mode": "seeded",
+      "steps": 100000000,
+      "cpuMs": 2814.5159999999996,
+      "wallMs": 2780.130184000016,
+      "checkpoints": [
+        {
+          "n": 25000000,
+          "bytes": 244965346,
+          "sha256": "4beb8cb1c8f7a9c1f59f4e64f42fb5a35c3b78968ce22d63f0ad0a6889d822df",
+          "retired": 17508815,
+          "calls": 2625228,
+          "regions": 510
+        },
+        {
+          "n": 50000000,
+          "bytes": 245731298,
+          "sha256": "5ba945fb088d042707b61db977eef76d338e0ba296dc45ad6251f31f0379347d",
+          "retired": 35745609,
+          "calls": 5073162,
+          "regions": 510
+        },
+        {
+          "n": 75000000,
+          "bytes": 246837218,
+          "sha256": "169bf9cc68adaceebd68b59f0d40a97e66506c1acbcbf9c5237fcc9a8241f0d0",
+          "retired": 54992020,
+          "calls": 7228006,
+          "regions": 510
+        },
+        {
+          "n": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58",
+          "retired": 73093840,
+          "calls": 9273308,
+          "regions": 509
+        }
+      ]
+    },
+    {
+      "label": "control",
+      "mode": "timed-seeded",
+      "steps": 400000000,
+      "cpuMs": 11341.81500000002,
+      "wallMs": 11252.28208100002,
+      "checkpoints": [
+        {
+          "n": 400000000,
+          "bytes": 249049058,
+          "sha256": "b2bd04e6d0c3b25109f26bb8740e0b02934b165c385981b53f76d2e96a6916ad",
+          "retired": 301802126,
+          "calls": 42050405,
+          "regions": 509
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "mode": "timed-seeded",
+      "steps": 400000000,
+      "cpuMs": 11782.929999999998,
+      "wallMs": 11775.204138999892,
+      "checkpoints": [
+        {
+          "n": 400000000,
+          "bytes": 249049058,
+          "sha256": "b2bd04e6d0c3b25109f26bb8740e0b02934b165c385981b53f76d2e96a6916ad",
+          "retired": 301802126,
+          "calls": 42050405,
+          "regions": 509
+        }
+      ]
+    },
+    {
+      "label": "candidate",
+      "mode": "timed-seeded",
+      "steps": 400000000,
+      "cpuMs": 11368.104999999996,
+      "wallMs": 11347.373308000024,
+      "checkpoints": [
+        {
+          "n": 400000000,
+          "bytes": 249049058,
+          "sha256": "b2bd04e6d0c3b25109f26bb8740e0b02934b165c385981b53f76d2e96a6916ad",
+          "retired": 301802126,
+          "calls": 42050405,
+          "regions": 509
+        }
+      ]
+    },
+    {
+      "label": "control",
+      "mode": "timed-seeded",
+      "steps": 400000000,
+      "cpuMs": 11132.093000000008,
+      "wallMs": 11123.171625999865,
+      "checkpoints": [
+        {
+          "n": 400000000,
+          "bytes": 249049058,
+          "sha256": "b2bd04e6d0c3b25109f26bb8740e0b02934b165c385981b53f76d2e96a6916ad",
+          "retired": 301802126,
+          "calls": 42050405,
+          "regions": 509
+        }
+      ]
+    }
+  ],
+  "cpuReductionPercent": -3.0129472809089064
+}

@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "01-fresh-open",
+      "seconds": 10.087874029999998
+    },
+    {
+      "name": "02-short-slide-stays-locked",
+      "seconds": 13.520515882
+    },
+    {
+      "name": "full slide opens Home",
+      "seconds": 17.669695341
+    },
+    {
+      "name": "04-saved-home-opens-locked",
+      "seconds": 29.558554953
+    },
+    {
+      "name": "05-saved-lock-opens-locked",
+      "seconds": 41.532564136
+    },
+    {
+      "name": "06-saved-sleep-wakes-locked",
+      "seconds": 52.88571189699999
+    },
+    {
+      "name": "restored phone still unlocks",
+      "seconds": 57.148575066999996
+    }
+  ],
+  "result": "pass"
+}

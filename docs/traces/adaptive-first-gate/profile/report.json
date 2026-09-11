@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "scope": "Adaptive real-app correctness pilot against frozen complete checkpoints. Diagnostic timings only; not ABBA throughput acceptance.",
+  "workload": {
+    "name": "settings",
+    "events": [
+      {
+        "at": 0,
+        "type": "touch",
+        "down": 1,
+        "x": 275,
+        "y": 250
+      },
+      {
+        "at": 5000000,
+        "type": "touch",
+        "down": 0,
+        "x": 275,
+        "y": 250
+      },
+      {
+        "at": 400000000,
+        "type": "button",
+        "id": 1,
+        "down": 1
+      },
+      {
+        "at": 405000000,
+        "type": "button",
+        "id": 1,
+        "down": 0
+      }
+    ],
+    "credits": 600000000,
+    "checkpoints": [
+      100000000,
+      300000000,
+      600000000
+    ]
+  },
+  "stop": 100000000,
+  "wasmSha256": "f5473d363843ce3cda69ddc7accee60751c9cb486c18b239c74b3906f7fc51d4",
+  "credits": 100000000,
+  "cpuMs": 10193.013,
+  "wallMs": 8190.412517000001,
+  "checkpoints": [
+    {
+      "credits": 100000000,
+      "bytes": 248274914,
+      "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+    }
+  ],
+  "validatedCheckpoints": 1,
+  "fullWorkload": false,
+  "sources": {
+    "tools/jit/adaptive/replay-workload.mjs": "41b8d9b31d746feb405d859c7d14500e26f849b4adb6ca2ff7967254b3c34c57",
+    "tools/jit/adaptive/workload-compiler.mjs": "6960c15d56238e66c4347fce7a9f025116a90c3ada09209db69ea0ffdde8bd29",
+    "tools/jit/adaptive/workloads.mjs": "d17a24af0fc8897536d6799e86afcffeb7ca97bb9ffad30c310318deecc30eb6",
+    "tools/jit/adaptive/unit.mjs": "3b87c6b62a46a9db3b48870a6f5680f0a436fb6fb41e4acffdd916b98628cf3a",
+    "tools/jit/adaptive/decode.mjs": "d18da7dc9fdc54c984c5291fcfbba1decf6af96f8c625f282121a16e114a6606",
+    "tools/jit/adaptive/emit.mjs": "d453a9d741c82b33293554dd21a5ffa3697ab165fb1940321ca25a2b906fb91f"
+  },
+  "compiler": {
+    "attempts": 1298,
+    "captureRefusals": 161,
+    "unsupported": 282,
+    "compiled": 1016,
+    "installed": 1016,
+    "rejected": 0,
+    "binaryBytes": 4894528,
+    "compileCpuMs": 3003.6229999999937,
+    "compileWallMs": 2327.518044000047
+  },
+  "runtime": [
+    22776507,
+    2907781,
+    74748434,
+    0,
+    335948,
+    62192,
+    2470062,
+    1,
+    0,
+    39578,
+    1355816,
+    25304,
+    1330512
+  ],
+  "attempts": 1298
+}

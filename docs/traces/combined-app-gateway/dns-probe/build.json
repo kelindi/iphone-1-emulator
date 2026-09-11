@@ -1,0 +1,203 @@
+{
+  "passed": true,
+  "programName": "dns-record-probe",
+  "diagnosticLogging": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/dns_record_probe.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/app-services-current/mdns-local-audit/build/dns_record_probe.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/clang-15",
+        "-target",
+        "armv6-apple-darwin8",
+        "-marm",
+        "-Os",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-fno-unwind-tables",
+        "-fno-asynchronous-unwind-tables",
+        "-fno-pic",
+        "-DOWN_HTTP_DIAGNOSTICS=0",
+        "-c",
+        "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/weather_support.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/app-services-current/mdns-local-audit/build/weather_support.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/cctools-src/cctools/ld64/src/ld/ld",
+        "-arch",
+        "armv6",
+        "-ios_version_min",
+        "1.0",
+        "-e",
+        "_start",
+        "-no_pie",
+        "-no_uuid",
+        "-no_compact_unwind",
+        "-no_version_load_command",
+        "-no_function_starts",
+        "-no_data_in_code_info",
+        "-no_encryption",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/app-services-current/mdns-local-audit/build/dns-record-probe",
+        "/home/vercel-sandbox/iphone-1/.context/app-services-current/mdns-local-audit/build/dns_record_probe.o",
+        "/home/vercel-sandbox/iphone-1/.context/app-services-current/mdns-local-audit/build/weather_support.o",
+        "/home/vercel-sandbox/iphone-1/.context/guest-hello/original-readonly/usr__lib__libSystem.B.dylib"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sourceSHA256": {
+    "dns_record_probe.c": "8ac4b9366584c587e41aa7afd0fd9a3bb0f92abe39cd35a7093430190b1b9676",
+    "weather_support.c": "d030fdbba96f5ac5125ec526f9274ce18ed75cd05696de0284a9bd1933d43dbb",
+    "build.py": "a5fc14ca994aa75210d8f6b77ba72250a2aec4bf42b4e230ffd58a4ceec444e2",
+    "macho_audit.py": "c37831e904a17c803264f1bc5ebb40bc8b161e89da1139c3de7de7c56837b1db"
+  },
+  "clangVersion": "clang version 15.0.7 (AWS 15.0.7-3.amzn2023.0.4)\nTarget: x86_64-amazon-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin\n",
+  "audit": {
+    "passed": true,
+    "bytes": 13468,
+    "sha256": "e6adfdc352884c946c5bae2373505935c39db0985603fcba287fc29ad70c505f",
+    "entry": "0x21d8",
+    "text": {
+      "name": "__text",
+      "segment": "__TEXT",
+      "address": 8664,
+      "size": 3156,
+      "fileOffset": 4568
+    },
+    "imports": [
+      {
+        "address": "0x3004",
+        "symbol": "_DNSServiceCreateConnection",
+        "originalExportVA": "0x300bd6dc"
+      },
+      {
+        "address": "0x3028",
+        "symbol": "_DNSServiceProcessResult",
+        "originalExportVA": "0x30044768"
+      },
+      {
+        "address": "0x301c",
+        "symbol": "_DNSServiceQueryRecord",
+        "originalExportVA": "0x30045568"
+      },
+      {
+        "address": "0x3014",
+        "symbol": "_DNSServiceRefDeallocate",
+        "originalExportVA": "0x3003fa20"
+      },
+      {
+        "address": "0x3020",
+        "symbol": "_DNSServiceRefSockFD",
+        "originalExportVA": "0x3003f994"
+      },
+      {
+        "address": "0x3010",
+        "symbol": "_DNSServiceRegisterRecord",
+        "originalExportVA": "0x300bd778"
+      },
+      {
+        "address": "0x300c",
+        "symbol": "___error",
+        "originalExportVA": "0x30001bb0"
+      },
+      {
+        "address": "0x3000",
+        "symbol": "__exit",
+        "originalExportVA": "0x300099f0"
+      },
+      {
+        "address": "0x3024",
+        "symbol": "_poll",
+        "originalExportVA": "0x30067ae0"
+      },
+      {
+        "address": "0x3008",
+        "symbol": "_usleep",
+        "originalExportVA": "0x300243a0"
+      },
+      {
+        "address": "0x3018",
+        "symbol": "_write",
+        "originalExportVA": "0x30009860"
+      }
+    ],
+    "commands": [
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x1",
+      "0x2",
+      "0xb",
+      "0xe",
+      "0x5",
+      "0xc"
+    ],
+    "sourceLibrarySHA256": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2",
+    "ownSymbols": {
+      "_logline": "0x24e0",
+      "_number": "0x25bc",
+      "_ask": "0x26b0",
+      "_registered": "0x2804",
+      "_pump": "0x28a0",
+      "_answered": "0x2af0",
+      "_payload": "0x2d3c",
+      "_address": "0x2fe6",
+      "_name": "0x2fea",
+      "_api__exit": "0x3000",
+      "_api_DNSServiceCreateConnection": "0x3004",
+      "_api_usleep": "0x3008",
+      "_api___error": "0x300c",
+      "_api_DNSServiceRegisterRecord": "0x3010",
+      "_api_DNSServiceRefDeallocate": "0x3014",
+      "_api_write": "0x3018",
+      "_api_DNSServiceQueryRecord": "0x301c",
+      "_api_DNSServiceRefSockFD": "0x3020",
+      "_api_poll": "0x3024",
+      "_api_DNSServiceProcessResult": "0x3028",
+      "_registration": "0x3030",
+      "_query": "0x3038",
+      "_record": "0x3050",
+      "_reg_done": "0x3054",
+      "_reg_good": "0x3058",
+      "_callback_bad": "0x305c",
+      "_log_failed": "0x3060",
+      "_memset": "0x2e10",
+      "_start": "0x21d8"
+    },
+    "scope": "Own program and eager original imports; this audit does not execute it."
+  },
+  "toolSHA256": {
+    "clang": "f75850dd02e3aa1b517522d0e9050c837bd652e6a762abbc2c1dadcc8d84102f",
+    "linker": "6aef3cf7d8cd6d65d44c1762b3f4af60f2521312601e2e8ed39dab3ada42c0af",
+    "originalLibrary": "6243ad0b202fa364ac7b243f0416013f81416e32abb3c69e30c6b020250448e2"
+  }
+}

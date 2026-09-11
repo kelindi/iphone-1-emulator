@@ -1,0 +1,174 @@
+[
+  {
+    "arm": 0,
+    "condition": "((insn & 0x0c000000u) == 0x00000000u &&        /* the DP encoding space */\n        (insn & 0x01900000u) != 0x01000000u &&        /* not misc: MSR/BX/CLZ/DSP */\n        !((insn & 0x0e000000u) == 0x00000000u &&\n          (insn & 0x00000090u) == 0x00000090u))",
+    "groups": [
+      0,
+      1
+    ]
+  },
+  {
+    "arm": 1,
+    "condition": "((insn & 0x0f000000u) == 0x0a000000u ||\n        (insn & 0x0f000000u) == 0x0b000000u)",
+    "groups": [
+      5
+    ]
+  },
+  {
+    "arm": 2,
+    "condition": "((insn & 0x0fc000f0u) == 0x00000090u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 3,
+    "condition": "((insn & 0x0f8000f0u) == 0x00800090u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 4,
+    "condition": "((insn & 0x0f900090u) == 0x01000080u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 5,
+    "condition": "((insn & 0x0e000000u) == 0x06000000u &&\n               (insn & 0x00000010u) != 0)",
+    "groups": [
+      3
+    ]
+  },
+  {
+    "arm": 6,
+    "condition": "((insn & 0x0c000000u) == 0x04000000u)",
+    "groups": [
+      2,
+      3
+    ]
+  },
+  {
+    "arm": 7,
+    "condition": "((insn & 0x0e000000u) == 0x08000000u)",
+    "groups": [
+      4
+    ]
+  },
+  {
+    "arm": 8,
+    "condition": "((insn & 0x0e000000u) == 0x00000000u &&\n               (insn & 0x00000090u) == 0x00000090u &&\n               (insn & 0x00000060u) != 0x00000000u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 9,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01900f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 10,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01800f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 11,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01b00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 12,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01a00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 13,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01d00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 14,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01c00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 15,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01f00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 16,
+    "condition": "((insn & 0x0ff00ff0u) == 0x01e00f90u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 17,
+    "condition": "((insn & 0x0fb00ff0u) == 0x01000090u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 18,
+    "condition": "((insn & 0x0e000000u) == 0x00000000u &&\n               (insn & 0x00000090u) == 0x00000090u)",
+    "groups": [
+      0
+    ]
+  },
+  {
+    "arm": 19,
+    "condition": "(insn == 0xe320f003u)",
+    "groups": [
+      1
+    ]
+  },
+  {
+    "arm": 20,
+    "condition": "((insn & 0x0f000010u) == 0x0e000010u)",
+    "groups": [
+      7
+    ]
+  },
+  {
+    "arm": 21,
+    "condition": "((insn & 0x0f000e10u) == 0x0e000a00u ||     /* VFP CDP          */\n               (insn & 0x0e000e00u) == 0x0c000a00u)",
+    "groups": [
+      6,
+      7
+    ]
+  },
+  {
+    "arm": 22,
+    "condition": "((insn & 0x0f000000u) == 0x0f000000u)",
+    "groups": [
+      7
+    ]
+  },
+  {
+    "arm": 23,
+    "condition": "((insn & 0x0c000000u) == 0x00000000u)",
+    "groups": [
+      0,
+      1
+    ]
+  }
+]

@@ -8,22 +8,18 @@ The physical web phone, all16 app launches, several persistent organizer workflo
 RTC updates and compiled-seed reuse are implemented. The full product gates below
 are still open. [The project overview](README.md) links current evidence.
 
-1. Correct actual populated-app graphics failures. The maintained Safari service
-   reaches pages but stalls at a form; Photos discovers two images but fails its
-   next-image transition. Preserve these first failures in [093](../tweets/093_default_local_demo_qualification_failure.md)
-   and [094](../tweets/094_photos_first_workflow_failure.md). A bounded Safari
-   source-stride correction passes native and actual WASM tests; browser validation
-   is pending. Its effect on Photos is unproven.
-2. Establish why the own HTTP daemon disappears on the accelerated default before
-   distributing it. Original exit/signal paths are qualified; no runtime cause or
-   lifecycle fix is established. Earlier successful091 used software composition.
-3. Target app-launch CPU work using exact executed-instruction counts. LTO's5.81%
-   fixed-work improvement yields only~50ms warm Settings median improvement and a
-   Home tail regression, so it stays parked. Calculator feedback passes its narrow
-   150ms gate, while multi-second app launches remain below target.
-4. Resume downstream audio after these blocking graphics workflows are understood.
-   Guest PCM consumption is verified in an isolated model; audible output, Camera,
-   external networking, rotation and broad media functionality remain open.
+1. Prioritize a measurable improvement in actual app-launch responsiveness. Warm
+   Settings remains around3–3.6 seconds in recorded cloud Chrome tests, above the
+   two-second target. The next targeted warm Settings/Home measurement is pending;
+   the completed100M instruction census is diagnostic evidence, not a speedup.
+2. The bounded Safari source-row correction is integrated in the default local
+   package after saved-phone upgrade/offline checks; see [096](../tweets/096_graphics_fix_default_release.md).
+   Photos navigation and the default Safari demo service remain unaccepted. A
+   follow-up Photos attempt has no completed acceptance result.
+3. Defer further audio/network research while resolving speed. Close out existing
+   diagnostic evidence without interpreting incomplete runs as app acceptance.
+4. Use [the completion checklist](completion-checklist.md) to distinguish useful
+   workflows from app launches, and integrated changes from isolated experiments.
 
 ## Product destination
 

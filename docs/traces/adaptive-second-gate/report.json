@@ -1,0 +1,936 @@
+{
+  "passed": false,
+  "correctnessPassed": true,
+  "performancePassed": false,
+  "scope": "Stage 2 fixed CPU throughput gate; not browser or Mac latency acceptance.",
+  "host": {
+    "node": "v24.14.1",
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz"
+  },
+  "timingBoundary": "CPU spans engine setup through teardown after identical emu_init+snapshot restore, subtracting only measured main-thread CPU for checkpoint serialization/hash/comparison, report I/O and statistics sampling; background compilation CPU during those exclusions remains counted. Wall time accumulates setup/install, original inputs/chunks including drains, and teardown. Common initialization/restore and one-time module/WABT loading are outside both measurements. Runtime instances remain alive across warmup and timed replays; installed generated units are reset every replay.",
+  "policy": {
+    "warmupsPerVersionPerWorkload": 1,
+    "timedOrder": [
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    "A": "independently frozen seeded engine",
+    "B": "adaptive candidate",
+    "aggregation": "Mean CPU milliseconds per workload/version; geometric mean of A/B ratios >= 2, each ratio >= 1.",
+    "minimumGeometricMean": 2,
+    "minimumIndividual": 1
+  },
+  "identities": {
+    "/home/vercel-sandbox/iphone-1/docs/traces/adaptive-workloads/report.json": "1479a8d0d8478d088344d494b33be8e0c25ccfc9c5f278eb46ab68a3f663609b",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/baseline-final/freeze-manifest.json": "b18ef5a92f31196eea95f3587a65df06983a3417951f0be3448c5917766762ce",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/baseline-final/site/dist/emu.js": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/baseline-final/site/dist/emu.wasm": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/baseline-final/site/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/baseline-final/site/jit/regions.json": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/workload-corrective-runtime/build-report.json": "886faf8a3d135f2e51e4dfbc0306dc45aaa25618ef6fe659322cff1af3a64f89",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/workload-corrective-runtime/workload.cjs": "915e2190643420a2892051fb04a2a113836ef1c229b2d8d814e16d77b2290f4f",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/workload-corrective-runtime/workload.wasm": "7d0c08a538879e7813d484b66ba76909ace4a3c217ee02206b49e8e72668b71c",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/benchmark-workloads.mjs": "a4807abb825255747e379945303350135f0ae7da7e1bf29688e658daa04c0a00",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/workload-compiler.mjs": "8af98b73c873b76f8c6c902cc301646a3360bc1535e82a6d792c90aea5a69af9",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/module-cache.mjs": "0bfd37d3f215cac747d6720a10e8546a3e3a2149f73f0a7e7bbfbfcb678ac11c",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/workloads.mjs": "d17a24af0fc8897536d6799e86afcffeb7ca97bb9ffad30c310318deecc30eb6",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/unit.mjs": "3b87c6b62a46a9db3b48870a6f5680f0a436fb6fb41e4acffdd916b98628cf3a",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/decode.mjs": "d18da7dc9fdc54c984c5291fcfbba1decf6af96f8c625f282121a16e114a6606",
+    "/home/vercel-sandbox/iphone-1/tools/jit/adaptive/emit.mjs": "d453a9d741c82b33293554dd21a5ffa3697ab165fb1940321ca25a2b906fb91f",
+    "/home/vercel-sandbox/iphone-1/package-lock.json": "ee9872cec640c55276e044394e3351ec2fa7fe24cd7f29ae659bead8bf122642",
+    "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/workload-home.snap": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "/home/vercel-sandbox/iphone-1/web/firmware/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
+    "/home/vercel-sandbox/iphone-1/web/firmware/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10"
+  },
+  "runs": [
+    {
+      "workload": "settings",
+      "version": "A",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 30015.374,
+      "wallMs": 17610.367943999987,
+      "totalProcessCpuMs": 31910.501,
+      "excludedMainCpuMs": 1895.1269999999997,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "generated": 460044763
+    },
+    {
+      "workload": "settings",
+      "version": "B",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 44758.029,
+      "wallMs": 42232.729145999954,
+      "totalProcessCpuMs": 46587.909,
+      "excludedMainCpuMs": 1829.8799999999997,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135522619,
+        20348898,
+        446789867,
+        0,
+        1979295,
+        461692,
+        17587891,
+        1,
+        0,
+        320019,
+        48961311,
+        105828,
+        48855483
+      ],
+      "generated": 135522619,
+      "compiler": {
+        "attempts": 9703,
+        "captureRefusals": 366,
+        "unsupported": 3235,
+        "compiled": 1106,
+        "installed": 6468,
+        "rejected": 0,
+        "binaryBytes": 4312860,
+        "compileCpuMs": 4777.1080000001675,
+        "compileWallMs": 4074.7289909993196,
+        "moduleCache": {
+          "hits": 5362,
+          "misses": 1106,
+          "evictions": 492,
+          "bytes": 33435259,
+          "entries": 614
+        }
+      },
+      "attempts": 9703
+    },
+    {
+      "workload": "settings",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 1,
+      "cpuMs": 16684.313,
+      "wallMs": 16729.207950000156,
+      "totalProcessCpuMs": 18518.961,
+      "excludedMainCpuMs": 1834.6480000000004,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "generated": 460044763
+    },
+    {
+      "workload": "settings",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 2,
+      "cpuMs": 44413.975,
+      "wallMs": 42442.68519400011,
+      "totalProcessCpuMs": 46435.986,
+      "excludedMainCpuMs": 2022.0109999999997,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135522619,
+        20348898,
+        446789867,
+        0,
+        1979295,
+        461692,
+        17587891,
+        1,
+        0,
+        320019,
+        48961311,
+        105828,
+        48855483
+      ],
+      "generated": 135522619,
+      "compiler": {
+        "attempts": 9703,
+        "captureRefusals": 366,
+        "unsupported": 3235,
+        "compiled": 1106,
+        "installed": 6468,
+        "rejected": 0,
+        "binaryBytes": 4312860,
+        "compileCpuMs": 4503.279000000131,
+        "compileWallMs": 4034.312848999063,
+        "moduleCache": {
+          "hits": 5362,
+          "misses": 1106,
+          "evictions": 492,
+          "bytes": 33435259,
+          "entries": 614
+        }
+      },
+      "attempts": 9703
+    },
+    {
+      "workload": "settings",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 3,
+      "cpuMs": 44980.034999999996,
+      "wallMs": 42886.08142500016,
+      "totalProcessCpuMs": 47374.903,
+      "excludedMainCpuMs": 2394.868,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135522619,
+        20348898,
+        446789867,
+        0,
+        1979295,
+        461692,
+        17587891,
+        1,
+        0,
+        320019,
+        48961311,
+        105828,
+        48855483
+      ],
+      "generated": 135522619,
+      "compiler": {
+        "attempts": 9703,
+        "captureRefusals": 366,
+        "unsupported": 3235,
+        "compiled": 1106,
+        "installed": 6468,
+        "rejected": 0,
+        "binaryBytes": 4312860,
+        "compileCpuMs": 4820.727000000115,
+        "compileWallMs": 4388.339833000471,
+        "moduleCache": {
+          "hits": 5362,
+          "misses": 1106,
+          "evictions": 492,
+          "bytes": 33435259,
+          "entries": 614
+        }
+      },
+      "attempts": 9703
+    },
+    {
+      "workload": "settings",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 4,
+      "cpuMs": 16860.715,
+      "wallMs": 16954.327201000007,
+      "totalProcessCpuMs": 18743.678,
+      "excludedMainCpuMs": 1882.963,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "passed": true,
+      "generated": 460044763
+    },
+    {
+      "workload": "contacts",
+      "version": "A",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 16917.478,
+      "wallMs": 16977.74002299999,
+      "totalProcessCpuMs": 18864.733,
+      "excludedMainCpuMs": 1947.2550000000008,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "generated": 438126814
+    },
+    {
+      "workload": "contacts",
+      "version": "B",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 45910.538,
+      "wallMs": 43394.20935700022,
+      "totalProcessCpuMs": 48017.65,
+      "excludedMainCpuMs": 2107.112,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135309174,
+        20988593,
+        446361637,
+        0,
+        1980280,
+        448128,
+        18228662,
+        1,
+        0,
+        331522,
+        47241373,
+        98951,
+        47142422
+      ],
+      "generated": 135309174,
+      "compiler": {
+        "attempts": 10107,
+        "captureRefusals": 328,
+        "unsupported": 3347,
+        "compiled": 1162,
+        "installed": 6760,
+        "rejected": 0,
+        "binaryBytes": 6150199,
+        "compileCpuMs": 5698.054000000175,
+        "compileWallMs": 5135.378448999516,
+        "moduleCache": {
+          "hits": 5598,
+          "misses": 1162,
+          "evictions": 441,
+          "bytes": 33537995,
+          "entries": 721
+        }
+      },
+      "attempts": 10107
+    },
+    {
+      "workload": "contacts",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 1,
+      "cpuMs": 17337.061,
+      "wallMs": 17412.40406899969,
+      "totalProcessCpuMs": 19296.236,
+      "excludedMainCpuMs": 1959.175,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "generated": 438126814
+    },
+    {
+      "workload": "contacts",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 2,
+      "cpuMs": 45960.609,
+      "wallMs": 43351.42242399941,
+      "totalProcessCpuMs": 48012.931,
+      "excludedMainCpuMs": 2052.3220000000006,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135309174,
+        20988593,
+        446361637,
+        0,
+        1980280,
+        448128,
+        18228662,
+        1,
+        0,
+        331522,
+        47241373,
+        98951,
+        47142422
+      ],
+      "generated": 135309174,
+      "compiler": {
+        "attempts": 10107,
+        "captureRefusals": 328,
+        "unsupported": 3347,
+        "compiled": 1162,
+        "installed": 6760,
+        "rejected": 0,
+        "binaryBytes": 6150199,
+        "compileCpuMs": 5776.67000000018,
+        "compileWallMs": 5065.614543000993,
+        "moduleCache": {
+          "hits": 5598,
+          "misses": 1162,
+          "evictions": 441,
+          "bytes": 33537995,
+          "entries": 721
+        }
+      },
+      "attempts": 10107
+    },
+    {
+      "workload": "contacts",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 3,
+      "cpuMs": 45501.443999999996,
+      "wallMs": 43107.63526099961,
+      "totalProcessCpuMs": 47457.058,
+      "excludedMainCpuMs": 1955.6140000000005,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        135309174,
+        20988593,
+        446361637,
+        0,
+        1980280,
+        448128,
+        18228662,
+        1,
+        0,
+        331522,
+        47241373,
+        98951,
+        47142422
+      ],
+      "generated": 135309174,
+      "compiler": {
+        "attempts": 10107,
+        "captureRefusals": 328,
+        "unsupported": 3347,
+        "compiled": 1162,
+        "installed": 6760,
+        "rejected": 0,
+        "binaryBytes": 6150199,
+        "compileCpuMs": 5490.7410000001555,
+        "compileWallMs": 4934.863257999707,
+        "moduleCache": {
+          "hits": 5598,
+          "misses": 1162,
+          "evictions": 441,
+          "bytes": 33537995,
+          "entries": 721
+        }
+      },
+      "attempts": 10107
+    },
+    {
+      "workload": "contacts",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 4,
+      "cpuMs": 16963.152,
+      "wallMs": 17050.065174999996,
+      "totalProcessCpuMs": 19035.728,
+      "excludedMainCpuMs": 2072.576,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "passed": true,
+      "generated": 438126814
+    },
+    {
+      "workload": "notes",
+      "version": "A",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 16950.945,
+      "wallMs": 17021.93896300014,
+      "totalProcessCpuMs": 18816.074,
+      "excludedMainCpuMs": 1865.1289999999997,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "generated": 418394167
+    },
+    {
+      "workload": "notes",
+      "version": "B",
+      "phase": "warmup",
+      "ordinal": 0,
+      "cpuMs": 43839.102,
+      "wallMs": 42262.2008519994,
+      "totalProcessCpuMs": 45806.164,
+      "excludedMainCpuMs": 1967.062,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        144823298,
+        20785615,
+        437317920,
+        0,
+        2126427,
+        512929,
+        17780096,
+        1,
+        0,
+        366162,
+        39734254,
+        167687,
+        39566567
+      ],
+      "generated": 144823298,
+      "compiler": {
+        "attempts": 10342,
+        "captureRefusals": 282,
+        "unsupported": 2882,
+        "compiled": 1443,
+        "installed": 7460,
+        "rejected": 0,
+        "binaryBytes": 4755379,
+        "compileCpuMs": 4787.2730000000865,
+        "compileWallMs": 4394.206218995911,
+        "moduleCache": {
+          "hits": 6017,
+          "misses": 1443,
+          "evictions": 738,
+          "bytes": 33324278,
+          "entries": 705
+        }
+      },
+      "attempts": 10342
+    },
+    {
+      "workload": "notes",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 1,
+      "cpuMs": 17019.950999999997,
+      "wallMs": 17097.88892699947,
+      "totalProcessCpuMs": 18852.224,
+      "excludedMainCpuMs": 1832.2730000000001,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "generated": 418394167
+    },
+    {
+      "workload": "notes",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 2,
+      "cpuMs": 43818.208,
+      "wallMs": 42309.39483500045,
+      "totalProcessCpuMs": 45794.215,
+      "excludedMainCpuMs": 1976.007,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        144823298,
+        20785615,
+        437317920,
+        0,
+        2126427,
+        512929,
+        17780096,
+        1,
+        0,
+        366162,
+        39734254,
+        167687,
+        39566567
+      ],
+      "generated": 144823298,
+      "compiler": {
+        "attempts": 10342,
+        "captureRefusals": 282,
+        "unsupported": 2882,
+        "compiled": 1443,
+        "installed": 7460,
+        "rejected": 0,
+        "binaryBytes": 4755379,
+        "compileCpuMs": 4678.0180000000655,
+        "compileWallMs": 4367.513422994467,
+        "moduleCache": {
+          "hits": 6017,
+          "misses": 1443,
+          "evictions": 738,
+          "bytes": 33324278,
+          "entries": 705
+        }
+      },
+      "attempts": 10342
+    },
+    {
+      "workload": "notes",
+      "version": "B",
+      "phase": "timed",
+      "ordinal": 3,
+      "cpuMs": 43756.253,
+      "wallMs": 42231.984856999945,
+      "totalProcessCpuMs": 45570.037,
+      "excludedMainCpuMs": 1813.7839999999997,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "runtime": [
+        144823298,
+        20785615,
+        437317920,
+        0,
+        2126427,
+        512929,
+        17780096,
+        1,
+        0,
+        366162,
+        39734254,
+        167687,
+        39566567
+      ],
+      "generated": 144823298,
+      "compiler": {
+        "attempts": 10342,
+        "captureRefusals": 282,
+        "unsupported": 2882,
+        "compiled": 1443,
+        "installed": 7460,
+        "rejected": 0,
+        "binaryBytes": 4755379,
+        "compileCpuMs": 4583.033000000063,
+        "compileWallMs": 4276.026161993388,
+        "moduleCache": {
+          "hits": 6017,
+          "misses": 1443,
+          "evictions": 738,
+          "bytes": 33324278,
+          "entries": 705
+        }
+      },
+      "attempts": 10342
+    },
+    {
+      "workload": "notes",
+      "version": "A",
+      "phase": "timed",
+      "ordinal": 4,
+      "cpuMs": 17072.394,
+      "wallMs": 17159.69579599786,
+      "totalProcessCpuMs": 19041.833,
+      "excludedMainCpuMs": 1969.4390000000003,
+      "rowCpuAccounting": "Whole-process setup-through-teardown CPU minus main-thread-only excluded work; retains background CPU during exclusions.",
+      "credits": 600000000,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "passed": true,
+      "generated": 418394167
+    }
+  ],
+  "results": [
+    {
+      "workload": "settings",
+      "controlCpuMs": 16772.514,
+      "candidateCpuMs": 44697.005,
+      "speedup": 0.3752491693794696
+    },
+    {
+      "workload": "contacts",
+      "controlCpuMs": 17150.1065,
+      "candidateCpuMs": 45731.02649999999,
+      "speedup": 0.3750212451496142
+    },
+    {
+      "workload": "notes",
+      "controlCpuMs": 17046.1725,
+      "candidateCpuMs": 43787.2305,
+      "speedup": 0.3892955161893603
+    }
+  ],
+  "geometricMean": 0.3797971232650648
+}

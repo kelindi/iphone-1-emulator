@@ -34,7 +34,10 @@ import hfsx_extract as H  # noqa: E402
 
 
 class Work:
-    def __init__(self, path):
+    def __init__(self, path, *, reuse_catalog_ids=False):
+        if not isinstance(reuse_catalog_ids, bool):
+            raise TypeError("reuse_catalog_ids must be boolean")
+        self.reuse_catalog_ids = reuse_catalog_ids
         self.vol = H.Volume(path)
         self.path = path
         self.bs = self.vol.block_size
@@ -322,8 +325,11 @@ class Work:
         if not sibling:
             raise SystemExit("file template /var/root/Library/Preferences missing")
         data = bytearray(sibling[4][sibling[3]:])
-        ident = self.next_catalog_id
-        self.next_catalog_id += 1
+        if self.reuse_catalog_ids:
+            ident = self._new_catalog_id()
+        else:
+            ident = self.next_catalog_id
+            self.next_catalog_id += 1
         blocks = (len(data_bytes) + self.bs - 1) // self.bs
         start = self._allocate_blocks(blocks)
         struct.pack_into(">H", data, 2, 0x0002)
@@ -536,11 +542,20 @@ def _der_certificate(subject_cn, issuer_cn, subject_key, signer_key,
         _der(0x30, tbs + algorithm + _der(0x03, b"\0" + signature)))
 
 
-def _local_activation_data():
+def _local_activation_data(*, device_key=None, include_device_keys=False):
+    """Build a coherent own activation bundle without changing any image.
+
+    The default retains the historical three-item return. Explicit callers may
+    reuse an existing RSA key and request a fourth mapping of normal Lockdown
+    PEM filenames to bytes. Callers must keep private PEM material confidential.
+    """
+    if device_key is not None and not isinstance(device_key, rsa.RSAPrivateKey):
+        raise TypeError("device_key must be an RSA private key")
     activation_key = rsa.generate_private_key(public_exponent=65537,
                                                key_size=2048)
     ca_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
-    device_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    if device_key is None:
+        device_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
     not_before = datetime(2007, 1, 1, tzinfo=timezone.utc)
     not_after = datetime(2037, 12, 31, tzinfo=timezone.utc)
 
@@ -594,11 +609,21 @@ def _local_activation_data():
     ca_key.public_key().verify(
         device_cert.signature, device_cert.tbs_certificate_bytes,
         padding.PKCS1v15(), device_cert.signature_hash_algorithm)
-    return activation_pem, ca_pem, {
+    result = (activation_pem, ca_pem, {
         "DeviceCertificate": device_pem,
         "AccountToken": account_token,
         "AccountTokenSignature": signature,
+    })
+    if not include_device_keys:
+        return result
+    keys = {
+        "device_private_key.pem": device_key.private_bytes(
+            serialization.Encoding.PEM, serialization.PrivateFormat.TraditionalOpenSSL,
+            serialization.NoEncryption()),
+        "device_public_key.pem": device_key.public_key().public_bytes(
+            serialization.Encoding.PEM, serialization.PublicFormat.PKCS1),
     }
+    return result + (keys,)
 
 
 def main():

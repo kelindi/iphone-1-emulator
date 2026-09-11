@@ -23,7 +23,8 @@ typedef enum {
     FW_ERR_NO_ROOM,      /* payload does not fit in guest RAM at load_addr */
     FW_ERR_KEY_REQUIRED, /* image has a KBAG but no key was supplied       */
     FW_ERR_INVALID_ARGUMENT,
-    FW_ERR_IV_REQUIRED   /* encrypted image needs an explicit unwrapped IV */
+    FW_ERR_IV_REQUIRED,  /* encrypted image needs an explicit unwrapped IV */
+    FW_ERR_BUSY          /* compiled execution/retirement prevents load */
 } fw_status_t;
 
 typedef struct {

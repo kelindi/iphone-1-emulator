@@ -1,0 +1,58 @@
+using raw file, bytes=5888896
+using raw file, bytes=36864
+using raw file, bytes=176160768
+layout virt_base=0xc0000000 phys_base=0x08000000 ram_size=0x10000000
+kernel_begin_pa=0x08000000 kernel_end_pa=0x085c4b80 entry_pa=0x0805f7f0 entry_va=0xc005f7f0
+devicetree_pa=0x085c5000 devicetree_va=0xc05c5000 devicetree_size=0x00009000
+boot_args_pa=0x085ce000 ramdisk_pa=0x085d0000 ramdisk_va=0xc05d0000 ramdisk_size=0x0a800000
+framebuffer_pa=0x12dd0000 vram_bytes=0x00960000 top_of_kernel_data_pa=0x13730000 cmdline=""
+WEATHER_EVENT pc=0000d050 cycles=10156362170 ttbr=16f74000 self=0012d7e0 r2=00134930 r3=30b1bcba
+REQUEST_HITS 1
+OBSERVER_CPU_UNCHANGED
+WEATHER_EVENT pc=0000d31c cycles=10185444558 ttbr=16f74000 self=0012d7e0 r2=00139220 r3=0013b740
+NSError address=0013b740
+ERROR_WORD offset=0 value=3886a65c
+ERROR_WORD offset=4 value=00000000
+ERROR_WORD offset=8 value=fffffc15
+ERROR_WORD offset=12 value=38861580
+ERROR_WORD offset=16 value=0013dc60
+ERROR_WORD offset=20 value=00000000
+ERROR_WORD offset=24 value=00000000
+ERROR_WORD offset=28 value=00000000
+ERROR_WORD offset=32 value=534f5050
+ERROR_WORD offset=36 value=642f2054
+ERROR_WORD offset=40 value=693f7767
+ERROR_WORD offset=44 value=3d69656d
+ERROR_WORD offset=48 value=46453633
+ERROR_WORD offset=52 value=37313435
+ERROR_WORD offset=56 value=4438332d
+ERROR_WORD offset=60 value=46342d32
+ERROR_WORD offset=64 value=392d3039
+ERROR_WORD offset=68 value=2d304643
+ERROR_WORD offset=72 value=42364435
+ERROR_WORD offset=76 value=39343946
+ERROR_WORD offset=80 value=34323739
+ERROR_WORD offset=84 value=70706126
+ERROR_WORD offset=88 value=65707974
+ERROR_WORD offset=92 value=6165773d
+DOMAIN_WORD offset=0 value=383e73b8 text=<fc>
+DOMAIN_WORD offset=4 value=000007c8 text=<unreadable>
+DOMAIN_WORD offset=8 value=308fd794 text=NSURLErrorDomain
+DOMAIN_WORD offset=12 value=00000010 text=<unreadable>
+DOMAIN_WORD offset=16 value=383e73b8 text=<fc>
+DOMAIN_WORD offset=20 value=000007c8 text=<unreadable>
+DOMAIN_WORD offset=24 value=308ec864 text=%@: second object of each pair must be non-nil
+DOMAIN_WORD offset=28 value=0000002e text=<unreadable>
+CLASS 3886a65c super=383f003c name=NSError ivars=3887b050
+CLASS 383f003c super=00000000 name=NSObject ivars=383f0884
+IVAR name=isa type=@ offset=0 value=3886a65c pointedText=<dc>
+OBSERVER_CPU_UNCHANGED
+
+reason=break-pc instructions=10186000000 pc=0x3056b520 cpsr=0x600f0010
+r0=0x00000000 r1=0x00618d44 r2=0x00000000 r3=0x62728862
+r4=0x88627288 r5=0x00678fc0 r6=0x000000a0 r7=0x2fffea7c
+r8=0x006188c0 r9=0x3800da94 r10=0x00000120 r11=0x00000360
+r12=0xff627288 r13=0x2fffea60 r14=0x00679323 r15=0x3056b520
+ttbr0=0x16f74000 sctlr=0x00c0380d M=1 unmapped_reads=205395 unmapped_writes=109183
+unmapped-pages: 0x3c400000 0x3cc04000 0x3cc0c000 0x38a00000 0x38c00000 0x38d00000
+last-pcs: 0x305685d0 0x30e9479c 0x30e947b0 0xc005a4a8 0x30409cba 0xc00601c4 0x30e9479c 0x3073566c 0xc002ad88 0x30002260 0xc005a27c 0xc00600ac 0xc005a2ec 0xc005a2f0 0xc0022cfc 0xc0061bb4 0xc00f0294 0xc00f0012 0xc0060020 0x3008b240 0xc005a2ec 0xc0028f78 0xc005aca2 0xc016323c 0xc00f010c 0xc00224d6 0xc0105322 0x303f5b9a 0xc005c2c0 0x303ff7a4 0x303ea21a 0x3056b520

@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "scope": "ABI2 result validation and cycle ownership, native C and actual generated WASM through C. No machine scheduler/admission qualification.",
+  "sources": {
+    "core/include/arm.h": "4ff01dc4656756557f7409571136039a6b581f69a9198e07b32acd93db265c00",
+    "core/include/arm_adaptive_jit.h": "7eea006e62862c8c98c60ecf7eec9e0667390e5526dbfe13386cb8e6a1457fd3",
+    "tools/jit/adaptive/tests/result-contract.c": "b099c9f090241c7ae98ec741ed03b9877afc96cbaf815d569ce037a1a4009b3a",
+    "tools/jit/adaptive/tests/bridge.c": "137d2e03e966f5c5a32481ccecde52f3c5fa4917f06590595ade55b7c7f8d4c9",
+    "tools/jit/adaptive/tests/bridge.mjs": "1031fcac9544e64d47215d034514462285dbc6d6da1d206912bbe39e8812c774",
+    "tools/jit/adaptive/decode.mjs": "fa4b851ed8dfaadf1e9b3e5b9448f0ca4974c63db5419797acc85d7c5bdcb4c4",
+    "tools/jit/adaptive/unit.mjs": "c94a1a70ac47fa5aaf2bb7e1a52c03c13a36bf9a11803d98cab0afcc33af38dd",
+    "tools/jit/adaptive/emit.mjs": "34284e29bdc29fdf4905623f5127dd5bb369787142577e31e0c199ede4740c04"
+  },
+  "commands": [
+    {
+      "cmd": "cc",
+      "args": [
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Icore/include",
+        "tools/jit/adaptive/tests/result-contract.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/result-contract-tests/native"
+      ],
+      "output": "",
+      "passed": true
+    },
+    {
+      "cmd": "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/result-contract-tests/native",
+      "args": [],
+      "output": "ABI2 result contract: valid exits and malformed results checked\n",
+      "passed": true
+    },
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcc",
+      "args": [
+        "-O2",
+        "-std=c11",
+        "-Icore/include",
+        "tools/jit/adaptive/tests/bridge.c",
+        "-sMODULARIZE=1",
+        "-sEXPORT_NAME=createBridge",
+        "-sENVIRONMENT=node",
+        "-sALLOW_TABLE_GROWTH=1",
+        "-sEXPORTED_RUNTIME_METHODS=[\"addFunction\",\"removeFunction\"]",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/result-contract-tests/bridge.cjs"
+      ],
+      "output": "",
+      "passed": true
+    },
+    {
+      "cmd": "/usr/local/bin/node",
+      "args": [
+        "tools/jit/adaptive/tests/bridge.mjs"
+      ],
+      "output": "PASS: actual WASM through C ABI2 bridge: zero budget, exact cycle credit, stale prefix, malformed result rejection\n",
+      "passed": true
+    }
+  ]
+}

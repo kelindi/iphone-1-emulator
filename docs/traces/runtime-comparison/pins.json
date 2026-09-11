@@ -1,0 +1,14 @@
+{
+  "fixtureBytes": 244887522,
+  "fixtureSHA256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+  "host": "Linux-6.18.40-x86_64-with-glibc2.34",
+  "cpus": 8,
+  "files": {
+    ".context/runtime-comparison/native-navigation.c": "67cc9ba9448550e76926e5c6f7584f72026cfa2fd1baff7cdd17b4176ea5cd5f",
+    ".context/runtime-comparison/native-navigation": "cd4945a3ab48ea095b8b3f26f888578b590d89e939d1a3106bc5e70340000112",
+    "web/emu_api.c": "87dd9c5c3ec3047e907935a2e61fb8a70d0975ec94184b50aa97d627646aaec1",
+    "web/dist/emu.wasm": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+    "web/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881",
+    ".context/mbx-stride-integration/native-build/core/libemucore.a": "25156d69418d2d77b971729fbfd561a29b79374a8211304578ae7879618d5025"
+  }
+}

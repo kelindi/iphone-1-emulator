@@ -1,0 +1,11 @@
+POST /dgw?imei=8521398C-A7CE-48CA-A650-619438FD26D0&apptype=weather&t=3 HTTP/1.1
+Accept: */*
+Accept-Language: en
+Accept-Encoding: gzip, deflate
+User-Agent: Apple iPhone v1.0 Weather v1.0.0.1A543a
+Content-Type: text/xml
+Content-Length: 354
+Connection: keep-alive
+Host: iphone-wu.apple.com
+
+<?xml version="1.0" encoding="utf-8"?><request devtype="Apple iPhone v1.0" deployver="Apple iPhone v1.0" app="YGoiPhoneClient" appver="1.0.0.1A543a" api="weather" apiver="1.0.0" acknotification="0000"><query id="30" timestamp="0" type="getforecastbylocationid"><list><id>USNY0996|2459115</id></list><language>en</language><unit>f</unit></query></request>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.iphone1.weather-http</string>
+    <key>ProgramArguments</key>
+    <array><string>/usr/libexec/iphone1-weather-http</string></array>
+    <key>RunAtLoad</key><true/>
+    <key>KeepAlive</key><true/>
+    <key>StandardOutPath</key><string>/var/log/iphone1-services.log</string>
+    <key>StandardErrorPath</key><string>/var/log/iphone1-services.log</string>
+</dict>
+</plist>

@@ -1,0 +1,130 @@
+{
+  "docs/traces/youtube-auth-probe/runtime-audit.json": {
+    "bytes": 3502,
+    "sha256": "e1da625cafcac0622516e05f31d212c6edb5c3d491d79bfc398f0f91e099b706"
+  },
+  "docs/traces/youtube-auth-probe/previous-response-equality.json": {
+    "bytes": 2514,
+    "sha256": "e380b7c4e7cd48a658ccd1d19f04dda2f806c975a0c110fe4b61a2719d1e82d3"
+  },
+  "docs/traces/youtube-auth-probe/old-identity-auth-proof.json": {
+    "bytes": 1508,
+    "sha256": "d05ed0fcef8712551850c7c5c716c40c26ab526523424c2f8c844c2c517e6dd9"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-identity-install.json": {
+    "bytes": 3169,
+    "sha256": "8863909985b98cd4ceed2c279480f2247d1115af83a351156195afb757396ff4"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-identity-readback.json": {
+    "bytes": 622,
+    "sha256": "a79abe3a980a3e7983320e4ccfb1fdcf949d6bddf55600285c5e23f573885601"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-browser-report.json": {
+    "bytes": 18964,
+    "sha256": "e7bbd5671a85c49dd5d5070d3f4425df5a78b5f77abad40d8fb18a9b7b8d6752"
+  },
+  "docs/traces/youtube-auth-probe/identity-install.json": {
+    "bytes": 3204,
+    "sha256": "3906b5324208a0ea90513f88435e47074c2d30a7a34b2aca23300434239b1ded"
+  },
+  "docs/traces/youtube-auth-probe/old-identity-recovered-log.json": {
+    "bytes": 1497,
+    "sha256": "c317e79f75411041744f3a11127f05a3fb434f55fa54cd898f17f7da3018ac4e"
+  },
+  "docs/traces/youtube-auth-probe/old-identity-recovered-service.log": {
+    "bytes": 8905,
+    "sha256": "050bb6dbc87e35ffda467145f910024baec1f1b9cf929aa013989d2f9ccf8129"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-auth-proof.json": {
+    "bytes": 120,
+    "sha256": "15c8c6a26640f3b6291d7432b662e188c9c62fbae2e1a28114349abbb8ae079b"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-recovered-log.json": {
+    "bytes": 2027,
+    "sha256": "87a7dd7bd6945ab5f7f120e01e18094f9040320e8313d4fb712da0f6ca130c5a"
+  },
+  "docs/traces/youtube-auth-probe/wrong-path-recovered-service.log": {
+    "bytes": 5180,
+    "sha256": "7effbda634a29735e1b76ca2f625abd7b091bfeab457257542d2d1b0f684c060"
+  },
+  "docs/traces/youtube-auth-probe/README.md": {
+    "bytes": 6120,
+    "sha256": "e08d84582ae2095db7ab5771783b28f1957e9c78c165fbe7c507635691952f7b"
+  },
+  "docs/traces/youtube-auth-probe/native-boot.json": {
+    "bytes": 431,
+    "sha256": "60bd06313b0351a7e667d0c7479ec40cdf63b4889699a8a351d936b70a5164e1"
+  },
+  "docs/traces/youtube-auth-probe/auth-proof.json": {
+    "bytes": 1871,
+    "sha256": "36adb3c8899241fe0af4a2efb234fe40c2667289e0b4b53a576d49fc719ad2e4"
+  },
+  "docs/traces/youtube-auth-probe/service.log": {
+    "bytes": 9265,
+    "sha256": "b58c4b388760ceddeba3b8595376e41c8de9a682966e218a5e0ead8cb2f594b4"
+  },
+  "docs/traces/youtube-auth-probe/guest-public-key.pem": {
+    "bytes": 426,
+    "sha256": "7f07ca3e8d342680dcd9706072ff6acdb2db6ba189fa0ebd448ed4e4cee51752"
+  },
+  "docs/traces/youtube-auth-probe/device-certificate.pem": {
+    "bytes": 1107,
+    "sha256": "562b8b44b6afea4d9879e9b065b7c6b7e74a63bad1e40ad54770c25dcb24fb34"
+  },
+  "docs/traces/youtube-auth-probe/identity-readback.json": {
+    "bytes": 625,
+    "sha256": "1663700f0164d1270b39c759fc62842c7189ee07826380d1d540c37a67933264"
+  },
+  "docs/traces/youtube-auth-probe/browser-report.json": {
+    "bytes": 20401,
+    "sha256": "f8275bd512160b7f079b4eebf7da9a75802de440714c748e1cc601bbe1676b9c"
+  },
+  "docs/traces/youtube-auth-probe/review.json": {
+    "bytes": 1552,
+    "sha256": "882a7f1d48cf86d9512bde9044bc4d838581a1e3f32964fce91a3c4758068a95"
+  },
+  "docs/traces/youtube-auth-probe/00-default-home.png": {
+    "bytes": 246247,
+    "sha256": "a3681df9366dc4eb14ac70183a4a0c7ac13a104420121f2f39fc73f73d3861b6"
+  },
+  "docs/traces/youtube-auth-probe/00-default-home-guest.png": {
+    "bytes": 136951,
+    "sha256": "b7b9fda64a74551199d5e6e4c5b5b8be224cd834d37f8b31df6fd1c86ed106fb"
+  },
+  "docs/traces/youtube-auth-probe/01-imported.png": {
+    "bytes": 216957,
+    "sha256": "04a2e76405c056cc2559f2bd96f3ee5d78a77beef832e83583cb9e1758d96325"
+  },
+  "docs/traces/youtube-auth-probe/01-imported-guest.png": {
+    "bytes": 107629,
+    "sha256": "6cacd651567da7d3ea2723a71e10a7754b42dd186f2820049b9438360086ab9e"
+  },
+  "docs/traces/youtube-auth-probe/02-youtube.png": {
+    "bytes": 116903,
+    "sha256": "72f330a45a9faf9e18f4d254b53c11e0c0788d29a8e60657c19331193425ec8d"
+  },
+  "docs/traces/youtube-auth-probe/02-youtube-guest.png": {
+    "bytes": 14719,
+    "sha256": "f714e39d68d9b19c9382bcbc75f9bccf7bfeb22f94bf3ddf67b09e670f0c340c"
+  },
+  "docs/traces/youtube-auth-probe/03-exported.png": {
+    "bytes": 162465,
+    "sha256": "252e9dcbd6a551d2cccbd775a7d6e520dae6f248c523a88accb2f00d9590ca4e"
+  },
+  "docs/traces/youtube-auth-probe/03-exported-guest.png": {
+    "bytes": 55548,
+    "sha256": "125b82337aec995c3736c057ec871d0b961f96c1ccadf87f67a341b903db6c99"
+  },
+  "docs/traces/youtube-auth-probe/final.png": {
+    "bytes": 162465,
+    "sha256": "252e9dcbd6a551d2cccbd775a7d6e520dae6f248c523a88accb2f00d9590ca4e"
+  },
+  "tweets/videos/youtube_device_signature.mp4": {
+    "bytes": 1111652,
+    "sha256": "0f6756145a06f044071c629ae338009736699963659abfb286a5f19f8b92ef8c"
+  },
+  "tweets/thumbnails/youtube_device_signature.jpg": {
+    "bytes": 30829,
+    "sha256": "02252a3087911cba67f5fb6f2b331d56ccdff52f5870a48fd64585bb6f4b956d"
+  }
+}

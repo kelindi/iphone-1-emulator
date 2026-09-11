@@ -1,0 +1,10 @@
+{
+  "snapshot": ".context/youtube-services/rotation-v2/control-1b-trace/post-player.snap",
+  "snapshotSHA256": "b9fedd264f1101415413b0c5d68bddc1b681dff0d7ca7054066714e986efd28d",
+  "logBytes": 37953,
+  "logSHA256": "5a5bc9267d27e92af448b5776fc8d2f902a5a6882163a28beb2375d1483f09e9",
+  "guestPublicKeySHA256": "7f07ca3e8d342680dcd9706072ff6acdb2db6ba189fa0ebd448ed4e4cee51752",
+  "certificateSHA256": "00aa7636849c1a6f6e2a44c2b84120f45cfad45c1b2754c8dd0735127c21501a",
+  "certificateMatchesGuestPublicKey": true,
+  "scope": "Snapshot backing-file readback only; dirty caches may be absent. No private key read or guest execution."
+}

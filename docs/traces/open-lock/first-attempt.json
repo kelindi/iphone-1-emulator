@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "name": "01-fresh-open",
+      "seconds": 10.786273203999999
+    },
+    {
+      "name": "02-short-slide-stays-locked",
+      "seconds": 14.242971793999999
+    },
+    {
+      "name": "full slide opens Home",
+      "seconds": 18.487493407000002
+    }
+  ],
+  "result": "fail",
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#save')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"save\" class=\"text-button\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at save (/home/vercel-sandbox/iphone-1/web/tests/open-lock.mjs:43:31)\n    at async file:///home/vercel-sandbox/iphone-1/web/tests/open-lock.mjs:53:3"
+}

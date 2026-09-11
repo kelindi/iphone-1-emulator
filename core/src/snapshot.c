@@ -80,6 +80,9 @@
  *
  * Copyright (c) 2026 j0shua-SYSON. MIT licensed.
  */
+#ifdef S5LBOX_ADAPTIVE_JIT
+#include "arm_adaptive_dispatch.h"
+#endif
 #include "snapshot.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -211,7 +214,11 @@ SNAP_SIZE_GUARD(s5l_stub_t,        56,    "snap_stubs");
 SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +8 bytes are host-only clock carry policy/debt, explicitly excluded
  * from snap_mach. Native byte-identity contracts pin the unchanged v39 format. */
-SNAP_SIZE_GUARD(s5l8900_t,         127496, "snap_mach");
+/* +8 bytes are the bus's host-only RAM-write notification callback. It is
+ * live compiler wiring, not guest state; no stream fields or version change.
+ * Code-version tables live outside the machine and require epoch invalidation
+ * before restore. Native sizeof probe: 127504. */
+SNAP_SIZE_GUARD(s5l8900_t,         127504, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -1693,6 +1700,11 @@ static snapshot_status_t snap_validate_structure(const s5l8900_t *m, FILE *f,
 
 static snapshot_status_t snap_apply(s5l8900_t *m, FILE *f,
                                     const uint8_t *in, size_t in_len) {
+#ifdef S5LBOX_ADAPTIVE_JIT
+    /* Validation has completed, but no payload byte has been applied. This
+     * barrier also covers a subsequent file I/O failure during partial apply. */
+    if (!arm_adaptive_forget(&m->cpu)) return SNAP_ERR_BUSY;
+#endif
     sn_io_t io = {0};
     io.mode = SN_LOAD; io.f = f; io.in = in; io.in_len = in_len;
     io.hash = FNV64_OFFSET;
@@ -1783,6 +1795,7 @@ const char *snapshot_strerror(snapshot_status_t st) {
         case SNAP_ERR_GEOMETRY:  return "snapshot machine layout does not match "
                                         "this machine (RAM size/base, NOR size, "
                                         "or the stub windows differ)";
+        case SNAP_ERR_BUSY:       return "compiled runtime is busy or failed";
         case SNAP_ERR_NOMEM:     return "out of memory";
         default:                 return "unknown snapshot error";
     }

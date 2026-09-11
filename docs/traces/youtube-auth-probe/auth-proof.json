@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "authenticationSucceeded": false,
+  "scope": "Retained challenge/signature diagnostic; HTTP503 is not authentication success. No certificate trust-chain validation.",
+  "logSHA256": "b58c4b388760ceddeba3b8595376e41c8de9a682966e218a5e0ead8cb2f594b4",
+  "completeExchanges": 2,
+  "nonceChecks": {
+    "hr1MatchesSHA1r1": true,
+    "r2MatchesChallenge": true,
+    "hmackr2MatchesChallenge": true
+  },
+  "certificatePEM_SHA256": "f5462158a4f82aa3927639b8caaf41e084be44d09424000652146568922cb819",
+  "certificateDER_SHA256": "cd7fd7cfc3c0deb2da950ab5b0112c1c214cfb67f6439d32e3141fe25d51b7f0",
+  "signatureSHA256": "22c29af6f6452f1e380b88d2efff57ccd11eef628253311adc6396b814fb89e7",
+  "signedDigestSHA256": "fb35af30557fa8bf04b499b7a54fb3b19ecfb34ed439a99a689b40d583f1a361",
+  "certificateProof": {
+    "bits": 2048,
+    "spkiSHA256": "7dfd1588cfdd9b64b92a4be4066f582772dc9f86c67be3c23f00c06c27b03415",
+    "signatureLengthValid": true,
+    "rawPKCS1DigestMatches": true,
+    "recoveredBlockSHA256": "1aa63db5fb71921f329af2ea7025d19d10fc887e5a38dd12af7daf4f8a9804b9"
+  },
+  "guestKeyProof": {
+    "bits": 2048,
+    "spkiSHA256": "7dfd1588cfdd9b64b92a4be4066f582772dc9f86c67be3c23f00c06c27b03415",
+    "signatureLengthValid": true,
+    "rawPKCS1DigestMatches": true,
+    "recoveredBlockSHA256": "1aa63db5fb71921f329af2ea7025d19d10fc887e5a38dd12af7daf4f8a9804b9",
+    "matchesCertificateKey": true
+  },
+  "authExchanges": [
+    {
+      "serial": 1,
+      "requestSHA256": "cb6f6a631335ff015dd8b87a4f9d8ed15ad083f30802884572efa40ddb1029e7",
+      "responseSHA256": "4d3dc1b31c7438148f73c363b5492e8303579ed875d5e398d6c149c1796e60c9"
+    },
+    {
+      "serial": 2,
+      "requestSHA256": "f14c88cd894801610bf45536bd7f8cf6ec09e1f20b9bb26a74aae6ab729103e8",
+      "responseSHA256": "d8702fc99f510179666d0a16044bc53f3d68b13061a8d15061efc3e0644f4a52"
+    }
+  ]
+}

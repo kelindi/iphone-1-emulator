@@ -1289,6 +1289,12 @@
       "sha256": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
       "source": ".context/mbx-stride-integration/candidate/firmware/rootfs_1A543a_act.img.gz.part1",
       "sameImmutableInode": true
+    },
+    "README.md": {
+      "bytes": 3359,
+      "sha256": "ee9e1773fbfb801533e94df7703b792ef669a4ab3ef621caf9add208b814a456",
+      "source": "authored archive README",
+      "sameImmutableInode": false
     }
   },
   "scope": "Both preserved attempts and frozen source/sites. Immutable hardlinks; never edit through either path. No compression or extra browser run."

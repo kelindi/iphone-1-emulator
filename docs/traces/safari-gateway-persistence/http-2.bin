@@ -1,0 +1,9 @@
+GET /echo?message=hi HTTP/1.1
+Accept-Language: en
+Accept-Encoding: gzip, deflate
+Referer: http://127.0.0.1/
+User-Agent: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Connection: keep-alive
+Host: 127.0.0.1
+

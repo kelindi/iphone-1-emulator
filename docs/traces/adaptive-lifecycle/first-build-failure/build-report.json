@@ -1,0 +1,80 @@
+{
+  "passed": false,
+  "sources": {
+    "core/include/arm.h": "63c6c08f17db8d2d79f9d1a0c100036be39b4e02822bf0d9a819a9cac97a3eee",
+    "core/include/arm_code_versions.h": "fd1ad8b2aa798e660874ec148da5bb3cc059c0800d5281517e8a38331cc3a34f",
+    "core/src/soc/mbx.c": "3e39d4718a6d22b2e6bbeff5579a3fd8675c4669c10382a2864be5d032156313",
+    "core/src/snapshot.c": "4ab09dee349dc0c9ba041b18275a591717a025b68cb9e3407968796b5fad4d88",
+    "core/include/snapshot.h": "f5a02f6df1a877d191353d4c0e54259704fbfdea3796fe0067895b1487e932e1",
+    "core/include/loader.h": "fdff1093edf51b40f3d0c036ac441ccf43af385a561f851c2505f0b25199d11b",
+    "core/src/firmware/loader.c": "5144fcbf77ac850f83782f152d6c436ae5814c059b9de1bd72159f56cf66e28f",
+    "core/src/boot/bringup_os1.c": "293cbafd0e2307d35889f3fed584b4875bd66fbb3fe3a9e1c34c8ab013448471",
+    "core/src/boot/bringup.c": "0b9eaa08bd684591815e1026cbb22d257feb0c6ccb562de440027e13ed9d97da",
+    "core/include/arm_adaptive_guard.h": "d68cfdf797eed674912f0aa85213913da3e7291d06ef0416a8613cbc8953e04c",
+    "core/include/arm_adaptive_jit.h": "7eea006e62862c8c98c60ecf7eec9e0667390e5526dbfe13386cb8e6a1457fd3",
+    "core/include/arm_adaptive_dispatch.h": "bf25fc7f429943c0b0338c6ba08b987bb6aa621b6ff2fb467f4e43dd88fdbed0",
+    "core/src/mmu.c": "cab7a251455d716f2616bf6cc47855f79642deb000af1d58ec59b8dd38626d43",
+    "core/src/arm/arm_interp.c": "0a71b5b5a94f6e86251f6d6f78b6cd98eb45aae75b5232d902913fd2d6580a0f",
+    "core/src/soc/machine.c": "3ac17bf2f462cf9ceb6063d4164c29223e90e57861688379d63b0a3eaeabf7f4",
+    "web/adaptive-runtime.c": "1a01733a3bec571cd2923368d2af2bab660a6b925bcf0ca7e33860064253700d",
+    "web/adaptive-runtime.h": "4d926da16d09293d4c5bb9c58ca692bf59d335097f62a21f7e70b5903430ee56",
+    "tools/jit/adaptive/decode.mjs": "63d7cc07480c51422bdf8e872344938cb8628223b6b80cc5348b83a1bc14ed36",
+    "tools/jit/adaptive/unit.mjs": "c94a1a70ac47fa5aaf2bb7e1a52c03c13a36bf9a11803d98cab0afcc33af38dd",
+    "tools/jit/adaptive/emit.mjs": "49534daa772d21013f1d53ea4d07fc032fdc65fb089a3ad645b84f898599264d",
+    "tools/jit/adaptive/tests/code-versions.c": "aec9e68d8e4caa79a268045d1c5780126a798bea5202a13b08acc2820efe80e3",
+    "tools/jit/adaptive/tests/machine-bridge.c": "2eb0ff5138fe175e358b6335510cddb8c56feb6d689b1b82c4f87fff8cceb5f9",
+    "tools/jit/adaptive/tests/machine-bridge.mjs": "005fd694ddfef52b88c33ca563ba785de79aa633d88b751f151e5a07764510e9"
+  },
+  "commands": [
+    {
+      "cmd": "cc",
+      "args": [
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Icore/include",
+        "tools/jit/adaptive/tests/code-versions.c",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/code-versions"
+      ],
+      "output": "",
+      "passed": true
+    },
+    {
+      "cmd": "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/code-versions",
+      "args": [],
+      "output": "Physical code versions: ranges, aliases, partial last granule, invalid spans and exhaustion PASS\n",
+      "passed": true
+    },
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcmake",
+      "args": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "-DIPHONE1_WEB=ON",
+        "-DIPHONE1_WASM_JIT=OFF",
+        "-DIPHONE1_WEB_DIST=/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/dist",
+        "-DCMAKE_C_FLAGS=-DS5LBOX_ADAPTIVE_JIT=1"
+      ],
+      "output": "-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build\n",
+      "passed": true
+    },
+    {
+      "cmd": "cmake",
+      "args": [
+        "--build",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "--target",
+        "emucore",
+        "-j",
+        "4"
+      ],
+      "output": "Consolidate compiler generated dependencies of target emucore\n[  2%] Building C object core/CMakeFiles/emucore.dir/src/snapshot.c.o\n[  4%] Building C object core/CMakeFiles/emucore.dir/src/soc/machine.c.o\n[  6%] Building C object core/CMakeFiles/emucore.dir/src/boot/bringup.c.o\n[  8%] Building C object core/CMakeFiles/emucore.dir/src/firmware/loader.c.o\n/home/vercel-sandbox/iphone-1/core/src/snapshot.c:1640:31: error: use of undeclared identifier 'm'\n 1640 |     if (!arm_adaptive_forget(&m->cpu)) return SNAP_ERR_BUSY;\n      |                               ^\n1 error generated.\ngmake[3]: *** [core/CMakeFiles/emucore.dir/build.make:137: core/CMakeFiles/emucore.dir/src/snapshot.c.o] Error 1\ngmake[3]: *** Waiting for unfinished jobs....\ngmake[2]: *** [CMakeFiles/Makefile2:154: core/CMakeFiles/emucore.dir/all] Error 2\ngmake[1]: *** [CMakeFiles/Makefile2:161: core/CMakeFiles/emucore.dir/rule] Error 2\ngmake: *** [Makefile:160: emucore] Error 2\n"
+    }
+  ],
+  "error": "Error: Command failed: cmake --build /home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build --target emucore -j 4\n/home/vercel-sandbox/iphone-1/core/src/snapshot.c:1640:31: error: use of undeclared identifier 'm'\n 1640 |     if (!arm_adaptive_forget(&m->cpu)) return SNAP_ERR_BUSY;\n      |                               ^\n1 error generated.\ngmake[3]: *** [core/CMakeFiles/emucore.dir/build.make:137: core/CMakeFiles/emucore.dir/src/snapshot.c.o] Error 1\ngmake[3]: *** Waiting for unfinished jobs....\ngmake[2]: *** [CMakeFiles/Makefile2:154: core/CMakeFiles/emucore.dir/all] Error 2\ngmake[1]: *** [CMakeFiles/Makefile2:161: core/CMakeFiles/emucore.dir/rule] Error 2\ngmake: *** [Makefile:160: emucore] Error 2\n\n    at genericNodeError (node:internal/errors:985:15)\n    at wrappedFn (node:internal/errors:539:14)\n    at checkExecSyncError (node:child_process:925:11)\n    at execFileSync (node:child_process:961:15)\n    at run (file:///home/vercel-sandbox/iphone-1/tools/jit/adaptive/test-machine-runtime.mjs:9:102)\n    at file:///home/vercel-sandbox/iphone-1/tools/jit/adaptive/test-machine-runtime.mjs:15:2"
+}

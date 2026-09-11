@@ -47,6 +47,15 @@
       </div>
     </section>
 
+    <nav class="view-controls" aria-label="Phone view">
+      <span id="view-hint" role="status">Slide to unlock · Touch the screen to explore</span>
+      <div class="view-switch">
+        <button id="view-2d" aria-pressed="true">2D</button>
+        <button id="view-3d" aria-pressed="false" title="Rotatable 3D model">3D</button>
+        <button id="view-reset" hidden>Front view</button>
+      </div>
+    </nav>
+
     <section class="companion" aria-label="Emulator controls" hidden>
       <div class="loading-state">
         <p id="status" role="status" aria-live="polite">Preparing your iPhone…</p>
@@ -67,7 +76,7 @@
       <details id="help" class="help-panel">
         <summary>Getting around <span aria-hidden="true">+</span></summary>
         <div class="help-content">
-          <p>Tap the screen to open an app. Drag to scroll, and use the round Home button to return. The buttons along the edge control sleep, volume, and silent mode.</p>
+          <p>Slide to unlock when you open your iPhone. Tap the screen to open an app. Drag to scroll, and use the round Home button to return. The buttons along the edge control sleep, volume, and silent mode.</p>
           <dl class="shortcuts">
             <div><dt><kbd>Esc</kbd> / <kbd>H</kbd></dt><dd>Home</dd></div>
             <div><dt><kbd>P</kbd></dt><dd>Sleep / wake</dd></div>
@@ -88,5 +97,6 @@
     </section>
   </main>
   <script type="module" src="app.js"></script>
+  <script type="module" src="phone-view.js"></script>
 </body>
 </html>

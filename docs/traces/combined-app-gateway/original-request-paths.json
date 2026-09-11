@@ -1,0 +1,32 @@
+{
+  "scope": "Static original instruction inspection, no guest execution or app modifications.",
+  "pins": {
+    ".context/service-discovery/Weather.original": "bd489dac1952be0a595bd6592b8a3ea29489bb4880319f8a288cf2944843d4eb",
+    ".context/app-services-opportunities/Stocks": "b73fcd49f6128cd57fcc602c05665536193dd639b265c56f5d603812c5002a95",
+    "docs/traces/weather-service-contract/disassemble.py": "629f4fe380b12775554190dcf7dab6f518e362296df52f47f4e443d1a0c7cf35"
+  },
+  "weather": {
+    "submitCall": "0000e2e8",
+    "loadRequestEntry": "0000d050",
+    "connectionFactoryCall": "0000d098",
+    "connectionStoredAt": "0000d0a4",
+    "connectionObjectOffset": 8,
+    "failureCallbackEntry": "0000d31c",
+    "failureCallbackArguments": {
+      "r0": "updater/self",
+      "r2": "connection; must match self+8",
+      "r3": "NSError pointer"
+    },
+    "errorDiscardingOverride": "0000e3d8",
+    "reachabilityCallback": "000046c0",
+    "reachabilityCondition": "Fifth argument at entrySP; at0x46c8 readSP+8 afterpush. False returns, true calls reloadFailedCities. No such guard in inspected initial submission path.",
+    "urlBuilder": "0000ff5c",
+    "endpoint": "http://iphone-wu.apple.com/dgw?imei=%@&apptype=weather&t=%u"
+  },
+  "stocks": {
+    "loadRequestEntry": "000167a8",
+    "connectionFactoryCall": "00016830",
+    "failureCallbackEntry": "00016c88"
+  },
+  "nextObservation": "First compare numeric and hostname Safari requests to distinguish hostname path. If necessary observe original Weather failure callback without guest state edits, pin process address-space and instruction bytes, capture NSError before override discards it. Do not infer DNS error code solely from absence of gateway POSTs."
+}

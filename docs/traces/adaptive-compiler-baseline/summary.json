@@ -1,0 +1,31 @@
+{
+  "source": ".context/adaptive-compiler/cloud-baseline/report.json",
+  "host": {
+    "macModel": null,
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "browser": "152.0.7977.82",
+  "scope": "Current legacy engine after real unlock; one first pair and at least30warm samples/action. Cloud results are not Mac acceptance or an adaptive-compiler speedup.",
+  "actions": {
+    "settings": {
+      "firstMs": 2667.5999999999767,
+      "warmSamples": 30,
+      "medianMs": 2317.5,
+      "p95Ms": 2566.70000000007,
+      "warmTargetMs": 1000,
+      "meetsWarmTarget": false
+    },
+    "home": {
+      "firstMs": 866.3000000000466,
+      "warmSamples": 30,
+      "medianMs": 866.4500000000116,
+      "p95Ms": 867.8999999999069,
+      "warmTargetMs": 1000,
+      "meetsWarmTarget": true
+    }
+  }
+}

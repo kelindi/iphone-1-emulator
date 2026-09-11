@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "checks": 7,
+  "scope": "aggregate count/prefix/zero/budget accounting, key aggregation, guest-memory read-only behavior, disabled reset"
+}

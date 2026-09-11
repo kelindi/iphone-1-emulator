@@ -1,0 +1,313 @@
+{
+  "buildPassed": true,
+  "binarySHA256": "54d2b12e11d024fba18bb8f340da43813a6186de63f890739b4e3dd2748212d5",
+  "bytes": 42924,
+  "imports": 18,
+  "environment": {
+    "passed": true,
+    "symbol": {
+      "name": "_environ",
+      "type": 15,
+      "section": 4,
+      "description": 0,
+      "value": 41032
+    },
+    "vectorAddress": "0xa050",
+    "firstWord": 0
+  },
+  "tests": {
+    "packetAndHTTP": 24,
+    "socketQuiet": 7092,
+    "socketDiagnostic": 7092,
+    "HTTPwireHash": "9aa294eead140b3b"
+  },
+  "allSourcesReserveR9": true,
+  "scope": "Native mock transport and packet/build checks only; no new guest/provision/daemon configuration here.",
+  "r9Audit": {
+    "passed": false,
+    "error": "r9 write at 0x2ba8: ldrdeq r8, sb, [r0], -lr",
+    "scope": "Conservative full-text decode includes literal pools; no full binary r9 proof on rejection."
+  },
+  "sourceSHA256": {
+    "weather_server.c": "ee1ada341f2c0f9f732d0dafc159c0564ce541b2aab7851b4c65444dc142013a",
+    "weather_http.c": "768dd0f0f03293f126d16a1889ffe2b349ee78cb15d02a964d49e016ffa4d605",
+    "weather_request.c": "de9bdd5d5f428c2cd4c6ab6c5bafeb6a034ac7fdcf1b5946eb0e7c4134781ba6",
+    "weather.c": "3ca387af1a6204fee0b204d685b7749854e89ab970385821eeadb601e8f6e743",
+    "weather_support.c": "d030fdbba96f5ac5125ec526f9274ce18ed75cd05696de0284a9bd1933d43dbb",
+    "http.c": "a9610464d353187fa58bf4d482ce0323fe536850c0b15a2c59fa91d9801860ce",
+    "stocks.c": "f35a5758a364baf2fdfb4efb16b0b056a58c6de468a6469e0f218bfa6ec8b217",
+    "dns_packet.c": "eb2e29fa756b57f8a431fdc3699b2a7b6709ba37ef3070f820bece2bfcc12582",
+    "standalone_runtime.c": "a4824c6961a9425c6e9bd1fb66dd0ebc87d6b93c79b25ee8a75a9dc25fdf192e",
+    "weather_http.h": "e5f48e5673c4d0df2187f91d50adf7c8a0f23c041c4a6982762a9ea6a573fdc3",
+    "weather_request.h": "3b98b2f56acef66d6daa3a0be2aca07632c1649a06ca996492cf377a1fefd814",
+    "weather.h": "ec87c9b58fcf5c9c1805028ef08ce1ed2b2d707b56e8abfd2b6efa25a54ab984",
+    "http.h": "76f80c9280b175897f4b3efa57717160f0f3d6ce774ab4f14d7863596f3e5e8e",
+    "stocks.h": "cd49f03fa1fcd80dd6ea632e1d5a846a71bffd3653d88539d13c61de802ab49a",
+    "dns_packet.h": "195725e7ee0eba3e5476281e1b617fd22548c346cc3bd9fcdb0e3eaa668f51ad",
+    "build.py": "409195f5e3b5eca1fa46b9eeee573d82c9eeec08e145dd768c4db177abae6c62",
+    "macho_audit.py": "c37831e904a17c803264f1bc5ebb40bc8b161e89da1139c3de7de7c56837b1db",
+    "test_dns_packet.py": "c11ad1c253ffc581dd282fa37c136547af800ac63e9be109c82cdc8e5ee806b7",
+    "test_weather_server.c": "8c70fc8c6194f888172103445856f6a11c209fb88ef32046c26c59a9bb3712b8",
+    "audit_r9.py": "0d8bd67737a455ea66bc0435f83e79bc1e8d727e387b4cf2dc3d332531fb8ac1"
+  },
+  "testSetupLimit": "Quiet strict warning compile first refused existing diagnostic-only serial parameter; final adds -Wno-unused-parameter, no source behavior change.",
+  "r9CodeAudit": {
+    "passed": true,
+    "binarySHA256": "54d2b12e11d024fba18bb8f340da43813a6186de63f890739b4e3dd2748212d5",
+    "instructionWords": 7018,
+    "excludedDataWords": 244,
+    "r9Writes": 0,
+    "source": "Compiler LC_DATA_IN_CODE KIND_DATA section-relative ranges from exact linked objects, rebased using all unique exported text symbols per object; every remaining final text word checked including linker padding. First audit incorrectly treated object offsets as file offsets and failed range assertion; corrected metadata interpretation only.",
+    "objects": [
+      {
+        "object": "dns_packet.o",
+        "sha256": "d1f2b1b7dce7eb2d307b39bbfe3fc331e359a91464c887378180b72c06127f2e",
+        "textStart": "0x8808",
+        "textBytes": 1240,
+        "anchors": [
+          "_own_dns_response"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0x4d4",
+            "linkedAddress": "0x8cdc",
+            "bytes": 4,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "http.o",
+        "sha256": "710257d0cd6b0fe09deb9147dcd74dd312ff41a1a74bfb08977577c3a19a89cc",
+        "textStart": "0x5c30",
+        "textBytes": 4648,
+        "anchors": [
+          "_own_http_response"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0xed0",
+            "linkedAddress": "0x6b00",
+            "bytes": 120,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1214",
+            "linkedAddress": "0x6e44",
+            "bytes": 20,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "standalone_runtime.o",
+        "textBytes": 0
+      },
+      {
+        "object": "stocks.o",
+        "sha256": "d64524e5b538e6c81b544043c3ad94ad82d092787bbdc0a9a8c7bfd0cba90087",
+        "textStart": "0x6e58",
+        "textBytes": 6576,
+        "anchors": [
+          "_own_stocks_request"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0x960",
+            "linkedAddress": "0x77b8",
+            "bytes": 100,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x11b4",
+            "linkedAddress": "0x800c",
+            "bytes": 44,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1388",
+            "linkedAddress": "0x81e0",
+            "bytes": 8,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1544",
+            "linkedAddress": "0x839c",
+            "bytes": 4,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1990",
+            "linkedAddress": "0x87e8",
+            "bytes": 32,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "weather.o",
+        "sha256": "fc0386107f518aa21b13c4eda35e6a19f151b0f659f42c8efa85ffcb41c95480",
+        "textStart": "0x566c",
+        "textBytes": 1448,
+        "anchors": [
+          "_own_weather_forecast",
+          "_own_weather_search"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0x178",
+            "linkedAddress": "0x57e4",
+            "bytes": 4,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x320",
+            "linkedAddress": "0x598c",
+            "bytes": 28,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x5a0",
+            "linkedAddress": "0x5c0c",
+            "bytes": 8,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "weather_http.o",
+        "sha256": "94963bf9c42e70a153834b534ac55dc4ea35e4efeb410d019a0cf46b7f4ba589",
+        "textStart": "0x3158",
+        "textBytes": 3692,
+        "anchors": [
+          "_own_weather_http_frame",
+          "_own_weather_http_response"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0x72c",
+            "linkedAddress": "0x3884",
+            "bytes": 56,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x890",
+            "linkedAddress": "0x39e8",
+            "bytes": 12,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0xb1c",
+            "linkedAddress": "0x3c74",
+            "bytes": 24,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0xe50",
+            "linkedAddress": "0x3fa8",
+            "bytes": 28,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "weather_request.o",
+        "sha256": "28275e314d58a12c93c00d4559456c4edc50fe856e7dc59c4cc08058b70d25b3",
+        "textStart": "0x3fc4",
+        "textBytes": 5800,
+        "anchors": [
+          "_own_weather_request"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0x678",
+            "linkedAddress": "0x463c",
+            "bytes": 76,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0xeb4",
+            "linkedAddress": "0x4e78",
+            "bytes": 44,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1238",
+            "linkedAddress": "0x51fc",
+            "bytes": 8,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1688",
+            "linkedAddress": "0x564c",
+            "bytes": 32,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "weather_server.o",
+        "sha256": "40c7f5889fadb7457b2c6abf9adc98d479a3877c0640a5625e39625eb8d359e0",
+        "textStart": "0x1b68",
+        "textBytes": 5616,
+        "anchors": [
+          "_start"
+        ],
+        "compilerDataRanges": [
+          {
+            "objectSectionOffset": "0xf8c",
+            "linkedAddress": "0x2af4",
+            "bytes": 244,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1154",
+            "linkedAddress": "0x2cbc",
+            "bytes": 12,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x123c",
+            "linkedAddress": "0x2da4",
+            "bytes": 4,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x12fc",
+            "linkedAddress": "0x2e64",
+            "bytes": 20,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x1404",
+            "linkedAddress": "0x2f6c",
+            "bytes": 24,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x14f8",
+            "linkedAddress": "0x3060",
+            "bytes": 4,
+            "kind": 1
+          },
+          {
+            "objectSectionOffset": "0x15e0",
+            "linkedAddress": "0x3148",
+            "bytes": 16,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "object": "weather_support.o",
+        "sha256": "790c23709f48c62afb519df5b7dde19b382a2d83ae0c4ef71f0a464ac47f079e",
+        "textStart": "0x5c14",
+        "textBytes": 28,
+        "anchors": [
+          "_memset"
+        ],
+        "compilerDataRanges": []
+      }
+    ]
+  }
+}

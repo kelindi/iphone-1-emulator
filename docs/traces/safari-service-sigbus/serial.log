@@ -1,0 +1,27 @@
+AppleMerlotLCD::_lcdEnable: enable: 0
+AppleMultitouchSPI: downloaded 44752 bytes of firmware data ("0x0086") in 23ms (3ms stage 1, 20ms stage 2).
+AppleMerlotLCD::_lcdEnable: enable: 1
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleMerlotLCD::_lcdEnable: enable: 0
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1
+AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000
+AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+AppleBasebandOutput: could not start DMA: device is not ready
+

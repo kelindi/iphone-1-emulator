@@ -1,0 +1,9 @@
+{
+  "core/include/arm_adaptive_guard.h": "ebd5e4202200a4416560e1bfb226c94cbf45e6df2d71e3a30bd574e7990dfe41",
+  "web/adaptive-runtime.c": "fa38d40098138b076f1e873bbded82af075b04e822331e4bdcea51d3f13fe3e7",
+  "web/adaptive-runtime.h": "64453f6075cd43e12418a9205cd6a659812d6f705364a1dd80ff14de839143a7",
+  "tools/jit/adaptive/tests/capture-at.c": "49a6b161a2a95f8ab7bfa731edea3a88e24d8b3eb498f2ad1b4bb3549456504c",
+  "tools/jit/adaptive/workload-bridge.c": "27f51344f8d4fa017afe94094c3bedf8a409c11c2a6331efeceec795c6297e58",
+  "tools/jit/adaptive/build-workload-runtime.mjs": "f00c1e66519f571f33a29064c110116c120118617f2a8463a91d5576a6e186f3",
+  "tools/jit/adaptive/smoke-workload-runtime.mjs": "8ae7c83e6e8f38de4c00dbd2c8141321f903592ed6ecb8a7fe7bb3a5164f87c0"
+}

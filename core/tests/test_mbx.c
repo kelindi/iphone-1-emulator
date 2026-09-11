@@ -3117,6 +3117,173 @@ static void test_compact_column_resample(void) {
     s5l8900_free(&m);
 }
 
+
+/* Actual first YouTube player packet, plus translated/clipped variants.
+ * Use a coloured, non-linear row ramp and an independent double-precision
+ * inverse as the reference; compare the entire surface, including untouched
+ * pixels rather than just checking completion. */
+static void test_compact_rotated_column(void) {
+    const uint32_t table0=0x08003000u, table2=0x08004000u;
+    const uint32_t region=0x1000u, object=0x14000u;
+    const uint32_t source=0x00b74000u, target=0x00a3d000u, record=0x300u;
+    const uint32_t actual_xy[8] = {0x43a00001u,0x376aac7bu,0x43a00000u,0x43f00000u,0x38000000u,0x2b800000u,0x00000000u,0x43f00000u};
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m,RAM_BASE,RAM_SIZE), "rotated compact init");
+    if (!m.ram) return;
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART0,table0);
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART2,table2);
+    for (unsigned i=0;i<3;i++)
+        test_map_gpu_page(&m,table0,region+i*4096u,0x08010000u+i*4096u);
+    test_map_gpu_page(&m,table0,object,0x08014000u);
+    for (unsigned i=0;i<4;i++)
+        test_map_gpu_page(&m,table2,source+i*4096u,0x08020000u+i*4096u);
+    for (unsigned i=0;i<150;i++)
+        test_map_gpu_page(&m,table2,target+i*4096u,0x080c0000u+i*4096u);
+    for (unsigned y=0;y<512;y++)
+        for (unsigned x=0;x<8;x++)
+            test_gpu_write32(&m,source+y*32+x*4,test_sprite_source_pixel(x,y));
+    for (unsigned variant=0;variant<3;variant++) {
+        unsigned left=variant==2?40:0, top=variant==2?64:0;
+        unsigned width=variant==2?240:320, height=variant==2?320:480;
+        test_write_compact_blit_copy(&m,region,object,source,target,record,
+            left,top,width,height,1,320,32,0xff000000u);
+        float xy[8];
+        for (unsigned i=0;i<8;i++) {
+            xy[i]=test_float_value(actual_xy[i])+(variant==1?0.5f:0.0f);
+            test_gpu_write32(&m,object+record+(5+i)*4,test_float_word(xy[i]));
+        }
+        for (unsigned v=0;v<4;v++) {
+            test_gpu_write32(&m,object+record+(22+v*3)*4,test_float_word(0.5f/8.0f));
+            test_gpu_write32(&m,object+record+(23+v*3)*4,
+                test_float_word((v<2?0.5f:319.5f)/512.0f));
+        }
+        for (unsigned y=0;y<480;y++)
+            for (unsigned x=0;x<320;x++)
+                test_gpu_write32(&m,target+y*1280+x*4,0x713257a9u);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x4cu);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+        unsigned mismatches=0, preserved_inside=0, covered=0;
+        double ux=(double)xy[2]-xy[0], uy=(double)xy[3]-xy[1];
+        double vx=(double)xy[4]-xy[0], vy=(double)xy[5]-xy[1];
+        double det=ux*vy-uy*vx;
+        for (unsigned y=0;y<480;y++) for (unsigned x=0;x<320;x++) {
+            uint32_t expected=0x713257a9u;
+            double dx=x+0.5-(double)xy[0],dy=y+0.5-(double)xy[1];
+            double u=(dx*vy-dy*vx)/det,v=(ux*dy-uy*dx)/det;
+            bool inside=x>=left&&x<left+width&&y>=top&&y<top+height;
+            if (inside&&u>=0&&u<1&&v>=0&&v<1) {
+                struct test_bilinear_axis a,b;
+                bool valid=test_bilinear_coordinate(0.5f,8,&a)&&
+                    test_bilinear_coordinate((float)(0.5+319.0*v),512,&b);
+                if (!valid) mismatches++;
+                expected=valid?test_bilinear_sprite_pixel(&a,&b):0u; covered++;
+            } else if (inside) preserved_inside++;
+            mismatches+=test_gpu_read32(&m,target+y*1280+x*4)!=expected;
+        }
+        CHECK(mismatches==0,"rotated compact variant %u mismatches %u",variant,mismatches);
+        CHECK(covered>0&&m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0x4cu,
+            "rotated compact variant %u failed completion",variant);
+        if(variant==1) CHECK(preserved_inside>0,"translated quad must leave uncovered pixels");
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x4cu);
+        /* Coherent non-right-angle basis, fractional out-of-family V,
+         * and W != 1 each reject without touching the staged destination. */
+        for(unsigned bad=0;bad<3;bad++) {
+            uint32_t offsets[2], saved[2]; unsigned count=bad==2?1:2;
+            if(bad==0){offsets[0]=7;offsets[1]=11;}
+            else if(bad==1){offsets[0]=29;offsets[1]=32;}
+            else offsets[0]=17;
+            for(unsigned k=0;k<count;k++) {
+                uint32_t addr=object+record+offsets[k]*4;
+                saved[k]=test_gpu_read32(&m,addr);
+                test_gpu_write32(&m,addr,test_float_word(test_float_value(saved[k])+
+                    (bad==1?0.25f/512.0f:1.0f)));
+            }
+            test_gpu_write32(&m,target+top*1280+left*4,0x89abcdefu);
+            m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+            CHECK(test_gpu_read32(&m,target+top*1280+left*4)==0x89abcdefu&&
+                m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,
+                "rotated compact malformed %u committed",bad);
+            for(unsigned k=0;k<count;k++)
+                test_gpu_write32(&m,object+record+offsets[k]*4,saved[k]);
+        }
+        /* Late source mapping failure must leave earlier target pixels intact. */
+        uint32_t pte=table2+(((source+320u*32u)>>12)&0x3ffu)*4u;
+        uint32_t saved=m.bus.read32(m.bus.ctx,pte);
+        m.bus.write32(m.bus.ctx,pte,0);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+        CHECK(test_gpu_read32(&m,target+top*1280+left*4)==0x89abcdefu&&
+            m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,
+            "rotated compact missing source mapping committed");
+        m.bus.write32(m.bus.ctx,pte,saved);
+    }
+    s5l8900_free(&m);
+}
+
+/* Full-extent compact producer has alternate corner ordering in these actual
+ * YouTube packets. Verify opaque integer rotation independently of filtered
+ * gradient rotation and include a partial source crop. */
+static void test_compact_integer_quarter_turn(void) {
+    const uint32_t table0=0x08003000u, table2=0x08004000u;
+    const uint32_t region=0x1000u, object=0x14000u;
+    const uint32_t source=0x00b74000u, target=0x00a3d000u, record=0x300u;
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m,RAM_BASE,RAM_SIZE), "rotated compact init");
+    if (!m.ram) return;
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART0,table0);
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART2,table2);
+    for (unsigned i=0;i<3;i++)
+        test_map_gpu_page(&m,table0,region+i*4096u,0x08010000u+i*4096u);
+    test_map_gpu_page(&m,table0,object,0x08014000u);
+    for (unsigned i=0;i<4;i++)
+        test_map_gpu_page(&m,table2,source+i*4096u,0x08020000u+i*4096u);
+    for (unsigned i=0;i<150;i++)
+        test_map_gpu_page(&m,table2,target+i*4096u,0x080c0000u+i*4096u);
+    for (unsigned y=0;y<512;y++)
+        for (unsigned x=0;x<8;x++)
+            test_gpu_write32(&m,source+y*32+x*4,test_sprite_source_pixel(x,y));
+    const uint32_t actual_record[33] = {0xe0000000u,0xa6118001u,0x0e436961u,0xa6887610u,0x22220e80u,0x42200000u,0x43ba8000u,0x42200000u,0x42da0000u,0x42440000u,0x43ba8000u,0x42440000u,0x42da0000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xff000000u,0x3f040000u,0x3f100000u,0xff000000u,0x00000000u,0x3f100000u,0xff000000u,0x3f040000u,0x00000000u,0xff000000u,0x00000000u,0x00000000u};
+    for (unsigned variant=0;variant<2;variant++) {
+        unsigned left=variant?42:40,top=variant?144:109;
+        unsigned width=variant?4:9,height=variant?32:264;
+        test_write_compact_blit_copy(&m,region,object,source,target,record,
+            left,top,width,height,264,9,1056,0xff000000u);
+        for(unsigned i=0;i<33;i++)
+            test_gpu_write32(&m,object+record+i*4,
+                i==2?(0x0e400000u|(source>>7)):actual_record[i]);
+        for(unsigned y=0;y<9;y++) for(unsigned x=0;x<264;x++)
+            test_gpu_write32(&m,source+y*1056+x*4,test_sprite_source_pixel(x,y));
+        for(unsigned y=0;y<480;y++) for(unsigned x=0;x<320;x++)
+            test_gpu_write32(&m,target+y*1280+x*4,0x713257a9u);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x4cu);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+        unsigned errors=0;
+        for(unsigned y=0;y<480;y++) for(unsigned x=0;x<320;x++) {
+            uint32_t expected=x>=left&&x<left+width&&y>=top&&y<top+height?
+                test_sprite_source_pixel(y-109,48-x):0x713257a9u;
+            errors+=test_gpu_read32(&m,target+y*1280+x*4)!=expected;
+        }
+        CHECK(errors==0&&m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0x4cu,
+            "compact integer quarter-turn variant %u mismatches %u",variant,errors);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x4cu);
+        uint32_t first=target+top*1280+left*4,last=target+(top+height-1)*1280+(left+width-1)*4;
+        /* Paired UV edges preserve rectangular consistency, but scaling is
+         * still unsupported. */
+        for(unsigned k=0;k<2;k++) test_gpu_write32(&m,object+record+(22+k*6)*4,
+            test_float_word(265.0f/512.0f));
+        test_gpu_write32(&m,first,0x89abcdefu);test_gpu_write32(&m,last,0x76543210u);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+        CHECK(test_gpu_read32(&m,first)==0x89abcdefu&&test_gpu_read32(&m,last)==0x76543210u&&
+            m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,"scaled compact quarter turn committed");
+        for(unsigned k=0;k<2;k++) test_gpu_write32(&m,object+record+(22+k*6)*4,actual_record[22+k*6]);
+        uint32_t pte=table2+(((source+((48-left)*1056)+(top-109)*4)>>12)&0x3ffu)*4u;
+        uint32_t saved=m.bus.read32(m.bus.ctx,pte);m.bus.write32(m.bus.ctx,pte,0);
+        m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+        CHECK(test_gpu_read32(&m,first)==0x89abcdefu&&test_gpu_read32(&m,last)==0x76543210u&&
+            m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0,"unmapped compact quarter turn committed");
+        m.bus.write32(m.bus.ctx,pte,saved);
+    }
+    s5l8900_free(&m);
+}
 /* Unlocking into Safari's retained error alert produced these two exact
  * compact-copy records.  Unlike the older compact fixtures, their texture
  * control uses the 0x0e layout while their UV endpoints remain half a texel
@@ -4183,6 +4350,7 @@ struct mbx_test_status_form {
     uint32_t xclip, yclip;
     uint32_t target;
     bool semantic_sprite;
+    bool quarter_turn;
     bool affine_sprite;
     bool scaled_sprite;
     bool column_resample;
@@ -4230,9 +4398,11 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
     const uint32_t mapped_source_y0 =
         filtered_sprite ? 0u : form->source_row0;
     const uint32_t mapped_source_width =
-        filtered_sprite ? filtered_pitch_pixels : form->width;
+        filtered_sprite ? filtered_pitch_pixels :
+        (form->quarter_turn ? form->height : form->width);
     const uint32_t mapped_source_height =
-        filtered_sprite ? filtered_texture_height : form->height;
+        filtered_sprite ? filtered_texture_height :
+        (form->quarter_turn ? form->width : form->height);
 
     s5l8900_t m;
     CHECK(s5l8900_init(&m, RAM_BASE, tall_source ? 0x00400000u : RAM_SIZE), "%s machine init failed",
@@ -4480,10 +4650,13 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
                     have_filtered_sample = true;
                 }
             } else {
-                src = test_sprite_source_pixel(x, y);
-                test_gpu_write32(&m,
-                    form->source + (form->source_row0 + y) *
-                        form->source_stride + (form->source_x0 + x) * 4u, src);
+                uint32_t sx = form->source_x0 + (form->quarter_turn ? y : x);
+                uint32_t sy = form->source_row0 +
+                    (form->quarter_turn ? form->width - 1u - x : y);
+                src = test_sprite_source_pixel(sx, sy);
+                if (!form->quarter_turn) src = test_sprite_source_pixel(x, y);
+                test_gpu_write32(&m, form->source + sy * form->source_stride +
+                    sx * 4u, src);
             }
             uint32_t dst = 0xff102030u + y * 0x00010101u + x;
             test_gpu_write32(&m,
@@ -4747,6 +4920,55 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
               "%s vertex colour bits raised completion", form->name);
         test_gpu_write32(&m, object + 0x250u, form->quad[24]);
     }
+    if (form->quarter_turn) {
+        /* Change only the sampling family, preserving each vertex's position,
+         * normalized position and UV while adopting filtered row-major order.
+         * Allocation and pitch remain unchanged. This is a coherent filtered
+         * quarter turn, which has not established supported semantics. */
+        const unsigned row_major_order[4] = {1u, 3u, 0u, 2u};
+        uint32_t texture_address = object + 0x1f0u + 2u * 4u;
+        uint32_t original_texture = test_gpu_read32(&m, texture_address);
+        test_gpu_write32(&m, texture_address, original_texture | 0x80000000u);
+        for (unsigned v = 0; v < 4u; v++) {
+            for (unsigned c = 0; c < 2u; c++)
+                test_gpu_write32(&m, object + 0x1f0u + (8u+2u*v+c)*4u,
+                    form->quad[8u+2u*row_major_order[v]+c]);
+            for (unsigned c = 0; c < 5u; c++)
+                test_gpu_write32(&m, object + 0x1f0u + (24u+5u*v+c)*4u,
+                    form->quad[24u+5u*row_major_order[v]+c]);
+        }
+        test_gpu_write32(&m, first, 0x89abcdefu);
+        test_gpu_write32(&m, last_destination, 0x76543210u);
+        m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+        CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+              test_gpu_read32(&m, last_destination) == 0x76543210u &&
+              m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+              "%s coherent filtered quarter turn committed", form->name);
+        test_gpu_write32(&m, texture_address, original_texture);
+        for (unsigned i = 8u; i < 44u; i++)
+            test_gpu_write32(&m, object + 0x1f0u + i*4u, form->quad[i]);
+        /* Keep the paired corners coherent: scaling and fractional origins
+         * must reject independently of the rectangle consistency checks. */
+        const unsigned pairs[2][2] = {{25u,35u}, {30u,40u}};
+        for (unsigned mutation = 0; mutation < 2u; mutation++) {
+            float original = test_float_value(form->quad[pairs[mutation][0]]);
+            float value = mutation == 0u ? original + 1.0f / 512.0f
+                                        : original + 0.5f / 512.0f;
+            for (unsigned k = 0; k < 2u; k++)
+                test_gpu_write32(&m, object + 0x1f0u + pairs[mutation][k]*4u,
+                                 test_float_word(value));
+            test_gpu_write32(&m, first, 0x89abcdefu);
+            test_gpu_write32(&m, last_destination, 0x76543210u);
+            m.bus.write32(m.bus.ctx, MBX_BASE + REG_RENDER, 1u);
+            CHECK(test_gpu_read32(&m, first) == 0x89abcdefu &&
+                  test_gpu_read32(&m, last_destination) == 0x76543210u &&
+                  m.bus.read32(m.bus.ctx, MBX_BASE + REG_STATUS) == 0u,
+                  "%s coherent non-unity/fractional UV committed", form->name);
+            for (unsigned k = 0; k < 2u; k++)
+                test_gpu_write32(&m, object + 0x1f0u + pairs[mutation][k]*4u,
+                                 form->quad[pairs[mutation][k]]);
+        }
+    }
     if (form->semantic_sprite) {
         uint32_t word_address = object + 0x1f0u + 27u * 4u;
         uint32_t saved_word = test_gpu_read32(&m, word_address);
@@ -4923,8 +5145,10 @@ static void test_captured_status_form(const struct mbx_test_status_form *form) {
 
         uint32_t last_source = 0u;
         if (!form->zero_coverage) {
-            uint32_t sampled_x = form->source_x0 + form->width - 1u;
-            uint32_t sampled_y = form->source_row0 + form->height - 1u;
+            uint32_t sampled_x = form->source_x0 +
+                (form->quarter_turn ? form->height : form->width) - 1u;
+            uint32_t sampled_y = form->source_row0 +
+                (form->quarter_turn ? form->width : form->height) - 1u;
             if (filtered_sprite) {
                 CHECK(have_filtered_sample,
                       "%s has no filtered source sample", form->name);
@@ -5265,6 +5489,62 @@ spotlight_home_narrow_strip_resample_form = {
     },
 };
 
+static const struct mbx_test_status_form youtube_quarter_0 = {
+ .name="YouTube quarter-turn witness 43 crop 0", .semantic_sprite=true, .quarter_turn=true,
+ .boundary_override=true, .xclip=0x00300020u, .yclip=0x01800060u,
+ .tile_x0=4, .tile_x1=5, .tile_y0=6, .tile_y1=23,
+ .left=37, .top=102, .width=11, .height=278,
+ .source=0x00965080u, .source_x0=0, .source_row0=0, .source_stride=1120, .source_control=0x0e440000u,
+ .source_width=278, .source_height=11,
+ .boundary={ 0x42140000u,0x43be0000u,0x42140000u,0x42cc0000u,0x42400000u,0x43be0000u,0x42400000u,0x42cc0000u },
+ .quad={ 0xe0000000u,0xa6118001u,0x0e475f81u,0xcd206c40u,0xa7718000u,0x0e531ae0u,0xae504ea0u,0x22250e80u,0x42140000u,0x43be0000u,0x42140000u,0x42cc0000u,0x42400000u,0x43be0000u,0x42400000u,0x42cc0000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xff000000u,0x3f0b0000u,0x3f300000u,0x3d140000u,0x3ebe0000u,0xff000000u,0x00000000u,0x3f300000u,0x3d140000u,0x3dcc0000u,0xff000000u,0x3f0b0000u,0x00000000u,0x3d400000u,0x3ebe0000u,0xff000000u,0x00000000u,0x00000000u,0x3d400000u,0x3dcc0000u },
+};
+static const struct mbx_test_status_form youtube_quarter_1 = {
+ .name="YouTube quarter-turn witness 4 crop 1", .semantic_sprite=true, .quarter_turn=true,
+ .boundary_override=true, .xclip=0x00780010u, .yclip=0x01c00030u,
+ .tile_x0=2, .tile_x1=14, .tile_y0=3, .tile_y1=27,
+ .left=21, .top=48, .width=92, .height=385,
+ .source=0x00965080u, .source_x0=0, .source_row0=0, .source_stride=1568, .source_control=0x0e600000u,
+ .source_width=385, .source_height=92,
+ .boundary={ 0x41a80000u,0x43d88000u,0x41a80000u,0x42400000u,0x42e20000u,0x43d88000u,0x42e20000u,0x42400000u },
+ .quad={ 0xe0000000u,0xa6418001u,0x0e6378e1u,0xcd206c40u,0xa7718000u,0x0e532da0u,0xae504ea0u,0x22250e80u,0x41a80000u,0x43d88000u,0x41a80000u,0x42400000u,0x42e20000u,0x43d88000u,0x42e20000u,0x42400000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xff000000u,0x3f408000u,0x3f380000u,0x3ca80000u,0x3ed88000u,0xff000000u,0x00000000u,0x3f380000u,0x3ca80000u,0x3d400000u,0xff000000u,0x3f408000u,0x00000000u,0x3de20000u,0x3ed88000u,0xff000000u,0x00000000u,0x00000000u,0x3de20000u,0x3d400000u },
+};
+static const struct mbx_test_status_form youtube_quarter_2 = {
+ .name="YouTube quarter-turn witness 43 crop 2", .semantic_sprite=true, .quarter_turn=true,
+ .boundary_override=true, .xclip=0x00300028u, .yclip=0x00d00060u,
+ .tile_x0=5, .tile_x1=5, .tile_y0=6, .tile_y1=12,
+ .left=40, .top=110, .width=6, .height=90,
+ .source=0x00965080u, .source_x0=8, .source_row0=2, .source_stride=1120, .source_control=0x0e440000u,
+ .source_width=278, .source_height=11,
+ .boundary={ 0x42200000u,0x43480000u,0x42200000u,0x42dc0000u,0x42380000u,0x43480000u,0x42380000u,0x42dc0000u },
+ .quad={ 0xe0000000u,0xa6118001u,0x0e475f81u,0xcd206c40u,0xa7718000u,0x0e531ae0u,0xae504ea0u,0x22250e80u,0x42140000u,0x43be0000u,0x42140000u,0x42cc0000u,0x42400000u,0x43be0000u,0x42400000u,0x42cc0000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xff000000u,0x3f0b0000u,0x3f300000u,0x3d140000u,0x3ebe0000u,0xff000000u,0x00000000u,0x3f300000u,0x3d140000u,0x3dcc0000u,0xff000000u,0x3f0b0000u,0x00000000u,0x3d400000u,0x3ebe0000u,0xff000000u,0x00000000u,0x00000000u,0x3d400000u,0x3dcc0000u },
+};
+/* Retained full-extent alternate shader alpha 251; compare
+ * the integer rotated source against independent vertex-alpha/source-over. */
+static const struct mbx_test_status_form youtube_alternate_0 = {
+ .name="YouTube alternate quarter-turn alpha 251", .semantic_sprite=true, .quarter_turn=true,
+ .boundary_override=true, .xclip=0x00380028u, .yclip=0x01000070u,
+ .tile_x0=5, .tile_x1=6, .tile_y0=7, .tile_y1=15,
+ .left=40, .top=112, .width=9, .height=144,
+ .source=0x00965080u, .source_x0=3, .source_row0=0,
+ .source_stride=1056, .source_control=0x0e400000u,
+ .source_width=264, .source_height=9,
+ .boundary={ 0x42200000u,0x43800000u,0x42200000u,0x42e00000u,0x42440000u,0x43800000u,0x42440000u,0x42e00000u },
+ .quad={ 0xe0000000u,0xa6118001u,0x0e436961u,0xd6887610u,0xa7718000u,0x0e531ae0u,0xa3104620u,0x22250e80u,0x42200000u,0x43ba8000u,0x42200000u,0x42da0000u,0x42440000u,0x43ba8000u,0x42440000u,0x42da0000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xfb000000u,0x3f040000u,0x3f100000u,0x3d200000u,0x3eba8000u,0xfb000000u,0x00000000u,0x3f100000u,0x3d200000u,0x3dda0000u,0xfb000000u,0x3f040000u,0x00000000u,0x3d440000u,0x3eba8000u,0xfb000000u,0x00000000u,0x00000000u,0x3d440000u,0x3dda0000u },
+};
+/* Retained full-extent alternate shader alpha 239; compare
+ * the integer rotated source against independent vertex-alpha/source-over. */
+static const struct mbx_test_status_form youtube_alternate_1 = {
+ .name="YouTube alternate quarter-turn alpha 239", .semantic_sprite=true, .quarter_turn=true,
+ .boundary_override=true, .xclip=0x00380028u, .yclip=0x01000070u,
+ .tile_x0=5, .tile_x1=6, .tile_y0=7, .tile_y1=15,
+ .left=40, .top=112, .width=9, .height=144,
+ .source=0x00965080u, .source_x0=3, .source_row0=0,
+ .source_stride=1056, .source_control=0x0e400000u,
+ .source_width=264, .source_height=9,
+ .boundary={ 0x42200000u,0x43800000u,0x42200000u,0x42e00000u,0x42440000u,0x43800000u,0x42440000u,0x42e00000u },
+ .quad={ 0xe0000000u,0xa6118001u,0x0e436961u,0xd6887610u,0xa7718000u,0x0e532da0u,0xa3104620u,0x22250e80u,0x42200000u,0x43ba8000u,0x42200000u,0x42da0000u,0x42440000u,0x43ba8000u,0x42440000u,0x42da0000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xef000000u,0x3f040000u,0x3f100000u,0x3d200000u,0x3eba8000u,0xef000000u,0x00000000u,0x3f100000u,0x3d200000u,0x3dda0000u,0xef000000u,0x3f040000u,0x00000000u,0x3d440000u,0x3eba8000u,0xef000000u,0x00000000u,0x00000000u,0x3d440000u,0x3dda0000u },
+};
 /* SpringBoard's Spotlight entry retained a direct-sampler, full-extent
  * texture packet. The direct sampler keeps the filtered producer's row-major
  * corner order even though its 0x0e texture state is unfiltered. Its 86x13
@@ -6696,6 +6976,12 @@ static void test_later_tiled_status_sprites(void) {
     test_captured_status_form(&safari_done_column_resample_form);
     test_captured_status_form(&spotlight_home_narrow_strip_resample_form);
     test_captured_status_form(&spotlight_entry_unfiltered_direct_crop_form);
+    test_captured_status_form(&youtube_alternate_0);
+    test_captured_status_form(&youtube_alternate_1);
+    test_captured_status_form(&youtube_quarter_0);
+    test_captured_status_form(&youtube_quarter_1);
+    test_captured_status_form(&youtube_quarter_2);
+
     test_captured_status_form(&safari_keyboard_address_row_resample_form);
     test_captured_status_form(&safari_keyboard_surface_row_resample_form);
     for (unsigned i = 0;
@@ -7679,6 +7965,8 @@ int main(void) {
     test_second_tiled_status_glyph();
     test_compact_opaque_blit_copy();
     test_compact_column_resample();
+    test_compact_rotated_column();
+    test_compact_integer_quarter_turn();
     test_compact_full_extent_uniform_minification();
     test_compact_clipped_zero_coverage();
     test_pointer_selected_solid_quad();

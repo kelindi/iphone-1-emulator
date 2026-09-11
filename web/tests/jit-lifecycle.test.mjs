@@ -31,6 +31,7 @@ function setup(options={}) {
   const events=[], active=new Map(), fnIds=new Map(), allocated=new Set(), waiting=[];
   const memory={buffer:new ArrayBuffer(2*1024*1024)};
   let ptr=128, nextId=1, mallocs=0, admissions=0, mode=0;
+  let deviceTicks=0, displayLit=1;
   const defs=options.defs || [region()];
   const binary=bytes('bounded fake seed');
   const definitions=bytes(JSON.stringify(defs));
@@ -47,7 +48,19 @@ function setup(options={}) {
     _emu_jit_install(pc,thumb,id){events.push(['install',pc,thumb,id]);admissions++;if(options.installThrow===admissions)throw Error('admission exception');return options.installFail===admissions?0:1;},
     _emu_jit_retired(){return 0;},_emu_jit_stat(){return 0;},_emu_jit_stale(){},_emu_jit_span(){return 0;},
     ccall(name){if(name==='emu_init')api.jitMemory=memory;events.push(['ccall',name]);return name==='emu_error'?'bad snapshot':0;},
-    cwrap(name){return (...args)=>{events.push(['api',name,...args]);if(name==='emu_snapshot_advance')return 1;if(name==='emu_snapshot_data')return 64;if(name==='emu_snapshot_size')return 16;return 0;};}
+    cwrap(name){return (...args)=>{
+      events.push(['api',name,...args]);
+      // Model the startup button/clock contract; real lock pixels and gestures
+      // are covered by open-lock.mjs in Chrome with the genuine guest.
+      if(name==='emu_run'){deviceTicks+=args[0];return args[0];}
+      if(name==='emu_ticks')return deviceTicks;
+      if(name==='emu_frame')return displayLit;
+      if(name==='emu_button'&&!args[1])displayLit=args[0]===1?1:0;
+      if(name==='emu_snapshot_advance')return 1;
+      if(name==='emu_snapshot_data')return 64;
+      if(name==='emu_snapshot_size')return 16;
+      return 0;
+    };}
   };
   if(options.lateMemory)delete api.jitMemory;
   if(options.missingExports)for(const key of Object.keys(api))if(key.startsWith('_emu_jit_'))delete api[key];

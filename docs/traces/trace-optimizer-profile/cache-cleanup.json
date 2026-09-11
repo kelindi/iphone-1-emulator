@@ -1,0 +1,28 @@
+{
+  "time": 1788708577.6150632,
+  "authorization": "Root permits completed regenerable browser caches; no live Chrome in redacted process check",
+  "freeBefore": 4127633408,
+  "paths": [
+    {
+      "path": ".context/web-lto/browser/measured/1-original/profile/Default/Cache",
+      "allocatedBytes": 119205888
+    },
+    {
+      "path": ".context/web-lto/browser/measured/1-original/profile/Default/Code Cache",
+      "allocatedBytes": 158801920
+    },
+    {
+      "path": ".context/web-lto/browser/measured/1-original/profile/Default/Service Worker",
+      "allocatedBytes": 106360832
+    },
+    {
+      "path": ".context/mbx-stride-integration/final-release/run-1/profile/Default/Cache",
+      "allocatedBytes": 119218176
+    },
+    {
+      "path": ".context/mbx-stride-integration/final-release/run-1/profile/Default/Code Cache",
+      "allocatedBytes": 192266240
+    }
+  ],
+  "freeAfter": 4340936704
+}

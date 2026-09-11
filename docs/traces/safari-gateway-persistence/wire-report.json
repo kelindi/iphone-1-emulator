@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "scope": "Four complete retained HTTP200 exchanges, first already present at import; fresh hi before ordinary reload and ok after real unlock. Original screenshots independently reviewed; no speed or complete graphics claim.",
+  "exportSHA256": "5feb00ae53dd557d77897a57276e0ff4f22f8303ce8b63d4eab177e278e5237a",
+  "transactions": [
+    {
+      "request": "GET / HTTP/1.1",
+      "requestBytes": 357,
+      "responseBytes": 598,
+      "responseBodyBytes": 474,
+      "requestSHA256": "2791f66dfd61a79e13b155a701d3d9c5fff607b57740bfa327ac8e24544f4793",
+      "responseSHA256": "caa103871118e568677727d5d33c535bdbc0d2c49b50f704d7526fdaee40f75b"
+    },
+    {
+      "request": "GET /echo?message=hi HTTP/1.1",
+      "requestBytes": 400,
+      "responseBytes": 428,
+      "responseBodyBytes": 304,
+      "requestSHA256": "ae6244ce8c4e7a20fde3cddbf042cec34f489b71c934425d0e81234410b1b42b",
+      "responseSHA256": "d374f1da00ddb3c1b03c3732a2d5e732e4164b803a2e7a2040c874bf97294240"
+    },
+    {
+      "request": "GET / HTTP/1.1",
+      "requestBytes": 400,
+      "responseBytes": 598,
+      "responseBodyBytes": 474,
+      "requestSHA256": "efa2078f5c10bcbcee728d6849fb729549507f0a76ea2e92bcf6807bc226f725",
+      "responseSHA256": "caa103871118e568677727d5d33c535bdbc0d2c49b50f704d7526fdaee40f75b"
+    },
+    {
+      "request": "GET /echo?message=ok HTTP/1.1",
+      "requestBytes": 400,
+      "responseBytes": 428,
+      "responseBodyBytes": 304,
+      "requestSHA256": "29494a74e0fea1a0e10a06236e898b9e630ae2b78274fdbc0e7ee60da07617b2",
+      "responseSHA256": "4eb3995e64706a4bf0bea5a4c68f518d90b121f90499111a485306bf3157a0a0"
+    }
+  ],
+  "filesystemReadbackLimits": "Original loader; catalog and file backing bytes only, no guest execution. Dirty filesystem buffers may not yet be reflected in backing bytes. Missing logs do not prove no event."
+}

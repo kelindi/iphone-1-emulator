@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "sourceSHA256": "d0bf680eb61974a505c137ff81755d1daaacaef46a8cfe6d9c81a47da3bd511c",
+  "outputSHA256": "472dedca08900d1ec3dcf69f025f1a18b2643cadc7e9223fdb3216d05b347223",
+  "programSHA256": "3a5e37c1504920613574e052af78b94708673a55d4c6e2ba1db8088ff4741368",
+  "changedFileForks": [
+    "/usr/libexec/iphone1-weather-http"
+  ],
+  "allOtherForksUnchanged": true,
+  "scope": "Private work image replaces only our own gateway with Motion-JPEG experiment; original Apple files unchanged"
+}

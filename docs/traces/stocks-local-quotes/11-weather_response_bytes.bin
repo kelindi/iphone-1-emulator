@@ -1,0 +1,7 @@
+HTTP/1.0 400 Bad Request
+Content-Type: text/xml; charset=utf-8
+Connection: close
+Cache-Control: no-store
+X-iPhone1-Demo: fixed-stocks
+Content-Length: 0
+

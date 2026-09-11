@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "scope": "Read-only exported snapshot and filesystem backing; dirty unsaved file buffers may not appear. No guest instructions.",
+  "snapshotSHA256": "98f623b0b415705013012cede33189c39d5f74b9ad7f642c29d8098481328a9e",
+  "loadedCPUUnchanged": true,
+  "launchd": {
+    "pid": 21,
+    "rawLastExitStatus": 0,
+    "label": "com.iphone1.weather-http"
+  },
+  "startupMarkers": 1,
+  "listeningMarkers": 1,
+  "acceptedRequests": 1,
+  "weatherOrStocksPosts": 0,
+  "payloads": [
+    {
+      "kind": "WEATHER_REQUEST_BYTES",
+      "declared": 357,
+      "artifact": "http-0.bin",
+      "sha256": "2791f66dfd61a79e13b155a701d3d9c5fff607b57740bfa327ac8e24544f4793",
+      "firstLine": "GET / HTTP/1.1"
+    },
+    {
+      "kind": "WEATHER_RESPONSE_BYTES",
+      "declared": 598,
+      "artifact": "http-1.bin",
+      "sha256": "caa103871118e568677727d5d33c535bdbc0d2c49b50f704d7526fdaee40f75b",
+      "firstLine": "HTTP/1.0 200 OK"
+    }
+  ],
+  "conclusion": "Numeric Safari HTTP route works; no Weather/Stocks request observed, so service XML handling has not yet been exercised. DNS/resolver, reachability and app request initiation remain separate hypotheses."
+}

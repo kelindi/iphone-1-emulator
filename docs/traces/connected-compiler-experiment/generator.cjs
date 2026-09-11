@@ -1,0 +1,26 @@
+'use strict';
+const path=require('node:path');
+const original=require(path.resolve(__dirname,'../../tools/jit/compiler.cjs'));
+function endExpr(s,start){if(s[start]!=='(')throw Error('expression start');let depth=0,quote=false,escape=false;for(let i=start;i<s.length;i++){const c=s[i];if(quote){if(escape)escape=false;else if(c==='\\')escape=true;else if(c==='"')quote=false;continue;}if(c==='"'){quote=true;continue;}if(c==='(')depth++;else if(c===')'&&!--depth)return i+1;}throw Error('unbalanced WAT');}
+function parts(wat){const start=wat.indexOf('(block $done(loop $run');if(start<0)throw Error('original run block missing');const end=endExpr(wat,start),init=wat.indexOf('(local.set $r0 ');if(init<0||init>start)throw Error('original init missing');return {header:wat.slice(0,init),init:wat.slice(init,start),run:wat.slice(start,end),end:wat.slice(end,-1)};}
+const C=n=>`(i32.const ${n|0})`, L=n=>`(local.get $${n})`;
+function match(e){return `(i32.and(i32.and(i32.eq(i32.and ${L('r15')}${C(~1023)})${C(e.pc)})(i32.eq(i32.and ${L('f')}${C(32)})${C(e.thumb?32:0)}))(i32.eqz(i32.and ${L('r15')}${C(e.thumb?1:3)})))`;}
+function compileCluster(entries,built){const ps=built.map(b=>parts(b.wat)),first=ps[0];if(ps.some(p=>p.init!==first.init))throw Error('initialization mismatch');
+const name='$cluster_'+entries[0].index;
+let header=first.header.replace('(func(export',`(func ${name}(export`).replace(/\(export "b\d+"\)/,'');
+header+='(local $target i32)(local $stale_pc i32)(local $stale_thumb i32)';
+const select=()=>`(local.set $target ${C(-1)})`+entries.map((e,i)=>`(if ${match(e,built[i])}(then(local.set $target ${C(i)})))`).join('');
+let body=first.init+select()+`(block $cluster_done(loop $cluster_run`;
+for(let i=0;i<entries.length;i++)body+=`(if(i32.eq ${L('target')}${C(i)})(then(local.set $why ${C(0)})(local.set $stale_pc ${C(entries[i].pc)})(local.set $stale_thumb ${C(entries[i].thumb?1:0)})${ps[i].run.replaceAll('$done','$region_done')}))`;
+body+=`(if(i32.and(i32.or(i32.eq ${L('why')}${C(2)})(i32.eq ${L('why')}${C(3)}))(i32.and(i32.gt_u ${L('n')}${C(0)})(i32.lt_u ${L('n')}${L('budget')})))(then${select()}(if(i32.eq ${L('target')}${C(-1)})(then(br $cluster_done)))(local.set $fetch(call $connected_fetch ${L('c')}${L('r15')}${L('f')}))(if(i32.eqz ${L('fetch')})(then(br $cluster_done)))(br $cluster_run)))(br $cluster_done)))`;
+const end=first.end.replace(/\(call \$stale \(i32.const -?\d+\)\(i32.const [01]\)\)/,`(call $stale ${L('stale_pc')}${L('stale_thumb')})`);
+if(end===first.end)throw Error('stale callback replacement missing');
+const wrappers=entries.map(e=>`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32)(call ${name} ${L('c')}${L('budget')}))`).join('');
+return {wat:header+body+end+')'+wrappers,proof:ps.map((p,i)=>({index:entries[i].index,originalRun:p.run,projectedRun:p.run.replaceAll('$done','$region_done').replaceAll('$region_done','$done')}))};}
+function generate(regions,offsets,options={}){original.configure(offsets);const entries=regions.map(e=>({...e,ops:new Map(e.ops)}));if(new Set(entries.map(e=>e.index)).size!==entries.length||new Set(entries.map(e=>`${e.pc>>>0}:${!!e.thumb}`)).size!==entries.length)throw Error('duplicate region');const built=entries.map(e=>original.compileRegion(e));if(built.some(b=>!b))throw Error('empty region');const max=options.maxCluster??4;if(!Number.isInteger(max)||max<1||max>4)throw Error('cluster limit');
+const edge=[];for(let i=0;i<entries.length;i++){const targets=new Set([...built[i].wat.matchAll(/\(local.set \$r15 \(i32.const (-?\d+)\)\)/g)].map(m=>(+m[1])>>>0));for(let j=0;j<entries.length;j++)if(i!==j&&[...targets].some(pc=>(pc&~1023)===(entries[j].pc|0)))edge.push([i,j]);}
+let clusters=[];if(options.clusters){clusters=options.clusters.map(group=>group.map(index=>{const n=entries.findIndex(e=>e.index===index);if(n<0)throw Error('unknown index');return n;}));if(clusters.flat().length!==entries.length||new Set(clusters.flat()).size!==entries.length||clusters.some(c=>!c.length||c.length>max))throw Error('invalid clusters');}else{const used=new Set();for(let i=0;i<entries.length;i++){if(used.has(i))continue;const group=[i];used.add(i);while(group.length<max){const next=edge.find(([a,b])=>group.includes(a)&&!used.has(b))?.[1]??edge.find(([a,b])=>group.includes(b)&&!used.has(a))?.[0];if(next===undefined)break;group.push(next);used.add(next);}clusters.push(group);}}
+const functions=[],proof=[];for(const group of clusters){if(group.length===1)functions.push(built[group[0]].wat);else{const c=compileCluster(group.map(i=>entries[i]),group.map(i=>built[i]));functions.push(c.wat);proof.push(...c.proof);}}
+const definitions=entries.map((e,i)=>({pc:e.pc,thumb:e.thumb,index:e.index,masks:built[i].masks.map(n=>n>>>0)}));
+return {wat:`(module(import "env" "memory"(memory 8192))(import "env" "stale"(func $stale(param i32 i32)))(import "env" "span"(func $span(param i32 i32 i32 i32 i32)(result i32)))(import "env" "connected_fetch"(func $connected_fetch(param i32 i32 i32)(result i32)))${functions.join('')})`,definitions,clusters:clusters.map(c=>c.map(i=>entries[i].index)),edges:edge.map(([a,b])=>[entries[a].index,entries[b].index]),proof};}
+module.exports={generate,compileCluster,parts,endExpr};

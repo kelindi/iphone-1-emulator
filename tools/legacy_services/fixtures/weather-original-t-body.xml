@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><request devtype="Apple iPhone v1.0" deployver="Apple iPhone v1.0" app="YGoiPhoneClient" appver="1.0.0.1A543a" api="weather" apiver="1.0.0" acknotification="0000"><query id="30" timestamp="0" type="getforecastbylocationid"><list><id>USCA0273|12797509</id></list><language>en</language><unit>f</unit></query></request>

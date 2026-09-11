@@ -1,0 +1,10 @@
+{
+  "snapshot": ".context/youtube-services/local-clip-browser/final-home.snap",
+  "snapshotSHA256": "f686464091bb599b3cfa471528e96a33f7e09a30218f6d40c9f66efb762a3ca8",
+  "logBytes": 17143,
+  "logSHA256": "a324138daa59970371b66965e4796154784d8452fa5a63d4e7e0331ffa802f54",
+  "guestPublicKeySHA256": "7f07ca3e8d342680dcd9706072ff6acdb2db6ba189fa0ebd448ed4e4cee51752",
+  "certificateSHA256": "00aa7636849c1a6f6e2a44c2b84120f45cfad45c1b2754c8dd0735127c21501a",
+  "certificateMatchesGuestPublicKey": true,
+  "scope": "Snapshot backing-file readback only; dirty caches may be absent. No private key read or guest execution."
+}

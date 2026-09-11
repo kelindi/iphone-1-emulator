@@ -7,8 +7,8 @@
     <key>ProgramArguments</key>
     <array><string>/usr/libexec/iphone1-local-http</string></array>
     <key>RunAtLoad</key><true/>
-    <key>KeepAlive</key><false/>
-    <key>StandardOutPath</key><string>/dev/console</string>
-    <key>StandardErrorPath</key><string>/dev/console</string>
+    <key>KeepAlive</key><true/>
+    <key>StandardOutPath</key><string>/var/log/iphone1-local-http.log</string>
+    <key>StandardErrorPath</key><string>/var/log/iphone1-local-http.log</string>
 </dict>
 </plist>

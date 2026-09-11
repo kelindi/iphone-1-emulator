@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "sources": {
+    "core/include/arm.h": "347cf61ebd007269e2a01b3d92eb345684849f31a36669000b06eb64c43e4744",
+    "core/include/arm_adaptive_guard.h": "f047fb9173b4c4577642699cbf7c6ccd143625a58235bfaa73597e0c2f6e6b61",
+    "core/include/arm_adaptive_jit.h": "7eea006e62862c8c98c60ecf7eec9e0667390e5526dbfe13386cb8e6a1457fd3",
+    "core/include/arm_adaptive_dispatch.h": "2b520bbedde5a02a8a3ffbe8665de06103faa3a58f964f9de9f52c4ca6ff782d",
+    "core/src/mmu.c": "cab7a251455d716f2616bf6cc47855f79642deb000af1d58ec59b8dd38626d43",
+    "core/src/arm/arm_interp.c": "71466a84bfcf301eb98d887af554f45b3ad01b099041f6c957c5a634d6ff1b3a",
+    "core/src/soc/machine.c": "f4ffa929ad5a44cf648d89a58d882b622bbac5d217de60531b8bb386f63881db",
+    "web/adaptive-runtime.c": "700bac173a09adc41606f125d79e5110f9f8673a3d583e0995e10f6404fe5435",
+    "web/adaptive-runtime.h": "817a3274d555ae0323e8856c49004b5183478bb64135867188ae836221929385",
+    "tools/jit/adaptive/decode.mjs": "fa4b851ed8dfaadf1e9b3e5b9448f0ca4974c63db5419797acc85d7c5bdcb4c4",
+    "tools/jit/adaptive/unit.mjs": "c94a1a70ac47fa5aaf2bb7e1a52c03c13a36bf9a11803d98cab0afcc33af38dd",
+    "tools/jit/adaptive/emit.mjs": "34284e29bdc29fdf4905623f5127dd5bb369787142577e31e0c199ede4740c04",
+    "tools/jit/adaptive/tests/machine-bridge.c": "48565b892a3ca7b661378c103fe58e3d94bd967d0c48ddbb4311c112112a6a47",
+    "tools/jit/adaptive/tests/machine-bridge.mjs": "1057003766b3d156ec52c8f7b95c1d7cfb17709de3840037c5493801305b04b2"
+  },
+  "commands": [
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcmake",
+      "args": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "-DIPHONE1_WEB=ON",
+        "-DIPHONE1_WASM_JIT=OFF",
+        "-DIPHONE1_WEB_DIST=/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/dist",
+        "-DCMAKE_C_FLAGS=-DS5LBOX_ADAPTIVE_JIT=1"
+      ],
+      "output": "-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build\n",
+      "passed": true
+    },
+    {
+      "cmd": "cmake",
+      "args": [
+        "--build",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "--target",
+        "emucore",
+        "-j",
+        "4"
+      ],
+      "output": "Consolidate compiler generated dependencies of target emucore\n[100%] Built target emucore\n",
+      "passed": true
+    },
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcc",
+      "args": [
+        "-O2",
+        "-std=c11",
+        "-Icore/include",
+        "-Iweb",
+        "tools/jit/adaptive/tests/machine-bridge.c",
+        "web/adaptive-runtime.c",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build/core/libemucore.a",
+        "-lm",
+        "-sMODULARIZE=1",
+        "-sEXPORT_NAME=createMachine",
+        "-sENVIRONMENT=node",
+        "-sALLOW_TABLE_GROWTH=1",
+        "-sALLOW_MEMORY_GROWTH=1",
+        "-sSTACK_SIZE=4194304",
+        "-sEXPORTED_FUNCTIONS=[\"_malloc\",\"_free\"]",
+        "-sEXPORTED_RUNTIME_METHODS=[\"addFunction\",\"removeFunction\"]",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/machine-bridge.cjs"
+      ],
+      "output": "",
+      "passed": true
+    },
+    {
+      "cmd": "/usr/local/bin/node",
+      "args": [
+        "tools/jit/adaptive/tests/machine-bridge.mjs"
+      ],
+      "output": "{\"passed\":true,\"scope\":\"Actual emitted WASM, guarded C registry and real machine scheduler; full snapshots on synthetic integer loops. Not real-phone workloads, MMU-on execution or performance acceptance.\",\"cases\":[{\"name\":\"connected loop\",\"credits\":128,\"guardCalls\":125,\"snapshotBytes\":17887393,\"sha256\":\"0a2677d2143af999ff4626995a58fe2b5b8c02744883cb8c6402881d82c92343\",\"retired\":0},{\"name\":\"cross-window loop\",\"credits\":128,\"guardCalls\":125,\"snapshotBytes\":17887393,\"sha256\":\"b2d364d15946a08fcd6f8b496daf4f976362bbd0c917ef47ab183b115599c1ac\",\"retired\":0},{\"name\":\"stale literal fallback\",\"credits\":128,\"guardCalls\":1,\"snapshotBytes\":17887393,\"sha256\":\"c4b983cc9c9bc23caae686c4ed57de905552f2882690cad0fe3173f33daf22a7\",\"retired\":1},{\"name\":\"fatal latch blocks repeated single-step\",\"passed\":true}],\"runtimeSha256\":\"1761250fe1608de55c568211509eaf1e84e42d3934f28cc67f3285e4f3cc40b3\"}\n",
+      "passed": true
+    }
+  ]
+}

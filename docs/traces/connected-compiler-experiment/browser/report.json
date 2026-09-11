@@ -1,0 +1,230 @@
+{
+  "host": {
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "date": "2026-09-06T21:28:05.700Z",
+  "browser": "152.0.7977.82",
+  "url": "http://127.0.0.1:8192",
+  "pulseMs": 30,
+  "actions": [
+    {
+      "kind": "settings",
+      "round": 0,
+      "firstVisibleMs": 1002.3000000007451,
+      "readyMs": 3700.10000000149,
+      "releaseOffsetMs": 35.5,
+      "releaseToFirstVisibleMs": 966.8000000007451,
+      "releaseToReadyMs": 3664.60000000149,
+      "observedAtMs": 4200.10000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 32.22375037443834,
+        "fps": 6.989515726410384,
+        "guestRate": 1.0000029955067398,
+        "cycles": "11313806241",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12323630,
+          "retired": 80026456,
+          "calls": 8826618
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "kind": "home",
+      "round": 0,
+      "firstVisibleMs": 400.1000000014901,
+      "readyMs": 850.1000000014901,
+      "releaseOffsetMs": 34.5,
+      "releaseToFirstVisibleMs": 365.6000000014901,
+      "releaseToReadyMs": 815.6000000014901,
+      "observedAtMs": 1350.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 11.642099145621549,
+        "fps": 6.954102920712932,
+        "guestRate": 0.9999061196090901,
+        "cycles": "11338505025",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12323630,
+          "retired": 96391188,
+          "calls": 10887256
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 1,
+      "firstVisibleMs": 300.1000000014901,
+      "readyMs": 2500.199999999255,
+      "releaseOffsetMs": 32,
+      "releaseToFirstVisibleMs": 268.1000000014901,
+      "releaseToReadyMs": 2468.199999999255,
+      "observedAtMs": 3055.60000000149,
+      "metrics": {
+        "type": "metrics",
+        "mips": 27.988547647444765,
+        "fps": 21.929824561338364,
+        "guestRate": 1.0000081406137225,
+        "cycles": "11463674310",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12323630,
+          "retired": 184765616,
+          "calls": 20434258
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "kind": "home",
+      "round": 1,
+      "firstVisibleMs": 450.1000000014901,
+      "readyMs": 900.1000000014901,
+      "releaseOffsetMs": 32.70000000298023,
+      "releaseToFirstVisibleMs": 417.3999999985099,
+      "releaseToReadyMs": 867.3999999985099,
+      "observedAtMs": 1400.1000000014901,
+      "metrics": {
+        "type": "metrics",
+        "mips": 19.179517592003545,
+        "fps": 16.944084521130765,
+        "guestRate": 1.0000064786235228,
+        "cycles": "11489189111",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12323630,
+          "retired": 201093502,
+          "calls": 22644233
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    }
+  ],
+  "errors": [],
+  "method": "50 ms canvas sampling; changed pixels exclude status bar; readiness must remain visually stable 500 ms. Ready time starts that stable interval. Legacy readyMs/firstVisibleMs start before mouse-down; release-relative fields use the actual browser pointerup event. First/warm are separate; at least20 warm samples are required for a per-action p95.",
+  "client": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 8,
+    "deviceMemory": 16
+  },
+  "summary": {
+    "settings": {
+      "first": {
+        "kind": "settings",
+        "round": 0,
+        "firstVisibleMs": 1002.3000000007451,
+        "readyMs": 3700.10000000149,
+        "releaseOffsetMs": 35.5,
+        "releaseToFirstVisibleMs": 966.8000000007451,
+        "releaseToReadyMs": 3664.60000000149,
+        "observedAtMs": 4200.10000000149,
+        "metrics": {
+          "type": "metrics",
+          "mips": 32.22375037443834,
+          "fps": 6.989515726410384,
+          "guestRate": 1.0000029955067398,
+          "cycles": "11313806241",
+          "memory": 643039232,
+          "jit": {
+            "enabled": true,
+            "generation": 1,
+            "regions": 509,
+            "bytes": 12323630,
+            "retired": 80026456,
+            "calls": 8826618
+          },
+          "serial": "",
+          "captureMs": null,
+          "captureChunkMs": null,
+          "finalizeMs": null
+        }
+      },
+      "warmSamples": 1,
+      "releaseToReadyP95Ms": null,
+      "navigationTargetMs": 2000,
+      "meetsSampledNavigationTarget": null,
+      "note": "Insufficient warm samples for the20-run navigation gate."
+    },
+    "home": {
+      "first": {
+        "kind": "home",
+        "round": 0,
+        "firstVisibleMs": 400.1000000014901,
+        "readyMs": 850.1000000014901,
+        "releaseOffsetMs": 34.5,
+        "releaseToFirstVisibleMs": 365.6000000014901,
+        "releaseToReadyMs": 815.6000000014901,
+        "observedAtMs": 1350.1000000014901,
+        "metrics": {
+          "type": "metrics",
+          "mips": 11.642099145621549,
+          "fps": 6.954102920712932,
+          "guestRate": 0.9999061196090901,
+          "cycles": "11338505025",
+          "memory": 643039232,
+          "jit": {
+            "enabled": true,
+            "generation": 1,
+            "regions": 509,
+            "bytes": 12323630,
+            "retired": 96391188,
+            "calls": 10887256
+          },
+          "serial": "",
+          "captureMs": null,
+          "captureChunkMs": null,
+          "finalizeMs": null
+        }
+      },
+      "warmSamples": 1,
+      "releaseToReadyP95Ms": null,
+      "navigationTargetMs": 2000,
+      "meetsSampledNavigationTarget": null,
+      "note": "Insufficient warm samples for the20-run navigation gate."
+    }
+  },
+  "moduleBodies": [
+    {
+      "url": "http://127.0.0.1:8192/jit/seed.wasm",
+      "sha256": "827009cf3c37d7b5b616b242906cc1387a0407b227cb26327aef9544bd38244c"
+    },
+    {
+      "url": "http://127.0.0.1:8192/dist/emu.wasm",
+      "sha256": "c94622bafd46737df75dc051facb4ce7af137d585c70f5eaaaab9e46a6aaa8dd"
+    }
+  ],
+  "passed": true,
+  "video": "/home/vercel-sandbox/iphone-1/.context/connected-engine/browser/page@742c0e270ed5a43f1cb8a45758c1bba9.webm"
+}
