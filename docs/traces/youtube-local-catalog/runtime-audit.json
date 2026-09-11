@@ -1,0 +1,252 @@
+{
+  "passed": true,
+  "binarySHA256": "073c1a110341bdf31db5af2285f6aaec394c860be0e441dec92400ea6f056c16",
+  "bytes": 63776,
+  "instructionWords": 8934,
+  "excludedCompilerDataWords": 312,
+  "r9Writes": 0,
+  "environmentAddress": "0xf048",
+  "environmentVector": "0xf050",
+  "environmentTerminator": 0,
+  "objects": [
+    {
+      "object": "dns_packet.o",
+      "sha256": "0d5b8f7dd8c910d5e2d84c364a147262a9ce06b3c1aa8160e34c5354cdecf592",
+      "textBase": "0x8be8",
+      "dataRanges": [
+        [
+          "0x90b0",
+          8,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "http.o",
+      "sha256": "710257d0cd6b0fe09deb9147dcd74dd312ff41a1a74bfb08977577c3a19a89cc",
+      "textBase": "0x6010",
+      "dataRanges": [
+        [
+          "0x6ee0",
+          120,
+          1
+        ],
+        [
+          "0x7224",
+          20,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "stocks.o",
+      "sha256": "d64524e5b538e6c81b544043c3ad94ad82d092787bbdc0a9a8c7bfd0cba90087",
+      "textBase": "0x7238",
+      "dataRanges": [
+        [
+          "0x7b98",
+          100,
+          1
+        ],
+        [
+          "0x83ec",
+          44,
+          1
+        ],
+        [
+          "0x85c0",
+          8,
+          1
+        ],
+        [
+          "0x877c",
+          4,
+          1
+        ],
+        [
+          "0x8bc8",
+          32,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "weather.o",
+      "sha256": "fc0386107f518aa21b13c4eda35e6a19f151b0f659f42c8efa85ffcb41c95480",
+      "textBase": "0x5a4c",
+      "dataRanges": [
+        [
+          "0x5bc4",
+          4,
+          1
+        ],
+        [
+          "0x5d6c",
+          28,
+          1
+        ],
+        [
+          "0x5fec",
+          8,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "weather_http.o",
+      "sha256": "253ffa7088d0fbbf9bef3740ffd891bb72e0331d705bdc00569f74ba82da1a2d",
+      "textBase": "0x3170",
+      "dataRanges": [
+        [
+          "0x39e4",
+          80,
+          1
+        ],
+        [
+          "0x3b60",
+          12,
+          1
+        ],
+        [
+          "0x3f04",
+          40,
+          1
+        ],
+        [
+          "0x4378",
+          44,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "weather_request.o",
+      "sha256": "28275e314d58a12c93c00d4559456c4edc50fe856e7dc59c4cc08058b70d25b3",
+      "textBase": "0x43a4",
+      "dataRanges": [
+        [
+          "0x4a1c",
+          76,
+          1
+        ],
+        [
+          "0x5258",
+          44,
+          1
+        ],
+        [
+          "0x55dc",
+          8,
+          1
+        ],
+        [
+          "0x5a2c",
+          32,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "weather_server.o",
+      "sha256": "4ac6b5ab2f93452767d90fa38cb288a0389e4aaaa304a8b6307eaf0b40e2db87",
+      "textBase": "0x1b58",
+      "dataRanges": [
+        [
+          "0x2b08",
+          248,
+          1
+        ],
+        [
+          "0x2cd4",
+          12,
+          1
+        ],
+        [
+          "0x2dbc",
+          4,
+          1
+        ],
+        [
+          "0x2e7c",
+          20,
+          1
+        ],
+        [
+          "0x2f84",
+          24,
+          1
+        ],
+        [
+          "0x3078",
+          4,
+          1
+        ],
+        [
+          "0x3160",
+          16,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "weather_support.o",
+      "sha256": "790c23709f48c62afb519df5b7dde19b382a2d83ae0c4ef71f0a464ac47f079e",
+      "textBase": "0x5ff4",
+      "dataRanges": []
+    },
+    {
+      "object": "youtube_auth.o",
+      "sha256": "8e4ce92e6539eb4449818d01d4aec69b7aeec87ac68fa540d18923eaab95ffa3",
+      "textBase": "0x90b8",
+      "dataRanges": [
+        [
+          "0x9574",
+          12,
+          1
+        ],
+        [
+          "0x9704",
+          16,
+          1
+        ]
+      ]
+    },
+    {
+      "object": "youtube_catalog.o",
+      "sha256": "aea1cbb553eab198ec410c170af846f8dc79ee52ef8328ed43c9b52d67b1ad29",
+      "textBase": "0x9714",
+      "dataRanges": [
+        [
+          "0x9820",
+          24,
+          4
+        ],
+        [
+          "0x9db8",
+          64,
+          1
+        ],
+        [
+          "0xa7fc",
+          80,
+          1
+        ],
+        [
+          "0xaa90",
+          4,
+          1
+        ],
+        [
+          "0xab24",
+          4,
+          1
+        ],
+        [
+          "0xabcc",
+          4,
+          1
+        ]
+      ]
+    }
+  ]
+}

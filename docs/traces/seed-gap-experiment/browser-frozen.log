@@ -1,0 +1,4 @@
+{'arm': 'control', 'directory': '.context/seed-gap/frozen-0-control', 'exit': 0}
+{'arm': 'candidate', 'directory': '.context/seed-gap/frozen-1-candidate', 'exit': 0}
+{'arm': 'candidate', 'directory': '.context/seed-gap/frozen-2-candidate', 'exit': 0}
+{'arm': 'control', 'directory': '.context/seed-gap/frozen-3-control', 'exit': 0}

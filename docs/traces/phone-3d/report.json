@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "name": "2D remains available",
+      "seconds": 10.33030349
+    },
+    {
+      "name": "3D opens with live lock screen",
+      "seconds": 14.321826724000001
+    },
+    {
+      "name": "angled slide unlocks the real guest",
+      "seconds": 21.077651361999997
+    },
+    {
+      "name": "case drag rotates model",
+      "seconds": 26.372076727
+    },
+    {
+      "name": "3D screen opens Settings",
+      "seconds": 27.691753452999997
+    },
+    {
+      "name": "3D Home button returns from app",
+      "seconds": 30.198027704
+    },
+    {
+      "name": "keyboard rotates to aluminum back",
+      "seconds": 31.272129473999996
+    },
+    {
+      "name": "wheel zoom works",
+      "seconds": 31.767676679
+    },
+    {
+      "name": "2D switch preserves guest",
+      "seconds": 31.799791975999998
+    },
+    {
+      "name": "mobile viewport fits model and controls",
+      "seconds": 32.405768425
+    },
+    {
+      "name": "WebGL context loss returns safely to 2D",
+      "seconds": 32.434864292
+    },
+    {
+      "name": "no page errors",
+      "seconds": 32.435887899
+    }
+  ],
+  "result": "pass"
+}

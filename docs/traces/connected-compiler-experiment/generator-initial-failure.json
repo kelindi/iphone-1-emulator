@@ -1,0 +1,7 @@
+{
+  "stage": "expanded synthetic fixture before final tests",
+  "error": "Error: empty region",
+  "source": "Thumb BX 0x4708 at0x1000 rejected by unchanged original compiler",
+  "resolution": "removed unsupported fixture; no opcode extension",
+  "initialReasonResetIssue": "source-reviewed bare VFP refusal inherited reason2; fixed by zeroing why before each member; literal regression now passes"
+}

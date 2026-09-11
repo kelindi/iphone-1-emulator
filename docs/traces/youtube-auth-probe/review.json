@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "authenticationSucceeded": false,
+  "scope": "Independent completed-wire, nonce, raw PKCS1 signature and submitted/backing certificate identity review. Explicit diagnostic503; no token, catalog, playback or public CA trust claim. No private key read.",
+  "snapshotSHA256": "95231aa8e759652e49b6c6c469505f784d14ddb6156be8c6e05cc1c5794ec984",
+  "serviceLogSHA256": "b58c4b388760ceddeba3b8595376e41c8de9a682966e218a5e0ead8cb2f594b4",
+  "proofSHA256": "36adb3c8899241fe0af4a2efb234fe40c2667289e0b4b53a576d49fc719ad2e4",
+  "readbackReportSHA256": "1663700f0164d1270b39c759fc62842c7189ee07826380d1d540c37a67933264",
+  "guestPublicPEM_SHA256": "7f07ca3e8d342680dcd9706072ff6acdb2db6ba189fa0ebd448ed4e4cee51752",
+  "backingCertificatePEM_SHA256": "562b8b44b6afea4d9879e9b065b7c6b7e74a63bad1e40ad54770c25dcb24fb34",
+  "submittedCertificatePEM_SHA256": "f5462158a4f82aa3927639b8caaf41e084be44d09424000652146568922cb819",
+  "identicalSubmittedBackingDER_SHA256": "cd7fd7cfc3c0deb2da950ab5b0112c1c214cfb67f6439d32e3141fe25d51b7f0",
+  "signatureSHA256": "22c29af6f6452f1e380b88d2efff57ccd11eef628253311adc6396b814fb89e7",
+  "signedDigestSHA256": "fb35af30557fa8bf04b499b7a54fb3b19ecfb34ed439a99a689b40d583f1a361",
+  "checks": {
+    "strictProofReproduced": true,
+    "independentHTTPFramingAndDelivery": true,
+    "nonceHashAndChallengeEcho": true,
+    "submittedCertificateEqualsBackingDER": true,
+    "certificateAndGuestPublicKeyAgree": true,
+    "independentRawPKCS1RecoveryMatches": true,
+    "snapshotAndReadbackHashesAgree": true
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "authenticationSucceeded": false,
+  "error": "exactly one ordered phase1/phase2 pair required"
+}

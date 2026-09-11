@@ -1,0 +1,32 @@
+{
+  "snapshot": ".context/app-services-current/stocks-gateway-browser/final-home.snap",
+  "scope": "Exact contiguous header bytes recovered from snapshot file offsets; process/address ownership not established yet.",
+  "headers": [
+    {
+      "offset": "0xc2895a0",
+      "bytes": 299,
+      "sha256": "41c325820af880e4515dfd3463262c48ad44fdc859e1fe8885bba6c46ff112ee",
+      "path": "header-0.bin",
+      "firstLine": "POST /dgw?imei=905DEB1B-0BC7-4E45-BF32-D5CC174B73FA&apptype=weather&t=3 HTTP/1.1"
+    },
+    {
+      "offset": "0xef97a2a",
+      "bytes": 299,
+      "sha256": "41c325820af880e4515dfd3463262c48ad44fdc859e1fe8885bba6c46ff112ee",
+      "path": "header-1.bin",
+      "firstLine": "POST /dgw?imei=905DEB1B-0BC7-4E45-BF32-D5CC174B73FA&apptype=weather&t=3 HTTP/1.1"
+    }
+  ],
+  "frozenParserSourceSHA256": "768dd0f0f03293f126d16a1889ffe2b349ee78cb15d02a964d49e016ffa4d605",
+  "actualHeader": {
+    "result": -1,
+    "offset": 0,
+    "body": 0
+  },
+  "diagnosticOnlyRemoveT": {
+    "result": 0,
+    "offset": 0,
+    "body": 0
+  },
+  "diagnosis": "Frozen parser rejects extra target parameter t. Removing only the captured &t=3 (diagnostic copy, not actual evidence) changes rejection to incomplete: Content-Length355 body has not arrived. Source code rejects unknown target keys before header/body completeness. Original captured headers unchanged."
+}

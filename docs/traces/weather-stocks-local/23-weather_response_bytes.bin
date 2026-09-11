@@ -1,0 +1,9 @@
+HTTP/1.0 200 OK
+Content-Type: text/xml; charset=utf-8
+Connection: close
+Cache-Control: no-store
+X-iPhone1-Demo: fixed-weather
+Content-Length: 580
+
+<?xml version='1.0' encoding='utf-8'?>
+<response demo="true" dataset="original-iphone-weather-demo-v1"><result id="30"><list><item><location id="USNY0996|2459115" city="New York" /><astronomy sunrise="360" sunset="1080" moonfacevisible="0" moonphase="0" /><condition time="720" temp="64" code="32" /><forecast high="66" low="50" code="32" /><forecast high="67" low="52" code="32" /><forecast high="65" low="49" code="32" /><forecast high="68" low="51" code="32" /><forecast high="70" low="54" code="32" /><forecast high="69" low="53" code="32" /></item></list></result></response>

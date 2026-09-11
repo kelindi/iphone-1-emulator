@@ -1,0 +1,15 @@
+{
+  "core/src/arm/arm_interp.c": "e571cfec393b1c17f5a0b9b466100b6b624209f220ca73d16de301951d8c2f5f",
+  "core/include/arm.h": "bff2bea785a7bafabbf83063183ac007d0e5eb80b6e754042c675c7ec4411ce8",
+  "web/adaptive-runtime.c": "20126cedb6267240eff775760b6a4e6490637e27bfa6d946cee39725da31a283",
+  "web/adaptive-runtime.h": "0b462b5ef790be48422913278a786a887366959fbff646ea8d9d0c7f7f7a0a62",
+  "tools/jit/adaptive/decode.mjs": "d18da7dc9fdc54c984c5291fcfbba1decf6af96f8c625f282121a16e114a6606",
+  "tools/jit/adaptive/unit.mjs": "3b87c6b62a46a9db3b48870a6f5680f0a436fb6fb41e4acffdd916b98628cf3a",
+  "tools/jit/adaptive/emit.mjs": "d453a9d741c82b33293554dd21a5ffa3697ab165fb1940321ca25a2b906fb91f",
+  "tools/jit/adaptive/test-emitter.mjs": "9ad0747972077bfb05e0cfe9fb72b6de5ba9068098907a9538167e02b0e7df03",
+  "tools/jit/adaptive/tests/write-cache.c": "7e778f1041ad7363f96a8b3871a61bddd5b350a6606170ad83ee7b740bf71682",
+  "tools/jit/adaptive/tests/store-runtime.c": "de8fd339e9355ed8a606606e24d067a3ff92e673cd350a5f23cded2e6bfe679d",
+  "tools/jit/adaptive/test-machine-runtime.mjs": "7490f6441435533b17a5e4bb1736796c37b7ac6f7f797caf362ee04d0a2f65dd",
+  "tools/jit/adaptive/tests/machine-bridge.c": "16901b92fbcf74d5192dba7a11064099467e365280778ddf2133c755ad7a1097",
+  "tools/jit/adaptive/tests/machine-bridge.mjs": "c64aa6f5fec1c95d76f68072848255d97dd2cb198132b57911fb52445bca7b72"
+}

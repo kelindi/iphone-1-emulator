@@ -1,0 +1,10 @@
+{
+  "clip-1.mp4": {
+    "bytes": 8826,
+    "sha256": "ea46a569f354d32c426475539bb40b8072d4aa30c3f39d4f9865bcf0886d7178"
+  },
+  "clip-1.jpg": {
+    "bytes": 1575,
+    "sha256": "69916756ae1e8e035076fff44b0033f7fb8e544c50d07bc6555a03b6ddee6768"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "passed": false,
+  "scope": "Actual emitted WASM, guarded C registry and real machine scheduler; full snapshots on synthetic integer loops. Not real-phone workloads or performance acceptance.",
+  "cases": [
+    {
+      "name": "connected loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "0a2677d2143af999ff4626995a58fe2b5b8c02744883cb8c6402881d82c92343",
+      "retired": 0
+    },
+    {
+      "name": "cross-window loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "b2d364d15946a08fcd6f8b496daf4f976362bbd0c917ef47ab183b115599c1ac",
+      "retired": 0
+    },
+    {
+      "name": "MMU register-shift ALU loop",
+      "credits": 128,
+      "guardCalls": 122,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "5e0a4c68660a9d16b2809377fbe62c83c586dc94d8aca2d02912d2d5cd713d10",
+      "retired": 0
+    },
+    {
+      "name": "MMU Thumb arithmetic loop",
+      "credits": 128,
+      "guardCalls": 122,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "7d3316a0b08be3610a0a3429d9c3ba99e00bfeee8b0f102d49042d0ae15e48fc",
+      "retired": 0
+    },
+    {
+      "name": "MMU-on connected loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "4f94c2b1367df82dbc492216a11a14ed354661e6a7d921b2155d807ca8aa0085",
+      "retired": 0
+    },
+    {
+      "name": "MMU-on cross-window loop",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 86,
+      "snapshotBytes": 17891489,
+      "sha256": "b9e670f426c176cc11b0bf981e22e4655b334d02edcb3407ff376fec7a031e49",
+      "retired": 0
+    },
+    {
+      "name": "MMU guarded slow instruction",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 86,
+      "snapshotBytes": 17891489,
+      "sha256": "9a5c03fd1553444bbe5e38f1ee009a43e764685dada2f6a3164848b4c96a676d",
+      "retired": 0
+    },
+    {
+      "name": "MMU nonidentity small-page mapping",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 86,
+      "snapshotBytes": 17899681,
+      "sha256": "df55e1d16fbe4698cf1371fa49b8af157d7dae63455f1595e1acd69f8027e6c6",
+      "retired": 0
+    },
+    {
+      "name": "timer IRQ after compiled prefix",
+      "credits": 128,
+      "guardCalls": 69,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "551de28093331907a0d58243819954aeec6818711dd15676274c1fa3ace14fc8",
+      "retired": 0
+    },
+    {
+      "name": "MMU load/store writeback handoff",
+      "credits": 128,
+      "guardCalls": 61,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 30,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        31,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 32,
+      "snapshotBytes": 17895585,
+      "sha256": "0ebccd5ce390709ba46a798df99fad3d0b5e3654b596a1c393a2cb05fc594244",
+      "retired": 0
+    },
+    {
+      "name": "MMU false-condition load has no fault",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "fb02657a1d85dc0258a157b92588423eaa84cafb5d4c9219ac90edbe4dfb8330",
+      "retired": 0
+    },
+    {
+      "name": "MMU load translation abort after prefix",
+      "credits": 128,
+      "guardCalls": 23,
+      "readCalls": 1,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "976f4fa002e3d2bef4e201c4734077679f982e4aa2a77bb2443d74c5399300e7",
+      "retired": 0
+    },
+    {
+      "name": "MMU alignment abort after prefix",
+      "credits": 128,
+      "guardCalls": 23,
+      "readCalls": 1,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "0286dee3a9bce8ff31feea38d0865a2c7772e072a3979cfa42d89da517d1ceb8",
+      "retired": 0
+    },
+    {
+      "name": "MMU partial LDM abort preserves destination registers",
+      "credits": 128,
+      "guardCalls": 23,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        2
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "ec751bf42588e0d7198bf35cabd7f95bd1257290988c486cc90e05818f2070e3",
+      "retired": 0
+    },
+    {
+      "name": "MMU partial STM abort preserves first store",
+      "credits": 128,
+      "guardCalls": 23,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "622cf76ca229f3dbe18fa388f6335f7e6a916f48047fd3d370830b64a4fc3787",
+      "retired": 0
+    },
+    {
+      "name": "guest store changes compiled instruction",
+      "credits": 128,
+      "guardCalls": 23,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 1,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        0
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "b8c087215fa77a7abc17eace38662221d3d605f1c75ab154ecb49a02acc0e62e",
+      "retired": 1
+    },
+    {
+      "name": "MMIO timer register store/load handoff",
+      "credits": 128,
+      "guardCalls": 61,
+      "readCalls": 0,
+      "readHits": 0,
+      "writeCalls": 30,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        32
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "fd9815d7ed5ca77d814ba8676f2345f7f4a0dc1bd9ac56d8ae5916e6a3d4ac13",
+      "retired": 0
+    },
+    {
+      "name": "compiled cold RAM load refuses without double miss",
+      "credits": 128,
+      "guardCalls": 22,
+      "readCalls": 1,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "b99eb0879785712c8eb3b91d40052f2a7eb19ee9a3ae2ae150af36005735f5d5",
+      "retired": 0
+    },
+    {
+      "name": "compiled device load remains reference",
+      "credits": 128,
+      "guardCalls": 42,
+      "readCalls": 42,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        43
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 0,
+      "snapshotBytes": 17887393,
+      "sha256": "2586d4bb39d557ffe53559bec7a655bdb32706c063f786c6176f4636004e28da",
+      "retired": 0
+    },
+    {
+      "name": "MMU compiled warm word loads",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "b986494e76c4f3ea2eacdf5af6b04ca995f181f282d2612864fa2ce02d1adae1",
+      "retired": 0
+    },
+    {
+      "name": "MMU compiled post-index loads",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "e9f456f2fb49c9de723632b25898a99213b01ff412620a1003363c369ac1d625",
+      "retired": 0
+    },
+    {
+      "name": "MMU compiled unprivileged translated loads",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "cd9e08833ec97e5f0fcd5a822d759d9bd04b2114e7446b1bbdae6b6c6bc1ad6d",
+      "retired": 0
+    },
+    {
+      "name": "MMU compiled byte loads zero extend",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "12e1c259bb7d544892bb7475339284eb757dcb8f984724e22cdb95ffadb73fd3",
+      "retired": 0
+    },
+    {
+      "name": "MMU compiled unaligned U1 RAM load",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "84b0fb846e9fb20716a6fabc8abe76788a9e4340258008ceaa14de7c25889349",
+      "retired": 0
+    },
+    {
+      "name": "MMU legacy unaligned load stays reference",
+      "credits": 128,
+      "guardCalls": 42,
+      "readCalls": 42,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "7e597e7662ce57d35cedf131759200ea3d69be31bdb26d4f969ecab6cbb62857",
+      "retired": 0
+    },
+    {
+      "name": "MMU cross-granule load stays reference",
+      "credits": 128,
+      "guardCalls": 42,
+      "readCalls": 42,
+      "readHits": 0,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        0,
+        43
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 43,
+      "snapshotBytes": 17895585,
+      "sha256": "c842382eaa5b9988751e87de29233e634b3eca2eafa9a3fa03eccd4f97eabad9",
+      "retired": 0
+    },
+    {
+      "name": "MMU nonidentity compiled RAM load",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17899681,
+      "sha256": "6957014d8c22abc01cf8d9959db7871f9a703d6121165d64e95f09860e1ca90c",
+      "retired": 0
+    },
+    {
+      "name": "MMU Thumb compiled word and byte loads",
+      "credits": 128,
+      "guardCalls": 121,
+      "readCalls": 61,
+      "readHits": 61,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        63,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17895585,
+      "sha256": "d99985bf316631d394a11a7e2e3f33467c060c771ec314e3c6498bcc0cb268c0",
+      "retired": 0
+    },
+    {
+      "name": "MMU Thumb compiled literal load",
+      "credits": 128,
+      "guardCalls": 125,
+      "readCalls": 42,
+      "readHits": 42,
+      "writeCalls": 0,
+      "writeHits": 0,
+      "writeBoundaries": 0,
+      "dread": [
+        42,
+        1
+      ],
+      "dwrite": [
+        0,
+        0
+      ],
+      "tlbHits": 1,
+      "snapshotBytes": 17891489,
+      "sha256": "440569926bff41b455c2dbde2e1bc0f330375f4ad072c5183e8588a0cfb42206",
+      "retired": 0
+    }
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: Expected store success/refusal\n\nfalse !== true\n\n    at file:///home/vercel-sandbox/iphone-1/tools/jit/adaptive/tests/machine-bridge.mjs:90:101",
+  "runtimeSha256": "8b3e1a3787caa52001d6fb639b2d6acb343e05dfb308ce9ebf273af181dc54b2"
+}

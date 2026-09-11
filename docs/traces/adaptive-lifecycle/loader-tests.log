@@ -1,0 +1,8 @@
+S5LBox firmware loader tests
+  [plain IMG3 -> guest said] iBoot
+  [encrypted IMG3 -> decrypted -> guest said] iBoot
+  [found 'ibot' in NOR @0x2000 -> booted -> guest said] iBoot
+  [non-zero RAM base 0x08000000 -> guest said] iBoot
+  [payload written to NOR survived a relaunch] 0xa5a5a5a5
+
+53 passed, 0 failed

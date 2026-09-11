@@ -11,6 +11,8 @@
     "test:offline": "node web/tests/offline.mjs",
     "test:capture": "node web/tests/capture.mjs",
     "test:controls": "node web/tests/controls.mjs",
+    "test:open-lock": "node web/tests/open-lock.mjs",
+    "test:3d": "node web/tests/phone-3d.mjs",
     "test:performance": "node web/tests/performance.mjs",
     "test:clock": "node web/tests/clock-lifecycle.mjs",
     "test:offline-update": "node web/tests/offline-update.mjs",
@@ -26,5 +28,8 @@
     "ffmpeg-static": "5.2.0",
     "playwright": "1.63.0",
     "wabt": "1.0.39"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
   }
 }

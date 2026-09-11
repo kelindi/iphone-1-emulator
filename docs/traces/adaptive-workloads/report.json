@@ -1,0 +1,283 @@
+{
+  "passed": true,
+  "scope": "Deterministic seeded-engine workload qualification; scheduler credits, not fetched instructions. No candidate or browser-speed claim.",
+  "fixture": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/graphics-speed/fixed-dismiss.snap",
+    "sha256": "764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244",
+    "bytes": 244887522
+  },
+  "freezeManifestSha256": "b18ef5a92f31196eea95f3587a65df06983a3417951f0be3448c5917766762ce",
+  "workloads": [
+    {
+      "name": "settings",
+      "events": [
+        {
+          "at": 0,
+          "type": "touch",
+          "down": 1,
+          "x": 275,
+          "y": 250
+        },
+        {
+          "at": 5000000,
+          "type": "touch",
+          "down": 0,
+          "x": 275,
+          "y": 250
+        },
+        {
+          "at": 400000000,
+          "type": "button",
+          "id": 1,
+          "down": 1
+        },
+        {
+          "at": 405000000,
+          "type": "button",
+          "id": 1,
+          "down": 0
+        }
+      ],
+      "credits": 600000000,
+      "checkpoints": [
+        100000000,
+        300000000,
+        600000000
+      ]
+    },
+    {
+      "name": "contacts",
+      "events": [
+        {
+          "at": 0,
+          "type": "touch",
+          "down": 1,
+          "x": 43,
+          "y": 425
+        },
+        {
+          "at": 5000000,
+          "type": "touch",
+          "down": 0,
+          "x": 43,
+          "y": 425
+        },
+        {
+          "at": 200000000,
+          "type": "touch",
+          "down": 1,
+          "x": 160,
+          "y": 454
+        },
+        {
+          "at": 205000000,
+          "type": "touch",
+          "down": 0,
+          "x": 160,
+          "y": 454
+        },
+        {
+          "at": 400000000,
+          "type": "button",
+          "id": 1,
+          "down": 1
+        },
+        {
+          "at": 405000000,
+          "type": "button",
+          "id": 1,
+          "down": 0
+        }
+      ],
+      "credits": 600000000,
+      "checkpoints": [
+        100000000,
+        300000000,
+        600000000
+      ]
+    },
+    {
+      "name": "notes",
+      "events": [
+        {
+          "at": 0,
+          "type": "touch",
+          "down": 1,
+          "x": 200,
+          "y": 250
+        },
+        {
+          "at": 5000000,
+          "type": "touch",
+          "down": 0,
+          "x": 200,
+          "y": 250
+        },
+        {
+          "at": 400000000,
+          "type": "button",
+          "id": 1,
+          "down": 1
+        },
+        {
+          "at": 405000000,
+          "type": "button",
+          "id": 1,
+          "down": 0
+        }
+      ],
+      "credits": 600000000,
+      "checkpoints": [
+        100000000,
+        300000000,
+        600000000
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "name": "settings",
+      "repeat": 0,
+      "cpuMs": 30110.443000000003,
+      "wallMs": 17562.100602999966,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "generated": 460044763
+    },
+    {
+      "name": "contacts",
+      "repeat": 0,
+      "cpuMs": 17217.32400000001,
+      "wallMs": 17166.875475000023,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "generated": 438126814
+    },
+    {
+      "name": "notes",
+      "repeat": 0,
+      "cpuMs": 17099.157000000003,
+      "wallMs": 17077.221963999982,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "generated": 418394167
+    },
+    {
+      "name": "settings",
+      "repeat": 1,
+      "cpuMs": 17065.821999999996,
+      "wallMs": 17059.47724800012,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248274914,
+          "sha256": "e8bd93554ee39f08092da5f99f52652d57e626fca67cc0b81eb5c63a437f5d58"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 248954850,
+          "sha256": "69116c8931e58a1485388713470bef983e6f6099e601061e6547919d2ed356a9"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 249061346,
+          "sha256": "8313b51b052b1e87418a9e0e33a9a4b698ff1afb87e216572aefb1d82a85b4bc"
+        }
+      ],
+      "generated": 460044763
+    },
+    {
+      "name": "contacts",
+      "repeat": 1,
+      "cpuMs": 17160.027000000042,
+      "wallMs": 17156.30139299984,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 246702050,
+          "sha256": "c35f41bfebaf178cff4bb597f88df3911c67f66c6f8c7b7a38e32678af7236e3"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 247132234,
+          "sha256": "8acc9f22b96beb102cd87adbd262d5f03cb5f61e37d1b7efa365b24ffe7a0d74"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 247669007,
+          "sha256": "cb0a460efb323629847bdd448355e352eced0e61b5372b7f10d3dd4d4a20d447"
+        }
+      ],
+      "generated": 438126814
+    },
+    {
+      "name": "notes",
+      "repeat": 1,
+      "cpuMs": 16990.105999999996,
+      "wallMs": 16984.214053000003,
+      "checkpoints": [
+        {
+          "credits": 100000000,
+          "bytes": 248770530,
+          "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+        },
+        {
+          "credits": 300000000,
+          "bytes": 253120482,
+          "sha256": "4c71f3643626c260ff26311c78190690f14189bcdbceff037b1fdb259a22f9e2"
+        },
+        {
+          "credits": 600000000,
+          "bytes": 254672866,
+          "sha256": "9ed74aac65717fd1e14fed6c4d239bab1f4aedfc7b3f4577e949f688a259f9e9"
+        }
+      ],
+      "generated": 418394167
+    }
+  ]
+}

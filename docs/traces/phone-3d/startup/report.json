@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "name": "click shows feedback while model downloads",
+      "seconds": 0.21889560600000005
+    },
+    {
+      "name": "3D opens before emulator is ready",
+      "seconds": 1.610082234
+    },
+    {
+      "name": "loading screen becomes the live guest",
+      "seconds": 19.308702016
+    },
+    {
+      "name": "2D remains available",
+      "seconds": 19.351860989000002
+    },
+    {
+      "name": "3D opens with live lock screen",
+      "seconds": 22.559951968
+    },
+    {
+      "name": "angled slide unlocks the real guest",
+      "seconds": 29.670803765000002
+    },
+    {
+      "name": "case drag rotates model",
+      "seconds": 36.009484257
+    },
+    {
+      "name": "3D screen opens Settings",
+      "seconds": 37.661825447
+    },
+    {
+      "name": "3D Home button returns from app",
+      "seconds": 40.825086247
+    },
+    {
+      "name": "keyboard rotates to aluminum back",
+      "seconds": 41.879696613
+    },
+    {
+      "name": "wheel zoom works",
+      "seconds": 42.559437535
+    },
+    {
+      "name": "2D switch preserves guest",
+      "seconds": 42.602405351
+    },
+    {
+      "name": "mobile viewport fits model and controls",
+      "seconds": 43.269409630999995
+    },
+    {
+      "name": "WebGL context loss returns safely to 2D",
+      "seconds": 43.305039076
+    },
+    {
+      "name": "no page errors",
+      "seconds": 43.305725348
+    }
+  ],
+  "result": "pass"
+}

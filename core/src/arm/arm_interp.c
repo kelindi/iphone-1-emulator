@@ -231,25 +231,41 @@ static inline uint32_t dread_tag(uint32_t va, bool priv) {
  * path's job, because only the slow path has done the walk that proves the
  * access is permitted at all.
  */
-static inline const uint8_t *dread_hit(arm_cpu_t *c, uint32_t va, unsigned n,
-                                       bool priv) {
+static inline const uint8_t *dread_peek(const arm_cpu_t *c, uint32_t va,
+                                        unsigned n, bool priv) {
 #ifdef S5LBOX_NO_DREAD
-    /* §9.5's oracle: a pure cache must not change a single retired
-     * instruction, so a build with it disabled is the comparison. */
-    (void)va; (void)n; (void)priv;
-    c->dread_misses++;
+    (void)c; (void)va; (void)n; (void)priv;
     return NULL;
 #else
     if (((va & ARM_DREAD_BLK_MASK) + n) > (ARM_DREAD_BLK_MASK + 1u))
-        { c->dread_misses++; return NULL; }
+        return NULL;
     const unsigned slot = dread_slot(va, priv);
-    if (!c->dread[slot].host ||
-        c->dread[slot].tag != dread_tag(va, priv) ||
-        c->dread[slot].gen != c->tlb_gen)
-        { c->dread_misses++; return NULL; }
-    c->dread_hits++;
+    if (!c->dread[slot].host || c->dread[slot].tag != dread_tag(va, priv) ||
+        c->dread[slot].gen != c->tlb_gen) return NULL;
     return c->dread[slot].host + (va & ARM_DREAD_BLK_MASK);
 #endif
+}
+static inline const uint8_t *dread_hit(arm_cpu_t *c, uint32_t va, unsigned n,
+                                       bool priv) {
+    const uint8_t *host = dread_peek(c, va, n, priv);
+    if (host) c->dread_hits++;
+    else c->dread_misses++;
+    return host;
+}
+
+const uint8_t *arm_read_cache_try(arm_cpu_t *c, uint32_t va, unsigned n,
+                                 bool priv) {
+    if (!c || !c->bus || !c->bus->host_ram ||
+        (n != 1u && n != 2u && n != 4u)) return NULL;
+    /* U=0 unaligned words require rotation and A=1 requires an abort. Those
+     * are reference boundaries; U=1/A=0 plain unaligned RAM loads are safe. */
+    if ((va & (n - 1u)) && ((c->cp15.sctlr & ARM_SCTLR_A) ||
+                           !(c->cp15.sctlr & ARM_SCTLR_U))) return NULL;
+    const uint8_t *host = dread_peek(c, va, n, priv);
+    /* Do not count misses here: a refused compiled instruction runs through
+     * the original step, which owns its miss, table walk and fault effects. */
+    if (host) c->dread_hits++;
+    return host;
 }
 
 /* Install the block a successful walk just resolved, when it is plain RAM.
@@ -275,22 +291,37 @@ static inline void dread_fill(arm_cpu_t *c, uint32_t va, uint32_t pa,
 /* The write cache repeats dread's proven translation key, but it is live only
  * when the frontend supplies host_ram_write. That separate callback is the
  * permission to bypass bus write observers; host_ram alone is never enough. */
+static inline uint8_t *dwrite_peek(const arm_cpu_t *c, uint32_t va,
+                                    unsigned n, bool priv) {
+    if (!c->bus->host_ram_write ||
+        ((va & ARM_DREAD_BLK_MASK) + n) > (ARM_DREAD_BLK_MASK + 1u)) return NULL;
+    const unsigned slot = dread_slot(va, priv);
+    if (!c->dwrite[slot].host || c->dwrite[slot].tag != dread_tag(va, priv) ||
+        c->dwrite[slot].gen != c->tlb_gen) return NULL;
+    return c->dwrite[slot].host + (va & ARM_DREAD_BLK_MASK);
+}
 static inline uint8_t *dwrite_hit(arm_cpu_t *c, uint32_t va, unsigned n,
                                   bool priv) {
     if (!c->bus->host_ram_write) return NULL;
-    if (((va & ARM_DREAD_BLK_MASK) + n) > (ARM_DREAD_BLK_MASK + 1u)) {
-        c->dwrite_misses++;
-        return NULL;
-    }
-    const unsigned slot = dread_slot(va, priv);
-    if (!c->dwrite[slot].host ||
-        c->dwrite[slot].tag != dread_tag(va, priv) ||
-        c->dwrite[slot].gen != c->tlb_gen) {
-        c->dwrite_misses++;
-        return NULL;
-    }
+    uint8_t *host = dwrite_peek(c, va, n, priv);
+    if (host) c->dwrite_hits++;
+    else c->dwrite_misses++;
+    return host;
+}
+
+const uint8_t *arm_write_cache_try(arm_cpu_t *c, uint32_t va, unsigned n,
+                                   bool priv, uint32_t value) {
+    if (!c || !c->bus || (n != 1u && n != 2u && n != 4u)) return NULL;
+    if ((va & (n - 1u)) && ((c->cp15.sctlr & ARM_SCTLR_A) ||
+                           !(c->cp15.sctlr & ARM_SCTLR_U))) return NULL;
+    uint8_t *host = dwrite_peek(c, va, n, priv);
+    if (!host) return NULL;
     c->dwrite_hits++;
-    return c->dwrite[slot].host + (va & ARM_DREAD_BLK_MASK);
+    /* Same little-endian plain-RAM store as the retained cached path. The
+     * notification follows commitment and cannot veto or replay the store. */
+    memcpy(host, &value, n);
+    if (c->bus->ram_written) c->bus->ram_written(c->bus->ctx, host, n);
+    return host;
 }
 
 static inline void dwrite_fill(arm_cpu_t *c, uint32_t va, uint32_t pa,
@@ -351,7 +382,10 @@ static inline void dwrite_fill(arm_cpu_t *c, uint32_t va, uint32_t pa,
             mem_write_crossing(c, va, (bits) / 8u, v, priv); return;          \
         }                                                                     \
         uint8_t *dw = dwrite_hit(c, va, (bits) / 8u, priv);                   \
-        if (dw) { memcpy(dw, &v, (bits) / 8u); return; }                      \
+        if (dw) { memcpy(dw, &v, (bits) / 8u);                               \
+            if (c->bus->ram_written)                                        \
+                c->bus->ram_written(c->bus->ctx, dw, (bits) / 8u);           \
+            return; }                      \
         uint32_t pa, f = arm_mmu_translate(c, va, ARM_ACCESS_WRITE, priv, &pa);\
         if (f) { note_abort(c, f, va); return; }                              \
         c->bus->write##bits(c->bus->ctx, pa, v);                              \

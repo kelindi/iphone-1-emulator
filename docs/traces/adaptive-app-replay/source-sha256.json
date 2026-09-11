@@ -1,0 +1,9 @@
+{
+  "tools/jit/adaptive/workload-bridge.c": "c789ef19694d53de9de1819c9c4f039b63a9e459abe420ae6ae552170233d5ea",
+  "tools/jit/adaptive/workload-compiler.mjs": "6960c15d56238e66c4347fce7a9f025116a90c3ada09209db69ea0ffdde8bd29",
+  "tools/jit/adaptive/replay-workload.mjs": "dca35336136538b14cef4965ee51a33917a3ab955e90d18ccafbb5d2e1dac8eb",
+  "tools/jit/adaptive/build-workload-runtime.mjs": "5b31d79dea7f5d9eb4c779ae46210e2caef7ac7cafa56c52bf6f0fceb1a9c9ca",
+  "tools/jit/adaptive/tests/index.c": "72a29834ecef5386c86bfe35fb2f967a616254194b341eca0d260f713fa9814b",
+  "web/adaptive-runtime.c": "da5f24c237f807c7c13fae9284236a7095155de065ae743b13159bdbff9ef778",
+  "web/adaptive-runtime.h": "dac44b1535c402316bf8caf239bbc2147ef9f6793f4340b5a399f6c2113e2128"
+}

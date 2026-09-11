@@ -1,0 +1,1565 @@
+{
+  "startedUTC": "2026-09-08T19:04:00.944Z",
+  "actions": [
+    {
+      "tap": [
+        160,
+        300
+      ],
+      "wait": 1500,
+      "elapsedSeconds": 47.657
+    },
+    {
+      "tap": [
+        274,
+        160
+      ],
+      "wait": 8000,
+      "shot": "02-weather",
+      "elapsedSeconds": 49.351
+    },
+    {
+      "observe": "weather-update-failed",
+      "frame": "02-weather-guest.png",
+      "expected": "Cupertino appears without temperatures; Update failed",
+      "elapsedSeconds": 76.78
+    },
+    {
+      "home": true,
+      "wait": 1500,
+      "elapsedSeconds": 76.783
+    },
+    {
+      "tap": [
+        121,
+        160
+      ],
+      "wait": 6000,
+      "shot": "03-stocks",
+      "elapsedSeconds": 78.479
+    },
+    {
+      "observe": "stocks-no-quotes",
+      "frame": "03-stocks-guest.png",
+      "expected": "Default symbols show without quotes; Error retrieving chart",
+      "elapsedSeconds": 115.423
+    },
+    {
+      "home": true,
+      "wait": 1500,
+      "elapsedSeconds": 115.427
+    },
+    {
+      "tap": [
+        199,
+        430
+      ],
+      "wait": 3500,
+      "shot": "04-safari",
+      "elapsedSeconds": 117.124
+    },
+    {
+      "tap": [
+        290,
+        43
+      ],
+      "wait": 1800,
+      "elapsedSeconds": 141.993
+    },
+    {
+      "tap": [
+        157,
+        56
+      ],
+      "wait": 2000,
+      "shot": "05-url-keyboard",
+      "elapsedSeconds": 143.987
+    },
+    {
+      "tap": [
+        39,
+        458
+      ],
+      "wait": 700,
+      "elapsedSeconds": 177.983
+    },
+    {
+      "taps": [
+        [
+          16,
+          295
+        ],
+        [
+          48,
+          295
+        ],
+        [
+          208,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          304,
+          295
+        ],
+        [
+          107,
+          458
+        ],
+        [
+          16,
+          295
+        ]
+      ],
+      "interval": 700,
+      "wait": 800,
+      "shot": "06-url",
+      "elapsedSeconds": 178.905
+    },
+    {
+      "tap": [
+        282,
+        458
+      ],
+      "wait": 5000,
+      "shot": "07-local",
+      "elapsedSeconds": 188.107
+    },
+    {
+      "assert": "safari-local-page",
+      "frame": "07-local-guest.png",
+      "expected": "Original Safari renders HOME-1 from 127.0.0.1",
+      "elapsedSeconds": 225.144
+    },
+    {
+      "finalExport": true,
+      "captureBoundary": "gateway-routing-diagnostic-after-weather-stocks-safari",
+      "shot": "08-routing-checkpoint",
+      "elapsedSeconds": 225.146
+    },
+    {
+      "tap": [
+        110,
+        310
+      ],
+      "wait": 1800,
+      "shot": "09-form-keyboard",
+      "elapsedSeconds": 253.121
+    },
+    {
+      "taps": [
+        [
+          160,
+          350
+        ],
+        [
+          272,
+          295
+        ]
+      ],
+      "interval": 900,
+      "wait": 800,
+      "elapsedSeconds": 350.281
+    },
+    {
+      "tap": [
+        281,
+        458
+      ],
+      "wait": 3500,
+      "shot": "10-form-result",
+      "elapsedSeconds": 353.264
+    },
+    {
+      "assert": "safari-form",
+      "frame": "10-form-result-guest.png",
+      "expected": "Original Safari displays Form received, Page ECHO-1, Message: go",
+      "elapsedSeconds": 497.126
+    },
+    {
+      "autosaveReload": true,
+      "elapsedSeconds": 497.132
+    },
+    {
+      "tap": [
+        64,
+        290
+      ],
+      "wait": 2000,
+      "shot": "11-after-reload-home",
+      "elapsedSeconds": 538.253
+    },
+    {
+      "home": true,
+      "wait": 1800,
+      "shot": "12-wake-after-reload",
+      "elapsedSeconds": 554.055
+    },
+    {
+      "observe": "reload-lock-screen",
+      "frame": "12-wake-after-reload-guest.png",
+      "expected": "Ordinary saved phone restores and wakes to original slide-to-unlock; fresh service request after reload remains unverified",
+      "elapsedSeconds": 569.551
+    }
+  ],
+  "checks": [
+    {
+      "name": "fresh-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 510,
+        "bytes": 12341313,
+        "retired": 49903649,
+        "calls": 7304167
+      }
+    },
+    {
+      "name": "imported-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 2,
+        "regions": 511,
+        "bytes": 12341313,
+        "retired": 25068610,
+        "calls": 3189373
+      }
+    },
+    {
+      "name": "safari-local-page",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "07-local-guest.png",
+      "frameSHA256": "a0ceec663a3d4611e35f93f7322ee9308a6d8aa3b57529f2f41901e867b5e664",
+      "expected": "Original Safari renders HOME-1 from 127.0.0.1",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "diagnostic-final-export",
+      "passed": true,
+      "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-browser-2/final-home.snap",
+      "bytes": 255353142,
+      "sha256": "98f623b0b415705013012cede33189c39d5f74b9ad7f642c29d8098481328a9e"
+    },
+    {
+      "name": "safari-form",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "10-form-result-guest.png",
+      "frameSHA256": "bd81234afa08b3fd96ad57df7bb0ac3792df1edde57d6341a9179d9bc95d56e3",
+      "expected": "Original Safari displays Form received, Page ECHO-1, Message: go",
+      "passed": true,
+      "assertedBy": "operator"
+    },
+    {
+      "name": "real-interval-autosave",
+      "passed": true,
+      "oldSavedAt": 1788894728532,
+      "savedAt": 1788894758295
+    },
+    {
+      "name": "actual-autosave-record-restored",
+      "passed": true,
+      "savedAt": 1788894758295
+    },
+    {
+      "name": "restored-generated-execution",
+      "passed": true,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 510,
+        "bytes": 12341313,
+        "retired": 47590760,
+        "calls": 6529968
+      }
+    }
+  ],
+  "observations": [
+    {
+      "name": "weather-update-failed",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "02-weather-guest.png",
+      "frameSHA256": "cf853d56bec645e22b9c8415433d2f4ec9258ea52089194cbcec5992a927b7e2",
+      "expected": "Cupertino appears without temperatures; Update failed"
+    },
+    {
+      "name": "stocks-no-quotes",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "03-stocks-guest.png",
+      "frameSHA256": "55ed1a2cc720d0eac3e01245a7206cb6eab0736fa9f3db823fa39e236f3e8c81",
+      "expected": "Default symbols show without quotes; Error retrieving chart"
+    },
+    {
+      "name": "safari-local-page",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "07-local-guest.png",
+      "frameSHA256": "a0ceec663a3d4611e35f93f7322ee9308a6d8aa3b57529f2f41901e867b5e664",
+      "expected": "Original Safari renders HOME-1 from 127.0.0.1"
+    },
+    {
+      "name": "safari-form",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "10-form-result-guest.png",
+      "frameSHA256": "bd81234afa08b3fd96ad57df7bb0ac3792df1edde57d6341a9179d9bc95d56e3",
+      "expected": "Original Safari displays Form received, Page ECHO-1, Message: go"
+    },
+    {
+      "name": "reload-lock-screen",
+      "scope": "Operator review of retained original framebuffer; no automatic app recognition",
+      "frame": "12-wake-after-reload-guest.png",
+      "frameSHA256": "c81c1bd2db98e1ee4132e135f734e7ab14add60d371cae186113570c47631e9f",
+      "expected": "Ordinary saved phone restores and wakes to original slide-to-unlock; fresh service request after reload remains unverified"
+    }
+  ],
+  "frames": [
+    {
+      "name": "00-default-home",
+      "guest": "00-default-home-guest.png",
+      "page": "00-default-home.png",
+      "elapsedSeconds": 19.309
+    },
+    {
+      "name": "01-imported",
+      "guest": "01-imported-guest.png",
+      "page": "01-imported.png",
+      "elapsedSeconds": 37.691
+    },
+    {
+      "name": "02-weather",
+      "guest": "02-weather-guest.png",
+      "page": "02-weather.png",
+      "elapsedSeconds": 57.718
+    },
+    {
+      "name": "03-stocks",
+      "guest": "03-stocks-guest.png",
+      "page": "03-stocks.png",
+      "elapsedSeconds": 84.856
+    },
+    {
+      "name": "04-safari",
+      "guest": "04-safari-guest.png",
+      "page": "04-safari.png",
+      "elapsedSeconds": 120.99
+    },
+    {
+      "name": "05-url-keyboard",
+      "guest": "05-url-keyboard-guest.png",
+      "page": "05-url-keyboard.png",
+      "elapsedSeconds": 146.389
+    },
+    {
+      "name": "06-url",
+      "guest": "06-url-guest.png",
+      "page": "06-url.png",
+      "elapsedSeconds": 188.104
+    },
+    {
+      "name": "07-local",
+      "guest": "07-local-guest.png",
+      "page": "07-local.png",
+      "elapsedSeconds": 193.472
+    },
+    {
+      "name": "08-routing-checkpoint",
+      "guest": "08-routing-checkpoint-guest.png",
+      "page": "08-routing-checkpoint.png",
+      "elapsedSeconds": 227.468
+    },
+    {
+      "name": "09-form-keyboard",
+      "guest": "09-form-keyboard-guest.png",
+      "page": "09-form-keyboard.png",
+      "elapsedSeconds": 255.321
+    },
+    {
+      "name": "10-form-result",
+      "guest": "10-form-result-guest.png",
+      "page": "10-form-result.png",
+      "elapsedSeconds": 357.215
+    },
+    {
+      "name": "autosaved-1",
+      "guest": "autosaved-1-guest.png",
+      "page": "autosaved-1.png",
+      "elapsedSeconds": 517.923
+    },
+    {
+      "name": "restored-1",
+      "guest": "restored-1-guest.png",
+      "page": "restored-1.png",
+      "elapsedSeconds": 526.989
+    },
+    {
+      "name": "11-after-reload-home",
+      "guest": "11-after-reload-home-guest.png",
+      "page": "11-after-reload-home.png",
+      "elapsedSeconds": 540.621
+    },
+    {
+      "name": "12-wake-after-reload",
+      "guest": "12-wake-after-reload-guest.png",
+      "page": "12-wake-after-reload.png",
+      "elapsedSeconds": 556.25
+    }
+  ],
+  "errors": [
+    "Error: Unfinished workflow gates: weather-forecast, stocks-quotes, services-reloaded\n    at main (file:///home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/qualify-browser.mjs:199:86)"
+  ],
+  "console": [],
+  "requests": [
+    {
+      "seconds": 1.114,
+      "url": "http://127.0.0.1:8232/",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.129,
+      "url": "http://127.0.0.1:8232/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.13,
+      "url": "http://127.0.0.1:8232/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.143,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.159,
+      "url": "http://127.0.0.1:8232/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.163,
+      "url": "http://127.0.0.1:8232/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.169,
+      "url": "http://127.0.0.1:8232/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.174,
+      "url": "http://127.0.0.1:8232/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.187,
+      "url": "http://127.0.0.1:8232/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.187,
+      "url": "http://127.0.0.1:8232/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.187,
+      "url": "http://127.0.0.1:8232/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.188,
+      "url": "http://127.0.0.1:8232/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.197,
+      "url": "http://127.0.0.1:8232/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 1.209,
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "method": "GET"
+    },
+    {
+      "seconds": 3.478,
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "method": "GET"
+    },
+    {
+      "seconds": 3.948,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "method": "GET"
+    },
+    {
+      "seconds": 7.106,
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "method": "GET"
+    },
+    {
+      "seconds": 11.361,
+      "url": "http://127.0.0.1:8232/dist/emu.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 20.91,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 20.921,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 28.379,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 28.39,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.781,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 61.794,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 91.805,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 91.813,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 122.09,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 122.099,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.894,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 151.9,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 212.124,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 212.132,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 241.805,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 241.813,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 272.177,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 272.186,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 302.277,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 302.283,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 332.15,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 332.16,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 361.745,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 361.753,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 391.843,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 391.851,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 421.939,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 421.946,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.741,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 451.75,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 481.922,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 481.931,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 511.866,
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 511.872,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 517.934,
+      "url": "http://127.0.0.1:8232/",
+      "method": "GET"
+    },
+    {
+      "seconds": 517.952,
+      "url": "http://127.0.0.1:8232/phone.css",
+      "method": "GET"
+    },
+    {
+      "seconds": 517.953,
+      "url": "http://127.0.0.1:8232/app.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 517.98,
+      "url": "http://127.0.0.1:8232/storage.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 517.991,
+      "url": "http://127.0.0.1:8232/icon.svg",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.007,
+      "url": "http://127.0.0.1:8232/emu-worker.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.846,
+      "url": "http://127.0.0.1:8232/dist/emu.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.846,
+      "url": "http://127.0.0.1:8232/seed-jit.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.858,
+      "url": "http://127.0.0.1:8232/jit/seed.wasm",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.858,
+      "url": "http://127.0.0.1:8232/jit/regions.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.858,
+      "url": "http://127.0.0.1:8232/jit/abi.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.859,
+      "url": "http://127.0.0.1:8232/assets.js",
+      "method": "GET"
+    },
+    {
+      "seconds": 518.892,
+      "url": "http://127.0.0.1:8232/manifest.json",
+      "method": "GET"
+    },
+    {
+      "seconds": 519.226,
+      "url": "http://127.0.0.1:8232/dist/emu.wasm",
+      "method": "GET"
+    }
+  ],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8232/",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 5825,
+      "bodySHA256": "59f35fab544eb8c17a2127f7d834371c8c3af3fbdd9e5dfdb68d1ecfd75c0e39"
+    },
+    {
+      "url": "http://127.0.0.1:8232/phone.css",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9396,
+      "bodySHA256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "url": "http://127.0.0.1:8232/app.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 18595,
+      "bodySHA256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/icon.svg",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 379,
+      "bodySHA256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "url": "http://127.0.0.1:8232/emu-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 13003,
+      "bodySHA256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8"
+    },
+    {
+      "url": "http://127.0.0.1:8232/dist/emu.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 17756,
+      "bodySHA256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/seed-jit.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9613,
+      "bodySHA256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 12341313,
+      "bodySHA256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/regions.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 74901,
+      "bodySHA256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/abi.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 364,
+      "bodySHA256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "url": "http://127.0.0.1:8232/assets.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 2397,
+      "bodySHA256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "url": "http://127.0.0.1:8232/manifest.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 1222,
+      "bodySHA256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "url": "https://iphone.files.garden/kernel_1A543a.macho",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/devicetree_m68ap.bin",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part0",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "https://iphone.files.garden/home_1A543a.snap.gz.part1",
+      "status": 200,
+      "fromSW": false
+    },
+    {
+      "url": "http://127.0.0.1:8232/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 250531,
+      "bodySHA256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/checkpoint-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 615,
+      "bodySHA256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 5825,
+      "bodySHA256": "59f35fab544eb8c17a2127f7d834371c8c3af3fbdd9e5dfdb68d1ecfd75c0e39"
+    },
+    {
+      "url": "http://127.0.0.1:8232/phone.css",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9396,
+      "bodySHA256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    {
+      "url": "http://127.0.0.1:8232/app.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 18595,
+      "bodySHA256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    {
+      "url": "http://127.0.0.1:8232/storage.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9079,
+      "bodySHA256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/icon.svg",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 379,
+      "bodySHA256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    {
+      "url": "http://127.0.0.1:8232/emu-worker.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 13003,
+      "bodySHA256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8"
+    },
+    {
+      "url": "http://127.0.0.1:8232/dist/emu.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 17756,
+      "bodySHA256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    {
+      "url": "http://127.0.0.1:8232/seed-jit.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 9613,
+      "bodySHA256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/seed.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 12341313,
+      "bodySHA256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/regions.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 74901,
+      "bodySHA256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    {
+      "url": "http://127.0.0.1:8232/jit/abi.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 364,
+      "bodySHA256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    {
+      "url": "http://127.0.0.1:8232/assets.js",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 2397,
+      "bodySHA256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    {
+      "url": "http://127.0.0.1:8232/manifest.json",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 1222,
+      "bodySHA256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    {
+      "url": "http://127.0.0.1:8232/dist/emu.wasm",
+      "status": 200,
+      "fromSW": false,
+      "bodyBytes": 250531,
+      "bodySHA256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    }
+  ],
+  "requestFailures": [],
+  "serial": [
+    {
+      "seconds": 19.02,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\rAppleMultitouchSPI: downloaded 44752 bytes of firmware data (\"0x0086\") in 26ms (4ms stage 1, 22ms stage 2).\n\rAppleMerlotLCD::_lcdEnable: enable: 1\n\r"
+    },
+    {
+      "seconds": 24.037,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 25.039,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\r"
+    },
+    {
+      "seconds": 155.074,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 188.179,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 190.187,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 191.187,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 192.188,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 193.189,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 198.206,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 208.236,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 218.46,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 228.486,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 238.497,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 248.525,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 255.545,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 256.545,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics Restart during 3D Blit.  Dummy page corrupted=0, 3DR=0, ISP=0, EVM=1\n\r"
+    },
+    {
+      "seconds": 354.742,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 355.745,
+      "text": "AppleMBXDevice(0xcbc08800): Graphics hang with pending 2D blit.  Free slots=100, IntStatus=00000000\n\r"
+    },
+    {
+      "seconds": 360.758,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 370.791,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 380.804,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 526.636,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\rAppleMultitouchSPI: downloaded 44752 bytes of firmware data (\"0x0086\") in 49ms (8ms stage 1, 41ms stage 2).\n\rAppleMerlotLCD::_lcdEnable: enable: 1\n\r"
+    },
+    {
+      "seconds": 531.619,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\rAppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 541.637,
+      "text": "AppleBasebandOutput: could not start DMA: device is not ready\n\r"
+    },
+    {
+      "seconds": 554.679,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 1\n\rAppleMultitouchSPI: downloaded 44752 bytes of firmware data (\"0x0086\") in 14ms (3ms stage 1, 11ms stage 2).\n\r"
+    },
+    {
+      "seconds": 562.708,
+      "text": "AppleMerlotLCD::_lcdEnable: enable: 0\n\r"
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "context",
+      "status": "closed"
+    },
+    {
+      "name": "browser",
+      "status": "closed"
+    },
+    {
+      "name": "server",
+      "status": "closed"
+    }
+  ],
+  "scope": "Diagnostic snapshot import followed by original touchscreen input; separate native boot qualification required. No speed or offline claim.",
+  "siteRoot": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-site",
+  "origin": "http://127.0.0.1:8232",
+  "capSeconds": 900,
+  "minFreeBytes": 1073741824,
+  "requirements": [
+    "weather-forecast",
+    "stocks-quotes",
+    "safari-form",
+    "services-reloaded"
+  ],
+  "mode": "explicit-workflow-assertions",
+  "initialAvailableBytes": 3942223872,
+  "fixture": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-boot/home.snap",
+    "bytes": 245047266,
+    "sha256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088"
+  },
+  "upload": {
+    "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-browser-2/import-home.snap",
+    "ownedCopy": true,
+    "removed": true,
+    "importComplete": true,
+    "prepared": {
+      "bytes": 245047266,
+      "sha256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088"
+    },
+    "beforeImport": {
+      "bytes": 245047266,
+      "sha256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088"
+    },
+    "afterImport": {
+      "bytes": 245047266,
+      "sha256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088"
+    },
+    "beforeCleanup": {
+      "bytes": 245047266,
+      "sha256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088"
+    }
+  },
+  "fixtureScope": "Exact imported file bytes; native listener/process health must be independently qualified.",
+  "projection": {
+    "index.html": {
+      "bytes": 5825,
+      "sha256": "59f35fab544eb8c17a2127f7d834371c8c3af3fbdd9e5dfdb68d1ecfd75c0e39"
+    },
+    "phone.css": {
+      "bytes": 9396,
+      "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
+    },
+    "app.js": {
+      "bytes": 18595,
+      "sha256": "6e36b4c0bcea1289327c28b31e0f2ee3c52b524e14e7816512c00269f1c5cc0b"
+    },
+    "assets.js": {
+      "bytes": 2397,
+      "sha256": "95ddb5c6598f1c05bb1625e22fa6b89fb6d1c50344b6fa25f2123db6f7c9663e"
+    },
+    "storage.js": {
+      "bytes": 9079,
+      "sha256": "5597ab191281d9baa1f37dba5f8208a9e6a5ad5230c41f732e50f4ccb8daf9f2"
+    },
+    "checkpoint-worker.js": {
+      "bytes": 615,
+      "sha256": "16630c38df0adad3e37adcaf4454b4e97996db326cbc8f6b21ee460c8e709a58"
+    },
+    "emu-worker.js": {
+      "bytes": 13003,
+      "sha256": "6d341e735e7d62ed167e0aed0406f1d6647f2458773e7cd8c71660543b3706b8"
+    },
+    "seed-jit.js": {
+      "bytes": 9613,
+      "sha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9"
+    },
+    "manifest.json": {
+      "bytes": 1222,
+      "sha256": "b02b34aea1ca2dcace967623dc1335bb642257770ca62e32466a129a2df90c6f"
+    },
+    "icon.svg": {
+      "bytes": 379,
+      "sha256": "fa2f3b0f47103f5d1b9f501eb48f57b4f3f6eb9c029948dc9f8692545f4a07aa"
+    },
+    "dist/emu.js": {
+      "bytes": 17756,
+      "sha256": "a3c73a4d064c15bbd4c1de9797a88addb2e595a686f2eaf1a66e8b6c0c29a6b2"
+    },
+    "dist/emu.wasm": {
+      "bytes": 250531,
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    },
+    "jit/abi.json": {
+      "bytes": 364,
+      "sha256": "78842488106b0f8912201561e4dbebcd0e61a8beaa1976f8785cfa82247ea698"
+    },
+    "jit/regions.json": {
+      "bytes": 74901,
+      "sha256": "c9d097ee798b3536e98fffe2f11b6aa408567ecc3e0a88e9250726f0eb640da9"
+    },
+    "jit/seed.wasm": {
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    "service-worker.js": {
+      "bytes": 3228,
+      "sha256": "b3049273e7a6e068ba73c0a79f4461d04a184d8ae10b78edc3117cde33dcb866"
+    }
+  },
+  "sourcePins": {
+    "/home/vercel-sandbox/iphone-1/tools/legacy_services/guest_http/qualify-browser.mjs": {
+      "bytes": 19892,
+      "sha256": "7cfb838a5ce1e7119da66774f5e34d82e47b80eaea6c3f04cbb13ddf0d62446a"
+    },
+    "/home/vercel-sandbox/iphone-1/web/tests/helpers/performance-lifecycle.mjs": {
+      "bytes": 2780,
+      "sha256": "b9313757389eb78f976c2940f7b29daf4c8f510c743cf5eeb8da5e3484a4bd49"
+    }
+  },
+  "lastState": {
+    "savedAt": 1788894758295,
+    "paused": false,
+    "metrics": {
+      "type": "metrics",
+      "mips": 22.257951088527935,
+      "fps": 14.912019087351297,
+      "guestRate": 1.000006296183615,
+      "cycles": "14176254118",
+      "memory": 644284416,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 510,
+        "bytes": 12341313,
+        "retired": 202096962,
+        "calls": 26671422
+      },
+      "serial": "",
+      "captureMs": null,
+      "captureChunkMs": null,
+      "finalizeMs": null
+    },
+    "status": "Saved at 07:12 PM"
+  },
+  "exportDiagnostic": {
+    "scope": "Hidden existing Export button, enabled wait, native DOM click; separate from real autosave",
+    "before": {
+      "disabled": false,
+      "status": "Saved at 07:07 PM",
+      "savedAt": 1788894458572,
+      "paused": false
+    },
+    "click": {
+      "disabled": false,
+      "status": "Saved at 07:07 PM",
+      "savedAt": 1788894458572
+    },
+    "suggestedFilename": "iphone-2026-09-08.snap",
+    "file": {
+      "path": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-browser-2/final-home.snap",
+      "bytes": 255353142,
+      "sha256": "98f623b0b415705013012cede33189c39d5f74b9ad7f642c29d8098481328a9e"
+    }
+  },
+  "autoSaveWait": {
+    "oldSavedAt": 1788894728532,
+    "startedUTC": "2026-09-08T19:12:18.078Z"
+  },
+  "autosaveReloads": 1,
+  "finalState": {
+    "ready": true,
+    "paused": false,
+    "savedAt": 1788894758295,
+    "metrics": {
+      "type": "metrics",
+      "mips": 4.921228175193388,
+      "fps": 0,
+      "guestRate": 1.0000119724625909,
+      "cycles": "14316347338",
+      "memory": 644284416,
+      "jit": {
+        "enabled": true,
+        "generation": 1,
+        "regions": 510,
+        "bytes": 12341313,
+        "retired": 282166133,
+        "calls": 37507493
+      },
+      "serial": "",
+      "captureMs": null,
+      "captureChunkMs": null,
+      "finalizeMs": null
+    },
+    "status": "Saved at 07:12 PM"
+  },
+  "video": "/home/vercel-sandbox/iphone-1/.context/app-services-current/services-browser-2/page@e65ebe7febd671575e569de61279a1a8.webm",
+  "videoFile": {
+    "bytes": 25003794,
+    "sha256": "8b5fcb1045d258a696dd7949fd3a444d9fddac372e46bb8242cf963ac4cbcd3f"
+  },
+  "responseAudit": {
+    "passed": true,
+    "requiredAssets": [
+      "index.html",
+      "phone.css",
+      "app.js",
+      "assets.js",
+      "storage.js",
+      "checkpoint-worker.js",
+      "emu-worker.js",
+      "seed-jit.js",
+      "manifest.json",
+      "icon.svg",
+      "dist/emu.js",
+      "dist/emu.wasm",
+      "jit/abi.json",
+      "jit/regions.json",
+      "jit/seed.wasm"
+    ],
+    "acceptedLocalResponses": 62,
+    "scope": "Actual received local bodies equal pinned site bytes; no offline/native-cache/guest HTTP claim."
+  },
+  "projectionUnchanged": true,
+  "elapsedSeconds": 571.484,
+  "runCompleted": false,
+  "missingRequirements": [
+    "weather-forecast",
+    "stocks-quotes",
+    "services-reloaded"
+  ],
+  "passed": false
+}

@@ -98,6 +98,44 @@ function setPaused(value) {
   lastStats = performance.now(); lastTicks = api.ticks(); steps = uniqueFrames = 0;
   schedule();
 }
+// Enter SpringBoard's own lock screen through the physical Sleep/Home buttons.
+// Run before exposing input or frames, so restored apps do not flash on opening.
+async function openLocked() {
+  send('loading', {message:'Waking your iPhone…'});
+  check(api.hostClock(1));
+  const advanceUntil = async predicate => {
+    const deadline = performance.now() + 20000;
+    while (!predicate()) {
+      if (performance.now() > deadline) throw new Error('Your iPhone could not wake. Please retry.');
+      const began = performance.now();
+      if (!api.clockDelay()) {
+        do {
+          if (!api.run(50000)) throw new Error('Your iPhone stopped while waking. Please retry.');
+        } while (performance.now() - began < 6 && !api.clockDelay());
+        jit?.pump();
+      }
+      await new Promise(resolve => setTimeout(resolve, Math.max(0, Math.ceil(api.clockDelay()))));
+    }
+  };
+  const waitTicks = async ticks => {
+    const target = api.ticks() + ticks;
+    await advanceUntil(() => api.ticks() >= target);
+  };
+  const press = async which => {
+    check(api.button(which, 1));
+    try { await waitTicks(1080000); } // 180 ms of the device's 6 MHz clock.
+    finally { check(api.button(which, 0)); }
+  };
+  const lit = () => check(api.frame(framePointer, widthPointer, heightPointer)) !== 0;
+  if (lit()) {
+    await press(0);
+    await advanceUntil(() => !lit());
+  }
+  await waitTicks(1200000);
+  await press(1); // Home wakes a sleeping phone without toggling Sleep again.
+  await advanceUntil(lit);
+  await waitTicks(2400000);
+}
 async function start(message) {
   if (started) throw new Error('Worker already initialized');
   started = true;
@@ -148,6 +186,7 @@ async function start(message) {
   if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer].every(Boolean))
     throw new Error('Not enough memory for display buffers');
   check(api.release());
+  if (snapshot) await openLocked();
   present(true);
   send('ready', {id:message.id, restored:Boolean(message.checkpoint), silent:Boolean(api.buttonState(4))});
   setPaused(false);

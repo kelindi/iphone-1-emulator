@@ -1,0 +1,58 @@
+OWN task=cc285620 ttbr=14a24000 threads=1
+SAVED_CODE_30022658 bef0b6ec9c4b02227b449c4d9c4e7d447e4404681a609b4b012298469346f844
+THREAD cbbad000
+ THREAD_FIELD 10=c01d9420
+ THREAD_FIELD 5c=00000001
+ THREAD_FIELD 28c=cbbad1b4
+ USER_R0=00000000
+ USER_R1=00000000
+ USER_R2=00000002
+ USER_R3=380135dc
+ USER_R4=2ffffee8
+ USER_R5=380058cc
+ USER_R6=380058c8
+ USER_R7=2ffffdec
+ USER_R8=2ffffee8
+ USER_R9=2fe59398
+ USER_R10=00000000
+ USER_R11=00003030
+ USER_R12=380074c4
+ USER_R13=2ffffdd4
+ USER_R14=30001678
+ USER_R15=3002266a
+ USER_R16=20000030
+ UFRAME 2ffffdec lr=300021dd
+ UFRAME 2ffffdfc lr=3003f1ac
+ UFRAME 2ffffe84 lr=300bd708
+ UFRAME 2ffffe94 lr=00002210
+ UFRAME 2ffffee4 lr=2fe2d504
+ KFRAME e2db38e8 lr=c0022601
+ KFRAME e2db3918 lr=c0022805
+ KFRAME e2db3958 lr=c0022935
+ KFRAME e2db3960 lr=c0013239
+ KFRAME e2db39a4 lr=c001b815
+ KFRAME e2db39cc lr=c002cca7
+ KFRAME e2db3c80 lr=c0019e19
+ KFRAME e2db3f0c lr=c0019e8d
+ KFRAME e2db3f2c lr=c0062bd4
+ KFRAME e2db3fa8 lr=c005f354
+LAUNCHD ttbr=13b9d000 root=00100220
+JOB 00100220 label=16 pid=0 status=00000000 child=00101da0 next=00000000
+JOB 00101da0 label=com.apple.mediaserverd pid=22 status=00000000 child=00000000 next=00101c20
+JOB 00101c20 label=com.iphone1.weather-http pid=21 status=00000000 child=00000000 next=00101b00
+JOB 00101b00 label=com.apple.ptpd pid=20 status=00000000 child=00000000 next=00101980
+JOB 00101980 label=com.apple.update pid=19 status=00000000 child=00000000 next=00101810
+JOB 00101810 label=com.apple.syslogd pid=18 status=00000000 child=00000000 next=00101690
+JOB 00101690 label=com.apple.notifyd pid=23 status=00000000 child=00000000 next=00101530
+JOB 00101530 label=com.apple.mobile.lockdown pid=17 status=00000000 child=00000000 next=00101360
+JOB 00101360 label=com.apple.mDNSResponder pid=16 status=00000000 child=00000000 next=00101200
+JOB 00101200 label=com.apple.iapd pid=15 status=00000000 child=00000000 next=001010c0
+JOB 001010c0 label=com.apple.daily pid=0 status=00000000 child=00000000 next=00100f60
+JOB 00100f60 label=com.apple.crashreporterd pid=14 status=00000000 child=00000000 next=00100dc0
+JOB 00100dc0 label=com.apple.configd pid=13 status=00000000 child=00000000 next=00100be0
+JOB 00100be0 label=com.apple.SpringBoard pid=12 status=00000000 child=00000000 next=00100ac0
+JOB 00100ac0 label=com.apple.DumpPanic pid=0 status=00000000 child=00000000 next=001009d0
+JOB 001009d0 label=com.apple.CommCenter pid=10 status=00000000 child=00000000 next=00100770
+JOB 00100770 label=com.apple.BTServer pid=9 status=00000000 child=00000000 next=00100390
+JOB 00100390 label=com.apple.launchd.readconfig pid=0 status=00000000 child=00000000 next=00000000
+JOB_AUDIT count=18 found=0 complete=1 error=none

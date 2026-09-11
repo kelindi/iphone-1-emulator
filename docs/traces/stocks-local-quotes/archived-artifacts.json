@@ -1,0 +1,130 @@
+[
+  {
+    "original": ".context/app-services-current/browser-run-2/final-home.snap",
+    "compressed": ".context/app-services-current/browser-run-2/final-home.snap.gz",
+    "rawBytes": 260051130,
+    "rawSHA256": "be1c7f12b93a817a823b97ce0fcf127aeb8061ae18923fdc6b3b24df55d99c08",
+    "compressedBytes": 111363752,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/hostname-browser/import-final-home.snap",
+    "compressed": ".context/app-services-current/hostname-browser/import-final-home.snap.gz",
+    "rawBytes": 255353142,
+    "rawSHA256": "98f623b0b415705013012cede33189c39d5f74b9ad7f642c29d8098481328a9e",
+    "compressedBytes": 110353544,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/checkpoint/phone.snap",
+    "compressed": ".context/app-services-current/dns-registration-boot/checkpoint/phone.snap.gz",
+    "rawBytes": 214020067,
+    "rawSHA256": "ff04325e33d80343faa67fe354e6ba369d008ad7d68415d0fe036e7602e10d35",
+    "compressedBytes": 97172033,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v2/phone.snap",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v2/phone.snap.gz",
+    "rawBytes": 219811811,
+    "rawSHA256": "03e6879a4d99e4e10419acd02b400b6b7ecd81c09c3121fbc7219eff7eedd31e",
+    "compressedBytes": 100276151,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v2/continued.snap",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v2/continued.snap.gz",
+    "rawBytes": 221401059,
+    "rawSHA256": "a29f23a246dd68a0d1b1f2a9b9a190820f38092916f68e2b4696d7538547a0d1",
+    "compressedBytes": 100791960,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v2/early-fault.snap",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v2/early-fault.snap.gz",
+    "rawBytes": 219869155,
+    "rawSHA256": "c51b7c27a73905b9f3555ce1163254ead91395eb42e1f619c801c08befc2aec8",
+    "compressedBytes": 100340378,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/hostname-browser-2/final-home.snap",
+    "compressed": ".context/app-services-current/hostname-browser-2/final-home.snap.gz",
+    "rawBytes": 256962664,
+    "rawSHA256": "88023b342c6eb050ee2cbe94aaae55e05b1207c3fb38a6880bfc13d3e66be9d8",
+    "compressedBytes": 110695907,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v3/before-registration.snap",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v3/before-registration.snap.gz",
+    "rawBytes": 219811811,
+    "rawSHA256": "13e0e8b264794949c250e26d50f5976533dca74fb74071bd82742d06df0627ee",
+    "compressedBytes": 100276412,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/services-boot/home.snap",
+    "compressed": ".context/app-services-current/services-boot/home.snap.gz",
+    "rawBytes": 245047266,
+    "rawSHA256": "08061e083cc1ffd9708e7a8fc48fa7a248894ee045056446cd5f94024986e088",
+    "compressedBytes": 106661265,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/services-browser-2/final-home.snap",
+    "compressed": ".context/app-services-current/services-browser-2/final-home.snap.gz",
+    "rawBytes": 255353142,
+    "rawSHA256": "98f623b0b415705013012cede33189c39d5f74b9ad7f642c29d8098481328a9e",
+    "compressedBytes": 110353537,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/safari-reload-browser/final-home.snap",
+    "compressed": ".context/app-services-current/safari-reload-browser/final-home.snap.gz",
+    "rawBytes": 259453290,
+    "rawSHA256": "5feb00ae53dd557d77897a57276e0ff4f22f8303ce8b63d4eab177e278e5237a",
+    "compressedBytes": 110868341,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-gateway-boot/home.snap",
+    "compressed": ".context/app-services-current/dns-gateway-boot/home.snap.gz",
+    "rawBytes": 245092322,
+    "rawSHA256": "27e3dd449991eaa418439ff775d851fc1bc705650cd6aed2acf5f783f0a1dd7e",
+    "compressedBytes": 106674068,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/probe.img",
+    "compressed": ".context/app-services-current/dns-registration-boot/probe.img.gz",
+    "rawBytes": 176160768,
+    "rawSHA256": "100fb598384cfa8c94fee718ea9fb5af60d882dca25d098c45c7c6f6a3710df0",
+    "compressedBytes": 85894818,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v2/probe.img",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v2/probe.img.gz",
+    "rawBytes": 176160768,
+    "rawSHA256": "dab89529e1ac23898938c77a5765e711b594deceafa256866134d39adbeac733",
+    "compressedBytes": 85894892,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-registration-boot/runtime-v3/probe.img",
+    "compressed": ".context/app-services-current/dns-registration-boot/runtime-v3/probe.img.gz",
+    "rawBytes": 176160768,
+    "rawSHA256": "4bf68b76b041c98bf9e88f7f6b162ccafbfb35e0ecefa002acf253dc37b3617e",
+    "compressedBytes": 85894880,
+    "roundTripVerified": true
+  },
+  {
+    "original": ".context/app-services-current/dns-gateway-boot/phone.img",
+    "compressed": ".context/app-services-current/dns-gateway-boot/phone.img.gz",
+    "rawBytes": 176160768,
+    "rawSHA256": "0deae121fd5186d7c912cee22646ea36e711593c0f6f2f8da426ea76ce08e94c",
+    "compressedBytes": 85909177,
+    "roundTripVerified": true
+  }
+]

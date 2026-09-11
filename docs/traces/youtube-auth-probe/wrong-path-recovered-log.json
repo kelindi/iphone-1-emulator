@@ -1,0 +1,79 @@
+{
+  "scope": "Every complete backing-log byte independently found in raw reconstructed RAM pages; all aligned duplicate candidates reported. No process ownership claim. No log extension/inferred missing bytes.",
+  "bytes": 5180,
+  "sha256": "7effbda634a29735e1b76ca2f625abd7b091bfeab457257542d2d1b0f684c060",
+  "pages": [
+    {
+      "logicalOffset": 0,
+      "bytes": 4096,
+      "allExactAlignedMatches": [
+        {
+          "ramOffset": "0xa8e3000",
+          "source": [
+            {
+              "ramOffset": "0xa8e3000",
+              "physicalAddress": "0x128e3000",
+              "fileOffset": "0xb279782",
+              "bytes": 4096
+            }
+          ]
+        },
+        {
+          "ramOffset": "0xc88c000",
+          "source": [
+            {
+              "ramOffset": "0xc88c000",
+              "physicalAddress": "0x1488c000",
+              "fileOffset": "0xc36872b",
+              "bytes": 4096
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "logicalOffset": 4096,
+      "bytes": 1084,
+      "allExactAlignedMatches": [
+        {
+          "ramOffset": "0xa8e6000",
+          "source": [
+            {
+              "ramOffset": "0xa8e6000",
+              "physicalAddress": "0x128e6000",
+              "fileOffset": "0xb27c785",
+              "bytes": 1084
+            }
+          ]
+        },
+        {
+          "ramOffset": "0xf298000",
+          "source": [
+            {
+              "ramOffset": "0xf298000",
+              "physicalAddress": "0x17298000",
+              "fileOffset": "0xec5c140",
+              "bytes": 1084
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "serial": 1,
+      "request": "POST /youtube/accounts/applelogin1 HTTP/1.1",
+      "requestBytes": 288,
+      "response": "HTTP/1.0 200 OK",
+      "responseBytes": 225
+    },
+    {
+      "serial": 2,
+      "request": "POST /youtube/accounts/applelogin1 HTTP/1.1",
+      "requestBytes": 288,
+      "response": "HTTP/1.0 200 OK",
+      "responseBytes": 225
+    }
+  ]
+}

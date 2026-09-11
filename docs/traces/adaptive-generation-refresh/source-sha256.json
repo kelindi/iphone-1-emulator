@@ -1,0 +1,9 @@
+{
+  "web/adaptive-runtime.c": "a40058a0e3d65fb03b85407d4d16f592ddb185ce522ea068e8a11f40d4de666a",
+  "web/adaptive-runtime.h": "4f3a47ba68e727421e95ccd11bc76c0f887719fd4c80b629411d201e1c9cfb63",
+  "tools/jit/adaptive/tests/refresh.c": "a40bda6641b5fd6c6506fab6f1c556d7c5b28e53bc7dd1db6b37fd7b207fb2a1",
+  "tools/jit/adaptive/workload-bridge.c": "e4beca18ba9252d282fac1abcbdbf6849e4a394422d5d0df3e14b964feb35e07",
+  "tools/jit/adaptive/workload-compiler.mjs": "6960c15d56238e66c4347fce7a9f025116a90c3ada09209db69ea0ffdde8bd29",
+  "tools/jit/adaptive/replay-workload.mjs": "41b8d9b31d746feb405d859c7d14500e26f849b4adb6ca2ff7967254b3c34c57",
+  "tools/jit/adaptive/build-workload-runtime.mjs": "5b31d79dea7f5d9eb4c779ae46210e2caef7ac7cafa56c52bf6f0fceb1a9c9ca"
+}

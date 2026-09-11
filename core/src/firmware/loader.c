@@ -9,10 +9,14 @@
  * Copyright (c) 2026 j0shua-SYSON. MIT licensed.
  */
 #include "loader.h"
+#ifdef S5LBOX_ADAPTIVE_JIT
+#include "arm_adaptive_dispatch.h"
+#endif
 #include <string.h>
 
 const char *fw_strerror(fw_status_t st) {
     switch (st) {
+        case FW_ERR_BUSY: return "compiled runtime is busy or failed";
         case FW_OK:              return "ok";
         case FW_ERR_INVALID_ARGUMENT:return "invalid firmware loader argument";
         case FW_ERR_PARSE:       return "not a valid IMG3 container";
@@ -39,6 +43,9 @@ static fw_status_t fw_load_img3_common(s5l8900_t *m, const uint8_t *buf,
     uint64_t off = (uint64_t)load_addr - m->ram_base;
     if (off + img.data_len > (uint64_t)m->ram_size) return FW_ERR_NO_ROOM;
 
+#ifdef S5LBOX_ADAPTIVE_JIT
+    if (!arm_adaptive_forget(&m->cpu)) return FW_ERR_BUSY;
+#endif
     uint8_t *dst = &m->ram[off];
 
     /* A KBAG we could not parse means "encrypted, but we do not know how".

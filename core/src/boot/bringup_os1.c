@@ -1,4 +1,7 @@
 #include "bringup_os1.h"
+#ifdef S5LBOX_ADAPTIVE_JIT
+#include "arm_adaptive_dispatch.h"
+#endif
 #include "bringup.h"
 #include "macho.h"
 #include "dt_patch.h"
@@ -39,6 +42,9 @@ bool s5l_os1_boot(s5l8900_t *m, const s5l_os1_request_t *req,
         return fail(r, "missing machine, kernel, or device tree");
     if (req->ramdisk_size && !req->ramdisk)
         return fail(r, "ramdisk size supplied without ramdisk data");
+#ifdef S5LBOX_ADAPTIVE_JIT
+    if (!arm_adaptive_forget(&m->cpu)) return fail(r, "compiled runtime is busy or failed");
+#endif
     r->virt_base = OS1_VIRT_BASE; r->phys_base = m->ram_base;
     r->ram_size = m->ram_size;
     if (req->devicetree_size > UINT32_MAX)

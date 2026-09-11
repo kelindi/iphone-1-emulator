@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "scope": "Media-only reencode of the exact existing PNG/timestamp sequence. No guest rerun. Initial decode preserved all frames/PTS; FFmpeg reported a shorter stream duration with B-frame reordering, while direct movie-header duration was correct. Reencoding without B frames removes the duration ambiguity; no lost frames or player truncation were demonstrated.",
+  "sourceReportSha256": "1de0f05b16e7bef9d8398bb73d2f064ae8d37514b21eb03d09b9d120b382f159",
+  "scriptSha256": "6628ec33da84bdac3e8b63e76507659fa733679df4e300f6cdecffab590f74c1",
+  "initialVideoSha256": "d4cde8714d98593380750d38f369eca84b895194e75dba0adad273c069a46fe0",
+  "initialMovieDurationSeconds": 14.188,
+  "maximumAcquisitionQuantizationMs": 0.499942000000253,
+  "finalMovieDurationSeconds": 14.188,
+  "finalPresentationTimestampSeconds": 14.187,
+  "frames": 205,
+  "allPresentationTimestampsExact": true,
+  "fullDecodePassed": true,
+  "finalVideo": {
+    "path": "/home/vercel-sandbox/iphone-1/tweets/videos/compiler_first_gate.mp4",
+    "bytes": 232249,
+    "sha256": "7a338d002146f577f3cbd9ef733ce9f25af67cc3cf725c69f918f2382c70aa1a"
+  },
+  "thumbnail": {
+    "path": "tweets/thumbnails/compiler_first_gate.jpg",
+    "sha256": "2fea73f1538eeb49dd94fd1dfab22482bd8e84cb8714985e560a575ac699d287",
+    "content": "Actual100M Settings loading shell; not a completed app launch."
+  },
+  "clarification": "Only descriptive text and script hash were corrected after direct movie-header inspection; encoding and validation were not rerun. Initial audit and script are preserved alongside this file.",
+  "manualReview": {
+    "thumbnail": "Actual Settings loading shell with title/status; not a completed launch.",
+    "video": "Candidate overlay and actual Home pixels inspected in review-B.png. Labels explicitly separate recording from browser/Mac latency and measured gate."
+  }
+}

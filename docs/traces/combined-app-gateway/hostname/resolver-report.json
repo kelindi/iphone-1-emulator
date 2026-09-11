@@ -1,0 +1,25 @@
+{
+  "result": "Weather uses asynchronous resolver; hosts file path not entered before failure",
+  "observedTTBR": "0x16f74000",
+  "host": "iphone-wu.apple.com",
+  "asyncStarts": 3,
+  "verifiedAsyncResumes": 3,
+  "queryTypeEntries": 3,
+  "filesGetaddrinfoEntries": 0,
+  "hostsFopenCalls": 0,
+  "hostsFopenReturns": 0,
+  "failure": "NSURLErrorDomain -1003",
+  "errorLayout": "Independently proven original NSError -code ldr r0,[r0,#8] and -domain ldr r0,[r0,#12], see error-layout.txt",
+  "limits": [
+    "One early async_resume peek/byte verification refused at same TTBR; refusal is logged and no data from it interpreted. Later three resume entries verified.",
+    "No observed file open failure: hosts file path was not entered.",
+    "No proof yet of supported local DNS configuration for asynchronous route; /etc/resolv.conf literal alone insufficient."
+  ],
+  "hashes": {
+    "probe-v2.c": "321316d700b327fff4df150fc03dd8c46f522307dcdf71826d8f461ea18cba34",
+    "probe-v2": "3e9c00dd2e81e7bd2820da941fa9370fc3da000a37e3d5b8d0982e2f6b74c637",
+    "stdout.log": "845695651ab022f44f1c6455116d860651044d07a89f9511de42e9431bcbe7ea",
+    "Foundation.original": "572af84d8c66991aa87083eb4d20cfa2fe94d755113a2baf2f01434f0681ac98",
+    "error-layout.txt": "f59354c16724176febaff865ab0a0c2d7b49dbcca81050e012127b0486d6b22c"
+  }
+}

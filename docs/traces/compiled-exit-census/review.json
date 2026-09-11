@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "independentReview": "No correctness blocker. All six raw row aggregates reconciled with totals and JIT deltas; zero overflow.",
+  "limitations": [
+    "32-bit per-row counters; collected totals below wrap, future wrap not detected",
+    "No scheduler-bypass or exclusive CPU-cost census",
+    "Browser navigation plus confirmation/message delay, not pure release-to-readiness"
+  ],
+  "reviewedScreens": [
+    "browser/2-settings.png",
+    "browser/2-home.png"
+  ],
+  "videoDecodeErrors": "",
+  "web/dist/emu.wasm": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+  "web/jit/seed.wasm": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+}

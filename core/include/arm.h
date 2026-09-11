@@ -260,6 +260,15 @@ typedef struct arm_bus {
      */
     uint8_t *(*host_ram_write)(void *ctx, uint32_t pa, uint32_t len);
 
+    /* Optional derived-code observer, called AFTER each committed main-RAM
+     * write, including stores through cached/direct host pointers. This is
+     * separate from device/framebuffer interposition: it cannot veto a write
+     * or perform guest effects. The owner maps host back to physical RAM.
+     * All writers must participate before code can rely on versions alone.
+     * Reset/restore/RAM replacement still require a compiler lifetime change. */
+    void (*ram_written)(void *ctx, const uint8_t *host, uint32_t len);
+
+
     /*
      * Optional platform hook for the ARM1176 CP15 Wait For Interrupt
      * operation.  A system model can synchronously advance its autonomous
@@ -602,6 +611,18 @@ uint32_t arm_mmu_translate(arm_cpu_t *cpu, uint32_t va, arm_access_t acc,
  * would have recorded. Every refusal leaves the fetch cache and counters
  * untouched, so the caller can fall back to arm_step() for faults or MMIO. */
 bool arm_fetch_cache_try_refill(arm_cpu_t *cpu, uint32_t va, bool priv);
+/* Observe the current cached executable mapping without walks or mutations. */
+/* Warm plain-RAM read only: no table walk, MMIO, fault or miss accounting.
+ * On success increments exactly one reference dread hit. Refused accesses
+ * must go through the original instruction before any destination/writeback. */
+/* Warm RAM store, honoring current direct-write consent. A NULL refusal has
+ * no effects. Success commits once, credits one write-cache hit and notifies
+ * ram_written; the returned address identifies the committed physical span. */
+const uint8_t *arm_write_cache_try(arm_cpu_t *cpu, uint32_t va, unsigned width,
+                                  bool privileged, uint32_t value);
+const uint8_t *arm_read_cache_try(arm_cpu_t *cpu, uint32_t va, unsigned width,
+                                 bool privileged);
+const uint8_t *arm_fetch_cache_peek(const arm_cpu_t *cpu, uint32_t va, bool priv);
 
 /*
  * Drop every cached translation. Call this wherever the guest does something

@@ -1,0 +1,6 @@
+vfp: refusing 0xeeb00b00 at pc 0x00000000: VMOV (immediate); VFPv3 only
+vfp: refusing 0xee400b10 at pc 0x00000000: Advanced SIMD scalar transfer (no NEON on VFP11)
+vfp: refusing 0xeeb00b00 at pc 0x00000000: VMOV (immediate); VFPv3 only
+S5LBox ARMv6 interpreter tests
+
+1067 passed, 0 failed

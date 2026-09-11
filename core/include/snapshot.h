@@ -200,7 +200,8 @@ typedef enum {
     SNAP_ERR_CHECKSUM,   /* payload does not match its recorded hash         */
     SNAP_ERR_CORRUPT,    /* section framing or a field value is nonsense     */
     SNAP_ERR_GEOMETRY,   /* the machine's RAM/NOR/stub layout does not match */
-    SNAP_ERR_NOMEM
+    SNAP_ERR_NOMEM,
+    SNAP_ERR_BUSY        /* compiled execution/retirement prevents restore */
 } snapshot_status_t;
 
 const char *snapshot_strerror(snapshot_status_t st);

@@ -1,0 +1,42 @@
+{
+  "commands": [
+    [
+      "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc",
+      "-O3",
+      "-DNDEBUG",
+      "-DS5LBOX_WASM_JIT=1",
+      "-std=gnu11",
+      "-I/home/vercel-sandbox/iphone-1/web",
+      "-I/home/vercel-sandbox/iphone-1/core/include",
+      "-c",
+      "/home/vercel-sandbox/iphone-1/.context/connected-engine/jit-runtime.c",
+      "-o",
+      "/home/vercel-sandbox/iphone-1/.context/connected-engine/jit-runtime.c.o"
+    ],
+    [
+      "/home/vercel-sandbox/iphone-1/.context/emsdk/upstream/emscripten/emcc",
+      "-O3",
+      "-DNDEBUG",
+      "-sALLOW_TABLE_GROWTH=1",
+      "-O3",
+      "-sALLOW_MEMORY_GROWTH=1",
+      "-sINITIAL_MEMORY=536870912",
+      "-sSTACK_SIZE=4194304",
+      "-sMODULARIZE=1",
+      "-sEXPORT_ES6=0",
+      "-sEXPORT_NAME=createEmu",
+      "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_malloc','_free']",
+      "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8','HEAPU32','addFunction','removeFunction']",
+      "/home/vercel-sandbox/iphone-1/.context/core-hotspot/control-build/CMakeFiles/emu.dir/web/emu_api.c.o",
+      "/home/vercel-sandbox/iphone-1/.context/connected-engine/jit-runtime.c.o",
+      "-o",
+      "/home/vercel-sandbox/iphone-1/.context/connected-engine/runtime/emu.js",
+      "/home/vercel-sandbox/iphone-1/.context/core-hotspot/control-build/core/libemucore.a",
+      "-lm"
+    ]
+  ],
+  "productionSha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
+  "runtimeSha256": "c94622bafd46737df75dc051facb4ce7af137d585c70f5eaaaab9e46a6aaa8dd",
+  "sharedCoreArchive": "/home/vercel-sandbox/iphone-1/.context/core-hotspot/control-build/core/libemucore.a",
+  "sharedCoreSha256": "e0b954e56664bd7d3f07c7f9097fc7c5f14a38688593a025952651833e19debc"
+}

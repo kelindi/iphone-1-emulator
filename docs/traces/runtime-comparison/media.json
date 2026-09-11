@@ -1,0 +1,12 @@
+[
+  {
+    "file": "tweets/videos/native_browser_comparison.mp4",
+    "bytes": 1035579,
+    "sha256": "3313a2bc2b46f23277030173711911c8cd8b166821bc8dd3141c278a49931801"
+  },
+  {
+    "file": "tweets/thumbnails/native_browser_comparison.jpg",
+    "bytes": 67599,
+    "sha256": "ed07f5d336e133b3e5089e5f9dc304dd4f27d1f8bf63b882bff8ef7c32d99aae"
+  }
+]

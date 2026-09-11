@@ -236,7 +236,7 @@ if __name__ == "__main__":
     if not build.get("passed") or build.get("diagnosticLogging") or not build.get("audit", {}).get("passed"):
         raise SystemExit("a passed quiet own-program build is required")
     if (build.get("programName") != "iphone1-local-http" or
-            set(build.get("sourceSHA256", {})) != {"server.c", "http.c", "http.h", "build.py", "macho_audit.py"}):
+            set(build.get("sourceSHA256", {})) != {"server.c", "http.c", "standalone_runtime.c", "http.h", "build.py", "macho_audit.py"}):
         raise SystemExit("this installer accepts only the maintained local-demo program")
     for name, expected in build["sourceSHA256"].items():
         if digest(HERE / name) != expected:

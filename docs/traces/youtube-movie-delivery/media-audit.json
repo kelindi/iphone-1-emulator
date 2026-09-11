@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "Exact original CoreMedia range requests and owned MP4 response bytes only; playback failed, decoder not qualified",
+  "exchanges": [
+    {
+      "request": "GET /demo/clip-1.mp4 HTTP/1.1",
+      "range": "bytes=0-1",
+      "responseBytes": 2,
+      "bodySHA256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "request": "GET /demo/clip-1.mp4 HTTP/1.1",
+      "range": "bytes=0-8825",
+      "responseBytes": 8826,
+      "bodySHA256": "ea46a569f354d32c426475539bb40b8072d4aa30c3f39d4f9865bcf0886d7178"
+    }
+  ],
+  "logSHA256": "5a5bc9267d27e92af448b5776fc8d2f902a5a6882163a28beb2375d1483f09e9"
+}

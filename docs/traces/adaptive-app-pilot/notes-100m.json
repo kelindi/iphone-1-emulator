@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "scope": "Adaptive real-app correctness pilot against frozen complete checkpoints. Diagnostic timings only; not ABBA throughput acceptance.",
+  "workload": {
+    "name": "notes",
+    "events": [
+      {
+        "at": 0,
+        "type": "touch",
+        "down": 1,
+        "x": 200,
+        "y": 250
+      },
+      {
+        "at": 5000000,
+        "type": "touch",
+        "down": 0,
+        "x": 200,
+        "y": 250
+      },
+      {
+        "at": 400000000,
+        "type": "button",
+        "id": 1,
+        "down": 1
+      },
+      {
+        "at": 405000000,
+        "type": "button",
+        "id": 1,
+        "down": 0
+      }
+    ],
+    "credits": 600000000,
+    "checkpoints": [
+      100000000,
+      300000000,
+      600000000
+    ]
+  },
+  "stop": 100000000,
+  "wasmSha256": "9d8edb7fc7ad5d1bf6af8db1c9475f9299e10873b7e2aca069316f070ec36b1a",
+  "credits": 100000000,
+  "cpuMs": 114133.72200000001,
+  "wallMs": 113501.50998900007,
+  "checkpoints": [
+    {
+      "credits": 100000000,
+      "bytes": 248770530,
+      "sha256": "28246c034348a70739c93512e8f315d030afe5046782831c3200e9dc5a077dca"
+    }
+  ],
+  "sources": {
+    "tools/jit/adaptive/replay-workload.mjs": "c7e3c663862324bf08a257a544d7b0b2da5d32bfa7e167c0fce47fa6b1b99076",
+    "tools/jit/adaptive/workload-compiler.mjs": "c2bff78ee4c45dcee913db79432eb1b80a88b6fa7b15c6bc84d2f9983a703b9e",
+    "tools/jit/adaptive/workloads.mjs": "d17a24af0fc8897536d6799e86afcffeb7ca97bb9ffad30c310318deecc30eb6",
+    "tools/jit/adaptive/unit.mjs": "3b87c6b62a46a9db3b48870a6f5680f0a436fb6fb41e4acffdd916b98628cf3a",
+    "tools/jit/adaptive/decode.mjs": "d18da7dc9fdc54c984c5291fcfbba1decf6af96f8c625f282121a16e114a6606",
+    "tools/jit/adaptive/emit.mjs": "d453a9d741c82b33293554dd21a5ffa3697ab165fb1940321ca25a2b906fb91f"
+  },
+  "compiler": {
+    "attempts": 2048,
+    "captureRefusals": 20,
+    "unsupported": 104,
+    "compiled": 1944,
+    "installed": 1944,
+    "rejected": 0,
+    "binaryBytes": 7654558,
+    "compileCpuMs": 3677.1729999999993,
+    "compileWallMs": 3371.536731000021
+  },
+  "runtime": [
+    760959,
+    67789,
+    99180378,
+    0,
+    11758,
+    370,
+    54858,
+    0,
+    0,
+    803
+  ],
+  "attempts": 2048,
+  "fullWorkload": false
+}

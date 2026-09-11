@@ -1,0 +1,127 @@
+{
+  "host": {
+    "platform": "linux",
+    "release": "6.18.40",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+    "logicalCpus": 8,
+    "memoryBytes": 17452048384
+  },
+  "date": "2026-09-06T15:31:09.599Z",
+  "browser": "152.0.7977.82",
+  "url": "http://127.0.0.1:8242",
+  "pulseMs": 30,
+  "actions": [
+    {
+      "kind": "settings",
+      "round": 0,
+      "firstVisibleMs": 953.2000000011176,
+      "readyMs": 3650,
+      "releaseOffsetMs": 41.30000000074506,
+      "releaseToFirstVisibleMs": 911.9000000003725,
+      "releaseToReadyMs": 3608.699999999255,
+      "observedAtMs": 4150.200000001118,
+      "metrics": {
+        "type": "metrics",
+        "mips": 31.716456653751,
+        "fps": 9.953219866634235,
+        "guestRate": 1.0000031518536991,
+        "cycles": "11320118804",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 83719309,
+          "calls": 10458250
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "kind": "home",
+      "round": 0,
+      "firstVisibleMs": 400.09999999962747,
+      "readyMs": 850.2999999988824,
+      "releaseOffsetMs": 33.5,
+      "releaseToFirstVisibleMs": 366.59999999962747,
+      "releaseToReadyMs": 816.7999999988824,
+      "observedAtMs": 1400.199999999255,
+      "metrics": {
+        "type": "metrics",
+        "mips": 14.970086489732884,
+        "fps": 12.92374987575232,
+        "guestRate": 1.0001047155132952,
+        "cycles": "11343515426",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 98433090,
+          "calls": 12344984
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    },
+    {
+      "kind": "settings",
+      "round": 1,
+      "firstVisibleMs": 100,
+      "readyMs": 2350.199999999255,
+      "releaseOffsetMs": 33.09999999962747,
+      "releaseToFirstVisibleMs": 66.90000000037253,
+      "releaseToReadyMs": 2317.0999999996275,
+      "observedAtMs": 2900.0999999996275,
+      "metrics": {
+        "type": "metrics",
+        "mips": 44.24073335992077,
+        "fps": 0,
+        "guestRate": 0.9999998339315523,
+        "cycles": "11458331449",
+        "memory": 643039232,
+        "jit": {
+          "enabled": true,
+          "generation": 1,
+          "regions": 509,
+          "bytes": 12341313,
+          "retired": 181089069,
+          "calls": 22071220
+        },
+        "serial": "",
+        "captureMs": null,
+        "captureChunkMs": null,
+        "finalizeMs": null
+      }
+    }
+  ],
+  "errors": [],
+  "method": "CPU attribution diagnostic with sampling overhead; never a speed acceptance result.50 ms canvas sampling; changed pixels exclude status bar; readiness must remain visually stable 500 ms. Ready time starts that stable interval. Legacy readyMs/firstVisibleMs start before mouse-down; release-relative fields use the actual browser pointerup event. First/warm are separate; at least20 warm samples are required for a per-action p95.",
+  "client": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 8,
+    "deviceMemory": 16
+  },
+  "passed": true,
+  "assets": [
+    {
+      "url": "http://127.0.0.1:8242/jit/seed.wasm",
+      "bytes": 12341313,
+      "sha256": "d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881"
+    },
+    {
+      "url": "http://127.0.0.1:8242/dist/emu.wasm",
+      "bytes": 250531,
+      "sha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
+    }
+  ],
+  "video": "/home/vercel-sandbox/iphone-1/.context/trace-optimizer-profile/run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
+  "closed": true
+}

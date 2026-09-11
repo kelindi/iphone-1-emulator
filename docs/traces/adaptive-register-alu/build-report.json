@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "sources": {
+    "core/include/arm.h": "347cf61ebd007269e2a01b3d92eb345684849f31a36669000b06eb64c43e4744",
+    "core/include/arm_adaptive_guard.h": "f047fb9173b4c4577642699cbf7c6ccd143625a58235bfaa73597e0c2f6e6b61",
+    "core/include/arm_adaptive_jit.h": "7eea006e62862c8c98c60ecf7eec9e0667390e5526dbfe13386cb8e6a1457fd3",
+    "core/include/arm_adaptive_dispatch.h": "2b520bbedde5a02a8a3ffbe8665de06103faa3a58f964f9de9f52c4ca6ff782d",
+    "core/src/mmu.c": "cab7a251455d716f2616bf6cc47855f79642deb000af1d58ec59b8dd38626d43",
+    "core/src/arm/arm_interp.c": "71466a84bfcf301eb98d887af554f45b3ad01b099041f6c957c5a634d6ff1b3a",
+    "core/src/soc/machine.c": "f4ffa929ad5a44cf648d89a58d882b622bbac5d217de60531b8bb386f63881db",
+    "web/adaptive-runtime.c": "9d772b99364d96f8269bf46fca4afad6e17203dfead6e2e16a2e9f5cd8e312db",
+    "web/adaptive-runtime.h": "817a3274d555ae0323e8856c49004b5183478bb64135867188ae836221929385",
+    "tools/jit/adaptive/decode.mjs": "975e6c78d91fb6f63c4773a38856e0f7cecb5a43069bc446972198b0d30d6517",
+    "tools/jit/adaptive/unit.mjs": "c94a1a70ac47fa5aaf2bb7e1a52c03c13a36bf9a11803d98cab0afcc33af38dd",
+    "tools/jit/adaptive/emit.mjs": "b7d9ea59574b5a08d61412a1384e9d04e3697c1d8ddbf6860a6f68cb135001be",
+    "tools/jit/adaptive/tests/machine-bridge.c": "d249242d8d745159d5036f87a1ed6b39a9c13ed6333ef8bea7439c801dd63a01",
+    "tools/jit/adaptive/tests/machine-bridge.mjs": "ce1c9677a9c14ca9236a514cc9c371663a72db141fdf530e71189576f6bf6d34"
+  },
+  "commands": [
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcmake",
+      "args": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "-DIPHONE1_WEB=ON",
+        "-DIPHONE1_WASM_JIT=OFF",
+        "-DIPHONE1_WEB_DIST=/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/dist",
+        "-DCMAKE_C_FLAGS=-DS5LBOX_ADAPTIVE_JIT=1"
+      ],
+      "output": "-- Configuring done\n-- Generating done\n-- Build files have been written to: /home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build\n",
+      "passed": true
+    },
+    {
+      "cmd": "cmake",
+      "args": [
+        "--build",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build",
+        "--target",
+        "emucore",
+        "-j",
+        "4"
+      ],
+      "output": "Consolidate compiler generated dependencies of target emucore\n[100%] Built target emucore\n",
+      "passed": true
+    },
+    {
+      "cmd": ".context/emsdk/upstream/emscripten/emcc",
+      "args": [
+        "-O2",
+        "-std=c11",
+        "-Icore/include",
+        "-Iweb",
+        "tools/jit/adaptive/tests/machine-bridge.c",
+        "web/adaptive-runtime.c",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/build/core/libemucore.a",
+        "-lm",
+        "-sMODULARIZE=1",
+        "-sEXPORT_NAME=createMachine",
+        "-sENVIRONMENT=node",
+        "-sALLOW_TABLE_GROWTH=1",
+        "-sALLOW_MEMORY_GROWTH=1",
+        "-sSTACK_SIZE=4194304",
+        "-sEXPORTED_FUNCTIONS=[\"_malloc\",\"_free\"]",
+        "-sEXPORTED_RUNTIME_METHODS=[\"addFunction\",\"removeFunction\"]",
+        "-o",
+        "/home/vercel-sandbox/iphone-1/.context/adaptive-compiler/machine-runtime-tests/machine-bridge.cjs"
+      ],
+      "output": "",
+      "passed": true
+    },
+    {
+      "cmd": "/usr/local/bin/node",
+      "args": [
+        "tools/jit/adaptive/tests/machine-bridge.mjs"
+      ],
+      "output": "{\"passed\":true,\"scope\":\"Actual emitted WASM, guarded C registry and real machine scheduler; full snapshots on synthetic integer loops. Not real-phone workloads or performance acceptance.\",\"cases\":[{\"name\":\"connected loop\",\"credits\":128,\"guardCalls\":125,\"tlbHits\":0,\"snapshotBytes\":17887393,\"sha256\":\"0a2677d2143af999ff4626995a58fe2b5b8c02744883cb8c6402881d82c92343\",\"retired\":0},{\"name\":\"cross-window loop\",\"credits\":128,\"guardCalls\":125,\"tlbHits\":0,\"snapshotBytes\":17887393,\"sha256\":\"b2d364d15946a08fcd6f8b496daf4f976362bbd0c917ef47ab183b115599c1ac\",\"retired\":0},{\"name\":\"MMU register-shift ALU loop\",\"credits\":128,\"guardCalls\":122,\"tlbHits\":1,\"snapshotBytes\":17891489,\"sha256\":\"5e0a4c68660a9d16b2809377fbe62c83c586dc94d8aca2d02912d2d5cd713d10\",\"retired\":0},{\"name\":\"MMU-on connected loop\",\"credits\":128,\"guardCalls\":125,\"tlbHits\":1,\"snapshotBytes\":17891489,\"sha256\":\"4f94c2b1367df82dbc492216a11a14ed354661e6a7d921b2155d807ca8aa0085\",\"retired\":0},{\"name\":\"MMU-on cross-window loop\",\"credits\":128,\"guardCalls\":125,\"tlbHits\":86,\"snapshotBytes\":17891489,\"sha256\":\"b9e670f426c176cc11b0bf981e22e4655b334d02edcb3407ff376fec7a031e49\",\"retired\":0},{\"name\":\"MMU guarded slow instruction\",\"credits\":128,\"guardCalls\":84,\"tlbHits\":86,\"snapshotBytes\":17891489,\"sha256\":\"9a5c03fd1553444bbe5e38f1ee009a43e764685dada2f6a3164848b4c96a676d\",\"retired\":0},{\"name\":\"MMU nonidentity small-page mapping\",\"credits\":128,\"guardCalls\":125,\"tlbHits\":86,\"snapshotBytes\":17899681,\"sha256\":\"df55e1d16fbe4698cf1371fa49b8af157d7dae63455f1595e1acd69f8027e6c6\",\"retired\":0},{\"name\":\"timer IRQ after compiled prefix\",\"credits\":128,\"guardCalls\":69,\"tlbHits\":0,\"snapshotBytes\":17887393,\"sha256\":\"551de28093331907a0d58243819954aeec6818711dd15676274c1fa3ace14fc8\",\"retired\":0},{\"name\":\"stale literal fallback\",\"credits\":128,\"guardCalls\":1,\"tlbHits\":0,\"snapshotBytes\":17887393,\"sha256\":\"c4b983cc9c9bc23caae686c4ed57de905552f2882690cad0fe3173f33daf22a7\",\"retired\":1},{\"name\":\"fatal latch blocks repeated single-step\",\"passed\":true}],\"runtimeSha256\":\"c7870192a48687032133fa879f8307ed5b158ab555f9cd74ba9272ff1935a1ef\"}\n",
+      "passed": true
+    }
+  ]
+}

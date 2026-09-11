@@ -1,5 +1,16 @@
 # Original Safari local demo service
 
+**2026-09-08 current isolated result:** the [combined gateway](WEATHER_GATEWAY.md)
+and loopback DNS serve Apple's original Weather and Stocks. Weather displays
+Cupertino 72°F with six days, New York 64°F after a swipe, a Home/revisit, and
+Cupertino 22°C through its own unit control. Stocks displays four fixed quotes
+on the same corrected build. [131 recording](../../../tweets/131_weather_stocks_local.md)
+and [actual DNS/HTTP evidence](../../../docs/traces/weather-stocks-local/README.md)
+retain the successful run. These are visibly labeled sample data. Live services,
+charts, search/add-city workflows, default distribution and persistence of this
+combined build remain unqualified. The separate port-18081 program below remains
+available, with its earlier failures preserved.
+
 **2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../../../tweets/093_default_local_demo_qualification_failure.md).
 
 This is independently authored guest software. Original OS 1.0 launchd and dyld
@@ -52,6 +63,14 @@ The output directory must not exist. Each compiler/linker invocation is bounded
 to 60 seconds. `build.json` records commands, diagnostics, source/tool hashes,
 the binary hash and its import audit; it also retains a failed invocation.
 Nothing is downloaded, and no Apple executable or library is changed.
+
+All own ARM translation units reserve `r9` with `-ffixed-r9`: original OS 1.0
+libSystem uses it as the current pthread pointer, so saving/restoring it around
+an own function is insufficient. Default builds also link `standalone_runtime.c`,
+which exports `environ` pointing to an owned, empty, null-terminated environment.
+These are narrow startup requirements for this fixed-config service, not a full
+CRT implementation. The installer requires the runtime source pin. Custom builds
+must explicitly include that source when they need this environment contract.
 
 The qualified toolchain is Clang 15 plus the classic ARM-capable ld64 used by
 [the own-program execution proof](../../../docs/traces/guest-hello/README.md).
@@ -130,6 +149,11 @@ copy. They do not need Apple firmware. The firmware dependency must be available
 in the interpreter's import path.
 
 ## Default and saved-phone policy
+
+The original YouTube challenge probe, explicit identity provisioning and
+signature evidence requirements are documented in [YOUTUBE.md](YOUTUBE.md).
+It deliberately refuses the final authentication step; it is not a catalog or
+video service.
 
 Provisioning must start with the current pristine default rootfs, not the 091
 data-retention fixture. A real Safari action will create a **Local demo**

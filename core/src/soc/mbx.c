@@ -456,6 +456,7 @@ static bool mbx_gart_write(const s5l_mbx_t *m, const arm_bus_t *bus,
             ? bus->host_ram_write(bus->ctx, pa, span) : NULL;
         if (direct) {
             memcpy(direct, src, span);
+            if (bus->ram_written) bus->ram_written(bus->ctx, direct, span);
         } else {
             for (uint32_t i = 0; i < span; i += 4u)
                 bus->write32(bus->ctx, pa + i, mbx_load_le32(src + i));
@@ -3018,12 +3019,15 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
      * Direct packets retain row-major p00,p10,p01,p11 corners in both the
      * half-texel 0x8e form and Spotlight's measured full-extent 0x0e form.
      * The older modulated 0x0e producer uses the alternate ordering below.
-     * No full-extent packet has established alternate-sampler semantics. */
-    bool row_major_corners = half_texel_layout || direct_sampler;
-    if (!half_texel_layout && scaled_sampler) {
-        if (why) *why = "full-extent alternate sampler is unmeasured";
-        return false;
-    }
+     * The captured full-extent alternate sampler is admitted below only for
+     * the integer quarter-turn family, after validating its UV mapping. */
+    bool compact_quarter_order = compact_copy && direct_sampler &&
+        !half_texel_layout && quad[8] == quad[10] && quad[12] == quad[14] &&
+        quad[9] == quad[13] && quad[11] == quad[15] &&
+        quad[30] == quad[40] && quad[25] == quad[35] &&
+        quad[26] == quad[31] && quad[36] == quad[41];
+    bool row_major_corners = (half_texel_layout || direct_sampler) &&
+                             !compact_quarter_order;
     const float epsilon = 0.0009765625f;
     float destination_x[4], destination_y[4];
     for (unsigned i = 0; i < 4u; i++) {
@@ -3054,7 +3058,8 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     if (reversed_axis_column) axis_aligned = false;
     struct mbx_affine_transform affine = {0};
     bool affine_sprite = !axis_aligned;
-    if (compact_copy && affine_sprite) {
+    if (compact_copy && affine_sprite &&
+        (!direct_sampler || !half_texel_layout)) {
         if (why) *why = "compact blit-copy destination is not axis-aligned";
         return false;
     }
@@ -3179,6 +3184,29 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
           quad[40] == u1_word && quad[41] == v1_word
         : quad[30] == u0_word && quad[41] == v0_word &&
           quad[40] == u1_word && quad[36] == v1_word;
+    /* Original OS1 YouTube player transition: full-extent integer texels,
+     * U along destination +Y and V along -X. This is a quarter turn, not
+     * an ordinary UV rectangle with a relaxed corner check. */
+    bool quarter_turn = !uv_rectangle &&
+        (perspective_copy || compact_quarter_order) &&
+        !half_texel_layout && !row_major_corners &&
+        (modulated_sampler || scaled_sampler || compact_quarter_order) && !affine_sprite &&
+        quad[30] == quad[40] && quad[25] == quad[35] &&
+        quad[26] == quad[31] && quad[36] == quad[41];
+    /* The captured alternate shader words are unchanged from filtered
+     * source-over draws. Treat the independent full-extent texture mode as
+     * integer sampling only for this measured unity quarter turn. This is a
+     * bounded interpretation of the existing shader, not a general admission
+     * of full-extent alternate draws. */
+    if (!half_texel_layout && scaled_sampler && !quarter_turn) {
+        if (why) *why = "full-extent alternate sampler is not a measured quarter turn";
+        return false;
+    }
+    if (quarter_turn) {
+        u0_word = quad[30]; u1_word = quad[25];
+        v0_word = quad[36]; v1_word = quad[26];
+        uv_rectangle = true;
+    }
     float normalized_u0, normalized_v0, normalized_u1, normalized_v1;
     if (!uv_rectangle ||
         !mbx_3d_word_to_nonnegative_float(u0_word, &normalized_u0) ||
@@ -3283,7 +3311,17 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         return false;
     }
 
-    if (affine_sprite) {
+    if (quarter_turn) {
+        if (dx != (float)source_height || dy != (float)source_width ||
+            x0 != (float)(int32_t)x0 || y0 != (float)(int32_t)y0 ||
+            u_texel_start != (float)source_left ||
+            v_texel_start != (float)source_top ||
+            u_texel_end != (float)source_right ||
+            v_texel_end != (float)source_bottom) {
+            if (why) *why = "quarter-turn sprite is not an integer unity rotation";
+            return false;
+        }
+    } else if (affine_sprite) {
         float expected_u2 = (float)source_width * (float)source_width;
         float expected_v2 = (float)source_height * (float)source_height;
         float expected_det = (float)source_width * (float)source_height;
@@ -3315,11 +3353,31 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             affine.v_x >= -epsilon && affine.v_x <= epsilon &&
             affine.v_y >= -30.0f - epsilon &&
             affine.v_y <= -30.0f + epsilon;
+        /* Original YouTube's compact opaque backdrop rotates a 320-row
+         * gradient column through 90 degrees, stretching its constant U axis
+         * over 480 pixels. Retain the producer's small float residuals, but
+         * do not admit general compact affine textures or arbitrary shears. */
+        bool compact_rotated_column = compact_copy && direct_sampler &&
+            half_texel_layout && header_texture_width == 8u &&
+            header_texture_height == 512u && source_pitch_pixels == 8u &&
+            source_width == 1u && source_height == 320u &&
+            u_texel_start == 0.5f && u_texel_end == 0.5f &&
+            v_texel_start == 0.5f && v_texel_end == 319.5f &&
+            affine.u_x >= -epsilon && affine.u_x <= epsilon &&
+            affine.u_y >= 480.0f - epsilon &&
+            affine.u_y <= 480.0f + epsilon &&
+            affine.v_x >= -320.0f - epsilon &&
+            affine.v_x <= -320.0f + epsilon &&
+            affine.v_y >= -epsilon && affine.v_y <= epsilon;
+        if (compact_copy && !compact_rotated_column) {
+            if (why) *why = "compact affine sprite is not the captured rotated column";
+            return false;
+        }
         if (reversed_axis_column && !os1_clock_column) {
             if (why) *why = "reversed axis sprite is not the captured Clock column";
             return false;
         }
-        if (os1_clock_column) {
+        if (os1_clock_column || compact_rotated_column) {
             /* All common clipping, tile, parameter and GART checks still run. */
         } else if (direct_sampler) {
             float u_error = u2 - expected_u2;
@@ -3638,8 +3696,8 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             u_texel_end == (float)source_right &&
             v_texel_end == (float)source_bottom;
         if (!integer_source_rectangle ||
-            full_raster_width != (int32_t)source_width ||
-            full_raster_height != (int32_t)source_height ||
+            full_raster_width != (int32_t)(quarter_turn ? source_height : source_width) ||
+            full_raster_height != (int32_t)(quarter_turn ? source_width : source_height) ||
             raster_left < raster_left_unclipped ||
             raster_top < raster_top_unclipped ||
             raster_right > raster_right_unclipped ||
@@ -3648,12 +3706,17 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                 "unfiltered sprite coverage is not a contiguous 1:1 crop";
             return false;
         }
-        source_x0 = source_left +
-                    (uint32_t)(raster_left - raster_left_unclipped);
-        source_y0 = source_top +
-                    (uint32_t)(raster_top - raster_top_unclipped);
-        if (source_x0 + width > source_right ||
-            source_y0 + height > source_bottom) {
+        if (quarter_turn) {
+            source_x0 = source_left + (uint32_t)(raster_top - raster_top_unclipped);
+            source_y0 = source_bottom - (uint32_t)(raster_right - raster_left_unclipped);
+        } else {
+            source_x0 = source_left +
+                        (uint32_t)(raster_left - raster_left_unclipped);
+            source_y0 = source_top +
+                        (uint32_t)(raster_top - raster_top_unclipped);
+        }
+        if (source_x0 + (quarter_turn ? height : width) > source_right ||
+            source_y0 + (quarter_turn ? width : height) > source_bottom) {
             if (why) *why = "unfiltered sprite crop exceeds its source";
             return false;
         }
@@ -3793,8 +3856,8 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     struct mbx_bilinear_axis y_axis[480u];
     uint32_t source_stage_x0 = source_x0;
     uint32_t source_stage_y0 = source_y0;
-    uint32_t source_stage_width = width;
-    uint32_t source_stage_height = height;
+    uint32_t source_stage_width = quarter_turn ? height : width;
+    uint32_t source_stage_height = quarter_turn ? width : height;
     if (filtered_sampling) {
         uint32_t minimum_x = UINT32_MAX, minimum_y = UINT32_MAX;
         uint32_t maximum_x = 0u, maximum_y = 0u;
@@ -3884,8 +3947,11 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
      * previous destination read therefore moved an entire rectangle across
      * the GART only to overwrite it.  Blended perspective sprites still need
      * the original destination, and keeping the shared output buffer preserves
-     * the all-validation-before-first-write transaction boundary. */
-    for (uint32_t row = 0; !compact_copy && row < height && ok; row++) {
+     * the all-validation-before-first-write transaction boundary. Compact
+     * affine quads also need that read: their rectangular staging area can
+     * include uncovered pixels which the affine rasterizer leaves unchanged. */
+    for (uint32_t row = 0; (!compact_copy || affine_sprite) &&
+                           row < height && ok; row++) {
         uint32_t dst = target + (top + row) * MBX_3D_TARGET_STRIDE +
                        left * 4u;
         ok = mbx_gart_read(m, bus, dst, pixels + row * row_bytes,
@@ -3991,6 +4057,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
                     ? vertical_left
                     : mbx_linear_bgra8(vertical_left, vertical_right,
                                        sample_x->weight);
+            } else if (quarter_turn) {
+                src = mbx_load_le32(source_pixels +
+                    (width - 1u - x) * source_row_bytes + y * 4u);
             } else {
                 src = mbx_load_le32(source_pixels + y * source_row_bytes +
                                     x * 4u);

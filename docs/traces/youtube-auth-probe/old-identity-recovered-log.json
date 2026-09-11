@@ -1,0 +1,49 @@
+{
+  "scope": "Raw snapshot RAM reconstruction, no process/filesystem ownership claim. First page observed verbatim; second found by 128 valid phase2-header hex bytes (all matches recorded; aligned candidate selected); third by unique phase2 SENT receipt. Full assembled hex lengths, serials and HTTP messages validate. No raw candidate body was accepted as complete.",
+  "pages": [
+    {
+      "logicalOffset": 0,
+      "ramOffset": "0xc88c000",
+      "source": [
+        {
+          "ramOffset": "0xc88c000",
+          "physicalAddress": "0x1488c000",
+          "fileOffset": "0xc2b172b",
+          "bytes": 4096
+        }
+      ]
+    },
+    {
+      "logicalOffset": 4096,
+      "matchedKnownHexBytes": 128,
+      "allSearchMatchOffsets": [
+        "0xc88c806",
+        "0xedda000"
+      ],
+      "ramOffset": "0xedda000",
+      "source": [
+        {
+          "ramOffset": "0xedda000",
+          "physicalAddress": "0x16dda000",
+          "fileOffset": "0xe6fec7a",
+          "bytes": 4096
+        }
+      ]
+    },
+    {
+      "logicalOffset": 8192,
+      "locationEvidence": "Unique phase2 SENT receipt page; full assembled hex blocks independently validated below",
+      "ramOffset": "0xeddb000",
+      "source": [
+        {
+          "ramOffset": "0xeddb000",
+          "physicalAddress": "0x16ddb000",
+          "fileOffset": "0xe6ffc7b",
+          "bytes": 4096
+        }
+      ]
+    }
+  ],
+  "bytes": 8905,
+  "sha256": "050bb6dbc87e35ffda467145f910024baec1f1b9cf929aa013989d2f9ccf8129"
+}

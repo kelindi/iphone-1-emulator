@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "scope": "Full candidate browser session1 recording, no cuts or speed change. Lossy H264 reencode; not pixel-identical to source. Actual first Settings screenshot supplies thumbnail.",
+  "sourceFullDecodeExit": 0,
+  "outputFullDecodeExit": 0,
+  "thumbnailFullDecodeExit": 0,
+  "decodeMode": "ffmpeg-static -xerror, threads1; source and encoded full framemd5 streams retained",
+  "allFrameTimingAndDecodedSizesEqual": true,
+  "frames": 2054,
+  "timebase": "1/25",
+  "firstPTS": 0,
+  "lastPTS": 2053,
+  "durationFromFramesSeconds": 82.16,
+  "encoder": "libx264,presetfast,crf23,yuv420p,threads1,movflags+faststart",
+  "files": [
+    {
+      "path": ".context/core-hotspot/browser-1-candidate/page@e34b63cc71cb97c42ca043187a531d6b.webm",
+      "bytes": 8012962,
+      "sha256": "3d422fbe366e77359541fd8e5fcb9cb462f9c983a2a95effcc43c6f26f95c176"
+    },
+    {
+      "path": "tweets/videos/core_decoder_comparison.mp4",
+      "bytes": 2374321,
+      "sha256": "ca0ef0bf75f5ec3a4f200a5b6d521e7d627f82c2d4157a8b32b4780fae19e040"
+    },
+    {
+      "path": "tweets/thumbnails/core_decoder_comparison.jpg",
+      "bytes": 35189,
+      "sha256": "17996840e5e90af80d40d4042273697126c1c7c01770328ca9496074d89f7277"
+    },
+    {
+      "path": ".context/core-hotspot/source-video.framemd5",
+      "bytes": 164536,
+      "sha256": "7250b983533de584ef36d352589a9290edd5d9813b615751e5b78674315f8825"
+    },
+    {
+      "path": ".context/core-hotspot/encoded-video.framemd5",
+      "bytes": 164536,
+      "sha256": "2c4978c92e4805ef444b8bc4b6f3b469fca0e0a3904b068a17ae525eba5ca336"
+    }
+  ]
+}
