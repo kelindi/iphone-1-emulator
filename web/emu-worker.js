@@ -143,9 +143,24 @@ async function start(message) {
   const response = await fetch('manifest.json', {cache:'no-cache'});
   if (!response.ok) throw new Error(`Could not load phone manifest (${response.status})`);
   const manifest = await response.json();
-  const load = (paths, label) => assetBytes(paths, received => send('loading', {
-    message:`Downloading ${label} · ${(received / 1048576).toFixed(1)} MB`, received
-  }), manifest.assetSha256 || {});
+  const downloads = [manifest.kernel, manifest.devicetree,
+    ...(!message.checkpoint ? [manifest.snapshot || manifest.rootfs] : [])].flat();
+  const sizes = downloads.map(path => manifest.assetBytes?.[path]);
+  const total = sizes.every(size => Number.isFinite(size) && size > 0)
+    ? sizes.reduce((sum, size) => sum + size, 0) : null;
+  let downloaded = 0, reported = 0;
+  const load = async (paths, label) => {
+    let partReceived = 0;
+    const bytes = await assetBytes(paths, received => {
+      partReceived = received;
+      // A corrupt cache retry must not send progress backwards or count twice.
+      reported = Math.max(reported, downloaded + received);
+      send('loading', {message:`Downloading ${label} · ${(reported / 1048576).toFixed(1)} MB`,
+        received:reported, total});
+    }, manifest.assetSha256 || {});
+    downloaded += partReceived;
+    return bytes;
+  };
   const kernel = await load(manifest.kernel, 'iPhone OS');
   const tree = await load(manifest.devicetree, 'hardware profile');
   let snapshot = message.checkpoint ? new Uint8Array(message.checkpoint) : null;

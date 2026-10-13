@@ -16,7 +16,7 @@ assert.notEqual(root,sourceRoot,'Upgrade test must use an isolated web root');
 assert.notEqual(root,previousRoot,'Upgrade test must preserve its previous firmware source');
 const port = Number(process.env.PORT || 8091);
 const url = `http://localhost:${port}/`;
-const files = ['index.html','phone.css','icon.svg','app.js','storage.js','assets.js',
+const files = ['index.html','phone.css','icon.svg','app.js','storage.js','assets.js','sha256.js',
   'checkpoint-worker.js','emu-worker.js','manifest.json','dist/emu.js','dist/emu.wasm',
   'seed-jit.js','jit/seed.wasm','jit/regions.json','jit/abi.json'];
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');

@@ -1,5 +1,6 @@
 // Verify immutable firmware before caching or decoding it. A bad cached entry
 // gets one network retry; storage denial never prevents loading the phone.
+import {sha256} from './sha256.js';
 const CACHE = 'iphone-1-assets-1a543a-v1';
 const FIRMWARE_ORIGINS = new Set(['https://iphone.files.garden']);
 const hex = bytes => [...new Uint8Array(bytes)].map(n => n.toString(16).padStart(2,'0')).join('');
@@ -29,7 +30,7 @@ export async function assetBytes(names, report = () => {}, hashes = {}) {
         report(received + partLength);
       }
       const buffer = await new Blob(pieces).arrayBuffer();
-      const valid = !hashes[name] || hex(await crypto.subtle.digest('SHA-256', buffer)) === hashes[name];
+      const valid = !hashes[name] || hex(await sha256(buffer)) === hashes[name];
       if (!valid) {
         try { await cache?.delete(url.href); } catch {}
         cached = null;

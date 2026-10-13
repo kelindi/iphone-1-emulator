@@ -8,6 +8,12 @@ let worker, sequence = 0, ready = false, paused = false, profileOwned = false;
 let saving = false, liveSave = false, lastInput = 0, lastSave = 0, savedRecord = null, silent = false;
 let serial = '', metrics = {}, captureMs = null, captureChunkMs = null, finalizeMs = null, startTime = 0;
 let preparingOffline = false;
+function setProgress(percent) {
+  const progress = $('progress');
+  progress.setAttribute('aria-valuenow', String(percent));
+  progress.querySelector('span').style.transform = `scaleX(${percent / 100})`;
+  $('boot-percent').textContent = `${percent}%`;
+}
 const setStatus = message => {
   $('status').textContent = message;
   if (!ready && !$('boot-loader').hidden) {
@@ -80,6 +86,7 @@ async function start(recovery = null) {
   pending.clear(); contacts.clear(); keys.clear();
   canvas.dataset.ready = 'false'; document.body.dataset.ready = 'false';
   controls(); $('progress').hidden = false; $('retry').hidden = true; $('recover').hidden = true;
+  setProgress(0);
   setStatus('Downloading iPhone OS…');
   try {
     savedRecord = recovery || await readCheckpoint();
@@ -102,8 +109,12 @@ async function start(recovery = null) {
       context.putImageData(pixels, 0, 0);
       canvas.dataset.frame = String(message.sequence);
       worker.postMessage({type:'recycle', buffer:message.buffer}, [message.buffer]);
-    } else if (message.type === 'loading') setStatus(message.message);
+    } else if (message.type === 'loading') {
+      setStatus(message.message);
+      if (message.total > 0) setProgress(Math.min(99, Math.floor(message.received / message.total * 100)));
+    }
     else if (message.type === 'ready') {
+      setProgress(100);
       ready = true; paused = false; lastInput = performance.now();
       $('boot-loader').hidden = true;
       canvas.dataset.ready = 'true'; document.body.dataset.ready = 'true';

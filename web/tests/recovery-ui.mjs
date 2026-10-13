@@ -19,9 +19,9 @@ try{
  await page.locator('.boot-logo').waitFor({state:'visible'});
  check('Apple logo and progress bar visible while loading',await page.locator('#progress').isVisible());
  check('loading label stays accessible without visible copy',await page.locator('#boot-label').evaluate(e=>getComputedStyle(e).clipPath==='inset(50%)'));
- check('unknown progress does not claim a percentage',await page.locator('#progress').getAttribute('aria-valuenow')===null);
+ check('progress starts at zero',await page.locator('#progress').getAttribute('aria-valuenow')==='0'&&await page.locator('#boot-percent').textContent()==='0%');
  await page.emulateMedia({reducedMotion:'reduce'});
- check('reduced motion stops progress animation',await page.locator('#progress span').evaluate(e=>getComputedStyle(e).animationName==='none'));
+ check('reduced motion stops progress transitions',await page.locator('#progress span').evaluate(e=>getComputedStyle(e).transitionDuration==='0s'));
  await page.setViewportSize({width:390,height:844});
  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  const logo=await page.locator('.boot-logo').boundingBox(),bar=await page.locator('#progress').boundingBox(),screen=await page.locator('#screen').boundingBox();
@@ -41,6 +41,7 @@ try{
  check('retry immediately restores loading state',await page.locator('#boot-loader').getAttribute('data-state')==='loading');
  await ready(); await page.waitForTimeout(1500);
  check('real guest ready with error overlay hidden',!await page.locator('#boot-loader').isVisible());
+ check('ready completes progress',await page.locator('#progress').getAttribute('aria-valuenow')==='100');
  check('minimalist controls remain hidden',!await page.locator('.companion').isVisible());
  check('real guest framebuffer drawn',await page.evaluate(()=>Number(document.querySelector('#screen').dataset.frame)>0));
  await page.screenshot({path:dir+'/recovered-home.png'});

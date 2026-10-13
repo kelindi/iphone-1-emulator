@@ -421,3 +421,7 @@ connectivity/live data remain separate, unimplemented steps.
 ### 139 — Apple logo and loading bar
 
 [Milestone](139_apple_logo_loader.md) · [Recording](videos/apple_logo_loader.mp4) · [Thumbnail](thumbnails/apple_logo_loader.jpg). Replaced the browser startup spinner/copy with an Apple logo and an indeterminate bar. Screen-reader stage text, reduced motion and error/retry controls remain. 115 unit tests, 18 loader/recovery checks and six offline checks pass locally. Recording includes controlled failures; deployment deferred.
+
+### 140 — Loading progress and secure HTTPS
+
+[Milestone](140_loader_progress_https.md) · [Recording](videos/loader_progress.mp4) · [Thumbnail](thumbnails/loader_progress.jpg). Added download percentage and a filled bar, preserved firmware verification without Web Crypto, and repaired live HTTPS plus an HTTP-to-HTTPS 308 redirect for 2007.mobile. 119 unit tests, loader/recovery, offline and physical controls pass; genuine desktop/mobile startup also passes with Web Crypto removed. Frontend release remains pending.
