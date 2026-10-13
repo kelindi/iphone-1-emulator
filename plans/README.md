@@ -32,6 +32,8 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 ## Status
 
+**README refresh (2026-10-13):** rewrote the project guide with the ASD-STE100 writing skill. The guide separates default offline workflows from isolated service experiments, lists unresolved hardware and product issues, and links dated performance evidence. Build, control, save, firmware, and test instructions now follow the current main-branch code.
+
 **Archive cleanup (2026-10-13):** removed historical browser recordings and the milestone publishing system from all branch histories. Emulator sources, functional media fixtures, engineering reports, and screenshots are retained. New diagnostic media belongs in ignored `.context/` paths.
 
 **Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt and a single-URL canonical sitemap while keeping the emulator as the only public page. The briefly deployed About link and page were removed by request. Unit, WASM smoke and crawl-file checks pass locally; the removal awaits release. 143.

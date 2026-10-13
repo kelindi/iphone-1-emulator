@@ -1,31 +1,190 @@
 # iphone-1
 
-> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+An emulator that runs iPhone OS 1.0, build `1A543a`, for the original iPhone
+(`iPhone1,1` / `M68AP`). Try the browser version at [2007.mobile](https://2007.mobile/).
 
-An S5L8900 emulator whose goal is to run the genuine iPhone OS 1.0 (build
-1A543a) on an emulated original iPhone (`iPhone1,1` / `M68AP`). Derived from
-[S5LBox](https://github.com/j0shua-SYSON/S5LBox), with a separate M68 board
-target and an OS 1.0 boot path.
+The emulator executes Apple's original kernel, frameworks, SpringBoard, and apps.
+SpringBoard is the original home-screen application.
+The browser displays the guest framebuffer, which contains the pixels drawn by the emulated phone.
+HTML and CSS provide the phone case and surrounding controls.
 
-Status and engineering log: [docs/iphone1_1_os1_port.md](docs/iphone1_1_os1_port.md).
-Current browser implementation and verification: [plans/execution.md](plans/execution.md).
-Product roadmap: [plans/web-iphone.md](plans/web-iphone.md).
-Original-app audit: [plans/app-coverage.md](plans/app-coverage.md).
+The portable C core derives from [S5LBox](https://github.com/j0shua-SYSON/S5LBox).
+The project adds an original-iPhone hardware target, an OS 1.0 boot path,
+a native diagnostic tool, and a WebAssembly browser interface.
 
-## Firmware
+## Current status
 
-The source copies in `web/firmware/` include the kernel, device tree,
-compressed work image, and home-screen snapshot used by `web/manifest.json`.
-The production manifest downloads matching public copies from
-`https://iphone.files.garden/`; the browser verifies every object against the
-checked-in SHA-256 digest before caching, decoding, or loading it.
-To regenerate them from the original restore package, supply
-`iPhone1,1_1.0_1A543a_Restore.ipsw` and its root-filesystem key locally:
+Status checked against the code and retained test reports on October 13, 2026.
+The phone boots and supports several offline workflows.
+Many original apps still cannot complete their main tasks.
+
+- **Original interface:** all 16 apps reached recognizable UI in the launch audit.
+  An app opening does not prove that its main task works.
+- **Offline apps:** focused browser tests cover Calculator, Notes, Calendar, and Contacts workflows.
+  The tested organizer edits survive save and reload.
+- **Input:** the browser supports taps, scrolling, slide to unlock, and the physical phone buttons.
+  Broader gesture behavior still needs tests.
+- **Clock:** focused tests cover Stopwatch timing and manual date/time changes across save and reload.
+  Audible alarms remain unfinished.
+- **Saved data:** the browser supports manual save, autosave, pause, backup export, and backup import.
+  Tests cover selected recovery and saved-phone upgrade cases.
+- **Offline visits:** Keep offline stores the page, emulator, and verified firmware for disconnected reloads.
+
+See the [app audit](plans/app-coverage.md) for tested workflows and their limits.
+The [engineering log](plans/execution.md) records later changes.
+Some audit entries describe older fixtures, so their dates and stated scope matter.
+
+### Experimental app services
+
+Separate prepared images demonstrate these workflows:
+
+- Safari loads local pages, submits a form, and preserves a bookmark across reload.
+- Weather and Stocks display fixed demo data through local services.
+- YouTube signs a local device challenge and displays one demo catalog entry.
+  Its player receives movie bytes, but playback still fails.
+
+These experiments use the original apps and guest networking code.
+They require their own prepared images and local services.
+The default phone does not include these services.
+See the [service tools](tools/legacy_services/README.md) and
+[YouTube investigation](plans/youtube-services.md).
+
+### Issues that still need fixes
+
+1. **Speed:** reduce app launch delays and qualify typing, scrolling, and animation.
+   Settings still exceeds the two-second warm-launch target in the recorded cloud baseline.
+2. **Networking:** complete a usable guest network connection and compatible app services.
+   General internet access, Maps, Mail, and modern service compatibility remain unfinished.
+3. **Audio and video:** complete the audio clock, FIFO, and DMA behavior.
+   DMA transfers data between memory and a device.
+   FIFO buffers hold samples in the order devices receive them.
+   Original YouTube currently fails during audio-device startup, even with a silent clip.
+   Audible iPod sound and genuine video playback remain unfinished.
+4. **Photos and Camera:** complete photo-library navigation, camera preview, capture, and saved media.
+   An isolated importer supplies images, but broader photo workflows still fail or lack tests.
+5. **Phone and Text:** complete simulated call and message workflows through the original apps.
+   The baseband device is not ready.
+   Real carrier service lies outside the initial product scope.
+6. **Hardware and reliability:** complete USB host transfers and the native NAND storage layout.
+   Check broader gestures, preference effects, alarms, long sessions, and saved-data upgrades.
+   Test actual Safari and Chrome on reference laptops.
+7. **CPU accuracy:** fix the known WebAssembly floating-point failures.
+   Existing tests expose missing exception flags and incorrect rounding behavior.
+   See the [floating-point failure report](docs/traces/wasm-vfp-conformance/README.md).
+
+The [product roadmap](plans/web-iphone.md) defines the remaining targets.
+The [completion checklist](plans/completion-checklist.md) explains the larger gaps.
+Hardware-specific plans and reports provide the detailed failure evidence.
+
+### Performance evidence
+
+A September 8 cloud baseline used Chrome 152 on a 2.90 GHz Xeon.
+It measured 30 warm samples for each action.
+Settings measured 2.318 seconds at the median and 2.567 seconds at p95.
+Home measured 0.866 seconds at the median and 0.868 seconds at p95.
+The p95 value describes the threshold for 95% of the samples.
+
+These results apply to that fixture and cloud machine.
+They do not establish performance on your hardware.
+See the [baseline report](docs/traces/adaptive-compiler-baseline/README.md).
+A saved home-screen snapshot avoids the slow full boot.
+The default browser also uses accelerated graphics.
+The CPU engine uses WebAssembly code generated for selected instruction regions.
+Runtime checks return unsupported work to the interpreter.
+
+## Run the browser locally
+
+You need Git, Node.js, npm, CMake, a C/C++ compiler, and Python.
+CI uses Node.js 22 and Emscripten 4.0.16.
+
+On Amazon Linux, the setup script installs build dependencies and the Emscripten SDK:
 
 ```sh
-python3 tools/firmware/extract_1a543a.py iPhone1,1_1.0_1A543a_Restore.ipsw fw/ --rootfs-key HEX
-# -> fw/kernel_1A543a.macho  fw/devicetree_m68ap.bin  fw/rootfs_1A543a_hfs.img
+bash tools/setup.sh
+npm run serve
+```
 
+Open `http://127.0.0.1:8080/`.
+Set `PORT` to choose another server port.
+If you define `CONDUCTOR_PORT`, the server uses it unless `PORT` overrides it.
+
+With build dependencies and Emscripten already installed:
+
+```sh
+npm ci
+bash tools/build-web.sh
+npm run serve
+```
+
+The build script finds Emscripten on `PATH` or in `.context/emsdk`.
+It writes generated files to `web/dist/` and regenerates the offline package.
+Rebuild after you change browser files.
+
+The default [manifest](web/manifest.json) downloads firmware and a saved home state
+from `https://iphone.files.garden/`.
+The browser checks each download against its recorded SHA-256 digest.
+It then restores the saved state instead of performing a full cold boot.
+Source copies of these firmware objects remain in `web/firmware/`.
+
+## Controls and saved data
+
+Slide to unlock when the phone opens.
+Tap the guest screen to select an app.
+Drag the guest screen to scroll.
+
+| Control | Keyboard shortcut |
+| --- | --- |
+| Home | Escape or H |
+| Sleep/wake | P |
+| Volume up/down | + / - |
+| Silent mode | M |
+
+Volume and silent-mode controls change emulated hardware state.
+They do not yet produce audible sound.
+
+Save stores a compressed checkpoint in the browser and retains a previous generation.
+A checkpoint contains the phone's memory, device state, and stored data.
+Autosave runs every 30 seconds when input is idle.
+The page also tries to save when the tab becomes hidden.
+Pause and Resume remain available during ordinary saves.
+A save does not resume a paused phone.
+
+Export creates a portable `.snap` backup.
+Import accepts a compatible snapshot, including a gzip-compressed snapshot.
+One tab owns the writable profile.
+Other tabs can explore the phone and export backups.
+The browser preserves incompatible saves for export instead of silently resetting them.
+
+Keep exported backups.
+The browser can clear stored data or reach its storage limit.
+Reset removes the current saved state and restores a fresh phone.
+Export your phone before Reset.
+Importing an older backup also restores that backup's older phone state.
+
+Keep offline downloads the complete offline package.
+Offline mode needs service-worker support and HTTPS or localhost.
+If a cached firmware file fails its digest check, the browser tries a fresh download.
+Offline package updates wait until existing phone tabs close.
+
+The public site uses PostHog for visit and emulator lifecycle events.
+The configuration disables session recording and automatic UI capture.
+Event calls exclude guest text, pixels, touch coordinates, logs, and backup contents.
+Local and preview hosts do not send these production events.
+See [the analytics configuration](web/analytics.js).
+
+## Firmware and native diagnostics
+
+The prepared work image seeds local activation data and disables automatic locking.
+It mounts the root filesystem from a RAM disk instead of the native NAND partitions.
+These changes affect data files and boot configuration.
+The project does not patch Apple's executable code.
+The emulator retains the upstream [S5LBox license](third_party/S5LBox-LICENSE).
+
+To prepare a work image, supply the original restore package and its root-filesystem key locally:
+
+```sh
+python3 -m pip install -r tools/firmware/requirements.txt
+python3 tools/firmware/extract_1a543a.py iPhone1,1_1.0_1A543a_Restore.ipsw fw/ --rootfs-key HEX
 python3 tools/firmware/rootfs_work.py fw/rootfs_1A543a_hfs.img fw/work_1A543a.img \
     --fstab "/dev/md0 / hfs rw 0 1" \
     --launchd-env com.apple.SpringBoard.plist=LK_ENABLE_MBX2D=1,LK_ENABLE_OGL=0 \
@@ -33,146 +192,80 @@ python3 tools/firmware/rootfs_work.py fw/rootfs_1A543a_hfs.img fw/work_1A543a.im
     --no-autolock --activate
 ```
 
-The `--add` option seeds `lockdownd`'s cached activation state, while
-`--activate` replaces the two Lockdown certificate data files in the work image
-and adds a locally signed activation record so the genuine verifier continues
-to report Activated. `--no-autolock` seeds the SpringBoard idle-time
-preferences. These are data-file changes only; no Apple binary is modified,
-and the extracted image is copied, never changed.
+The extractor produces a kernel, device tree, and root filesystem.
+The work-image tool copies the extracted image before it changes data.
+These commands prepare a work image.
+They do not recreate every packaged snapshot or release artifact.
+See the [boot and hardware log](docs/iphone1_1_os1_port.md) for details.
 
-## Build and run
+Build and test the native diagnostic tool:
 
 ```sh
-cmake -S . -B build -G Ninja && cmake --build build && ctest --test-dir build
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel 4
+ctest --test-dir build --output-on-failure
+```
+
+Run a full native boot with the prepared files:
+
+```sh
+mkdir -p .context
 ./build/tools/iphone1 --board m68 \
     --kernel fw/kernel_1A543a.macho --devicetree fw/devicetree_m68ap.bin \
     --ramdisk fw/work_1A543a.img --ram-mb 256 --debug-enabled \
     --cmdline "debug=0x8 serial=3 rd=md0 -v" \
-    --steps 12000000000 --serial run.log --screenshot run.ppm --shot-every 500000000
-python3 tools/firmware/ppm2png.py run.ppm.11.ppm home.png
+    --steps 12000000000 --serial .context/run.log \
+    --screenshot .context/run.ppm --shot-every 500000000
 ```
 
-The genuine 2007 home screen appears after several billion instructions
-(historically around 5.5–7G, depending on the work image and clock settings).
-`--shot-every` writes `run.ppm.<n>.ppm` every N instructions. Touch and physical
-button input are implemented; keep the multitouch node matched. The work-image
-command above disables automatic screen locking during experiments.
+A full boot takes billions of guest instructions.
+The native tool supports scripted input, snapshots, screenshots, and CPU/device logs.
+It does not provide a desktop phone window on the current main branch.
 
-The harness also supports repeatable `--pc-log ADDR` targets for logging
-registers and readable argument buffers at selected guest PCs, as well as
-`--at STEP tap X Y`, `--at STEP touch down|move|up X Y`, and
-`--at STEP press NAME` for scripted input.
-`tap` schedules its automatic lift after 100 ms of guest time. Explicit
-`touch down|move|up` events remain step-scheduled. `press NAME` holds the
-button for 100 ms of guest time before releasing it.
+## Tests
 
-For long idle experiments, `rootfs_work.py --no-autolock` seeds
-`SBAutoLockTime` and `SBAutoDimTime` as integer `-1` in SpringBoard's
-preferences. This is a user-preference change in the work image, not an Apple
-binary patch.
-
-## Browser build
-
-The browser displays the genuine guest framebuffer inside a clickable iPhone
-case. Emulation runs in a dedicated worker; the page handles touch, physical
-buttons, loading, and browser saves. Emscripten **4.0.16** is the tested SDK.
-
-On the provided Amazon Linux workspace, this installs dependencies and builds:
+After the web build, run the unit and WebAssembly smoke checks:
 
 ```sh
-bash tools/setup.sh
-npm run serve
-```
-
-With dependencies already installed:
-
-```sh
-bash tools/build-web.sh
-npm run serve
-```
-
-The build script accepts an SDK on PATH or the one installed in `.context/emsdk`.
-Generated files live in `web/dist/emu.js` and `web/dist/emu.wasm`. Open
-`http://127.0.0.1:8080/`; `PORT` overrides the port, and local Conductor workspaces
-use their assigned `CONDUCTOR_PORT`. Conductor's run menu includes Web, Build,
-and Test scripts.
-
-The manifest uses a home snapshot by default, avoiding the multi-minute cold
-boot. Remove its `snapshot` entry to boot from the rootfs. The supplied snapshot
-already has the Repair Needed alert dismissed. Native diagnostic commands in
-older plans may contain stale icon coordinates; the supplied home state has
-Settings near `(275,250)` and Safari near `(200,430)`.
-
-New phones use accelerated MBX graphics, the guarded WebAssembly CPU engine,
-and foreground clock pacing. A quiet paired VM test with 20 warm samples per
-action measures Home p95 at **0.92 seconds**, down from 1.27; Settings p95 is
-**3.57 seconds**, down from 3.88 and still above its two-second target. See the [measured comparison](plans/graphics-speed.md) and
-[default package verification](plans/execution.md).
-These are cloud-VM results, not a full-speed or reference-Mac acceptance claim.
-Existing saved phones keep their boot state, graphics mode and data. Export
-first, then Reset to start a fresh accelerated phone; importing an old backup
-restores its older state too. The original USB service keeps lockdownd alive;
-USB data transfer to a host is still unmodeled.
-
-The fresh phone uses a 168 MiB compacted work image. Preserving every file while
-removing unused disk blocks frees about 16.6 MiB of guest RAM and fixes the
-verified Contacts editing failure caused by memory pressure. About 6 MiB of disk
-space remains; large media libraries still need a separate storage device.
-Existing saved phones keep their original disk layout and data. To try the new
-starting phone, Export your saved phone first, then Reset. See the
-[memory investigation](plans/guest-memory.md) for validation and limits.
-
-Click the round Home button or use Escape/H; P is sleep/wake, +/- is volume,
-and M toggles the ringer. Drag the guest screen to scroll. Touchscreen browsers
-can supply multiple fingers; broader gesture behavior is still being verified.
-Volume and ringer GPIOs are modeled, but audible sound is not implemented yet.
-
-Save stores a compressed checkpoint in this browser, retaining a previous
-generation. Autosave runs every 30 seconds when input is idle, with extra
-opportunities when the tab is hidden. Initial snapshot capture measured about
-0.17–0.20 seconds; checksum and transfer copying then yield in small chunks
-while the guest continues. Pause and Resume remain available during ordinary saves; saving finishes without resuming a paused phone. Full save still takes several seconds. Export creates a
-portable `.snap` backup; Import also accepts gzip-compressed snapshots. One tab
-owns the writable profile; other tabs can explore and export. Keep exported
-backups because browser storage can be cleared or reach its quota. Exact
-snapshot-format compatibility is required; incompatible saves are preserved
-for export rather than silently reset.
-
-Keep offline installs a verified copy of the page, emulator, and R2-hosted firmware for
-disconnected reloads. Firmware cache corruption triggers verification and a
-fresh download; Retry is available after reconnecting. Offline bundle updates
-wait until existing phone tabs close. After changing frontend files, rebuild
-to regenerate `web/service-worker.js`; its content hashes keep matching JS and
-WASM together. If firmware changes, run `python3 tools/firmware/update_manifest.py`
-before rebuilding.
-
-The full product goal is **not complete**: networking, cellular service,
-audio, Camera, rotation, many app workflows, and near-real-time performance
-remain under development. The current verification includes real Settings and
-Safari navigation; the presence of an icon does not imply a working app.
-
-## Verification
-
-```sh
-cmake -S . -B build && cmake --build build --parallel 4
-ctest --test-dir build --output-on-failure
-npm run test:web
 npm run test:unit
+npm run test:web
 npm run test:capture
-# With the server running and Chrome installed:
+```
+
+With the server running and Chrome installed, run the relevant browser checks:
+
+```sh
 npm run test:browser
-npm run test:persistence
-npm run test:offline -- --record
 npm run test:controls
+npm run test:persistence
+npm run test:offline
 npm run test:offline-update
 npm run test:clock
 npm run test:save-pause
+npm run test:calculator
+npm run test:notes
 ```
 
-Browser tests use `/usr/bin/google-chrome` by default (`CHROME_PATH` overrides it).
-The real background-tab clock test also requires `DISPLAY` or `Xvfb` (on this
-VM: `sudo dnf install -y xorg-x11-server-Xvfb`). It creates a disposable Chrome
-profile with Playwright's focus override disabled.
-Video recording also needs Playwright's ffmpeg: `npx playwright install ffmpeg`.
-Reports, guest screenshots, and recordings go to `.context/` and stay out of Git.
-Engineering summaries are kept in `plans/` and `docs/`.
+Browser tests default to `/usr/bin/google-chrome`.
+Set `CHROME_PATH` to choose another Chrome or Chromium executable.
+The background-tab clock test also needs `DISPLAY` or Xvfb.
+On Amazon Linux, install Xvfb with `sudo dnf install -y xorg-x11-server-Xvfb`.
+Recording tests need Playwright's encoder: `npx playwright install ffmpeg`.
+
+Keep generated reports, screenshots, recordings, and exports in ignored `.context/` paths.
+Historical browser recordings and milestone publishing files no longer belong to the branch histories.
+Retained engineering reports describe their original runs.
+Their historical hashes can predate the archival cleanup.
+
+## Repository guide
+
+| Path | Purpose |
+| --- | --- |
+| `core/` | Portable ARMv6 CPU, memory, boot, and hardware models |
+| `web/` | Browser interface, worker, WebAssembly API, saves, and offline cache |
+| `tools/iphone1.c` | Native diagnostic tool |
+| `tools/firmware/` | Firmware extraction and work-image tools |
+| `tools/jit/` | Generated CPU code and isolated compiler experiments |
+| `tools/legacy_services/` | Local app services and prepared-image experiments |
+| `docs/traces/` | Retained test reports, screenshots, profiles, and experiment fixtures |
+| `plans/` | Implementation history, feature plans, and remaining work |
