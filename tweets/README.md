@@ -426,6 +426,10 @@ connectivity/live data remain separate, unimplemented steps.
 
 [Milestone](140_loader_progress_https.md) · [Recording](videos/loader_progress.mp4) · [Thumbnail](thumbnails/loader_progress.jpg). Added download percentage and a filled bar, preserved firmware verification without Web Crypto, and repaired live HTTPS plus an HTTP-to-HTTPS 308 redirect for 2007.mobile. 119 unit tests, loader/recovery, offline and physical controls pass; genuine desktop/mobile startup also passes with Web Crypto removed. Frontend release remains pending.
 
+### 141 — Silent 1080p emulator tour
+
+[Milestone](141_silent_1080p_demo.md) · [Demo](videos/iphone_demo_1080p.mp4) · [Thumbnail](thumbnails/iphone_demo_1080p.jpg). An 18-second silent fframes/Metal export at 1920 × 1080, 30 fps: real unlock, Settings, Calculator `12 + 34 = 46`, and Home. Phone enlarged 30%, footage played 1.5× faster than the prior edit (1.722× original speed) after trimming startup; inspected frames, reviewed images, arithmetic reference and complete MP4 decode pass.
+
 ### 142 — PostHog tracking
 
 [Milestone](142_posthog_tracking.md). Production-domain page visits, emulator startup/timing, first touchscreen interaction, physical controls, saves/backups, recovery and offline setup now emit PostHog events. 122 unit tests, WASM smoke, real SDK transport, blocked-SDK startup and disconnected reload pass. Live on 2007.mobile; genuine startup and PostHog ingestion (HTTP 200) are verified.
