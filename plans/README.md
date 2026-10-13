@@ -30,7 +30,7 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 ## Status
 
-**Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt, a canonical two-page sitemap and a static About guide. Desktop/mobile layout, all 122 unit tests, WASM smoke, crawl-file checks and offline About-to-guest navigation pass. Production release verification pending. [143](../tweets/143_search_metadata.md).
+**Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt, a canonical two-page sitemap and a static About guide. Desktop/mobile layout, all 122 unit tests, WASM smoke, crawl-file checks and offline About-to-guest navigation pass. Live on 2007.mobile; public pages/crawl files return 200 and genuine startup passes. [143](../tweets/143_search_metadata.md).
 
 **PostHog tracking (2026-10-13):** added asynchronous US PostHog analytics for production-domain visits and emulator lifecycle/control/save events. Guest content and replay are excluded; localhost/previews do not send events. 122 unit tests, WASM smoke, real SDK browser events, blocked SDK and offline reload pass. Live 2007.mobile startup and a labeled test event accepted by PostHog (HTTP 200) are verified. [142](../tweets/142_posthog_tracking.md).
 
