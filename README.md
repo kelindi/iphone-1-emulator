@@ -1,5 +1,7 @@
 # iphone-1
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 An S5L8900 emulator whose goal is to run the genuine iPhone OS 1.0 (build
 1A543a) on an emulated original iPhone (`iPhone1,1` / `M68AP`). Derived from
 [S5LBox](https://github.com/j0shua-SYSON/S5LBox), with a separate M68 board
@@ -104,10 +106,8 @@ Settings near `(275,250)` and Safari near `(200,430)`.
 New phones use accelerated MBX graphics, the guarded WebAssembly CPU engine,
 and foreground clock pacing. A quiet paired VM test with 20 warm samples per
 action measures Home p95 at **0.92 seconds**, down from 1.27; Settings p95 is
-**3.57 seconds**, down from 3.88 and still above its two-second target. See the
-[measured comparison and recording](tweets/055_mbx_navigation_speed.md),
-[continuous sixteen-app walkthrough](tweets/056_continuous_sixteen_apps.md),
-and [default package verification](tweets/058_accelerated_default_phone.md).
+**3.57 seconds**, down from 3.88 and still above its two-second target. See the [measured comparison](plans/graphics-speed.md) and
+[default package verification](plans/execution.md).
 These are cloud-VM results, not a full-speed or reference-Mac acceptance claim.
 Existing saved phones keep their boot state, graphics mode and data. Export
 first, then Reset to start a fresh accelerated phone; importing an old backup
@@ -174,5 +174,5 @@ The real background-tab clock test also requires `DISPLAY` or `Xvfb` (on this
 VM: `sudo dnf install -y xorg-x11-server-Xvfb`). It creates a disposable Chrome
 profile with Playwright's focus override disabled.
 Video recording also needs Playwright's ffmpeg: `npx playwright install ffmpeg`.
-Reports, guest screenshots, and recordings go to `.context/`; committed milestone
-recordings and explanations are indexed in [tweets/README.md](tweets/README.md).
+Reports, guest screenshots, and recordings go to `.context/` and stay out of Git.
+Engineering summaries are kept in `plans/` and `docs/`.

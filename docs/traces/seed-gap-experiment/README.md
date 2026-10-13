@@ -1,5 +1,7 @@
 # Filling measured gaps in the existing seed
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Outcome:** modest improvement in this pilot; retain the candidate in isolation. Do not replace the production seed. Warm Settings median improves5.47%, below the10% threshold declared before browser testing. Its measured p95 improves449ms. This is not full-speed acceptance.
 
 ## One bounded change
@@ -50,6 +52,6 @@ The main lesson is that measured seed gaps can help, but this256-position change
 
 [Clean browser summary](browser-summary.json), [frame review](frame-review.json), [fixed replay](screen-result.json), [focused guard report](guard-report.json), [frozen site hashes](frozen-site-hashes.json), and [decision](decision.json). Raw screenshots,RGBA.gz files, complete WebM recordings and executed scripts are archived. Script paths are original workspace-relative paths; restore them under `.context/seed-gap` for reproduction. Build requires the archived103warm census rows at their original paths, pinned compiler/WABT, production runtime and firmware. Firmware and full249MB replay snapshots are not duplicated; checkpoint hashes are retained.
 
-[Full candidate recording](../../../tweets/videos/seed_gap_comparison.mp4) · [thumbnail](../../../tweets/thumbnails/seed_gap_comparison.jpg). This uncut recording is the first clean candidate session: startup, first pair, then ten warm Settings/Home pairs. The interrupted lock-screen attempt remains separately archived.
+historical recording (removed) · historical thumbnail (removed). This uncut recording is the first clean candidate session: startup, first pair, then ten warm Settings/Home pairs. The interrupted lock-screen attempt remains separately archived.
 
 `disk-preservation.json` records lossless compression of closed historical snapshots to maintain browser disk reserve. Each gzip was decompressed and hash-verified before removing the old path. Restore those files by decompression if an older script needs the raw path. The experiment's firmware and replay fixture were untouched.

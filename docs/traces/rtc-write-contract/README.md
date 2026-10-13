@@ -1,5 +1,7 @@
 # The original OS 1.0 RTC setter is implemented
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 2026-09-06. Static inspection of the unchanged `1A543a` kernel disproves the current emulator comment that this kernel's date setter is a panic stub. **No guest clock behavior changes here.** Calendar still needs a genuine date-setting and persistence gate.
 
 The [read-only extractor](extract.py) checks the original kernel SHA-256, maps file-backed Mach-O segments, verifies the class name and vtable, and records eight complete function bodies in [report.json](report.json) and the adjacent text files. It uses Capstone only to decode original bytes. There is no Apple binary patch, guest execution, host-time injection or firmware change.
@@ -28,7 +30,7 @@ The original Settings → General → Date & Time UI allows automatic time to be
 
 Native read-only inspection of both genuine exported snapshots reports zero unsupported PMU writes in each. Total register writes rise from 222 to 231, which does not identify any RTC transaction. No guest instruction is executed by this inspector. The first inspector assumed 128 MiB and failed geometry; the actual exported phone has 256 MiB. Corrected geometry and 64-bit counter formatting produce the retained observations. This does not alter either immutable export.
 
-[Complete reports, screenshots, actions, inspector source and hashes](browser-diagnostic/) preserve the result. The first noninteractive launch collected only Home because stdin was closed; the separate interactive run also retains an initial mistaken Wallpaper navigation and its correction. [The uncut original-speed recording](../../../tweets/videos/manual_time_diagnostic.mp4) covers the interactive run, including manual review pauses and the final timeout; [thumbnail](../../../tweets/thumbnails/manual_time_diagnostic.jpg). It is a diagnostic recording, not a speed or successful persistence milestone. Next, leave the picker through the original UI, observe the actual transaction, and finish an unpaused execution gate before making a clock-change claim.
+[Complete reports, screenshots, actions, inspector source and hashes](browser-diagnostic/) preserve the result. The first noninteractive launch collected only Home because stdin was closed; the separate interactive run also retains an initial mistaken Wallpaper navigation and its correction. historical recording (removed) covers the interactive run, including manual review pauses and the final timeout; historical thumbnail (removed). It is a diagnostic recording, not a speed or successful persistence milestone. Next, leave the picker through the original UI, observe the actual transaction, and finish an unpaused execution gate before making a clock-change claim.
 
 ## Bounded attempt to leave the picker
 

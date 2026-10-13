@@ -105,11 +105,6 @@
     "sha256": "9e8b1adfa49527a2e08fc5ad6ed6fc264b09e54a8bd8313d2471e984ad58528c"
   },
   {
-    "path": "docs/traces/compiled-exit-census/browser/page@5980e9a5a838284d0b3ce2eb674f45c9.webm",
-    "bytes": 6061877,
-    "sha256": "70d54c3e961d97b9136dec0b4806b654058275297553a239d5a86e9d8b28d388"
-  },
-  {
     "path": "docs/traces/compiled-exit-census/browser/report.json",
     "bytes": 40900,
     "sha256": "f67cc7a351f81ef5b443825c4b62bb5cf952411666fd1123202f01e7f2feedbe"
@@ -153,11 +148,6 @@
     "path": "docs/traces/compiled-exit-census/decode.log",
     "bytes": 0,
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  },
-  {
-    "path": "docs/traces/compiled-exit-census/encode.log",
-    "bytes": 11240,
-    "sha256": "5924a05d0a9ef970a128b4201cba25914709aab48928bad9d5f98f8de8ed47a8"
   },
   {
     "path": "docs/traces/compiled-exit-census/jit-runtime-source.c",
@@ -273,20 +263,5 @@
     "path": "docs/traces/compiled-exit-census/test-counters.cjs",
     "bytes": 1131,
     "sha256": "a272fba6ed732485f6a07c4a3140fd7608e77f3ff87ef85520329263cd455c8b"
-  },
-  {
-    "path": "docs/traces/compiled-exit-census/thumbnail.log",
-    "bytes": 3226,
-    "sha256": "f94a4b166180fe597eeb5c56640c1024cf121ce54dbefeb27d56a8eb9927f00f"
-  },
-  {
-    "path": "tweets/thumbnails/compiled_exit_census.jpg",
-    "bytes": 31644,
-    "sha256": "b8133dfc56d6d6b63e0006edbb18c33f616dae7d827689aa8b8c6b099275d4e0"
-  },
-  {
-    "path": "tweets/videos/compiled_exit_census.mp4",
-    "bytes": 1464953,
-    "sha256": "e1aa16c4495827f235c2ec99d7f4431045389a9f84665d8b9527dbf9eec2c8d6"
   }
 ]

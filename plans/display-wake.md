@@ -1,5 +1,7 @@
 # Display wake investigation — 2026-09-05
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Power/wake exposed a missing M68 device, separate from MBX rendering. The
 browser correctly showed black when the guest disabled every CLCD window;
 retaining the previous canvas image had previously hidden that state.
@@ -63,7 +65,7 @@ complete normally.
   lock screen's idle timeout. Real browser recording is the acceptance check
   for user-visible wake timing.
 
-The [real Chrome milestone](../tweets/030_sleep_wake_unlock.md) now records
+The real Chrome milestone now records
 volume/silent overlays, sleep, wake and slide-to-unlock. Four automated checks
 pass in `npm run test:controls`; the slow unlock animation remains a separate
 performance issue.

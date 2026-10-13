@@ -15,8 +15,8 @@ const out=resolve(process.env.ARTIFACT_DIR||'.context/adaptive-compiler/first-ga
 const root=resolve(process.env.RUNTIME_ROOT||'.context/adaptive-compiler/workload-refresh-runtime');
 const baseline=resolve('.context/adaptive-compiler/baseline-final');
 const gatePath=resolve(process.env.GATE_REPORT||'.context/adaptive-compiler/workload-abba-first/report.json');
-const video=resolve(process.env.VIDEO_PATH||'tweets/videos/compiler_first_gate.mp4');
-const thumbnail=resolve(process.env.THUMBNAIL_PATH||'tweets/thumbnails/compiler_first_gate.jpg');
+const video=resolve(process.env.VIDEO_PATH||out+'/compiler_first_gate.mp4');
+const thumbnail=resolve(process.env.THUMBNAIL_PATH||out+'/compiler_first_gate.jpg');
 await mkdir(out); // Never overwrite a recording attempt.
 const hash=(b,algorithm='sha256')=>createHash(algorithm).update(b).digest('hex');
 const report={passed:false,scope:'Independent visualization of frozen Settings first100M scheduler credits, A then B. Actual emu_frame pixels at observed wall-clock pace. NOT ABBA measurement, browser latency or Mac performance.',method:'Same frozen inputs and1M scheduler-credit chunks. Frame capture, PNG encoding and recording I/O overhead remain in displayed elapsed pace. Each arm starts after restore/engine setup; setup and the gap between arms are outside the recording. After100M, the actual stopped framebuffer is held for one measured second. Millisecond video timestamp quantization; no interpolation or speed change.',identities:{},arms:[],process:{pid:process.pid,startedUtc:new Date().toISOString()},media:{}};

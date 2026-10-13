@@ -1,5 +1,7 @@
 # Calculator input feedback diagnostic
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 On the unmodified local RTC/streaming-loader build with the current recovery UI,
 all 60 measured Calculator presses produce the independently reviewed result:
 30 presses of **9**, each followed by **C**. One warmup pair is excluded by the
@@ -56,8 +58,8 @@ from retrying an unfavorable latency result.
 
 ## Recording
 
-[Full uncut 73.24-second MP4](../../../tweets/videos/calculator_input_feedback.mp4)
-and [thumbnail](../../../tweets/thumbnails/calculator_input_feedback.jpg).
+historical recording (removed)
+and historical thumbnail (removed).
 Actual repeated presses run approximately 00:15–01:12. The thumbnail at 00:15.8
 shows the first measured 9. Original WebM and converted MP4 durations match
 [exactly](video-durations.json); no playback-speed change or reconstructed UI.

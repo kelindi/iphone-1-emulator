@@ -1,5 +1,7 @@
 # Isolated verified streaming seed loader
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Persistent native-code reuse is verified in the isolated HTTP mechanism gate; production is unchanged.** The candidate preserves the original seed, ABI, generated admissions and controller lifecycle. Its only intended behavior change is how the already verified seed reaches WebAssembly compilation. The mechanism is accepted, but repeatable return-visit speed, first-ever launch gains and full-speed functionality are not established.
 
 The current loader uses `WebAssembly.compile(binary)`. The candidate retains the actual fetched Response, reads a clone under the existing 32MiB cap, verifies both SHA256 identities and parses definitions, then calls `compileStreaming` with that still-unused original Response. A synthetic `new Response(binary)` would discard relevant browser metadata. Unsupported streaming, unavailable cloning or unusable MIME use the same verified bytes; a streaming TypeError falls back without refetching, whereas a real compilation error remains an error. [Candidate](seed-jit.js), [exact diff](loader.patch), [source identity](source-proof.json).
@@ -47,7 +49,7 @@ All 8 raw phone-frame comparisons pass against independently frozen original C0/
 | Warm Settings |2.5678s|2.8666s|
 | Warm Home |0.8662s|0.9163s|
 
-These single observations establish neither a causal savings amount nor repeatable launch/p95 acceptance. The header is deliberately cacheable and service workers are bypassed; those delivery conditions differ from production. The complete first 68.48-second and returning 62.20-second recordings have unchanged durations and no cuts or speed changes. [Milestone076, both recordings and thumbnails](../../../tweets/076_compiled_seed_reuse.md), [recording identity](recordings.json).
+These single observations establish neither a causal savings amount nor repeatable launch/p95 acceptance. The header is deliberately cacheable and service workers are bypassed; those delivery conditions differ from production. The complete first 68.48-second and returning 62.20-second recordings have unchanged durations and no cuts or speed changes. Milestone076, both recordings and thumbnails, [recording identity](recordings.json).
 
 ## Next decision
 

@@ -1,5 +1,7 @@
 # Own test photos written by the original guest filesystem
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The independently authored importer runs inside original OS1 and creates all
 five fixed JPEG/THM files through libSystem. Its readbacks and an independent
 snapshot/backing-file audit match every full payload SHA. A separate continuation
@@ -90,7 +92,7 @@ thumbnails, and no invalid-name control. The first circle image eventually
 renders full-size. Showing the controls reintroduces stale album content, and
 next-image attempts leave a narrow blue strip instead of the square image.
 The session stops at the unfinished `square-fullscreen` gate with no retry.
-[Milestone094 and complete recording](../../../tweets/094_photos_first_workflow_failure.md),
+Milestone094 and complete recording,
 [original report](browser-run-1/report.json), [independent artifact audit and limits](browser-run-1/acceptance-audit.json).
 
 All32 received local responses match the pinned assets, all16 projected source

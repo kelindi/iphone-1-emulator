@@ -11,10 +11,6 @@
     "bytes": 10203,
     "sha256": "0010f13e9d1f5ab6f1dc62b93fd94ff987e52beb31efd8655eb4c422f2e6668a"
   },
-  "docs/traces/rtc-release-upgrade/final-release/thumbnail.log": {
-    "bytes": 2589,
-    "sha256": "4eac325f908d5982d9af0c32800ba7331feac75f6916c4720b03e56669f38308"
-  },
   "docs/traces/rtc-release-upgrade/final-release/00-fresh-home.png": {
     "bytes": 202091,
     "sha256": "bb0d3d0b66502d059803b8564f19946ff8a1d7f65e4ca2be50dd329c5e70ee49"
@@ -119,12 +115,5 @@
     "bytes": 3445,
     "sha256": "8bc75b57108e12c08e085ecba89e43ea87f6d123f3b94908a9f1a3b4bf042ed6"
   },
-  "tweets/videos/rtc_final_release.mp4": {
-    "bytes": 1016771,
-    "sha256": "b06dcea5c0de4068b9b8620c6e038f72fa454e41cbdb11984526878d27477552"
-  },
-  "tweets/thumbnails/rtc_final_release.jpg": {
-    "bytes": 79538,
-    "sha256": "492ee219a2aea710b3c6c1ce9cc8e4883aa6b42dc223453b7225d3a6a1462b68"
-  }
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

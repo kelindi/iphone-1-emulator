@@ -1,6 +1,8 @@
 # First modeled main-header/body evidence
 
-This isolated experiment implements the reached protocol of the original 2,140-byte helper as a high-level semantic model. It does not execute its CPU or announce main-firmware readiness. [Milestone066](../../../tweets/066_sdio_first_main_payload.md) explains the result and exact trace sections.
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+This isolated experiment implements the reached protocol of the original 2,140-byte helper as a high-level semantic model. It does not execute its CPU or announce main-firmware readiness. Milestone066 explains the result and exact trace sections.
 
 - [Positive trace](positive-mmio.log), [report](positive-report.json), and [model state](positive-main-model.json): original host consumes request16→512→16; stop after instruction0xc038a8c4 has committed the final pair, at0xc038a8c8 with source offset528. All39 physical transfers complete and receive genuine acknowledgements.
 - [Negative trace](main-negative-mmio.log) and [report](main-negative-report.json): disabled semantic model retains the original100-zero-poll failure after the full helper receive.

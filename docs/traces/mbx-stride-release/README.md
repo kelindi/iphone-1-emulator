@@ -1,5 +1,7 @@
 # Default MBX source-row correction
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Only `dist/emu.wasm` and its generated service worker changed in this local
 promotion. Previous core: `7a72add6…9088`. New core:
 `3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463`.
@@ -37,7 +39,7 @@ The actual persistent Chrome profile remains at
 `.context/mbx-stride-integration/final-release/run-1/profile`.
 
 `release-archive.json` pins the retained root artifacts, including the original
-WebM. [Milestone 096](../../../tweets/096_graphics_fix_default_release.md) links the
+WebM. Milestone 096 links the
 uncut MP4 and thumbnail. The MP4 fully decodes without errors.
 
 ## Limits

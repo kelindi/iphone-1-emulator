@@ -1,6 +1,8 @@
 # Default-image local HTTP qualification — failed browser gate
 
-One pristine accelerated-default image boots our maintained, quiet ARMv6 daemon and reaches genuine Home. One original Safari workflow then loads its landing page and link, but stalls at the first form. **The default integration is not accepted or published.** [Milestone093 and full recording](../../../tweets/093_default_local_demo_qualification_failure.md).
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+One pristine accelerated-default image boots our maintained, quiet ARMv6 daemon and reaches genuine Home. One original Safari workflow then loads its landing page and link, but stalls at the first form. **The default integration is not accepted or published.** Milestone093 and full recording.
 
 | Gate | Actual result |
 |---|---|

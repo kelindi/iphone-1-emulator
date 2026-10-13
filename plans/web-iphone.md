@@ -1,5 +1,7 @@
 # Delivery plan: a usable original iPhone in the browser
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Planning baseline: 2026-09-05, local commit `b0a7399`. This is a proposed implementation plan, not a claim that the features below are complete. The existing browser recordings demonstrate SpringBoard, Settings, Safari launches, and Home navigation; the other app workflows need verification.
 
 ## Current execution priorities — 2026-09-06
@@ -13,7 +15,7 @@ are still open. [The project overview](README.md) links current evidence.
    two-second target. The next targeted warm Settings/Home measurement is pending;
    the completed100M instruction census is diagnostic evidence, not a speedup.
 2. The bounded Safari source-row correction is integrated in the default local
-   package after saved-phone upgrade/offline checks; see [096](../tweets/096_graphics_fix_default_release.md).
+   package after saved-phone upgrade/offline checks; see [096](../docs/traces/mbx-stride-release/README.md).
    Photos navigation and the default Safari demo service remain unaccepted. A
    follow-up Photos attempt has no completed acceptance result.
 3. Defer further audio/network research while resolving speed. Close out existing
@@ -202,7 +204,7 @@ Weather/Stocks/Mail/Maps adapters depend on milestone 5, not Camera. YouTube dep
 - Test cached offline startup, missing/corrupt downloads, denied storage/camera permissions, audio unlock, background/resume, low quota, two tabs, service outage, and old saves after upgrade. Foreground resume must not produce runaway clock catch-up or stuck audio/input.
 - Run native regressions, WASM startup, real browser app flows, release cold boot, snapshot compatibility, and the 30-minute soak. Use a browser automation runner for repeatability and actual Safari testing for the Safari claim; a generic WebKit runner is supplementary.
 - Put every app's demo/live/unsupported boundaries in compact surrounding help. Keep the main view focused on the phone.
-- Record the full release walkthrough and per-milestone clips at `tweets/videos/<slug>.mp4`, generate matching thumbnails, and update the tweet index. Existing clips may support a baseline but cannot prove a new feature or speed result.
+- Keep release recordings and matching verification reports in `.context/`; do not commit generated media.
 
 Exit gate: all agreed app workflows, browser performance budgets, persistence/recovery checks, and hosted smoke checks pass, with a release manifest and rollback path.
 

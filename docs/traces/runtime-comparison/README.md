@@ -1,5 +1,7 @@
 # Does native execution justify moving the phone onto a server?
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Decision: keep local browser execution for now.** The current native engine
 is faster on this Vercel Sandbox, especially on first launch, but the repeat-use
 advantage is small enough that streaming can consume it. This is a bounded pilot,
@@ -90,4 +92,4 @@ Freshly build the current Release emucore into an isolated directory if the
 historical local archive is unavailable, and record the new compiler/build pins.
 Run contracts and limits are in `contract.md`; do not overwrite existing outputs.
 
-[Milestone and complete browser-arm recording](../../../tweets/098_native_browser_performance.md).
+Milestone and complete browser-arm recording.

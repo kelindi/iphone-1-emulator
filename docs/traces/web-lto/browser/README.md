@@ -1,6 +1,8 @@
 # Full-web LTO browser outcome — parked
 
-LTO reduces deterministic fixed-work CPU by5.81%, but warm Settings median improves only49.85ms and Home pooled p95 worsens49.0ms. Keep the candidate isolated. This does not meet two-second navigation or establish broad nonregression. [Milestone092 and full candidate recording](../../../../tweets/092_web_lto_navigation_diagnostic.md).
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+LTO reduces deterministic fixed-work CPU by5.81%, but warm Settings median improves only49.85ms and Home pooled p95 worsens49.0ms. Keep the candidate isolated. This does not meet two-second navigation or establish broad nonregression. Milestone092 and full candidate recording.
 
 The original A/B/B/A controller failed after its first original arm completed all22 stages: two post-run loops called stored string `a.url` as `a.url()`. The original runner, first samples, failed series, complete trace, raw pixels, actual response hashes, failed profile and truncated WebM remain untouched. Independent artifact recovery passes all22 stages and required assets. Graceful browser-close/before-close CDP receipts are absent; the outer controller closed all14 unique scoped identities. The recording ends prematurely at112seconds and is not called complete. [Failure assessment](reporter-fix/assessment.md), [receipt](reporter-fix/failure-receipt.json), [original failed series](measured/series.json).
 

@@ -1,5 +1,7 @@
 # Plan: remove the `--unmatch arm-io/usb-otg` workaround
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 ## Current investigation (2026-09-05)
 
 This is now a direct app-speed dependency. [Transition measurements](transition-latency.md)
@@ -12,7 +14,7 @@ Revalidation with the current core, compact work image and **unmodified device
 tree**, without USB unmatching, passes 500 million instructions and starts
 `AppleUSBDeviceMux` at 168.6 million. The subsequent full cold boot reaches Home. lockdownd stays PID 17 across
 Settings/Home, and browser Home readiness improves to 3.4–4.0 seconds.
-[Milestone 036](../tweets/036_home_service_recovery.md) contains the evidence. Four reordered-tree probes
+[Milestone 036](transition-latency.md) contains the evidence. Four reordered-tree probes
 also passed, but the unmodified control establishes that reordering is not
 required for this observed early-startup success. Do not promote a device-tree
 ordering workaround from those probes.

@@ -1,5 +1,7 @@
 # All-fallback PC census — verified measurement, no speed change
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The [retained warm Settings profiles](../warm-settings-reassessment/README.md) identify interpreter execution as the strongest measured remaining CPU target. Prior generated-exit counts cannot quantify instructions in wholly unseeded stretches. This isolated observer is intended to close that gap. The final observer and browser census now pass the gates below. No speed gain or production CPU optimization is established.
 
 ## Frozen questions and partitions
@@ -60,7 +62,7 @@ The no-observer relink is byte-identical to the released RTC core **7a72add6…9
 
 The single actual browser session passes **five settled full-RGB/alpha frame comparisons and manual reviews**, all counter conservation gates, exact served core/seed bodies and closure of all eleven scoped Chrome process identities. Normal paused import installs 512 regions. Ordinary startup also happened to report 512 in this particular observed session; startup was recorded, not forced to a universal 511/512 value. The UI is the frozen verified release before the independent visible-recovery UI change. Root's permitted native Wi-Fi coldboot overlap is recorded, and the observer itself adds substantial CPU/memory/transport work. **Its elapsed times are not navigation performance results.**
 
-[Full uncut 56.40-second recording](../../../tweets/videos/warm_fallback_census_diagnostic.mp4) · [actual 49-second thumbnail](../../../tweets/thumbnails/warm_fallback_census_diagnostic.jpg) · [browser report](browser/report.json) · [five-screen manual review](browser/manual-review.json). The recording includes diagnostic normal-import setup, the preparation Settings/Home pair, and the collected warm Settings/Home pair. The readiness confirmation interval is included in the counted worker brackets, as predeclared. Source and encoded video duration are identical.
+historical recording (removed) · historical thumbnail (removed) · [browser report](browser/report.json) · [five-screen manual review](browser/manual-review.json). The recording includes diagnostic normal-import setup, the preparation Settings/Home pair, and the collected warm Settings/Home pair. The readiness confirmation interval is included in the counted worker brackets, as predeclared. Source and encoded video duration are identical.
 
 | Actual completed steps | Warm Settings | Home control |
 | --- | ---: | ---: |

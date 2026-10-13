@@ -1,6 +1,8 @@
 # Original manual time changes survive real autosave and reload
 
-The isolated complete-RTC-write candidate passes the single instrumented browser workflow: **19 checks**, two real picker changes, two natural autosaves, two reloads and final unpaused generated execution. The full [original-speed recording](../../../../tweets/videos/rtc_manual_time_autosave.mp4) runs 123.68 seconds at25fps ([actual final-frame thumbnail](../../../../tweets/thumbnails/rtc_manual_time_autosave.jpg)). The test's elapsed time, including setup/close, is125.650seconds. This is a candidate result; production promotion is separate.
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+The isolated complete-RTC-write candidate passes the single instrumented browser workflow: **19 checks**, two real picker changes, two natural autosaves, two reloads and final unpaused generated execution. The full historical recording (removed) runs 123.68 seconds at25fps (historical thumbnail (removed)). The test's elapsed time, including setup/close, is125.650seconds. This is a candidate result; production promotion is separate.
 
 ## Actual interaction and persistence
 

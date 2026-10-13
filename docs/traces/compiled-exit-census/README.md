@@ -1,5 +1,7 @@
 # Why compiled execution stops
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Decision:** prioritize measured seed-coverage gaps before another connected-code architecture. This diagnosis finds frequent missed opportunities, not a demonstrated speedup. Production is unchanged.
 
 ## Warm Settings result
@@ -52,4 +54,4 @@ All six browser windows conserve generated exits against the exact JIT-call delt
 
 Scripts retain workspace-relative paths. Regeneration requires original firmware/fixture and the pinned current core archive recorded in runtime-build.json; those large inputs are not duplicated. Compiled observer runtime and seed are retained. Decompress raw rows into original paths before rerunning analysis. This archive adds no production code.
 
-[Full browser recording](../../../tweets/videos/compiled_exit_census.mp4) and [thumbnail](../../../tweets/thumbnails/compiled_exit_census.jpg) show startup followed by all three Settings/Home pairs. The later two pairs correspond to the pooled warm census. Video is a demonstration of the instrumented phone, not comparative speed evidence.
+historical recording (removed) and historical thumbnail (removed) show startup followed by all three Settings/Home pairs. The later two pairs correspond to the pooled warm census. Video is a demonstration of the instrumented phone, not comparative speed evidence.

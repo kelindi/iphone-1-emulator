@@ -1,10 +1,12 @@
 # Original Stocks quote demo module
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **2026-09-08 isolated guest result:** original Stocks displays AAPL 120.00,
 GOOG 500.00, YHOO 25.00 and T 40.00 through the same corrected gateway that
 serves original Weather. Actual DNS, finance POST and complete quote response
 bytes accompany the original framebuffer evidence.
-[131](../../../tweets/131_weather_stocks_local.md) and
+[131](../../../docs/traces/weather-stocks-local/README.md) and
 [retained trace](../../../docs/traces/weather-stocks-local/README.md).
 These are visibly labeled fixed samples. Charts, symbol search, live data,
 default distribution and persistence of this combined build remain unqualified;

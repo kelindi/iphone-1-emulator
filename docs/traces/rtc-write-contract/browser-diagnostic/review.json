@@ -34,6 +34,5 @@
   ],
   "nativeArchiveSHA256": "0a02dbd345758710c8f635487abafd19b2b1597ea32fb2b1c60fd1526cd4aec2",
   "originalError": "page.waitForFunction: Timeout 15000ms exceeded.\n    at verifyJit (/home/vercel-sandbox/iphone-1/web/tests/organizer.mjs:35:84)\n    at /home/vercel-sandbox/iphone-1/web/tests/organizer.mjs:167:8",
-  "video": "../../../../tweets/videos/manual_time_diagnostic.mp4",
-  "thumbnail": "../../../../tweets/thumbnails/manual_time_diagnostic.jpg"
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

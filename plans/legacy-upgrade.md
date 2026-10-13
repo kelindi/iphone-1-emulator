@@ -1,5 +1,7 @@
 # Preserving an older phone while updating its boot configuration
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Investigation started 2026-09-05. This is a disposable-fixture experiment, not a
 released migration feature. Existing browser profiles remain untouched.
 
@@ -114,7 +116,7 @@ screen and still passes the USB/clock and daemon checks. Browser errors are
 empty. The sampled guest/wall rate is 0.985; this is a bounded correctness proof,
 not a navigation latency or CPU throughput benchmark.
 
-[Milestone 044](../tweets/044_legacy_phone_data_preserved.md) links the complete
+Milestone 044 links the complete
 original-speed browser recording. Its report and screenshots are under
 `.context/legacy-upgrade/browser/`. The screen inspection confirms Adam in the
 actual Apple application; SQLite contents alone were not accepted as proof.

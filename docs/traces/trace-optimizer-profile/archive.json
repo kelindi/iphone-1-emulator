@@ -126,11 +126,6 @@
       "sha256": "b8e79163a3c4f83b36b5b36f31dc1cade0f96946855dda9efb8762d2743bd5ec"
     },
     {
-      "path": "media.json",
-      "bytes": 842,
-      "sha256": "3b3d4bd207654db1194f237977e6a6f7bb2a20f5f836c241c046bb71e83d352c"
-    },
-    {
       "path": "pins.json",
       "bytes": 2725,
       "sha256": "855331ee58b2735fc3c07d9bbf5ff888c21e766f615d3aece5460932fcd0b676"
@@ -179,11 +174,6 @@
       "path": "run-1/controller.json",
       "bytes": 1826,
       "sha256": "af462bbd30b09a5c5499fa21353ee13c817c452c16b2ba652a934978899c5ecf"
-    },
-    {
-      "path": "run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
-      "bytes": 1575045,
-      "sha256": "e45e65c018b4858f64d0e5268fd0f43b6b7fcd5b7631866f03ae295844fd8e29"
     },
     {
       "path": "run-1/process-after.txt",
@@ -236,22 +226,5 @@
       "sha256": "b17026eb798ad91638b51be83793df672f49ebc6e461b33fbb9539f6966baac1"
     }
   ],
-  "media": {
-    "source": ".context/trace-optimizer-profile/run-1/page@ebd9d5dbe5ba2ba2000aede243b18700.webm",
-    "output": "tweets/videos/trace_optimizer_profile.mp4",
-    "thumbnail": "tweets/thumbnails/trace_optimizer_profile.jpg",
-    "method": "Full source video reencoded libx264/presetfast/crf23/threads1, no cuts or speed changes. Thumbnail is actual final Settings frame. Initial system ffmpeg executable absent; used repository ffmpeg-static binary without guest rerun.",
-    "files": [
-      {
-        "path": "tweets/videos/trace_optimizer_profile.mp4",
-        "bytes": 430857,
-        "sha256": "770ecaa4780b2dcecc969fe2c7709c6067b9ba2aa092d556481549ae705df3f6"
-      },
-      {
-        "path": "tweets/thumbnails/trace_optimizer_profile.jpg",
-        "bytes": 35189,
-        "sha256": "17996840e5e90af80d40d4042273697126c1c7c01770328ca9496074d89f7277"
-      }
-    ]
-  }
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }
