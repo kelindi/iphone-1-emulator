@@ -425,3 +425,7 @@ connectivity/live data remain separate, unimplemented steps.
 ### 140 — Loading progress and secure HTTPS
 
 [Milestone](140_loader_progress_https.md) · [Recording](videos/loader_progress.mp4) · [Thumbnail](thumbnails/loader_progress.jpg). Added download percentage and a filled bar, preserved firmware verification without Web Crypto, and repaired live HTTPS plus an HTTP-to-HTTPS 308 redirect for 2007.mobile. 119 unit tests, loader/recovery, offline and physical controls pass; genuine desktop/mobile startup also passes with Web Crypto removed. Frontend release remains pending.
+
+### 142 — PostHog tracking
+
+[Milestone](142_posthog_tracking.md). Production-domain page visits, emulator startup/timing, first touchscreen interaction, physical controls, saves/backups, recovery and offline setup now emit PostHog events. 122 unit tests, WASM smoke, real SDK transport, blocked-SDK startup and disconnected reload pass. Production verification is pending.
