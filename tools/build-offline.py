@@ -6,7 +6,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
 web = root / 'web'
-files = ['index.html', 'phone.css', 'icon.svg', 'app.js', 'storage.js',
+files = ['index.html', 'phone.css', 'icon.svg', 'app.js', 'analytics.js', 'storage.js',
          'checkpoint-worker.js', 'assets.js', 'sha256.js', 'emu-worker.js', 'manifest.json', 'dist/emu.js', 'dist/emu.wasm']
 # The seed and its C ABI metadata must travel with the matching interpreter.
 # A build with acceleration disabled can omit generated seed artifacts; the
