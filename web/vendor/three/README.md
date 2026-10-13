@@ -1,1 +1,0 @@
-Three.js 0.185.1, MIT license (see LICENSE). The two browser modules are copied from the pinned npm package's build/ directory. The 3D phone is authored in phone-model.js; no external model or texture downloads are used. Update both modules together when updating the dependency.
