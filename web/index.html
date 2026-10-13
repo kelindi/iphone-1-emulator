@@ -4,8 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f5f3">
-  <meta name="description" content="The original iPhone, running genuine iPhone OS 1.0 in your browser.">
-  <title>iPhone · 2007 in your browser</title>
+  <meta name="description" content="📱 iPhone (2007)">
+  <title>📱 iPhone (2007)</title>
+  <link rel="canonical" href="https://2007.mobile/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="📱 iPhone (2007)">
+  <meta property="og:description" content="📱 iPhone (2007)">
+  <meta property="og:url" content="https://2007.mobile/">
+  <meta property="og:image" content="https://2007.mobile/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="The original iPhone displaying its genuine home screen, with The Iphone above it.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="📱 iPhone (2007)">
+  <meta name="twitter:description" content="📱 iPhone (2007)">
+  <meta name="twitter:image" content="https://2007.mobile/og-image.png">
+  <meta name="twitter:image:alt" content="The original iPhone displaying its genuine home screen, with The Iphone above it.">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="phone.css">
 </head>
@@ -33,7 +48,8 @@
             This emulator needs a browser with canvas and WebAssembly support.
           </canvas>
           <div id="boot-loader" class="boot-loader" role="status" aria-live="polite">
-            <span class="boot-spinner" aria-hidden="true"></span>
+            <svg class="boot-logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+            <div id="progress" class="boot-progress" role="progressbar" aria-label="Loading iPhone" aria-valuetext="Downloading iPhone OS…"><span aria-hidden="true"></span></div>
             <span id="boot-label">Downloading iPhone OS…</span>
             <div class="boot-recovery">
               <button id="retry" class="text-button" hidden disabled>Try again</button>
@@ -47,19 +63,9 @@
       </div>
     </section>
 
-    <nav class="view-controls" aria-label="Phone view">
-      <span id="view-hint" role="status">Slide to unlock · Touch the screen to explore</span>
-      <div class="view-switch">
-        <button id="view-2d" aria-pressed="true">2D</button>
-        <button id="view-3d" aria-pressed="false" title="Rotatable 3D model">3D</button>
-        <button id="view-reset" hidden>Front view</button>
-      </div>
-    </nav>
-
     <section class="companion" aria-label="Emulator controls" hidden>
       <div class="loading-state">
         <p id="status" role="status" aria-live="polite">Preparing your iPhone…</p>
-        <progress id="progress" aria-label="Loading iPhone"></progress>
       </div>
       <div id="controls" class="session-controls" aria-label="Saved phone controls">
         <button id="pause" class="text-button" disabled>Pause</button>
@@ -97,6 +103,5 @@
     </section>
   </main>
   <script type="module" src="app.js"></script>
-  <script type="module" src="phone-view.js"></script>
 </body>
 </html>
