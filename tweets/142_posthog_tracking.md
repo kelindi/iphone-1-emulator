@@ -6,7 +6,7 @@ The 2007 iPhone demo now has usage tracking: visits, startup time, the first rea
 
 ## What you're seeing
 
-This is an analytics milestone, with no visual UI change. The existing [demo recording](videos/iphone_demo_1080p.mp4) and [thumbnail](thumbnails/iphone_demo_1080p.jpg) show the same phone. Browser verification screenshots and request receipts are in `.context/posthog/`; no separate screen recording is needed for invisible instrumentation.
+This is an analytics milestone, with no visual UI change. The earlier [emulator recording](videos/browser_home_settings_safari_cpi1.mp4) and [thumbnail](thumbnails/browser_home_settings_safari_cpi1.jpg) provide guest context; the current shell is shown in the verification screenshots. Browser verification screenshots and request receipts are in `.context/posthog/`; no separate screen recording is needed for invisible instrumentation.
 
 ## ELI5 technical explanation
 
