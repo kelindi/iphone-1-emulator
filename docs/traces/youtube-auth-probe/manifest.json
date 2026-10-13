@@ -119,12 +119,5 @@
     "bytes": 162465,
     "sha256": "252e9dcbd6a551d2cccbd775a7d6e520dae6f248c523a88accb2f00d9590ca4e"
   },
-  "tweets/videos/youtube_device_signature.mp4": {
-    "bytes": 1111652,
-    "sha256": "0f6756145a06f044071c629ae338009736699963659abfb286a5f19f8b92ef8c"
-  },
-  "tweets/thumbnails/youtube_device_signature.jpg": {
-    "bytes": 30829,
-    "sha256": "02252a3087911cba67f5fb6f2b331d56ccdff52f5870a48fd64585bb6f4b956d"
-  }
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

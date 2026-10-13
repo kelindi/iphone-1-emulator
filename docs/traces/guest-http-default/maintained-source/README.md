@@ -1,6 +1,8 @@
 # Original Safari local demo service
 
-**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../../../tweets/093_default_local_demo_qualification_failure.md).
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../README.md).
 
 This is independently authored guest software. Original OS 1.0 launchd and dyld
 load the ARMv6 executable, and the original socket APIs serve fixed HTML at
@@ -8,7 +10,7 @@ load the ARMv6 executable, and the original socket APIs serve fixed HTML at
 the surrounding host browser addresses a different machine.
 
 The verbose qualification program passed actual Safari URL entry, link, form,
-bookmark and autosave/reload in [milestone 091](../../../tweets/091_safari_local_demo.md).
+bookmark and autosave/reload in [milestone 091](../../guest-safari/README.md).
 The maintained persistent, quiet program here is the proposed successor. Its
 default-image qualification and distribution are still pending; it is not yet
 installed in the normal starting phone. See the

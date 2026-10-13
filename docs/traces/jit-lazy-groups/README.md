@@ -1,5 +1,7 @@
 # Smaller generated functions: isolated first-use candidate
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 2026-09-06. **Parked after the browser comparison: no production change.** This experiment tests whether smaller generated functions reduce the compilation work observed in [the first-use Chrome trace](../browser-first-use/README.md). Correctness passes, but first-use and warm Settings are slower.
 
 The emitter preserves the exact original basic blocks, including whole-block raw-code checks before entering a block's tail. Regions with more than 32 blocks move those blocks into private functions in groups of 32. A small public dispatcher calls the appropriate group, retaining the original remaining budget. It continues only after positive retirement and an unsupported/group exit to an exact admitted entry in a different group. True unsupported entries, stale code, faults, memory fallback, mode/page exits and zero progress return immediately. The stale callback remains inside the original body and runs once. Register/flag writeback at each group boundary is the main performance tradeoff.
@@ -31,7 +33,7 @@ First-use and warm Settings regress in both paired directions. Home observations
 
 All **24 matched-stage raw screen comparisons pass** the predeclared ≤2 RGB tolerance below guest row 30, with exact alpha. Root manually reviewed all 24 images; they show the correct original Settings and Home content. Same-run cold/warm comparisons remain a separate diagnostic with fading scrollbar differences retained. See the [decision and individual timings](quiet-first-use/decision.json), [screen report](quiet-first-use/screen-comparison.json), [contact sheet](quiet-first-use/contact-sheet.png), and full per-run traces, profiles and asset receipts under [quiet-first-use/](quiet-first-use/). Rows in the contact sheet are runs 1–4; columns are C0 Settings/Home, H1 Settings/Home, C1 Settings/Home.
 
-The [complete candidate recording](../../../tweets/videos/smaller_function_diagnostic.mp4) preserves run 2 at original speed, including Import, pauses and all three stages. [Thumbnail](../../../tweets/thumbnails/smaller_function_diagnostic.jpg). It is evidence of an unsuccessful speed experiment, not a promoted improvement. Original WebM hashes and all durable evidence hashes are in [artifact-pins.json](quiet-first-use/artifact-pins.json).
+The historical recording (removed) preserves run 2 at original speed, including Import, pauses and all three stages. historical thumbnail (removed). It is evidence of an unsuccessful speed experiment, not a promoted improvement. Original WebM hashes and all durable evidence hashes are in [artifact-pins.json](quiet-first-use/artifact-pins.json).
 
 ## Reproduction
 

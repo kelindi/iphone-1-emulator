@@ -1,5 +1,7 @@
 # Updating an installed offline phone
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 An existing offline installation now checks for an update in the background at startup. A first-time visitor is not registered until they choose **Keep offline**. A waiting update gets a separate notice: **“Phone update ready. Save, close all phone tabs, then reopen to update.”** Saving or pausing does not replace this notice.
 
 The service worker still never calls `skipWaiting`. Every open phone keeps its active content-hashed shell, manifest and WASM together. Normal browser activation happens after all phone tabs close. The upgrade neither resets the guest nor rewrites its IndexedDB checkpoints. Failed update checks while disconnected are quiet; phone startup and saving remain independent.
@@ -30,7 +32,7 @@ The before/after Settings screenshots were also inspected and decoded to RGB: al
 
 The first run's offline assertion incorrectly relied on `navigator.onLine`, which remained true in this Chrome setup even after Playwright blocked network access. The maintained check instead requires an uncached, non-service-worker request to reject. The rerun passes with that actual network probe, and records both observations.
 
-[Milestone 039](../tweets/039_offline_bundle_upgrade.md) contains the matching original-speed tab recordings. This is an update safety gate, not a speed measurement.
+Milestone 039 contains the matching original-speed tab recordings. This is an update safety gate, not a speed measurement.
 
 
 ## Validation with the compiled CPU engine

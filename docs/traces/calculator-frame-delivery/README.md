@@ -1,5 +1,7 @@
 # Calculator frame delivery: one observed production run
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 All 60 measured presses and two warmup presses pass independent raw-pixel verification. The unchanged production phone delivers the button change to the canvas within **135.7 ms for 9 and 134.0 ms for C at p95**. This meets the declared 150 ms **canvas button-feedback** threshold for this Calculator workload in this observed run. It does not establish physical paint time, every app's input latency, or a production speedup.
 
 | Boundary from actual pointer event | 9 median / p95 | C median / p95 |
@@ -40,7 +42,7 @@ The current worker checks presentation after roughly six-millisecond CPU slices 
 
 ## Artifacts and reproduction
 
-[Full uncut recording](../../../tweets/videos/calculator_frame_delivery.mp4) · [actual thumbnail](../../../tweets/thumbnails/calculator_frame_delivery.jpg) · [milestone 090](../../../tweets/090_calculator_frame_delivery.md).
+historical recording (removed) · historical thumbnail (removed) · milestone 090.
 
 [Archive hashes](archive.json), [frozen source/site/browser pins](source/frozen.json), [controller and scoped cleanup](run-1/controller.json), [actual report](run-1/report.json), [raw crops](run-1/crops/), [original WebM](run-1/page@95c0ee33573924a198ed6fe435081332.webm), and [unchanged worker source](runtime-source/emu-worker.js) are retained. The one run completed in 81.30 seconds under its 180-second cap; all scoped processes closed before other agents resumed heavy work. No retry followed its latency result.
 

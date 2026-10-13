@@ -1,5 +1,7 @@
 # Checkpoint compression worker investigation
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The actual browser CPU profile identified large renderer-main-thread native work during Save. A separate Chrome diagnostic then loaded one immutable genuine MBX checkpoint, without running the emulator, and separated the unchanged encoder from the unchanged IndexedDB transaction.
 
 The snapshot contains **244,887,522 bytes**, SHA-256 `764486ea35ba9832f35c8118397f361026ed21119295321e0a29519509de1244`. Encoding took **6,653.6 ms elapsed / 6,720 ms renderer CPU**, producing **102,885,269 gzip bytes**. Committing that already encoded Blob took **192.1 ms / 20 ms renderer CPU**. Read/decompression was measured separately (**1,229.3 ms / 1,270 ms CPU**) and is not part of Save. Both the original input after encoding and the complete decoded snapshot retained the exact original SHA-256.
@@ -28,7 +30,7 @@ The approximately **95% reduction in main-thread CPU** and consistently shorter 
 
 All 16 original Settings/Home screenshots were manually reviewed and every RGB pixel below the predefined status-bar exclusion matches the first baseline reference **exactly** (max delta 0, stricter than the unchanged allowable delta 3). All samples are retained in [quiet](quiet/), including full raw scheduler fields and per-action overlap/readiness records. The Linux renderer main thread is identified by TID equal to PID, not an unreliable truncated thread name. A terminated compression worker disappears from the ending thread inventory; total renderer-process CPU still includes its work.
 
-[Original-speed first-pair recording](../../../tweets/videos/save_compression_worker.mp4): baseline 0–25.88 s, worker 25.88–49.84 s. Labels only, no accelerated playback. The script source and source provenance are retained here; the immutable firmware fixture itself is provided by the existing project firmware workflow rather than duplicated in this evidence directory.
+historical recording (removed): baseline 0–25.88 s, worker 25.88–49.84 s. Labels only, no accelerated playback. The script source and source provenance are retained here; the immutable firmware fixture itself is provided by the existing project firmware workflow rather than duplicated in this evidence directory.
 
 The reviewed worker/storage/app change is now integrated. `npm run test:checkpoint-worker` runs the maintained real-browser contracts against a built local server; `npm run test:save-pause` checks actual Save/Pause/reload. The offline manifest includes the new worker, and emulator-observation tests select the emulator worker explicitly instead of assuming there is only one worker. The existing 34 unit checks pass. No C/WASM, guest clock, CPU instruction policy or Apple binary changes are part of this change.
 

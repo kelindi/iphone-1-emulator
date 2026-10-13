@@ -1,5 +1,7 @@
 # Original YouTube local catalog — 2026-09-10
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Catalog, token consumption and thumbnail delivery pass. Video playback does
 not yet work.** The [independent wire review](wire-review.json) checks all four
 complete exchanges in [the saved log](service.log): original signed challenge,
@@ -11,7 +13,7 @@ than implementing cryptographic server authentication or Google accounts.
 The [clean browser recheck](browser-report.json) passes only its declared
 catalog/thumbnail requirements. [Catalog frame](catalog.png). It also records
 the unsuccessful playback attempt as an observation. Its recording is linked
-from [milestone134](../../../tweets/134_youtube_local_catalog.md).
+from milestone134.
 
 ## Build, fixture and tests
 

@@ -1,6 +1,8 @@
 # Measured mixed seed coverage candidate — parked
 
-The browser comparison does not justify promotion: warm Settings improves modestly, but first use is mixed and Home tail latency worsens in the reverse pair. Production remains unchanged. [Milestone 088 and the complete actual recording](../../../tweets/088_mixed_seed_coverage_diagnostic.md).
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+The browser comparison does not justify promotion: warm Settings improves modestly, but first use is mixed and Home tail latency worsens in the reverse pair. Production remains unchanged. Milestone 088 and the complete actual recording.
 
 The candidate adds 64 measured hot pages and 2,048 measured positions within 71 existing regions. It preserves all 512 original definitions, captured opcodes, and admission bits. The instruction compiler and its raw-code, memory, exception, mode, alias and budget guards are unchanged. This is separate from the parked continuation, POP, lazy-group and earlier coverage experiments.
 
@@ -36,7 +38,7 @@ The original frozen series completed three sessions, then stopped before the fou
 
 Warm Settings median gains are 6.86% forward and 2.35% reverse; p95 gains 15.90% and 3.00%. Home median is unchanged, and reverse Home p95 regresses 0.867→0.967s despite the favorable pooled value. The two first Settings pairs disagree. All 88 settled raw frame pairs/reference comparisons and eight manual first screen reviews pass; exact served hashes, scoped cleanup, complete traces and both compilation CPU budgets pass. Summed CPU includes foreground/background compilation, unioned per thread without nested duplication; it is not elapsed launch time and not seed-only attribution. [All observations and per-order statistics](browser/browser-summary.json), [88-frame audit](browser/screen-audit.json), [frozen method](browser-contract.md).
 
-**Decision: park, no production promotion.** The modest warm improvement does not justify the extra compilation/size and mixed first/Home outcome. These fresh-profile controlled-import measurements are distinct from the accepted cached return-visit finding in 080. The comparison uses frozen previous UI, normal clock/autosave and the genuine guest; the current recovery UI is unchanged. All 4 raw WebMs remain private; the entire 117.28-second third candidate arm is available as the original-speed [MP4](../../../tweets/videos/mixed_seed_coverage_diagnostic.mp4), with actual 46s [thumbnail](../../../tweets/thumbnails/mixed_seed_coverage_diagnostic.jpg).
+**Decision: park, no production promotion.** The modest warm improvement does not justify the extra compilation/size and mixed first/Home outcome. These fresh-profile controlled-import measurements are distinct from the accepted cached return-visit finding in 080. The comparison uses frozen previous UI, normal clock/autosave and the genuine guest; the current recovery UI is unchanged. All 4 raw WebMs remain private; the entire 117.28-second third candidate arm is available as the original-speed historical recording (removed), with actual 46s historical thumbnail (removed).
 
 ## Register-transfer follow-up: already measured, no repeat
 

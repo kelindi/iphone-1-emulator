@@ -1,8 +1,10 @@
 # Make the verified local Safari demo available in new phones
 
-**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../tweets/093_default_local_demo_qualification_failure.md).
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
 
-This is the concrete next integration after [091](../tweets/091_safari_local_demo.md). The isolated test already proves original launchd/dyld execution, loopback HTTP, Safari URL entry/link/form/bookmark behavior, and real autosave/reload of the running service. It does not yet provision the default phone. No production changes or new guest run are part of this proposal.
+**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../docs/traces/guest-http-default/README.md).
+
+This is the concrete next integration after [091](../docs/traces/guest-safari/README.md). The isolated test already proves original launchd/dyld execution, loopback HTTP, Safari URL entry/link/form/bookmark behavior, and real autosave/reload of the running service. It does not yet provision the default phone. No production changes or new guest run are part of this proposal.
 
 Implementation preparation is now authorized and in progress in
 [`tools/legacy_services/guest_http/`](../tools/legacy_services/guest_http/README.md).

@@ -1,5 +1,7 @@
 # Adaptive compiler Stage 1 — cloud baseline
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 2026-09-08, Chrome 152 on Linux, Intel Xeon 2.90 GHz. Current legacy engine;
 no compiler speedup is claimed. Reference-Mac acceptance is still pending.
 
@@ -13,7 +15,7 @@ target. One first sample per action cannot establish a first-launch p95.
 - [Freeze manifest](freeze-manifest.json): SHA-256 identities for 132 independent files.
 - [Frozen inputs](frozen-inputs.tar.gz): executed harness, site, selected source and dependency metadata.
 - [Frames](frames.tar.gz): original screenshots and lossless gzipped RGBA frames.
-- [Complete recording](../../../tweets/videos/adaptive_compiler_baseline.mp4).
+- historical recording (removed).
 
 Manifest SHA-256: `b18ef5a92f31196eea95f3587a65df06983a3417951f0be3448c5917766762ce`.
 All frozen file hashes were verified again after the run. Absolute paths in the

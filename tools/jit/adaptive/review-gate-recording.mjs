@@ -6,7 +6,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import ffmpeg from 'ffmpeg-static';
 const out=resolve('.context/adaptive-compiler/first-gate-recording');
-const video=resolve('tweets/videos/compiler_first_gate.mp4');
+const video=resolve(out+'/compiler_first_gate.mp4');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const report=JSON.parse(await readFile(out+'/report.json'));
 const audit={passed:false,scope:'Media-only reencode of the exact existing PNG/timestamp sequence. No guest rerun. Initial decode preserved all frames/PTS; FFmpeg reported a shorter stream duration with B-frame reordering, while direct movie-header duration was correct. Reencoding without B frames removes the duration ambiguity; no lost frames or player truncation were demonstrated.',sourceReportSha256:sha(await readFile(out+'/report.json')),scriptSha256:sha(await readFile(new URL(import.meta.url))),initialVideoSha256:sha(await readFile(video))};
@@ -31,7 +31,7 @@ try{
  assert(audit.finalMovieDurationSeconds>=audit.finalPresentationTimestampSeconds);assert(audit.finalMovieDurationSeconds-audit.finalPresentationTimestampSeconds<=0.003);
  audit.frames=raw.length;audit.allPresentationTimestampsExact=true;audit.fullDecodePassed=true;
  audit.finalVideo={path:video,bytes:bytes.length,sha256:sha(bytes)};
- audit.thumbnail={path:'tweets/thumbnails/compiler_first_gate.jpg',sha256:sha(await readFile('tweets/thumbnails/compiler_first_gate.jpg')),content:'Actual100M Settings loading shell; not a completed app launch.'};
+ audit.thumbnail={path:out+'/compiler_first_gate.jpg',sha256:sha(await readFile(out+'/compiler_first_gate.jpg')),content:'Actual100M Settings loading shell; not a completed app launch.'};
  await rename(staged,video);audit.passed=true;
 }catch(e){audit.error=e.stack;process.exitCode=1;}
 await writeFile(out+'/media-review.json',JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit));

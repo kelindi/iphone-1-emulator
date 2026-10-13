@@ -1,12 +1,14 @@
 # Combined local Safari, Weather and Stocks gateway transport
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **2026-09-08 isolated guest qualification passed:** original Weather displays
 Cupertino 72°F and six days, swipes to New York 64°F, returns through Home, and
 converts Cupertino to 22°C using its own unit control. Original Stocks displays
 AAPL 120.00, GOOG 500.00, YHOO 25.00 and T 40.00 on the same corrected gateway.
 The retained run passed with no harness errors; actual DNS and complete HTTP
 exchanges accompany the original framebuffer recording.
-[131](../../../tweets/131_weather_stocks_local.md) and
+[131](../../../docs/traces/weather-stocks-local/README.md) and
 [source, wire audit and recording](../../../docs/traces/weather-stocks-local/README.md).
 All displayed values are fixed, visibly labeled sample data. Charts, symbol or
 city search/addition, live data, default distribution and persistence of this

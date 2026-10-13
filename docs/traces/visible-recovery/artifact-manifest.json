@@ -43,12 +43,5 @@
     "bytes": 9396,
     "sha256": "ed4fe70a13464f44635d77b26bae906ccbeeeecb0338d293a76010856e88871a"
   },
-  "tweets/videos/visible_recovery.mp4": {
-    "bytes": 183217,
-    "sha256": "3eab1cbfe2bd88cb603cb39cf49d26e439fc51e46b00f3345ab9dd96fa298a73"
-  },
-  "tweets/thumbnails/visible_recovery.jpg": {
-    "bytes": 22067,
-    "sha256": "dd3cb93e44d7684a4fb37b5a4dfb8f347f595f67a9413b8c1b640e3b4b63636e"
-  }
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

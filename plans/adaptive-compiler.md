@@ -1,5 +1,7 @@
 # Adaptive compiler implementation
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Accepted target: genuine iPhone OS running locally in Chrome on the user's Mac,
 with warm common-app launch p95 ≤1s, first launch after opening a saved phone
 p95 ≤2s, touch feedback p95 ≤100ms, scrolling ≥30 distinct frames/s and cached
@@ -59,8 +61,8 @@ previous-runtime restoration, offline startup, corrupted caches and cancellation
 Only then consider changing the default engine. Known legacy WASM VFP failures
 remain explicit; relative equality does not establish architectural conformance.
 
-Every significant milestone needs a tweets entry/index update; visual milestones
-need an actual complete recording and thumbnail. Preserve raw results, failures,
+Record significant milestones in the engineering log. Keep visual diagnostic
+recordings and thumbnails in ignored `.context/` paths. Preserve raw results, failures,
 source identities and declared limitations. Work in independent copies to prevent
 cross-session edits from invalidating comparisons.
 

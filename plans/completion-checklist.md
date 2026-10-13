@@ -1,5 +1,7 @@
 # Completion checklist and plain-English status
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Status review: 2026-09-06, after the previous PR merged and work continued on
 `kelindi/untitled-v2`. This summarizes existing evidence; no new benchmark or
 feature acceptance is claimed. The full targets remain in [the roadmap](web-iphone.md).
@@ -75,4 +77,4 @@ full original boot-chain reproduction and perfect storage-hardware fidelity are
 not prerequisites for the planned first release.
 
 
-Architecture decision update: [098](../tweets/098_native_browser_performance.md) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.
+Architecture decision update: [098](../docs/traces/runtime-comparison/README.md) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.

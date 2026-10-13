@@ -1,5 +1,7 @@
 # Guest memory pressure and the RAM-disk workaround
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 ## Failure identified
 
 The Contacts experiment created Ada, saved and restored successfully, then
@@ -122,10 +124,10 @@ The matching screenshot is `.context/organizer-debug/clean-ready-home.png`.
 The compact disk remains the default multipart asset in `web/manifest.json`.
 The first compact checkpoint described above used a 100,894,841-byte gzip
 expanding to 245,747,682 bytes. It has since been replaced by the
-[USB-enabled starting phone](../tweets/036_home_service_recovery.md), which
+[USB-enabled starting phone](transition-latency.md), which
 keeps the same disk and passes the Contacts regression again. The manifest
 verifies every current compressed part.
-[Milestone 032](../tweets/032_contacts_memory_recovery.md) retains the browser
+Milestone 032 retains the browser
 workflow recording and thumbnail. Existing saved phones still take precedence
 over these starting assets; Export before Reset to keep an older phone.
 

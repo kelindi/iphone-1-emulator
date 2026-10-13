@@ -1,5 +1,7 @@
 # Original Weather controls survive browser reload
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 2026-09-06. The real OS 1.0 Weather app passes a focused controls/persistence workflow on the current browser phone. It opens city management, changes Fahrenheit to Celsius, removes New York using the actual two-step delete control, and changes back to Fahrenheit. Each final selection/list survives ordinary Save and page reload.
 
 This verifies existing app functionality; no production emulator change was needed for this gate. **It does not verify temperature conversion, adding a city, or receiving a forecast.** The app still reports Update failed. The separate [demo backend](../../../tools/legacy_services/README.md) has only loopback HTTP acceptance and was not connected to this run.
@@ -16,7 +18,7 @@ The first two-second observation after tapping the minus control catches its tra
 
 ## Recording and reproduction
 
-[Original-speed recording](../../../tweets/videos/weather_controls_persist.mp4) —3:47.80,1280×1000,25fps. [Thumbnail](../../../tweets/thumbnails/weather_controls_persist.jpg). Approximate sections:0:10–0:27 launch/city management;0:52–1:14 Celsius and first reload;1:14–1:54 delete-control inspection;3:02–3:24 actual removal and reload;3:24–3:47 Fahrenheit and final reload. The long interval before removal is manual inspection time, not measured app latency.
+historical recording (removed) —3:47.80,1280×1000,25fps. historical thumbnail (removed). Approximate sections:0:10–0:27 launch/city management;0:52–1:14 Celsius and first reload;1:14–1:54 delete-control inspection;3:02–3:24 actual removal and reload;3:24–3:47 Fahrenheit and final reload. The long interval before removal is manual inspection time, not measured app latency.
 
 The recording is transcoded from the continuous Playwright WebM without speed changes or cuts. The thumbnail is the actual final restored phone. The temporary browser profile is deleted after the run; the user's own saved phone is unaffected.
 

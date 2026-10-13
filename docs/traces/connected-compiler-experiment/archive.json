@@ -45,11 +45,6 @@
     "sha256": "713039fe5688d8a736e031efe154d7e8c0702a321df14e2c39fc70e4aae9b42b"
   },
   {
-    "path": "docs/traces/connected-compiler-experiment/browser/page@742c0e270ed5a43f1cb8a45758c1bba9.webm",
-    "bytes": 1796897,
-    "sha256": "07eae992269f24b99a4ce9e0298670d315bcc129ba7143201a46b6be68c473bc"
-  },
-  {
     "path": "docs/traces/connected-compiler-experiment/browser/report.json",
     "bytes": 6988,
     "sha256": "ee3f4f8b833ea9b0f16f875ffede1987ceb3d6126ffaeaf34e4c357d4a269708"
@@ -233,15 +228,5 @@
     "path": "docs/traces/connected-compiler-experiment/test-focused.cjs",
     "bytes": 9149,
     "sha256": "6f7e333d94fa6fd545d6fb1bb762a51e71954ba498fbf95bd71fd40fd5c335a8"
-  },
-  {
-    "path": "tweets/thumbnails/connected_compiler_experiment.jpg",
-    "bytes": 21622,
-    "sha256": "8d062dbb498703301ac5b3ef69509b4489b6bcc24e24a6319889cceb218c32f6"
-  },
-  {
-    "path": "tweets/videos/connected_compiler_experiment.mp4",
-    "bytes": 480770,
-    "sha256": "b7f9c3232d925b63c652a1762b2b7c082f23b23c2f28c00628f8efbeadb90ba3"
   }
 ]

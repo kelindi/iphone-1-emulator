@@ -540,15 +540,8 @@
     }
   ],
   "publishedVideo": {
-    "tweets/videos/smaller_function_diagnostic.mp4": {
-      "bytes": 1534991,
-      "sha256": "6fd6accde4c87a92c7fbee02442482c1f4e2116fc09ccd3b7cde1baf60bccbea"
-    },
-    "tweets/thumbnails/smaller_function_diagnostic.jpg": {
-      "bytes": 69755,
-      "sha256": "5d91c4c74fd2a3cc80bec4761ad07d52f8a7c392c748f76cc6f71081f2c9c695"
-    },
     "durationSeconds": 87.96,
     "method": "Complete original-speed candidate run2. H264 1280x1000,25fps, no cuts or time scaling. Thumbnail from20s, manually reviewed original paused Home."
-  }
+  },
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

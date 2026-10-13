@@ -1,6 +1,8 @@
 # Isolated audio-engine contract tests
 
-This is a native model/test result, **not a new guest run or playback demonstration**. The model is isolated from production and the snapshot format. The accepted genuine-driver boundary remains [milestone070](../../../tweets/070_original_audio_input_captured.md); [milestone072](../../../tweets/072_raw_audio_frame_boundaries.md) proves standalone raw decoding.
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+This is a native model/test result, **not a new guest run or playback demonstration**. The model is isolated from production and the snapshot format. The accepted genuine-driver boundary remains [milestone070](../amc-input/README.md); [milestone072](../aac-framing/README.md) proves standalone raw decoding.
 
 The prototype implements real allocated buffers, an owned physical-DMA input queue, device-session configuration, actual decoder consumption and PCM publication, ownership/backpressure, event masks/acknowledgements and bounded quiesce. Its LC/stereo implementation policy is selected by trusted exact program SRAM/write-coverage data. Sample rate comes from the actual session register contract; configuration bytes are generated from those fields. There is no original ASC, packet-table or media-file input in the engine adapter.
 

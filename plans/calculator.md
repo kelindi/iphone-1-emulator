@@ -1,5 +1,7 @@
 # Genuine Calculator workflow acceptance
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The production browser’s original iPhone OS 1.0 Calculator passes twelve arithmetic workflows in a fresh disposable profile using accelerated MBX graphics and the guarded CPU engine. The original software-renderer acceptance established the reviewed references with exact hashes; the current MBX revalidation retains those references with the narrow rounding allowance described below.
 
 | Workflow | Real key sequence | Displayed result |
@@ -27,7 +29,7 @@ Run `npm run test:calculator -- --record` after starting the built production br
 
 The historical software-graphics verified report is `.context/calculator-production-verified/report.json`; original discovery evidence is `.context/calculator-discovery/report.json`. All twelve pixel comparisons and the positive generated-instruction gate pass. Fixed waits of 50 ms held touch, 500 ms between keys and 1.3 seconds before result capture establish functionality, not a speed benchmark or minimum input latency. No production core, firmware, app binary or framebuffer behavior changed for this work.
 
-[Milestone 048](../tweets/048_calculator_workflows.md) preserves the complete original-speed acceptance recording and an actual decimal-result thumbnail.
+Milestone 048 preserves the complete original-speed acceptance recording and an actual decimal-result thumbnail.
 
 
 ## Accelerated default and short-tap revalidation
@@ -36,4 +38,4 @@ The rebuilt production core `603679fb…c84f` passes all twelve cases after corr
 
 The original reference PNGs and SHA256 values remain unchanged. Accelerated composition differs slightly at glyph edges: independent decoding of all 337,920 result pixels found only two pixels with a two-level green-channel difference; all other changed channels differ by one and alpha matches exactly. The maintained comparison therefore requires **maximum RGB difference ≤2 and exact alpha**, without an average-error or changed-percentage allowance. All 132 comparisons to other answers fail that threshold (minimum maximum difference 166). Each actual number was also read independently.
 
-The final browser replay passes all twelve cases and the positive compiled-execution gate; every result hash matches the earlier recorded run. [Milestone 063](../tweets/063_short_tap_contact_report.md) links the actual production recording and thumbnail, while [durable verification](../docs/traces/short-tap/production/verification.json) retains both failed test attempts, the independent PNG review, negative comparisons and final report. Software exactness and MBX bounded color equivalence are distinct claims.
+The final browser replay passes all twelve cases and the positive compiled-execution gate; every result hash matches the earlier recorded run. [Milestone 063](../docs/traces/short-tap/verification.json) links the actual production recording and thumbnail, while [durable verification](../docs/traces/short-tap/production/verification.json) retains both failed test attempts, the independent PNG review, negative comparisons and final report. Software exactness and MBX bounded color equivalence are distinct claims.

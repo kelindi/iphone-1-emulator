@@ -1,5 +1,7 @@
 # Bounded Safari source-row correction — candidate
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The actual failed default Safari phone retains BGRA8 copy packets with an independent 1,888-byte (472-pixel) source pitch. The current decoder rejects them because it limits source pitch to the 320-pixel display width. Apple's original OS1 packer independently masks the supplied source pitch to 15 bits; the retained packet is not a 472-pixel destination.
 
 The isolated patch admits BGRA8 pitch up to the observed 0x760 bound. It preserves the destination 320×480 limit, other-format bounds, each GART row translation, aliases and all-or-nothing batch commit. This is bounded support, not unrestricted image dimensions. Production is unchanged.
@@ -42,9 +44,9 @@ command sent before READY in the second launcher was discarded before the
 iterator; the actual guest action log contains exactly two Home presses.
 
 Both full original WebM recordings are archived alongside their reports. The
-public [095 recording](../../../tweets/videos/safari_stride472_recovery.mp4)
+public historical recording (removed)
 is the complete corrected recording at original speed; the
-[3:20 thumbnail](../../../tweets/thumbnails/safari_stride472_recovery.jpg)
+historical thumbnail (removed)
 shows `glyph`. This is a functional rendering check, not a benchmark or controlled
 browser before/after comparison. The original failing Safari run is retained in093.
 

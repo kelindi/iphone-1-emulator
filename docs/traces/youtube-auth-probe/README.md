@@ -1,5 +1,7 @@
 # Original YouTube local authentication experiment — 2026-09-10
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 **Final result: the original app's device-signature proof passes.** The complete
 9,265-byte backing log contains the ordered first/second authentication requests
 and both response-delivery receipts. Challenge hashes and echoes pass. The
@@ -71,15 +73,15 @@ do not establish a 1024-bit key-size restriction.
 
 ## Recording and limitations
 
-The [final recording](../../../tweets/videos/youtube_device_signature.mp4) and
-[thumbnail](../../../tweets/thumbnails/youtube_device_signature.jpg) show the
+The historical recording (removed) and
+historical thumbnail (removed) show the
 corrected phone, original YouTube loading, and the expected connection error
 after our deliberate 503 response. The cryptographic proof comes from the
 retained exchange, not the screen. The browser observation completed without
 harness errors; its `passed` is null because it is not a catalog-success test.
 
-The earlier [recording](../../../tweets/videos/youtube_auth_probe.mp4) and
-[thumbnail](../../../tweets/thumbnails/youtube_auth_probe.jpg) show the actual
+The earlier historical recording (removed) and
+historical thumbnail (removed) show the actual
 wrong-path browser attempt: dismissing the phone alert, opening YouTube,
 loading and its connection error near the end. This is an observation run
 (`runCompleted: true`, `passed: null`), not a successful YouTube test.

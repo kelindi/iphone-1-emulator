@@ -1,8 +1,10 @@
 # Original audio driver suspends a real saved decoder generation
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 One isolated Stage Y guest retires the original power and clock writes and the original driver's state3→5 store. All 180,224 SRAM bytes and the 65,534-byte compressed queue remain owned by one real retained decoder generation; the active engine relinquishes its allocations, service, DMA and IRQ state. The normal guest then reaches PC `31236650`, where an existing observer refuses its binding. This is **not an accepted HAL call or audible output**.
 
-This is a nonvisual follow-up to [083](../../../../tweets/083_original_audio_buffer_consumed.md). No production core, firmware, snapshot format or browser sound output changed. The experimental GPL FAAD decoder and its allocations remain private to this probe.
+This is a nonvisual follow-up to [083](../README.md). No production core, firmware, snapshot format or browser sound output changed. The experimental GPL FAAD decoder and its allocations remain private to this probe.
 
 ## Actual transitions
 

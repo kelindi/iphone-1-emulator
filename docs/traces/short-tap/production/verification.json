@@ -42,10 +42,5 @@
   "limitations": "Functional checks under concurrent load, no new speed claim. Older saved firmware remains unchanged through bundle update.",
   "browserChecksTotalExcludingCalculator": 59,
   "state": "Production short-tap API correction verified; no full-speed claim",
-  "recording": {
-    "path": "tweets/videos/calculator_accelerated_default.mp4",
-    "sha256": "1601b98bd1c08f445cc4e9cc359f2b1f17c82d75624d3b2142c50ed4bf58a064",
-    "thumbnail": "tweets/thumbnails/calculator_accelerated_default.jpg",
-    "scope": "Actual earlier recorded 12-case run; two strict delta 1 false negatives are independently reviewed and preserved. Final delta 2 run has the same twelve raw display hashes."
-  }
+  "archiveCleanup": "Publishing/media records removed during archival cleanup. Measurements and source identities describe the original run; historical hash receipts may predate this cleanup."
 }

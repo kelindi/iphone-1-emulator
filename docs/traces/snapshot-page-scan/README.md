@@ -1,6 +1,8 @@
 # Faster snapshot page classification
 
-Milestone [071](../../../tweets/071_faster_snapshot_capture.md) demonstrates the reviewed capture change, now integrated with all final production checks passing. The timing recordings remain the original isolated comparison. No Apple binary, snapshot version, page encoding, loader path, guest state, or execution seed is changed by this candidate.
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+Milestone 071 demonstrates the reviewed capture change, now integrated with all final production checks passing. The timing recordings remain the original isolated comparison. No Apple binary, snapshot version, page encoding, loader path, guest state, or execution seed is changed by this candidate.
 
 ## Change and correctness
 
@@ -36,7 +38,7 @@ The mean reduction across the two arms is65.4%. This scope applies only to initi
 
 Full observations are in `browser-analysis.json` and each `browser-*/report.json`; screenshots and logs are retained beside them. Pause checks compare actual guest ticks/cycles: they stay fixed while paused, advance after Resume, and remain fixed when Save completes in the paused state. This establishes a repeated initial-capture reduction and shorter first acknowledgement. It does **not** establish faster finalization, compression, total Save, or app navigation. First Pause remains above150 ms in both candidate runs. These are two ordered pairs, not broad hardware/browser coverage.
 
-The recorded video is the complete first accepted pair at original speed, with labels only: [MP4](../../../tweets/videos/snapshot_page_scan.mp4), [JPG](../../../tweets/thumbnails/snapshot_page_scan.jpg). Baseline0–17.72s, candidate17.72–35.40s. Thumbnail29.72s shows the genuine paused phone while Save is active. `video.py` and `video.json` retain the exact input paths, timing and encoding recipe. Raw source recordings remain in `.context/snapshot-page-scan/browser-{1-baseline,2-candidate}/`; the durable MP4 contains both in full, with no speedup or omitted interval.
+The recorded video is the complete first accepted pair at original speed, with labels only: historical recording (removed), historical thumbnail (removed). Baseline0–17.72s, candidate17.72–35.40s. Thumbnail29.72s shows the genuine paused phone while Save is active. `video.py` and `video.json` retain the exact input paths, timing and encoding recipe. Raw source recordings remain in `.context/snapshot-page-scan/browser-{1-baseline,2-candidate}/`; the durable MP4 contains both in full, with no speedup or omitted interval.
 
 ## Preserved diagnostic failures
 

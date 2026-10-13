@@ -1,6 +1,8 @@
 # Complete main-container receive evidence
 
-[Milestone 069](../../../tweets/069_sdio_complete_main_received.md) describes the actual completed transfer and its limits. The original helper is represented by a supported semantic model; neither helper nor main CPU code executes.
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
+Milestone 069 describes the actual completed transfer and its limits. The original helper is represented by a supported semantic model; neither helper nor main CPU code executes.
 
 - [Full trace](full-mmio.log), [report](full-report.json), [model state](full-main-model.json), [data state](full-data.json), and [fixed budget](full-budget.json):504 original DMA completions,234 headers/233 bodies, final command4 at committed completeDMA return0xc0379684. The host's outer main-loader return is not claimed.
 - [Actual source wire](full-source-wire.bin) and [request wire](full-request-wire.bin):128704 bytes, SHA256 `445167098fb17ac5376f1910578459f7a6bc5ac4ed29fcd09cf9ac8c69eac727`.

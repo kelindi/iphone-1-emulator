@@ -240,11 +240,6 @@
     "sha256": "a81b745e261e56416442004243f433d9a68de5b7534097e259a11319817c8e35"
   },
   {
-    "path": "docs/traces/seed-gap-experiment/browser-0-control/page@fe1d5f12ab9ee29a9fd4a8b5aa3f004c.webm",
-    "bytes": 8005572,
-    "sha256": "b7ece89567362ed0e44126ccc9623b047ba233047ccb6323475fef0367b3e1dc"
-  },
-  {
     "path": "docs/traces/seed-gap-experiment/browser-0-control/report.json",
     "bytes": 22200,
     "sha256": "30ebc00ed3867f896f48a0ec90eeecbcf173fea7ff1707641f8327cd00423e18"
@@ -268,11 +263,6 @@
     "path": "docs/traces/seed-gap-experiment/browser-1-candidate/0-settings.rgba.gz",
     "bytes": 633,
     "sha256": "0e118b2b575762d669b2cf915e07b3de364c9f0c26087262f6a52ce1dfaaea4c"
-  },
-  {
-    "path": "docs/traces/seed-gap-experiment/browser-1-candidate/page@dd3ed11723acb7bcd1c492576273fef1.webm",
-    "bytes": 3209488,
-    "sha256": "a01b2e7918a76813f0bf31060058f9a7e69e497b8c2865721a10b1ab58fb7a17"
   },
   {
     "path": "docs/traces/seed-gap-experiment/browser-1-candidate/report.json",
@@ -355,11 +345,6 @@
     "sha256": "5c741b0b145c5a34610bfcaaebf4144757a47d8db3d501873e1318724442ee8e"
   },
   {
-    "path": "docs/traces/seed-gap-experiment/diagnostic/page@c08b6921f35ecd60a48c5cd23e62f4fb.webm",
-    "bytes": 1392950,
-    "sha256": "3361cc12c6e28b5badae6bdc35659379220b8424fe372d42ac76d94739ab283c"
-  },
-  {
     "path": "docs/traces/seed-gap-experiment/diagnostic/report.json",
     "bytes": 32104,
     "sha256": "6f5993982b6811e0ac309cacd77a073eb307cdf664973c9e33bcd4c26f9f270f"
@@ -388,11 +373,6 @@
     "path": "docs/traces/seed-gap-experiment/disk-preservation.json",
     "bytes": 2263,
     "sha256": "35c13e3d6e7a5d8ce797aea5af6035e53098ac54c6b44a4518c683a0e810aa32"
-  },
-  {
-    "path": "docs/traces/seed-gap-experiment/encode.log",
-    "bytes": 10003,
-    "sha256": "6f0e7e88f4db5b521adc8e1050cdb43a88bf49be2d4f71effaea623b625a4065"
   },
   {
     "path": "docs/traces/seed-gap-experiment/failed-frame.log",
@@ -640,11 +620,6 @@
     "sha256": "9e8b1adfa49527a2e08fc5ad6ed6fc264b09e54a8bd8313d2471e984ad58528c"
   },
   {
-    "path": "docs/traces/seed-gap-experiment/frozen-0-control/page@a049052f0bb0f1da781ead6a30fcff15.webm",
-    "bytes": 7870210,
-    "sha256": "f3601a261042afd6554b1980023979c532b7c34a8a6e05b9cc3e6af744b1604d"
-  },
-  {
     "path": "docs/traces/seed-gap-experiment/frozen-0-control/report.json",
     "bytes": 22669,
     "sha256": "1bbf58684812b8e812faacf5820fd0f18e792419eee63fac796bfad6a5969523"
@@ -878,11 +853,6 @@
     "path": "docs/traces/seed-gap-experiment/frozen-1-candidate/9-settings.rgba.gz",
     "bytes": 31981,
     "sha256": "ede1079628c53eab9f534b9fd264428371150c5f1e1a1c4b74bbe31de82f71c9"
-  },
-  {
-    "path": "docs/traces/seed-gap-experiment/frozen-1-candidate/page@ecba33b3cbaaa9bbfb22a8289671bc49.webm",
-    "bytes": 7629855,
-    "sha256": "00b28db183b4fa503a00f0e86c34914996fb776a6f0555c941b5e2cf6535de30"
   },
   {
     "path": "docs/traces/seed-gap-experiment/frozen-1-candidate/report.json",
@@ -1120,11 +1090,6 @@
     "sha256": "5abc0f30041032d178ffe78f16fb249759e717b088eeb78ff9b2be1d8890e4a5"
   },
   {
-    "path": "docs/traces/seed-gap-experiment/frozen-2-candidate/page@80ff3a2a706b292088d5aa5a921fa576.webm",
-    "bytes": 7638847,
-    "sha256": "5d32c157772c55e2fe5bfe223ff603d75d1a3474b45dc7155058a5eb28f9a664"
-  },
-  {
     "path": "docs/traces/seed-gap-experiment/frozen-2-candidate/report.json",
     "bytes": 22717,
     "sha256": "14ca1903425508662b4874ea11cd4eb29c270d07790036f8030ec1535547e217"
@@ -1360,11 +1325,6 @@
     "sha256": "2b8205b6bc2ff211f1015ec7a8318655bd3d0580c61fb628a4fa36de15292807"
   },
   {
-    "path": "docs/traces/seed-gap-experiment/frozen-3-control/page@210285362779ad89040ec8d658f5c088.webm",
-    "bytes": 7888464,
-    "sha256": "1cd01f9baf410404baa5edbe80b779cfd8dc377f87bb59ea7ae4540ad61ab0c2"
-  },
-  {
     "path": "docs/traces/seed-gap-experiment/frozen-3-control/report.json",
     "bytes": 22535,
     "sha256": "e493c3fe45c6d0cb499b85c86c71f750e011b3875285fb9124ae56ec8e1b115d"
@@ -1398,11 +1358,6 @@
     "path": "docs/traces/seed-gap-experiment/guard.log",
     "bytes": 215,
     "sha256": "f07260be7a77338bb7d504f42a315fe2676f2d383eafb5c0c98cb2f41ca99f91"
-  },
-  {
-    "path": "docs/traces/seed-gap-experiment/media.py",
-    "bytes": 808,
-    "sha256": "b116064d09c646e2c7bf9d088e4c0236bf59362ffd24275ed864f21e41858599"
   },
   {
     "path": "docs/traces/seed-gap-experiment/opcode-audit.md",
@@ -1573,20 +1528,5 @@
     "path": "docs/traces/seed-gap-experiment/test-guards.cjs",
     "bytes": 5552,
     "sha256": "a30d3df027492ce41ba100b11290cb233a10d0d1ffbbd897e064a81b6cf68736"
-  },
-  {
-    "path": "docs/traces/seed-gap-experiment/thumbnail.log",
-    "bytes": 3223,
-    "sha256": "7a214c33dd63fdde51c1ad685c6dc7c015218fb9fad186aebf3962aeb180ff92"
-  },
-  {
-    "path": "tweets/thumbnails/seed_gap_comparison.jpg",
-    "bytes": 40161,
-    "sha256": "6f0cad8092ec4fb06d11d6a0c3e2b762bbf05015bce23912a6b01cf231e0552c"
-  },
-  {
-    "path": "tweets/videos/seed_gap_comparison.mp4",
-    "bytes": 2309956,
-    "sha256": "5119cde33c9c9e8b53812d54f4553fe41333360a40841f4e8a857dd256bf0955"
   }
 ]

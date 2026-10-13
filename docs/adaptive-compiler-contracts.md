@@ -1,5 +1,7 @@
 # Adaptive compiler: Stage 1 correctness contracts
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 Status: **specified, not implemented or qualified**. Stage 1 establishes the baseline and these acceptance contracts. It does not install a new execution engine, alter the original guest, remove guards, or change the product's lock-screen startup. Existing test results cited below are evidence for the legacy engine, not passes for a future adaptive compiler.
 
 The accepted design retains the current ARM CPU, MMU, devices and interpreter; adds a separate ABI2 IR/connected-code engine; and keeps the legacy ABI1 seed and `jit=0` path usable. A compiled unit has at most **32 basic blocks, 512 static guest instructions and eight distinct physical 1 KiB code granules**. Loops may revisit those instructions, but every invocation remains bounded by the scheduler's remaining retirement budget. Compilation starts at the configured **1,024-entry hotness threshold**, with at most **eight queued requests, 2,048 installed units and 32 MiB installed WASM binary bytes**. These are rejection/eviction bounds, not reasons to skip guest work. Browser module/native-code memory can exceed binary size and must be measured separately.
@@ -96,7 +98,7 @@ All future rows below are **requirements**, not completed adaptive-engine tests.
 | Whole machine | Pinned real Settings, Contacts and Notes input trajectories; complete CPU/RAM/device/output checkpoints; both MMU paths | First divergence preserved; no tolerance widening, guest patches or silent interpreter substitution |
 | Actual browser | Verified served assets and enabled tier; original lock-screen/unlock/Home prerequisites; normal clock/autosave; retained frames and complete recordings | Wrong startup state, concurrent file mutation/workload, hidden asset mismatch, missing samples/cleanup, unexpected trap |
 
-Known reusable evidence includes [exit-census milestone103](../tweets/103_compiled_exit_census.md), [connected-code milestone102](../tweets/102_connected_compiler_experiment.md) and [gap-fill milestone105](../tweets/105_measured_seed_gap_trial.md). They do not substitute for ABI2 tests. In particular, the gap fixtures executed only175of256 added instructions through generated code in their chosen state;81 safely fell back. Fresh warm-cache and data-dependent tests are necessary.
+Known reusable evidence includes [exit-census milestone103](traces/compiled-exit-census/README.md), [connected-code milestone102](traces/connected-compiler-experiment/README.md) and [gap-fill milestone105](traces/seed-gap-experiment/README.md). They do not substitute for ABI2 tests. In particular, the gap fixtures executed only175of256 added instructions through generated code in their chosen state;81 safely fell back. Fresh warm-cache and data-dependent tests are necessary.
 
 ## 9. VFP limitation and performance decision rules
 

@@ -1,8 +1,10 @@
 # Original Safari serves a real local demo
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 One disposable native boot and one browser workflow pass. The genuine OS 1.0 Safari app loads a numeric loopback address, follows a link, submits `hi` through a GET form, creates a bookmark, returns Home, and revisits the bookmark. Ordinary interval autosave preserves the page, bookmark and running server; after reload the original app makes two new HTTP requests successfully. This is an **isolated imported phone**, not a feature in the default starting phone yet. No external networking or Weather response is claimed.
 
-[Full recording](../../../tweets/videos/091_safari_local_demo.mp4), [thumbnail](../../../tweets/thumbnails/091_safari_local_demo.jpg), [milestone 091](../../../tweets/091_safari_local_demo.md), [browser report](browser-run-1/report.json) and [independent audit](browser-run-1/audit.json) retain the result. The 676.76-second recording preserves the original 25 fps timing; the 681.902-second harness duration also includes setup and closure. At approximately 03:45–04:15 Safari loads the local page, 04:20–06:25 covers the link and form, 06:35–08:30 covers the bookmark/Home/revisit, and 08:55–11:00 covers autosave/reload and fresh requests. [Media hashes and review](media.json) bind both files. The actual MP4 frame at 04:05 was reviewed, along with every workflow screenshot.
+historical recording (removed), historical thumbnail (removed), milestone 091, [browser report](browser-run-1/report.json) and [independent audit](browser-run-1/audit.json) retain the result. The 676.76-second recording preserves the original 25 fps timing; the 681.902-second harness duration also includes setup and closure. At approximately 03:45–04:15 Safari loads the local page, 04:20–06:25 covers the link and form, 06:35–08:30 covers the bookmark/Home/revisit, and 08:55–11:00 covers autosave/reload and fresh requests. [Media hashes and review](media.json) bind both files. The actual MP4 frame at 04:05 was reviewed, along with every workflow screenshot.
 
 ## Independently authored service and original APIs
 

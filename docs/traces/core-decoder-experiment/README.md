@@ -1,5 +1,7 @@
 # Coarse ARM decoder partition: rejected performance prototype
 
+> Historical recordings and publishing artifacts have been removed from Git history. The summaries below describe the original runs; remaining test reports and screenshots are retained. Historical hash receipts may predate this archival cleanup.
+
 The current production profile's largest internal leaf, function81, reliably maps
 to `arm_step` through the [binding proof](binding/README.md). Its24.37% exclusive
 sampled residency includes fetch, Thumb execution, decoding and exception handling;
@@ -54,8 +56,8 @@ bar;23 Settings frames differ from the first control. Manual review and pixel bo
 (x313–317,y66–339), at different fade intensities. Alpha is exact; maximum RGB
 difference is63. The exact-image check remains failed; no crop or tolerance was
 introduced to turn it into a pass. Complete recordings and original frames remain in
-each browser session directory. [Candidate recording](../../../tweets/videos/core_decoder_comparison.mp4)
-and [thumbnail](../../../tweets/thumbnails/core_decoder_comparison.jpg) show the actual experiment.
+each browser session directory. historical recording (removed)
+and historical thumbnail (removed) show the actual experiment.
 
 `archive.json` hashes the retained scripts, reports, compiler patch, modules,
 logs and browser artifacts. Scripts retain their original `.context/core-hotspot`
