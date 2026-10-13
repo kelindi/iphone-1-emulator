@@ -16,5 +16,13 @@
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
     "https://iphone.files.garden/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
     "https://iphone.files.garden/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+  },
+  "assetBytes": {
+    "https://iphone.files.garden/kernel_1A543a.macho": 5888896,
+    "https://iphone.files.garden/devicetree_m68ap.bin": 36864,
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part0": 40606822,
+    "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1": 40606821,
+    "https://iphone.files.garden/home_1A543a.snap.gz.part0": 50201156,
+    "https://iphone.files.garden/home_1A543a.snap.gz.part1": 50201155
   }
 }

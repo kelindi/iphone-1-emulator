@@ -9,6 +9,7 @@ root = Path(__file__).resolve().parents[2] / 'web'
 path = root / 'manifest.json'
 manifest = json.loads(path.read_text())
 hashes = {}
+sizes = {}
 remote_origin = 'https://iphone.files.garden'
 for key in ('kernel', 'devicetree', 'rootfs', 'snapshot'):
     names = manifest.get(key, [])
@@ -27,6 +28,8 @@ for key in ('kernel', 'devicetree', 'rootfs', 'snapshot'):
             for chunk in iter(lambda: file.read(1048576), b''):
                 digest.update(chunk)
         hashes[name] = digest.hexdigest()
+        sizes[name] = source.stat().st_size
 manifest['assetSha256'] = hashes
+manifest['assetBytes'] = sizes
 path.write_text(json.dumps(manifest, indent=2) + '\n')
 print(f'Updated {len(hashes)} asset hashes in {path}')
