@@ -6,7 +6,7 @@ import {resolve, extname, sep} from 'node:path';
 // A local development server; never exposes files outside the chosen web root.
 const root = await realpath(resolve(process.env.WEB_ROOT || 'web'));
 const port = Number(process.env.PORT || process.env.CONDUCTOR_PORT || 8080);
-const types = {'.html':'text/html', '.js':'text/javascript', '.mjs':'text/javascript',
+const types = {'.html':'text/html', '.txt':'text/plain', '.xml':'application/xml', '.js':'text/javascript', '.mjs':'text/javascript',
   '.css':'text/css', '.json':'application/json', '.wasm':'application/wasm',
   '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.mp4':'video/mp4'};
 createServer(async (req, res) => {

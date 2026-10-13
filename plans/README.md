@@ -30,6 +30,8 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 ## Status
 
+**Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt and a single-URL canonical sitemap while keeping the emulator as the only public page. The briefly deployed About link and page were removed by request. Unit, WASM smoke and crawl-file checks pass locally; the removal awaits release. [143](../tweets/143_search_metadata.md).
+
 **PostHog tracking (2026-10-13):** added asynchronous US PostHog analytics for production-domain visits and emulator lifecycle/control/save events. Guest content and replay are excluded; localhost/previews do not send events. 122 unit tests, WASM smoke, real SDK browser events, blocked SDK and offline reload pass. Live 2007.mobile startup and a labeled test event accepted by PostHog (HTTP 200) are verified. [142](../tweets/142_posthog_tracking.md).
 
 **Loader progress and mobile HTTPS repair (2026-10-13):** added byte-based loading percentage and a filled Apple bar; firmware verification now has a SHA-256 fallback when Web Crypto is unavailable. Optional seed acceleration skips unsupported HTTP contexts. 119 unit tests, loader/recovery, offline, physical controls and genuine desktop/mobile startup with Web Crypto removed pass. Reissued the live 2007.mobile certificate and added a permanent HTTP-to-HTTPS redirect preserving paths/queries; HTTPS and OG delivery now work. Frontend changes await the follow-up PR release. [140](../tweets/140_loader_progress_https.md).
