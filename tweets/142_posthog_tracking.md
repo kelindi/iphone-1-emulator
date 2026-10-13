@@ -26,6 +26,6 @@ Visits can be compared with successful emulator startup and actual interaction, 
 
 ## Release
 
-Production deployment verification is pending.
+Deployed to **https://2007.mobile/** from source commit `7f779a53c3c3367038b8769b4f2debbcb42c79eb` via production deployment `dpl_A6jf5eoUpHS7w785MQ3g1JN8AgJK` (READY). The live guest and actual SDK reached ready without page errors. One labeled `$is_test: true` verification event was accepted by the US ingestion endpoint with HTTP 200 and `{"status":"Ok"}`. Production bot filtering remains enabled; only the disposable verification browser opted out for this event. Receipt: `.context/posthog/live-report.json`; screenshot: `.context/posthog/live-1080p.png`. [PR #8](https://github.com/kelindi/iphone-1/pull/8).
 
 SDK reference: [PostHog JavaScript configuration](https://posthog.com/docs/libraries/js/config).

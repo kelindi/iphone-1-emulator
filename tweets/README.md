@@ -428,4 +428,4 @@ connectivity/live data remain separate, unimplemented steps.
 
 ### 142 — PostHog tracking
 
-[Milestone](142_posthog_tracking.md). Production-domain page visits, emulator startup/timing, first touchscreen interaction, physical controls, saves/backups, recovery and offline setup now emit PostHog events. 122 unit tests, WASM smoke, real SDK transport, blocked-SDK startup and disconnected reload pass. Production verification is pending.
+[Milestone](142_posthog_tracking.md). Production-domain page visits, emulator startup/timing, first touchscreen interaction, physical controls, saves/backups, recovery and offline setup now emit PostHog events. 122 unit tests, WASM smoke, real SDK transport, blocked-SDK startup and disconnected reload pass. Live on 2007.mobile; genuine startup and PostHog ingestion (HTTP 200) are verified.
