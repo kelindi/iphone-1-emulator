@@ -1,5 +1,6 @@
 /* Optional guarded seed: guest startup never waits for this accelerator. */
-const seedEnabled = new URL(location.href).searchParams.get('jit') !== '0';
+// HTTP origins use the interpreter when native hash verification is unavailable.
+const seedEnabled = Boolean(globalThis.crypto?.subtle) && new URL(location.href).searchParams.get('jit') !== '0';
 const SEED_MAX_BYTES = 32 * 1024 * 1024;
 const SEED_MAX_REGIONS = 512;
 const SEED_PREPARE_TIMEOUT_MS = 8000;

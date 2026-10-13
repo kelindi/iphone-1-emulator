@@ -99,17 +99,19 @@ button:disabled { cursor: default; }
   pointer-events: none;
 }
 .boot-logo { display: block; width: 22%; max-width: 64px; height: auto; flex: 0 0 auto; fill: #c4c4c6; }
-.boot-progress { width: 46%; max-width: 128px; height: 5px; flex: 0 0 auto; overflow: hidden; border-radius: 4px; background: #333335; }
-.boot-progress span { display: block; width: 35%; height: 100%; border-radius: inherit; background: #c4c4c6; animation: boot-progress 1.6s linear infinite; }
+.boot-meter { width: 46%; max-width: 128px; flex: 0 0 auto; }
+.boot-progress { height: 5px; overflow: hidden; border-radius: 4px; background: #333335; }
+.boot-progress span { display: block; width: 100%; height: 100%; border-radius: inherit; background: #c4c4c6; transform: scaleX(0); transform-origin: left; transition: transform 180ms ease-out; }
+#boot-percent { display: block; margin-top: 10px; font-variant-numeric: tabular-nums; }
 #boot-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .boot-loader[data-state="error"] { gap: 12px; color: #d0d0d4; line-height: 1.5; }
 .boot-loader[data-state="error"] .boot-logo { display: none; }
+.boot-loader[data-state="error"] .boot-meter { display: none; }
 .boot-loader[data-state="error"] #boot-label { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip-path: none; white-space: normal; }
 .boot-recovery { display: none; }
 .boot-loader[data-state="error"] .boot-recovery { display: flex; flex-direction: column; gap: 4px; pointer-events: auto; }
 .boot-recovery .text-button { min-height: 44px; color: #d0d0d4; }
 .boot-recovery .text-button:enabled:hover { color: #fff; background: #ffffff18; }
-@keyframes boot-progress { from { transform: translateX(-100%); } to { transform: translateX(286%); } }
 .physical { position: absolute; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; }
 .physical:focus-visible { outline: 2px solid #5186c0; outline-offset: 5px; }
 .physical.home {

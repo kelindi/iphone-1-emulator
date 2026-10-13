@@ -46,6 +46,15 @@ test('corrupt network firmware is never cached or returned', async t => {
   assert.equal(stored.size, 0);
 });
 
+test('mobile HTTP without Web Crypto still verifies firmware and rejects corruption', async t => {
+  t.mock.getter(globalThis, 'crypto', () => ({}));
+  const name = 'firmware/kernel', good = Buffer.from('verified over HTTP');
+  const {stored} = environment(t, new Map([['/phone/' + name, good]]));
+  assert.deepEqual(Buffer.from(await assetBytes(name, undefined, {[name]:digest(good)})), good);
+  await assert.rejects(assetBytes(name, undefined, {[name]:digest('different bytes')}), /integrity check failed/);
+  assert.equal(stored.size, 0);
+});
+
 test('multipart gzip checks each part before reconstructing the original bytes', async t => {
   const raw = Buffer.from('original phone snapshot'.repeat(500)), packed = gzipSync(raw);
   const names = ['firmware/home.gz.part0','firmware/home.gz.part1'];
