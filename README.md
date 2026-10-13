@@ -71,6 +71,10 @@ See the [service tools](tools/legacy_services/README.md) and
 7. **CPU accuracy:** fix the known WebAssembly floating-point failures.
    Existing tests expose missing exception flags and incorrect rounding behavior.
    See the [floating-point failure report](docs/traces/wasm-vfp-conformance/README.md).
+8. **Build automation:** fix the [JIT replay tool](tools/jit/replay.mjs), which treats remote firmware URLs as local filenames.
+   The CI web job currently fails at that step before its browser checks.
+   The GitHub Pages deployment job also returns HTTP 404.
+   Native tests, unit tests, the WebAssembly build, and its smoke test pass in the latest main-branch CI run.
 
 The [product roadmap](plans/web-iphone.md) defines the remaining targets.
 The [completion checklist](plans/completion-checklist.md) explains the larger gaps.
