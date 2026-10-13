@@ -411,3 +411,13 @@ connectivity/live data remain separate, unimplemented steps.
 ### 128 — 3D opens during startup
 
 [Milestone](128_3d_startup_click.md) · [Recording](videos/3d_startup_click.mp4) · [Thumbnail](thumbnails/3d_startup_click.jpg). Removed the silent emulator-readiness gate, added model-loading feedback, and verified 15 Chrome checks with deliberately delayed downloads. Online model replacement remains separate.
+
+
+### 138 — Minimalist phone and sharing preview
+
+[Milestone](138_minimalist_phone.md) · [Recording](videos/minimalist_phone.mp4) · [Thumbnail](thumbnails/minimalist_phone.jpg) · [OG image](../web/og-image.png). Removed the 3D switch, model and Three.js assets; preserved real touch and physical controls. Added a 1200 × 630 preview with the genuine phone and a light, condensed Instrument Serif title reading “The Iphone”, plus canonical/social metadata for 2007.mobile. All 115 unit tests, WASM smoke, physical controls, offline recovery and ten focused desktop/mobile checks pass locally. Deployment and live redirects deferred by request.
+
+
+### 139 — Apple logo and loading bar
+
+[Milestone](139_apple_logo_loader.md) · [Recording](videos/apple_logo_loader.mp4) · [Thumbnail](thumbnails/apple_logo_loader.jpg). Replaced the browser startup spinner/copy with an Apple logo and an indeterminate bar. Screen-reader stage text, reduced motion and error/retry controls remain. 115 unit tests, 18 loader/recovery checks and six offline checks pass locally. Recording includes controlled failures; deployment deferred.
