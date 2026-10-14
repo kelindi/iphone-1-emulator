@@ -361,6 +361,7 @@ $('export').addEventListener('click', async () => {
 $('pause').addEventListener('click', async () => {
   try {
     await releaseInputs(); paused = !paused;
+    if (paused) { audio?.suspend().catch(() => {}); audioTime = 0; } else unlockAudio();
     await call('pause', {value:paused}); controls();
     track(paused ? 'emulator paused' : 'emulator resumed');
     paused ? setStatus('Paused. Your iPhone will wait here.') : showRunning();
