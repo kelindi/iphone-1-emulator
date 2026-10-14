@@ -34,6 +34,8 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 **README refresh (2026-10-13):** rewrote the project guide with the ASD-STE100 writing skill. The guide separates default offline workflows from isolated service experiments, lists unresolved hardware and product issues, and links dated performance evidence. Build, control, save, firmware, and test instructions now follow the current main-branch code.
 
+**Open-source cleanup (2026-10-14):** added the GPL-2.0-or-later `LICENSE`, `CONTRIBUTING.md`, `SECURITY.md`, and Apple disclaimer. The JIT replay tool now maps manifest firmware URLs to the source copies in `web/firmware/`, and the unused GitHub Pages workflow is removed.
+
 **Automation status after archive cleanup (2026-10-13):** native CI, unit tests, the WebAssembly build, and WASM smoke pass. The unchanged JIT replay tool treats remote firmware URLs as local filenames and fails before browser CI checks. GitHub Pages deployment returns HTTP 404, matching the previous main run. The README records these remaining issues; emulator and deployment configuration changes are outside this cleanup.
 
 **Archive cleanup (2026-10-13):** removed historical browser recordings and the milestone publishing system from all branch histories. Emulator sources, functional media fixtures, engineering reports, and screenshots are retained. New diagnostic media belongs in ignored `.context/` paths.
@@ -199,7 +201,7 @@ The current [16-app audit](app-coverage.md) records actual app behavior and rema
 - Emscripten build `web/dist/emu.wasm` using the same portable core.
 - The browser loads `web/manifest.json`, reassembles multipart <100 MB firmware chunks, gunzips, and loads snapshot or rootfs. Current worker/frontend additions are tracked in the execution log.
 - Canvas rendering, status bar, `?cpi=` knob, mouse-as-touch, Escape=Home, Shift+click=hold.
-- GitHub Actions CI builds and deploys to Pages (currently expects Pages source = "GitHub Actions").
+- GitHub Actions CI builds and tests the core, WebAssembly build, and browser checks. Vercel deploys the site; the unused GitHub Pages workflow was removed.
 
 ### Speed passes
 - Native `-O3` + IPO.
