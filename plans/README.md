@@ -38,7 +38,7 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 **Archive cleanup (2026-10-13):** removed historical browser recordings and the milestone publishing system from all branch histories. Emulator sources, functional media fixtures, engineering reports, and screenshots are retained. New diagnostic media belongs in ignored `.context/` paths.
 
-**System sounds play (2026-10-14):** modeled the I2S frame clock on GPIOIC lines 134/170, a 32-byte transmit FIFO and sample-rate-paced PL080 DMA. Pressing Sleep on the shipped home snapshot no longer fails with `could not start DMA`; the captured output is Apple's original `lock.caf`, sample for sample (correlation 1.000). The browser plays that PCM via WebAudio after the first gesture. 42 native tests pass; iPod/YouTube audio is unverified. See [Audio](audio.md).
+**System sounds play (2026-10-14):** modeled the I2S frame clock on GPIOIC lines 134/170, a 32-byte transmit FIFO and sample-rate-paced PL080 DMA. Pressing Sleep on the shipped home snapshot no longer fails with `could not start DMA`; the captured output is Apple's original `lock.caf`, sample for sample (correlation 1.000). The browser plays that PCM via WebAudio after the first gesture (Chrome capture correlates 0.9999997 with `lock.caf`). 42 native tests pass; iPod/YouTube audio is unverified. See [Audio](audio.md).
 
 **Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt and a single-URL canonical sitemap while keeping the emulator as the only public page. The briefly deployed About link and page were removed by request. Unit, WASM smoke and crawl-file checks pass locally; the removal awaits release. 143.
 

@@ -112,7 +112,7 @@ Approximations, labelled in `soc.h`: 44.1 kHz frame clock, 32-byte FIFO, 4 bytes
 
 Native result from the shipped home snapshot, pressing Sleep (`tools/iphone1 ... --at 9800000000 press hold --steps 11500000000 --audio-wav lock.wav`): no `could not start DMA` message, 43,311 frame-clock edges, 169,998 bytes shifted, no underrun or overflow. The 42,499-frame capture contains Apple's `lock.caf` exactly: correlation 1.00000 and gain 0.9998 against the CAF's 17,600 frames (44.1 kHz stereo 16-bit). `core/tests/test_i2s.c` covers the clock, backpressure, pacing, drain and long-refresh behavior.
 
-The browser receives the same PCM via `emu_audio_read()`; the worker posts it and the page schedules it on WebAudio after the first gesture. Playback stutters when the guest runs slower than real time. Still unverified: I2S0/WM8758 media playback (iPod), YouTube startup, recording/input, and exact silicon timing.
+The browser receives the same PCM via `emu_audio_read()`; the worker posts it and the page schedules it on WebAudio after the first gesture, and Pause suspends the AudioContext. In Chrome, Sleep scheduled 208 buffers whose PCM correlates 0.9999997 with `lock.caf`; unlock also sounds, and paused output falls silent within ~15 ms. Playback stutters when the guest runs slower than real time. Still unverified: I2S0/WM8758 media playback (iPod), YouTube startup, recording/input, and exact silicon timing.
 
 ## Next gates
 
