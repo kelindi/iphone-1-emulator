@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 47, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 16, in run
-    assert (j['copied'],j['decoded'],j['queue'],j['current'],j['start'],j['words'],j['copiedWords'],j['events'],j['mask'],j['samples'],j['publications'])==(83304,17770,65534,0x14ae1568,0x14ae1000,4096,346,0x200,0x2000,108544,53),'actual frozen resources differ'
-AssertionError: actual frozen resources differ

@@ -1,229 +1,0 @@
-using raw file, bytes=5888896
-using raw file, bytes=36864
-using raw file, bytes=176160768
-layout virt_base=0xc0000000 phys_base=0x08000000 ram_size=0x10000000
-kernel_begin_pa=0x08000000 kernel_end_pa=0x085c4b80 entry_pa=0x0805f7f0 entry_va=0xc005f7f0
-devicetree_pa=0x085c5000 devicetree_va=0xc05c5000 devicetree_size=0x00009000
-boot_args_pa=0x085ce000 ramdisk_pa=0x085d0000 ramdisk_va=0xc05d0000 ramdisk_size=0x0a800000
-framebuffer_pa=0x12dd0000 vram_bytes=0x00960000 top_of_kernel_data_pa=0x13730000 cmdline="debug=0x8 serial=3 rd=md0 -v"
-Darwin Kernel Version 9.0.0d1: Tue May 22 21:15:55 PDT 2007; root:xnu-933.0.0.178.obj~3/RELEASE_ARM_S5L8900XRB
-standard timeslicing quantum is 10000 us
-vm_page_bootstrap: 18309 free pages and 47227 wired pages
-mig_table_max_displ = 79
-iBoot version: 
-70 prelinked modules
-AppleS5L8900XIO::start: chip-revision: EVT0
-AppleARMPL192VIC::start: _vicBaseAddress = 0xee4d2000
-AppleS5L8900XEdgeIC::start: _edgeicBaseAddress: 0xee4d4000
-AppleS5L8900XGPIOIC::start: gpioBaseAddress: 0xee4d5000  gpioicBaseAddress: 0xee4d6000
-AppleS5L8900XPowerController::start: _pcBaseAddress: 0xee4d7000
-AppleS5L8900XClockController::start: _ccBaseAddress: 0xee4d8000 _miuBaseAddress: 0xee4d9000
-AppleS5L8900XClockController: Dynamic Performance State Management Enabled with max state 3
-AppleARMPL080DMAC::start: dmac0: _dmacBaseAddress: 0xee4da000
-AppleARMPL080DMAC::start: dmac1: _dmacBaseAddress: 0xee4db000
-AppleS5L8900XUSBWrangler::start starting
-AppleS5L8900XUSBWrangler::start registers at 0xee4dd000, 0x38400000 physical
-AppleS5L8900XADM::start: mapped I/O registers at 0xee558000/0x38800000
-+ AppleMPVDDriver[0xcb937000]::init(properties 0xcbab9800)
-+ AppleMPVDDriver[0xcb937000]::start(provider 0xcb996600)
-AppleS5L8900XSPIController::start: spi0: _spiBaseAddress = 0xef57b000
-AppleS5L8900XUSBPhy::start called
-AppleS5L8900XUSBPhy::start registers at 0xef57c000
-AppleS5L8900XI2CController::start: i2c0 _i2cBaseAddress: 0xef57d000
-AppleS5L8900XWatchDogTimer::start: _wdtBaseAddress: 0xef57e000
-AppleS5L8900XI2CController::start: i2c1 _i2cBaseAddress: 0xef57f000
-AppleS5L8900XI2SController::start: i2s0 i2sBaseAddress: 0xef580000
-AppleS5L8900XI2SController::start: i2s1 i2sBaseAddress: 0xef582000
-AppleS5L8900XSPIController::start: spi1: _spiBaseAddress = 0xef583000
-AppleS5L8900XSPIController::start: spi2: _spiBaseAddress = 0xef584000
-AppleMBXDevice(0xcbc08800): Init
-AppleMBX: Disabling auto clock gating because this is a EVT0/EVT1AppleMBX: Enabling auto clock-gating: 0
-AppleImage2NORAccess::probe(raw-device)
-AppleImage2NORAccess::start(raw-device) <1>
-AppleSimpleNORAccess::start imageVersion: 0
-AppleImage2NORAccessUserClient::probe(AppleImage2NORAccess)
-AppleImage2NORAccessUserClient::start(AppleImage2NORAccess) <1>
-AppleS5L8900XUSBWrangler::setPowerState state = 1
-
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart1 at 0x3cc04000(0xef697000)
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart3 at 0x3cc0c000(0xef698000)
-AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13b1d000, bufLA: 0xef699000
-AppleS5L8900XFMC::start: _fmcBaseAddress:      0xee559000
-AppleS5L8900XFMC::start: _rseccBaseAddress:    0xee55b000
-AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13bc3000, bufLA: 0xef69e000
-AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13bc6000, bufLA: 0xef69f000
-AppleARMPL080DMAC::_initDMAChannel: index: 7, bufPA: 0x13bc7000, bufLA: 0xef6a0000
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart0 at 0x3cc00000(0xef6a1000)
-AppleARMPL080DMAC::_initDMAChannel: index: 2, bufPA: 0x13bcc000, bufLA: 0xef6a2000
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart4 at 0x3cc10000(0xef6a3000)
-IOCoreSurfaceDeviceMemoryRegion: edram was powered on at boot
-AppleSerialKDP::start registering as KDP debugger
-AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13af5000, bufLA: 0xef7e4000
-AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13af6000, bufLA: 0xef7e5000
-AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13af7000, bufLA: 0xef7e6000
-ApplePCF50635PMU::start: pmu _pmuIICNub: 0xcbbae400
-AppleMicron2020::start()
-Registering IOCameraSensor service.
-AppleWM875xAudio::start: cbbc2800, audio0 _wmIICNub: 0xcb8f2d80, _wmIISNub: 0xcbbc4f80
-AppleMultitouchSPI: successfully starting non-DMA version of driver
-AppleMultitouchSPI: Logging is ENABLED
-AppleS5L8900XFMC::newDeviceWithRegistryEntry: no NAND flash banks are ready
-AppleS5L8900XUSBWrangler::phyRegistered PHY 0xcbb5eb80 notified us of availability
-AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb80
-AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb00
-+ AppleMPVDDriver[0xcb937000]::setPowerStateGated()
-
-AppleMBX: Detected mbx,s5l8900x.  SupportsWriteCombining: true
-AppleMBXDevice(0xcbc08800)::setPowerState(1)
-AppleMBXDevice(0xcbc08800)::changePowerStateGated(1)
-BSD root: md0, major 2, minor 0
-AppleMerlotLCD: _lcdPanelID: 0x000000
-Jettisoning kernel linker.
-IOIpodUSBDevice::start
-IOIpodUSBDevice - Configuration: PTP
-IOIpodUSBDevice          Interface: PTP
-IOIpodUSBDevice - Configuration: HID
-IOIpodUSBDevice          Interface: IapOverUsbHid
-IOIpodUSBDevice - Configuration: PTP + Apple Mobile Device
-IOIpodUSBDevice          Interface: PTP
-IOIpodUSBDevice          Interface: AppleUSBMux
-IOAccessoryPortUSB::start
-virtual bool AppleUSBDeviceMux::start(IOService*) build: May 22 2007 21:27:52
-init_waste
-AppleMicron2020: Sensor not present
-AppleS5L8900XSDIO: registers @ vaddr 0xf190b000, paddr 0x38d00000
-IOReturn AppleS5L8900XSDIO::setPowerStateGated(long unsigned int, IOService*)
-AppleBaseband::start(0xcbaed400): baseband
-AppleMBX: Added swap device: AppleH1CLCD  id: cb937200
-AppleMBX: Using AppleH1CLCD as legacy swap device
-AppleH1CameraInterface: EVT0 no longer supported
-/dev/md0 on / (hfs, local, noatime)
-launchctl: Couldn't stat("/etc/mach_init.d"): No such file or directory
-Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stdout", ...): No such file or directory
-Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stderr", ...): No such file or directory
-IOAccessoryPortSerial::start: could not set up serial port: device is offline
-Timeout waiting for CMDRDY! (cmd 5, cmdReg 0x00040045, arg 0x00000000)
-Failed to perform base SDIO init sequence.
-Unable to setup and scan the SDIO bus.
-AppleS5L8900XSDIO::setPowerState took 110 ms
-AppleS5L8900XSDIO: Command line options and current values used by driver
-AppleS5L8900XSDIO:     sdio-crc-panic=0
-AppleMultitouchSPI: downloaded 44752 bytes of firmware data ("0x0086") in 1ms (0ms stage 1, 1ms stage 2).
-ApplePCF50635PMUPowerSource: mbcs1-3 00 00 00
-ApplePCF50635PMUPowerSource: _powerSupplyType 1, _usbConnectType 1
-ApplePCF50635PMUPowerSource: enabling idle sleep
-ApplePCF50635PMUPowerSource: cap 75, ext 0, chrgCap 0, chrg 0 (0 mA, cyc 0, kind 0), warn 0, crit 0
-ApplePCF50635PMUPowerSource: AppleUSBCableDetect 0
-HTTP entry cycle=261043978 pc=00001400 cpsr=40000010 ttbr=14ca4000 exact_entry=64
-HTTP witness cycle=261043978 pc=00001400 r0=00001400 r1=00000000 r2=2fe58f98 r3=00000001 lr=2fe2d504
-HTTP witness cycle=261060553 pc=30009860 r0=00000001 r1=000037c8 r2=00000014 r3=30009860 lr=00002030
-LOCAL_HTTP_BEGIN_V1
-HTTP witness cycle=261072028 pc=000020a8 r0=000037dd r1=00000003 r2=00000000 r3=3000c400 lr=00001484
-HTTP result label=socket_server value=00000003 detail=00000000
-HTTP witness cycle=261072568 pc=30009860 r0=00000001 r1=2fffe5e8 r2=00000020 r3=30009860 lr=00002030
-socket_server 00000003 00000000
-HTTP witness cycle=261077830 pc=000020a8 r0=000037eb r1=00000000 r2=00000000 r3=30009860 lr=000014d8
-HTTP result label=readiness_attempt value=00000000 detail=00000000
-HTTP witness cycle=261078446 pc=30009860 r0=00000001 r1=2fffe5e8 r2=00000024 r3=30009860 lr=00002030
-readiness_attempt 00000000 00000000
-HTTP witness cycle=261086177 pc=000020a8 r0=00003924 r1=00000000 r2=00000044 r3=30001d70 lr=00001524
-HTTP result label=ifconf value=00000000 detail=00000044
-HTTP witness cycle=261086584 pc=30009860 r0=00000001 r1=2fffe5e8 r2=00000019 r3=30009860 lr=00002030
-ifconf 00000000 00000044
-HTTP witness cycle=261091232 pc=000020a8 r0=0000392b r1=00000044 r2=00000000 r3=30009860 lr=000023bc
-HTTP result label=ifconf_bytes value=00000044 detail=00000000
-HTTP witness cycle=261091753 pc=30009860 r0=00000001 r1=2fffe560 r2=0000001f r3=30009860 lr=00002030
-ifconf_bytes 00000044 00000000
-HTTP witness cycle=261097918 pc=30009860 r0=00000001 r1=2fffe5d4 r2=00000043 r3=30009860 lr=00002030
-D 6c6f300000000000000000000000000014120100180300006c6f300000000000
-HTTP witness cycle=261107262 pc=30009860 r0=00000001 r1=2fffe5d4 r2=00000043 r3=30009860 lr=00002030
-D 000000006c6f3000000000000000000000000000100200007f00000100000000
-HTTP witness cycle=261115797 pc=30009860 r0=00000001 r1=2fffe5d4 r2=0000000b r3=30009860 lr=00002030
-D 00000000
-HTTP witness cycle=261120565 pc=000020a8 r0=00003938 r1=00000000 r2=00008049 r3=30001d70 lr=00001614
-HTTP result label=ifflags value=00000000 detail=00008049
-HTTP witness cycle=261120991 pc=30009860 r0=00000001 r1=2fffe5e8 r2=0000001a r3=30009860 lr=00002030
-ifflags 00000000 00008049
-HTTP witness cycle=261125719 pc=000020a8 r0=00003940 r1=00000010 r2=00000000 r3=30009860 lr=000023bc
-HTTP result label=ifname value=00000010 detail=00000000
-HTTP witness cycle=261126126 pc=30009860 r0=00000001 r1=2fffe560 r2=00000019 r3=30009860 lr=00002030
-ifname 00000010 00000000
-HTTP witness cycle=261131287 pc=30009860 r0=00000001 r1=2fffe5d4 r2=00000023 r3=30009860 lr=00002030
-D 6c6f3000000000000000000000000000
-HTTP witness cycle=261138205 pc=000020a8 r0=00003938 r1=00000000 r2=00008049 r3=30001d70 lr=00001614
-HTTP result label=ifflags value=00000000 detail=00008049
-HTTP witness cycle=261138631 pc=30009860 r0=00000001 r1=2fffe5e8 r2=0000001a r3=30009860 lr=00002030
-ifflags 00000000 00008049
-HTTP witness cycle=261143359 pc=000020a8 r0=00003940 r1=00000010 r2=00000000 r3=30009860 lr=000023bc
-HTTP result label=ifname value=00000010 detail=00000000
-HTTP witness cycle=261143766 pc=30009860 r0=00000001 r1=2fffe560 r2=00000019 r3=30009860 lr=00002030
-ifname 00000010 00000000
-HTTP witness cycle=261148927 pc=30009860 r0=00000001 r1=2fffe5d4 r2=00000023 r3=30009860 lr=00002030
-D 6c6f3000000000000000000000000000
-HTTP witness cycle=261161673 pc=000020a8 r0=00003947 r1=00000000 r2=0000007c r3=2fffd63c lr=00002210
-HTTP result label=route_sysctl value=00000000 detail=0000007c
-HTTP witness cycle=261162194 pc=30009860 r0=00000001 r1=2fffd5a8 r2=0000001f r3=30009860 lr=00002030
-route_sysctl 00000000 0000007c
-HTTP witness cycle=261167382 pc=000020a8 r0=00003954 r1=0000007c r2=00000000 r3=30009860 lr=000023bc
-HTTP result label=route_bytes value=0000007c detail=00000000
-HTTP witness cycle=261167884 pc=30009860 r0=00000001 r1=2fffd520 r2=0000001e r3=30009860 lr=00002030
-route_bytes 0000007c 00000000
-HTTP witness cycle=261173953 pc=30009860 r0=00000001 r1=2fffd594 r2=00000043 r3=30009860 lr=00002030
-D 7c00050401000000050020000300000000000000000000000000000000000000
-HTTP witness cycle=261183297 pc=30009860 r0=00000001 r1=2fffd594 r2=00000043 r3=30009860 lr=00002030
-D 000000000000000000400000000000000000000000c0000000c0000000000000
-HTTP witness cycle=261192641 pc=30009860 r0=00000001 r1=2fffd594 r2=00000043 r3=30009860 lr=00002030
-D 0000000000000000000000000000000000000000000000000000000010020000
-HTTP witness cycle=261201872 pc=30009860 r0=00000001 r1=2fffd594 r2=0000003b r3=30009860 lr=00002030
-D 7f0000010000000000000000100200007f0000010000000000000000
-HTTP witness cycle=261210214 pc=000020a8 r0=00003960 r1=00000002 r2=00000000 r3=30009860 lr=0000229c
-HTTP result label=fcntl_get value=00000002 detail=00000000
-HTTP witness cycle=261210678 pc=30009860 r0=00000001 r1=2fffe5c4 r2=0000001c r3=30009860 lr=00002030
-fcntl_get 00000002 00000000
-HTTP witness cycle=261216510 pc=000020a8 r0=0000396a r1=00000000 r2=00000000 r3=3000bad0 lr=000022d0
-HTTP result label=fcntl_set value=00000000 detail=00000000
-HTTP witness cycle=261216974 pc=30009860 r0=00000001 r1=2fffe5c4 r2=0000001c r3=30009860 lr=00002030
-fcntl_set 00000000 00000000
-HTTP witness cycle=261222632 pc=000020a8 r0=00003974 r1=00000000 r2=00000000 r3=2fffe638 lr=0000232c
-HTTP result label=nosigpipe value=00000000 detail=00000000
-HTTP witness cycle=261223096 pc=30009860 r0=00000001 r1=2fffe5c4 r2=0000001c r3=30009860 lr=00002030
-nosigpipe 00000000 00000000
-HTTP witness cycle=261228005 pc=3000e8e0 r0=00000003 r1=2fffe6b8 r2=00000010 r3=3000e8e0 lr=0000185c
-HTTP witness cycle=261229686 pc=000020a8 r0=00003826 r1=00000000 r2=00000000 r3=3000e8e0 lr=0000187c
-HTTP result label=bind value=00000000 detail=00000000
-HTTP witness cycle=261230055 pc=30009860 r0=00000001 r1=2fffe5e8 r2=00000017 r3=30009860 lr=00002030
-bind 00000000 00000000
-HTTP witness cycle=261235577 pc=000020a8 r0=0000382b r1=00000000 r2=00000010 r3=3000e860 lr=000018d8
-HTTP result label=bound_name value=00000000 detail=00000010
-HTTP witness cycle=261236060 pc=30009860 r0=00000001 r1=2fffe5e8 r2=0000001d r3=30009860 lr=00002030
-bound_name 00000000 00000010
-HTTP witness cycle=261241076 pc=000020a8 r0=00003836 r1=00000010 r2=00000000 r3=30009860 lr=000023bc
-HTTP result label=bound_address value=00000010 detail=00000000
-HTTP witness cycle=261241616 pc=30009860 r0=00000001 r1=2fffe560 r2=00000020 r3=30009860 lr=00002030
-bound_address 00000010 00000000
-HTTP witness cycle=261247391 pc=30009860 r0=00000001 r1=2fffe5d4 r2=00000023 r3=30009860 lr=00002030
-D 100246a17f0000010000000000000000
-HTTP witness cycle=261252986 pc=30030500 r0=00000003 r1=00000004 r2=30030500 r3=30009860 lr=00001958
-HTTP witness cycle=261253668 pc=000020a8 r0=00003844 r1=00000000 r2=00000000 r3=30009860 lr=00001974
-HTTP result label=listen value=00000000 detail=00000000
-HTTP witness cycle=261254075 pc=30009860 r0=00000001 r1=2fffe5e8 r2=00000019 r3=30009860 lr=00002030
-listen 00000000 00000000
-HTTP witness cycle=261258896 pc=30009860 r0=00000001 r1=0000384b r2=00000018 r3=30009860 lr=00002030
-LOCAL_HTTP_LISTENING_V1
-Dec 31 16:00:00 launchd[1]: 16/com.apple.BTServer: Standard Out/Error: com.apple.server.bluetooth: Bluetooth Super Server Robot Destroyer
-Dec 31 16:00:00 launchd[1]: 16/com.apple.BTServer: Standard Out/Error: failed bootstrap_check_in : unknown error code - 1102
-Dec 31 16:00:00 launchd[1]: 16/com.apple.BTServer: Standard Out/Error: com.apple.server.bluetooth: Got local-mac-address: 00:00:00:00:00:00
-IOIpodUSBDevice::gated_registerFunction all functions registered- we are ready to start usb stack
-ipif_ctl_connect: creating unit ip1
-ipif_ctl_connect: creating unit ip2
-
-reason=own-http-reviewed-home instructions=3229000000 pc=0xc00292f4 cpsr=0x60000033
-r0=0x00000000 r1=0xcdc3c9c0 r2=0x0000f1d1 r3=0x0000f1d1
-r4=0xcbb1920c r5=0xcdc3c9c0 r6=0xcdc3c9dc r7=0xe2d6bdd0
-r8=0xcdc3c9dc r9=0xcb9d2000 r10=0xcdc3c9dc r11=0xc0027075
-r12=0xc0109d09 r13=0xe2d6bdc0 r14=0xc010617d r15=0xc00292f4
-ttbr0=0x15791000 sctlr=0x00c0380d M=1 unmapped_reads=137035 unmapped_writes=38566
-unmapped-pages: 0x3c400000 0x3cc04000 0x3cc0c000 0x38a00000 0x38c00000 0x38d00000
-last-pcs: 0xc01638b0 0xc0060178 0xc005f6bc 0xc0061c16 0xc005a2ec 0xc0060174 0xc005a268 0xc0061c38 0xc0061c20 0xc0010324 0xc00215d4 0xc005a284 0xc0019ae8 0x303fc576 0xc006016c 0xc0028f04 0xc005a280 0xc0060634 0xc0162b7c 0xc005867a 0xc0060630 0x2fe0db84 0x3000191c 0x30e94ea8 0x3008e540 0x30006424 0x3001d8ca 0x3001d9f4 0x3004316c 0x30043112 0xc006016c 0xc00292f4
-HTTP final ready=1 seen=1 entries=1 bind=1/1 listen=1/1 written=1 uart=1 failed=0 ttbr=14ca4000 fd=3 capture_requested=1
-HTTP snapshot status=0 bytes=246132706 pipe_ok=1

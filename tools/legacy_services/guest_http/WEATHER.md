@@ -2,7 +2,7 @@
 
 `weather.c` builds deterministic XML response bodies for the original OS1
 Weather gateway. It uses the established dataset and response structure from
-`../weather.py` and `docs/traces/weather-service-contract/`. It introduces no
+`../weather.py` and `tools/legacy_services/fixtures/weather-demo-backend/`. It introduces no
 libc imports and can be linked into the independently authored ARMv6 daemon.
 
 The API expects validated, decoded request fields. `own_weather_forecast` takes

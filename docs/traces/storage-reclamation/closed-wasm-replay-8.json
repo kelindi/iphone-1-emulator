@@ -1,9 +1,0 @@
-{
-  "originalPath": ".context/replay-wasm.snap",
-  "gzipPath": ".context/replay-wasm.snap.gz",
-  "rawBytes": 244437150,
-  "rawSha256": "a0aab0d45969b508bef3fe706082f5bc158da9161efd72caa2ce69312d107019",
-  "gzipBytes": 105400813,
-  "gzipSha256": "ac963ac7907ab9dac518fbb635a87381df8f617932188c6fc4bcc76c0dd6d467",
-  "exactWitness": ".context/replay-wasm-nzcv.snap.gz"
-}

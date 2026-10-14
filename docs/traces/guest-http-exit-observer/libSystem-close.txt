@@ -1,8 +1,0 @@
-30009880 06c0a0e3   mov      ip, #6
-30009884 800000ef   svc      #0x80
-30009888 1eff2f31   bxlo     lr
-3000988c 04c09fe5   ldr      ip, [pc, #4]
-30009890 0cc09fe7   ldr      ip, [pc, ip]
-30009894 000000ea   b        #0x3000989c
-30009898 d4edff07   ubfxeq   lr, r4, #0x1b, #0x20
-3000989c 1cff2fe1   bx       ip

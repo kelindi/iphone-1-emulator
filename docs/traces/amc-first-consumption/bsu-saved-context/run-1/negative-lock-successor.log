@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 47, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 27, in run
-    assert r['pc']==pc and r['address']==addr and r['value']==value and r['afterPC']==pc+4 and r['afterCPSR']==r['cpsr'] and r['cpsr']&63==0x13,'actual lock successor/mode differs'
-AssertionError: actual lock successor/mode differs

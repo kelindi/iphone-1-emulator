@@ -1,7 +1,0 @@
-  FAIL test_os1_safari_472_source_copy:7609: actual wide packet pixels or outside rectangle differ
-  FAIL test_os1_safari_472_source_copy:7610: wide packet exact completion missing
-  FAIL test_os1_safari_472_source_copy:7616: wide source row boundary/noncontiguous mapping differs
-  FAIL test_os1_safari_472_source_copy:7617: wide source multirow completion missing
-PowerVR MBX2D tests
-
-2843 passed, 4 failed

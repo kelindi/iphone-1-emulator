@@ -18,7 +18,4 @@ node_modules/
 
 # Generated publishing and browser-recording artifacts
 /tweets/
-/docs/traces/**/*.mp4
-/docs/traces/**/*.webm
-/docs/traces/**/*.mov
-/docs/traces/**/*.m4v
+/docs/traces/

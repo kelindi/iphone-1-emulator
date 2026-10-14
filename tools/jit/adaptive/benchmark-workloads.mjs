@@ -24,7 +24,7 @@ function excludeMain(row,fn){const start=process.threadCpuUsage();try{return fn(
 async function excludeMainAsync(row,fn){const start=process.threadCpuUsage();try{return await fn();}finally{const d=process.threadCpuUsage(start);row.excludedMainCpuMs+=(d.user+d.system)/1000;}}
 function updateCpu(row,start){const d=process.cpuUsage(start);row.totalProcessCpuMs=(d.user+d.system)/1000;row.cpuMs=row.totalProcessCpuMs-row.excludedMainCpuMs;}
 try{
- const reference=JSON.parse(await pin('docs/traces/adaptive-workloads/report.json'));
+ const reference=JSON.parse(await pin('tools/jit/adaptive/fixtures/adaptive-workloads-report.json'));
  const baselineBytes=await pin(baselineRoot+'/freeze-manifest.json',reference.freezeManifestSha256),baseline=JSON.parse(baselineBytes);
  const frozen=relative=>pin(baselineRoot+'/'+relative,baseline.entries.find(e=>e.relative===relative)?.sha256||assert.fail('Missing frozen identity '+relative));
  await frozen('site/dist/emu.js');await frozen('site/dist/emu.wasm');

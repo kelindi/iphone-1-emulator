@@ -1,7 +1,0 @@
-{
-  "originalOracle": "docs/traces/jit-continuation/oracle.c",
-  "originalTest": "docs/traces/jit-continuation/test.cjs",
-  "oracleSourceSha256": "05658afdf754eadb17efabf5c517a799fca01fe13c41f671bb4d1317545d069e",
-  "testSourceSha256": "1be4f96d705f00855a92ef0badef1a772b48cefd65ba0eda351ba09556d5cd5d",
-  "scope": "Both separate modules use original runtime policy; observer module alone adds census and instrumented arm_step. Frozen prior actual-emitter boundary cases reused. Independent cross-module hashes compared after both finish."
-}

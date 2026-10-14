@@ -1,6 +1,0 @@
-30067ae0 e6c0a0e3   mov      ip, #0xe6
-30067ae4 800000ef   svc      #0x80
-30067ae8 1eff2f31   bxlo     lr
-30067aec 04c09fe5   ldr      ip, [pc, #4]
-30067af0 0cc09fe7   ldr      ip, [pc, ip]
-30067af4 000000ea   b        #0x30067afc

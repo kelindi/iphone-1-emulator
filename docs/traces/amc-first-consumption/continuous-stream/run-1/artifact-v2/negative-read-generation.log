@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 104, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 43, in run
-    cycle,n,slot,a,w,v,pc,cpsr,owner=row;assert 1<=n<=len(gs) and slot==(n-1)%2 and w in (1,2,4) and owner==0,'read generation/width/owner invalid'
-AssertionError: read generation/width/owner invalid

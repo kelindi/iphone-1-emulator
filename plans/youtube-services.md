@@ -8,7 +8,7 @@
 the normal response. The original app then fetches Featured and displays the
 owned five-second clip, including its exact JPEG thumbnail, title and duration.
 An independent wire audit and clean browser recheck pass.
-[Milestone134](../docs/traces/youtube-local-catalog/README.md).
+[Milestone134](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-local-catalog/README.md).
 
 Playback remains unfinished. The movie-player transition repeatedly triggers
 graphics restarts. Ordinary native tracing captures genuine 90-degree texture
@@ -24,14 +24,14 @@ complete saved gateway log and offline verifier prove its 2048-bit signature
 matches the submitted certificate and the guest public key. The server
 deliberately returns 503 instead of a token, so the app still displays Cannot
 connect to YouTube. This is a successful signing diagnostic, not completed
-authentication, catalog rendering or playback. [Milestone133](../docs/traces/youtube-auth-probe/README.md),
-[evidence and failed attempts](../docs/traces/youtube-auth-probe/README.md),
+authentication, catalog rendering or playback. [Milestone133](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-auth-probe/README.md),
+[evidence and failed attempts](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-auth-probe/README.md),
 [implementation guide](../tools/legacy_services/guest_http/YOUTUBE.md).
 
 The earlier baseline had no new retained gateway traffic. Static inspection
 established a three-entry catalog candidate; its asset URLs remain placeholders.
 No Apple executable, saved app token, production image or media playback path
-has been modified. [Original contract and baseline](../docs/traces/youtube-service-check/README.md).
+has been modified. [Original contract and baseline](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-service-check/README.md).
 
 ## Original-app contract
 
@@ -70,14 +70,14 @@ The original media/audio path is unfinished. Browser video overlaid on the guest
 
 ## Movie delivery follow-up (2026-09-10)
 
-Original CoreMedia fetched bytes0–1 then0–8825 of the owned MP4; exact206 responses and complete body match pass. Renderer v2 reaches the original movie error in a clean browser recording; v3 reduces native graphics rejections to four alternate-shader commands, with2,964 checks passing. Playback is still unfinished. Next: capture the original media setup/decoder failure status before choosing a format or device repair. See [milestone135](../docs/traces/youtube-movie-delivery/README.md).
+Original CoreMedia fetched bytes0–1 then0–8825 of the owned MP4; exact206 responses and complete body match pass. Renderer v2 reaches the original movie error in a clean browser recording; v3 reduces native graphics rejections to four alternate-shader commands, with2,964 checks passing. Playback is still unfinished. Next: capture the original media setup/decoder failure status before choosing a format or device repair. See [milestone135](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-movie-delivery/README.md).
 
 ## Rotation completed; preparation still fails
 
-Renderer v4 completes all1,695 native drawing commands with0rejections;3,024 unit checks pass. Browser interaction has0graphics restarts but the harness failed at context cleanup, preserved honestly. The separate Motion-JPEG MOV also arrives intact and fails playback. Qualified live error capture finds NSOSStatusErrorDomain/code1; original AVController prepareForPlaybackReply: supplies this result. No typed underlying NSError was exposed. Trace that preparation status producer next. [Milestone136](../docs/traces/youtube-player-rotation/README.md).
+Renderer v4 completes all1,695 native drawing commands with0rejections;3,024 unit checks pass. Browser interaction has0graphics restarts but the harness failed at context cleanup, preserved honestly. The separate Motion-JPEG MOV also arrives intact and fails playback. Qualified live error capture finds NSOSStatusErrorDomain/code1; original AVController prepareForPlaybackReply: supplies this result. No typed underlying NSError was exposed. Trace that preparation status producer next. [Milestone136](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-player-rotation/README.md).
 
 Qualified preparation trace now identifies the actual legacy MeCCA pipeline: reference-movie check returns0, playback preparation returns1 in the separate media process, and callbacks forward that1 to YouTube. Inspect MeCCA internal preparation next. The initial VT/software-JPEG hypothesis was not demonstrated as this app's active decoder path.
 
 ## YouTube silent-clip startup diagnosis (2026-09-10)
 
-Qualified original media-process observation proves `AudioDeviceAddIOProc` succeeds, then `AudioDeviceStart` returns `0xe00002d8`. AppleBasebandOutput reports DMA not ready immediately before that return. The mixer maps the failure to MeCCA result 1 and the generic movie error. All 252,624,866 saved bytes match the same-schedule control. A second qualified replay directly confirms the original I2S synchronization timeout: matching configuration writes, no callback hits, state 4 at return and r6=`e00002d8`. A real external-clock/FIFO/DMA model remains next; clock rate/gating and FIFO behavior are still unproven. Silent video does not bypass audio startup. [Evidence](../docs/traces/youtube-audio-start/README.md) · [milestone 137](../docs/traces/youtube-audio-start/README.md).
+Qualified original media-process observation proves `AudioDeviceAddIOProc` succeeds, then `AudioDeviceStart` returns `0xe00002d8`. AppleBasebandOutput reports DMA not ready immediately before that return. The mixer maps the failure to MeCCA result 1 and the generic movie error. All 252,624,866 saved bytes match the same-schedule control. A second qualified replay directly confirms the original I2S synchronization timeout: matching configuration writes, no callback hits, state 4 at return and r6=`e00002d8`. A real external-clock/FIFO/DMA model remains next; clock rate/gating and FIFO behavior are still unproven. Silent video does not bypass audio startup. [Evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-audio-start/README.md) · [milestone 137](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/youtube-audio-start/README.md).

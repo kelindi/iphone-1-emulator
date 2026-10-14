@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/guest-loopback/observer-v2/audit.py", line 50, in <module>
-    out=(R/'stdout.log').read_text();serial=(R/'serial.log').read_text();proof=audit(out,serial)
-  File "/home/vercel-sandbox/iphone-1/.context/guest-loopback/observer-v2/audit.py", line 29, in audit
-    assert native_blobs==blobs
-AssertionError

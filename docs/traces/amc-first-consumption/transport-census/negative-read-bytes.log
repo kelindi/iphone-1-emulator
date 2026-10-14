@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-s/run-1/audit.py", line 135, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-s/run-1/audit.py", line 80, in run
-    count=audit_reads((out/'read-ledger.bin').read_bytes(),(out/'read-coverage.bin').read_bytes(),(out/'read-bytes.bin').read_bytes(),pcm,9873234585,release)
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-s/run-1/audit.py", line 21, in audit_reads
-    assert observed==actual==pcm, 'observed read bytes differ'
-AssertionError: observed read bytes differ

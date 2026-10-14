@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 47, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-x/run-1/lock-audit.py", line 36, in run
-    fields=(p/'locked-driver-fields.bin').read_bytes();assert struct.unpack('<II',fields)==(0x14ae1568,3750),'actual original saved current/remaining differs'
-AssertionError: actual original saved current/remaining differs

@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/save-audit.py", line 86, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/save-audit.py", line 41, in run
-    words=receipts(j,(p/'saved-context.bin').read_bytes(),(p/'saved-sram-copies.bin').read_bytes(),sram,trace,code)
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/run-1/save-audit.py", line 19, in receipts
-    assert len(context)==64 and list(struct.unpack_from('<7I',context))==words and struct.unpack_from('<I',context,60)[0]==0,'saved context differs'
-AssertionError: saved context differs

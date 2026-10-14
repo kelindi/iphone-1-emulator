@@ -1,9 +1,0 @@
-Initial actual full verifier invocation: python3 .context/sdio-first/main-full/verify_full.py
-Failed at commands(full), inherited assertion ticks - triggerTicks == 600.
-Tool-reported traceback:
-  File "verify_full.py", line 52, in <module>
-    cmds=commands('full');assert len(cmds)==3414
-  File "<string>", line 32, in commands
-AssertionError
-
-Source and exact delayed event are preserved alongside this record. No device/probe source changed.

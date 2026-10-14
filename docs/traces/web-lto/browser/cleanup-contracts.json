@@ -1,1 +1,0 @@
-{"passed": true, "checks": 10, "scope": "Synthetic owned-profile extraction only; IDB/blob/metadata exact, trace and foreign directory preserved; rejects foreign arm/profile symlink. No browser/guest."}

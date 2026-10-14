@@ -1,5 +1,0 @@
-{
-  "sha256": "c241c2f868510d6fe4a0540f284390ccdbeea2b376413fae4d37e206f2a679e5",
-  "pid": 3380562,
-  "scope": "System receipts on observed arm-directory/series transitions; up to poll/scheduling delay, no guest instrumentation. ps percentages are lifetime averages, not interval utilization."
-}

@@ -1,1 +1,0 @@
-test: .context/guest-loopback/test.c:49: int main(void): Assertion `strlen("IPHONE1_GUEST_LOOPBACK_V1_OK\n")==26' failed.

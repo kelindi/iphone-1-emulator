@@ -65,4 +65,4 @@ Use **cold boot** for Wi‑Fi verification, not the shipped snapshot, because th
 - Screenshot of Settings → Wi‑Fi showing the fake network and, if milestone 3 is reached, Safari loading example.com.
 
 ## Deliverable
-A PR from a branch `devin/<timestamp>-wifi` targeting `devin/1788299483-m68-os1-boot`.
+A PR from a branch `wifi` targeting `main`.

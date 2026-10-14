@@ -1,6 +1,0 @@
-{
-  "passed": true,
-  "scenarios": 404,
-  "pairedEngineCases": 1212,
-  "unchangedFields": "every field except observer; includes state/counter hashes and generated counts"
-}

@@ -1,7 +1,0 @@
-{
-  "snapshot": ".context/app-services-current/stocks-gateway-browser/final-home.snap",
-  "snapshotSHA256": "f2b1a7f0b4542592aa94f95792c5441013e903d91888f568541ed083434ef26e",
-  "logBytes": 9305,
-  "logSHA256": "5be8e5df2ffa56677f131b01b658babdea62f569bdc7888c71ffac85d81af74f",
-  "scope": "Snapshot backing-file readback; dirty cache bytes may be absent. No guest execution."
-}

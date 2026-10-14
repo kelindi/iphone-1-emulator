@@ -1,3 +1,0 @@
-{
-  "failure": "Third attempted optional V8 source src/api/api-wasm.cc returned404; no content or claim relies on that nonexistent path. Prior streaming-decoder.cc and wasm-serialization.cc fetched successfully and hash-pinned."
-}

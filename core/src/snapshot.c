@@ -218,10 +218,10 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
  * live compiler wiring, not guest state; no stream fields or version change.
  * Code-version tables live outside the machine and require epoch invalidation
  * before restore. Native sizeof probe: 127504. */
-/* 127736 adds the two host-only I2S transmit streams and the heap-owned PCM
+/* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-SNAP_SIZE_GUARD(s5l8900_t,         127736, "snap_mach");
+SNAP_SIZE_GUARD(s5l8900_t,         127728, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */

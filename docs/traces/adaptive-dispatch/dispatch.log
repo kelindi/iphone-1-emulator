@@ -1,1 +1,0 @@
-PASS: real scheduler snapshot equality across budget/edge/refusal/boundary policies; fatal exit stops without replay

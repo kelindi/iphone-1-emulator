@@ -1,7 +1,0 @@
-# Native versus browser architecture check
-
-Same host, same shipped Home snapshot, current MBX source/core, real Settings and Home actions. Native uses maintained browser C API, actual monotonic host clock and input queue, direct RAM writes; current native GCC O3/LTO interpreter. Browser uses current complete web package and compiled WASM seed. This compares available execution options, not compiler-only overhead.
-
-Order: native A, Chrome B, Chrome B, native A. Each fresh phone: one first +three warm Settings/Home rounds. Same30ms press,50ms visual readiness sample,500ms stability confirmation (reported from start),1000ms guest-running gap. Same sampled pixel predicate as maintained performance.mjs. Inspect all final frames; no claim from white pixels alone. Browser includes worker/canvas/recording; native samples direct scanout with screenshots outside measured action. Those presentation costs are intentionally part of deployable-option comparison; no actual internet streaming tested. Small pilot, no p95/full product acceptance. Normal browser autosaves remain enabled; native has no automatic host persistence. Record this limitation.
-
-240s native cap, browser bounded by outer controller; fresh outputs, retain failures. No product edits or new optimization. Before recommending hosted execution, measure a low-latency H264 encoding workload on retained actual frames and show network-delay sensitivity separately. A local encoder benchmark does not prove actual end-to-end streaming or Mac performance.

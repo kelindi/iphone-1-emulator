@@ -1,8 +1,0 @@
-{"round":0,"kind":"settings","releaseToReadyMs":2294.083,"releaseToFirstVisibleMs":19.629,"observedMs":2834.838,"instructions":109724440}
-{"round":0,"kind":"home","releaseToReadyMs":833.624,"releaseToFirstVisibleMs":323.456,"observedMs":1373.939,"instructions":29945357}
-{"round":1,"kind":"settings","releaseToReadyMs":1993.391,"releaseToFirstVisibleMs":221.469,"observedMs":2531.987,"instructions":91744767}
-{"round":1,"kind":"home","releaseToReadyMs":829.988,"releaseToFirstVisibleMs":323.513,"observedMs":1362.285,"instructions":38246833}
-{"round":2,"kind":"settings","releaseToReadyMs":2146.371,"releaseToFirstVisibleMs":20.767,"observedMs":2682.640,"instructions":102341611}
-{"round":2,"kind":"home","releaseToReadyMs":832.215,"releaseToFirstVisibleMs":376.826,"observedMs":1371.542,"instructions":28486877}
-{"round":3,"kind":"settings","releaseToReadyMs":2095.981,"releaseToFirstVisibleMs":19.116,"observedMs":2629.976,"instructions":108739387}
-{"round":3,"kind":"home","releaseToReadyMs":780.140,"releaseToFirstVisibleMs":375.236,"observedMs":1314.654,"instructions":37193327}

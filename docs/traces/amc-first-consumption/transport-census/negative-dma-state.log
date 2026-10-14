@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-s/run-1/later-audit.py", line 57, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-s/run-1/later-audit.py", line 49, in run
-    assert accepted==3+len(captures) and int(start,16)==captures[accepted][0] and int(count)==4096 and cw==words[accepted] and int(current,16)==int(start,16)+4*cw,'DMA final current/ownership differs'
-AssertionError: DMA final current/ownership differs

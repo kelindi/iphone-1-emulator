@@ -1,5 +1,0 @@
-{
-  "originalCompilerSha256": "b68ddff5c7b0a5aa52b87ba1ba8ae3b72457ec74e2b1cfe9dc4d33ae3f22c170",
-  "candidateCompilerSha256": "9dd27ab14e35f2cf23120d58e430815c7d0ce0acbd6e052b3c2c7996a41cb762",
-  "scope": "isolated seed emitter only; exact original basic-block construction and instruction bodies"
-}

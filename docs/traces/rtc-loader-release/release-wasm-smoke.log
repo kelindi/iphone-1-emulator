@@ -1,5 +1,0 @@
-
-> test:web
-> node web/smoke.mjs
-
-WASM smoke passed: emu_init=-1; error=kernel and devicetree are required

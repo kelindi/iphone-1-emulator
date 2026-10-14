@@ -1,1 +1,0 @@
-{"passed": true, "copiedBytes": 65884, "currentCopiedBytes": 348, "queueBytes": 65536, "decodedBytes": 348, "queueSHA256": "1f047875f9b58b5e0c72f51ec72e8474d1018c4fe62739446474daf5a2663215", "publications": 1, "consumptionClaim": false, "scope": "All owned bytes equal actual captured inputs minus decoded bytes; separate consumption audit required."}

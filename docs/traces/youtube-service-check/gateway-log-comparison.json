@@ -1,6 +1,0 @@
-{
-  "inputGatewayLogSHA256": "d604f0d6743be64228b0603b96a2707b931a495244184cef4a667d4e1f5e2bd8",
-  "outputGatewayLogSHA256": "d604f0d6743be64228b0603b96a2707b931a495244184cef4a667d4e1f5e2bd8",
-  "identical": true,
-  "scope": "No new retained local gateway traffic across YouTube initial launch; does not prove absence of attempts to other unconfigured hosts."
-}

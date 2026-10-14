@@ -1,6 +1,0 @@
-{"kind":"settings","round":0,"firstVisibleMs":1150.8000000000466,"readyMs":4700.100000000093,"releaseToFirstVisibleMs":1096.1999999999534,"releaseToReadyMs":4645.5}
-{"kind":"home","round":0,"firstVisibleMs":600.1999999999534,"readyMs":950.1000000000931,"releaseToFirstVisibleMs":562.0999999998603,"releaseToReadyMs":912}
-{"kind":"settings","round":1,"firstVisibleMs":350,"readyMs":3250.0999999998603,"releaseToFirstVisibleMs":314.5,"releaseToReadyMs":3214.5999999998603}
-{"kind":"home","round":1,"firstVisibleMs":500.0999999998603,"readyMs":950.0999999998603,"releaseToFirstVisibleMs":464.5,"releaseToReadyMs":914.5}
-{"kind":"settings","round":2,"firstVisibleMs":350.0999999998603,"readyMs":3150.0999999998603,"releaseToFirstVisibleMs":315,"releaseToReadyMs":3115}
-{"kind":"home","round":2,"firstVisibleMs":500.0999999998603,"readyMs":900.0999999998603,"releaseToFirstVisibleMs":462.0999999998603,"releaseToReadyMs":862.0999999998603}

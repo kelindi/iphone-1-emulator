@@ -29,7 +29,7 @@ The guest CPU runs at 412 MHz, but the interpreter only retire ~42 M instruction
 Run the snapshot resume command with `--steps 10190000000 --no-fb`. It executes exactly 400 M instructions after load. Measure wall time with `date +%s.%N` before/after and subtract the load offset (`--steps 9790000000`, zero instructions executed). Rate = 400e6 / (total − offset). Profile with `perf` and list the top symbols. Do not report "target steps / total time".
 
 ## Deliverable
-A PR from a branch `devin/<timestamp>-speed` targeting `devin/1788299483-m68-os1-boot` that:
+A PR from a branch `speed` targeting `main` that:
 - implements the block cache, fast data TLB, and correct tick accounting,
 - adds tests,
 - updates `docs/iphone1_1_os1_port.md` §"Interpreter speed" with baseline and new rates,

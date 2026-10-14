@@ -9,7 +9,7 @@ const out=resolve(process.env.ARTIFACT_DIR||'.context/adaptive-compiler/workload
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const build=JSON.parse(await readFile(out+'/build-report.json'));assert(build.passed);
 assert.equal(sha(await readFile(out+'/workload.wasm')),build.wasmSha256);
-const frozen=JSON.parse(await readFile('docs/traces/adaptive-workloads/report.json'));
+const frozen=JSON.parse(await readFile('tools/jit/adaptive/fixtures/adaptive-workloads-report.json'));
 const baseline=JSON.parse(await readFile('.context/adaptive-compiler/baseline-final/freeze-manifest.json'));
 const fixture=await readFile(process.env.FIXTURE_SNAPSHOT||'.context/adaptive-compiler/workload-home.snap');
 assert.equal(sha(fixture),frozen.fixture.sha256);

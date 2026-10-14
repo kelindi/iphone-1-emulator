@@ -1,7 +1,0 @@
-HTTP/1.0 200 OK
-Content-Type: text/html; charset=utf-8
-Content-Length: 474
-Connection: close
-Cache-Control: no-store
-
-<!DOCTYPE html><html><head><meta name="viewport" content="width=320, initial-scale=1"><title>iPhone Local Demo</title></head><body><h1>Local demo</h1><p>This page is served inside this emulated phone. It is fixed demo content, not an internet service.</p><p>Page: HOME-1</p><p><a href="/next">Open next page</a></p><form action="/echo" method="get"><label>Message <input name="message" maxlength="32" size="12"></label><input type="submit" value="Send"></form></body></html>

@@ -21,7 +21,7 @@ class WeatherRequestTests(unittest.TestCase):
         cls.fn = cls.lib.own_weather_request
         cls.fn.argtypes = [ctypes.c_char_p, ctypes.c_uint, ctypes.c_void_p, ctypes.c_uint, ctypes.POINTER(ctypes.c_uint)]
         cls.fn.restype = ctypes.c_int
-        base = ROOT/'docs/traces/weather-service-contract/demo-backend'
+        base = ROOT/'tools/legacy_services/fixtures/weather-demo-backend'
         cls.forecast = (base/'forecast-request.xml').read_bytes()
         cls.search = (base/'search-request.xml').read_bytes()
 

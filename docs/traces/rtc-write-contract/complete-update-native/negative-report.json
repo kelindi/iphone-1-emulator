@@ -1,6 +1,0 @@
-{
-  "passed": true,
-  "mutant": "wrong extra increment on commit pulse",
-  "exitCode": 1,
-  "expectedFailure": "FAIL line29: p.seconds==desired\n"
-}

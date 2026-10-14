@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/stream-audit.py", line 82, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/stream-audit.py", line 49, in run
-    assert f"STREAM IPC generation{n} cycles{g['ipcCycles']} return0" in trace,'generation actual IPC missing'
-AssertionError: generation actual IPC missing

@@ -1,3 +1,0 @@
-Error: State mismatch straight-tail-prefix-suffix-budget
-    at compare (/home/vercel-sandbox/iphone-1/.context/jit-register-layout/test.cjs:27:292)
-    at /home/vercel-sandbox/iphone-1/.context/jit-register-layout/test.cjs:34:186

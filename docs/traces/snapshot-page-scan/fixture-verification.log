@@ -1,4 +1,0 @@
-{"name":"mbx","trial":0,"size":244887522,"sha256":"11347c979d747bf2e0a3c575eb46a089f99c867743074e821e4c47dbafa420c6","blockingExact":true,"captureExact":true,"chunks":233,"retiredDuringFinalize":11650000}
-{"name":"mbx","trial":1,"size":244887522,"sha256":"c2f312989eab08ff423ae81d0033f69bcb76a2698c19844b7dd2bd18965fe586","blockingExact":true,"captureExact":true,"chunks":233,"retiredDuringFinalize":11650000}
-{"name":"software","trial":0,"size":244932578,"sha256":"543af08a6222b167deb596dd12744709c85676463183ed0cc6494474c92b73b5","blockingExact":true,"captureExact":true,"chunks":233,"retiredDuringFinalize":11650000}
-{"name":"software","trial":1,"size":244932578,"sha256":"379ad2ae9ca09af6f24f882e7503c044f41d9bdc9fcb4f5d6379ee92d6656211","blockingExact":true,"captureExact":true,"chunks":233,"retiredDuringFinalize":11650000}

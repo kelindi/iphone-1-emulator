@@ -1,7 +1,0 @@
-[1/5] Building C object core/CMakeFiles/emucore.dir/src/snapshot.c.o
-[2/5] Linking C static library core/libemucore.a
-[3/5] Linking C executable ../dist/emu.js
-[4/5] Generating the guarded browser instruction seed
-Generated 512 guarded regions (12341313 bytes; d9c661556ab17bb8433ed9b0c3ecfd52e2fcafe58221b4cb84a920e4976b3881)
-[5/5] Versioning the complete offline browser bundle
-Offline bundle: 2637a8ea60ba6bd2416605fe

@@ -1,7 +1,0 @@
-{
-  "scope": "New control raw stream remains private; actual independent full parser requires exact same bytes/hash as073. Reuse its durable lossless stream, no new compression or duplicate146MB blob.",
-  "rawLocalPath": ".context/sdio-first/handoff-ready/runs/control-1/transactions.bin",
-  "bytes": 146615936,
-  "sha256": "13881df363adc1770b768a2841874ab289f7377c5d58eb337e52569b2735eae9",
-  "durableLosslessFile": "../../sdio-checkpoint/v2/actual/continuation-transactions.bin.gz"
-}

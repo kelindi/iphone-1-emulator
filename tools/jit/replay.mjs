@@ -4,7 +4,7 @@ import {gunzipSync} from 'node:zlib';
 import {fileURLToPath} from 'node:url';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {resolve} from 'node:path';
+import {basename,resolve} from 'node:path';
 const repo=fileURLToPath(new URL('../../',import.meta.url));
 const path=p=>resolve(repo,p);
 const m=await createEmu({locateFile:p=>path('web/dist/'+p)});
@@ -18,7 +18,7 @@ if(process.env.FIXTURE_SNAPSHOT) fixture=await readFile(resolve(process.env.FIXT
 else {
  const parts=Array.isArray(manifest.snapshot)?manifest.snapshot:[manifest.snapshot];
  if(!parts[0]) throw Error('A home snapshot is required');
- fixture=Buffer.concat(await Promise.all(parts.map(p=>readFile(path('web/'+p)))));
+ fixture=Buffer.concat(await Promise.all(parts.map(p=>readFile(/^https?:/.test(p)?path('web/firmware/'+basename(new URL(p).pathname)):path('web/'+p)))));
 }
 if(fixture[0]===0x1f && fixture[1]===0x8b) fixture=gunzipSync(fixture);
 const s=alloc(fixture);

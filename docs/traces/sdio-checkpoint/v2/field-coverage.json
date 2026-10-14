@@ -1,8 +1,0 @@
-{
-  "serializedLeaves": 106,
-  "excludedHostPointers": [
-    "dma_ctx",
-    "dma_reader"
-  ],
-  "passed": true
-}

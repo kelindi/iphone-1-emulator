@@ -3,7 +3,6 @@
 add_library(emucore STATIC
     src/arm/arm_interp.c
     src/arm/vfp.c
-    src/arm/a64_static_engine.c
     src/mmu.c
     src/snapshot.c
     src/vm_source.c
