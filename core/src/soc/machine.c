@@ -17,14 +17,9 @@
 #endif
 #include <stdio.h>
 #include "board.h"
-#include "../arm/a64_static_engine.h"
 #include <stdlib.h>
 #include <string.h>
 
-#if defined(S5LBOX_STATIC_A64_DEFAULT_GRAPH) && \
-    defined(S5LBOX_STATIC_A64_DEFAULT_COMPACT_RAW)
-#error "Only one signed-static A64 product policy may be selected"
-#endif
 
 /* ------------------------------------------------------- the window map ---
  *
@@ -821,7 +816,6 @@ bool s5l8900_set_pre_step_hook(s5l8900_t *m, s5l_pre_step_fn fn, void *ctx,
         m->pre_step_filter = 0u;
         m->pre_step_matches = 0u;
         m->pre_step_handled = 0u;
-        s5l8900_static_a64_invalidate_derived(m);
         return true;
     }
     if (!targets || !count || count > S5L_PRE_STEP_TARGET_MAX) return false;
@@ -845,7 +839,6 @@ bool s5l8900_set_pre_step_hook(s5l8900_t *m, s5l_pre_step_fn fn, void *ctx,
     m->pre_step_hook = fn;
     m->pre_step_matches = 0u;
     m->pre_step_handled = 0u;
-    s5l8900_static_a64_invalidate_derived(m);
     return true;
 }
 
@@ -1382,42 +1375,6 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     m->bus.host_ram = machine_host_ram;
 
     arm_reset(&m->cpu, &m->bus);
-#if defined(S5LBOX_STATIC_A64_DEFAULT_DIRECT_WRITES)
-    /* This opt-in belongs to the iOS target, whose machine bus is not wrapped
-     * by a RAM-write observer. Generic and diagnostic frontends remain NULL. */
-    if (!s5l8900_set_direct_ram_writes(m, true)) {
-        s5l8900_free(m);
-        return false;
-    }
-#endif
-#if defined(S5LBOX_STATIC_A64_DEFAULT_GRAPH)
-    /* The iOS target explicitly promises the measured, build-time-signed
-     * graph path and its exact timebase-bounded extended invocation. Refuse a
-     * misconfigured binary rather than silently shipping the interpreter or
-     * the older sixteen-instruction boundary while the UI and documentation
-     * imply acceleration. */
-    if (!s5l8900_static_a64_set_enabled(m, true) ||
-        !s5l8900_static_a64_set_graph(m, true) ||
-        !s5l8900_static_a64_set_chain_limit(
-            m, S5LBOX_STATIC_A64_PRODUCT_CHAIN_INSNS)) {
-        s5l8900_free(m);
-        return false;
-    }
-#endif
-#if defined(S5LBOX_STATIC_A64_DEFAULT_COMPACT_RAW)
-    /* The callback-free live-byte tier beat the interpreter by 6.06% in an
-     * exact, balanced 100M-instruction A9 replay. Select that proved policy
-     * with the same 256-instruction timebase-bounded ceiling used by the
-     * diagnostic control. Every unsupported or unproved shape still reaches
-     * the architectural interpreter before mutation. */
-    if (!s5l8900_static_a64_set_enabled(m, true) ||
-        !s5l8900_static_a64_set_compact_raw(m, true) ||
-        !s5l8900_static_a64_set_chain_limit(
-            m, S5LBOX_STATIC_A64_PRODUCT_CHAIN_INSNS)) {
-        s5l8900_free(m);
-        return false;
-    }
-#endif
     return true;
 }
 
@@ -1430,9 +1387,6 @@ void s5l8900_free(s5l8900_t *m) {
     if (!m) return;
 #ifdef S5LBOX_ADAPTIVE_JIT
     if (!arm_adaptive_forget(&m->cpu)) return;
-#endif
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-    s5l8900_static_a64_dispose(m);
 #endif
     for (unsigned i = 0; i < m->stub_count; i++) {
         free(m->stubs[i].regs);
@@ -1563,7 +1517,6 @@ bool s5l8900_wake_from_standby(s5l8900_t *m) {
      * did not. Flush host-derived execution state and detach the new guest
      * instant from any pre-sleep host-clock anchor. Lifetime evidence counters
      * remain intact, including the monotonic retired-instruction count above. */
-    s5l8900_static_a64_invalidate_derived(m);
     m->batch_pending = 0u;
     m->wfi_pace_yield = false;
     m->active_clock_last_host_ns = 0u;
@@ -1854,9 +1807,6 @@ static unsigned interpreter_tick_batch_limit(const s5l8900_t *m,
     if (m->pre_step_hook ||
         (m->cpu.bus && m->cpu.bus->privileged_svc_handler))
         return 0u;
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-    if (s5l8900_static_a64_is_enabled(m)) return 0u;
-#endif
     return run_retirement_batch_limit(m, remaining, active_clock);
 }
 
@@ -2037,62 +1987,6 @@ static void run_clock_retired(s5l8900_t *m, bool *active_clock,
         *active_clock = false;
 }
 
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-typedef struct {
-    s5l8900_t *machine;
-    bool *active_clock;
-    unsigned *pending_retired;
-} static_a64_retirement_boundary_t;
-
-/* A privileged compact prefix may remain inside the build-time-linked runner
- * across a FETCH-window change only after receiving the same device/clock
- * boundary its outer-loop return used to provide. The callback performs that
- * exact accounting and then repeats the ordinary machine eligibility gate;
- * the engine separately rechecks CPU/translation admission before reading the
- * replacement window. */
-static bool static_a64_retirement_boundary(void *opaque, unsigned retired) {
-    static_a64_retirement_boundary_t *boundary =
-        (static_a64_retirement_boundary_t *)opaque;
-    if (!boundary || !boundary->machine || !boundary->active_clock ||
-        !boundary->pending_retired || !retired)
-        return false;
-    run_clock_retired(boundary->machine, boundary->active_clock,
-                      boundary->pending_retired, retired, false, true);
-    return run_retirement_batch_limit(boundary->machine, 1u,
-                                      *boundary->active_clock) != 0u;
-}
-#endif
-
-unsigned s5l8900_static_a64_fallback_step(s5l8900_t *m,
-                                          arm_status_t *status) {
-    arm_status_t step_status;
-
-    if (!m || !status) return 0u;
-    *status = ARM_OK;
-    if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
-        (m->cpu.cpsr & ARM_CPSR_MODE_MASK) != ARM_MODE_USR ||
-        (m->cpu.cpsr & ARM_CPSR_E) != 0u ||
-        m->cpu.abort_pending ||
-        (m->cpu.fiq_line && !(m->cpu.cpsr & ARM_CPSR_F)) ||
-        (m->cpu.irq_line && !(m->cpu.cpsr & ARM_CPSR_I)))
-        return 0u;
-    step_status = arm_step(&m->cpu);
-    *status = step_status;
-    if (step_status != ARM_OK) return 0u;
-
-    /* A fallback may perform MMIO or change instruction state/privilege. The
-     * resident ARM loop can continue only while the same User A32/Thumb machine
-     * boundary that admitted it remains exact. RETIRE_STOP still accounts the
-     * successful instruction before returning to the device tick. */
-    if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
-        (m->cpu.cpsr & ARM_CPSR_MODE_MASK) != ARM_MODE_USR ||
-        (m->cpu.cpsr & ARM_CPSR_E) != 0u ||
-        m->cpu.abort_pending ||
-        (m->cpu.fiq_line && !(m->cpu.cpsr & ARM_CPSR_F)) ||
-        (m->cpu.irq_line && !(m->cpu.cpsr & ARM_CPSR_I)))
-        return 2u;
-    return 1u;
-}
 
 unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
 #ifdef S5LBOX_ADAPTIVE_JIT
@@ -2109,15 +2003,6 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
     unsigned n = 0;
     unsigned active_pending_retired = 0u;
     bool active_clock = false;
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-    static_a64_retirement_boundary_t static_boundary = {
-        .machine = m,
-        .active_clock = &active_clock,
-        .pending_retired = &active_pending_retired,
-    };
-    bool compact_pc_profile_slice =
-        s5l8900_static_a64_compact_raw_pc_profile_slice_begin(m);
-#endif
     /* A direct arm_step() may have used the same machine between run calls.
      * Only a wait reached during THIS bounded slice may shorten it. */
     m->batch_pending = 0u;
@@ -2140,64 +2025,6 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                 continue;
             }
         }
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-        /* The iOS product keeps the rejected signed engine compiled for exact
-         * experiments but leaves it disabled. Check that policy before the
-         * expensive timebase/input eligibility gate: the old order paid a
-         * 64-bit divide and several scattered loads on every interpreted guest
-         * instruction even though no signed state had ever been allocated. */
-        if (
-#ifdef S5LBOX_ADAPTIVE_JIT
-            !arm_adaptive_enabled &&
-#endif
-            s5l8900_static_a64_is_enabled(m)) {
-            bool known_negative = false;
-            arm_status_t engine_status = ARM_OK;
-            unsigned boundary_retired = 0u;
-            unsigned batch = run_retirement_batch_limit(
-                m, max_steps - n, active_clock);
-            if (batch)
-                batch = s5l8900_static_a64_try(
-                    m, batch, &known_negative, &engine_status,
-                    static_a64_retirement_boundary, &static_boundary,
-                    &boundary_retired);
-            if (batch) {
-                if (boundary_retired > batch) {
-                    st = ARM_UNDEFINED;
-                    break;
-                }
-                n += batch;
-                unsigned unaccounted = batch - boundary_retired;
-                if (unaccounted || engine_status != ARM_OK) {
-                    run_clock_retired(
-                        m, &active_clock, &active_pending_retired,
-                        unaccounted, engine_status != ARM_OK,
-                        m->level_dirty ||
-                        ext_inputs(m) != m->ext_seen ||
-                        (known_negative && unaccounted != 0u));
-                }
-                if (engine_status != ARM_OK) {
-                    st = engine_status;
-                    break;
-                }
-                /* The ordinary next iteration would first repeat the machine
-                 * gate and only then discover the same negative cache entry.
-                 * Do those checks now and fall directly into its one
-                 * interpreter step. A timer/IRQ/input edge or changed byte
-                 * cancels the bypass. */
-                if (!known_negative || n >= max_steps)
-                    continue;
-                if (run_retirement_batch_limit(
-                        m, max_steps - n, active_clock) &&
-                    !s5l8900_static_a64_commit_known_negative_bypass(m))
-                    continue;
-            }
-            if (engine_status != ARM_OK) {
-                st = engine_status;
-                break;
-            }
-        }
-#endif
 
         /* A limit of one cannot save a tick call, so retain the smaller
          * ordinary path at the edge itself. Inside a real batch, inspect every
@@ -2338,10 +2165,6 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
     if (active_clock && active_pending_retired)
         (void)active_host_clock_sync(
             m, (uint32_t)active_pending_retired);
-#if defined(S5LBOX_STATIC_A64_ENGINE)
-    if (compact_pc_profile_slice)
-        s5l8900_static_a64_compact_raw_pc_profile_slice_end(m);
-#endif
     if (m->uart4_host_service)
         m->uart4_host_service(m->uart4_host_ctx, n);
     m->batch_pending = 0u;

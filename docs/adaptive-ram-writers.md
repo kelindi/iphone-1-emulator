@@ -16,7 +16,7 @@ run after version checks. A version match alone does not authorize execution.
 | Writer / path | Current coverage | Remaining requirement |
 |---|---|---|
 | `arm_interp.c` `MEM_WRITE` cached `dwrite_hit` | Notifies after direct byte/halfword/word memcpy | Custom paths must retain this post-commit contract |
-| ABI2 `adaptive_write` / `arm_write_cache_try` | Qualified warm-cache helper notifies after commit; active code overlap forces an immediate exit | 51 integrated cases pass; see [store evidence](traces/adaptive-ram-stores/README.md) |
+| ABI2 `adaptive_write` / `arm_write_cache_try` | Qualified warm-cache helper notifies after commit; active code overlap forces an immediate exit | 51 integrated cases pass; see [store evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-ram-stores/README.md) |
 | `machine.c` `bus_write` | Notifies each committed RAM span; MMIO excluded | Custom/interposed buses must preserve the notification contract |
 | `arm_interp.c` crossing/multiword/VFP stores | Commit through the two paths above | Broader fault/atomic/exclusive observer matrix before removing literals |
 | `pl080.c` `bus_store` DMA | Uses notified machine bus writes | Tested widths and boundary spans; broader device scheduling qualification remains |
@@ -29,7 +29,6 @@ run after version checks. A version match alone does not authorize execution.
 | `firmware/loader.c` `fw_load_img3_common` | Adaptive loader invalidates before direct copy/decryption | Validate armed partial-decrypt/error cases before final writer qualification |
 | Optional `bringup.c` / native kernel patch callback | Adaptive native bringup invalidates before edits | Keep callback execution unbound; optional native integration remains unqualified |
 | Optional `md_bridge.c` / `md_raw_bridge.c` | **Not covered**: copies, mapped stores, bounce buffers in guest RAM | Add commit/lifetime interface; reads can partially modify destination on error |
-| Optional `a64_static_engine.c` raw-RAM execution | **Not qualified** | Separate write instrumentation/exclusion audit |
 | Production web `HEAP*.set` staging | Inspected writes are separate malloc input/mask buffers | No claim that arbitrary external HEAP mutations are observable |
 | Test harness raw guest-RAM edits | Paused setup only in version fixtures | Notify/rebind explicitly for writes whose stale-code behavior is under test |
 
@@ -38,9 +37,9 @@ qualification build disables ABI1. That does not establish safe arbitrary tier
 mixing in production. Notifications must become visible before the next affected
 instruction; merely maintaining a counter without checking it is insufficient.
 
-Evidence and exact current test scope: [code versions](traces/adaptive-code-versions/README.md).
+Evidence and exact current test scope: [code versions](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-code-versions/README.md).
 
-[117 lifecycle evidence](traces/adaptive-lifecycle/README.md) verifies real
+[117 lifecycle evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-lifecycle/README.md) verifies real
 restore/free/disable barriers. Explicit disable always advances a bound epoch,
 even with only an external pending capture. The existing generated stores remain
 uninstrumented: engine transitions must use this API, not assign the public flag
