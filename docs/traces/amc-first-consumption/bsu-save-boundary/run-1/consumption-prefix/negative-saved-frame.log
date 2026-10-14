@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/consumption-prefix/destination-audit.py", line 45, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/run-1/consumption-prefix/destination-audit.py", line 26, in run
-    frame=(out/'destination-frame.bin').read_bytes();assert len(frame)==20 and struct.unpack_from('<I',frame,0)[0]==r[0] and struct.unpack_from('<I',frame,16)[0]==r[14],'actual saved frame differs'
-AssertionError: actual saved frame differs

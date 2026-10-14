@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-n/run-1/ordering-audit.py", line 54, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-n/run-1/ordering-audit.py", line 44, in run
-    rows=records((out/'ordering.bin').read_bytes(),trace,originals);baseline=Path('.context/amc-first/stage-m/run-1')
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-n/run-1/ordering-audit.py", line 16, in records
-    assert code==originals[pc],'original mapped code differs'
-AssertionError: original mapped code differs

@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 106, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 86, in run
-    else:assert code==bytes(32) and w['reason'] in (1,2,3,4,5),'unavailable code fabricated'
-AssertionError: unavailable code fabricated

@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/launch.py", line 158, in <module>
-    audit('save-audit.py',run_root,run_root/'save-audit.log');report['saveAuditPass']=True;save()
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-w/launch.py", line 32, in audit
-    with logfile.open('w') as log:subprocess.run(audit_command(out/script,directory),stdout=log,stderr=subprocess.STDOUT,check=True,timeout=30)
-  File "/usr/lib64/python3.9/subprocess.py", line 528, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['/usr/bin/python3', '.context/amc-first/stage-w/run-1/save-audit.py', '.context/amc-first/stage-w/run-1']' returned non-zero exit status 1.

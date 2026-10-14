@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 86, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 57, in run
-    assert (p/name).read_bytes()==(old/name).read_bytes(),'save mutated owned resources: '+name
-AssertionError: save mutated owned resources: sram.bin

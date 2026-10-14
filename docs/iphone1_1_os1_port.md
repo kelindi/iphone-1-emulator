@@ -475,8 +475,8 @@ same coordinate conversion as MTZ2.
 Snapshots preserve the guest CPU instruction count and device state:
 
 ```text
---save-at 5800000000 /home/ubuntu/firmware/home.snap
---load /home/ubuntu/firmware/home.snap --at 6000000000 tap 48 60 --steps 6500000000
+--save-at 5800000000 fw/home.snap
+--load fw/home.snap --at 6000000000 tap 48 60 --steps 6500000000
 ```
 
 Loading resumes absolute instruction counting from the saved CPU cycle count;

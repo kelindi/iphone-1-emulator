@@ -1,6 +1,0 @@
-{
-  "scope": "Functional guest-step census only; no latency/CPU-time comparison",
-  "rootHeavyJobs": "END before start",
-  "legacyMessage": "Private hello/native observer builds closed; approved normal coldboot about to start, 10B instructions/900s wall. Root explicitly permits overlap.",
-  "quietClaim": false
-}

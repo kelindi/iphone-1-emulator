@@ -1,8 +1,0 @@
-{
-  "passed": true,
-  "productionSourceSha256": "3ddac5082690e4ea0f0e710105ccbc7ec1a2f1afa6da74986b0c56691f173d2f",
-  "candidateSha256": "3c2cc4122a9b32ab22db44d253e26920650c885c1c019b170a2951002ce597e9",
-  "classSuffixByteIdentical": true,
-  "classSuffixSha256": "393a7256e394d56a29425b840021f62637cba80fcf34ac572fbdce236b2d2daf",
-  "scope": "Only optional seed loading/preparation prefix changes. Runtime/admission/reset/restore classes, seed bytes and ABI unchanged. No production edits."
-}

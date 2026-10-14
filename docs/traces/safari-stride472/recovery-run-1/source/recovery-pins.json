@@ -1,7 +1,0 @@
-{
-  "recovery.mjs": "e0a5b71fd29ded1a7d0ed1c675f932ff3ff8db0be669bd4ea86f346ec05030df",
-  "recovery-contract.md": "842f87558f31841fa1465457e6a01e998c3421651aa7294c9e65ed7141e15b95",
-  "site-pins.json": "6842291956e1b38e9e37f82da6ae0156e851d12b361f8ea661615e4a518e6bc5",
-  "release-wasm-current/report.json": "e89b6ab3fe38b3d565275104400887c95393b394af63f9aba1b6c216d6fc2549",
-  "release-wasm-current/abi-report.json": "90e891e23a4f8293efe43483f51257e4f5106266275c516e0fd2ae43f8f6a285"
-}

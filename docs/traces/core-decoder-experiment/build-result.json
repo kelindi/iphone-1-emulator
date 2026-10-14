@@ -1,8 +1,0 @@
-{
-  "controlByteIdentical": true,
-  "modules": {
-    "control": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463",
-    "candidate": "6b549c12201b65e75983c6bb47cb4438c3d66e677f8740f2cfae0342311db714"
-  },
-  "productionSha256": "3b43ccf4a8292a4da776491aa92185b0ea88e2fc38a3002a6e1fe1d5a6aa4463"
-}

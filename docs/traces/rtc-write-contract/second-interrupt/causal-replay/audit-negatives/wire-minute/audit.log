@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/rtc-second/audit.py", line 53, in <module>
-    assert transaction and writes==[(i+1,0x59+i,v,1) for i,v in enumerate(transaction)]
-AssertionError

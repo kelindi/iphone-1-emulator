@@ -1,7 +1,0 @@
-{
-  "snapshot": ".context/app-services-current/weather-t-browser/final-home.snap",
-  "snapshotSHA256": "cae763b95e4ef87e7915b36a520a0d8f5f5d924a937889b28aaa7339643e97c4",
-  "logBytes": 21529,
-  "logSHA256": "d604f0d6743be64228b0603b96a2707b931a495244184cef4a667d4e1f5e2bd8",
-  "scope": "Snapshot backing-file readback; dirty cache bytes may be absent. No guest execution."
-}

@@ -1,1 +1,0 @@
-AssertionError: expected four changed release files, but runtime emu.js wrapper is byte-identical to the previous build. Actual differences are only dist/emu.wasm, seed-jit.js and generated service-worker.js. Core/loader/seed/UI projection comparisons before that assertion all passed; no production file was changed.

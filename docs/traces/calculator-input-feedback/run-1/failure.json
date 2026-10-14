@@ -1,9 +1,0 @@
-{
-  "passed": false,
-  "at": 1788683680.7308927,
-  "phase": "first warmup report serialization",
-  "error": "TypeError: Do not know how to serialize a BigInt",
-  "source": "executed-test.mjs",
-  "log": "../run-1.log",
-  "scope": "Warmup actual guest screen retained; no timing dataset survived process exit and no latency conclusion. Browser closed through finally. No product changes."
-}

@@ -218,7 +218,7 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
  * live compiler wiring, not guest state; no stream fields or version change.
  * Code-version tables live outside the machine and require epoch invalidation
  * before restore. Native sizeof probe: 127504. */
-SNAP_SIZE_GUARD(s5l8900_t,         127504, "snap_mach");
+SNAP_SIZE_GUARD(s5l8900_t,         127496, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */

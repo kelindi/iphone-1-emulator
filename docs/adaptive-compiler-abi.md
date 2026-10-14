@@ -1,10 +1,10 @@
 # Adaptive compiler ABI2 proposal
 
 Status: **initial isolated runtime integration is implemented; broader qualification remains pending**.
-See [end-to-end synthetic workload evidence](traces/adaptive-runtime/README.md). The C result layout
-and invocation validator are implemented and tested in isolation; [bridge evidence](traces/adaptive-result-contract/README.md) does not qualify admission or scheduler dispatch.
+See [end-to-end synthetic workload evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-runtime/README.md). The C result layout
+and invocation validator are implemented and tested in isolation; [bridge evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-result-contract/README.md) does not qualify admission or scheduler dispatch.
 An isolated WASM emitter now implements the proposed result layout and integer
-execution slice; [CPU-only evidence](traces/adaptive-emitter/README.md) does not
+execution slice; [CPU-only evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-emitter/README.md) does not
 qualify machine scheduling, admission, code invalidation or real guard behavior. This specifies an initial
 Stage 2 integration interface, subordinate to the [accepted plan](../plans/adaptive-compiler.md)
 and [correctness contracts](adaptive-compiler-contracts.md). ABI1, its existing
@@ -230,7 +230,7 @@ The instruction guard import performs a pure mapping/literal check first, then
 may reproduce reference fetch-cache fields and TLB-hit accounting through the
 existing nonwalking refill. It must not change architectural registers, execute
 an instruction or access MMIO. Failed pure checks perform no refill. This fixes
-a complete-snapshot mismatch on MMU cross-window execution; [113 evidence](traces/adaptive-mmu-timer/README.md) includes a guarded slow-load test proving no double-counted fetch.
+a complete-snapshot mismatch on MMU cross-window execution; [113 evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-mmu-timer/README.md) includes a guarded slow-load test proving no double-counted fetch.
 
 ## Initial physical-version implementation
 
@@ -255,7 +255,7 @@ failure forbids the requested mutation. Restore reports `SNAP_ERR_BUSY` rather
 than misclassifying runtime ownership as guest corruption. Explicit disable
 advances every bound lifetime, including capture-only pending work, and releases
 installed handles through the existing retirement queue. Browser host rebind and
-background cancellation integration remain required. [117 evidence](traces/adaptive-lifecycle/README.md).
+background cancellation integration remain required. [117 evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-lifecycle/README.md).
 
 ## Warm RAM load import
 
@@ -267,7 +267,7 @@ MMIO. Zero means BEFORE, with no instruction or miss-counter effects. On success
 it credits exactly one reference read-cache hit; the generated load owns result
 and writeback, and ordinary retirement remains unchanged. The pointer is consumed
 immediately during that invocation, never retained across lifetime changes.
-Only load-bearing modules require this import. [118 evidence](traces/adaptive-ram-loads/README.md).
+Only load-bearing modules require this import. [118 evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-ram-loads/README.md).
 
 ## Compiled RAM store protocol
 
@@ -289,7 +289,7 @@ post-commit forbidden registry mutation also fails closed before cycle credit.
 
 Supported generated forms currently include ARM immediate STR/STRB addressing
 and Thumb immediate word/byte stores. Unsupported forms retain interpreter
-handoff. This protocol passes 51 isolated integrated cases; [store evidence](traces/adaptive-ram-stores/README.md) records the exact scope. Real-app performance acceptance remains pending.
+handoff. This protocol passes 51 isolated integrated cases; [store evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-ram-stores/README.md) records the exact scope. Real-app performance acceptance remains pending.
 
 ## Stage 2 synchronous admission observer
 

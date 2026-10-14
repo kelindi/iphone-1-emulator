@@ -1,6 +1,0 @@
-{
-  "pid": 3831620,
-  "timeUTC": "2026-09-06T07:49:31.342541+00:00",
-  "reason": "Own terminal UART line observed, but required native entry identity witness absent; stop first unexpected observer gate, preserve incomplete attempt, no retry.",
-  "signal": "SIGTERM"
-}

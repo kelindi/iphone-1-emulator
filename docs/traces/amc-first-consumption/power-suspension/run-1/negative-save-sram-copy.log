@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 86, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 41, in run
-    words=receipts(j,(p/'saved-context.bin').read_bytes(),(p/'saved-sram-copies.bin').read_bytes(),sram,trace,code)
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/run-1/save-audit.py", line 20, in receipts
-    assert copies==sram[0x28000:0x2c000]+sram[0x14000:0x1c000],'actual original SRAM copies differ'
-AssertionError: actual original SRAM copies differ

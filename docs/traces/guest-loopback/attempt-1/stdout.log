@@ -1,174 +1,0 @@
-using raw file, bytes=5888896
-using raw file, bytes=36864
-using raw file, bytes=176160768
-layout virt_base=0xc0000000 phys_base=0x08000000 ram_size=0x10000000
-kernel_begin_pa=0x08000000 kernel_end_pa=0x085c4b80 entry_pa=0x0805f7f0 entry_va=0xc005f7f0
-devicetree_pa=0x085c5000 devicetree_va=0xc05c5000 devicetree_size=0x00009000
-boot_args_pa=0x085ce000 ramdisk_pa=0x085d0000 ramdisk_va=0xc05d0000 ramdisk_size=0x0a800000
-framebuffer_pa=0x12dd0000 vram_bytes=0x00960000 top_of_kernel_data_pa=0x13730000 cmdline="debug=0x8 serial=3 rd=md0 -v"
-Darwin Kernel Version 9.0.0d1: Tue May 22 21:15:55 PDT 2007; root:xnu-933.0.0.178.obj~3/RELEASE_ARM_S5L8900XRB
-standard timeslicing quantum is 10000 us
-vm_page_bootstrap: 18309 free pages and 47227 wired pages
-mig_table_max_displ = 79
-iBoot version: 
-70 prelinked modules
-AppleS5L8900XIO::start: chip-revision: EVT0
-AppleARMPL192VIC::start: _vicBaseAddress = 0xee4d2000
-AppleS5L8900XEdgeIC::start: _edgeicBaseAddress: 0xee4d4000
-AppleS5L8900XGPIOIC::start: gpioBaseAddress: 0xee4d5000  gpioicBaseAddress: 0xee4d6000
-AppleS5L8900XPowerController::start: _pcBaseAddress: 0xee4d7000
-AppleS5L8900XClockController::start: _ccBaseAddress: 0xee4d8000 _miuBaseAddress: 0xee4d9000
-AppleS5L8900XClockController: Dynamic Performance State Management Enabled with max state 3
-AppleARMPL080DMAC::start: dmac0: _dmacBaseAddress: 0xee4da000
-AppleARMPL080DMAC::start: dmac1: _dmacBaseAddress: 0xee4db000
-AppleS5L8900XUSBWrangler::start starting
-AppleS5L8900XUSBWrangler::start registers at 0xee4dd000, 0x38400000 physical
-AppleS5L8900XADM::start: mapped I/O registers at 0xee558000/0x38800000
-+ AppleMPVDDriver[0xcb937000]::init(properties 0xcbab9800)
-+ AppleMPVDDriver[0xcb937000]::start(provider 0xcb996600)
-AppleS5L8900XSPIController::start: spi0: _spiBaseAddress = 0xef57b000
-AppleS5L8900XUSBPhy::start called
-AppleS5L8900XUSBPhy::start registers at 0xef57c000
-AppleS5L8900XI2CController::start: i2c0 _i2cBaseAddress: 0xef57d000
-AppleS5L8900XWatchDogTimer::start: _wdtBaseAddress: 0xef57e000
-AppleS5L8900XI2CController::start: i2c1 _i2cBaseAddress: 0xef57f000
-AppleS5L8900XI2SController::start: i2s0 i2sBaseAddress: 0xef580000
-AppleS5L8900XI2SController::start: i2s1 i2sBaseAddress: 0xef582000
-AppleS5L8900XSPIController::start: spi1: _spiBaseAddress = 0xef583000
-AppleS5L8900XSPIController::start: spi2: _spiBaseAddress = 0xef584000
-AppleMBXDevice(0xcbc08800): Init
-AppleMBX: Disabling auto clock gating because this is a EVT0/EVT1AppleMBX: Enabling auto clock-gating: 0
-AppleImage2NORAccess::probe(raw-device)
-AppleImage2NORAccess::start(raw-device) <1>
-AppleSimpleNORAccess::start imageVersion: 0
-AppleImage2NORAccessUserClient::probe(AppleImage2NORAccess)
-AppleImage2NORAccessUserClient::start(AppleImage2NORAccess) <1>
-AppleS5L8900XUSBWrangler::setPowerState state = 1
-
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart1 at 0x3cc04000(0xef697000)
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart3 at 0x3cc0c000(0xef698000)
-AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13b1d000, bufLA: 0xef699000
-AppleS5L8900XFMC::start: _fmcBaseAddress:      0xee559000
-AppleS5L8900XFMC::start: _rseccBaseAddress:    0xee55b000
-AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13bc3000, bufLA: 0xef69e000
-AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13bc6000, bufLA: 0xef69f000
-AppleARMPL080DMAC::_initDMAChannel: index: 7, bufPA: 0x13bc7000, bufLA: 0xef6a0000
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart0 at 0x3cc00000(0xef6a1000)
-AppleARMPL080DMAC::_initDMAChannel: index: 2, bufPA: 0x13bcc000, bufLA: 0xef6a2000
-AppleS5L8900XSerial: Identified Serial Port on ARM Device=uart4 at 0x3cc10000(0xef6a3000)
-IOCoreSurfaceDeviceMemoryRegion: edram was powered on at boot
-AppleSerialKDP::start registering as KDP debugger
-AppleARMPL080DMAC::_initDMAChannel: index: 5, bufPA: 0x13af5000, bufLA: 0xef7e4000
-AppleARMPL080DMAC::_initDMAChannel: index: 4, bufPA: 0x13af6000, bufLA: 0xef7e5000
-AppleARMPL080DMAC::_initDMAChannel: index: 3, bufPA: 0x13af7000, bufLA: 0xef7e6000
-ApplePCF50635PMU::start: pmu _pmuIICNub: 0xcbbae400
-AppleMicron2020::start()
-Registering IOCameraSensor service.
-AppleWM875xAudio::start: cbbc2800, audio0 _wmIICNub: 0xcb8f2d80, _wmIISNub: 0xcbbc4f80
-AppleMultitouchSPI: successfully starting non-DMA version of driver
-AppleMultitouchSPI: Logging is ENABLED
-AppleS5L8900XFMC::newDeviceWithRegistryEntry: no NAND flash banks are ready
-AppleS5L8900XUSBWrangler::phyRegistered PHY 0xcbb5eb80 notified us of availability
-AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb80
-AppleS5L8900XUSBWrangler::withRegistryEntry allocated new nub 0xcbb6cb00
-+ AppleMPVDDriver[0xcb937000]::setPowerStateGated()
-
-AppleMBX: Detected mbx,s5l8900x.  SupportsWriteCombining: true
-AppleMBXDevice(0xcbc08800)::setPowerState(1)
-AppleMBXDevice(0xcbc08800)::changePowerStateGated(1)
-BSD root: md0, major 2, minor 0
-AppleMerlotLCD: _lcdPanelID: 0x000000
-Jettisoning kernel linker.
-IOIpodUSBDevice::start
-IOIpodUSBDevice - Configuration: PTP
-IOIpodUSBDevice          Interface: PTP
-IOIpodUSBDevice - Configuration: HID
-IOIpodUSBDevice          Interface: IapOverUsbHid
-IOIpodUSBDevice - Configuration: PTP + Apple Mobile Device
-IOIpodUSBDevice          Interface: PTP
-IOIpodUSBDevice          Interface: AppleUSBMux
-IOAccessoryPortUSB::start
-virtual bool AppleUSBDeviceMux::start(IOService*) build: May 22 2007 21:27:52
-init_waste
-AppleMicron2020: Sensor not present
-AppleS5L8900XSDIO: registers @ vaddr 0xf190b000, paddr 0x38d00000
-IOReturn AppleS5L8900XSDIO::setPowerStateGated(long unsigned int, IOService*)
-AppleBaseband::start(0xcbaed400): baseband
-AppleMBX: Added swap device: AppleH1CLCD  id: cb937200
-AppleMBX: Using AppleH1CLCD as legacy swap device
-AppleH1CameraInterface: EVT0 no longer supported
-/dev/md0 on / (hfs, local, noatime)
-launchctl: Couldn't stat("/etc/mach_init.d"): No such file or directory
-Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stdout", ...): No such file or directory
-Dec 31 16:00:00 launchd[9]: 16/com.apple.BTServer: open("/var/logs/BTServer/stderr", ...): No such file or directory
-IOAccessoryPortSerial::start: could not set up serial port: device is offline
-Timeout waiting for CMDRDY! (cmd 5, cmdReg 0x00040045, arg 0x00000000)
-Failed to perform base SDIO init sequence.
-Unable to setup and scan the SDIO bus.
-AppleS5L8900XSDIO::setPowerState took 110 ms
-AppleS5L8900XSDIO: Command line options and current values used by driver
-AppleS5L8900XSDIO:     sdio-crc-panic=0
-AppleMultitouchSPI: downloaded 44752 bytes of firmware data ("0x0086") in 1ms (0ms stage 1, 1ms stage 2).
-ApplePCF50635PMUPowerSource: mbcs1-3 00 00 00
-ApplePCF50635PMUPowerSource: _powerSupplyType 1, _usbConnectType 1
-ApplePCF50635PMUPowerSource: enabling idle sleep
-ApplePCF50635PMUPowerSource: cap 75, ext 0, chrgCap 0, chrg 0 (0 mA, cyc 0, kind 0), warn 0, crit 0
-ApplePCF50635PMUPowerSource: AppleUSBCableDetect 0
-LOOPBACK_BEGIN_V1
-socket_server 00000003 00000000
-readiness_attempt 00000000 00000000
-ifconf 00000000 00000044
-ifconf_bytes 00000044 00000000
-D 6c6f300000000000000000000000000014120100180300006c6f300000000000
-D 000000006c6f3000000000000000000000000000100200007f00000100000000
-D 00000000
-ifflags 00000000 00008049
-ifname 00000010 00000000
-D 6c6f3000000000000000000000000000
-ifflags 00000000 00008049
-ifname 00000010 00000000
-D 6c6f3000000000000000000000000000
-route_sysctl 00000000 0000007c
-route_bytes 0000007c 00000000
-D 7c00050401000000050020000300000000000000000000000000000000000000
-D 000000000000000000400000000000000000000000c0000000c0000000000000
-D 0000000000000000000000000000000000000000000000000000000010020000
-D 7f0000010000000000000000100200007f0000010000000000000000
-fcntl_get 00000002 00000000
-fcntl_set 00000000 00000000
-nosigpipe 00000000 00000000
-bind 00000000 00000000
-bound_name 00000000 00000010
-bound_address 00000010 00000000
-D 100246a17f0000010000000000000000
-listen 00000000 00000000
-socket_client 00000004 00000000
-fcntl_get 00000002 00000000
-fcntl_set 00000000 00000000
-nosigpipe 00000000 00000000
-connect ffffffff 00000024
-connect_status 00000000 00000000
-accept 00000005 00000010
-peer_address 00000010 00000000
-D 1002c0007f0000010000000000000000
-fcntl_get 00000006 00000000
-fcntl_set 00000000 00000000
-nosigpipe 00000000 00000000
-actual_request 00000036 00000000
-D 474554202f7175616c696669636174696f6e20485454502f312e300d0a486f73
-D 743a203132372e302e302e313a31383038310d0a0d0a
-close_response 00000000 00000000
-actual_response 00000071 00000000
-D 485454502f312e3020323030204f4b0d0a436f6e74656e742d547970653a2074
-D 6578742f706c61696e0d0a436f6e74656e742d4c656e6774683a2032390d0a43
-D 6f6e6e656374696f6e3a20636c6f73650d0a0d0a4950484f4e45315f47554553
-D 545f4c4f4f504241434b5f56315f4f4b0a
-close_client 00000000 00000000
-close_server 00000000 00000000
-LOOPBACK_PASS_V1
-Dec 31 16:00:00 mDNSResponder-118 (May 25 2007 13:22:17)[16]: starting
-Dec 31 16:00:00 /System/Library/CoreServices/DumpPanic: No panic data in IORegistry
-IOIpodUSBDevice::gated_registerFunction all functions registered- we are ready to start usb stack
-ipif_ctl_connect: creating unit ip1
-ipif_ctl_connect: creating unit ip2
-

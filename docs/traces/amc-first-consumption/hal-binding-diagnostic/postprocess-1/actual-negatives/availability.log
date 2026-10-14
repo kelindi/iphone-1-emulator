@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 106, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-z/postprocess-1/binding-audit.py", line 85, in run
-    if w['available']:assert w['reason']==0 and sum(s[1] for s in w['spans'])==32 and all(s[4] for s in w['spans']),'complete code availability differs'
-AssertionError: complete code availability differs

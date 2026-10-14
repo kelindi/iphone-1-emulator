@@ -70,11 +70,7 @@ See the [service tools](tools/legacy_services/README.md) and
    Test actual Safari and Chrome on reference laptops.
 7. **CPU accuracy:** fix the known WebAssembly floating-point failures.
    Existing tests expose missing exception flags and incorrect rounding behavior.
-   See the [floating-point failure report](docs/traces/wasm-vfp-conformance/README.md).
-8. **Build automation:** fix the [JIT replay tool](tools/jit/replay.mjs), which treats remote firmware URLs as local filenames.
-   The CI web job currently fails at that step before its browser checks.
-   The GitHub Pages deployment job also returns HTTP 404.
-   Native tests, unit tests, the WebAssembly build, and its smoke test pass in the latest main-branch CI run.
+   See the [floating-point failure report](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/wasm-vfp-conformance/README.md).
 
 The [product roadmap](plans/web-iphone.md) defines the remaining targets.
 The [completion checklist](plans/completion-checklist.md) explains the larger gaps.
@@ -90,7 +86,7 @@ The p95 value describes the threshold for 95% of the samples.
 
 These results apply to that fixture and cloud machine.
 They do not establish performance on your hardware.
-See the [baseline report](docs/traces/adaptive-compiler-baseline/README.md).
+See the [baseline report](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/adaptive-compiler-baseline/README.md).
 A saved home-screen snapshot avoids the slow full boot.
 The default browser also uses accelerated graphics.
 The CPU engine uses WebAssembly code generated for selected instruction regions.
@@ -257,6 +253,8 @@ On Amazon Linux, install Xvfb with `sudo dnf install -y xorg-x11-server-Xvfb`.
 Recording tests need Playwright's encoder: `npx playwright install ffmpeg`.
 
 Keep generated reports, screenshots, recordings, and exports in ignored `.context/` paths.
+Historical engineering reports formerly under `docs/traces/` remain available at
+[commit 09c6897](https://github.com/kelindi/iphone-1/tree/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces).
 Historical browser recordings and milestone publishing files no longer belong to the branch histories.
 Retained engineering reports describe their original runs.
 Their historical hashes can predate the archival cleanup.
@@ -271,5 +269,19 @@ Their historical hashes can predate the archival cleanup.
 | `tools/firmware/` | Firmware extraction and work-image tools |
 | `tools/jit/` | Generated CPU code and isolated compiler experiments |
 | `tools/legacy_services/` | Local app services and prepared-image experiments |
-| `docs/traces/` | Retained test reports, screenshots, profiles, and experiment fixtures |
 | `plans/` | Implementation history, feature plans, and remaining work |
+
+## License
+
+iphone-1 is free software under the GNU General Public License, version 2 or
+(at your option) any later version; see [LICENSE](LICENSE).
+The portable C core derives from [S5LBox](https://github.com/j0shua-SYSON/S5LBox),
+whose MIT notice is kept in [third_party/S5LBox-LICENSE](third_party/S5LBox-LICENSE)
+and in the affected source files.
+
+The license covers this project's source code only.
+Apple firmware, iPhone OS software, and the files derived from them remain Apple's property
+and are not licensed by this project.
+iPhone and iPhone OS are trademarks of Apple Inc. iphone-1 is not affiliated with or endorsed by Apple.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).

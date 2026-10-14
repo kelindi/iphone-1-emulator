@@ -1,8 +1,0 @@
-Internal ctest changing into directory: /home/vercel-sandbox/iphone-1/.context/rtc-write/native-build
-Test project /home/vercel-sandbox/iphone-1/.context/rtc-write/native-build
-    Start 9: test_i2c
-1/1 Test #9: test_i2c .........................   Passed    0.13 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   0.13 sec

@@ -1,9 +1,0 @@
-HTTP/1.0 200 OK
-Content-Type: text/xml; charset=utf-8
-Connection: close
-Cache-Control: no-store
-X-iPhone1-Demo: fixed-stocks
-Content-Length: 791
-
-<?xml version='1.0' encoding='utf-8'?>
-<response demo="true" dataset="original-iphone-stocks-demo-v1"><result id="1"><list><quote><symbol>AAPL</symbol><price>120.00</price><change>1.25</change><changepercent>1.05</changepercent><status>0</status><link>http://127.0.0.1/</link></quote><quote><symbol>GOOG</symbol><price>500.00</price><change>-2.50</change><changepercent>-0.50</changepercent><status>0</status><link>http://127.0.0.1/</link></quote><quote><symbol>YHOO</symbol><price>25.00</price><change>0.00</change><changepercent>0.00</changepercent><status>0</status><link>http://127.0.0.1/</link></quote><quote><symbol>T</symbol><price>40.00</price><change>0.20</change><changepercent>0.50</changepercent><status>0</status><link>http://127.0.0.1/</link></quote></list></result></response>

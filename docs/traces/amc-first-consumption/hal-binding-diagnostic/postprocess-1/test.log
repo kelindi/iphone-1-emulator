@@ -1,2 +1,0 @@
-PASS 12 synthetic independent binding-table/fault controls; no guest
-PASS 5 geometry-header/parser negative checks; synthetic only

@@ -1,1 +1,0 @@
-Initial independent auditor rejected the HFS catalog root record because parent CNID1 was absent from its directory map. No guest/image failure. Corrected the read-only map to include reserved root parent1; retained original auditor.

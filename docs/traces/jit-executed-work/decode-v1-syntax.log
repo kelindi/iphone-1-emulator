@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/jit-executed-work/test-decode.py", line 3, in <module>
-    from decode import decode
-  File "/home/vercel-sandbox/iphone-1/.context/jit-executed-work/decode.py", line 16
-    assert isinstance(pos['thumb'],bool) and pos['pc']%(2 if pos['thumb']else4)==0,'position mode/alignment'
-                                                                         ^
-SyntaxError: invalid syntax

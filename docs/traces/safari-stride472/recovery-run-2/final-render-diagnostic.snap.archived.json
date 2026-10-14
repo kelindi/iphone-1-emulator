@@ -1,9 +1,0 @@
-{
-  "originalPath": ".context/safari-default-mbx/recovery-run-2/final-render-diagnostic.snap",
-  "gzipPath": ".context/safari-default-mbx/recovery-run-2/final-render-diagnostic.snap.gz",
-  "rawBytes": 259768584,
-  "rawSha256": "a4317f614172c7363e9ef10a7dcb136e3eab0849b1272360ec8c87d16e30186c",
-  "gzipBytes": 110654748,
-  "gzipSha256": "6958300b54ac34d340e33e1004e9300a7a176b3612bb61eea6eb178a444810bf",
-  "fullRoundtripVerified": true
-}

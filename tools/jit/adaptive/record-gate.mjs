@@ -38,7 +38,7 @@ try{
  const gate=JSON.parse(await pin(gatePath));
  assert.equal(gate.correctnessPassed,true);assert.equal(gate.performancePassed,false);
  const frozen=async path=>pin(path,gate.identities[resolve(path)]||assert.fail('Missing gate identity '+path));
- const reference=JSON.parse(await frozen('docs/traces/adaptive-workloads/report.json'));
+ const reference=JSON.parse(await frozen('tools/jit/adaptive/fixtures/adaptive-workloads-report.json'));
  const manifest=JSON.parse(await frozen(baseline+'/freeze-manifest.json'));
  await frozen(baseline+'/site/dist/emu.js');await frozen(baseline+'/site/dist/emu.wasm');
  const seedBytes=await frozen(baseline+'/site/jit/seed.wasm'),regions=JSON.parse(await frozen(baseline+'/site/jit/regions.json'));

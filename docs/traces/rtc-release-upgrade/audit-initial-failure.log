@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/rtc-release-upgrade/audit.py", line 27, in <module>
-    receipts=validate(r);negative=[]
-  File "/home/vercel-sandbox/iphone-1/.context/rtc-release-upgrade/audit.py", line 22, in validate
-    assert len(offline)==48 and all(x['fromServiceWorker'] for x in offline)
-AssertionError
-
-Independent inspection:48 total response events =46 HTTP responses supplied by ServiceWorker +2 local blob: worker-script responses. No HTTP(S) network response. Preserve original report/source; corrected audit classifies these non-network Blob responses explicitly.

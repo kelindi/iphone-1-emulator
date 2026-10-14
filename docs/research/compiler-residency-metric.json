@@ -1,5 +1,5 @@
 {
-  "source": "docs/traces/trace-optimizer-profile/analysis.json",
+  "source": "https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/trace-optimizer-profile/analysis.json",
   "sourceSha256": "88ccf8396a8f1e93f8fefb50e8987d5eb1af4e7bb70b589ec035642b82fa674d",
   "scope": "Difference of periodically reported worker metrics bracketing recorded warm Settings profile; includes readiness confirmation and may not exactly align with profiler boundaries. Calls include generated function attempts returning zero; ratio is not mean positive block length or measured handoff cost.",
   "before": {

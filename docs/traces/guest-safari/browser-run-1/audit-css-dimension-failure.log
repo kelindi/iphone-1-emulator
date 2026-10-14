@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/guest-safari/audit.py", line 68, in <module>
-    wa,ha,aa=png(R/a);wb,hb,bb=png(R/b);assert (wa,ha)==(wb,hb)==(320,480);aa=aa[y0*wa*3:y1*wa*3];bb=bb[y0*wa*3:y1*wa*3];assert aa==bb,(a,b)
-AssertionError

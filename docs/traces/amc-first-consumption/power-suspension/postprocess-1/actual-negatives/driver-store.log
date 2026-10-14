@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/postprocess-1/suspend-audit.py", line 48, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/postprocess-1/suspend-audit.py", line 36, in run
-    assert bool(state)==bool(j['driverStoreRetired']),'driver state receipt absent'
-AssertionError: driver state receipt absent

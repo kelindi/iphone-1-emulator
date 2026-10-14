@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-i/run-1/audit.py", line 28, in <module>
-    assert len(file_matches)==len(stream_matches)==1, 'captured bytes lack unique original provenance'
-AssertionError: captured bytes lack unique original provenance
