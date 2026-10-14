@@ -42,4 +42,4 @@ Run under `xvfb-run` if no X display is available (`apt-get install xvfb`) and u
 - Screenshots from `xvfb-run` showing the demo sequence.
 
 ## Deliverable
-A PR from a branch `devin/<timestamp>-sdl` targeting `devin/1788299483-m68-os1-boot`.
+A PR from a branch `sdl` targeting `main`.
