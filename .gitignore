@@ -9,12 +9,13 @@ build/
 *.ppm
 __pycache__/
 /web/build/
-/web/dist/
+# web/dist, web/jit and web/service-worker.js are committed: Vercel serves web/
+# as-is. CI rebuilds them and fails if the committed copies are stale.
+/web/dist/package.json
+/web/dist/*.pdb
 !/web/firmware/**
 node_modules/
 /.context/
-/web/service-worker.js
-/web/jit/
 
 # Generated publishing and browser-recording artifacts
 /tweets/

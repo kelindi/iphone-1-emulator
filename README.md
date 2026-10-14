@@ -115,7 +115,8 @@ npm run serve
 ```
 
 The build script finds Emscripten on `PATH` or in `.context/emsdk`.
-It writes generated files to `web/dist/` and regenerates the offline package.
+It writes generated files to `web/dist/` and `web/jit/` and regenerates the offline package (`web/service-worker.js`).
+These generated files are committed because Vercel serves `web/` as-is.
 Rebuild after you change browser files.
 
 The default [manifest](web/manifest.json) downloads firmware and a saved home state

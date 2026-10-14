@@ -44,6 +44,11 @@ jobs:
         run: |
           emcmake cmake -S . -B web/build -DIPHONE1_WEB=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build web/build
+      - name: Verify committed browser artifacts match the build
+        run: |
+          git status --porcelain -- web
+          git diff --stat --exit-code -- web/dist web/jit web/service-worker.js
+          test -z "$(git status --porcelain -- web)"
       - name: Run WebAssembly smoke test
         run: node web/smoke.mjs
       - name: Verify generated execution against complete interpreter snapshots

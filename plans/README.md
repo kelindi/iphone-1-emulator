@@ -203,7 +203,7 @@ The current [16-app audit](app-coverage.md) records actual app behavior and rema
 - Emscripten build `web/dist/emu.wasm` using the same portable core.
 - The browser loads `web/manifest.json`, reassembles multipart <100 MB firmware chunks, gunzips, and loads snapshot or rootfs. Current worker/frontend additions are tracked in the execution log.
 - Canvas rendering, status bar, `?cpi=` knob, mouse-as-touch, Escape=Home, Shift+click=hold.
-- GitHub Actions CI builds and tests the core, WebAssembly build, and browser checks. Vercel deploys the site; the unused GitHub Pages workflow was removed.
+- GitHub Actions CI builds and tests the core, WebAssembly build, and browser checks. Vercel deploys the site; the unused GitHub Pages workflow was removed. Vercel serves `web/` with no build step, so `web/dist/`, `web/jit/` and the generated `web/service-worker.js` are committed; CI rebuilds them and fails on any difference. Before `web/service-worker.js` was committed, production returned 404 for it and Keep offline could not register.
 
 ### Speed passes
 - Native `-O3` + IPO.

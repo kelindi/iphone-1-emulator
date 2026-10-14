@@ -27,6 +27,13 @@ ctest --test-dir build --output-on-failure
 For browser changes, follow the build and test steps in the
 [README](README.md#run-the-browser-locally).
 
+Vercel serves `web/` without a build step, so the generated `web/dist/`,
+`web/jit/` and `web/service-worker.js` are committed. After changing C code
+or any file listed in `tools/build-offline.py`, rebuild with Emscripten 4.0.16
+(`bash tools/build-web.sh`) and commit the regenerated files. For JS/HTML/CSS
+changes alone, `python3 tools/build-offline.py` refreshes the service worker.
+CI rebuilds everything and fails if the committed copies differ.
+
 ## Pull requests
 
 - Keep each pull request focused on one change.
