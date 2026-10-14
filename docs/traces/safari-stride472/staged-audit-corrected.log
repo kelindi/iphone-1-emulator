@@ -1,1 +1,0 @@
-{"passed": true, "packets": 905, "stagedBytes": 4583272, "sha256": "18dd3a56643fba342aae32992827d80c41c3e0ec8c84a57958616a07f7f4cdc9", "pixelsCommittedToGuest": false, "guestExecuted": false, "oracle": "Independent original packet fields and actual per-row GART source reads"}

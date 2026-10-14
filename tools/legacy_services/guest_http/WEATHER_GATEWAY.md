@@ -8,8 +8,8 @@ converts Cupertino to 22°C using its own unit control. Original Stocks displays
 AAPL 120.00, GOOG 500.00, YHOO 25.00 and T 40.00 on the same corrected gateway.
 The retained run passed with no harness errors; actual DNS and complete HTTP
 exchanges accompany the original framebuffer recording.
-[131](../../../docs/traces/weather-stocks-local/README.md) and
-[source, wire audit and recording](../../../docs/traces/weather-stocks-local/README.md).
+[131](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/weather-stocks-local/README.md) and
+[source, wire audit and recording](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/weather-stocks-local/README.md).
 All displayed values are fixed, visibly labeled sample data. Charts, symbol or
 city search/addition, live data, default distribution and persistence of this
 combined build remain unqualified; the chart HTTP400 is retained.
@@ -215,8 +215,8 @@ build and default distribution are unqualified.
 The earlier hosts-only attempt failed before Weather HTTP: its asynchronous
 resolver skipped the monitored hosts-file path. Later DNS routing reached the
 gateway but exposed the unsupported original `t` parameter. Both failures remain
-preserved in the [earlier evidence](../../../docs/traces/combined-app-gateway/README.md)
-and [final recovery archive](../../../docs/traces/weather-stocks-local/README.md).
+preserved in the [earlier evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/combined-app-gateway/README.md)
+and [final recovery archive](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/weather-stocks-local/README.md).
 
 
 ## Supplemental resolver candidate
@@ -237,7 +237,7 @@ old resolver entry and XML bytes, and audits every other existing file fork.
 Historical hosts-mode installation remains available to reproduce its failure.
 
 The original configd resource consumer and resolver serialization are verified
-in [the retained contract](../../../docs/traces/combined-app-gateway/dns-runtime/resolver-config-contract.json).
+in [the retained contract](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/combined-app-gateway/dns-runtime/resolver-config-contract.json).
 The final isolated phone now demonstrates this route through actual original
 Weather/Stocks requests and displayed sample responses. The config contract
 alone remains a static claim; the separate guest wire and frame evidence above

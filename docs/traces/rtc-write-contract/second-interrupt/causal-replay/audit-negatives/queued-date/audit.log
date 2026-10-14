@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/rtc-second/audit.py", line 41, in <module>
-    assert current and peeks['date-structure'][:8]==current
-AssertionError

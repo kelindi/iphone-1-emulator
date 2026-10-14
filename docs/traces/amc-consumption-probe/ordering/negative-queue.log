@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-k/run-1/ordering-audit.py", line 34, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-k/run-1/ordering-audit.py", line 29, in run
-    rel=old.relative_to(baseline);data=(out/rel).read_bytes();assert data==old.read_bytes(), 'guest artifact differs: '+str(rel);files[str(rel)]=hashlib.sha256(data).hexdigest()
-AssertionError: guest artifact differs: owned-queue.bin

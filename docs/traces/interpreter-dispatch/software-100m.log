@@ -1,5 +1,0 @@
-{"module":"file:///home/vercel-sandbox/iphone-1/.context/interpreter-dispatch/dist/emu.js","seedDirectory":"web/jit"}
-{"fixtureSha256":"28591a3003b8677469b2e506185792e26ac128ba9383b7f110959f4f4fb0c82d","instructions":100000000,"regions":512}
-{"enabled":0,"done":100000000,"hash":"1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8","architectureHash":"fa874776028c395160e0dfcf2897e119c62d436ab49e14d68b4b82dca0d0a4bd","tlb":["2416294936","58979021","387578"],"generated":0,"calls":0,"regions":0,"runMs":4438.910070999998,"ms":6190.692418}
-{"enabled":1,"done":100000000,"hash":"1d95750bdd3880a408f8e9cfee9451ae642894eaff8129e81bb954058034a5a8","architectureHash":"fa874776028c395160e0dfcf2897e119c62d436ab49e14d68b4b82dca0d0a4bd","tlb":["2416294936","58979021","387578"],"generated":87140487,"calls":8561513,"regions":511,"runMs":3051.9180749999996,"ms":4828.308994000001}
-Full machine snapshot equivalence passed

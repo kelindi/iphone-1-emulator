@@ -1,7 +1,0 @@
-{
-  "scope": "Exact accepted control trace reused without another146MB copy",
-  "privateOriginal": ".context/sdio-first/runtime-write/runs/control-1/transactions.bin",
-  "durableIdenticalStream": "../../../sdio-checkpoint/v2/actual/continuation-transactions.bin.gz",
-  "rawBytes": 146615936,
-  "rawSha256": "13881df363adc1770b768a2841874ab289f7377c5d58eb337e52569b2735eae9"
-}

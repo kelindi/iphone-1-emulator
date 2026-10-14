@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 104, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 48, in run
-    actual=v.to_bytes(4,'little');pcm=(p/f'stream-pcm-{n}.bin').read_bytes();assert len(pcm)==4096 and pcm==oracle[(n-1)*4096:n*4096],'actual decoded PCM differs'
-AssertionError: actual decoded PCM differs

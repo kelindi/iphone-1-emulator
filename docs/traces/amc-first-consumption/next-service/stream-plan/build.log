@@ -1,4 +1,0 @@
-.context/amc-first/stage-t/source/amc_idle.c: In function ‘amc_idle_write’:
-.context/amc-first/stage-t/source/amc_idle.c:85:29: warning: comparison of unsigned expression in ‘< 0’ is always false [-Wtype-limits]
-   85 |         if (s->input_prefix < AMC_INPUT_PREFIX && s->input_prefix < 6u &&
-      |                             ^

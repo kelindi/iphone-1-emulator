@@ -9,7 +9,7 @@ import wabtFactory from 'wabt';
 import {buildUnit} from './unit.mjs';
 import {emitUnit} from './emit.mjs';
 const require=createRequire(import.meta.url);
-const oraclePath=resolve('docs/traces/connected-compiler-experiment/oracle.cjs');
+const oraclePath=resolve('tools/jit/adaptive/fixtures/oracle.cjs');
 const m=await require(oraclePath)(),wabt=await wabtFactory();
 const layout={registers:m._emu_jit_offset(0),cpsr:m._emu_jit_offset(1)};
 const busOffset=m._emu_jit_offset(9),cyclesOffset=busOffset-8;

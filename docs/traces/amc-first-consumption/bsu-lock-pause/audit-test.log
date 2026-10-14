@@ -1,4 +1,0 @@
-external ledger predicate: 4 synthetic positive/negative checks pass; actual artifact negatives await guest run
-complete external predicates: 7 checks pass, including actual owner-record PC/value mutants
-final external predicates: 9 checks pass; full CPSR/Thumb and owner-record negatives included
-retirement evidence predicates: 15 PASS

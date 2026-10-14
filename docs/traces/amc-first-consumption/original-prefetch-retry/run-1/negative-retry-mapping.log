@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 43, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 38, in run
-    if i>=2:ba.fresh_walk(retry,w)
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/binding-audit.py", line 54, in fresh_walk
-    else:assert available and pa==expected_pa,'cloned physical translation differs'
-AssertionError: cloned physical translation differs

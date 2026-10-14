@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 104, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-u/run-1/artifact-v2/audit.py", line 36, in run
-    assert gs[n-1]['released'] and gs[n-1]['releasePC']==int(m[2],16),'actual generation owner write differs';actual_release.append(n)
-AssertionError: actual generation owner write differs

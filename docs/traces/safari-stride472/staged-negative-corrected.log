@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/safari-default-mbx/staged-audit.py", line 13, in <module>
-    data=Path(sys.argv[1]).read_bytes();report=audit(data);print(json.dumps(report))
-  File "/home/vercel-sandbox/iphone-1/.context/safari-default-mbx/staged-audit.py", line 9, in audit
-    assert hashlib.sha256(data[start:start+n]).hexdigest()==r['sourceSHA256'],'staged actual pixels differ from independent current source rows';offset+=n
-AssertionError: staged actual pixels differ from independent current source rows

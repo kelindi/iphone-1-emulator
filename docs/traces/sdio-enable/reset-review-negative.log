@@ -1,8 +1,0 @@
-FAIL line78: s.have_time&&s.endpoint.initializing
-FAIL line79: !s.endpoint.enabled&&!s.endpoint.initializing&&!s.endpoint.ready
-FAIL line80: !s.endpoint.ready&&s.card.state==CARD_SELECTED
-FAIL line81: s.have_time&&s.endpoint.ready
-FAIL line82: !s.endpoint.ready&&!s.endpoint.enabled
-FAIL line83: !s.endpoint.ready&&s.card.state==CARD_SELECTED
-SDIO isolated contracts: 101589 checks, 0 failures
-SDIO endpoint contracts: 12723 new, 114312 total checks, 6 failures

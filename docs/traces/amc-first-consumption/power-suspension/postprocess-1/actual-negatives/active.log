@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/postprocess-1/suspend-audit.py", line 48, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-y/postprocess-1/suspend-audit.py", line 8, in run
-    assert all(j[n]==0 for n in ('activeInitialized','activeConfigured','activeDecoder','activeQueue','activeIRQ','activeEvents','activeMask','activeService','activeDMA','activeIdleEnabled','activeResetComplete')),'active hardware was retained'
-AssertionError: active hardware was retained

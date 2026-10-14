@@ -77,4 +77,4 @@ full original boot-chain reproduction and perfect storage-hardware fidelity are
 not prerequisites for the planned first release.
 
 
-Architecture decision update: [098](../docs/traces/runtime-comparison/README.md) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.
+Architecture decision update: [098](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/runtime-comparison/README.md) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.

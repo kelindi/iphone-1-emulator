@@ -1,7 +1,7 @@
 """Deterministic Weather gateway fixture; not connected to the guest yet.
 
 The original request/response contract is documented in
-docs/traces/weather-service-contract/. No live weather provider is contacted.
+tools/legacy_services/fixtures/weather-demo-backend/. No live weather provider is contacted.
 """
 from dataclasses import dataclass
 from xml.etree import ElementTree as ET

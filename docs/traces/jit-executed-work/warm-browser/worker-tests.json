@@ -1,1 +1,0 @@
-{"passed":true,"cases":["start reset","stop immutable transfer","recycling preservation","read nonmutation","invalid operation","generated overflow","exact150M cap","disabled no cap","BigInt serialization"],"scope":"Synthetic worker bracket/reset/immutable buffer copies/overflow and exact150M stop/disabled capture/serialization; no guest or browser run"}

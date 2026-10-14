@@ -6,14 +6,14 @@
 and loopback DNS serve Apple's original Weather and Stocks. Weather displays
 Cupertino 72°F with six days, New York 64°F after a swipe, a Home/revisit, and
 Cupertino 22°C through its own unit control. Stocks displays four fixed quotes
-on the same corrected build. [131 recording](../../../docs/traces/weather-stocks-local/README.md)
-and [actual DNS/HTTP evidence](../../../docs/traces/weather-stocks-local/README.md)
+on the same corrected build. [131 recording](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/weather-stocks-local/README.md)
+and [actual DNS/HTTP evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/weather-stocks-local/README.md)
 retain the successful run. These are visibly labeled sample data. Live services,
 charts, search/add-city workflows, default distribution and persistence of this
 combined build remain unqualified. The separate port-18081 program below remains
 available, with its earlier failures preserved.
 
-**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](../../../docs/traces/guest-http-default/README.md).
+**2026-09-06 qualification result:** the maintained quiet daemon boots from the actual pristine accelerated-default image and original Safari renders its landing page and Next. The first form stalls with guest graphics hangs; the final process list also lacks the daemon, with exit cause unobserved. Bookmark/reload/final Home remain unfinished. No default promotion or retry. [093 failure evidence](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/guest-http-default/README.md).
 
 This is independently authored guest software. Original OS 1.0 launchd and dyld
 load the ARMv6 executable, and the original socket APIs serve fixed HTML at
@@ -21,7 +21,7 @@ load the ARMv6 executable, and the original socket APIs serve fixed HTML at
 the surrounding host browser addresses a different machine.
 
 The verbose qualification program passed actual Safari URL entry, link, form,
-bookmark and autosave/reload in [milestone 091](../../../docs/traces/guest-safari/README.md).
+bookmark and autosave/reload in [milestone 091](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/guest-safari/README.md).
 The maintained persistent, quiet program here is the proposed successor. Its
 default-image qualification and distribution are still pending; it is not yet
 installed in the normal starting phone. See the
@@ -75,7 +75,7 @@ CRT implementation. The installer requires the runtime source pin. Custom builds
 must explicitly include that source when they need this environment contract.
 
 The qualified toolchain is Clang 15 plus the classic ARM-capable ld64 used by
-[the own-program execution proof](../../../docs/traces/guest-hello/README.md).
+[the own-program execution proof](https://github.com/kelindi/iphone-1/blob/09c68979f3df9f4e80b00c66cb4e2e8676e350fd/docs/traces/guest-hello/README.md).
 The executable uses ARMv6 ARM instructions, an `LC_UNIXTHREAD` entry and eager
 32-bit data relocations. The build omits newer optional version, function-start,
 data-in-code, encryption, UUID and compact-unwind metadata. No CRT implementation

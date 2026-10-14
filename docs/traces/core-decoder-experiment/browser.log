@@ -1,4 +1,0 @@
-{'arm': 'control', 'directory': '.context/core-hotspot/browser-0-control', 'exit': 0}
-{'arm': 'candidate', 'directory': '.context/core-hotspot/browser-1-candidate', 'exit': 0}
-{'arm': 'candidate', 'directory': '.context/core-hotspot/browser-2-candidate', 'exit': 0}
-{'arm': 'control', 'directory': '.context/core-hotspot/browser-3-control', 'exit': 0}

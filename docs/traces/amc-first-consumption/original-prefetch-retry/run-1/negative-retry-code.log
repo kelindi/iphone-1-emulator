@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 43, in <module>
-    if __name__=='__main__':run(sys.argv[1])
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-aa/run-1/prefetch-audit.py", line 31, in run
-    assert bytes.fromhex(retry['expectedHex'])==expected==(q/'binding-expected.bin').read_bytes() and (q/'binding-code.bin').read_bytes()==expected,'actual mapped original window differs'
-AssertionError: actual mapped original window differs

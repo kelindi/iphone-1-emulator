@@ -1,5 +1,0 @@
-{
-  "error": "undefined !== 9",
-  "reason": "mock wrongly expected return after actual fc handler returns; no guest executed",
-  "source": "test-worker-hook-first-failure.mjs"
-}

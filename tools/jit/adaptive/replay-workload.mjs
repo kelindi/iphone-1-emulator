@@ -10,7 +10,7 @@ import {workloads,validateWorkload,nextBoundary} from './workloads.mjs';
 const root=resolve(process.env.RUNTIME_ROOT||'.context/adaptive-compiler/workload-observer-runtime');
 const out=resolve(process.env.ARTIFACT_DIR||'.context/adaptive-compiler/workload-observer-replay');await mkdir(out);
 const sha=b=>createHash('sha256').update(b).digest('hex');
-const reference=JSON.parse(await readFile('docs/traces/adaptive-workloads/report.json'));
+const reference=JSON.parse(await readFile('tools/jit/adaptive/fixtures/adaptive-workloads-report.json'));
 const build=JSON.parse(await readFile(root+'/build-report.json'));assert(build.passed);
 assert.equal(sha(await readFile(root+'/workload.wasm')),build.wasmSha256);
 assert.equal(sha(await readFile(root+'/workload.cjs')),build.wrapperSha256,'Pinned runtime wrapper');

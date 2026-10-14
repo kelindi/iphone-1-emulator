@@ -1,6 +1,0 @@
-{
-  "passed": true,
-  "checks": 1744,
-  "capacity": 576,
-  "scope": "actual runtime WASM installation, rejection, invalidation, queue canaries, reset and replacement saturation; no guest instructions after setup"
-}

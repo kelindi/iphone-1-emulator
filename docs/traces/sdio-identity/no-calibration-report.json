@@ -1,3 +1,0 @@
-{
-"baseline":false,"gateReached":true,"cccrInitializerEntered":true,"pc":"c0381cdc","instructions":309965323,"ticks":4709358,"cpuHz":412000000,"commandTicks":600,"accesses":91497,"statusReads":91307,"triggers":20,"completedResponses":20,"transportErrors":0,"rejectedWrites":0,"cardErrorResponses":0,"cccrReads":2,"cccrMask":257,"cardState":3,"rca":1,"irq":false,"forwarded":[3959503,7598,192437,29292311,101517,1131405]
-}

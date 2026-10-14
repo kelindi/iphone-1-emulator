@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/amc-first/stage-l/launch.py", line 53, in <module>
-    with logfile.open('w') as log:r=subprocess.run(['python3',str(out/'ordering-audit.py','original-return-oracle.py'),str(mutant)],stdout=log,stderr=subprocess.STDOUT,timeout=30)
-TypeError: decoding to str: need a bytes-like object, PosixPath found

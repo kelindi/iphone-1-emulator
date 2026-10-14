@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/vercel-sandbox/iphone-1/.context/rtc-second/audit.py", line 54, in <module>
-    end=re.search(r'END retired(\d+) records(\d+) rtcWrites7 callbackExit1 observationFailed0 pc([0-9a-f]+) unknownWrites7',text);assert end
-AssertionError
