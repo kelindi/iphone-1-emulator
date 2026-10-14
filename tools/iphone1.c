@@ -255,6 +255,7 @@ int main(int argc,char **argv) {
     uint32_t dump[8]; unsigned dump_n=0;
     const char *unmatch[16]; unsigned unmatch_n=0; uint64_t shot_every=0; uint32_t mmio_watch=0;
     const char *load_path = NULL, *save_path = NULL, *dump_ram = NULL;
+    const char *audio_wav = NULL; FILE *wav = NULL; uint64_t wav_frames = 0;
     uint64_t save_step = UINT64_MAX;
     input_event_t events[128]; unsigned event_n = 0;
     for (int i=1;i<argc;i++) {
@@ -279,6 +280,7 @@ int main(int argc,char **argv) {
             save_path = argv[++i];
         }
         else if (!strcmp(argv[i],"--load")&&i+1<argc) load_path=argv[++i];
+        else if (!strcmp(argv[i],"--audio-wav")&&i+1<argc) audio_wav=argv[++i];
         else if (!strcmp(argv[i],"--at")&&i+2<argc) {
             input_event_t e = { .step = strtoull(argv[++i], NULL, 0) };
             const char *action = argv[++i];
@@ -479,6 +481,19 @@ int main(int argc,char **argv) {
         if (m.cpu.cycles>=trace_from) { slice=1; trace_record(&m); }
         else if (m.cpu.cycles+slice>trace_from) slice=(unsigned)(trace_from-m.cpu.cycles);
         unsigned n=s5l8900_run(&m,slice,&st); total+=n; ring[ri++%32]=m.cpu.r[15];
+        if (audio_wav && !wav) {
+            wav = fopen(audio_wav, "wb");
+            if (!wav) { fprintf(stderr, "cannot open %s\n", audio_wav); audio_wav = NULL; }
+            else { uint8_t z[44] = {0}; fwrite(z, 1, sizeof z, wav); }
+        }
+        if (wav) {
+            int16_t pcm[2048];
+            size_t got;
+            while ((got = s5l8900_audio_read(&m, pcm, 1024u)) != 0u) {
+                fwrite(pcm, 4u, got, wav);
+                wav_frames += got;
+            }
+        }
         if (!saved && save_path && total >= save_step) {
             snapshot_status_t ss = snapshot_save(&m, save_path);
             if (ss != SNAP_OK) fprintf(stderr, "snapshot save failed: %s\n",
@@ -528,6 +543,25 @@ int main(int argc,char **argv) {
         uint32_t pc=m.cpu.r[15], off=pc-m.ram_base;
         if (pc>=m.ram_base&&off+4<=m.ram_size)
             printf("bytes-at-pc=%02x%02x%02x%02x\n",m.ram[off],m.ram[off+1],m.ram[off+2],m.ram[off+3]);
+    }
+    for (unsigned i=0;i<S5L8900_I2S_COUNT;i++) {
+        const s5l_i2s_stream_t *a=&m.i2s_tx[i];
+        if (!a->tx_stores && !a->lrck_rising) continue;
+        printf("i2s%u-tx: lrck_rising=%llu stores=%llu shifted=%llu underruns=%llu overflow=%llu fifo=%u\n",
+               i,(unsigned long long)a->lrck_rising,(unsigned long long)a->tx_stores,
+               (unsigned long long)a->tx_bytes,(unsigned long long)a->underruns,
+               (unsigned long long)a->overflow_bytes,a->fifo_level);
+    }
+    if (wav) {
+        uint32_t rate = s5l8900_audio_rate(&m), data = (uint32_t)(wav_frames * 4u);
+        uint8_t h[44] = {'R','I','F','F',0,0,0,0,'W','A','V','E','f','m','t',' ',
+                         16,0,0,0,1,0,2,0,0,0,0,0,0,0,0,0,4,0,16,0,
+                         'd','a','t','a',0,0,0,0};
+        uint32_t riff = 36u + data, br = rate * 4u;
+        memcpy(h+4,&riff,4); memcpy(h+24,&rate,4); memcpy(h+28,&br,4); memcpy(h+40,&data,4);
+        fseek(wav, 0, SEEK_SET); fwrite(h, 1, sizeof h, wav); fclose(wav);
+        printf("audio-wav: %s frames=%llu dropped=%llu\n", audio_wav,
+               (unsigned long long)wav_frames, (unsigned long long)m.audio_dropped);
     }
     if (shot&&!save_ppm(shot,&m)) fprintf(stderr,"screenshot failed: %s\n",shot);
     if (dump_ram) {

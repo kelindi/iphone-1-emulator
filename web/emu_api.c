@@ -532,6 +532,20 @@ int emu_serial_read(uint8_t *out, unsigned max) {
     return (int)count;
 }
 
+/* Shifted-out I2S PCM: interleaved signed 16-bit stereo frames at
+ * emu_audio_rate(). Returns the number of whole frames copied. */
+EMSCRIPTEN_KEEPALIVE
+int emu_audio_read(int16_t *out, unsigned max_frames) {
+    if (!out || !machine_ready)
+        return 0;
+    return (int)s5l8900_audio_read(&machine, out, max_frames);
+}
+
+EMSCRIPTEN_KEEPALIVE
+int emu_audio_rate(void) {
+    return machine_ready ? (int)s5l8900_audio_rate(&machine) : 0;
+}
+
 /* Snapshot allocation belongs to this API, and remains valid until the next
  * save/free/init. Copy it out of WASM before emu_free_snapshot(). */
 EMSCRIPTEN_KEEPALIVE

@@ -218,7 +218,10 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
  * live compiler wiring, not guest state; no stream fields or version change.
  * Code-version tables live outside the machine and require epoch invalidation
  * before restore. Native sizeof probe: 127504. */
-SNAP_SIZE_GUARD(s5l8900_t,         127504, "snap_mach");
+/* 127736 adds the two host-only I2S transmit streams and the heap-owned PCM
+ * ring's pointer and counters (232). Never serialised: snap_apply() resets the
+ * streams, the ring belongs to the live frontend. Byte format unchanged. */
+SNAP_SIZE_GUARD(s5l8900_t,         127736, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -1742,6 +1745,10 @@ static snapshot_status_t snap_apply(s5l8900_t *m, FILE *f,
      * restored guest instant. The callback, context and accumulated evidence
      * remain the live frontend's, exactly like the other host-only fields. */
     m->wfi_pace_yield = false;
+    /* The I2S transmit streams are host-only (see s5l_i2s_stream_t): the
+     * restored instant starts with empty FIFOs and a fresh clock phase. */
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
+        s5l_i2s_stream_reset(&m->i2s_tx[i]);
     /* A restored guest instant has no relation to the host instant sampled
      * before restore. Preserve policy/evidence, but require a fresh anchor and
      * discard every transient conversion input. */

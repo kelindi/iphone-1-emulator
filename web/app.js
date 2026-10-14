@@ -9,6 +9,7 @@ let worker, sequence = 0, ready = false, paused = false, profileOwned = false;
 let saving = false, liveSave = false, lastInput = 0, lastSave = 0, savedRecord = null, silent = false;
 let serial = '', metrics = {}, captureMs = null, captureChunkMs = null, finalizeMs = null, startTime = 0;
 let preparingOffline = false;
+let audio = null, audioTime = 0;
 function setProgress(percent) {
   const progress = $('progress');
   progress.setAttribute('aria-valuenow', String(percent));
@@ -107,7 +108,8 @@ async function start(recovery = null) {
   worker = new Worker(workerURL);
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
-    if (message.type === 'frame') {
+    if (message.type === 'audio') playAudio(message.rate, message.buffer);
+    else if (message.type === 'frame') {
       pixels.data.set(new Uint8Array(message.buffer));
       context.putImageData(pixels, 0, 0);
       canvas.dataset.frame = String(message.sequence);
@@ -145,6 +147,29 @@ async function start(recovery = null) {
   startTime = performance.now();
   const checkpoint = savedRecord ? await checkpointBytes(savedRecord) : null;
   worker.postMessage({type:'start', cpi, checkpoint}, checkpoint ? [checkpoint] : []);
+}
+
+// Browsers start audio only from a user gesture; the guest keeps running silently until then.
+function unlockAudio() {
+  const Context = window.AudioContext || window.webkitAudioContext;
+  if (!audio && Context) audio = new Context({latencyHint:'interactive'});
+  if (audio?.state === 'suspended') audio.resume().catch(() => {});
+}
+for (const type of ['pointerdown','keydown','touchend'])
+  document.addEventListener(type, unlockAudio, {capture:true, passive:true});
+function playAudio(rate, buffer) {
+  if (!audio || audio.state !== 'running' || paused) return;
+  const pcm = new Int16Array(buffer), frames = pcm.length >> 1;
+  if (!frames || !rate) return;
+  const out = audio.createBuffer(2, frames, rate);
+  const left = out.getChannelData(0), right = out.getChannelData(1);
+  for (let i = 0; i < frames; i++) { left[i] = pcm[2 * i] / 32768; right[i] = pcm[2 * i + 1] / 32768; }
+  // Keep a short lead; when the guest falls behind real time, restart the queue rather than drift.
+  const now = audio.currentTime;
+  if (audioTime < now + 0.01 || audioTime > now + 0.5) audioTime = now + 0.04;
+  const source = audio.createBufferSource();
+  source.buffer = out; source.connect(audio.destination); source.start(audioTime);
+  audioTime += frames / rate;
 }
 
 function point(event) {

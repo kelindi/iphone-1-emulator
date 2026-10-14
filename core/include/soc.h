@@ -1300,6 +1300,11 @@ bool     s5l_mbx_irq(const s5l_mbx_t *m);
 #define S5L_GPIOIC_LINE_MULTITOUCH 155u
 /* M68 `/arm-io/spi2/multi-touch` declares `interrupts {0xa3, 0}`. */
 #define S5L_GPIOIC_LINE_MULTITOUCH_M68 163u
+/* `/arm-io/i2s0` and `/arm-io/i2s1` declare `interrupts {0x86, 0}` and
+ * `{0xaa, 0}`: GPIOIC lines, not VIC lines. They carry each port's external
+ * frame clock; see s5l_i2s_stream_t. */
+#define S5L_GPIOIC_LINE_I2S0_LRCK  134u
+#define S5L_GPIOIC_LINE_I2S1_LRCK  170u
 
 /* Number of distinct unknown offsets remembered, as on I2C and SPI. */
 #define S5L_GPIOIC_UNKNOWN_OFF 8u
@@ -2433,6 +2438,55 @@ s5l_i2s_fifo_t s5l_i2s_fifo_role(uint32_t off);
  * controller `index` (0 or 1). UINT32_MAX for a bad index or S5L_I2S_FIFO_NONE.
  * Exposed so a host tap derives the address the same way the tree states it. */
 uint32_t s5l_i2s_fifo_pa(unsigned index, s5l_i2s_fifo_t which);
+
+/* --- the transmit stream: frame clock, FIFO and sample pacing -----------
+ * What the driver needs before it will start a transfer, and what the PL080
+ * needs to be paced by. Measured, from AppleS5L8900XI2SController on 1A543a:
+ *
+ *   - configure() sets bit 20 of +0x04 on i2s1 (0x01100301). With that bit
+ *     set, start() (0xc040bb60) enables the port's GPIOIC line, sets its state
+ *     to 1 and sleeps. The line's handler (0xc040be44) moves 1 -> 2 on the
+ *     first event and 2 -> 3 (ready, wakeup) on the second; with no events the
+ *     timeout sets 4 and AudioDeviceStart fails with 0xe00002d8. The line is
+ *     therefore an external frame clock the port synchronises to.
+ *   - start() submits the transmit DMA BEFORE writing 6 to +0x08, so the FIFO
+ *     must fill and stall the channel rather than swallow the buffer.
+ *
+ * APPROXIMATIONS, labelled as such: the frame clock runs at
+ * S5L_I2S_FRAME_HZ (the 44.1 kHz rate of every shipped UI sound), the FIFO
+ * holds S5L_I2S_TX_FIFO_BYTES, and a running transmitter consumes
+ * S5L_I2S_FRAME_BYTES per frame (16-bit stereo, the dma-channels widths).
+ * None of the three has been read off the silicon.
+ *
+ * Host-only: not serialised. A restore empties the FIFO and restarts the
+ * clock phase; a stalled channel simply resumes. */
+#define S5L_I2S_FRAME_HZ       44100u
+#define S5L_I2S_FRAME_BYTES    4u
+#define S5L_I2S_TX_FIFO_BYTES  32u
+#define S5L_AUDIO_RING_BYTES   (1u << 18)
+
+typedef struct {
+    uint64_t lrck_phase;    /* tb ticks x 2 x frame rate, modulo tb rate     */
+    uint64_t drain_phase;   /* tb ticks x byte rate, modulo tb rate          */
+    uint32_t credit;        /* bytes the shifter may still take this refresh */
+    bool     lrck;          /* level currently driven onto the GPIOIC line   */
+    bool     lrck_driven;
+    uint8_t  fifo[S5L_I2S_TX_FIFO_BYTES];
+    unsigned fifo_head, fifo_level;
+    uint64_t lrck_rising;   /* rising edges driven                           */
+    uint64_t tx_stores;     /* stores into the transmit FIFO                 */
+    uint64_t tx_bytes;      /* bytes shifted out                             */
+    uint64_t underruns;     /* refreshes the shifter found the FIFO empty    */
+    uint64_t overflow_bytes;/* bytes stored into a full FIFO, dropped        */
+} s5l_i2s_stream_t;
+
+void s5l_i2s_stream_reset(s5l_i2s_stream_t *s);
+/* +0x00 bit 0: the port has been configured. Gates FIFO pacing. */
+bool s5l_i2s_configured(const s5l_i2s_t *i2s);
+/* Configured with +0x04 bit 20: the port waits on its external frame clock. */
+bool s5l_i2s_frame_sync(const s5l_i2s_t *i2s);
+/* Configured and +0x08 running (startTransfer writes 6, stop writes 0). */
+bool s5l_i2s_tx_running(const s5l_i2s_t *i2s);
 
 /* ----------------------------------------------------------------- SPI ---
  * The two S5L8900 SPI controllers AppleS5L8900XSPIController drives. Their
@@ -4221,7 +4275,24 @@ typedef struct {
     void                     *uart4_host_ctx;
     s5l_uart4_host_tx_fn      uart0_host_tx;
     void                     *uart0_host_ctx;
+
+    /*
+     * The I2S transmit streams and the PCM they shift out. Host-only, never
+     * serialised; see s5l_i2s_stream_t. audio_ring is heap-owned like ram,
+     * so a snapshot probe copy of this struct stays small. Bytes are the
+     * little-endian sample stream exactly as the FIFO received it.
+     */
+    s5l_i2s_stream_t i2s_tx[S5L8900_I2S_COUNT];
+    uint8_t  *audio_ring;
+    uint32_t  audio_rd, audio_fill;
+    uint64_t  audio_dropped;
 } s5l8900_t;
+
+/* Shifted-out PCM: interleaved signed 16-bit stereo at s5l8900_audio_rate().
+ * read() returns whole frames copied; available() counts whole frames. */
+size_t   s5l8900_audio_available(const s5l8900_t *m);
+size_t   s5l8900_audio_read(s5l8900_t *m, int16_t *out, size_t max_frames);
+unsigned s5l8900_audio_rate(const s5l8900_t *m);
 
 /*
  * Declare a stub window. `name` must be a string literal or otherwise outlive

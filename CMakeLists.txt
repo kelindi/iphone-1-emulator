@@ -47,7 +47,7 @@ if(IPHONE1_WEB)
         -sMODULARIZE=1
         -sEXPORT_ES6=0
         -sEXPORT_NAME=createEmu
-        "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_malloc','_free']"
+        "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_emu_audio_read','_emu_audio_rate','_malloc','_free']"
         "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8','HEAPU32','addFunction','removeFunction']"
     )
     set_target_properties(emu PROPERTIES

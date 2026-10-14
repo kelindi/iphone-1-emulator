@@ -104,6 +104,16 @@ The following evidence is local under `.context/audio/`: `stream-trace.c` (nativ
 
 The [Wolfson WM8758B datasheet, revision 4.4](https://www.mouser.com/datasheet/2/76/WM8758B_v4_4-1132068.pdf), pages 64–69, is a useful primary reference for codec word length, master/slave mode and PLL scaling. It is a later part revision and does not define the S5L8900 I2S FIFO or establish the clock of this observed baseband route. Register defaults and protocol in production remain grounded in the supplied OS1 driver.
 
+## I2S frame clock, transmit FIFO and paced DMA (2026-10-14)
+
+The I2S1 start gate is implemented. `configure()` sets bit 20 of `+0x04` (`0x01100301`); with it set, `start()` (`0xc040bb60`) unmasks GPIOIC line 170, waits for two callbacks at `0xc040be44` (state 1 -> 2 -> 3), then submits DMA and writes 6 to `+0x08`. The machine now drives a frame clock onto line 134/170 while its port is configured that way, accepts `+0x10` stores into a bounded transmit FIFO, gates PL080 destination readiness on FIFO space, and shifts bytes out at the frame rate in guest timebase time. WFI wake sources name the frame-clock edge and the paced item's retirement, so idle fast-forward cannot skip either.
+
+Approximations, labelled in `soc.h`: 44.1 kHz frame clock, 32-byte FIFO, 4 bytes per frame. None is read off silicon. Stream state is host-only; snapshots keep format v39 and a restore starts with empty FIFOs.
+
+Native result from the shipped home snapshot, pressing Sleep (`tools/iphone1 ... --at 9800000000 press hold --steps 11500000000 --audio-wav lock.wav`): no `could not start DMA` message, 43,311 frame-clock edges, 169,998 bytes shifted, no underrun or overflow. The 42,499-frame capture contains Apple's `lock.caf` exactly: correlation 1.00000 and gain 0.9998 against the CAF's 17,600 frames (44.1 kHz stereo 16-bit). `core/tests/test_i2s.c` covers the clock, backpressure, pacing, drain and long-refresh behavior.
+
+The browser receives the same PCM via `emu_audio_read()`; the worker posts it and the page schedules it on WebAudio after the first gesture. Playback stutters when the guest runs slower than real time. Still unverified: I2S0/WM8758 media playback (iPod), YouTube startup, recording/input, and exact silicon timing.
+
 ## Next gates
 
 1. Resolve the measured AppleAMC reset gate: trace the producer of the reset request, expected status transitions, and any subsequent SRAM upload/engine commands before modeling readiness. In parallel, find a genuine media-category workflow that selects WM8758/I2S0 and compare it with the measured baseband ringtone path. Require nonzero guest-produced samples and a proven format before defining playback semantics.

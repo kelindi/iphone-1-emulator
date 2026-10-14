@@ -38,6 +38,8 @@ The key split is: shared S5L8900 SoC code in `core/src/soc/`, and per-board wiri
 
 **Archive cleanup (2026-10-13):** removed historical browser recordings and the milestone publishing system from all branch histories. Emulator sources, functional media fixtures, engineering reports, and screenshots are retained. New diagnostic media belongs in ignored `.context/` paths.
 
+**System sounds play (2026-10-14):** modeled the I2S frame clock on GPIOIC lines 134/170, a 32-byte transmit FIFO and sample-rate-paced PL080 DMA. Pressing Sleep on the shipped home snapshot no longer fails with `could not start DMA`; the captured output is Apple's original `lock.caf`, sample for sample (correlation 1.000). The browser plays that PCM via WebAudio after the first gesture. 42 native tests pass; iPod/YouTube audio is unverified. See [Audio](audio.md).
+
 **Search metadata (2026-10-13):** added descriptive search/social metadata, WebSite JSON-LD, robots.txt and a single-URL canonical sitemap while keeping the emulator as the only public page. The briefly deployed About link and page were removed by request. Unit, WASM smoke and crawl-file checks pass locally; the removal awaits release. 143.
 
 **PostHog tracking (2026-10-13):** added asynchronous US PostHog analytics for production-domain visits and emulator lifecycle/control/save events. Guest content and replay are excluded; localhost/previews do not send events. 122 unit tests, WASM smoke, real SDK browser events, blocked SDK and offline reload pass. Live 2007.mobile startup and a labeled test event accepted by PostHog (HTTP 200) are verified. 142.
@@ -235,7 +237,7 @@ Each parallel work stream has its own plan document under `plans/`:
 - [USB](usb.md) — retired unmatch workaround; detached service works, host transfers remain
 - [Wi-Fi](wifi.md) — Marvell 88W8686 SDIO Wi-Fi + host bridging
 - [Legacy app services](legacy-services.md) — original Weather protocol discovery and remaining guest-network acceptance
-- [Audio](audio.md) — original WM8758 control protocol verified; PCM transport and audible output remain
+- [Audio](audio.md) — I2S1 frame clock, FIFO and paced DMA play original system sounds; iPod/YouTube media paths remain
 - [SDL](sdl.md) — SDL2 desktop frontend, outside the browser product's critical path
 
 ## How to run

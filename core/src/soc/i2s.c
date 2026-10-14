@@ -102,3 +102,19 @@ void s5l_i2s_write(s5l_i2s_t *i2s, uint32_t off, uint32_t val) {
     i2s->unknown_writes++;
     note_unknown(i2s, off);
 }
+
+void s5l_i2s_stream_reset(s5l_i2s_stream_t *s) {
+    if (s) memset(s, 0, sizeof *s);
+}
+
+bool s5l_i2s_configured(const s5l_i2s_t *i2s) {
+    return i2s && (i2s->regs[0] & 1u);
+}
+
+bool s5l_i2s_frame_sync(const s5l_i2s_t *i2s) {
+    return s5l_i2s_configured(i2s) && (i2s->regs[1] & (1u << 20));
+}
+
+bool s5l_i2s_tx_running(const s5l_i2s_t *i2s) {
+    return s5l_i2s_configured(i2s) && (i2s->regs[2] & 6u);
+}

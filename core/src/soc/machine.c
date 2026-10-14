@@ -200,6 +200,155 @@ static inline bool mmio_data(uint32_t a, unsigned bytes,
     return (bytes == 1u || bytes == 2u || bytes == 4u) &&
            (a & (bytes - 1u)) == 0u && in_window(a, bytes, base, size);
 }
+/* ------------------------------------------------ I2S transmit streams ---
+ * See s5l_i2s_stream_t in soc.h for what is measured and what is assumed. */
+static const unsigned I2S_LRCK_LINE[S5L8900_I2S_COUNT] = {
+    S5L_GPIOIC_LINE_I2S0_LRCK, S5L_GPIOIC_LINE_I2S1_LRCK
+};
+
+static uint64_t audio_tb_hz(const s5l8900_t *m) {
+    return m->tb_hz ? m->tb_hz : S5L8900_TB_HZ;
+}
+
+static void audio_ring_push(s5l8900_t *m, uint8_t b) {
+    if (!m->audio_ring) { m->audio_dropped++; return; }
+    if (m->audio_fill == S5L_AUDIO_RING_BYTES) {
+        /* A host that stops reading loses the oldest audio, not the newest. */
+        m->audio_rd = (m->audio_rd + 1u) % S5L_AUDIO_RING_BYTES;
+        m->audio_fill--;
+        m->audio_dropped++;
+    }
+    m->audio_ring[(m->audio_rd + m->audio_fill) % S5L_AUDIO_RING_BYTES] = b;
+    m->audio_fill++;
+}
+
+/* The shifter takes what its credit allows, oldest byte first. */
+static void i2s_tx_drain(s5l8900_t *m, unsigned i) {
+    s5l_i2s_stream_t *s = &m->i2s_tx[i];
+    while (s->credit && s->fifo_level) {
+        audio_ring_push(m, s->fifo[s->fifo_head]);
+        s->fifo_head = (s->fifo_head + 1u) % S5L_I2S_TX_FIFO_BYTES;
+        s->fifo_level--;
+        s->credit--;
+        s->tx_bytes++;
+    }
+}
+
+static void i2s_tx_store(s5l8900_t *m, unsigned i, uint32_t val,
+                         unsigned bytes) {
+    s5l_i2s_stream_t *s = &m->i2s_tx[i];
+    s->tx_stores++;
+    for (unsigned k = 0; k < bytes; k++) {
+        if (s->fifo_level == S5L_I2S_TX_FIFO_BYTES) {
+            s->overflow_bytes++;
+            continue;
+        }
+        s->fifo[(s->fifo_head + s->fifo_level) % S5L_I2S_TX_FIFO_BYTES] =
+            (uint8_t)(val >> (8u * k));
+        s->fifo_level++;
+    }
+    i2s_tx_drain(m, i);
+}
+
+/* Before the DMA controllers: turn elapsed guest time into shifter credit. */
+static void i2s_tx_advance(s5l8900_t *m, uint32_t tb) {
+    uint64_t hz = audio_tb_hz(m);
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++) {
+        s5l_i2s_stream_t *s = &m->i2s_tx[i];
+        if (!s5l_i2s_tx_running(&m->i2s[i])) {
+            s->credit = 0u;
+            s->drain_phase = 0u;
+            continue;
+        }
+        s->drain_phase += (uint64_t)tb * S5L_I2S_FRAME_HZ * S5L_I2S_FRAME_BYTES;
+        uint64_t add = s->drain_phase / hz;
+        s->drain_phase %= hz;
+        uint64_t c = (uint64_t)s->credit + add;
+        s->credit = c > UINT32_MAX ? UINT32_MAX : (uint32_t)c;
+        i2s_tx_drain(m, i);
+    }
+}
+
+/* After them: credit the FIFO could not satisfy is an underrun and is gone,
+ * so a late refill cannot replay time that has already passed. */
+static void i2s_tx_settle(s5l8900_t *m) {
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++) {
+        s5l_i2s_stream_t *s = &m->i2s_tx[i];
+        if (s->credit && !s->fifo_level) {
+            s->underruns++;
+            s->credit = 0u;
+        }
+    }
+}
+
+/* The external frame clock, a square wave at S5L_I2S_FRAME_HZ while the port
+ * is configured to synchronise to it. A refresh spanning two or more
+ * half-periods still presents one rising edge to the edge latch. */
+static void i2s_lrck_drive(s5l8900_t *m, uint32_t tb) {
+    uint64_t hz = audio_tb_hz(m);
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++) {
+        s5l_i2s_stream_t *s = &m->i2s_tx[i];
+        unsigned line = I2S_LRCK_LINE[i];
+        if (!s5l_i2s_frame_sync(&m->i2s[i])) {
+            if (s->lrck_driven && s->lrck) {
+                s->lrck = false;
+                s5l_gpioic_set_line(&m->gpioic, line, false);
+            }
+            s->lrck_phase = 0u;
+            continue;
+        }
+        s->lrck_phase += (uint64_t)tb * 2u * S5L_I2S_FRAME_HZ;
+        uint64_t toggles = s->lrck_phase / hz;
+        s->lrck_phase %= hz;
+        if (!s->lrck_driven) {
+            s->lrck_driven = true;
+            s5l_gpioic_set_line(&m->gpioic, line, s->lrck);
+        }
+        if (!toggles) continue;
+        bool end = (toggles & 1u) ? !s->lrck : s->lrck;
+        if (toggles >= 2u || !s->lrck) {
+            if (s->lrck) s5l_gpioic_set_line(&m->gpioic, line, false);
+            s5l_gpioic_set_line(&m->gpioic, line, true);
+            s->lrck_rising++;
+        }
+        s5l_gpioic_set_line(&m->gpioic, line, end);
+        s->lrck = end;
+    }
+}
+
+static bool i2s_tx_fifo_addr(uint32_t addr, unsigned *index) {
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++) {
+        if (addr == s5l_i2s_fifo_pa(i, S5L_I2S_FIFO_TX)) {
+            if (index) *index = i;
+            return true;
+        }
+    }
+    return false;
+}
+
+size_t s5l8900_audio_available(const s5l8900_t *m) {
+    return m ? m->audio_fill / S5L_I2S_FRAME_BYTES : 0u;
+}
+
+size_t s5l8900_audio_read(s5l8900_t *m, int16_t *out, size_t max_frames) {
+    if (!m || !out || !m->audio_ring) return 0u;
+    size_t n = m->audio_fill / S5L_I2S_FRAME_BYTES;
+    if (n > max_frames) n = max_frames;
+    for (size_t f = 0; f < n * 2u; f++) {
+        uint8_t lo = m->audio_ring[m->audio_rd];
+        uint8_t hi = m->audio_ring[(m->audio_rd + 1u) % S5L_AUDIO_RING_BYTES];
+        m->audio_rd = (m->audio_rd + 2u) % S5L_AUDIO_RING_BYTES;
+        out[f] = (int16_t)(uint16_t)(lo | (uint16_t)hi << 8);
+    }
+    m->audio_fill -= (uint32_t)(n * S5L_I2S_FRAME_BYTES);
+    return n;
+}
+
+unsigned s5l8900_audio_rate(const s5l8900_t *m) {
+    (void)m;
+    return S5L_I2S_FRAME_HZ;
+}
+
 /* The timer is the one peripheral that does not fit the uniform 4 KB window:
  * its interrupt-status alias sits at offset 0x10000. */
 static inline bool in_power(uint32_t a, unsigned bytes) {
@@ -574,11 +723,17 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     if (mmio_data(addr, bytes, S5L8900_I2S0_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_i2s_write(&m->i2s[0], addr - S5L8900_I2S0_BASE, val);
+        if (addr - S5L8900_I2S0_BASE == S5L_I2S_TX_FIFO_OFF &&
+            s5l_i2s_configured(&m->i2s[0]))
+            i2s_tx_store(m, 0u, val, bytes);
         return;
     }
     if (mmio_data(addr, bytes, S5L8900_I2S1_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_i2s_write(&m->i2s[1], addr - S5L8900_I2S1_BASE, val);
+        if (addr - S5L8900_I2S1_BASE == S5L_I2S_TX_FIFO_OFF &&
+            s5l_i2s_configured(&m->i2s[1]))
+            i2s_tx_store(m, 1u, val, bytes);
         return;
     }
     if (mmio_data(addr, bytes, S5L8900_SPI0_BASE, S5L8900_DEV_SIZE)) {
@@ -664,7 +819,6 @@ static uint8_t  r8 (void *c, uint32_t a) { return (uint8_t) bus_read(c, a, 1); }
  */
 static bool dma_dst_ready(void *ctx, uint32_t dst, unsigned width) {
     const s5l8900_t *m = ctx;
-    (void)width;
     for (unsigned i = 0; i < S5L8900_SPI_COUNT; i++) {
         static const uint32_t base[] = {
             S5L8900_SPI0_BASE, S5L8900_SPI1_BASE, S5L8900_SPI2_BASE
@@ -673,6 +827,9 @@ static bool dma_dst_ready(void *ctx, uint32_t dst, unsigned width) {
         if (dst == base[i] + SPI_TXDATA)
             return m->spi[i].tx_level < S5L_SPI_FIFO_DEPTH;
     }
+    unsigned i2s;
+    if (i2s_tx_fifo_addr(dst, &i2s) && s5l_i2s_configured(&m->i2s[i2s]))
+        return m->i2s_tx[i2s].fifo_level + width <= S5L_I2S_TX_FIFO_BYTES;
     return true;
 }
 
@@ -986,8 +1143,24 @@ static s5l_wake_kind_t wake_edge_spi1(const s5l8900_t *m, uint32_t *ticks) {
  * would return false silently and could never wake the core.
  */
 static s5l_wake_kind_t wake_edge_gpio(const s5l8900_t *m, uint32_t *ticks) {
-    (void)m; (void)ticks;
-    return S5L_WAKE_NEVER;
+    /* The one GPIOIC input with a schedule of its own: an I2S frame clock the
+     * guest has unmasked. Its next rising edge is a known distance away. */
+    uint64_t hz = audio_tb_hz(m), best = 0;
+    bool have = false;
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++) {
+        unsigned line = I2S_LRCK_LINE[i];
+        if (!s5l_i2s_frame_sync(&m->i2s[i]) ||
+            !(m->gpioic.en[line >> 5] & (1u << (line & 31u)))) continue;
+        const s5l_i2s_stream_t *s = &m->i2s_tx[i];
+        uint64_t need = (s->lrck ? 2u : 1u) * hz - s->lrck_phase;
+        uint64_t rate = 2u * S5L_I2S_FRAME_HZ;
+        uint64_t at = (need + rate - 1u) / rate;
+        if (!at) at = 1u;
+        if (!have || at < best) { best = at; have = true; }
+    }
+    if (!have) return S5L_WAKE_NEVER;
+    if (ticks) *ticks = best > UINT32_MAX ? UINT32_MAX : (uint32_t)best;
+    return S5L_WAKE_AT;
 }
 
 /*
@@ -1042,8 +1215,32 @@ static s5l_wake_kind_t wake_edge_uart4(const s5l8900_t *m, uint32_t *ticks) {
  * straight over the completion.
  */
 static s5l_wake_kind_t wake_edge_dmac(const s5l8900_t *m, uint32_t *ticks) {
-    (void)m; (void)ticks;
-    return S5L_WAKE_NEVER;
+    /* Except for a channel paced by a running I2S transmitter: it retires its
+     * item when the shifter has taken the remaining bytes, and that moment is
+     * a computable distance at the stream's byte rate. */
+    uint64_t hz = audio_tb_hz(m), best = 0;
+    bool have = false;
+    for (unsigned d = 0; d < S5L8900_DMAC_COUNT; d++) {
+        for (unsigned c = 0; c < S5L_PL080_CHANNELS; c++) {
+            const s5l_pl080_chan_t *ch = &m->dmac[d].ch[c];
+            unsigned i;
+            if (!(ch->cfg & PL080_CFG_EN) || !i2s_tx_fifo_addr(ch->dst, &i) ||
+                !s5l_i2s_tx_running(&m->i2s[i])) continue;
+            uint32_t sw = (ch->ctrl >> PL080_CTRL_SWIDTH_SHIFT) &
+                          PL080_CTRL_WIDTH_MASK;
+            /* The last store lands once the shifter has made room for it. */
+            uint64_t left = (uint64_t)(ch->ctrl & PL080_CTRL_SIZE_MASK) << sw;
+            uint64_t room = S5L_I2S_TX_FIFO_BYTES - m->i2s_tx[i].fifo_level;
+            uint64_t need = left > room ? left - room : 0u;
+            uint64_t rate = (uint64_t)S5L_I2S_FRAME_HZ * S5L_I2S_FRAME_BYTES;
+            uint64_t at = (need * hz + rate - 1u) / rate;
+            if (!at) at = 1u;
+            if (!have || at < best) { best = at; have = true; }
+        }
+    }
+    if (!have) return S5L_WAKE_NEVER;
+    if (ticks) *ticks = best > UINT32_MAX ? UINT32_MAX : (uint32_t)best;
+    return S5L_WAKE_AT;
 }
 
 static const s5l_wake_source_t WAKE_SOURCES[] = {
@@ -1272,7 +1469,11 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     /* The MBX aperture's edram, owned here like RAM. See S5L_MBX_APERTURE.
      * A failure is handled below with the RAM failure, not ignored. */
     m->mbx.edram = calloc(S5L_MBX_EDRAM_SIZE, 1);
+    /* Optional: without it shifted-out samples are counted and dropped. */
+    m->audio_ring = calloc(S5L_AUDIO_RING_BYTES, 1);
     if (!m->ram || !m->mbx.edram) {
+        free(m->audio_ring);
+        m->audio_ring = NULL;
         free(m->ram);
         m->ram = NULL;
         free(m->mbx.edram);
@@ -1310,6 +1511,8 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
      */
     s5l_buttons_reset(&m->buttons);
     s5l_buttons_apply(&m->buttons, &m->gpio, &m->gpioic);
+    for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
+        s5l_i2s_stream_reset(&m->i2s_tx[i]);
     s5l_usbotg_reset(&m->usbotg);
     for (unsigned i = 0; i < S5L8900_DMAC_COUNT; i++)
         s5l_pl080_reset(&m->dmac[i]);
@@ -1443,6 +1646,8 @@ void s5l8900_free(s5l8900_t *m) {
     m->ram = NULL;
     free(m->mbx.edram);
     m->mbx.edram = NULL;
+    free(m->audio_ring);
+    m->audio_ring = NULL;
     s5l_nor_free(&m->nor);
 }
 
@@ -1721,6 +1926,7 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
     /* Before the controllers, so a port that can drain has drained and the
      * request line below reads true rather than stale. */
     for (unsigned i = 0; i < S5L8900_SPI_COUNT; i++) s5l_spi_step(&m->spi[i]);
+    i2s_tx_advance(m, tb);
 
     for (unsigned i = 0; i < S5L8900_DMAC_COUNT; i++) {
         bool dmac_irq = s5l_pl080_run(&m->dmac[i], &m->bus, dma_dst_ready, m);
@@ -1728,6 +1934,7 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
                          i == 0u ? S5L8900_IRQ_DMAC0 : S5L8900_IRQ_DMAC1,
                          dmac_irq);
     }
+    i2s_tx_settle(m);
 
     /*
      * The GPIO interrupt cascade. Seven group outputs, seven VIC lines, and
@@ -1762,6 +1969,7 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
      * latches nothing on either an edge line or a level one.
      */
     s5l_buttons_apply(&m->buttons, &m->gpio, &m->gpioic);
+    i2s_lrck_drive(m, tb);
 
     for (unsigned g = 0; g < S5L_GPIOIC_GROUPS; g++) {
         unsigned line = s5l_gpioic_cascade(g);

@@ -55,11 +55,9 @@ See the [service tools](tools/legacy_services/README.md) and
    Settings still exceeds the two-second warm-launch target in the recorded cloud baseline.
 2. **Networking:** complete a usable guest network connection and compatible app services.
    General internet access, Maps, Mail, and modern service compatibility remain unfinished.
-3. **Audio and video:** complete the audio clock, FIFO, and DMA behavior.
-   DMA transfers data between memory and a device.
-   FIFO buffers hold samples in the order devices receive them.
-   Original YouTube currently fails during audio-device startup, even with a silent clip.
-   Audible iPod sound and genuine video playback remain unfinished.
+3. **Audio and video:** original system sounds (such as the lock click) now play through the modeled I2S clock, FIFO, and DMA.
+   iPod music and YouTube playback have not been verified yet, and sound stutters when the emulator runs slower than real time.
+   Genuine video playback remains unfinished.
 4. **Photos and Camera:** complete photo-library navigation, camera preview, capture, and saved media.
    An isolated importer supplies images, but broader photo workflows still fail or lack tests.
 5. **Phone and Text:** complete simulated call and message workflows through the original apps.

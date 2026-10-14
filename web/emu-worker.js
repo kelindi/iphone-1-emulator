@@ -2,7 +2,8 @@
 importScripts('dist/emu.js', 'seed-jit.js');
 let jit;
 let module, api, paused = true, started = false, scheduled = false;
-let framePointer, widthPointer, heightPointer, serialPointer, contactsPointer;
+let framePointer, widthPointer, heightPointer, serialPointer, contactsPointer, audioPointer;
+const AUDIO_FRAMES = 4096;
 let frameBuffer = new ArrayBuffer(320 * 480 * 4);
 let lastPixels = new Uint32Array(320 * 480);
 const darkPixels = new Uint32Array(320 * 480).fill(0xff000000);
@@ -62,6 +63,16 @@ function present(force = false) {
   frameBuffer = null;
   send('frame', {buffer, sequence:++frameSequence}, [buffer]);
 }
+// Guest PCM leaves in guest-time order; the page schedules it on WebAudio.
+function drainAudio(deliver = true) {
+  for (;;) {
+    const frames = api.audio(audioPointer, AUDIO_FRAMES);
+    if (!frames) return;
+    if (!deliver) continue;
+    const pcm = module.HEAPU8.slice(audioPointer, audioPointer + frames * 4).buffer;
+    send('audio', {rate:api.audioRate(), buffer:pcm}, [pcm]);
+  }
+}
 function tick() {
   if (paused) return;
   try {
@@ -74,6 +85,7 @@ function tick() {
       if (api.clockDelay() > 0) break;
     } while (performance.now() - began < 6);
     jit?.pump();
+    drainAudio();
     const now = performance.now();
     if (now - lastFrame >= 1000 / 60) { present(); lastFrame = now; }
     if (now - lastStats >= 1000) {
@@ -188,6 +200,7 @@ async function start(message) {
     ['run','emu_run',['number']], ['status','emu_status',[]],
     ['frame','emu_frame',['number','number','number']], ['ticks','emu_ticks',[]],
     ['cycles','emu_cycles',[]], ['serial','emu_serial_read',['number','number']],
+    ['audio','emu_audio_read',['number','number']], ['audioRate','emu_audio_rate',[]],
     ['contacts','emu_touch_contacts',['number','number']], ['button','emu_button',['number','number']],
     ['release','emu_release_inputs',[]], ['idle','emu_inputs_idle',[]],
     ['buttonState','emu_button_state',['number']], ['save','emu_save_snapshot',[]],
@@ -198,10 +211,12 @@ async function start(message) {
   framePointer = module._malloc(320 * 480 * 4);
   widthPointer = module._malloc(4); heightPointer = module._malloc(4);
   serialPointer = module._malloc(8192); contactsPointer = module._malloc(5 * 6 * 4);
-  if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer].every(Boolean))
+  audioPointer = module._malloc(AUDIO_FRAMES * 4);
+  if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer,audioPointer].every(Boolean))
     throw new Error('Not enough memory for display buffers');
   check(api.release());
   if (snapshot) await openLocked();
+  drainAudio(false); // The wake sequence's own clicks happen before the page is shown.
   present(true);
   send('ready', {id:message.id, restored:Boolean(message.checkpoint), silent:Boolean(api.buttonState(4))});
   setPaused(false);
