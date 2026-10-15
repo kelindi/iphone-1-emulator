@@ -16,7 +16,7 @@ run after version checks. A version match alone does not authorize execution.
 | Writer / path | Current coverage | Remaining requirement |
 |---|---|---|
 | `arm_interp.c` `MEM_WRITE` cached `dwrite_hit` | Notifies after direct byte/halfword/word memcpy | Custom paths must retain this post-commit contract |
-| ABI2 `adaptive_write` / `arm_write_cache_try` | Qualified warm-cache helper notifies after commit; active code overlap forces an immediate exit | 51 integrated cases pass; see [store evidence](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/adaptive-ram-stores/README.md` in the traces archive) |
+| ABI2 `adaptive_write` / `arm_write_cache_try` | Qualified warm-cache helper notifies after commit; active code overlap forces an immediate exit | 51 integrated cases pass; see [store evidence](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/adaptive-ram-stores/README.md` in the traces archive) |
 | `machine.c` `bus_write` | Notifies each committed RAM span; MMIO excluded | Custom/interposed buses must preserve the notification contract |
 | `arm_interp.c` crossing/multiword/VFP stores | Commit through the two paths above | Broader fault/atomic/exclusive observer matrix before removing literals |
 | `pl080.c` `bus_store` DMA | Uses notified machine bus writes | Tested widths and boundary spans; broader device scheduling qualification remains |
@@ -37,9 +37,9 @@ qualification build disables ABI1. That does not establish safe arbitrary tier
 mixing in production. Notifications must become visible before the next affected
 instruction; merely maintaining a counter without checking it is insufficient.
 
-Evidence and exact current test scope: [code versions](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/adaptive-code-versions/README.md` in the traces archive).
+Evidence and exact current test scope: [code versions](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/adaptive-code-versions/README.md` in the traces archive).
 
-[117 lifecycle evidence](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/adaptive-lifecycle/README.md` in the traces archive) verifies real
+[117 lifecycle evidence](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/adaptive-lifecycle/README.md` in the traces archive) verifies real
 restore/free/disable barriers. Explicit disable always advances a bound epoch,
 even with only an external pending capture. The existing generated stores remain
 uninstrumented: engine transitions must use this API, not assign the public flag

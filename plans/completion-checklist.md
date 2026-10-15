@@ -77,4 +77,4 @@ full original boot-chain reproduction and perfect storage-hardware fidelity are
 not prerequisites for the planned first release.
 
 
-Architecture decision update: [098](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/runtime-comparison/README.md` in the traces archive) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.
+Architecture decision update: [098](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/runtime-comparison/README.md` in the traces archive) now compares actual native/browser navigation. Native repeat Settings gains only~9% and Home~36ms before network/display overhead. Keep local browser execution for now; fresh first launch gains more, but remote performance and reference-Mac behavior remain untested.

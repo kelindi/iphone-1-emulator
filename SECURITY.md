@@ -1,7 +1,7 @@
 # Security policy
 
 Report vulnerabilities privately through
-[GitHub security advisories](https://github.com/kelindi/iphone-1/security/advisories/new).
+[GitHub security advisories](https://github.com/kelindi/iphone-1-emulator/security/advisories/new).
 Do not open a public issue for a security problem.
 
 Include the affected component (`core/`, `web/`, or `tools/`), the steps to

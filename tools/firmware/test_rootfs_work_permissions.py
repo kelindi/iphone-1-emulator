@@ -10,7 +10,7 @@ import rootfs_work as N
 # Frozen original helper (SHA256 2c7b5445b254ec46cbe5476c1358255ef011852f6d4c4aecebff40c7080a08d1)
 # generated this complete synthetic output before permission support. Retained as
 # docs/traces/guest-hello/rootfs_work_original.py in the traces archive release
-# (https://github.com/kelindi/iphone-1/releases/tag/traces-archive); no actual firmware is involved.
+# (https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive); no actual firmware is involved.
 DEFAULT_IMAGE_SHA256 = "93359f6244f95d0a91fd9a1089ca3e82ae42934631b4f7a4988be082fe4f85cb"
 
 def record(parent,name,kind,ident):

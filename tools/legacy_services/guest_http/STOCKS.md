@@ -6,8 +6,8 @@
 GOOG 500.00, YHOO 25.00 and T 40.00 through the same corrected gateway that
 serves original Weather. Actual DNS, finance POST and complete quote response
 bytes accompany the original framebuffer evidence.
-[131](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/weather-stocks-local/README.md` in the traces archive) and
-[retained trace](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/weather-stocks-local/README.md` in the traces archive).
+[131](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/weather-stocks-local/README.md` in the traces archive) and
+[retained trace](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/weather-stocks-local/README.md` in the traces archive).
 These are visibly labeled fixed samples. Charts, symbol search, live data,
 default distribution and persistence of this combined build remain unqualified;
 the chart HTTP400 is retained.

@@ -11,6 +11,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from unwrap8900 import unwrap
+from rootfs_work import Work
+
+# iBoot boots the kernelcache installed in the root filesystem, not the
+# restore kernelcache at the top of the IPSW. The restore one has a smaller
+# __PRELINK segment (fewer kexts) and does not match web/firmware.
+KERNELCACHE = "/System/Library/Caches/com.apple.kernelcaches/kernelcache.s5l8900xrb"
 
 
 def rootfs_key(args):
@@ -40,10 +46,25 @@ def main():
     with zipfile.ZipFile(a.ipsw) as z:
         z.extractall(ipsw)
 
-    ksrc = next(ipsw.rglob("kernelcache.restore.release.s5l8900xrb"), None)
-    if not ksrc:
-        raise SystemExit("kernelcache.restore.release.s5l8900xrb not found")
-    _fmt, _kind, compressed = unwrap(ksrc.read_bytes())
+    dsrc = next(ipsw.rglob("DeviceTree.m68ap.img2"), None)
+    if not dsrc:
+        raise SystemExit("DeviceTree.m68ap.img2 not found")
+    _fmt, _kind, dt = unwrap(dsrc.read_bytes())
+    (a.outdir / "devicetree_m68ap.bin").write_bytes(dt)
+
+    dmgs = list(ipsw.rglob("*.dmg"))
+    if not dmgs:
+        raise SystemExit("no DMG found")
+    encrypted = max(dmgs, key=lambda p: p.stat().st_size)
+    decrypted = a.outdir / "rootfs.dmg"
+    rootfs = a.outdir / "rootfs_1A543a_hfs.img"
+    subprocess.run([sys.executable, str(HERE / "vfdecrypt.py"),
+                    str(encrypted), rootfs_key(a), str(decrypted)], check=True)
+    subprocess.run([sys.executable, str(HERE / "udif.py"), "extract",
+                    str(decrypted), str(rootfs), "Apple_HFSX"],
+                   check=True)
+
+    _fmt, _kind, compressed = unwrap(Work(str(rootfs)).read_file_path(KERNELCACHE))
     kc = a.outdir / "kernelcache.complzss"
     kc.write_bytes(compressed)
     unlzss = a.unlzss
@@ -55,28 +76,11 @@ def main():
         candidate = HERE.parent.parent / "build" / "tools" / "unlzss"
         if candidate.exists():
             unlzss = candidate
-    macho = a.outdir / "kernel.macho"
+    macho = a.outdir / "kernel_1A543a.macho"
     if unlzss:
         subprocess.run([str(unlzss), str(kc), str(macho)], check=True)
     else:
-        print(f"run: unlzss {kc} > {macho}")
-
-    dsrc = next(ipsw.rglob("DeviceTree.m68ap.img2"), None)
-    if not dsrc:
-        raise SystemExit("DeviceTree.m68ap.img2 not found")
-    _fmt, _kind, dt = unwrap(dsrc.read_bytes())
-    (a.outdir / "devicetree.bin").write_bytes(dt)
-
-    dmgs = list(ipsw.rglob("*.dmg"))
-    if not dmgs:
-        raise SystemExit("no DMG found")
-    encrypted = max(dmgs, key=lambda p: p.stat().st_size)
-    decrypted = a.outdir / "rootfs.dmg"
-    subprocess.run([sys.executable, str(HERE / "vfdecrypt.py"),
-                    str(encrypted), rootfs_key(a), str(decrypted)], check=True)
-    subprocess.run([sys.executable, str(HERE / "udif.py"), "extract",
-                    str(decrypted), str(a.outdir / "rootfs.img"), "Apple_HFSX"],
-                   check=True)
+        print(f"run: unlzss {kc} {macho}")
     print("extracted firmware to", a.outdir)
 
 

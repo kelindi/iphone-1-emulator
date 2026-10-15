@@ -6,7 +6,7 @@ It is an isolated qualification tool. Original Photos discovers both images and
 renders the first, but image navigation fails; **it is not a qualified Photos feature**.
 No Apple executable or mounted ramdisk is edited by the host.
 
-The original [PhotoLibrary discovery](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/photo-library-contract/README.md` in the traces archive)
+The original [PhotoLibrary discovery](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/photo-library-contract/README.md` in the traces archive)
 suggests `Media/DCIM/100APPLE` under the Photos process home. `/private/var/root`
 is now verified by actual original Photos enumeration. The first image has a yellow circle on blue with one white marker;
 the second has a mint square on red with two markers. A third gray image named

@@ -68,7 +68,7 @@ See the [service tools](tools/legacy_services/README.md) and
    Test actual Safari and Chrome on reference laptops.
 7. **CPU accuracy:** fix the known WebAssembly floating-point failures.
    Existing tests expose missing exception flags and incorrect rounding behavior.
-   See the [floating-point failure report](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/wasm-vfp-conformance/README.md` in the traces archive).
+   See the [floating-point failure report](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/wasm-vfp-conformance/README.md` in the traces archive).
 
 The [product roadmap](plans/web-iphone.md) defines the remaining targets.
 The [completion checklist](plans/completion-checklist.md) explains the larger gaps.
@@ -84,7 +84,7 @@ The p95 value describes the threshold for 95% of the samples.
 
 These results apply to that fixture and cloud machine.
 They do not establish performance on your hardware.
-See the [baseline report](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/adaptive-compiler-baseline/README.md` in the traces archive).
+See the [baseline report](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive) (`docs/traces/adaptive-compiler-baseline/README.md` in the traces archive).
 A saved home-screen snapshot avoids the slow full boot.
 The default browser also uses accelerated graphics.
 The CPU engine uses WebAssembly code generated for selected instruction regions.
@@ -135,11 +135,12 @@ Drag the guest screen to scroll.
 | --- | --- |
 | Home | Escape or H |
 | Sleep/wake | P |
-| Volume up/down | + / - |
+| Volume up/down | + or = / - or _ |
 | Silent mode | M |
 
 Volume and silent-mode controls change emulated hardware state.
-They do not yet produce audible sound.
+System sounds now play (see Audio and video above),
+but whether these controls change loudness or mute sound has not been verified.
 
 Save stores a compressed checkpoint in the browser and retains a previous generation.
 A checkpoint contains the phone's memory, device state, and stored data.
@@ -191,7 +192,11 @@ python3 tools/firmware/rootfs_work.py fw/rootfs_1A543a_hfs.img fw/work_1A543a.im
     --no-autolock --activate
 ```
 
-The extractor produces a kernel, device tree, and root filesystem.
+The extractor writes `kernel_1A543a.macho`, `devicetree_m68ap.bin`, and `rootfs_1A543a_hfs.img`.
+It takes the kernel from the kernelcache installed in the root filesystem, which is the one iBoot boots;
+the restore kernelcache at the top of the IPSW carries fewer kexts.
+The output kernel and device tree match the copies in `web/firmware/`.
+Without a native build, it prints the `unlzss` command to run instead of writing the kernel.
 The work-image tool copies the extracted image before it changes data.
 These commands prepare a work image.
 They do not recreate every packaged snapshot or release artifact.
@@ -229,7 +234,11 @@ After the web build, run the unit and WebAssembly smoke checks:
 npm run test:unit
 npm run test:web
 npm run test:capture
+npm run test:jit-replay
 ```
+
+`test:jit-replay` also reads the firmware copies in `web/firmware/`.
+Set `INSTRUCTIONS` to shorten the run; CI uses `100000000`.
 
 With the server running and Chrome installed, run the relevant browser checks:
 
@@ -243,6 +252,11 @@ npm run test:clock
 npm run test:save-pause
 npm run test:calculator
 npm run test:notes
+npm run test:open-lock
+npm run test:performance
+npm run test:checkpoint-worker
+npm run test:recovery-ui
+npm run test:input-feedback
 ```
 
 Browser tests default to `/usr/bin/google-chrome`.
@@ -254,7 +268,7 @@ Recording tests need Playwright's encoder: `npx playwright install ffmpeg`.
 Keep generated reports, screenshots, recordings, and exports in ignored `.context/` paths.
 Historical engineering reports formerly under `docs/traces/` were removed from the
 repository history to keep clones small; they remain downloadable as a tarball
-from the [`traces-archive` release](https://github.com/kelindi/iphone-1/releases/tag/traces-archive).
+from the [`traces-archive` release](https://github.com/kelindi/iphone-1-emulator/releases/tag/traces-archive).
 Historical browser recordings and milestone publishing files no longer belong to the branch histories.
 Retained engineering reports describe their original runs.
 Their historical hashes can predate the archival cleanup.
