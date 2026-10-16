@@ -9,6 +9,7 @@ let lastPixels = new Uint32Array(320 * 480);
 const darkPixels = new Uint32Array(320 * 480).fill(0xff000000);
 let lastFrame = 0, lastStats = 0, lastTicks = 0, steps = 0, uniqueFrames = 0;
 let frameSequence = 0;
+const phaseMessages = {verify:'Checking the download…', decompress:'Unpacking iPhone OS…'};
 let capturing = false, resolveCaptureTurn;
 const captureTurns = new MessageChannel();
 captureTurns.port1.onmessage = () => { const resolve = resolveCaptureTurn; resolveCaptureTurn = null; resolve(); };
@@ -113,7 +114,7 @@ function setPaused(value) {
 // Enter SpringBoard's own lock screen through the physical Sleep/Home buttons.
 // Run before exposing input or frames, so restored apps do not flash on opening.
 async function openLocked() {
-  send('loading', {message:'Waking your iPhone…'});
+  send('loading', {phase:'wake', message:'Waking your iPhone…'});
   check(api.hostClock(1));
   const advanceUntil = async predicate => {
     const deadline = performance.now() + 20000;
@@ -151,6 +152,7 @@ async function openLocked() {
 async function start(message) {
   if (started) throw new Error('Worker already initialized');
   started = true;
+  send('loading', {phase:'manifest', message:'Downloading iPhone OS…'});
   const {assetBytes} = await import('./assets.js');
   const response = await fetch('manifest.json', {cache:'no-cache'});
   if (!response.ok) throw new Error(`Could not load phone manifest (${response.status})`);
@@ -167,9 +169,9 @@ async function start(message) {
       partReceived = received;
       // A corrupt cache retry must not send progress backwards or count twice.
       reported = Math.max(reported, downloaded + received);
-      send('loading', {message:`Downloading ${label} · ${(reported / 1048576).toFixed(1)} MB`,
+      send('loading', {phase:'download', message:`Downloading ${label} · ${(reported / 1048576).toFixed(1)} MB`,
         received:reported, total});
-    }, manifest.assetSha256 || {});
+    }, manifest.assetSha256 || {}, phase => send('loading', {phase, message:phaseMessages[phase] || `Downloading ${label}…`}));
     downloaded += partReceived;
     return bytes;
   };
@@ -179,7 +181,7 @@ async function start(message) {
   let rootfs = null;
   if (!snapshot && manifest.snapshot) snapshot = await load(manifest.snapshot, 'your iPhone');
   if (!snapshot) rootfs = await load(manifest.rootfs, 'disk');
-  send('loading', {message:'Waking your iPhone…'});
+  send('loading', {phase:'engine', message:'Starting the emulator…'});
   module = await createEmu({locateFile:path => new URL(`dist/${path}`, location.href).href,
     printErr:text => send('log', {message:text})});
   const k = alloc(kernel), d = alloc(tree), r = rootfs ? alloc(rootfs) : 0;
@@ -188,6 +190,7 @@ async function start(message) {
       [k, kernel.length, d, tree.length, r, rootfs?.length || 0, 256]));
   } finally { module._free(k); module._free(d); if (r) module._free(r); }
   if (snapshot) {
+    send('loading', {phase:'restore', message:'Restoring your iPhone…'});
     const s = alloc(snapshot);
     try { check(module.ccall('emu_load_snapshot', 'number', ['number','number'], [s, snapshot.length])); }
     finally { module._free(s); }

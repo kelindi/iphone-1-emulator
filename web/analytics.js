@@ -19,6 +19,10 @@ if (enabled) {
     property_denylist: ['$current_url', '$initial_current_url', '$referrer', '$initial_referrer'],
   });
   window.posthog.register({site: '2007.mobile', guest_os: 'iPhone OS 1.0', guest_build: '1A543a'});
+  // Brave reports a Chrome user agent; its own API is the only way to tell them apart.
+  try {
+    window.navigator?.brave?.isBrave?.().then(isBrave => window.posthog.register({is_brave: Boolean(isBrave)}), () => {});
+  } catch { /* Browser detection is best effort. */ }
 }
 
 // Properties at call sites contain only app lifecycle categories, timings and control names.
