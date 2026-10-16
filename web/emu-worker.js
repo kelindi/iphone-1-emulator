@@ -161,6 +161,7 @@ async function start(message) {
   if (!response.ok) throw new Error(`Could not load phone manifest (${response.status})`);
   const manifest = await response.json();
   const downloads = [manifest.kernel, manifest.devicetree,
+    ...(manifest.nand ? [manifest.nand] : []),
     ...(!message.checkpoint ? [manifest.snapshot || manifest.rootfs] : [])].flat();
   const sizes = downloads.map(path => manifest.assetBytes?.[path]);
   const total = sizes.every(size => Number.isFinite(size) && size > 0)
@@ -180,6 +181,9 @@ async function start(message) {
   };
   const kernel = await load(manifest.kernel, 'iPhone OS');
   const tree = await load(manifest.devicetree, 'hardware profile');
+  // The flash image is the immutable base disk; checkpoints carry only the
+  // pages changed since it, so it loads on every start.
+  let nand = manifest.nand ? await load(manifest.nand, 'storage') : null;
   let snapshot = message.checkpoint ? new Uint8Array(message.checkpoint) : null;
   let rootfs = null;
   if (!snapshot && manifest.snapshot) snapshot = await load(manifest.snapshot, 'your iPhone');
@@ -192,6 +196,12 @@ async function start(message) {
     check(module.ccall('emu_init', 'number', Array(7).fill('number'),
       [k, kernel.length, d, tree.length, r, rootfs?.length || 0, 256]));
   } finally { module._free(k); module._free(d); if (r) module._free(r); }
+  if (nand) {
+    const n = alloc(nand), length = nand.length;
+    nand = null;
+    try { check(module.ccall('emu_attach_nand', 'number', ['number','number'], [n, length])); }
+    finally { module._free(n); }
+  }
   if (snapshot) {
     const s = alloc(snapshot);
     try { check(module.ccall('emu_load_snapshot', 'number', ['number','number'], [s, snapshot.length])); }

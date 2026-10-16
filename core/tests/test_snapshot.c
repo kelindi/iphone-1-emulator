@@ -845,6 +845,43 @@ static void test_nor_round_trips(void) {
     s5l8900_free(a); s5l8900_free(b);
 }
 
+/* Browser checkpoints carry only the NAND pages changed since a tracked base
+ * image, and refuse to apply them to a different base. */
+static void test_nand_changes_round_trip(void) {
+    s5l8900_t ma, mb, mc;
+    s5l8900_t *a = &ma, *b = &mb;
+    CHECK(s5l8900_init(a, 0, RAMSZ), "init a");
+    CHECK(s5l8900_init(b, 0, RAMSZ), "init b");
+    CHECK(s5l8900_init(&mc, 0, RAMSZ), "init c");
+    nand_t *na = s5l_fmc_backing(&a->fmc), *nb = s5l_fmc_backing(&b->fmc);
+    nand_t *nc = s5l_fmc_backing(&mc.fmc);
+    CHECK(na && nb && nc, "NAND backing");
+    if (!na || !nb || !nc) return;
+    uint8_t d[2048], sp[64], rd[2048];
+    memset(d, 0xa5, sizeof d); memset(sp, 0x5a, sizeof sp);
+    CHECK(nand_program_page(na, 5, d, sp) == NAND_OK &&
+          nand_program_page(nb, 5, d, sp) == NAND_OK, "base page");
+    CHECK(nand_track_changes(na, 77u) && nand_track_changes(nb, 77u) &&
+          nand_track_changes(nc, 78u), "tracking");
+    memset(d, 0x3c, sizeof d);
+    CHECK(nand_program_page(na, 200, d, sp) == NAND_OK &&
+          nand_erase_block(na, 0) == NAND_OK, "changes");
+    nand_mark_bad(na, 9);
+    uint8_t *buf = NULL; size_t len = 0;
+    CHECK(snapshot_save_mem(a, &buf, &len) == SNAP_OK, "save");
+    CHECK(snapshot_load_mem(&mc, buf, len) == SNAP_ERR_GEOMETRY,
+          "changes applied to a different base image");
+    CHECK(snapshot_load_mem(b, buf, len) == SNAP_OK, "load");
+    CHECK(nand_read_page(nb, 200, rd, NULL) == NAND_OK && rd[0] == 0x3c &&
+          rd[2047] == 0x3c, "changed page lost");
+    CHECK(nand_read_page(nb, 5, rd, NULL) == NAND_OK && rd[0] == 0xff,
+          "erased base page survived");
+    CHECK(nand_is_bad(nb, 9) && nand_page_changed(nb, 200),
+          "bad block or change record lost");
+    free(buf);
+    s5l8900_free(a); s5l8900_free(b); s5l8900_free(&mc);
+}
+
 /* -------------------------------------------------------- the file round --- */
 
 static void test_file_round_trip(void) {
@@ -1267,6 +1304,7 @@ int main(void) {
     test_ram_round_trips();
     test_partial_ram_pages();
     test_nor_round_trips();
+    test_nand_changes_round_trip();
     test_file_round_trip();
     test_incremental_capture();
     test_bad_snapshots_are_refused();
