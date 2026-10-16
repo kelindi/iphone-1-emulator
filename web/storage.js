@@ -1,4 +1,4 @@
-export const PROFILE_VERSION = 'm68-1a543a-snapshot39';
+export const PROFILE_VERSION = 'm68-1a543a-snapshot44';
 const DB_NAME = 'iphone-1';
 let database;
 const MAX_CHECKPOINT_BYTES = 512 * 1048576;
