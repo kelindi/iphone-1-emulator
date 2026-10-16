@@ -75,14 +75,25 @@ function showRunning() {
 // While the guest Camera app streams, the device camera feeds the phone's
 // camera input: the webcam on a laptop, the rear camera on a phone. Without
 // a camera or permission the guest keeps its built-in test scene.
-const CAMERA_W = 320, CAMERA_H = 240;
+// An upright 3:4 crop, the shape of the phone's portrait preview.
+const CAMERA_W = 240, CAMERA_H = 320;
 let camera = null;
 function stopCamera() {
+  clearTimeout(cameraIdle);
   if (!camera) return;
   clearInterval(camera.timer);
   camera.stream?.getTracks().forEach(track => track.stop());
   camera = null;
   worker?.postMessage({type:'camera-frame'});
+}
+// The guest pauses the camera input between preview and still capture, so
+// keep the device camera running across short gaps; the still and its
+// review frame then come from the device too, not the test scene.
+let cameraIdle = 0;
+function cameraActivity(active) {
+  clearTimeout(cameraIdle);
+  if (active) startCamera();
+  else cameraIdle = setTimeout(stopCamera, 5000);
 }
 async function startCamera() {
   if (camera || !navigator.mediaDevices?.getUserMedia) return;
@@ -150,7 +161,7 @@ async function start(recovery = null) {
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
     if (message.type === 'audio') playAudio(message.rate, message.buffer);
-    else if (message.type === 'camera') message.active ? startCamera() : stopCamera();
+    else if (message.type === 'camera') cameraActivity(message.active);
     else if (message.type === 'frame') {
       pixels.data.set(new Uint8Array(message.buffer));
       context.putImageData(pixels, 0, 0);

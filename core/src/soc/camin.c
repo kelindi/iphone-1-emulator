@@ -77,20 +77,26 @@ static uint32_t scene_pixel(uint32_t x, uint32_t y, uint32_t w, uint32_t h,
 #define CAMIN_SCALER       0x48u
 #define CAMIN_SCALER_PORTRAIT (1u << 13)
 
-static void fill422(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
-                    uint32_t stride);
+/* The host frame and test scene are upright as the user holds the phone.
+ * The preview scaler outputs upright portrait frames; the still and the
+ * post-capture review keep the sensor's layout, which the guest turns a
+ * quarter clockwise for display, so those are sampled turned back. */
+static uint32_t frame_pixel(const s5l_camin_t *c, uint32_t x, uint32_t y,
+                            uint32_t w, uint32_t h, bool turned) {
+    uint32_t X = x, Y = y, W = w, H = h;
+    if (turned) { X = h - 1u - y; Y = x; W = h; H = w; }
+    if (c->host_frame && c->host_w && c->host_h)
+        return c->host_frame[(size_t)(Y * c->host_h / H) * c->host_w +
+                             X * c->host_w / W];
+    return scene_pixel(X, Y, W, H, c->scene_seq);
+}
 
-void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
-                    uint32_t stride) {
+static void fill_bgra(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                      uint32_t stride, bool turned) {
     for (uint32_t y = 0; y < h; y++) {
         uint8_t *row = dst + (size_t)y * stride;
         for (uint32_t x = 0; x < w; x++) {
-            uint32_t p;
-            if (c->host_frame && c->host_w && c->host_h)
-                p = c->host_frame[(size_t)(y * c->host_h / h) * c->host_w +
-                                  x * c->host_w / w];
-            else
-                p = scene_pixel(x, y, w, h, c->scene_seq);
+            uint32_t p = frame_pixel(c, x, y, w, h, turned);
             row[4 * x + 0] = (uint8_t)p;
             row[4 * x + 1] = (uint8_t)(p >> 8);
             row[4 * x + 2] = (uint8_t)(p >> 16);
@@ -99,22 +105,20 @@ void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
     }
 }
 
-static uint32_t frame_pixel(const s5l_camin_t *c, uint32_t x, uint32_t y,
-                            uint32_t w, uint32_t h) {
-    if (c->host_frame && c->host_w && c->host_h)
-        return c->host_frame[(size_t)(y * c->host_h / h) * c->host_w +
-                             x * c->host_w / w];
-    return scene_pixel(x, y, w, h, c->scene_seq);
+void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                    uint32_t stride) {
+    fill_bgra(c, dst, w, h, stride, false);
 }
 
 static void fill422(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
                     uint32_t stride) {
+    bool turned = true;
     for (uint32_t y = 0; y < h; y++) {
         uint8_t *row = dst + (size_t)y * stride;
         for (uint32_t x = 0; x + 1u < w; x += 2u) {
             int yy[2], cb = 0, cr = 0;
             for (int k = 0; k < 2; k++) {
-                uint32_t p = frame_pixel(c, x + (uint32_t)k, y, w, h);
+                uint32_t p = frame_pixel(c, x + (uint32_t)k, y, w, h, turned);
                 int r = (int)((p >> 16) & 0xffu), g = (int)((p >> 8) & 0xffu),
                     b = (int)(p & 0xffu);
                 yy[k] = (77 * r + 150 * g + 29 * b + 128) >> 8;
@@ -159,7 +163,8 @@ bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram,
     uint32_t slot = c->frame_index & 3u;
     uint32_t pa = c->regs[(0x18u >> 2) + slot];
     uint8_t *dst = w && h && ram ? ram(ctx, pa, stride * h) : NULL;
-    if (dst && bgra) s5l_camin_fill(c, dst, w, h, stride);
+    bool portrait = (c->regs[CAMIN_SCALER / 4u] & CAMIN_SCALER_PORTRAIT) != 0u;
+    if (dst && bgra) fill_bgra(c, dst, w, h, stride, !portrait);
     else if (dst) fill422(c, dst, w, h, stride);
     else c->dropped++;
     c->scene_seq++;
