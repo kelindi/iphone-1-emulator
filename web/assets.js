@@ -4,7 +4,7 @@ import {sha256} from './sha256.js';
 const CACHE = 'iphone-1-assets-1a543a-v1';
 const FIRMWARE_ORIGINS = new Set(['https://iphone.files.garden']);
 const hex = bytes => [...new Uint8Array(bytes)].map(n => n.toString(16).padStart(2,'0')).join('');
-export async function assetBytes(names, report = () => {}, hashes = {}) {
+export async function assetBytes(names, report = () => {}, hashes = {}, phase = () => {}) {
   const parts = Array.isArray(names) ? names : [names];
   if (!parts.length || parts.some(x => typeof x !== 'string')) throw new Error('Invalid firmware manifest');
   let cache;
@@ -15,6 +15,7 @@ export async function assetBytes(names, report = () => {}, hashes = {}) {
     const url = new URL(name, location.href);
     if (url.origin !== location.origin && !FIRMWARE_ORIGINS.has(url.origin))
       throw new Error('Firmware must come from an approved host');
+    phase('download');
     let cached;
     try { cached = await cache?.match(url.href); } catch {}
     for (let attempt = 0; attempt < 2; attempt++) {
@@ -29,6 +30,7 @@ export async function assetBytes(names, report = () => {}, hashes = {}) {
         pieces.push(value); partLength += value.byteLength;
         report(received + partLength);
       }
+      phase('verify');
       const buffer = await new Blob(pieces).arrayBuffer();
       const valid = !hashes[name] || hex(await sha256(buffer)) === hashes[name];
       if (!valid) {
@@ -45,6 +47,7 @@ export async function assetBytes(names, report = () => {}, hashes = {}) {
   }
   const blob = new Blob(chunks);
   if (/\.gz(?:\.part\d+)?$/.test(parts[0])) {
+    phase('decompress');
     return new Uint8Array(await new Response(blob.stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
   }
   return new Uint8Array(await blob.arrayBuffer());

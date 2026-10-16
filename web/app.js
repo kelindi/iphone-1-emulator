@@ -10,6 +10,18 @@ let saving = false, liveSave = false, lastInput = 0, lastSave = 0, savedRecord =
 let serial = '', metrics = {}, captureMs = null, captureChunkMs = null, finalizeMs = null, startTime = 0;
 let preparingOffline = false;
 let audio = null, audioTime = 0;
+// Startup steps with no worker message for this long are reported as a stall.
+const STALL_MS = 45000;
+const phaseLabels = {manifest:'downloading iPhone OS', download:'downloading iPhone OS', verify:'checking the download',
+  decompress:'unpacking iPhone OS', engine:'starting the emulator', restore:'restoring your iPhone', wake:'waking your iPhone'};
+let phase = 'profile', phaseStart = 0, phaseTimes = {}, lastWorkerMessage = 0, stalled = false;
+function enterPhase(next) {
+  if (next === phase) return;
+  const now = performance.now();
+  if (phaseStart) phaseTimes[`${phase}_ms`] = Math.round((phaseTimes[`${phase}_ms`] || 0) + now - phaseStart);
+  phase = next; phaseStart = now;
+}
+const errorMessage = error => describeError(error).slice(0, 160);
 function setProgress(percent) {
   const progress = $('progress');
   progress.setAttribute('aria-valuenow', String(percent));
@@ -50,7 +62,8 @@ function controls() {
   canvas.style.pointerEvents = ready && !paused ? '' : 'none';
 }
 function fail(error) {
-  track('emulator failed', {error_type:error?.name || 'Error', startup:!ready});
+  track('emulator failed', {error_type:error?.name || 'Error', error_message:errorMessage(error), startup:!ready,
+    phase, stalled, startup_ms:Math.round(performance.now() - startTime)});
   ready = false;
   canvas.dataset.ready = 'false'; document.body.dataset.ready = 'false';
   $('boot-loader').hidden = false;
@@ -92,6 +105,8 @@ async function start(recovery = null) {
   controls(); $('progress').hidden = false; $('retry').hidden = true; $('recover').hidden = true;
   setProgress(0);
   setStatus('Downloading iPhone OS…');
+  phase = 'profile'; phaseStart = performance.now(); phaseTimes = {}; stalled = false;
+  lastWorkerMessage = performance.now();
   try {
     savedRecord = recovery || await readCheckpoint();
     if (savedRecord && savedRecord.version !== PROFILE_VERSION)
@@ -108,6 +123,7 @@ async function start(recovery = null) {
   worker = new Worker(workerURL);
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
+    lastWorkerMessage = performance.now();
     if (message.type === 'audio') playAudio(message.rate, message.buffer);
     else if (message.type === 'frame') {
       pixels.data.set(new Uint8Array(message.buffer));
@@ -115,10 +131,17 @@ async function start(recovery = null) {
       canvas.dataset.frame = String(message.sequence);
       worker.postMessage({type:'recycle', buffer:message.buffer}, [message.buffer]);
     } else if (message.type === 'loading') {
+      if (message.phase) enterPhase(message.phase);
+      if (stalled) return;
       setStatus(message.message);
       if (message.total > 0) setProgress(Math.min(99, Math.floor(message.received / message.total * 100)));
     }
     else if (message.type === 'ready') {
+      enterPhase('running');
+      if (stalled) track('emulator recovered from stall', {startup_ms:Math.round(performance.now() - startTime)});
+      stalled = false;
+      $('retry').hidden = true;
+      $('boot-loader').dataset.state = 'loading';
       setProgress(100);
       ready = true; paused = false; lastInput = performance.now();
       $('boot-loader').hidden = true;
@@ -127,7 +150,7 @@ async function start(recovery = null) {
       silent = Boolean(message.silent);
       document.querySelector('[data-toggle]').setAttribute('aria-pressed', String(silent));
       controls(); showRunning();
-      track('emulator ready', {startup_ms:Math.round(performance.now() - startTime), restored:Boolean(savedRecord)});
+      track('emulator ready', {startup_ms:Math.round(performance.now() - startTime), restored:Boolean(savedRecord), ...phaseTimes});
       window.dispatchEvent(new CustomEvent('iphone-ready', {detail:{startupMs:performance.now() - startTime}}));
     } else if (message.type === 'reply') {
       const req = pending.get(message.id); pending.delete(message.id);
@@ -145,7 +168,9 @@ async function start(recovery = null) {
     }
   };
   startTime = performance.now();
+  enterPhase('checkpoint');
   const checkpoint = savedRecord ? await checkpointBytes(savedRecord) : null;
+  enterPhase('worker');
   worker.postMessage({type:'start', cpi, checkpoint}, checkpoint ? [checkpoint] : []);
 }
 
@@ -413,8 +438,31 @@ $('recover').addEventListener('click', async () => {
   } catch (error) { fail(error); }
 });
 setInterval(() => save(false), 30000);
+// A startup step that never settles leaves no error behind; surface it and offer a retry.
+setInterval(() => {
+  if (ready || stalled || document.hidden || $('boot-loader').dataset.state !== 'loading') return;
+  if (performance.now() - lastWorkerMessage < STALL_MS) return;
+  stalled = true;
+  const detail = {phase, phase_ms:Math.round(performance.now() - phaseStart),
+    startup_ms:Math.round(performance.now() - startTime), restored:Boolean(savedRecord), ...phaseTimes};
+  track('emulator stalled', detail);
+  console.warn('iPhone startup stalled', detail);
+  window.dispatchEvent(new CustomEvent('iphone-stalled', {detail}));
+  $('boot-loader').dataset.state = 'error';
+  setStatus(`Your iPhone got stuck ${phaseLabels[phase] || 'starting up'}. Try again, or open this page in another browser.`);
+  $('retry').hidden = false; $('retry').disabled = false;
+  $('recover').hidden = !savedRecord;
+  controls();
+}, 5000);
+let pageErrors = 0;
+const reportPageError = (error, kind) => {
+  if (++pageErrors > 5) return;
+  track('page error', {kind, phase, ready, error_type:error?.name || 'Error', error_message:errorMessage(error)});
+};
+window.addEventListener('error', event => reportPageError(event.error || {message:event.message}, 'error'));
+window.addEventListener('unhandledrejection', event => reportPageError(event.reason, 'rejection'));
 document.addEventListener('visibilitychange', () => {
-  if (!ready) return;
+  if (!ready) { if (!document.hidden) lastWorkerMessage = performance.now(); return; }
   releaseInputs().catch(() => {});
   if (document.hidden) { save(false); call('pause', {value:true}).catch(() => {}); }
   else call('pause', {value:paused}).catch(fail);
