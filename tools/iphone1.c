@@ -395,21 +395,6 @@ int main(int argc,char **argv) {
            r.boot_args_pa,r.ramdisk_pa,r.ramdisk_va,r.ramdisk_size);
     printf("framebuffer_pa=0x%08x vram_bytes=0x%08x top_of_kernel_data_pa=0x%08x cmdline=\"%s\"\n",
            r.framebuffer_pa,r.vram_bytes,r.top_of_kernel_data_pa,r.cmdline);
-    if (load_path) {
-        snapshot_status_t ss = snapshot_load(&m, load_path);
-        if (ss != SNAP_OK) {
-            fprintf(stderr, "snapshot load failed: %s\n", snapshot_strerror(ss));
-            s5l8900_free(&m); free(k.p); free(d.p); free(rd.p);
-            return 1;
-        }
-        fprintf(stderr, "loaded snapshot %s at step %llu\n", load_path,
-                (unsigned long long)m.cpu.cycles);
-    }
-    if (!s5l8900_set_cycles_per_insn(&m, cpi)) {
-        fprintf(stderr, "invalid --cpi %u (expected 1..16)\n", cpi);
-        s5l8900_free(&m); free(k.p); free(d.p); free(rd.p);
-        return 2;
-    }
     if (nand_path) {
         nand_t *nd = s5l_fmc_backing(&m.fmc);
         FILE *probe = fopen(nand_path, "rb");
@@ -431,6 +416,21 @@ int main(int argc,char **argv) {
             fprintf(stderr, "nand: loaded %llu pages from %s\n",
                     (unsigned long long)nd->live_pages, nand_path);
         }
+    }
+    if (load_path) {
+        snapshot_status_t ss = snapshot_load(&m, load_path);
+        if (ss != SNAP_OK) {
+            fprintf(stderr, "snapshot load failed: %s\n", snapshot_strerror(ss));
+            s5l8900_free(&m); free(k.p); free(d.p); free(rd.p);
+            return 1;
+        }
+        fprintf(stderr, "loaded snapshot %s at step %llu\n", load_path,
+                (unsigned long long)m.cpu.cycles);
+    }
+    if (!s5l8900_set_cycles_per_insn(&m, cpi)) {
+        fprintf(stderr, "invalid --cpi %u (expected 1..16)\n", cpi);
+        s5l8900_free(&m); free(k.p); free(d.p); free(rd.p);
+        return 2;
     }
     qsort(events, event_n, sizeof events[0], input_compare);
     tap_t t={serial?fopen(serial,"wb"):NULL,&m,true}; s5l8900_set_uart0_host(&m,tap,&t);
