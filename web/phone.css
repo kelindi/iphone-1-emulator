@@ -17,16 +17,16 @@ button:disabled { cursor: default; }
 
 .experience {
   display: grid;
-  min-height: 100svh;
+  min-height: calc(100svh - 24px);
   place-items: center;
-  padding: 16px;
+  padding: 16px 16px 4px;
   background: #f5f5f3;
 }
 .device-stage { display: flex; justify-content: center; }
 .phone {
   position: relative;
   isolation: isolate;
-  width: min(380px, calc(100vw - 32px), calc((100svh - 32px) * 380 / 716));
+  width: min(380px, calc(100vw - 32px), calc((100svh - 44px) * 380 / 716));
   aspect-ratio: 380 / 716;
   border-radius: 13.6% / 7.2%;
   filter: drop-shadow(0 24px 28px #0000001c) drop-shadow(0 4px 7px #00000024);
@@ -175,10 +175,14 @@ kbd { display: inline-block; padding: 0 4px; min-width: 18px; border: 1px solid 
 #diagnostics { max-height: 240px; margin: 12px 0 0; padding: 12px; overflow: auto; border-radius: 6px; background: #e8e5df; color: #66635d; font: 10px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
 .colophon { margin: 10px 0 0; color: #aaa49b; font-size: 9px; letter-spacing: .035em; }
 .colophon span { margin: 0 5px; }
+.site-footer { height: 24px; padding-bottom: 4px; text-align: center; color: #aaa49b; font-size: 11px; line-height: 20px; letter-spacing: .02em; }
+.site-footer a { color: #858078; text-decoration: none; }
+.site-footer a:hover { color: #282825; text-decoration: underline; }
+.site-footer a:focus-visible { outline: 2px solid #5186c0; outline-offset: 2px; border-radius: 2px; }
 
 @media (max-width: 420px) {
-  .experience { padding: 12px; }
-  .phone { width: min(380px, calc(100vw - 24px), calc((100svh - 24px) * 380 / 716)); }
+  .experience { padding: 12px 12px 4px; }
+  .phone { width: min(380px, calc(100vw - 24px), calc((100svh - 40px) * 380 / 716)); }
 }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
