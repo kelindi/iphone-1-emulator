@@ -56,6 +56,7 @@ function fail(error) {
   $('boot-loader').hidden = false;
   $('boot-loader').dataset.state = 'error';
   setStatus(describeError(error));
+  stopCamera();
   worker?.terminate();
   worker = null;
   for (const req of pending.values()) req.reject(new Error(describeError(error)));
@@ -71,6 +72,45 @@ function showRunning() {
   else if (lastSave) setStatus(`Saved at ${new Date(lastSave).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}`);
   else setStatus('Ready. Your iPhone, just as you left it.');
 }
+// While the guest Camera app streams, the device camera feeds the phone's
+// camera input: the webcam on a laptop, the rear camera on a phone. Without
+// a camera or permission the guest keeps its built-in test scene.
+const CAMERA_W = 320, CAMERA_H = 240;
+let camera = null;
+function stopCamera() {
+  if (!camera) return;
+  clearInterval(camera.timer);
+  camera.stream?.getTracks().forEach(track => track.stop());
+  camera = null;
+  worker?.postMessage({type:'camera-frame'});
+}
+async function startCamera() {
+  if (camera || !navigator.mediaDevices?.getUserMedia) return;
+  const state = camera = {stream:null, timer:0};
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({audio:false,
+      video:{facingMode:{ideal:'environment'}, width:{ideal:640}, height:{ideal:480}}});
+    if (camera !== state) { stream.getTracks().forEach(track => track.stop()); return; }
+    state.stream = stream;
+    const video = Object.assign(document.createElement('video'), {muted:true, playsInline:true, srcObject:stream});
+    await video.play();
+    const grab = Object.assign(document.createElement('canvas'), {width:CAMERA_W, height:CAMERA_H});
+    const grabContext = grab.getContext('2d', {willReadFrequently:true});
+    state.timer = setInterval(() => {
+      const vw = video.videoWidth, vh = video.videoHeight;
+      if (!worker || camera !== state || !vw || !vh) return;
+      const scale = Math.max(CAMERA_W / vw, CAMERA_H / vh), sw = CAMERA_W / scale, sh = CAMERA_H / scale;
+      grabContext.drawImage(video, (vw - sw) / 2, (vh - sh) / 2, sw, sh, 0, 0, CAMERA_W, CAMERA_H);
+      const {data} = grabContext.getImageData(0, 0, CAMERA_W, CAMERA_H);
+      worker.postMessage({type:'camera-frame', width:CAMERA_W, height:CAMERA_H, buffer:data.buffer}, [data.buffer]);
+    }, 1000 / 15);
+  } catch (error) {
+    if (camera !== state) return;
+    camera = null;
+    setStatus('Camera unavailable, so the iPhone shows a test pattern.');
+    track('camera unavailable', {error_type:error?.name || 'Error'});
+  }
+}
 function inputError(error) {
   setStatus(`Input could not be delivered: ${error.message}`);
   releaseInputs().catch(() => {});
@@ -85,6 +125,7 @@ async function start(recovery = null) {
   ready = false; paused = false;
   $('boot-loader').hidden = false;
   $('boot-loader').dataset.state = 'loading';
+  stopCamera();
   worker?.terminate();
   for (const req of pending.values()) req.reject(new Error('Phone restarted'));
   pending.clear(); contacts.clear(); keys.clear();
@@ -109,6 +150,7 @@ async function start(recovery = null) {
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
     if (message.type === 'audio') playAudio(message.rate, message.buffer);
+    else if (message.type === 'camera') message.active ? startCamera() : stopCamera();
     else if (message.type === 'frame') {
       pixels.data.set(new Uint8Array(message.buffer));
       context.putImageData(pixels, 0, 0);

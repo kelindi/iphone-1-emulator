@@ -7,7 +7,15 @@
  * (data). Only the control plane lives here. Pixel data reaches the SoC
  * through /arm-io/camin, not through this bus. */
 #include "soc.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+static int cam_trace = -1;
+static bool tracing(void) {
+    if (cam_trace < 0) cam_trace = getenv("S5LBOX_CAMSENSOR_TRACE") != NULL;
+    return cam_trace != 0;
+}
 
 #define REG_MODEL_ID   0x3000u
 #define REG_STANDBY    0x3202u
@@ -84,6 +92,7 @@ static uint16_t reg_get(s5l_mt9d112_t *s, uint16_t reg) {
 
 static void reg_set(s5l_mt9d112_t *s, uint16_t reg, uint16_t value) {
     s->reg_writes++;
+    if (tracing()) fprintf(stderr, "cam i2c w %04x = %04x (mcu %04x)\n", reg, value, s->mcu_addr);
     if (reg == REG_MCU_ADDR) { s->mcu_addr = value; return; }
     if (reg == REG_MCU_DATA) { var_set(s, s->mcu_addr, value); return; }
     uint16_t *v = slot(s->reg_addr, s->reg_val, &s->reg_count,
@@ -122,6 +131,8 @@ static uint8_t read_byte(void *ctx) {
     if (!s) return 0xffu;
     uint16_t v = reg_get(s, s->ptr);
     uint8_t out = s->rpos ? (uint8_t)v : (uint8_t)(v >> 8);
+    if (s->rpos && tracing())
+        fprintf(stderr, "cam i2c r %04x = %04x (mcu %04x)\n", s->ptr, v, s->mcu_addr);
     if (s->rpos) {
         s->reg_reads++;
         if (s->ptr != REG_MCU_DATA) s->ptr = (uint16_t)(s->ptr + 2u);
