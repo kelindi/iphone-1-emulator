@@ -229,6 +229,102 @@ storage_status_t storage_load_nand(nand_t *n, const char *path) {
     return st;
 }
 
+/* ------------------------------------------------------- sparse NAND ---- */
+
+#define STORAGE_SPARSE_MAGIC   0x50534e56u   /* "VNSP" */
+#define STORAGE_SPARSE_VERSION 1u
+
+storage_status_t storage_save_nand_sparse(const nand_t *n, const char *path) {
+    if (!n || !n->blocks || !n->bad || !path) return STORAGE_ERR_IO;
+    char *tmp = storage_temp_path(path, n);
+    if (!tmp) return STORAGE_ERR_NOMEM;
+    FILE *f = fopen(tmp, "wb");
+    if (!f) { free(tmp); return STORAGE_ERR_IO; }
+    size_t plen = (size_t)n->page_size + n->spare_size;
+    bool ok = wr32(f, STORAGE_SPARSE_MAGIC) && wr32(f, STORAGE_SPARSE_VERSION)
+           && wr32(f, n->page_size) && wr32(f, n->spare_size)
+           && wr32(f, n->pages_per_block) && wr32(f, n->block_count)
+           && wr32(f, (uint32_t)n->live_pages) && wr32(f, 0);
+    uint64_t hash = STORAGE_FNV64_OFFSET;
+    for (uint32_t b = 0; ok && b < n->block_count; b++) {
+        uint8_t **pages = n->blocks[b];
+        if (!pages) continue;
+        for (uint32_t p = 0; ok && p < n->pages_per_block; p++) {
+            if (!pages[p]) continue;
+            uint32_t idx = b * n->pages_per_block + p;
+            uint8_t le[4] = { (uint8_t)idx, (uint8_t)(idx >> 8),
+                              (uint8_t)(idx >> 16), (uint8_t)(idx >> 24) };
+            hash = hash_bytes(hash, le, 4);
+            hash = hash_bytes(hash, pages[p], plen);
+            ok = fwrite(le, 1, 4, f) == 4 && fwrite(pages[p], 1, plen, f) == plen;
+        }
+    }
+    hash = hash_bytes(hash, n->bad, n->block_count);
+    if (ok) ok = fwrite(n->bad, 1, n->block_count, f) == n->block_count;
+    if (ok) ok = wr64(f, hash);
+    return finish_atomic_save(f, tmp, path, ok);
+}
+
+storage_status_t storage_load_nand_sparse(nand_t *n, const char *path) {
+    if (!n || !n->blocks || !n->bad || !path) return STORAGE_ERR_IO;
+    FILE *f = fopen(path, "rb");
+    if (!f) return STORAGE_ERR_IO;
+    uint32_t hdr[HEADER_WORDS];
+    for (unsigned i = 0; i < HEADER_WORDS; i++) {
+        if (!rd32(f, &hdr[i])) { fclose(f); return STORAGE_ERR_TRUNCATED; }
+    }
+    if (hdr[0] != STORAGE_SPARSE_MAGIC)   { fclose(f); return STORAGE_ERR_FORMAT; }
+    if (hdr[1] != STORAGE_SPARSE_VERSION) { fclose(f); return STORAGE_ERR_VERSION; }
+    if (hdr[7] != 0) { fclose(f); return STORAGE_ERR_TRAILING; }
+    if (hdr[2] != n->page_size || hdr[3] != n->spare_size ||
+        hdr[4] != n->pages_per_block || hdr[5] != n->block_count) {
+        fclose(f);
+        return STORAGE_ERR_GEOMETRY;
+    }
+    /* Stage into a scratch device so a bad file never touches the live one. */
+    nand_t t;
+    if (!nand_init(&t, n->page_size, n->spare_size, n->pages_per_block,
+                   n->block_count)) { fclose(f); return STORAGE_ERR_NOMEM; }
+    size_t plen = (size_t)n->page_size + n->spare_size;
+    uint8_t *buf = malloc(plen);
+    storage_status_t st = buf ? STORAGE_OK : STORAGE_ERR_NOMEM;
+    uint64_t hash = STORAGE_FNV64_OFFSET;
+    uint32_t total = nand_total_pages(n), prev = 0;
+    for (uint32_t r = 0; st == STORAGE_OK && r < hdr[6]; r++) {
+        uint8_t le[4];
+        if (fread(le, 1, 4, f) != 4 || fread(buf, 1, plen, f) != plen) {
+            st = STORAGE_ERR_TRUNCATED;
+            break;
+        }
+        uint32_t idx = (uint32_t)le[0] | (uint32_t)le[1] << 8 |
+                       (uint32_t)le[2] << 16 | (uint32_t)le[3] << 24;
+        if (idx >= total || (r && idx <= prev)) { st = STORAGE_ERR_FORMAT; break; }
+        prev = idx;
+        hash = hash_bytes(hash, le, 4);
+        hash = hash_bytes(hash, buf, plen);
+        if (nand_store_page(&t, idx, buf, buf + n->page_size) != NAND_OK)
+            st = STORAGE_ERR_NOMEM;
+    }
+    free(buf);
+    if (st == STORAGE_OK &&
+        fread(t.bad, 1, t.block_count, f) != t.block_count)
+        st = STORAGE_ERR_TRUNCATED;
+    uint64_t recorded = 0;
+    if (st == STORAGE_OK) {
+        hash = hash_bytes(hash, t.bad, t.block_count);
+        if (!rd64(f, &recorded)) st = STORAGE_ERR_TRUNCATED;
+        else if (recorded != hash) st = STORAGE_ERR_CHECKSUM;
+    }
+    for (uint32_t i = 0; st == STORAGE_OK && i < t.block_count; i++)
+        if (t.bad[i] > 1u) st = STORAGE_ERR_FORMAT;
+    if (st == STORAGE_OK) st = require_eof(f);
+    if (fclose(f) != 0 && st == STORAGE_OK) st = STORAGE_ERR_IO;
+    if (st != STORAGE_OK) { nand_free(&t); return st; }
+    nand_free(n);
+    *n = t;
+    return STORAGE_OK;
+}
+
 /* --------------------------------------------------------------- NOR ---- */
 
 #define STORAGE_NOR_MAGIC 0x524f4e56u   /* "VNOR" */

@@ -56,6 +56,15 @@ storage_status_t storage_save_nand(const nand_t *n, const char *path);
 storage_status_t storage_load_nand(nand_t *n, const char *path);
 
 /*
+ * Sparse NAND image: header, then one record per programmed page (index,
+ * data, spare), then the bad-block map and an FNV-1a hash. Erased pages are
+ * not stored, so a multi-gigabyte device costs only what has been written.
+ * Save is atomic (sibling file + rename); load is transactional.
+ */
+storage_status_t storage_save_nand_sparse(const nand_t *n, const char *path);
+storage_status_t storage_load_nand_sparse(nand_t *n, const char *path);
+
+/*
  * NOR persistence. An untethered jailbreak on this SoC (24kpwn) persists its
  * payload in NOR, so flash changes must survive a relaunch just as NAND
  * changes do.

@@ -379,6 +379,21 @@ static void test_sparse_backing(void) {
     d[7] = 0xff;
     CHECK(nand_program_page(&n, 64 * 3 + 5, d, NULL) == NAND_ERR_NOT_ERASED,
           "sparse page allowed a 0->1 program");
+    {
+        const char *path = "ios3vm_nand_sparse.img";
+        nand_t back;
+        CHECK(nand_init(&back, 2048, 64, 64, 0x8000), "init failed");
+        CHECK(storage_save_nand_sparse(&n, path) == STORAGE_OK, "sparse save");
+        CHECK(storage_load_nand_sparse(&back, path) == STORAGE_OK &&
+              back.live_pages == 1, "sparse load");
+        CHECK(nand_read_page(&back, 64 * 3 + 5, rd, rs) == NAND_OK &&
+              rd[7] == 0x12 && rs[3] == 0x34, "sparse round trip lost data");
+        CHECK(flip_file_byte(path, 40), "could not corrupt sparse image");
+        CHECK(storage_load_nand_sparse(&back, path) == STORAGE_ERR_CHECKSUM &&
+              back.live_pages == 1, "corrupt sparse image accepted");
+        nand_free(&back);
+        remove(path);
+    }
     CHECK(nand_erase_block(&n, 3) == NAND_OK && n.live_pages == 0,
           "erase did not release the block's pages");
     CHECK(nand_read_page(&n, 64 * 3 + 5, rd, rs) == NAND_OK &&

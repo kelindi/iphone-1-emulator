@@ -2406,6 +2406,8 @@ uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
 void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
 bool s5l_fmc_irq(const s5l_fmc_t *f);
 void s5l_fmc_free(s5l_fmc_t *f);
+/* The NAND array behind the controller, allocated (erased) on first use. */
+nand_t *s5l_fmc_backing(s5l_fmc_t *f);
 /* DMA request for the FIFO as a source: a page is loaded and not drained. */
 bool s5l_fmc_rx_ready(const s5l_fmc_t *f);
 

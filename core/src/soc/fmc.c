@@ -113,6 +113,10 @@ static bool fmc_backing(s5l_fmc_t *f) {
     return true;
 }
 
+nand_t *s5l_fmc_backing(s5l_fmc_t *f) {
+    return f && fmc_backing(f) ? f->nand : NULL;
+}
+
 void s5l_fmc_free(s5l_fmc_t *f) {
     if (!f || !f->nand) return;
     nand_free(f->nand);
@@ -237,7 +241,7 @@ void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val) {
         return;
     }
     f->regs[word(off)] = val;
-    if (off == FMC_NAND_CMD && tracing_cmds() && val != 0u && val != 0x30u)
+    if (off == FMC_NAND_CMD && tracing_cmds())
         fprintf(stderr, "fmc cmd %02x ctrl %08x addr %08x %08x\n", val,
                 f->regs[word(FMC_CTRL)], f->regs[word(FMC_ADDR)],
                 f->regs[word(FMC_ADDR) + 1u]);
