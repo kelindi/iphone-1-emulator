@@ -488,6 +488,13 @@ static uint8_t *machine_host_ram(void *ctx, uint32_t pa, uint32_t len) {
     return m->ram + (pa - m->ram_base);
 }
 
+/* The flash controller exists only once a NAND array has been attached
+ * (s5l_fmc_backing); without one the window stays unmapped, so the stock
+ * driver does not find a blank chip and panic on the RAM-disk boot. */
+static inline bool fmc_present(const s5l8900_t *m) {
+    return m->fmc.nand != NULL;
+}
+
 static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
     s5l8900_t *m = ctx;
 
@@ -536,9 +543,11 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
         v = s5l_clcd_read(&m->clcd, addr - S5L8900_CLCD_BASE);
     } else if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_camin_read(&m->camin, addr - S5L8900_CAMIN_BASE);
-    } else if (mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
+    } else if (fmc_present(m) &&
+               mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_fmc_read(&m->fmc, addr - S5L8900_FMC_BASE);
-    } else if (mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+    } else if (fmc_present(m) &&
+               mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_rsecc_read(&m->rsecc, addr - S5L8900_RSECC_BASE);
     } else if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
                in_window(addr, bytes, S5L8900_TVOUT_CTRL_BASE,
@@ -656,13 +665,15 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
         s5l_clcd_write(&m->clcd, addr - S5L8900_CLCD_BASE, val);
         return;
     }
-    if (mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
+    if (fmc_present(m) &&
+        mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_fmc_write(&m->fmc, addr - S5L8900_FMC_BASE, val);
         m->level_dirty = true;
         return;
     }
-    if (mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+    if (fmc_present(m) &&
+        mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_rsecc_write(&m->rsecc, addr - S5L8900_RSECC_BASE, val);
         m->level_dirty = true;
