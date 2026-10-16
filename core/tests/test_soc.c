@@ -3808,6 +3808,49 @@ static void test_timer_interrupt_reaches_handler(void) {
     s5l8900_free(&m);
 }
 
+static uint32_t camin_test_len;
+static uint8_t *camin_test_ram(void *ctx, uint32_t pa, uint32_t len) {
+    static uint8_t buffer[2400u * 1600u];
+    (void)ctx; (void)pa;
+    camin_test_len = len;
+    return len <= sizeof buffer ? buffer : NULL;
+}
+
+/* AppleH1CamIn's three captured frame modes: the portrait live preview,
+ * the 16 bpp still, and the post-capture review that keeps 0x00 at the
+ * 480x640 sensor window but scales to a landscape 400x300 through 0x54. */
+static void test_camin_frame_geometry(void) {
+    static const struct {
+        const char *name;
+        uint32_t geom, out, scaler, fmt, pixels, bytes;
+    } modes[] = {
+        {"preview", 0x81908130u, 0x01900130u, 0x61902130u, 0x6100d100u,
+         0x0001db00u, 304u * 4u * 400u},
+        {"still", 0x864084b0u, 0x064004b0u, 0x464004b0u, 0x6100c100u,
+         0x001d4c00u, 1200u * 2u * 1600u},
+        {"review", 0x828081e0u, 0x0190012cu, 0x6190012cu, 0x01009100u,
+         0x0001d4c0u, 400u * 4u * 300u},
+    };
+    for (unsigned i = 0; i < sizeof modes / sizeof modes[0]; i++) {
+        s5l_camin_t c;
+        memset(&c, 0, sizeof c);
+        c.frame_ticks = 1u;
+        s5l_camin_reset(&c);
+        s5l_camin_write(&c, 0x18u, 0x08800000u);
+        s5l_camin_write(&c, 0x00u, modes[i].geom);
+        s5l_camin_write(&c, 0x48u, modes[i].scaler);
+        s5l_camin_write(&c, 0x54u, modes[i].out);
+        s5l_camin_write(&c, 0x58u, modes[i].fmt);
+        s5l_camin_write(&c, 0x5cu, modes[i].pixels);
+        s5l_camin_write(&c, 0xc0u, 0xc2000400u);
+        camin_test_len = 0u;
+        CHECK(s5l_camin_tick(&c, 1u, camin_test_ram, NULL) &&
+              camin_test_len == modes[i].bytes && c.dropped == 0u,
+              "camin %s frame wrote %u bytes, expected %u",
+              modes[i].name, camin_test_len, modes[i].bytes);
+    }
+}
+
 int main(void) {
     printf("S5LBox S5L8900 machine tests\n");
     test_ram_readback();
@@ -3879,6 +3922,7 @@ int main(void) {
     test_wfi_unpredictable_source_stops_the_fast_forward();
     test_wfi_wake_source_order_does_not_matter();
     test_timer_interrupt_reaches_handler();
+    test_camin_frame_geometry();
     printf("\n%d passed, %d failed\n", g_pass, g_fail);
     return g_fail == 0 ? 0 : 1;
 }
