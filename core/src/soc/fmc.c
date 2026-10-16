@@ -203,26 +203,48 @@ static uint32_t us_ticks(uint64_t tb_hz, uint32_t us) {
     return (uint32_t)(t ? t : 1u);
 }
 
-void s5l_fmc_tick(s5l_fmc_t *f, uint32_t tb, uint64_t tb_hz) {
+/* `elapsed` is timebase ticks since the previous refresh; xfer_tb and
+ * ready_tb hold the ticks still to go once their delay is armed. */
+void s5l_fmc_tick(s5l_fmc_t *f, uint32_t elapsed, uint64_t tb_hz) {
     /* The DMA drains the FIFO in one go, often from inside the filter that
      * is about to ack the previous transfer's bit 3; the bus time of a real
      * 2112-byte transfer keeps the new bit 3 behind that ack. */
     if (f->xfer_state == 1u) {
-        f->xfer_tb = tb + us_ticks(tb_hz, FMC_T_XFER_US);
+        f->xfer_tb = us_ticks(tb_hz, FMC_T_XFER_US);
         f->xfer_state = 2u;
-    } else if (f->xfer_state == 2u && (int32_t)(tb - f->xfer_tb) >= 0) {
-        f->status |= FMC_ST_DATA_READY;
-        f->xfer_state = 0u;
+    } else if (f->xfer_state == 2u) {
+        if (elapsed >= f->xfer_tb) {
+            f->status |= FMC_ST_DATA_READY;
+            f->xfer_state = 0u;
+            f->xfer_tb = 0u;
+        } else {
+            f->xfer_tb -= elapsed;
+        }
     }
     if (!f->ready_pending) return;
     if (f->ready_armed) {
-        f->ready_tb = tb + us_ticks(tb_hz, f->ready_us);
+        f->ready_tb = us_ticks(tb_hz, f->ready_us);
         f->ready_armed = 0u;
         return;
     }
-    if ((int32_t)(tb - f->ready_tb) < 0) return;
+    if (elapsed < f->ready_tb) {
+        f->ready_tb -= elapsed;
+        return;
+    }
     f->status |= f->ready_pending;
     f->ready_pending = 0u;
+    f->ready_tb = 0u;
+}
+
+uint32_t s5l_fmc_ticks_to_event(const s5l_fmc_t *f) {
+    uint32_t best = 0u;
+    if (f->xfer_state == 1u) best = 1u;
+    else if (f->xfer_state == 2u) best = f->xfer_tb ? f->xfer_tb : 1u;
+    if (f->ready_pending) {
+        uint32_t r = f->ready_armed || !f->ready_tb ? 1u : f->ready_tb;
+        if (!best || r < best) best = r;
+    }
+    return best;
 }
 
 bool s5l_fmc_irq(const s5l_fmc_t *f) {

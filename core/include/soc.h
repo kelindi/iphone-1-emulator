@@ -2414,7 +2414,9 @@ void s5l_fmc_reset(s5l_fmc_t *f);
 uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
 void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
 bool s5l_fmc_irq(const s5l_fmc_t *f);
-void s5l_fmc_tick(s5l_fmc_t *f, uint32_t tb, uint64_t tb_hz);
+void s5l_fmc_tick(s5l_fmc_t *f, uint32_t elapsed, uint64_t tb_hz);
+/* Timebase ticks until the next delayed status edge, 0 when none is due. */
+uint32_t s5l_fmc_ticks_to_event(const s5l_fmc_t *f);
 void s5l_fmc_free(s5l_fmc_t *f);
 /* The NAND array behind the controller, allocated (erased) on first use. */
 nand_t *s5l_fmc_backing(s5l_fmc_t *f);

@@ -540,6 +540,10 @@ int main(int argc,char **argv) {
                (unsigned long long)m.fmc.erases,
                (unsigned long long)m.fmc.prog_fails,
                (unsigned long long)(m.fmc.nand ? m.fmc.nand->live_pages : 0u));
+    if (m.fmc.commands)
+        printf("fmc: status=%08x ready_pending=%x xfer_state=%u rpos=%u rend=%u\n",
+               m.fmc.status, m.fmc.ready_pending, m.fmc.xfer_state,
+               m.fmc.rpos, m.fmc.rend);
     if (nand_path && m.fmc.nand) {
         storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, nand_path);
         printf("nand: save %s: %s\n", nand_path, storage_strerror(ns));

@@ -1106,6 +1106,14 @@ static s5l_wake_kind_t wake_edge_camin(const s5l8900_t *m, uint32_t *ticks) {
     return S5L_WAKE_AT;
 }
 
+/* Delayed FMC array-ready and transfer-done edges. */
+static s5l_wake_kind_t wake_edge_fmc(const s5l8900_t *m, uint32_t *ticks) {
+    uint32_t until = s5l_fmc_ticks_to_event(&m->fmc);
+    if (until == 0u) return S5L_WAKE_NEVER;
+    *ticks = until;
+    return S5L_WAKE_AT;
+}
+
 /* TV-out SDO VSYNC.  The device answers "no deliverable VSYNC" with zero,
  * which is a statement about its state (stopped, masked, already pending) and
  * therefore S5L_WAKE_NEVER rather than an unknown. */
@@ -1277,6 +1285,7 @@ static const s5l_wake_source_t WAKE_SOURCES[] = {
     { "timer", S5L8900_IRQ_TIMER, wake_edge_timer },
     { "clcd",  S5L8900_IRQ_CLCD,  wake_edge_clcd  },
     { "camin", S5L8900_IRQ_CAMIN, wake_edge_camin },
+    { "fmc", S5L8900_IRQ_FMC, wake_edge_fmc },
     { "tvout", S5L8900_IRQ_TVOUT, wake_edge_tvout },
     { "spi0",  S5L8900_IRQ_SPI0,  wake_edge_spi0  },
     { "spi1",  S5L8900_IRQ_SPI1,  wake_edge_spi1  },
