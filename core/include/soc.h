@@ -2396,6 +2396,35 @@ uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
 void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
 bool s5l_fmc_irq(const s5l_fmc_t *f);
 
+/* /arm-io/rsecc: reg 0x38f00000, interrupts {0x2b}. The FMC driver's ECC
+ * engine (c041f8f4): data/ECC buffer physical pointers, setup = sectors-1 |
+ * strength, start 1 = check, 2 = generate; completion on IRQ 43, cleared by
+ * a store to +0x40; status bit 0 = uncorrectable. See fmc.c. */
+#define S5L8900_RSECC_BASE  0x38f00000u
+#define S5L8900_IRQ_RSECC   43u
+#define S5L_RSECC_SIZE      0x80u
+#define RSECC_DATA          0x04u
+#define RSECC_ECC           0x08u
+#define RSECC_START         0x0cu
+#define RSECC_STATUS        0x10u
+#define RSECC_SETUP         0x14u
+#define RSECC_CLEARINT      0x40u
+#define RSECC_START_CHECK   1u
+#define RSECC_START_GEN     2u
+#define RSECC_ST_UNCORRECTABLE 1u
+#define RSECC_SECTOR        512u
+typedef struct {
+    uint32_t regs[S5L_RSECC_SIZE / 4u];
+    uint32_t pending, irq, status;
+    uint32_t reserved[5];
+    uint64_t checks, gens, failures;
+} s5l_rsecc_t;
+void s5l_rsecc_reset(s5l_rsecc_t *e);
+uint32_t s5l_rsecc_read(s5l_rsecc_t *e, uint32_t off);
+void s5l_rsecc_write(s5l_rsecc_t *e, uint32_t off, uint32_t val);
+/* Runs a started operation against guest memory; returns the IRQ level. */
+bool s5l_rsecc_run(s5l_rsecc_t *e, const arm_bus_t *bus);
+
 void s5l_mt9d112_reset(s5l_mt9d112_t *s);
 void s5l_mt9d112_bind(s5l_mt9d112_t *s, s5l_i2c_slave_t *slave);
 uint16_t s5l_mt9d112_var(const s5l_mt9d112_t *s, uint16_t addr);
@@ -4145,6 +4174,7 @@ typedef struct {
     s5l_mt9d112_t camsensor;
     s5l_camin_t   camin;
     s5l_fmc_t     fmc;
+    s5l_rsecc_t   rsecc;
     s5l_i2s_t   i2s[S5L8900_I2S_COUNT];
     /* spi[0] is spi0, spi[1] is spi1 and spi[2] is spi2. M68 attaches its Z1
      * touch controller on spi2; the baseband transport also uses that bus. */

@@ -3011,8 +3011,8 @@ static void test_tvout_machine_routing_and_irq30(void) {
      * and from 22 to 23 when the PowerVR MBX block was modelled so its
      * kext could get past its reset handshake, and from 23 to 24 with the
      * camera input block, and from 24 to 25 with the NAND flash controller. */
-    CHECK(nw == m.stub_count + 26u,
-          "fixed device-window count=%u expect 26 (+%u stubs)",
+    CHECK(nw == m.stub_count + 27u,
+          "fixed device-window count=%u expect 27 (+%u stubs)",
           nw - m.stub_count, m.stub_count);
     bool have_ctrl = false, have_mixer = false, have_sdo = false;
     for (unsigned i = 0; i < nw && i < S5L_WINDOW_MAX; i++) {

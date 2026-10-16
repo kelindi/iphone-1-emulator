@@ -135,6 +135,7 @@ SNAP_SIZE_GUARD(s5l_wm8991_t,      496,   "snap_codec");
 SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
 SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
 SNAP_SIZE_GUARD(s5l_fmc_t,         344,   "snap_fmc");
+SNAP_SIZE_GUARD(s5l_rsecc_t,       184,   "snap_rsecc");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
 /* Four register banks, plus what the board is driving and which lines it
@@ -224,8 +225,8 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-/* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344), v41. */
-SNAP_SIZE_GUARD(s5l8900_t,         129768, "snap_mach");
+/* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344) + rsecc (184), v41. */
+SNAP_SIZE_GUARD(s5l8900_t,         129952, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -869,6 +870,13 @@ static void snap_fmc(sn_io_t *io, s5l_fmc_t *f) {
     F64(f->id_reads);
 }
 
+static void snap_rsecc(sn_io_t *io, s5l_rsecc_t *e) {
+    FA32(e->regs, S5L_RSECC_SIZE / 4u);
+    F32(e->pending); F32(e->irq); F32(e->status);
+    FA32(e->reserved, 5u);
+    F64(e->checks); F64(e->gens); F64(e->failures);
+}
+
 static bool codec_state_valid(const s5l_wm8991_t *c, bool wm8758) {
     if (!c || c->ptr >= WM8991_NREG ||
         c->wlen > WM8991_MAX_WRITE ||
@@ -1192,6 +1200,7 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
     snap_camsensor(io, &m->camsensor);
     snap_camin(io, &m->camin);
     snap_fmc(io, &m->fmc);
+    snap_rsecc(io, &m->rsecc);
 
     F64(m->unmapped_reads);
     F64(m->unmapped_writes);

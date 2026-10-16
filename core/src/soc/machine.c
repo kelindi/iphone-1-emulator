@@ -38,6 +38,7 @@ static const s5l_window_t DEVICE_WINDOWS[] = {
     { S5L8900_CLCD_BASE,  S5L8900_DEV_SIZE,   "clcd"  },
     { S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE,   "camin" },
     { S5L8900_FMC_BASE,   S5L8900_DEV_SIZE,   "fmc"   },
+    { S5L8900_RSECC_BASE, S5L8900_DEV_SIZE,   "rsecc" },
     { S5L8900_TVOUT_CTRL_BASE,  S5L_TVOUT_BANK_SIZE, "tvout-control" },
     { S5L8900_TVOUT_MIXER_BASE, S5L_TVOUT_BANK_SIZE, "tvout-mixer"   },
     { S5L8900_TVOUT_SDO_BASE,   S5L_TVOUT_BANK_SIZE, "tvout-sdo"     },
@@ -537,6 +538,8 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
         v = s5l_camin_read(&m->camin, addr - S5L8900_CAMIN_BASE);
     } else if (mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_fmc_read(&m->fmc, addr - S5L8900_FMC_BASE);
+    } else if (mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_rsecc_read(&m->rsecc, addr - S5L8900_RSECC_BASE);
     } else if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
                in_window(addr, bytes, S5L8900_TVOUT_CTRL_BASE,
                          S5L_TVOUT_BANK_SIZE)) {
@@ -656,6 +659,12 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     if (mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_fmc_write(&m->fmc, addr - S5L8900_FMC_BASE, val);
+        m->level_dirty = true;
+        return;
+    }
+    if (mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_rsecc_write(&m->rsecc, addr - S5L8900_RSECC_BASE, val);
         m->level_dirty = true;
         return;
     }
@@ -1514,6 +1523,7 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     s5l_clcd_reset(&m->clcd);
     s5l_camin_reset(&m->camin);
     s5l_fmc_reset(&m->fmc);
+    s5l_rsecc_reset(&m->rsecc);
     {
         const char *t = getenv("S5LBOX_CAMIN_TRACE");
         m->camin.trace = t && *t && *t != '0';
@@ -1853,6 +1863,8 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CAMIN,
                      s5l_camin_tick(&m->camin, tb, machine_host_ram, m));
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_FMC, s5l_fmc_irq(&m->fmc));
+    s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_RSECC - 32u,
+                     s5l_rsecc_run(&m->rsecc, &m->bus));
 
     /*
      * The MBX completion line. Like i2c and spi below, the device completes

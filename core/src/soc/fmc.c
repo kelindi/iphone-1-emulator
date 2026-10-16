@@ -46,7 +46,10 @@ uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off) {
     static uint32_t last_off = ~0u, last_v, repeats;
     uint32_t v = fmc_read(f, off);
     if (tracing()) {
-        if (off == last_off && v == last_v) repeats++;
+        if (off == last_off && v == last_v) {
+            if (++repeats % 100000u == 0u)
+                fprintf(stderr, "fmc   (x%u so far)\n", repeats);
+        }
         else {
             if (repeats) fprintf(stderr, "fmc   (x%u)\n", repeats);
             fprintf(stderr, "fmc r %03x = %08x\n", off, v);
@@ -120,4 +123,72 @@ void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val) {
     f->regs[word(off)] = val;
     if (off == FMC_NAND_CMD) nand_command(f, val);
     else if (off == FMC_CMD_CTRL) start(f, val);
+}
+
+/*
+ * RSECC. The genuine engine is a Reed-Solomon coder; nothing here needs the
+ * real code because every page this machine stores was written through this
+ * model. A CRC-32 per 512-byte sector, four bytes per sector at the ECC
+ * pointer, is self-consistent and detects what matters: an erased page (ECC
+ * bytes 0xff) fails the check, which AppleS5L8900XFMC::_fmcCompleteRead
+ * reclassifies as blank once it sees an all-0xff spare.
+ */
+void s5l_rsecc_reset(s5l_rsecc_t *e) {
+    if (e) memset(e, 0, sizeof *e);
+}
+
+uint32_t s5l_rsecc_read(s5l_rsecc_t *e, uint32_t off) {
+    if (off == RSECC_STATUS) return e->status;
+    return off < S5L_RSECC_SIZE ? e->regs[(off >> 2) % (S5L_RSECC_SIZE / 4u)]
+                                : 0u;
+}
+
+void s5l_rsecc_write(s5l_rsecc_t *e, uint32_t off, uint32_t val) {
+    if (tracing()) fprintf(stderr, "rsecc w %03x = %08x\n", off, val);
+    if (off >= S5L_RSECC_SIZE) return;
+    if (off == RSECC_CLEARINT) { e->irq = 0u; return; }
+    e->regs[off >> 2] = val;
+    if (off == RSECC_START &&
+        (val == RSECC_START_CHECK || val == RSECC_START_GEN))
+        e->pending = val;
+}
+
+static uint32_t sector_crc(const arm_bus_t *bus, uint32_t pa) {
+    uint32_t crc = ~0u;
+    for (uint32_t i = 0; i < RSECC_SECTOR; i += 4u) {
+        uint32_t w = bus->read32(bus->ctx, pa + i);
+        for (unsigned k = 0; k < 4u; k++) {
+            crc ^= (w >> (8u * k)) & 0xffu;
+            for (unsigned b = 0; b < 8u; b++)
+                crc = (crc >> 1) ^ (0xedb88320u & (0u - (crc & 1u)));
+        }
+    }
+    return ~crc;
+}
+
+bool s5l_rsecc_run(s5l_rsecc_t *e, const arm_bus_t *bus) {
+    if (e->pending) {
+        uint32_t data = e->regs[RSECC_DATA >> 2], ecc = e->regs[RSECC_ECC >> 2];
+        uint32_t n = (e->regs[RSECC_SETUP >> 2] & 3u) + 1u;
+        e->status = 0u;
+        for (uint32_t i = 0; i < n; i++) {
+            uint32_t crc = sector_crc(bus, data + i * RSECC_SECTOR);
+            if (e->pending == RSECC_START_GEN) {
+                bus->write32(bus->ctx, ecc + 4u * i, crc);
+            } else {
+                uint32_t want = bus->read32(bus->ctx, ecc + 4u * i);
+                if (want == 0xffffffffu || want != crc)
+                    e->status |= RSECC_ST_UNCORRECTABLE;
+            }
+        }
+        if (e->pending == RSECC_START_GEN) e->gens++;
+        else { e->checks++; if (e->status) e->failures++; }
+        if (tracing())
+            fprintf(stderr, "rsecc %s n=%u data=%08x ecc=%08x st=%u\n",
+                    e->pending == RSECC_START_GEN ? "gen" : "check", n, data,
+                    ecc, e->status);
+        e->pending = 0u;
+        e->irq = 1u;
+    }
+    return e->irq != 0u;
 }
