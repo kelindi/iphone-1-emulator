@@ -14,7 +14,7 @@ Usage:
                                        plist NAME (binary plist rewritten)
       [--no-autolock]                 set SpringBoard auto-lock and dim to Never and
                                       disable SpringBoard idle sleep
-      [--no-bluetooth]                disable the BTServer launch daemon
+      [--no-bluetooth]                make BlueTool's deep-sleep script a no-op
       [--activate]                    seed a locally verified activation record
       [--add GUEST_PATH=HOSTFILE]...  add a new file, creating directories
 """
@@ -689,17 +689,14 @@ def main():
         else:
             w.add_file_data(path, data)
     if no_bluetooth:
-        # No Bluetooth chip is emulated. With BTServer running, every display
-        # sleep runs BlueTool's deepsleep script against the absent chip and
-        # holds off the next wake for ~45 s of retries.
-        path = "/System/Library/LaunchDaemons/com.apple.BTServer.plist"
-        existing = w.find_file_path(path)
-        if not existing:
+        # No Bluetooth chip is emulated. Stock BTServer runs BlueTool's
+        # deepsleep script on every display sleep; against the absent CSR chip
+        # it retries resets for ~45 s and holds off the next wake. Disabling
+        # BTServer instead leaves the display unable to relight after a lock.
+        path = "/etc/bluetool/deepsleep.script"
+        if not w.find_file_path(path):
             raise SystemExit("%s: file not found" % path)
-        fork, _, _, _ = existing
-        pl = plistlib.loads(w.vol.read_fork(fork))
-        pl["Disabled"] = True
-        w.replace_file_path(path, plistlib.dumps(pl, fmt=plistlib.FMT_XML))
+        w.replace_file_path(path, b"#\n# No Bluetooth chip is emulated; nothing to put to sleep.\n#\nquit\n")
     if activate:
         activation_pem, ca_pem, record = _local_activation_data()
         for path, data in (
