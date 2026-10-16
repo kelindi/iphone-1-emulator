@@ -67,6 +67,16 @@ static uint32_t scene_pixel(uint32_t x, uint32_t y, uint32_t w, uint32_t h,
     return bars[(x * 8u) / (w ? w : 1u)];
 }
 
+/* 0x58 bit 12 is set for 'BGRA' (32 bpp) by the buffer-setup helper
+ * c0306c68 and clear for the 16 bpp still, which the JPEG encoder takes as
+ * 4:2:2 YCbCr ('2vuy': Cb Y0 Cr Y1); 0x5C holds the buffer size in pixels. */
+#define CAMIN_FMT          0x58u
+#define CAMIN_FMT_BGRA     (1u << 12)
+#define CAMIN_PIXELS       0x5cu
+
+static void fill422(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                    uint32_t stride);
+
 void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
                     uint32_t stride) {
     for (uint32_t y = 0; y < h; y++) {
@@ -86,6 +96,37 @@ void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
     }
 }
 
+static uint32_t frame_pixel(const s5l_camin_t *c, uint32_t x, uint32_t y,
+                            uint32_t w, uint32_t h) {
+    if (c->host_frame && c->host_w && c->host_h)
+        return c->host_frame[(size_t)(y * c->host_h / h) * c->host_w +
+                             x * c->host_w / w];
+    return scene_pixel(x, y, w, h, c->scene_seq);
+}
+
+static void fill422(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                    uint32_t stride) {
+    for (uint32_t y = 0; y < h; y++) {
+        uint8_t *row = dst + (size_t)y * stride;
+        for (uint32_t x = 0; x + 1u < w; x += 2u) {
+            int yy[2], cb = 0, cr = 0;
+            for (int k = 0; k < 2; k++) {
+                uint32_t p = frame_pixel(c, x + (uint32_t)k, y, w, h);
+                int r = (int)((p >> 16) & 0xffu), g = (int)((p >> 8) & 0xffu),
+                    b = (int)(p & 0xffu);
+                yy[k] = (77 * r + 150 * g + 29 * b + 128) >> 8;
+                cb += ((-43 * r - 85 * g + 128 * b + 128) >> 8) + 128;
+                cr += ((128 * r - 107 * g - 21 * b + 128) >> 8) + 128;
+            }
+            cb /= 2; cr /= 2;
+            row[2 * x + 0] = (uint8_t)(cb > 255 ? 255 : cb < 0 ? 0 : cb);
+            row[2 * x + 1] = (uint8_t)(yy[0] > 255 ? 255 : yy[0]);
+            row[2 * x + 2] = (uint8_t)(cr > 255 ? 255 : cr < 0 ? 0 : cr);
+            row[2 * x + 3] = (uint8_t)(yy[1] > 255 ? 255 : yy[1]);
+        }
+    }
+}
+
 bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram,
                     void *ctx) {
     if (!c || !c->frame_ticks || !(c->regs[CAMIN_CTRL / 4u] & CAMIN_CTRL_EN)) {
@@ -98,11 +139,15 @@ bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram,
 
     uint32_t geom = c->regs[0];
     uint32_t w = geom & 0x1fffu, h = (geom >> 16) & 0x1fffu;
-    uint32_t stride = w * 4u;
+    bool bgra = (c->regs[CAMIN_FMT / 4u] & CAMIN_FMT_BGRA) != 0u;
+    uint32_t stride = w * (bgra ? 4u : 2u);
+    uint32_t limit = c->regs[CAMIN_PIXELS / 4u];
+    if (limit && w && h > limit / w) h = limit / w;
     uint32_t slot = c->frame_index & 3u;
     uint32_t pa = c->regs[(0x18u >> 2) + slot];
     uint8_t *dst = w && h && ram ? ram(ctx, pa, stride * h) : NULL;
-    if (dst) s5l_camin_fill(c, dst, w, h, stride);
+    if (dst && bgra) s5l_camin_fill(c, dst, w, h, stride);
+    else if (dst) fill422(c, dst, w, h, stride);
     else c->dropped++;
     c->scene_seq++;
     c->frames++;

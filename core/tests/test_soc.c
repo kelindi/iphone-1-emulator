@@ -1557,10 +1557,11 @@ static void test_wfi_wake_source_order_does_not_matter(void) {
      * today for the reason the SPI pair does, and both are declared anyway
      * because this table is the machine's definition of what can interrupt it.
      * camin joined with the camera input block's frame clock, fmc with the
-     * flash controller's delayed ready and transfer-done edges. */
-    CHECK(real != NULL && nreal == 10u + S5L_GPIOIC_GROUPS,
+     * flash controller's delayed ready and transfer-done edges, jpeg with
+     * the encoder's completion. */
+    CHECK(real != NULL && nreal == 11u + S5L_GPIOIC_GROUPS,
           "the machine declares %u wake sources, expected %u",
-          nreal, 10u + S5L_GPIOIC_GROUPS);
+          nreal, 11u + S5L_GPIOIC_GROUPS);
     for (unsigned i = 0; i < nreal; i++)
         CHECK(real[i].name && real[i].next_edge &&
               real[i].line < 32u * S5L8900_VIC_COUNT,
@@ -3011,9 +3012,10 @@ static void test_tvout_machine_routing_and_irq30(void) {
      * 22 with the two PL080 DMA controllers that feed those I2S FIFOs,
      * and from 22 to 23 when the PowerVR MBX block was modelled so its
      * kext could get past its reset handshake, and from 23 to 24 with the
-     * camera input block, and from 24 to 25 with the NAND flash controller. */
-    CHECK(nw == m.stub_count + 27u,
-          "fixed device-window count=%u expect 27 (+%u stubs)",
+     * camera input block, and from 24 to 25 with the NAND flash controller,
+     * and from 25 to 26 with the JPEG encoder. */
+    CHECK(nw == m.stub_count + 28u,
+          "fixed device-window count=%u expect 28 (+%u stubs)",
           nw - m.stub_count, m.stub_count);
     bool have_ctrl = false, have_mixer = false, have_sdo = false;
     for (unsigned i = 0; i < nw && i < S5L_WINDOW_MAX; i++) {

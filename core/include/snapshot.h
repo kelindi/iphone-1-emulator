@@ -193,7 +193,9 @@
  *      the end of MACH.
  *      Its MCU sequencer state is what AppleMicron2020 polls before preview,
  *      so it cannot be defaulted on restore. */
-#define SNAPSHOT_VERSION   42u
+/* v43: /arm-io/jpeg (AppleJPEGDriver's encoder) and the physical edram at
+ *      0x18000000 it writes the encoded still into, appended to MACH. */
+#define SNAPSHOT_VERSION   43u
 
 typedef enum {
     SNAP_OK = 0,

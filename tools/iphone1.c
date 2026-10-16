@@ -446,6 +446,12 @@ int main(int argc,char **argv) {
                                        snapshot_strerror(ss));
             else fprintf(stderr, "saved snapshot %s at step %llu\n", save_path,
                          (unsigned long long)total);
+            if (ss == SNAP_OK && m.fmc.nand) {
+                char np[1024];
+                snprintf(np, sizeof np, "%s.nand", save_path);
+                storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, np);
+                fprintf(stderr, "nand: save %s: %s\n", np, storage_strerror(ns));
+            }
             saved = true;
         }
         if (tap_pending &&
@@ -520,6 +526,12 @@ int main(int argc,char **argv) {
                                        snapshot_strerror(ss));
             else fprintf(stderr, "saved snapshot %s at step %llu\n", save_path,
                          (unsigned long long)total);
+            if (ss == SNAP_OK && m.fmc.nand) {
+                char np[1024];
+                snprintf(np, sizeof np, "%s.nand", save_path);
+                storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, np);
+                fprintf(stderr, "nand: save %s: %s\n", np, storage_strerror(ns));
+            }
             saved = true;
         }
         if (shot&&shot_every&&total/shot_every!=(total-n)/shot_every) {

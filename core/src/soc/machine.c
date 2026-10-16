@@ -37,6 +37,7 @@ static const s5l_window_t DEVICE_WINDOWS[] = {
     { S5L8900_NOR_BASE,   S5L8900_NOR_SIZE,   "nor"   },
     { S5L8900_CLCD_BASE,  S5L8900_DEV_SIZE,   "clcd"  },
     { S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE,   "camin" },
+    { S5L8900_JPEG_BASE,  S5L8900_DEV_SIZE,   "jpeg"  },
     { S5L8900_FMC_BASE,   S5L8900_DEV_SIZE,   "fmc"   },
     { S5L8900_RSECC_BASE, S5L8900_DEV_SIZE,   "rsecc" },
     { S5L8900_TVOUT_CTRL_BASE,  S5L_TVOUT_BANK_SIZE, "tvout-control" },
@@ -484,6 +485,9 @@ static void note_device(s5l8900_t *m, uint32_t addr, uint32_t val, bool is_write
 static uint8_t *machine_host_ram(void *ctx, uint32_t pa, uint32_t len) {
     s5l8900_t *m = ctx;
     if (!m || !m->ram || !len) return NULL;
+    if (m->edram && pa >= S5L8900_EDRAM_BASE &&
+        (uint64_t)pa - S5L8900_EDRAM_BASE + len <= S5L8900_EDRAM_SIZE)
+        return m->edram + (pa - S5L8900_EDRAM_BASE);
     if (!in_ram(m, pa, len)) return NULL;
     return m->ram + (pa - m->ram_base);
 }
@@ -501,6 +505,11 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
     if (in_ram(m, addr, bytes)) {
         uint32_t v = 0;
         memcpy(&v, &m->ram[addr - m->ram_base], bytes);   /* little-endian host */
+        return v;
+    }
+    if (m->edram && in_window(addr, bytes, S5L8900_EDRAM_BASE, S5L8900_EDRAM_SIZE)) {
+        uint32_t v = 0;
+        memcpy(&v, &m->edram[addr - S5L8900_EDRAM_BASE], bytes);
         return v;
     }
     /*
@@ -543,6 +552,8 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
         v = s5l_clcd_read(&m->clcd, addr - S5L8900_CLCD_BASE);
     } else if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_camin_read(&m->camin, addr - S5L8900_CAMIN_BASE);
+    } else if (mmio_word(addr, bytes, S5L8900_JPEG_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_jpeg_read(&m->jpeg, addr - S5L8900_JPEG_BASE);
     } else if (fmc_present(m) &&
                mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_fmc_read(&m->fmc, addr - S5L8900_FMC_BASE);
@@ -627,6 +638,11 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
 
 static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     s5l8900_t *m = ctx;
+    if (m->edram && !in_ram(m, addr, bytes) &&
+        in_window(addr, bytes, S5L8900_EDRAM_BASE, S5L8900_EDRAM_SIZE)) {
+        memcpy(&m->edram[addr - S5L8900_EDRAM_BASE], &val, bytes);
+        return;
+    }
 
     if (in_ram(m, addr, bytes)) {
         memcpy(&m->ram[addr - m->ram_base], &val, bytes);
@@ -676,6 +692,12 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
         mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_rsecc_write(&m->rsecc, addr - S5L8900_RSECC_BASE, val);
+        m->level_dirty = true;
+        return;
+    }
+    if (mmio_word(addr, bytes, S5L8900_JPEG_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_jpeg_write(&m->jpeg, addr - S5L8900_JPEG_BASE, val, m->tb_hz);
         m->level_dirty = true;
         return;
     }
@@ -1117,6 +1139,13 @@ static s5l_wake_kind_t wake_edge_camin(const s5l8900_t *m, uint32_t *ticks) {
     return S5L_WAKE_AT;
 }
 
+static s5l_wake_kind_t wake_edge_jpeg(const s5l8900_t *m, uint32_t *ticks) {
+    uint32_t until = s5l_jpeg_ticks_to_event(&m->jpeg);
+    if (until == 0u) return S5L_WAKE_NEVER;
+    *ticks = until;
+    return S5L_WAKE_AT;
+}
+
 /* Delayed FMC array-ready and transfer-done edges. */
 static s5l_wake_kind_t wake_edge_fmc(const s5l8900_t *m, uint32_t *ticks) {
     uint32_t until = s5l_fmc_ticks_to_event(&m->fmc);
@@ -1297,6 +1326,7 @@ static const s5l_wake_source_t WAKE_SOURCES[] = {
     { "clcd",  S5L8900_IRQ_CLCD,  wake_edge_clcd  },
     { "camin", S5L8900_IRQ_CAMIN, wake_edge_camin },
     { "fmc", S5L8900_IRQ_FMC, wake_edge_fmc },
+    { "jpeg", S5L8900_IRQ_JPEG, wake_edge_jpeg },
     { "tvout", S5L8900_IRQ_TVOUT, wake_edge_tvout },
     { "spi0",  S5L8900_IRQ_SPI0,  wake_edge_spi0  },
     { "spi1",  S5L8900_IRQ_SPI1,  wake_edge_spi1  },
@@ -1520,14 +1550,17 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     /* The MBX aperture's edram, owned here like RAM. See S5L_MBX_APERTURE.
      * A failure is handled below with the RAM failure, not ignored. */
     m->mbx.edram = calloc(S5L_MBX_EDRAM_SIZE, 1);
+    m->edram = calloc(S5L8900_EDRAM_SIZE, 1);
     /* Optional: without it shifted-out samples are counted and dropped. */
     m->audio_ring = calloc(S5L_AUDIO_RING_BYTES, 1);
-    if (!m->ram || !m->mbx.edram) {
+    if (!m->ram || !m->mbx.edram || !m->edram) {
         free(m->audio_ring);
         m->audio_ring = NULL;
         free(m->ram);
         m->ram = NULL;
         free(m->mbx.edram);
+        free(m->edram);
+        m->edram = NULL;
         m->mbx.edram = NULL;
         return false;
     }
@@ -1544,6 +1577,11 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     s5l_mbx_reset(&m->mbx);
     s5l_clcd_reset(&m->clcd);
     s5l_camin_reset(&m->camin);
+    s5l_jpeg_reset(&m->jpeg);
+    {
+        const char *t = getenv("S5LBOX_JPEG_TRACE");
+        m->jpeg.trace = t && *t && *t != '0';
+    }
     s5l_fmc_reset(&m->fmc);
     s5l_rsecc_reset(&m->rsecc);
     {
@@ -1582,6 +1620,8 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
         free(m->ram);
         m->ram = NULL;
         free(m->mbx.edram);
+        free(m->edram);
+        m->edram = NULL;
         m->mbx.edram = NULL;
         return false;
     }
@@ -1664,6 +1704,8 @@ void s5l8900_free(s5l8900_t *m) {
     free(m->ram);
     m->ram = NULL;
     free(m->mbx.edram);
+    free(m->edram);
+    m->edram = NULL;
     m->mbx.edram = NULL;
     free(m->audio_ring);
     m->audio_ring = NULL;
@@ -1885,6 +1927,8 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
         m->camin.frame_ticks = m->tb_hz / S5L_CAMIN_FPS;
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CAMIN,
                      s5l_camin_tick(&m->camin, tb, machine_host_ram, m));
+    s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_JPEG - 32u,
+                     s5l_jpeg_tick(&m->jpeg, tb, machine_host_ram, m));
     s5l_fmc_tick(&m->fmc, tb, m->tb_hz);
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_FMC, s5l_fmc_irq(&m->fmc));
     s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_RSECC - 32u,

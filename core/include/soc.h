@@ -42,7 +42,7 @@
  * The resulting physical map, with what is and is not modelled:
  *
  *   0x08000000  DRAM base. 128 MB fitted on an iPhone1,2 (ends 0x10000000).
- *   0x18000000  edram, 0x140000                    NOT MODELLED
+ *   0x18000000  edram, 0x140000                    plain memory (JPEG output)
  *   0x20000000  vrom (boot ROM), 0x10000           NOT MODELLED
  *   0x22000000  SRAM / AMC window, 0x2c000         NOT MODELLED
  *   0x28000000  <- first physical byte the device tree assigns to NOTHING
@@ -2363,6 +2363,28 @@ uint32_t s5l_camin_read(s5l_camin_t *c, uint32_t off);
 void s5l_camin_write(s5l_camin_t *c, uint32_t off, uint32_t val);
 bool s5l_camin_irq(const s5l_camin_t *c);
 
+/* /arm-io/jpeg: reg {0x01000000, 0x1000}, interrupts {0x32}. See jpeg.c. */
+#define S5L8900_JPEG_BASE   0x39000000u
+#define S5L8900_IRQ_JPEG    50u
+#define S5L_JPEG_SIZE       0x100u
+typedef struct {
+    uint32_t regs[S5L_JPEG_SIZE / 4u];
+    uint32_t busy_ticks;
+    uint32_t reserved[3];
+    uint64_t encodes, reads, writes;
+    bool     trace;
+    uint8_t  pad[7];
+} s5l_jpeg_t;
+void s5l_jpeg_reset(s5l_jpeg_t *j);
+uint32_t s5l_jpeg_read(s5l_jpeg_t *j, uint32_t off);
+void s5l_jpeg_write(s5l_jpeg_t *j, uint32_t off, uint32_t val, uint32_t tb_hz);
+bool s5l_jpeg_tick(s5l_jpeg_t *j, uint32_t tb, s5l_camin_ram_fn ram, void *ctx);
+bool s5l_jpeg_irq(const s5l_jpeg_t *j);
+uint32_t s5l_jpeg_ticks_to_event(const s5l_jpeg_t *j);
+size_t s5l_jpeg_encode_422(const uint8_t *src, uint32_t w, uint32_t h,
+                           uint32_t stride, int quality, uint32_t sampling,
+                           uint8_t *out, size_t cap);
+
 /* /arm-io/fmc: reg {0x00a00000, 0x1000}, interrupts {0x14}; child "disk"
  * (device_type nand) reg 0x0f = banks 0-3. See fmc.c. */
 #define S5L8900_FMC_BASE    0x38a00000u
@@ -4201,6 +4223,10 @@ typedef struct {
     /* M68 camera sensor on i2c1 (unused, all-zero, on N82). */
     s5l_mt9d112_t camsensor;
     s5l_camin_t   camin;
+    s5l_jpeg_t    jpeg;
+    /* Physical edram (S5L8900_EDRAM_BASE): plain memory the JPEG encoder
+     * writes its output into. Owned like RAM; streamed by the snapshot. */
+    uint8_t      *edram;
     s5l_fmc_t     fmc;
     s5l_rsecc_t   rsecc;
     s5l_i2s_t   i2s[S5L8900_I2S_COUNT];

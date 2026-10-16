@@ -136,6 +136,7 @@ SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
 SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
 SNAP_SIZE_GUARD(s5l_fmc_t,         4688,  "snap_fmc");
 SNAP_SIZE_GUARD(s5l_rsecc_t,       184,   "snap_rsecc");
+SNAP_SIZE_GUARD(s5l_jpeg_t,        304,   "snap_jpeg");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
 /* Four register banks, plus what the board is driving and which lines it
@@ -226,7 +227,8 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
 /* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344) + rsecc (184), v41. */
-SNAP_SIZE_GUARD(s5l8900_t,         134296, "snap_mach");
+/* +312: jpeg (304) and the edram pointer, v43. */
+SNAP_SIZE_GUARD(s5l8900_t,         134608, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -861,6 +863,13 @@ static void snap_camin(sn_io_t *io, s5l_camin_t *c) {
     FA32(c->reserved, 6u);
 }
 
+static void snap_jpeg(sn_io_t *io, s5l_jpeg_t *j) {
+    FA32(j->regs, S5L_JPEG_SIZE / 4u);
+    F32(j->busy_ticks);
+    FA32(j->reserved, 3u);
+    F64(j->encodes); F64(j->reads); F64(j->writes);
+}
+
 static void snap_fmc(sn_io_t *io, s5l_fmc_t *f) {
     FA32(f->regs, S5L_FMC_SIZE / 4u);
     F32(f->status); F32(f->fifo); F32(f->chip_id); F32(f->bank_mask);
@@ -1207,6 +1216,9 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
     snap_camin(io, &m->camin);
     snap_fmc(io, &m->fmc);
     snap_rsecc(io, &m->rsecc);
+    /* v43: JPEG encoder and the physical edram it writes into. */
+    snap_jpeg(io, &m->jpeg);
+    FBYTES(m->edram, S5L8900_EDRAM_SIZE);
 
     F64(m->unmapped_reads);
     F64(m->unmapped_writes);
