@@ -43,6 +43,11 @@ static bool tracing_cmds(void) { trace_init(); return fmc_trace == 2; }
 /* READ STATUS: ready, not write-protected; bit 0 = last operation failed. */
 #define NAND_STATUS_PASS 0xe0u
 #define NAND_STATUS_FAIL 0xe1u
+/* Busy times, shortened from the part's tR 25 us / tPROG 200 us / tBERS
+ * 2 ms so whole-array scans stay quick. */
+#define FMC_T_READ_US    25u
+#define FMC_T_WRITE_US   50u
+#define FMC_T_XFER_US    5u
 
 void s5l_fmc_reset(s5l_fmc_t *f) {
     if (!f) return;
@@ -57,7 +62,7 @@ void s5l_fmc_reset(s5l_fmc_t *f) {
 }
 
 bool s5l_fmc_rx_ready(const s5l_fmc_t *f) {
-    return f->last_cmd == NAND_CMD_READ_GO && f->rpos < S5L_FMC_PAGE_BYTES;
+    return f->last_cmd == NAND_CMD_READ_GO && f->rpos < f->rend;
 }
 
 static uint32_t op_page(const s5l_fmc_t *f) {
@@ -92,9 +97,10 @@ static uint32_t fmc_read(s5l_fmc_t *f, uint32_t off) {
     f->reads++;
     if (off == FMC_STATUS) return f->status;
     if (off == FMC_FIFO && f->last_cmd == NAND_CMD_READ_GO) {
-        if (f->rpos + 4u > S5L_FMC_PAGE_BYTES) return 0xffffffffu;
+        if (f->rpos + 4u > f->rend) return 0xffffffffu;
         const uint8_t *b = &f->rbuf[f->rpos];
         f->rpos += 4u;
+        if (f->rpos >= f->rend) f->xfer_state = 1u;
         return (uint32_t)b[0] | (uint32_t)b[1] << 8 | (uint32_t)b[2] << 16 |
                (uint32_t)b[3] << 24;
     }
@@ -173,7 +179,18 @@ static void nand_command(s5l_fmc_t *f, uint32_t cmd) {
     if (f->last_cmd == NAND_CMD_RESET || f->last_cmd == NAND_CMD_READ_GO ||
         f->last_cmd == NAND_CMD_ERASE_GO || f->last_cmd == NAND_CMD_PROG_GO) {
         if (f->last_cmd == NAND_CMD_RESET) f->resets++;
-        f->status |= (selected_banks(f) & f->bank_mask) << 4;
+        uint32_t sel = selected_banks(f) & f->bank_mask;
+        if (f->last_cmd == NAND_CMD_READ_GO)
+            for (uint32_t b = 0; b < S5L_FMC_BANKS; b++)
+                if (sel & (1u << b)) f->bank_row[b] = f->row;
+        if (f->last_cmd == NAND_CMD_RESET) {
+            f->status |= sel << 4;
+        } else {
+            f->ready_pending |= sel << 4;
+            f->ready_us = f->last_cmd == NAND_CMD_READ_GO ? FMC_T_READ_US
+                                                          : FMC_T_WRITE_US;
+            f->ready_armed = 1u;
+        }
     }
 }
 
@@ -181,6 +198,33 @@ static void nand_command(s5l_fmc_t *f, uint32_t cmd) {
  * around the polled READ ID data phase), bits 3+n enable bank n's ready
  * bit (reset writes (#banks mask << 3) | 4). Address-done and data-ready
  * are polled, never interrupt sources. */
+static uint32_t us_ticks(uint64_t tb_hz, uint32_t us) {
+    uint64_t t = tb_hz * us / 1000000u;
+    return (uint32_t)(t ? t : 1u);
+}
+
+void s5l_fmc_tick(s5l_fmc_t *f, uint32_t tb, uint64_t tb_hz) {
+    /* The DMA drains the FIFO in one go, often from inside the filter that
+     * is about to ack the previous transfer's bit 3; the bus time of a real
+     * 2112-byte transfer keeps the new bit 3 behind that ack. */
+    if (f->xfer_state == 1u) {
+        f->xfer_tb = tb + us_ticks(tb_hz, FMC_T_XFER_US);
+        f->xfer_state = 2u;
+    } else if (f->xfer_state == 2u && (int32_t)(tb - f->xfer_tb) >= 0) {
+        f->status |= FMC_ST_DATA_READY;
+        f->xfer_state = 0u;
+    }
+    if (!f->ready_pending) return;
+    if (f->ready_armed) {
+        f->ready_tb = tb + us_ticks(tb_hz, f->ready_us);
+        f->ready_armed = 0u;
+        return;
+    }
+    if ((int32_t)(tb - f->ready_tb) < 0) return;
+    f->status |= f->ready_pending;
+    f->ready_pending = 0u;
+}
+
 bool s5l_fmc_irq(const s5l_fmc_t *f) {
     uint32_t en = f->regs[word(FMC_INT_EN)];
     if (!(en & 4u)) return false;
@@ -217,11 +261,23 @@ static void start(s5l_fmc_t *f, uint32_t val) {
         f->fifo = f->nand_status * 0x01010101u;
         f->status |= FMC_ST_DATA_READY;
     } else if ((val & FMC_CC_READ) && f->last_cmd == NAND_CMD_READ_GO) {
-        if (!f->nand || nand_read_page(f->nand, op_page(f), f->rbuf,
+        uint32_t sel = selected_banks(f) & f->bank_mask, bank = 0u;
+        if (sel) { while (!(sel & 1u)) { sel >>= 1; bank++; } }
+        else bank = f->op_bank;
+        uint32_t page = bank * S5L_FMC_PAGES_PER_BANK + f->bank_row[bank];
+        if (!f->nand || nand_read_page(f->nand, page, f->rbuf,
                                        f->rbuf + f->nand->page_size) != NAND_OK)
             memset(f->rbuf, 0xff, sizeof f->rbuf);
         f->rpos = f->col < S5L_FMC_PAGE_BYTES ? f->col & ~3u : 0u;
-        f->status |= FMC_ST_DATA_READY;
+        /* Transfer-done (status bit 3) is raised once DATA_COUNT bytes have
+         * left the FIFO, not when the transfer starts: the read pipeline in
+         * the FMC interrupt filter acks the previous transfer's bit 3 right
+         * after starting the next one. */
+        uint32_t len = f->regs[word(FMC_DATA_COUNT)] + 1u;
+        if (!f->regs[word(FMC_DATA_COUNT)] || len > S5L_FMC_PAGE_BYTES - f->rpos)
+            len = S5L_FMC_PAGE_BYTES - f->rpos;
+        f->rend = f->rpos + ((len + 3u) & ~3u);
+        if (f->rend > S5L_FMC_PAGE_BYTES) f->rend = S5L_FMC_PAGE_BYTES;
     } else if ((val & FMC_CC_WRITE) && f->last_cmd == NAND_CMD_PROG) {
         f->status |= FMC_ST_DATA_READY;
     }
@@ -278,6 +334,9 @@ void s5l_rsecc_write(s5l_rsecc_t *e, uint32_t off, uint32_t val) {
         e->pending = val;
 }
 
+/* sector_crc() of a sector of 0xff bytes. */
+#define RSECC_ERASED_CRC 0xbd7bc39fu
+
 static uint32_t sector_crc(const arm_bus_t *bus, uint32_t pa) {
     uint32_t crc = ~0u;
     for (uint32_t i = 0; i < RSECC_SECTOR; i += 4u) {
@@ -302,7 +361,12 @@ bool s5l_rsecc_run(s5l_rsecc_t *e, const arm_bus_t *bus) {
                 bus->write32(bus->ctx, ecc + 4u * i, crc);
             } else {
                 uint32_t want = bus->read32(bus->ctx, ecc + 4u * i);
-                if (want == 0xffffffffu || want != crc)
+                /* Erased media is a valid codeword: an all-0xff sector
+                 * with all-0xff parity reads back clean. Calling it
+                 * uncorrectable made VFL_ReadScatteredPagesInVb mark every
+                 * unwritten page it touched for refresh. */
+                bool erased = want == 0xffffffffu && crc == RSECC_ERASED_CRC;
+                if (!erased && want != crc)
                     e->status |= RSECC_ST_UNCORRECTABLE;
             }
         }

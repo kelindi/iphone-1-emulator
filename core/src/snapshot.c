@@ -134,7 +134,7 @@ SNAP_SIZE_GUARD(s5l_pcf50635_t,    600,   "snap_pmu");
 SNAP_SIZE_GUARD(s5l_wm8991_t,      496,   "snap_codec");
 SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
 SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
-SNAP_SIZE_GUARD(s5l_fmc_t,         4624,  "snap_fmc");
+SNAP_SIZE_GUARD(s5l_fmc_t,         4688,  "snap_fmc");
 SNAP_SIZE_GUARD(s5l_rsecc_t,       184,   "snap_rsecc");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
@@ -226,7 +226,7 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
 /* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344) + rsecc (184), v41. */
-SNAP_SIZE_GUARD(s5l8900_t,         134232, "snap_mach");
+SNAP_SIZE_GUARD(s5l8900_t,         134296, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -870,6 +870,8 @@ static void snap_fmc(sn_io_t *io, s5l_fmc_t *f) {
     F64(f->id_reads);
     FBYTES(f->rbuf, sizeof f->rbuf); FBYTES(f->wbuf, sizeof f->wbuf);
     F32(f->rpos); F32(f->wpos); F32(f->row); F32(f->col); F32(f->op_bank);
+    for (unsigned b = 0; b < S5L_FMC_BANKS; b++) F32(f->bank_row[b]);
+    F32(f->ready_pending); F32(f->ready_us); F32(f->ready_tb); F32(f->ready_armed); F32(f->rend); F32(f->xfer_state); F32(f->xfer_tb); F32(f->xfer_rsvd);
     F32(f->nand_status);
     F64(f->programs); F64(f->erases); F64(f->prog_fails);
 }

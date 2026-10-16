@@ -2398,6 +2398,15 @@ typedef struct {
      * committed by 0x10. Addresses latch when the address phase starts. */
     uint8_t  rbuf[S5L_FMC_PAGE_BYTES], wbuf[S5L_FMC_PAGE_BYTES];
     uint32_t rpos, wpos, row, col, op_bank, nand_status;
+    /* Row each bank's own page register last loaded (READ 0x30 may be
+     * broadcast; data is then drained from whichever bank is selected). */
+    uint32_t bank_row[S5L_FMC_BANKS];
+    /* Array busy time: READ/PROGRAM/ERASE ready bits land ready_us after
+     * the command, so the completion interrupt follows the driver's sleep
+     * the way tR/tPROG/tBERS do on the part. */
+    uint32_t ready_pending, ready_us, ready_tb, ready_armed;
+    uint32_t rend;  /* end of the programmed read transfer (DATA_COUNT) */
+    uint32_t xfer_state, xfer_tb, xfer_rsvd;  /* transfer-done delay */
     uint64_t programs, erases, prog_fails;
     nand_t  *nand;                  /* host-only backing; not snapshotted */
 } s5l_fmc_t;
@@ -2405,6 +2414,7 @@ void s5l_fmc_reset(s5l_fmc_t *f);
 uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
 void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
 bool s5l_fmc_irq(const s5l_fmc_t *f);
+void s5l_fmc_tick(s5l_fmc_t *f, uint32_t tb, uint64_t tb_hz);
 void s5l_fmc_free(s5l_fmc_t *f);
 /* The NAND array behind the controller, allocated (erased) on first use. */
 nand_t *s5l_fmc_backing(s5l_fmc_t *f);

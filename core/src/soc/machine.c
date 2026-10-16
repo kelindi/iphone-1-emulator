@@ -1865,6 +1865,7 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
         m->camin.frame_ticks = m->tb_hz / S5L_CAMIN_FPS;
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CAMIN,
                      s5l_camin_tick(&m->camin, tb, machine_host_ram, m));
+    s5l_fmc_tick(&m->fmc, tb, m->tb_hz);
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_FMC, s5l_fmc_irq(&m->fmc));
     s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_RSECC - 32u,
                      s5l_rsecc_run(&m->rsecc, &m->bus));
