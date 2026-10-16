@@ -257,6 +257,7 @@ int main(int argc,char **argv) {
     const char *unmatch[16]; unsigned unmatch_n=0; uint64_t shot_every=0; uint32_t mmio_watch=0;
     const char *load_path = NULL, *save_path = NULL, *dump_ram = NULL;
     const char *nand_path = NULL;
+    bool nand_base = false;
     const char *audio_wav = NULL; FILE *wav = NULL; uint64_t wav_frames = 0;
     uint64_t save_step = UINT64_MAX;
     input_event_t events[128]; unsigned event_n = 0;
@@ -283,6 +284,7 @@ int main(int argc,char **argv) {
         }
         else if (!strcmp(argv[i],"--load")&&i+1<argc) load_path=argv[++i];
         else if (!strcmp(argv[i],"--nand")&&i+1<argc) nand_path=argv[++i];
+        else if (!strcmp(argv[i],"--nand-base")) nand_base=true;
         else if (!strcmp(argv[i],"--audio-wav")&&i+1<argc) audio_wav=argv[++i];
         else if (!strcmp(argv[i],"--at")&&i+2<argc) {
             input_event_t e = { .step = strtoull(argv[++i], NULL, 0) };
@@ -413,8 +415,13 @@ int main(int argc,char **argv) {
         FILE *probe = fopen(nand_path, "rb");
         if (probe) {
             fclose(probe);
-            storage_status_t ns = nd ? storage_load_nand_sparse(nd, nand_path)
+            uint64_t base_hash = 0;
+            storage_status_t ns = nd ? storage_load_nand_sparse_file(
+                                           nd, fopen(nand_path, "rb"), &base_hash)
                                      : STORAGE_ERR_NOMEM;
+            if (ns == STORAGE_OK && nand_base &&
+                !nand_track_changes(nd, base_hash))
+                ns = STORAGE_ERR_NOMEM;
             if (ns != STORAGE_OK) {
                 fprintf(stderr, "nand: cannot load %s: %s\n", nand_path,
                         storage_strerror(ns));
@@ -556,7 +563,7 @@ int main(int argc,char **argv) {
         printf("fmc: status=%08x ready_pending=%x xfer_state=%u rpos=%u rend=%u\n",
                m.fmc.status, m.fmc.ready_pending, m.fmc.xfer_state,
                m.fmc.rpos, m.fmc.rend);
-    if (nand_path && m.fmc.nand) {
+    if (nand_path && m.fmc.nand && !nand_base) {
         storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, nand_path);
         printf("nand: save %s: %s\n", nand_path, storage_strerror(ns));
     }
