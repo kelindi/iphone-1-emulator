@@ -3293,7 +3293,14 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     uint32_t expected_source_control =
         (half_texel_layout ? 0x8e000000u : 0x0e000000u) |
         ((pitch_units & ~3u) << 16);
-    if (quad[1] != expected_header ||
+    /* Camera Roll's toolbar slide sends a compact direct copy whose header
+     * omits bits 15..16 (0xa6400000: 512x128). Its texture is the same
+     * linear, decoded-pitch layout as the 0xa0018000 form, so those bits do
+     * not change sampling for this clamped half-texel copy. */
+    bool header_matches = quad[1] == expected_header ||
+        (compact_copy && direct_sampler && half_texel_layout &&
+         quad[1] == (expected_header & ~0x00018000u));
+    if (!header_matches ||
         (quad[2] & ~MBX_3D_ADDRESS_MASK) != expected_source_control) {
         if (why) *why =
             "sprite texture allocation or split pitch is inconsistent";
