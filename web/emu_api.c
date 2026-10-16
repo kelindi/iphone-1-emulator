@@ -320,9 +320,13 @@ int emu_attach_nand(const uint8_t *buf, size_t len) {
         return -2;
     }
     nand_t *n = s5l_fmc_backing(&machine.fmc);
-    FILE *f = n ? fmemopen((void *)(uintptr_t)buf, len, "rb") : NULL;
-    if (!f) {
+    if (!n) {
         set_error("NAND allocation failed");
+        return -3;
+    }
+    FILE *f = fmemopen((void *)(uintptr_t)buf, len, "rb");
+    if (!f) {
+        set_error("NAND image could not be opened");
         return -3;
     }
     uint64_t hash = 0;

@@ -176,6 +176,10 @@ storage_status_t storage_load_nand(nand_t *n, const char *path) {
     }
 
     uint32_t pages = nand_total_pages(n);
+    if ((uint64_t)pages * (n->page_size + n->spare_size) > SIZE_MAX) {
+        fclose(f);
+        return STORAGE_ERR_NOMEM;
+    }
     size_t dbytes = (size_t)pages * n->page_size;
     size_t sbytes = (size_t)pages * n->spare_size;
     uint8_t *data = malloc(dbytes);

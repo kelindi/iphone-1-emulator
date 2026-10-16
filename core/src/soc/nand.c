@@ -22,12 +22,11 @@ bool nand_init(nand_t *n, uint32_t page_size, uint32_t spare_size,
     memset(n, 0, sizeof *n);
     if (!page_size || !pages_per_block || !block_count) return false;
 
-    /* Reject geometries whose byte counts would overflow 32-bit arithmetic. */
+    /* Pages are allocated sparsely, so the array's total byte count may
+     * exceed SIZE_MAX (a 4 GiB part in wasm32); only page indices and a
+     * single page must fit. */
     uint64_t pages = (uint64_t)pages_per_block * block_count;
-    uint64_t dbytes = pages * page_size;
-    uint64_t sbytes = pages * spare_size;
-    if (pages > 0xffffffffu || dbytes > (uint64_t)SIZE_MAX ||
-        sbytes > (uint64_t)SIZE_MAX ||
+    if (pages > 0xffffffffu ||
         (uint64_t)page_size + spare_size > 0xffffffffu) return false;
 
     n->page_size = page_size;
