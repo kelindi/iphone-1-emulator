@@ -132,6 +132,8 @@ SNAP_SIZE_GUARD(s5l_tvout_t,       12304, "snap_tvout");
 SNAP_SIZE_GUARD(s5l_i2c_t,         320,   "snap_i2c");
 SNAP_SIZE_GUARD(s5l_pcf50635_t,    600,   "snap_pmu");
 SNAP_SIZE_GUARD(s5l_wm8991_t,      496,   "snap_codec");
+SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
+SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
 /* Four register banks, plus what the board is driving and which lines it
@@ -221,7 +223,8 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-SNAP_SIZE_GUARD(s5l8900_t,         127728, "snap_mach");
+/* 129424 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40. */
+SNAP_SIZE_GUARD(s5l8900_t,         129424, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -828,6 +831,34 @@ static void snap_pmu(sn_io_t *io, s5l_pcf50635_t *p) {
         io->err = SNAP_ERR_CORRUPT;
 }
 
+static bool camsensor_state_valid(const s5l_mt9d112_t *s) {
+    return s && s->reg_count <= MT9D112_REGS && s->var_count <= MT9D112_VARS &&
+           s->wlen <= sizeof s->wbuf && s->rpos <= 1u;
+}
+
+static void snap_camsensor(sn_io_t *io, s5l_mt9d112_t *s) {
+    FBYTES(s->reg_addr, sizeof s->reg_addr);
+    FBYTES(s->reg_val, sizeof s->reg_val);
+    FBYTES(s->var_addr, sizeof s->var_addr);
+    FBYTES(s->var_val, sizeof s->var_val);
+    F32(s->reg_count); F32(s->var_count);
+    F16(s->mcu_addr); F16(s->ptr);
+    FBYTES(s->wbuf, sizeof s->wbuf);
+    F8(s->wlen); F8(s->rpos); FB(s->reading);
+    F64(s->reg_reads); F64(s->reg_writes); F64(s->unknown_reads);
+    F64(s->refused); F64(s->seq_commands);
+    if (sn_reading(io) && io->err == SNAP_OK && !camsensor_state_valid(s))
+        io->err = SNAP_ERR_CORRUPT;
+}
+
+static void snap_camin(sn_io_t *io, s5l_camin_t *c) {
+    FA32(c->regs, S5L_CAMIN_SIZE / 4u);
+    F32(c->frame_ticks); F32(c->frame_accum);
+    F32(c->frame_index); F32(c->scene_seq);
+    F64(c->frames); F64(c->reads); F64(c->writes); F64(c->dropped);
+    FA32(c->reserved, 6u);
+}
+
 static bool codec_state_valid(const s5l_wm8991_t *c, bool wm8758) {
     if (!c || c->ptr >= WM8991_NREG ||
         c->wlen > WM8991_MAX_WRITE ||
@@ -1147,6 +1178,9 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
      * SNAPSHOT_VERSION's v14 note. */
     for (unsigned i = 0; i < S5L8900_DMAC_COUNT; i++)
         snap_pl080(io, &m->dmac[i]);
+    /* Appended for the same positional reason; see the v40 note. */
+    snap_camsensor(io, &m->camsensor);
+    snap_camin(io, &m->camin);
 
     F64(m->unmapped_reads);
     F64(m->unmapped_writes);
@@ -1419,6 +1453,7 @@ static bool snap_machine_valid(const s5l8900_t *m) {
     for (unsigned i = 0; i < S5L8900_I2C_COUNT; i++)
         if (!i2c_state_valid(&m->i2c[i])) return false;
     if (!pmu_state_valid(&m->pmu)) return false;
+    if (!camsensor_state_valid(&m->camsensor)) return false;
     if (!codec_state_valid(&m->codec, m->i2c[0].slave_count == 2u &&
                                     m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR)) return false;
     for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
@@ -1441,8 +1476,12 @@ static bool snap_machine_valid(const s5l8900_t *m) {
         m->i2c[0].slaves[0].ctx == &m->pmu &&
         m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR &&
         m->i2c[0].slaves[1].ctx == &m->codec;
-    if ((!n82_wiring && !m68_wiring) ||
-        m->i2c[1].slave_count != 0u ||
+    bool i2c1_ok = m68_wiring ?
+        m->i2c[1].slave_count == 1u &&
+        m->i2c[1].slaves[0].addr == MT9D112_I2C_ADDR &&
+        m->i2c[1].slaves[0].ctx == &m->camsensor :
+        m->i2c[1].slave_count == 0u;
+    if ((!n82_wiring && !m68_wiring) || !i2c1_ok ||
         m->pmu.tick_hz != m->tb_hz)
         return false;
     /* The SPI board wiring, for the same reason. N82 has the transport-only

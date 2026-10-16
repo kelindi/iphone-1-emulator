@@ -189,7 +189,11 @@
  *      only thing in this machine that can distinguish "the guest never
  *      programmed a transfer" from "it programmed one and this model refused
  *      it", and refused_flow/width/chain/softreq/endian name which refusal. */
-#define SNAPSHOT_VERSION   39u
+/* v40: the M68 MT9D112 camera sensor on i2c1 and /arm-io/camin, appended at
+ *      the end of MACH.
+ *      Its MCU sequencer state is what AppleMicron2020 polls before preview,
+ *      so it cannot be defaulted on restore. */
+#define SNAPSHOT_VERSION   40u
 
 typedef enum {
     SNAP_OK = 0,

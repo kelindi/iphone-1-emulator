@@ -46,6 +46,10 @@ static bool m68_attach(s5l8900_t *m) {
     s5l_wm8758_reset(&m->codec);
     s5l_wm8758_bind(&m->codec, &codec);
     if (!s5l_i2c_attach(&m->i2c[0], &codec)) return false;
+    s5l_i2c_slave_t camsensor;
+    s5l_mt9d112_reset(&m->camsensor);
+    s5l_mt9d112_bind(&m->camsensor, &camsensor);
+    if (!s5l_i2c_attach(&m->i2c[1], &camsensor)) return false;
 
     s5l_spi_slave_t mpl;
     s5l_spi_mpl_bind(&mpl, &m->spi[0]);

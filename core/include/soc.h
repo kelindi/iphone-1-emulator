@@ -2312,6 +2312,60 @@ void s5l_wm8758_bind(s5l_wm8758_t *codec, s5l_i2c_slave_t *slave);
 bool s5l_wm8758_register_valid(unsigned reg);
 uint16_t s5l_wm8758_peek(const s5l_wm8758_t *codec, unsigned reg);
 
+/* M68 rear camera sensor control plane, /arm-io/i2c1/camera0. See mt9d112.c.
+ * Registers and MCU variables are sparse key/value tables: the driver touches
+ * a few dozen of each, and an unwritten entry reads back as zero. */
+#define MT9D112_I2C_ADDR  0x3cu
+#define MT9D112_MODEL_ID  0x1580u
+#define MT9D112_REGS      64u
+#define MT9D112_VARS      192u
+typedef struct {
+    uint16_t reg_addr[MT9D112_REGS], reg_val[MT9D112_REGS];
+    uint16_t var_addr[MT9D112_VARS], var_val[MT9D112_VARS];
+    uint32_t reg_count, var_count;
+    uint16_t mcu_addr, ptr;
+    uint8_t  wbuf[4];
+    uint8_t  wlen, rpos;
+    bool     reading;
+    uint8_t  pad;
+    uint64_t reg_reads, reg_writes, unknown_reads, refused, seq_commands;
+} s5l_mt9d112_t;
+/* /arm-io/camin: reg {0x01700000, 0x1000}, interrupts {0x0f}. See camin.c. */
+#define S5L8900_CAMIN_BASE  0x39700000u
+#define S5L8900_IRQ_CAMIN   15u
+#define S5L_CAMIN_SIZE      0x200u   /* highest register the driver touches is 0x15c */
+#define CAMIN_ACK           0x08u
+#define CAMIN_STAT_A        0x64u
+#define CAMIN_STAT_B        0xb8u
+#define CAMIN_CTRL          0xc0u
+#define CAMIN_STAT_RESET    0x1000u
+#define CAMIN_STAT_DONE     0x2000u
+typedef struct {
+    uint32_t regs[S5L_CAMIN_SIZE / 4u];
+    uint32_t frame_ticks, frame_accum, frame_index, scene_seq;
+    uint64_t frames, reads, writes, dropped;
+    uint32_t reserved[6];
+    /* Host-only: optional XRGB8888 input frame (webcam); NULL = test scene. */
+    const uint32_t *host_frame;
+    uint32_t host_w, host_h;
+    bool     trace;
+    uint8_t  pad[7];
+} s5l_camin_t;
+#define CAMIN_CTRL_EN       0x80000000u
+#define S5L_CAMIN_FPS       15u
+typedef uint8_t *(*s5l_camin_ram_fn)(void *ctx, uint32_t pa, uint32_t len);
+bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram, void *ctx);
+void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                    uint32_t stride);
+void s5l_camin_reset(s5l_camin_t *c);
+uint32_t s5l_camin_read(s5l_camin_t *c, uint32_t off);
+void s5l_camin_write(s5l_camin_t *c, uint32_t off, uint32_t val);
+bool s5l_camin_irq(const s5l_camin_t *c);
+
+void s5l_mt9d112_reset(s5l_mt9d112_t *s);
+void s5l_mt9d112_bind(s5l_mt9d112_t *s, s5l_i2c_slave_t *slave);
+uint16_t s5l_mt9d112_var(const s5l_mt9d112_t *s, uint16_t addr);
+
 /* ----------------------------------------------------------------- I2S ---
  * The two S5L8900 I2S controllers. Their windows are derived at the top of this
  * header; this is the register model, and it is deliberately the smallest one
@@ -4053,6 +4107,9 @@ typedef struct {
      * audio stack whose transport is undeclared. i2s[0] is i2s0 (the codec's),
      * i2s[1] is i2s1 (the baseband voice path). */
     s5l_wm8991_t codec;
+    /* M68 camera sensor on i2c1 (unused, all-zero, on N82). */
+    s5l_mt9d112_t camsensor;
+    s5l_camin_t   camin;
     s5l_i2s_t   i2s[S5L8900_I2S_COUNT];
     /* spi[0] is spi0, spi[1] is spi1 and spi[2] is spi2. M68 attaches its Z1
      * touch controller on spi2; the baseband transport also uses that bus. */

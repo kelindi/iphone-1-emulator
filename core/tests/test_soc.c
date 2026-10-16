@@ -1555,10 +1555,11 @@ static void test_wfi_wake_source_order_does_not_matter(void) {
      * is the only source in the table whose producer is OUTSIDE the machine.
      * The two DMA controllers joined with the PL080 model; both answer NEVER
      * today for the reason the SPI pair does, and both are declared anyway
-     * because this table is the machine's definition of what can interrupt it. */
-    CHECK(real != NULL && nreal == 8u + S5L_GPIOIC_GROUPS,
+     * because this table is the machine's definition of what can interrupt it.
+     * camin joined with the camera input block's frame clock. */
+    CHECK(real != NULL && nreal == 9u + S5L_GPIOIC_GROUPS,
           "the machine declares %u wake sources, expected %u",
-          nreal, 8u + S5L_GPIOIC_GROUPS);
+          nreal, 9u + S5L_GPIOIC_GROUPS);
     for (unsigned i = 0; i < nreal; i++)
         CHECK(real[i].name && real[i].next_edge &&
               real[i].line < 32u * S5L8900_VIC_COUNT,
@@ -3008,9 +3009,10 @@ static void test_tvout_machine_routing_and_irq30(void) {
      * when the two I2S controllers landed with the WM8991 codec, and from 20 to
      * 22 with the two PL080 DMA controllers that feed those I2S FIFOs,
      * and from 22 to 23 when the PowerVR MBX block was modelled so its
-     * kext could get past its reset handshake. */
-    CHECK(nw == m.stub_count + 24u,
-          "fixed device-window count=%u expect 24 (+%u stubs)",
+     * kext could get past its reset handshake, and from 23 to 24 with the
+     * camera input block. */
+    CHECK(nw == m.stub_count + 25u,
+          "fixed device-window count=%u expect 25 (+%u stubs)",
           nw - m.stub_count, m.stub_count);
     bool have_ctrl = false, have_mixer = false, have_sdo = false;
     for (unsigned i = 0; i < nw && i < S5L_WINDOW_MAX; i++) {

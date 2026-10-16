@@ -36,6 +36,7 @@
 static const s5l_window_t DEVICE_WINDOWS[] = {
     { S5L8900_NOR_BASE,   S5L8900_NOR_SIZE,   "nor"   },
     { S5L8900_CLCD_BASE,  S5L8900_DEV_SIZE,   "clcd"  },
+    { S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE,   "camin" },
     { S5L8900_TVOUT_CTRL_BASE,  S5L_TVOUT_BANK_SIZE, "tvout-control" },
     { S5L8900_TVOUT_MIXER_BASE, S5L_TVOUT_BANK_SIZE, "tvout-mixer"   },
     { S5L8900_TVOUT_SDO_BASE,   S5L_TVOUT_BANK_SIZE, "tvout-sdo"     },
@@ -531,6 +532,8 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
         else                     v = s5l_vic_read(&m->vic[1], off);
     } else if (mmio_word(addr, bytes, S5L8900_CLCD_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_clcd_read(&m->clcd, addr - S5L8900_CLCD_BASE);
+    } else if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_camin_read(&m->camin, addr - S5L8900_CAMIN_BASE);
     } else if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
                in_window(addr, bytes, S5L8900_TVOUT_CTRL_BASE,
                          S5L_TVOUT_BANK_SIZE)) {
@@ -645,6 +648,12 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     if (mmio_word(addr, bytes, S5L8900_CLCD_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_clcd_write(&m->clcd, addr - S5L8900_CLCD_BASE, val);
+        return;
+    }
+    if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_camin_write(&m->camin, addr - S5L8900_CAMIN_BASE, val);
+        m->level_dirty = true;
         return;
     }
     if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
@@ -1069,6 +1078,14 @@ static s5l_wake_kind_t wake_edge_clcd(const s5l8900_t *m, uint32_t *ticks) {
     return S5L_WAKE_AT;
 }
 
+static s5l_wake_kind_t wake_edge_camin(const s5l8900_t *m, uint32_t *ticks) {
+    const s5l_camin_t *c = &m->camin;
+    if (!c->frame_ticks || !(c->regs[CAMIN_CTRL / 4u] & CAMIN_CTRL_EN))
+        return S5L_WAKE_NEVER;
+    *ticks = c->frame_accum < c->frame_ticks ? c->frame_ticks - c->frame_accum : 1u;
+    return S5L_WAKE_AT;
+}
+
 /* TV-out SDO VSYNC.  The device answers "no deliverable VSYNC" with zero,
  * which is a statement about its state (stopped, masked, already pending) and
  * therefore S5L_WAKE_NEVER rather than an unknown. */
@@ -1239,6 +1256,7 @@ static s5l_wake_kind_t wake_edge_dmac(const s5l8900_t *m, uint32_t *ticks) {
 static const s5l_wake_source_t WAKE_SOURCES[] = {
     { "timer", S5L8900_IRQ_TIMER, wake_edge_timer },
     { "clcd",  S5L8900_IRQ_CLCD,  wake_edge_clcd  },
+    { "camin", S5L8900_IRQ_CAMIN, wake_edge_camin },
     { "tvout", S5L8900_IRQ_TVOUT, wake_edge_tvout },
     { "spi0",  S5L8900_IRQ_SPI0,  wake_edge_spi0  },
     { "spi1",  S5L8900_IRQ_SPI1,  wake_edge_spi1  },
@@ -1485,6 +1503,11 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     s5l_power_reset(&m->power);
     s5l_mbx_reset(&m->mbx);
     s5l_clcd_reset(&m->clcd);
+    s5l_camin_reset(&m->camin);
+    {
+        const char *t = getenv("S5LBOX_CAMIN_TRACE");
+        m->camin.trace = t && *t && *t != '0';
+    }
     s5l_tvout_reset(&m->tvout, m->tb_hz);
     for (unsigned i = 0; i < S5L8900_I2C_COUNT; i++)
         s5l_i2c_reset(&m->i2c[i]);
@@ -1815,6 +1838,10 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
 
     bool clcd_irq = s5l_clcd_tick(&m->clcd, tb);
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CLCD, clcd_irq);
+    if (!m->camin.frame_ticks && m->tb_hz)
+        m->camin.frame_ticks = m->tb_hz / S5L_CAMIN_FPS;
+    s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CAMIN,
+                     s5l_camin_tick(&m->camin, tb, machine_host_ram, m));
 
     /*
      * The MBX completion line. Like i2c and spi below, the device completes
