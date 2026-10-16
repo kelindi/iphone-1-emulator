@@ -676,6 +676,7 @@ def main():
             pl = {}
         pl["SBAutoLockTime"] = -1
         pl["SBAutoDimTime"] = -1
+        pl["SBDisableIdleSleep"] = True
         data = plistlib.dumps(pl, fmt=plistlib.FMT_XML)
         if existing:
             w.replace_file_path(path, data)
