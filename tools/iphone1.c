@@ -549,7 +549,8 @@ int main(int argc,char **argv) {
         uint32_t win=m.cpu.r[15]&~63u;
         if (win==last_window) same++; else same=0; last_window=win;
         if (st!=ARM_OK) { reason=status_name(st); break; }
-        if (same>=20 && slice>1) { reason="spin"; break; }
+        /* A powered-down AP spins by design until a queued Power press. */
+        if (same>=20 && slice>1 && !s5l_pcf50635_in_standby(&m.pmu)) { reason="spin"; break; }
         if (!n) break;
     }
     if (m.fmc.commands)

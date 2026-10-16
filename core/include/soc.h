@@ -2111,6 +2111,11 @@ bool     s5l_i2c_irq(const s5l_i2c_t *bus);
 #define PCF50635_OOCSHDWN 0x0cu
 #define PCF50635_INT2_ONKEYR 0x01u
 #define PCF50635_OOCSHDWN_GO_STANDBY 0x01u
+/* Written by the sleep path that logs "pmu go hib". Like standby, the AP
+ * loses power and ONKEY restarts it through XNU's retained reset trampoline. */
+#define PCF50635_OOCSHDWN_GO_HIBERNATE 0x02u
+#define PCF50635_OOCSHDWN_POWER_DOWN \
+    (PCF50635_OOCSHDWN_GO_STANDBY | PCF50635_OOCSHDWN_GO_HIBERNATE)
 #define PCF50635_RTCSC    0x59u
 #define PCF50635_RTCWD    0x5cu
 #define PCF50635_RTCYR    0x5fu

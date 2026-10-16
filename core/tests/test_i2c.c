@@ -336,15 +336,19 @@ static void test_pmu_standby_wake_event_is_one_shot(void) {
     CHECK(pmu.unknown_reads == unknown,
           "known interrupt-mask registers were counted as unknown");
 
-    /* Bit 1 is reserved on the period PCF50633-family register map. The old
-     * model called it GOHIB, which made a real iPhone OS 3 shutdown (0x01)
-     * invisible and treated the reserved bit as power state instead. Keep an
-     * explicit negative control so that one-bit error cannot return. */
-    uint8_t command = 0x02u;
+    /* iPhone OS 3 shuts down with GO_STANDBY (0x01); iPhone OS 1.0's sleep
+     * path logs "pmu go hib", writes 0x02 and spins with IRQs masked. Both
+     * power the AP down until ONKEY. */
+    uint8_t command = PCF50635_OOCSHDWN_GO_HIBERNATE;
     drive_write(&bus, PCF50635_I2C_ADDR, PCF50635_OOCSHDWN,
                 &command, 1u);
-    CHECK(!s5l_pcf50635_in_standby(&pmu),
-          "reserved OOCSHDWN bit 1 was treated as standby");
+    CHECK(s5l_pcf50635_in_standby(&pmu),
+          "iPhone OS 1.0 \"pmu go hib\" (0x02) did not power down");
+    s5l_pcf50635_wake_onkey(&pmu);
+    CHECK(!s5l_pcf50635_in_standby(&pmu) &&
+              pmu.regs[PCF50635_OOCSHDWN] == 0u,
+          "ONKEY wake left GO_HIBERNATE asserted: %02x",
+          pmu.regs[PCF50635_OOCSHDWN]);
 
     command = (uint8_t)(0x80u | PCF50635_OOCSHDWN_GO_STANDBY);
     drive_write(&bus, PCF50635_I2C_ADDR, PCF50635_OOCSHDWN,

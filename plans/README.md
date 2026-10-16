@@ -251,3 +251,5 @@ See `README.md` for full build/run instructions and firmware extraction commands
 ## Retained experiment artifacts
 
 Eleven completed browser-test exports, five completed RTC test snapshots and nine historical CPU replay outputs are stored as verified gzip archives with adjacent `.archived.json` receipts to keep browser storage tests within the VM disk budget. [Exact locations and restore helper](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/storage-reclamation/README.md` in the traces archive). Current firmware, active replay fixtures and saved browser profiles are preserved.
+
+- Sleep/wake on the NAND phone: with no USB cable, iPhone OS 1.0 sleeps with PMU OOCSHDWN=0x02 ("pmu go hib") rather than 0x01, then spins with IRQs masked. The PMU model only treated 0x01 as power-down, so Power/Home never woke the browser phone (black screen ~50 s after boot). 0x02 now powers down the same way; ONKEY restarts the AP through the retained reset trampoline and the guest logs "System Wake" and returns to the lock screen. The native runner no longer stops with "spin" while the AP is powered down, so queued presses can wake it.
