@@ -107,8 +107,7 @@ static storage_status_t finish_atomic_save(FILE *f, char *tmp,
 }
 
 storage_status_t storage_save_nand(const nand_t *n, const char *path) {
-    if (!n || !n->data || !n->bad ||
-        (n->spare_size && !n->spare) || !path) return STORAGE_ERR_IO;
+    if (!n || !n->blocks || !n->bad || !path) return STORAGE_ERR_IO;
     for (uint32_t i = 0; i < n->block_count; i++)
         if (n->bad[i] > 1u) return STORAGE_ERR_FORMAT;
 
@@ -118,20 +117,29 @@ storage_status_t storage_save_nand(const nand_t *n, const char *path) {
     if (!f) { free(tmp); return STORAGE_ERR_IO; }
 
     uint32_t pages = nand_total_pages(n);
-    size_t dbytes = (size_t)pages * n->page_size;
-    size_t sbytes = (size_t)pages * n->spare_size;
+    uint8_t *buf = malloc((size_t)n->page_size + n->spare_size);
+    if (!buf) { fclose(f); remove(tmp); free(tmp); return STORAGE_ERR_NOMEM; }
     uint64_t hash = STORAGE_FNV64_OFFSET;
-    hash = hash_bytes(hash, n->data, dbytes);
-    if (sbytes) hash = hash_bytes(hash, n->spare, sbytes);
-    hash = hash_bytes(hash, n->bad, n->block_count);
 
     bool ok = wr32(f, STORAGE_MAGIC) && wr32(f, STORAGE_VERSION)
            && wr32(f, n->page_size) && wr32(f, n->spare_size)
            && wr32(f, n->pages_per_block) && wr32(f, n->block_count)
            && wr32(f, STORAGE_FLAG_CHECKSUM) && wr32(f, 0);
 
-    if (ok) ok = fwrite(n->data, 1, dbytes, f) == dbytes;
-    if (ok && sbytes) ok = fwrite(n->spare, 1, sbytes, f) == sbytes;
+    /* The stream is dense (all data, then all spare); the backing is sparse,
+     * so each page is expanded on the way out. */
+    for (uint32_t pg = 0; ok && pg < pages; pg++) {
+        ok = nand_read_page(n, pg, buf, NULL) == NAND_OK &&
+             fwrite(buf, 1, n->page_size, f) == n->page_size;
+        hash = hash_bytes(hash, buf, n->page_size);
+    }
+    for (uint32_t pg = 0; ok && n->spare_size && pg < pages; pg++) {
+        ok = nand_read_page(n, pg, NULL, buf) == NAND_OK &&
+             fwrite(buf, 1, n->spare_size, f) == n->spare_size;
+        hash = hash_bytes(hash, buf, n->spare_size);
+    }
+    free(buf);
+    hash = hash_bytes(hash, n->bad, n->block_count);
     if (ok) ok = fwrite(n->bad, 1, n->block_count, f) == n->block_count;
     if (ok) ok = wr64(f, hash);
 
@@ -140,8 +148,7 @@ storage_status_t storage_save_nand(const nand_t *n, const char *path) {
 }
 
 storage_status_t storage_load_nand(nand_t *n, const char *path) {
-    if (!n || !n->data || !n->bad ||
-        (n->spare_size && !n->spare) || !path) return STORAGE_ERR_IO;
+    if (!n || !n->blocks || !n->bad || !path) return STORAGE_ERR_IO;
 
     FILE *f = fopen(path, "rb");
     if (!f) return STORAGE_ERR_IO;
@@ -210,9 +217,13 @@ storage_status_t storage_load_nand(nand_t *n, const char *path) {
     if (fclose(f) != 0 && st == STORAGE_OK) st = STORAGE_ERR_IO;
 
     if (st == STORAGE_OK) {
-        memcpy(n->data, data, dbytes);
-        if (sbytes) memcpy(n->spare, spare, sbytes);
-        memcpy(n->bad, bad, n->block_count);
+        for (uint32_t pg = 0; pg < pages && st == STORAGE_OK; pg++) {
+            if (nand_store_page(n, pg, data + (size_t)pg * n->page_size,
+                                spare ? spare + (size_t)pg * n->spare_size
+                                      : NULL) != NAND_OK)
+                st = STORAGE_ERR_NOMEM;
+        }
+        if (st == STORAGE_OK) memcpy(n->bad, bad, n->block_count);
     }
     free(data); free(spare); free(bad);
     return st;

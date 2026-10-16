@@ -240,26 +240,41 @@ static void test_bad_image_refused(void) {
     remove(path);
 }
 
+/* The backing is sparse; fill and dump through the page API. */
+static void fill(nand_t *n, uint8_t d, uint8_t sp) {
+    uint8_t data[4096], spare[256];
+    memset(data, d, n->page_size); memset(spare, sp, n->spare_size);
+    for (uint32_t pg = 0; pg < nand_total_pages(n); pg++)
+        nand_store_page(n, pg, data, spare);
+}
+static void dump(const nand_t *n, uint8_t *data, uint8_t *spare) {
+    for (uint32_t pg = 0; pg < nand_total_pages(n); pg++)
+        nand_read_page(n, pg, data + (size_t)pg * n->page_size,
+                       spare + (size_t)pg * n->spare_size);
+}
+
 static void test_truncated_nand_load_is_transactional(void) {
     const char *good = "ios3vm_nand_tx_good.img";
     const char *shortp = "ios3vm_nand_tx_short.img";
     nand_t src, dst;
     CHECK(small(&src) && small(&dst), "init failed");
-    memset(src.data, 0x11, (size_t)nand_total_pages(&src) * src.page_size);
+    fill(&src, 0x11, 0xff);
     CHECK(storage_save_nand(&src, good) == STORAGE_OK, "save failed");
     CHECK(copy_prefix(good, shortp, 33u), "could not make truncated fixture");
 
     size_t db = (size_t)nand_total_pages(&dst) * dst.page_size;
     size_t sb = (size_t)nand_total_pages(&dst) * dst.spare_size;
-    memset(dst.data, 0x5a, db); memset(dst.spare, 0x6b, sb); memset(dst.bad, 1, dst.block_count);
+    fill(&dst, 0x5a, 0x6b); memset(dst.bad, 1, dst.block_count);
     uint8_t data_before[64 * 16], spare_before[8 * 16], bad_before[4];
-    memcpy(data_before, dst.data, db); memcpy(spare_before, dst.spare, sb);
+    dump(&dst, data_before, spare_before);
     memcpy(bad_before, dst.bad, dst.block_count);
 
     CHECK(storage_load_nand(&dst, shortp) == STORAGE_ERR_TRUNCATED,
           "truncated NAND image was not rejected");
-    CHECK(memcmp(dst.data, data_before, db) == 0 &&
-          memcmp(dst.spare, spare_before, sb) == 0 &&
+    uint8_t data_after[64 * 16], spare_after[8 * 16];
+    dump(&dst, data_after, spare_after);
+    CHECK(memcmp(data_after, data_before, db) == 0 &&
+          memcmp(spare_after, spare_before, sb) == 0 &&
           memcmp(dst.bad, bad_before, dst.block_count) == 0,
           "failed NAND load partially mutated the live device");
     nand_free(&src); nand_free(&dst); remove(good); remove(shortp);
@@ -269,7 +284,7 @@ static void test_nand_integrity_and_exact_length(void) {
     const char *path = "ios3vm_nand_integrity.img";
     nand_t src, dst;
     CHECK(small(&src) && small(&dst), "init failed");
-    memset(src.data, 0x3c, (size_t)nand_total_pages(&src) * src.page_size);
+    fill(&src, 0x3c, 0xff);
     CHECK(storage_save_nand(&src, path) == STORAGE_OK, "save failed");
     CHECK(flip_file_byte(path, 32), "could not corrupt payload");
     CHECK(storage_load_nand(&dst, path) == STORAGE_ERR_CHECKSUM,
@@ -344,7 +359,35 @@ static void test_nor_integrity_and_exact_length(void) {
     s5l_nor_free(&src); s5l_nor_free(&dst); remove(path);
 }
 
+static void test_sparse_backing(void) {
+    nand_t n;
+    CHECK(nand_init(&n, 2048, 64, 64, 0x8000), "big geometry init failed");
+    CHECK(n.live_pages == 0, "erased device materialised %llu pages",
+          (unsigned long long)n.live_pages);
+    uint8_t d[2048], sp[64], rd[2048], rs[64];
+    CHECK(nand_read_page(&n, 0x1fffff, rd, rs) == NAND_OK && rd[0] == 0xff &&
+          rd[2047] == 0xff && rs[63] == 0xff, "erased page did not read 0xff");
+    memset(d, 0xff, sizeof d); memset(sp, 0xff, sizeof sp);
+    CHECK(nand_program_page(&n, 5, d, sp) == NAND_OK && n.live_pages == 0,
+          "programming all ones materialised a page");
+    d[7] = 0x12; sp[3] = 0x34;
+    CHECK(nand_program_page(&n, 64 * 3 + 5, d, sp) == NAND_OK &&
+          n.live_pages == 1, "program did not materialise exactly one page");
+    CHECK(nand_read_page(&n, 64 * 3 + 5, rd, rs) == NAND_OK &&
+          rd[7] == 0x12 && rd[8] == 0xff && rs[3] == 0x34,
+          "programmed page read back wrong");
+    d[7] = 0xff;
+    CHECK(nand_program_page(&n, 64 * 3 + 5, d, NULL) == NAND_ERR_NOT_ERASED,
+          "sparse page allowed a 0->1 program");
+    CHECK(nand_erase_block(&n, 3) == NAND_OK && n.live_pages == 0,
+          "erase did not release the block's pages");
+    CHECK(nand_read_page(&n, 64 * 3 + 5, rd, rs) == NAND_OK &&
+          rd[7] == 0xff && rs[3] == 0xff, "erased block did not read 0xff");
+    nand_free(&n);
+}
+
 int main(void) {
+    test_sparse_backing();
     printf("S5LBox NAND device tests\n");
     test_erased_reads_all_ones();
     test_program_and_read_back();
