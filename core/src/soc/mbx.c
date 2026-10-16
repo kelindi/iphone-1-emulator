@@ -3091,7 +3091,8 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float closure_y = destination_y[p00] + destination_y[p11] -
                           destination_y[p10] - destination_y[p01];
         if (!half_texel_layout ||
-            (!direct_sampler && !modulated_sampler) ||
+            (!direct_sampler && !modulated_sampler &&
+             !(scaled_sampler && perspective_copy)) ||
             closure_x < -epsilon || closure_x > epsilon ||
             closure_y < -epsilon || closure_y > epsilon) {
             if (why) *why =
@@ -3352,7 +3353,13 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float review_scale = source_height ? -affine.v_x / (float)source_height : 0.0f;
         float review_rounding = affine.u_y - review_scale * (float)source_width;
         if (review_rounding < 0.0f) review_rounding = -review_rounding;
-        bool camera_review_turn = compact_copy && direct_sampler &&
+        /* The same frame then shrinks toward its Camera Roll thumbnail as a
+         * scaled-sampler perspective copy (vertex alpha). It interpolates
+         * toward the thumbnail's aspect, so its two axes minify
+         * independently; it is still a shear-free quarter turn. */
+        bool review_shrink = perspective_copy && scaled_sampler;
+        bool camera_review_turn =
+            ((compact_copy && direct_sampler) || review_shrink) &&
             half_texel_layout && !quarter_turn &&
             header_texture_width == 512u && header_texture_height == 512u &&
             source_width && source_height &&
@@ -3360,8 +3367,13 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             source_height <= header_texture_height &&
             review_u_x <= epsilon && review_v_y <= epsilon &&
             affine.u_y > 0.0f && affine.v_x < 0.0f &&
-            review_scale >= 1.0f && review_rounding <= 1.0f &&
-            affine.u_y / (float)source_width >= 1.0f;
+            review_scale > 0.0f &&
+            (review_shrink
+                ? review_scale <= 1.0f &&
+                  affine.u_y <= (float)source_width
+                : review_rounding <= 1.0f) &&
+            (review_shrink || (review_scale >= 1.0f &&
+                               affine.u_y / (float)source_width >= 1.0f));
         float expected_u2 = (float)source_width * (float)source_width;
         float expected_v2 = (float)source_height * (float)source_height;
         float expected_det = (float)source_width * (float)source_height;
