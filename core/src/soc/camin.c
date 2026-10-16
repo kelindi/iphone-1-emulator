@@ -73,6 +73,9 @@ static uint32_t scene_pixel(uint32_t x, uint32_t y, uint32_t w, uint32_t h,
 #define CAMIN_FMT          0x58u
 #define CAMIN_FMT_BGRA     (1u << 12)
 #define CAMIN_PIXELS       0x5cu
+#define CAMIN_OUT_SIZE     0x54u
+#define CAMIN_SCALER       0x48u
+#define CAMIN_SCALER_PORTRAIT (1u << 13)
 
 static void fill422(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
                     uint32_t stride);
@@ -137,9 +140,19 @@ bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram,
     if (c->frame_accum < c->frame_ticks) return s5l_camin_irq(c);
     c->frame_accum %= c->frame_ticks;
 
-    uint32_t geom = c->regs[0];
+    /* 0x54 is the output size (height << 16 | width). Preview and still
+     * also mirror it in 0x00, but the post-capture review frame keeps 0x00
+     * at the 480x640 sensor window and scales to 300x400 through 0x54. */
+    uint32_t geom = c->regs[CAMIN_OUT_SIZE / 4u] ? c->regs[CAMIN_OUT_SIZE / 4u]
+                                                 : c->regs[0];
     uint32_t w = geom & 0x1fffu, h = (geom >> 16) & 0x1fffu;
     bool bgra = (c->regs[CAMIN_FMT / 4u] & CAMIN_FMT_BGRA) != 0u;
+    /* 0x48 bit 13 is set for the live preview, which leaves the scaler
+     * turned to portrait (304 wide). The post-capture review clears it and
+     * keeps the sensor's landscape layout: 0x54's high field is its width. */
+    if (bgra && !(c->regs[CAMIN_SCALER / 4u] & CAMIN_SCALER_PORTRAIT)) {
+        uint32_t t = w; w = h; h = t;
+    }
     uint32_t stride = w * (bgra ? 4u : 2u);
     uint32_t limit = c->regs[CAMIN_PIXELS / 4u];
     if (limit && w && h > limit / w) h = limit / w;
