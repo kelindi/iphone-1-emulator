@@ -184,7 +184,8 @@ static void nand_command(s5l_fmc_t *f, uint32_t cmd) {
 bool s5l_fmc_irq(const s5l_fmc_t *f) {
     uint32_t en = f->regs[word(FMC_INT_EN)];
     if (!(en & 4u)) return false;
-    return (f->status & en & ~FMC_ST_ADDR_DONE) != 0u;
+    uint32_t banks = (f->status >> 1) & en & 0x7f8u;   /* status 4+n <- en 3+n */
+    return (banks | (f->status & en & FMC_ST_DATA_READY)) != 0u;
 }
 
 static void start(s5l_fmc_t *f, uint32_t val) {
