@@ -3028,6 +3028,14 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         quad[26] == quad[31] && quad[36] == quad[41];
     bool row_major_corners = (half_texel_layout || direct_sampler) &&
                              !compact_quarter_order;
+    /* Camera Roll's toolbar button fade copies a 31x36 texel crop of a
+     * 32x64 texture mirrored left-to-right: an unfiltered modulated
+     * perspective copy whose row-major corners are axis-aligned but whose
+     * first vertex is the right edge (u grows as x falls). */
+    bool mirrored_copy = perspective_copy && modulated_sampler &&
+        !half_texel_layout && !row_major_corners &&
+        quad[8] == quad[12] && quad[10] == quad[14] &&
+        quad[9] == quad[11] && quad[13] == quad[15] && quad[8] != quad[10];
     const float epsilon = 0.0009765625f;
     float destination_x[4], destination_y[4];
     for (unsigned i = 0; i < 4u; i++) {
@@ -3039,15 +3047,18 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             return false;
         }
     }
+    if (mirrored_copy && destination_x[0] <= destination_x[1])
+        mirrored_copy = false;
+    if (mirrored_copy) row_major_corners = true;
     bool axis_aligned = row_major_corners
         ? quad[8] == quad[12] && quad[10] == quad[14] &&
           quad[9] == quad[11] && quad[13] == quad[15]
         : quad[8] == quad[10] && quad[12] == quad[14] &&
           quad[9] == quad[13] && quad[11] == quad[15];
-    unsigned p00 = row_major_corners ? 0u : 1u;
-    unsigned p10 = row_major_corners ? 1u : 3u;
-    unsigned p01 = row_major_corners ? 2u : 0u;
-    unsigned p11 = row_major_corners ? 3u : 2u;
+    unsigned p00 = mirrored_copy ? 1u : row_major_corners ? 0u : 1u;
+    unsigned p10 = mirrored_copy ? 0u : row_major_corners ? 1u : 3u;
+    unsigned p01 = mirrored_copy ? 3u : row_major_corners ? 2u : 0u;
+    unsigned p11 = mirrored_copy ? 2u : row_major_corners ? 3u : 2u;
     float x0 = destination_x[p00], y0 = destination_y[p00];
     float x1 = destination_x[p11], y1 = destination_y[p11];
     /* Clock's captured column is turned through 180 degrees. Its genuine
@@ -4090,6 +4101,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             } else if (quarter_turn) {
                 src = mbx_load_le32(source_pixels +
                     (width - 1u - x) * source_row_bytes + y * 4u);
+            } else if (mirrored_copy) {
+                src = mbx_load_le32(source_pixels + y * source_row_bytes +
+                                    (width - 1u - x) * 4u);
             } else {
                 src = mbx_load_le32(source_pixels + y * source_row_bytes +
                                     x * 4u);
