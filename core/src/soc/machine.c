@@ -2009,11 +2009,23 @@ static unsigned run_retirement_batch_limit(const s5l8900_t *m,
  * engine owns its own boundary contract, so either policy disables this path
  * completely.
  */
+/*
+ * A privileged host SVC handler (iPhone OS 3's memory-disk bridge) can advance
+ * device time from inside arm_step(), but only privileged code can reach it:
+ * User mode is the safety boundary, as in S5LBox. With such a handler, batch
+ * User-mode retirements only and end a batch the moment the CPU leaves User
+ * mode. Without one (OS 1.0) nothing changes. Disabling batching outright, as
+ * before, also kept the guarded seed from ever running under iPhone OS 3.
+ */
+static bool privileged_host_svc_boundary(const s5l8900_t *m) {
+    return m->cpu.bus && m->cpu.bus->privileged_svc_handler &&
+           (m->cpu.cpsr & 31u) != ARM_MODE_USR;
+}
+
 static unsigned interpreter_tick_batch_limit(const s5l8900_t *m,
                                               unsigned remaining,
                                               bool active_clock) {
-    if (m->pre_step_hook ||
-        (m->cpu.bus && m->cpu.bus->privileged_svc_handler))
+    if (m->pre_step_hook || privileged_host_svc_boundary(m))
         return 0u;
     return run_retirement_batch_limit(m, remaining, active_clock);
 }
@@ -2289,7 +2301,8 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                 retired = m->batch_pending + 1u;
                 total_retired++;
                 if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
-                    flushed || m->wfi_pace_yield)
+                    flushed || m->wfi_pace_yield ||
+                    privileged_host_svc_boundary(m))
                     break;
             } while (retired < limit);
             } else
@@ -2300,7 +2313,7 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                 unsigned prefix = arm_wasm_jit_try(&m->cpu, limit - retired);
                 retired += prefix;
                 total_retired += prefix;
-                if (retired == limit) break;
+                if (retired == limit || privileged_host_svc_boundary(m)) break;
                 unsigned retired_before = retired;
                 m->batch_pending = retired_before;
                 st = arm_step(&m->cpu);
@@ -2312,7 +2325,8 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                 retired = m->batch_pending + 1u;
                 total_retired++;
                 if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
-                    flushed || m->wfi_pace_yield)
+                    flushed || m->wfi_pace_yield ||
+                    privileged_host_svc_boundary(m))
                     break;
             } while (retired < limit);
             } else
@@ -2330,7 +2344,8 @@ unsigned s5l8900_run(s5l8900_t *m, unsigned max_steps, arm_status_t *status) {
                 retired = m->batch_pending + 1u;
                 total_retired++;
                 if (m->level_dirty || ext_inputs(m) != m->ext_seen ||
-                    flushed || m->wfi_pace_yield)
+                    flushed || m->wfi_pace_yield ||
+                    privileged_host_svc_boundary(m))
                     break;
             } while (retired < limit);
             }

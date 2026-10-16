@@ -13,6 +13,10 @@ Usage:
       [--launchd-env NAME=K=V,...]     add EnvironmentVariables to a launchd
                                        plist NAME (binary plist rewritten)
       [--no-autolock]                 set SpringBoard auto-lock and dim to Never
+      [--no-autolock-mobile]          the same for iPhone OS 2.x/3.x, where
+                                       SpringBoard runs as mobile (uid 501)
+      [--device-keys]                 provision lockdownd's device RSA key pair
+                                       so the guest never generates it
       [--activate]                    seed a locally verified activation record
       [--add GUEST_PATH=HOSTFILE]...  add a new file, creating directories
 """
@@ -290,10 +294,32 @@ class Work:
         key_len = 6 + len(encoded)
         return struct.pack(">HIH", key_len, parent, len(name)) + encoded
 
+    def _find_path_record(self, path, rtype):
+        components = [x for x in path.split("/") if x]
+        parent = 2
+        for component in components[:-1]:
+            parent = self._resolve_path(component, parent)
+            if parent is None:
+                return None
+        return self._find_record(parent, components[-1], rtype)
+
+    # Templates for new catalog records. The 1A543a image is matched by its
+    # audited catalog IDs; other builds (iPhone OS 2.x/3.x lack
+    # /var/root/Library/Preferences) fall back to root-owned records found by
+    # path, so the new entry inherits root ownership and ordinary modes.
+    def _folder_template(self):
+        return (self._find_record(1451, "Preferences", 1) or
+                self._find_path_record("/private/var/root", 1))
+
+    def _file_template(self):
+        return (self._find_record(1452, ".GlobalPreferences.plist", 2) or
+                self._find_path_record("/private/etc/fstab", 2))
+
     def _new_folder(self, parent, name):
-        sibling = self._find_record(1451, "Preferences", 1)
+        sibling = self._folder_template()
         if not sibling:
-            raise SystemExit("folder template /var/root/Library/Preferences missing")
+            raise SystemExit("no folder template (/var/root/Library/Preferences "
+                             "or /private/var/root)")
         data = bytearray(sibling[4][sibling[3]:])
         ident = self._new_catalog_id()
         struct.pack_into(">I", data, 4, 0)
@@ -321,9 +347,10 @@ class Work:
 
     def _new_file(self, parent, name, data_bytes, *, mode=None, uid=None, gid=None):
         self._validate_new_file_permissions(mode, uid, gid)
-        sibling = self._find_record(1452, ".GlobalPreferences.plist", 2)
+        sibling = self._file_template()
         if not sibling:
-            raise SystemExit("file template /var/root/Library/Preferences missing")
+            raise SystemExit("no file template (/var/root/Library/Preferences/"
+                             ".GlobalPreferences.plist or /private/etc/fstab)")
         data = bytearray(sibling[4][sibling[3]:])
         if self.reuse_catalog_ids:
             ident = self._new_catalog_id()
@@ -635,6 +662,8 @@ def main():
     w = Work(dst)
     i = 2
     no_autolock = False
+    no_autolock_mobile = False
+    device_keys = False
     activate = False
     while i < len(a):
         if a[i] == "--fstab":
@@ -656,6 +685,12 @@ def main():
             i += 2
         elif a[i] == "--no-autolock":
             no_autolock = True
+            i += 1
+        elif a[i] == "--no-autolock-mobile":
+            no_autolock_mobile = True
+            i += 1
+        elif a[i] == "--device-keys":
+            device_keys = True
             i += 1
         elif a[i] == "--activate":
             activate = True
@@ -681,6 +716,33 @@ def main():
             w.replace_file_path(path, data)
         else:
             w.add_file_data(path, data)
+    if no_autolock_mobile:
+        # iPhone OS 3 SpringBoard reads and atomically rewrites this as mobile.
+        path = "/private/var/mobile/Library/Preferences/com.apple.springboard.plist"
+        if w.find_file_path(path):
+            raise SystemExit("%s already exists" % path)
+        data = plistlib.dumps({"SBAutoLockTime": -1, "SBAutoDimTime": -1},
+                              fmt=plistlib.FMT_XML)
+        w.add_file_data(path, data, mode=0o600, uid=501, gid=501)
+    if device_keys:
+        # On first boot iPhone OS 3's lockdownd generates a 1024-bit RSA pair
+        # in Security's bignum code: measured at 51-95% of guest instructions
+        # for over 2 G instructions. Provide the pair in lockdownd's own
+        # PKCS#1 PEM forms instead, root-only like the files it writes.
+        key = rsa.generate_private_key(public_exponent=65537, key_size=1024)
+        pems = {
+            "device_private_key.pem": key.private_bytes(
+                serialization.Encoding.PEM,
+                serialization.PrivateFormat.TraditionalOpenSSL,
+                serialization.NoEncryption()),
+            "device_public_key.pem": key.public_key().public_bytes(
+                serialization.Encoding.PEM, serialization.PublicFormat.PKCS1),
+        }
+        for name, data in pems.items():
+            path = "/private/var/root/Library/Lockdown/" + name
+            if w.find_file_path(path):
+                raise SystemExit("%s already exists" % path)
+            w.add_file_data(path, data, mode=0o600, uid=0, gid=0)
     if activate:
         activation_pem, ca_pem, record = _local_activation_data()
         for path, data in (

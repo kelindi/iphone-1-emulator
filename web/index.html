@@ -78,6 +78,10 @@
         </button>
       </div>
     </section>
+    <div id="firmware-picker" class="firmware-picker" hidden>
+      <label for="firmware">Firmware</label>
+      <select id="firmware" aria-label="iPhone OS version"></select>
+    </div>
 
     <section class="companion" aria-label="Emulator controls" hidden>
       <div class="loading-state">
@@ -115,7 +119,7 @@
           </details>
         </div>
       </details>
-      <p class="colophon">Genuine iPhone OS 1.0 <span aria-hidden="true">·</span> Emulated in WebAssembly</p>
+      <p class="colophon">Genuine <span id="firmware-name">iPhone OS 1.0</span> <span aria-hidden="true">·</span> Emulated in WebAssembly</p>
     </section>
   </main>
   <footer class="site-footer">Made by <a href="https://kelindi.ca">Kelindi</a></footer>

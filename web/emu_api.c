@@ -1,5 +1,7 @@
 #include "board.h"
 #include "bringup_os1.h"
+#include "bringup.h"
+#include "ios3_bringup_gate.h"
 #include "snapshot.h"
 #include "devicetree.h"
 #ifdef S5LBOX_WASM_JIT
@@ -137,10 +139,45 @@ static void reset_host_inputs(void) {
     memset(button_force_release, 0, sizeof button_force_release);
 }
 
+/* iPhone OS 3's root volume lives outside guest RAM, behind the memory-disk
+ * bridge. In the browser it is one heap buffer the page streamed in; the
+ * machine owns it from emu_init_ios3() until release. Guest writes land in it
+ * and are lost on reload: checkpoints cover RAM only, so the page keeps
+ * browser saving off for iPhone OS 3. */
+static uint8_t *ios3_disk;
+static size_t ios3_disk_size;
+static vm_block_t ios3_root;
+static s5l_bringup_md_t ios3_md;
+static s5l_bringup_result_t ios3_result;
+static ios3_bringup_gate_report_t ios3_gate;
+static vm_block_io_status_t disk_read(void *ctx, uint64_t off, void *dst,
+                                      size_t n, size_t *got) {
+    (void)ctx;
+    if (off > ios3_disk_size || n > ios3_disk_size - off) return VM_BLOCK_IO_ERROR;
+    memcpy(dst, ios3_disk + off, n);
+    *got = n;
+    return VM_BLOCK_IO_OK;
+}
+static vm_block_io_status_t disk_write(void *ctx, uint64_t off, const void *src,
+                                       size_t n, size_t *put) {
+    (void)ctx;
+    if (off > ios3_disk_size || n > ios3_disk_size - off) return VM_BLOCK_IO_ERROR;
+    memcpy(ios3_disk + off, src, n);
+    *put = n;
+    return VM_BLOCK_IO_OK;
+}
+static vm_block_io_status_t disk_flush(void *ctx) {
+    (void)ctx;
+    return VM_BLOCK_IO_OK;
+}
+
 static void release_machine(void) {
 #ifdef S5LBOX_WASM_JIT
     web_jit_bind(NULL);
 #endif
+    free(ios3_disk);
+    ios3_disk = NULL;
+    ios3_disk_size = 0u;
     browser_clock_compatible = false;
     browser_wait_until_ms = 0;
     snapshot_capture_free(snapshot_capture);
@@ -308,6 +345,83 @@ int emu_init(const uint8_t *kernel, size_t kernel_size,
     return 0;
 }
 
+/* Nubs iPhone OS 3 must not match on M68 until their devices are modeled;
+ * spi2 (Z1 touch) and mbx (hardware compositing) stay matched. Same list as
+ * tools/iphone1.c --ios3. */
+static const char *const m68_ios3_unmatch[] = {
+    "arm-io/sha1", "arm-io/uart1/baseband", "arm-io/usb-otg"
+};
+
+/*
+ * Boot iPhone OS 3.1.3 (7E18) on M68. `disk` is a heap buffer the caller
+ * allocated with malloc() holding the prepared root volume; ownership passes
+ * to the machine on every return path, so the caller must not free it.
+ */
+EMSCRIPTEN_KEEPALIVE
+int emu_init_ios3(const uint8_t *kernel, size_t kernel_size,
+                  const uint8_t *devicetree, size_t devicetree_size,
+                  uint8_t *disk, size_t disk_size) {
+    const s5l_board_t *board;
+    s5l_bringup_request_t request;
+
+    set_error("");
+    release_machine();
+    ios3_disk = disk;
+    ios3_disk_size = disk_size;
+    serial_read_pos = serial_write_pos = 0u;
+    last_status = ARM_OK;
+    reset_host_inputs();
+    if (!kernel || !kernel_size || !devicetree || !devicetree_size ||
+        !disk || !disk_size || (disk_size & 4095u)) {
+        set_error("kernel, devicetree and a 4 KiB-aligned disk are required");
+        release_machine();
+        return -1;
+    }
+    board = s5l_board_find("m68");
+    if (!board || !s5l_board_init(board, &machine, S5L_BRINGUP_RAM_SIZE)) {
+        set_error("machine initialization failed");
+        release_machine();
+        return -3;
+    }
+    machine_ready = true;
+#ifdef S5LBOX_WASM_JIT
+    web_jit_bind(&machine);
+#endif
+    if (!s5l8900_set_direct_ram_writes(&machine, true)) {
+        set_error("direct RAM write cache initialization failed");
+        release_machine();
+        return -6;
+    }
+    ios3_root = (vm_block_t){ .context = NULL, .size = disk_size,
+                              .read_at = disk_read, .write_at = disk_write,
+                              .flush = disk_flush };
+    memset(&request, 0, sizeof request);
+    memset(&ios3_gate, 0, sizeof ios3_gate);
+    request.kernel = kernel;
+    request.kernel_size = kernel_size;
+    request.devicetree = devicetree;
+    request.devicetree_size = devicetree_size;
+    request.root_media = &ios3_root;
+    request.lcd_node = "arm-io/spi1/lcd0";
+    request.unmatch = m68_ios3_unmatch;
+    request.unmatch_count = sizeof m68_ios3_unmatch / sizeof m68_ios3_unmatch[0];
+    ios3_bringup_gate_configure(&request, &ios3_gate);
+    if (s5l_bringup(&machine, &request, &ios3_md, &ios3_result) != S5L_BRINGUP_OK) {
+        set_error(ios3_result.detail[0] ? ios3_result.detail : "iPhone OS 3 boot setup failed");
+        release_machine();
+        return -4;
+    }
+    /* boot_args version 6 is not the OS1 layout the host-clock check knows,
+     * so the guest keeps deterministic timing. */
+    browser_clock_compatible = false;
+    if (!s5l8900_set_uart0_host(&machine, serial_tx, NULL)) {
+        set_error("UART0 host tap setup failed");
+        release_machine();
+        return -5;
+    }
+    return 0;
+}
+
 EMSCRIPTEN_KEEPALIVE
 int emu_load_snapshot(const uint8_t *buf, size_t len) {
     snapshot_status_t status;
@@ -324,7 +438,13 @@ int emu_load_snapshot(const uint8_t *buf, size_t len) {
         set_error(snapshot_strerror(status));
         return -3;
     }
-    browser_clock_compatible = browser_guest_clock_compatible();
+    browser_clock_compatible = ios3_disk ? false : browser_guest_clock_compatible();
+    /* The raw memory-disk bridge keeps in-flight transfers (svc 0xe3 ... 0xe4)
+     * on the host, outside the snapshot. Restart it as bring-up left it, so a
+     * restore never inherits the previous run's pending slots: measured, two
+     * interpreter runs from one snapshot otherwise diverged within 100 M
+     * instructions. md_raw_bridge_init() keeps the configuration. */
+    if (ios3_disk) md_raw_bridge_init(&ios3_md.raw, &ios3_md.raw.config);
     browser_wait_until_ms = 0;
     reset_host_inputs();
     last_status = ARM_OK;

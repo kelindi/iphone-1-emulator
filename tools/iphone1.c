@@ -1,6 +1,7 @@
 #include "board.h"
 #include "bringup_os1.h"
 #include "bringup.h"
+#include "ios3_bringup_gate.h"
 #include "lzss.h"
 #include "snapshot.h"
 #include <errno.h>
@@ -56,6 +57,43 @@ static int save_ppm(const char *path, const s5l8900_t *m) {
     fprintf(f,"P6\n%u %u\n255\n",w,h); fwrite(rgb,1,(size_t)w*h*3u,f);
     fclose(f); free(rgb); return 1;
 }
+/* The iOS 3 root medium: a host file read and written in place through the
+ * memory-disk bridge. Pass a copy, never the pristine extracted image. */
+typedef struct { FILE *f; } file_media_t;
+#ifdef _WIN32
+#define media_seek _fseeki64
+#define media_tell _ftelli64
+#else
+#define media_seek fseeko
+#define media_tell ftello
+#endif
+static vm_block_io_status_t media_read(void *ctx, uint64_t off, void *dst,
+                                       size_t n, size_t *got) {
+    file_media_t *fm = ctx;
+    if (media_seek(fm->f, (long long)off, SEEK_SET) != 0) return VM_BLOCK_IO_ERROR;
+    *got = fread(dst, 1, n, fm->f);
+    return *got ? VM_BLOCK_IO_OK : VM_BLOCK_IO_ERROR;
+}
+static vm_block_io_status_t media_write(void *ctx, uint64_t off, const void *src,
+                                        size_t n, size_t *put) {
+    file_media_t *fm = ctx;
+    if (media_seek(fm->f, (long long)off, SEEK_SET) != 0) return VM_BLOCK_IO_ERROR;
+    *put = fwrite(src, 1, n, fm->f);
+    return *put ? VM_BLOCK_IO_OK : VM_BLOCK_IO_ERROR;
+}
+static vm_block_io_status_t media_flush(void *ctx) {
+    return fflush(((file_media_t *)ctx)->f) == 0 ? VM_BLOCK_IO_OK : VM_BLOCK_IO_ERROR;
+}
+
+/* Nubs iPhone OS 3 must not match on M68 until their devices are modeled.
+ * Unlike N82, spi2 carries the Z1 touch controller here and stays matched.
+ * arm-io/mbx stays matched too: AppleMBX attaches to the core's model and
+ * QuartzCore composites through MBX2D (Calculator launch 0.29 G -> <=0.09 G
+ * guest instructions, 133/133 2D and 355/355 3D submits, none rejected). */
+static const char *const m68_ios3_unmatch[] = {
+    "arm-io/sha1", "arm-io/uart1/baseband", "arm-io/usb-otg"
+};
+
 typedef struct { FILE *serial; const s5l8900_t *m; bool bol; } tap_t;
 /* Serial output; each line in the --serial file is prefixed with the guest
  * instruction count so kernel messages can be correlated with --swi-log. */
@@ -86,6 +124,91 @@ static bool read_va32(s5l8900_t *m, uint32_t va, uint32_t *out) {
         pa<m->ram_base || pa-m->ram_base+4u>m->ram_size) return false;
     memcpy(out, m->ram+(pa-m->ram_base), 4); return true;
 }
+/*
+ * --record-ops: the observations the guarded seed generator compiles
+ * (tools/jit/generate-seed.mjs). Every executed instruction position is kept
+ * once with its mode and code word (Thumb halfwords individually); each
+ * 1 KiB region is ranked by executions, and the hottest REC_REGIONS are
+ * written in seed-input.json form. Nothing here touches guest state.
+ */
+#define REC_OPS_BITS 21u
+#define REC_REGION_BITS 17u
+#define REC_REGIONS 512u
+typedef struct { uint64_t key; uint32_t word; bool used; } rec_op_t;
+typedef struct { uint32_t key; uint64_t count; bool used; } rec_region_t;
+static rec_op_t *g_rec_ops;
+static rec_region_t *g_rec_regions;
+static uint64_t g_rec_ops_n, g_rec_steps;
+static uint64_t rec_hash(uint64_t k) { k ^= k >> 33; k *= 0xff51afd7ed558ccdull; return k ^ (k >> 33); }
+static void rec_note(s5l8900_t *m, uint32_t pc, bool thumb) {
+    uint32_t word;
+    if (!read_va32(m, pc & ~3u, &word)) return;
+    if (thumb) word = (pc & 2u) ? word >> 16 : word & 0xffffu;
+    else if (pc & 3u) return;
+    uint64_t key = (uint64_t)pc << 1 | thumb, mask = (1ull << REC_OPS_BITS) - 1u;
+    for (uint64_t i = rec_hash(key) & mask;; i = (i + 1u) & mask) {
+        rec_op_t *e = &g_rec_ops[i];
+        if (!e->used) {
+            if (g_rec_ops_n >= mask / 2u) break;   /* full: keep counting regions */
+            *e = (rec_op_t){key, word, true}; g_rec_ops_n++; break;
+        }
+        if (e->key == key) { e->word = word; break; }
+    }
+    uint32_t rkey = (pc >> 10) << 1 | thumb, rmask = (1u << REC_REGION_BITS) - 1u;
+    for (uint32_t i = (uint32_t)rec_hash(rkey) & rmask;; i = (i + 1u) & rmask) {
+        rec_region_t *r = &g_rec_regions[i];
+        if (!r->used) { *r = (rec_region_t){rkey, 1u, true}; break; }
+        if (r->key == rkey) { r->count++; break; }
+    }
+    g_rec_steps++;
+}
+static int rec_region_cmp(const void *a, const void *b) {
+    const rec_region_t *x = a, *y = b;
+    return x->count < y->count ? 1 : x->count > y->count ? -1 : (x->key > y->key) - (x->key < y->key);
+}
+static int rec_op_cmp(const void *a, const void *b) {
+    const rec_op_t *x = a, *y = b;
+    return (x->key > y->key) - (x->key < y->key);
+}
+static bool rec_write(const char *path) {
+    size_t nr = 0, rmax = 1u << REC_REGION_BITS, omax = 1u << REC_OPS_BITS;
+    rec_region_t *regions = malloc(rmax * sizeof *regions);
+    rec_op_t *ops = malloc(omax * sizeof *ops);
+    FILE *f = fopen(path, "w");
+    if (!regions || !ops || !f) { free(regions); free(ops); if (f) fclose(f); return false; }
+    for (size_t i = 0; i < rmax; i++) if (g_rec_regions[i].used) regions[nr++] = g_rec_regions[i];
+    qsort(regions, nr, sizeof *regions, rec_region_cmp);
+    if (nr > REC_REGIONS) nr = REC_REGIONS;
+    size_t no = 0;
+    for (size_t i = 0; i < omax; i++) if (g_rec_ops[i].used) ops[no++] = g_rec_ops[i];
+    qsort(ops, no, sizeof *ops, rec_op_cmp);
+    uint64_t covered = 0;
+    fprintf(f, "{\"version\":1,\"description\":\"Executed opcode positions recorded by "
+               "tools/iphone1 --record-ops; observations of genuine guest code, no guest data.\","
+               "\"regions\":[");
+    for (size_t r = 0; r < nr; r++) {
+        uint32_t base = (regions[r].key >> 1) << 10; bool thumb = regions[r].key & 1u;
+        covered += regions[r].count;
+        fprintf(f, "%s{\"pc\":%u,\"thumb\":%s,\"index\":%zu,\"ops\":[", r ? "," : "",
+                base, thumb ? "true" : "false", r);
+        bool first = true;
+        for (size_t i = 0; i < no; i++) {
+            uint32_t pc = (uint32_t)(ops[i].key >> 1);
+            if ((ops[i].key & 1u) != thumb || (pc & ~1023u) != base) continue;
+            fprintf(f, "%s[%u,%u]", first ? "" : ",", pc, ops[i].word);
+            first = false;
+        }
+        fputs("]}", f);
+    }
+    fputs("]}\n", f);
+    fclose(f);
+    fprintf(stderr, "recorded %llu instructions, %llu positions; %zu regions cover %.1f%%\n",
+            (unsigned long long)g_rec_steps, (unsigned long long)g_rec_ops_n, nr,
+            g_rec_steps ? covered * 100.0 / (double)g_rec_steps : 0.0);
+    free(regions); free(ops);
+    return true;
+}
+
 static void print_va_str(FILE *o, s5l8900_t *m, uint32_t va) {
     for (unsigned i=0;i<256;i+=4) { uint32_t w; if (!read_va32(m,va+i,&w)) { fputc('?',o); return; }
         for (unsigned b=0;b<4;b++) { char c=(char)(w>>(8*b)); if (!c) return; fputc(c,o); } }
@@ -200,6 +323,14 @@ static void dump_va(s5l8900_t *m, uint32_t va, unsigned words) {
 static void usage(void) {
     puts("iphone1 --board m68|n82 --kernel PATH --devicetree PATH [options]\n"
          "  --cpi N           cycles per retired instruction, 1..16, default 1\n"
+         "  --ios3 --rootfs WORK.img  boot iPhone OS 3.1.3 (7E18); WORK.img is\n"
+         "                    modified in place, so pass a copy\n"
+         "  --lcd-panel-id N  Merlot panel ID for --ios3 (default: the N82 value)\n"
+         "  --codesign-off    --ios3: disable guest code-signing enforcement\n"
+         "  --profile FILE    sample \"pc ttbr0 privileged\" every 10007 instructions\n"
+         "  --no-spin-stop    keep running through an idle kernel loop\n"
+         "  --record-ops FILE [--record-from STEP]  record executed opcode positions\n"
+         "                    (one instruction per slice; slow) as seed input JSON\n"
          "  --dump-ram FILE  write the guest RAM image when the run ends");
 }
 
@@ -258,8 +389,25 @@ int main(int argc,char **argv) {
     const char *audio_wav = NULL; FILE *wav = NULL; uint64_t wav_frames = 0;
     uint64_t save_step = UINT64_MAX;
     input_event_t events[128]; unsigned event_n = 0;
+    bool ios3 = false, codesign_off = false; const char *rootfs = NULL;
+    FILE *profile = NULL;
+    bool spin_stop = true;
+    const char *record_path = NULL; uint64_t record_from = 0;
+    enum { PROFILE_PERIOD = 10007u };
+    uint32_t panel_id = 0;
     for (int i=1;i<argc;i++) {
         if (!strcmp(argv[i],"--board")&&i+1<argc) board_name=argv[++i];
+        else if (!strcmp(argv[i],"--ios3")) ios3=true;
+        else if (!strcmp(argv[i],"--rootfs")&&i+1<argc) rootfs=argv[++i];
+        else if (!strcmp(argv[i],"--lcd-panel-id")&&i+1<argc) panel_id=(uint32_t)strtoul(argv[++i],NULL,0);
+        else if (!strcmp(argv[i],"--codesign-off")) codesign_off=true;
+        else if (!strcmp(argv[i],"--no-spin-stop")) spin_stop=false;
+        else if (!strcmp(argv[i],"--record-ops")&&i+1<argc) record_path=argv[++i];
+        else if (!strcmp(argv[i],"--record-from")&&i+1<argc) record_from=strtoull(argv[++i],NULL,0);
+        else if (!strcmp(argv[i],"--profile")&&i+1<argc) {
+            profile=fopen(argv[++i],"w");
+            if (!profile) { perror("--profile"); return 1; }
+        }
         else if (!strcmp(argv[i],"--kernel")&&i+1<argc) kp=argv[++i];
         else if (!strcmp(argv[i],"--devicetree")&&i+1<argc) dp=argv[++i];
         else if (!strcmp(argv[i],"--ramdisk")&&i+1<argc) rp=argv[++i];
@@ -375,6 +523,49 @@ int main(int argc,char **argv) {
         return 1;
     }
     m.trace_devices=trace; m.mtz1.trace=trace; m.mmio_watch_page=mmio_watch;
+    file_media_t media = {0};
+    vm_block_t root = {0};
+    static s5l_bringup_md_t md;
+    if (ios3) {
+        if (!rootfs) { fprintf(stderr, "--ios3 needs --rootfs WORK.img\n"); return 2; }
+        media.f = fopen(rootfs, "r+b");
+        if (!media.f) { perror(rootfs); return 1; }
+        media_seek(media.f, 0, SEEK_END);
+        root = (vm_block_t){ .context = &media,
+                             .size = (uint64_t)media_tell(media.f),
+                             .read_at = media_read, .write_at = media_write,
+                             .flush = media_flush };
+        static ios3_bringup_gate_report_t gate;
+        static s5l_bringup_request_t q3;
+        static s5l_bringup_result_t r3;
+        q3.kernel = k.p; q3.kernel_size = k.n;
+        q3.devicetree = d.p; q3.devicetree_size = d.n;
+        q3.root_media = &root;
+        q3.cmdline = cmd;
+        q3.no_framebuffer = !fb;
+        q3.guest_codesign_disabled = codesign_off;
+        q3.lcd_panel_id = panel_id;
+        q3.v_display = vd;
+        if (!strcmp(board_name, "m68")) {
+            q3.lcd_node = "arm-io/spi1/lcd0";
+            q3.unmatch = m68_ios3_unmatch;
+            q3.unmatch_count = sizeof m68_ios3_unmatch / sizeof m68_ios3_unmatch[0];
+        }
+        if (unmatch_n) { q3.unmatch = unmatch; q3.unmatch_count = unmatch_n; }
+        ios3_bringup_gate_configure(&q3, &gate);
+        if (s5l_bringup(&m, &q3, &md, &r3) != S5L_BRINGUP_OK) {
+            fprintf(stderr, "boot failed (%s at %s): %s\n",
+                    s5l_bringup_status_name(r3.status),
+                    s5l_bringup_stage_name(r3.stage), r3.detail);
+            s5l8900_free(&m); return 1;
+        }
+        printf("ios3 entry_va=0x%08x entry_pa=0x%08x devicetree_va=0x%08x patches=%u unmatched=%u\n",
+               r3.entry_va, r3.entry_pa, r3.devicetree_va,
+               r3.devicetree_patches, r3.devicetree_unmatched);
+        printf("ios3 root_media=%llu bytes framebuffer_pa=0x%08x vram=0x%08x md_bridge=%s cmdline=\"%s\"\n",
+               (unsigned long long)r3.root_media_size, r3.framebuffer_pa,
+               r3.vram_bytes, r3.md_bridge_installed ? "yes" : "no", r3.cmdline);
+    } else {
     s5l_os1_request_t q={k.p,k.n,d.p,d.n,rd.p,rd.n,cmd,fb,vd,b->lcd_width,b->lcd_height,debug,
                          unmatch,unmatch_n};
     s5l_os1_result_t r;
@@ -390,6 +581,7 @@ int main(int argc,char **argv) {
            r.boot_args_pa,r.ramdisk_pa,r.ramdisk_va,r.ramdisk_size);
     printf("framebuffer_pa=0x%08x vram_bytes=0x%08x top_of_kernel_data_pa=0x%08x cmdline=\"%s\"\n",
            r.framebuffer_pa,r.vram_bytes,r.top_of_kernel_data_pa,r.cmdline);
+    }
     if (load_path) {
         snapshot_status_t ss = snapshot_load(&m, load_path);
         if (ss != SNAP_OK) {
@@ -406,9 +598,14 @@ int main(int argc,char **argv) {
         return 2;
     }
     qsort(events, event_n, sizeof events[0], input_compare);
+    if (record_path) {
+        g_rec_ops = calloc((size_t)1u << REC_OPS_BITS, sizeof *g_rec_ops);
+        g_rec_regions = calloc((size_t)1u << REC_REGION_BITS, sizeof *g_rec_regions);
+        if (!g_rec_ops || !g_rec_regions) { fprintf(stderr, "--record-ops: out of memory\n"); return 1; }
+    }
     tap_t t={serial?fopen(serial,"wb"):NULL,&m,true}; s5l8900_set_uart0_host(&m,tap,&t);
     arm_status_t st=ARM_OK; uint64_t total=m.cpu.cycles; uint32_t ring[32]={0}; unsigned ri=0, same=0;
-    unsigned next_event = 0; bool saved = false;
+    unsigned next_event = 0, touch_retries = 0; bool saved = false;
     bool tap_pending = false, press_pending = false;
     uint64_t tap_down_ticks = 0, press_down_ticks = 0;
     unsigned press_button = 0;
@@ -441,8 +638,12 @@ int main(int argc,char **argv) {
             bool ok = s5l8900_set_button(&m, press_button, false);
             fprintf(stderr, "input step=%llu button %u up -> %s\n",
                     (unsigned long long)total, press_button,
-                    ok ? "accepted" : "rejected");
-            press_pending = false;
+                    ok ? "accepted" : "rejected, retrying");
+            /* GPIO may still be servicing the down edge. Retry shortly
+             * rather than leaving the button held for the rest of the run. */
+            if (ok) press_pending = false;
+            else press_down_ticks = m.timer.ticks - tap_duration_ticks +
+                                    tap_duration_ticks / 10u;
             continue;
         }
         unsigned slice=(unsigned)((steps-total)>1000000ull?1000000ull:steps-total);
@@ -454,7 +655,19 @@ int main(int argc,char **argv) {
                 fprintf(stderr, "%s %u %u -> %s\n",
                         e->kind == INPUT_LIFT || e->phase == MTZ2_PHASE_BREAK_TOUCH ?
                             "touch up" : "touch",
-                        e->x, e->y, ok ? "accepted" : "rejected");
+                        e->x, e->y, ok ? "accepted" : "rejected, retrying");
+                /* A touch controller holds one report until the driver reads
+                 * it; iPhone OS 3 polls far less often than OS 1.0. Retry the
+                 * rejected frame and delay the rest of the script with it, so
+                 * a drag keeps its shape instead of losing its middle. */
+                if (!ok && touch_retries < 400u) {
+                    touch_retries++;
+                    next_event--;
+                    for (unsigned j = next_event; j < event_n; j++)
+                        events[j].step += 1000000u;
+                    continue;
+                }
+                touch_retries = 0;
                 if (ok && e->auto_lift) {
                     tap_pending = true;
                     tap_down_ticks = m.timer.ticks;
@@ -480,7 +693,17 @@ int main(int argc,char **argv) {
          * EXEC/SWI logs report. */
         if (m.cpu.cycles>=trace_from) { slice=1; trace_record(&m); }
         else if (m.cpu.cycles+slice>trace_from) slice=(unsigned)(trace_from-m.cpu.cycles);
+        /* --profile samples the PC every PROFILE_PERIOD retired
+         * instructions (a prime, so it does not beat against loops). */
+        if (profile && slice > PROFILE_PERIOD) slice = PROFILE_PERIOD;
+        uint32_t rec_pc = m.cpu.r[15]; bool rec_thumb = (m.cpu.cpsr & 0x20u) != 0;
+        bool recording = g_rec_ops && total >= record_from;
+        if (recording) slice = 1;
         unsigned n=s5l8900_run(&m,slice,&st); total+=n; ring[ri++%32]=m.cpu.r[15];
+        if (recording && n) rec_note(&m, rec_pc, rec_thumb);
+        if (profile && n)
+            fprintf(profile, "%08x %08x %u\n", m.cpu.r[15], m.cpu.cp15.ttbr0,
+                    (m.cpu.cpsr & 31u) != 0x10u);
         if (audio_wav && !wav) {
             wav = fopen(audio_wav, "wb");
             if (!wav) { fprintf(stderr, "cannot open %s\n", audio_wav); audio_wav = NULL; }
@@ -510,12 +733,26 @@ int main(int argc,char **argv) {
         uint32_t win=m.cpu.r[15]&~63u;
         if (win==last_window) same++; else same=0; last_window=win;
         if (st!=ARM_OK) { reason=status_name(st); break; }
-        if (same>=20 && slice>1) { reason="spin"; break; }
+        /* Twenty slice-end PCs in one 64-byte window is a spin at the normal
+         * 1M-instruction slice, but only an idle loop at --profile's 10007. */
+        if (!profile && spin_stop && same>=20 && slice>1) { reason="spin"; break; }
         if (!n) break;
     }
+    if (record_path && !rec_write(record_path))
+        fprintf(stderr, "--record-ops: cannot write %s\n", record_path);
     printf("\nreason=%s instructions=%llu pc=0x%08x cpsr=0x%08x\n",reason,
            (unsigned long long)total,m.cpu.r[15],m.cpu.cpsr);
     for (unsigned i=0;i<16;i++) printf("r%u=0x%08x%s",i,m.cpu.r[i],i%4==3?"\n":" ");
+    printf("clcd running=%d frames=%llu updates=%llu ctrl=0x%08x active=%d\n",
+           s5l_clcd_running(&m.clcd), (unsigned long long)m.clcd.frames,
+           (unsigned long long)m.clcd.updates, m.clcd.ctrl,
+           (int)s5l_clcd_active_window(&m.clcd));
+    for (unsigned w = 0; w < CLCD_WIN_COUNT; w++) {
+        uint32_t fbp, ww, wh, ws, wf, wo;
+        if (s5l_clcd_window(&m.clcd, w, &fbp, &ww, &wh, &ws, &wf, &wo))
+            printf("clcd win%u fb=0x%08x %ux%u stride=%u fmt=%u order=%u\n",
+                   w, fbp, ww, wh, ws, wf, wo);
+    }
     printf("ttbr0=0x%08x sctlr=0x%08x M=%u unmapped_reads=%llu unmapped_writes=%llu\n",
            m.cpu.cp15.ttbr0,m.cpu.cp15.sctlr,(m.cpu.cp15.sctlr&1u)!=0,
            (unsigned long long)m.unmapped_reads,(unsigned long long)m.unmapped_writes);

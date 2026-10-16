@@ -20,3 +20,7 @@ node_modules/
 # Generated publishing and browser-recording artifacts
 /tweets/
 /docs/traces/
+
+# Firmware prepared locally from the user's own IPSW (tools/firmware/prepare_ios3_web.py).
+# It is Apple software and is never committed or published.
+/web/firmware/*/

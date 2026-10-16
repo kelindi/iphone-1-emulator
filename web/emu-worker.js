@@ -148,13 +148,95 @@ async function openLocked() {
   await advanceUntil(lit);
   await waitTicks(2400000);
 }
+// iPhone OS 3 firmware is prepared locally from the user's own IPSW and is
+// never published. Its files are streamed straight into the WASM heap rather
+// than through assets.js: no Cache Storage copy, no second in-memory buffer.
+// A path list is one byte stream; a .gz first part makes it one gzip stream.
+async function streamInto(paths, base, size, label, report) {
+  const urls = (Array.isArray(paths) ? paths : [paths]).map(p => new URL(p, base));
+  if (urls.some(url => url.origin !== location.origin))
+    throw new Error('Local firmware must come from this site');
+  let part = 0, reader = null, received = 0;
+  const raw = new ReadableStream({async pull(controller) {
+    for (;;) {
+      if (!reader) {
+        if (part >= urls.length) { controller.close(); return; }
+        const response = await fetch(urls[part++], {cache:'no-store'});
+        if (!response.ok) throw new Error(`${label}: HTTP ${response.status}`);
+        reader = response.body.getReader();
+      }
+      const {done, value} = await reader.read();
+      if (done) { reader = null; continue; }
+      received += value.byteLength; report(received);
+      controller.enqueue(value); return;
+    }
+  }});
+  const stream = /\.gz$/.test(urls[0].pathname) ? raw.pipeThrough(new DecompressionStream('gzip')) : raw;
+  const ptr = module._malloc(size);
+  if (!ptr) throw new Error(`Not enough memory for ${label}`);
+  let offset = 0;
+  try {
+    for (const out = stream.getReader();;) {
+      const {done, value} = await out.read();
+      if (done) break;
+      if (offset + value.byteLength > size) throw new Error(`${label} is larger than its manifest says`);
+      module.HEAPU8.set(value, ptr + offset);
+      offset += value.byteLength;
+    }
+    if (offset !== size) throw new Error(`${label} is ${offset} bytes, expected ${size}`);
+  } catch (e) { module._free(ptr); throw e; }
+  return ptr;
+}
+async function startIos3(message, manifest, base) {
+  send('loading', {message:'Starting the emulator…'});
+  module = await createEmu({locateFile:path => new URL(`dist/${path}`, location.href).href,
+    printErr:text => send('log', {message:text})});
+  const total = manifest.downloadBytes || null;
+  let downloaded = 0;
+  const report = label => received =>
+    send('loading', {message:`Loading ${label} · ${((downloaded + received) / 1048576).toFixed(1)} MB`,
+      received:downloaded + received, total});
+  const load = async (entry, label) => {
+    const ptr = await streamInto(entry.path, base, entry.size, label, report(label));
+    downloaded += entry.downloadSize || entry.size;
+    return ptr;
+  };
+  const k = await load(manifest.kernel, 'iPhone OS');
+  const d = await load(manifest.devicetree, 'hardware profile');
+  const disk = await load(manifest.disk, 'disk');
+  try {
+    // emu_init_ios3 takes ownership of the disk buffer on every path.
+    check(module.ccall('emu_init_ios3', 'number', Array(6).fill('number'),
+      [k, manifest.kernel.size, d, manifest.devicetree.size, disk, manifest.disk.size]));
+  } finally { module._free(k); module._free(d); }
+  if (manifest.snapshot) {
+    const s = await load(manifest.snapshot, 'your iPhone');
+    try { check(module.ccall('emu_load_snapshot', 'number', ['number','number'], [s, manifest.snapshot.size])); }
+    finally { module._free(s); }
+  } else send('loading', {message:'Starting iPhone OS from power-on. This takes a few minutes.'});
+  check(module.ccall('emu_set_cpi', 'number', ['number'], [message.cpi || 1]));
+  return Boolean(manifest.snapshot);
+}
 async function start(message) {
   if (started) throw new Error('Worker already initialized');
   started = true;
   const {assetBytes} = await import('./assets.js');
-  const response = await fetch('manifest.json', {cache:'no-cache'});
-  if (!response.ok) throw new Error(`Could not load phone manifest (${response.status})`);
+  // The published default keeps its exact request; another firmware's
+  // manifest must come from this site.
+  const manifestURL = message.manifest ? new URL(message.manifest, location.href) : null;
+  if (manifestURL && manifestURL.origin !== location.origin)
+    throw new Error('Firmware manifest must come from this site');
+  const response = await fetch(manifestURL || 'manifest.json', {cache:'no-cache'});
+  if (!response.ok) throw new Error(response.status === 404 && message.manifest
+    ? 'This firmware is not prepared on this computer. See docs/ios3-browser.md.'
+    : `Could not load phone manifest (${response.status})`);
   const manifest = await response.json();
+  if (manifest.kind === 'ios3') {
+    await startIos3(message, manifest, manifestURL);
+    // Only this firmware's own seed (?seed=, recorded from its code) runs it.
+    await finishStart(message, false, Boolean(new URL(location.href).searchParams.get('seed')));
+    return;
+  }
   const downloads = [manifest.kernel, manifest.devicetree,
     ...(!message.checkpoint ? [manifest.snapshot || manifest.rootfs] : [])].flat();
   const sizes = downloads.map(path => manifest.assetBytes?.[path]);
@@ -193,8 +275,15 @@ async function start(message) {
     finally { module._free(s); }
   }
   check(module.ccall('emu_set_cpi', 'number', ['number'], [message.cpi || 1]));
+  await finishStart(message, Boolean(snapshot));
+}
+// `wake`: a restored OS 1.0 phone enters its own lock screen first. iPhone OS 3
+// snapshots are already taken there, and a cold boot draws it by itself.
+// `seed`: the default regions were recorded from OS 1.0. Another OS runs them
+// only from its own seed directory; without one it stays on the interpreter.
+async function finishStart(message, wake, seed = true) {
   // Optional code preparation runs alongside the genuine guest startup.
-  jit = new SeedJIT(module);
+  jit = seed ? new SeedJIT(module) : null;
   api = Object.fromEntries([
     ['hostClock','emu_host_clock',['number']], ['clockDelay','emu_clock_delay',[]],
     ['run','emu_run',['number']], ['status','emu_status',[]],
@@ -215,7 +304,7 @@ async function start(message) {
   if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer,audioPointer].every(Boolean))
     throw new Error('Not enough memory for display buffers');
   check(api.release());
-  if (snapshot) await openLocked();
+  if (wake) await openLocked();
   drainAudio(false); // The wake sequence's own clicks happen before the page is shown.
   present(true);
   send('ready', {id:message.id, restored:Boolean(message.checkpoint), silent:Boolean(api.buttonState(4))});

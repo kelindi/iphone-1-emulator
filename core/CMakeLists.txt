@@ -69,8 +69,10 @@ if(NOT IPHONE1_WEB)
     endforeach()
     # Exercise the browser C API natively against real device models. The
     # Emscripten annotation stub is scoped to this test target only.
-    add_executable(test_web_api ../web/tests/native_api.c)
-    target_include_directories(test_web_api PRIVATE ../web/tests/include)
+    add_executable(test_web_api ../web/tests/native_api.c
+        ../tools/ios3/ios3_bringup_gate.c ../tools/ios3/ios3_kernel_patch.c
+        ../tools/ios3/guest_patch.c ../tools/ios3/sha256.c)
+    target_include_directories(test_web_api PRIVATE ../web/tests/include ../tools/ios3)
     target_link_libraries(test_web_api PRIVATE emucore)
     add_test(NAME test_web_api COMMAND test_web_api)
 endif()

@@ -127,9 +127,24 @@ static uint8_t firmware_byte(s5l_mtz1_t *d, unsigned pos,
             return pos == n + 4u ? (uint8_t)(ck >> 8) : (uint8_t)ck;
         }
         return 0u;
-    case 0x46u:
     case 0x64u:
     case 0x65u: {
+        /* iPhone OS 3.1.3's AppleMultitouchSPI (Z1F50) protocol: an
+         * eight-byte probe whose reply carries the length at [4..5] and its
+         * two-byte sum at [6..7] (0xc043bd08 reads them when the driver's
+         * 0x1bc mode byte is set). 0x64 starts a gesture and 0x65 follows
+         * the frame just read. The frame then follows with op 0x68 in the
+         * same AA/payload/sum layout as OS 1.0's 0x47. OS 1.0 probes with
+         * 0x46 only. */
+        unsigned l = d->pending_len ? d->pending_len + 2u : 0u;
+        uint16_t ck = (uint16_t)((l >> 8) + (uint8_t)l);
+        if (pos == 4u) return (uint8_t)(l >> 8);
+        if (pos == 5u) return (uint8_t)l;
+        if (pos == 6u) return (uint8_t)(ck >> 8);
+        if (pos == 7u) return (uint8_t)ck;
+        return 0u;
+    }
+    case 0x46u: {
         unsigned l = d->pending_len ? d->pending_len + 2u : 0u;
         if (pos == 1u) return (uint8_t)(l >> 8);
         if (pos == 2u) return (uint8_t)l;

@@ -133,6 +133,46 @@ static unsigned raw16(const uint8_t *p) {
     return p[0] | ((unsigned)p[1] << 8);
 }
 
+/* iPhone OS 3.1.3 reads frames with an eight-byte 0x64 probe (length at
+ * [4..5], sum at [6..7]) and then op 0x68. OS 1.0's 0x46/0x47 path is
+ * covered above and must keep its own layout. */
+static void test_ios3_frame_read(void) {
+    s5l_mtz1_t d = {0};
+    s5l_spi_slave_t slave;
+    uint8_t rx[MTZ2_PAYLOAD_LIMIT + 3u];
+    const uint8_t probe[8] = {0x64u, 0x64u, 0x64u, 0x64u,
+                              0x64u, 0x64u, 0x64u, 0x64u};
+    s5l_mtz1_reset(&d);
+    s5l_mtz1_bind(&d, &slave);
+    d.firmware = true;
+    s5l_mtz1_tick(&d, 6000000u);
+
+    txn(&slave, probe, rx, sizeof probe);
+    CHECK(rx[0] == 0xaau && rx[4] == 0u && rx[5] == 0u &&
+          rx[6] == 0u && rx[7] == 0u, "ios3 idle probe reports no frame");
+
+    s5l_mt_contact_t c = {1u, MTZ2_PHASE_MAKE_TOUCH, 160u, 240u, 255u, 8u, 8u};
+    CHECK(s5l_mtz1_set_contacts(&d, &c, 1u), "ios3 queue contact");
+    txn(&slave, probe, rx, sizeof probe);
+    unsigned l = (unsigned)rx[4] << 8 | rx[5];
+    uint16_t lc = (uint16_t)(rx[4] + rx[5]);
+    CHECK(rx[0] == 0xaau && l == d.pending_len + 2u &&
+          rx[6] == (uint8_t)(lc >> 8) && rx[7] == (uint8_t)lc,
+          "ios3 probe length %u and sum at [4..7]", l);
+    CHECK(d.pending_len && d.atn, "ios3 probe does not consume the frame");
+
+    uint8_t request[MTZ2_PAYLOAD_LIMIT + 3u];
+    memset(request, 0x68u, sizeof request);
+    unsigned n = l + 1u;
+    txn(&slave, request, rx, n);
+    uint16_t dc = sum(rx + 1u, n - 3u);
+    CHECK(rx[0] == 0xaau && rx[1] == MTZ1_FRAME_TYPE &&
+          rx[n - 2u] == (uint8_t)(dc >> 8) && rx[n - 1u] == (uint8_t)dc,
+          "ios3 0x68 frame carries payload and sum");
+    CHECK(!d.pending_len && !d.atn && d.frames_read == 1u,
+          "ios3 0x68 read consumes the frame");
+}
+
 static void test_motion_velocity(void) {
     s5l_mtz1_t d = {0};
     s5l_spi_slave_t slave;
@@ -408,6 +448,7 @@ int main(void) {
     s5l_mtz1_power_pin(&d, false);
     CHECK(!d.firmware && !d.atn, "power off resets");
     test_contact_lifecycle();
+    test_ios3_frame_read();
     test_os1_coordinates();
     test_motion_velocity();
     printf("%d passed, %d failed\n", pass, fail);

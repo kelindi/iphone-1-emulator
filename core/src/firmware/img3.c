@@ -53,14 +53,26 @@ bool img3_decrypt_data_iv(const img3_t *img, const uint8_t *key, unsigned key_bi
     aes_ctx_t ctx;
     if (!aes_init(&ctx, key, key_bits)) return false;
 
-    /* Real payloads are not always a whole number of blocks; CBC covers the
-     * aligned prefix and the remainder is passed through unchanged. */
+    /* Real payloads are not always a whole number of blocks. Apple's images
+     * still encrypt the final partial block: the cipher runs over the tag's
+     * padding, so the last block is decrypted in full and truncated. Passing
+     * that tail through unchanged corrupts it (the 7E18 kernelcache then
+     * decompresses 42 bytes short with an Adler-32 mismatch). A tag with no
+     * padding to hold a whole final block keeps the old pass-through. */
     uint32_t whole = img->data_len & ~(AES_BLOCK_SIZE - 1u);
     uint32_t tail  = img->data_len - whole;
 
     if (whole && !aes_cbc_decrypt(&ctx, iv, img->data, out, whole))
         return false;
-    if (tail) memcpy(out + whole, img->data + whole, tail);
+    if (tail && img->data_span >= whole + AES_BLOCK_SIZE) {
+        uint8_t block[AES_BLOCK_SIZE];
+        const uint8_t *chain = whole ? img->data + whole - AES_BLOCK_SIZE : iv;
+        if (!aes_cbc_decrypt(&ctx, chain, img->data + whole, block, AES_BLOCK_SIZE))
+            return false;
+        memcpy(out + whole, block, tail);
+    } else if (tail) {
+        memcpy(out + whole, img->data + whole, tail);
+    }
 
     if (out_len) *out_len = img->data_len;
     return true;
@@ -135,8 +147,9 @@ img3_status_t img3_parse(const uint8_t *buf, size_t len, img3_t *out) {
 
         switch (magic) {
             case IMG3_TAG_DATA:
-                out->data     = d;
-                out->data_len = data_len;
+                out->data      = d;
+                out->data_len  = data_len;
+                out->data_span = total_len - IMG3_TAG_HEADER;
                 break;
             case IMG3_TAG_KBAG:
                 if (!out->kbag.present) parse_kbag(d, data_len, &out->kbag);

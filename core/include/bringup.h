@@ -317,6 +317,15 @@ typedef struct {
     /* Opt-outs. See the note above: zero means "do the thing that boots". */
     bool no_framebuffer;      /* leave Boot_Video and /vram unconfigured  */
     bool no_lcd_panel_id;     /* A/B control for the Merlot panel ID      */
+
+    /*
+     * Board placement of the Merlot panel. NULL/0 select the N82 values
+     * (arm-io/spi0/lcd0, 0x00a5c22b). M68 keeps Merlot on spi1 behind the
+     * spi0 MPL bridge, so its caller names arm-io/spi1/lcd0. The node must
+     * still be exactly "lcd,merlot" or bring-up refuses the patch.
+     */
+    const char *lcd_node;
+    uint32_t    lcd_panel_id;
     bool no_memory_node;      /* leave /memory reg at the template's zero */
 
     /*

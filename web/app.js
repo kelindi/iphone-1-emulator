@@ -27,6 +27,47 @@ const describeError = error => error?.message || error?.name || String(error || 
 const queryCpi = Number.parseInt(new URLSearchParams(location.search).get('cpi'), 10);
 const cpi = Number.isInteger(queryCpi) && queryCpi >= 1 && queryCpi <= 16 ? queryCpi : 1;
 
+// Firmware selection. The default build keeps the published behaviour exactly:
+// manifest.json, browser saves and offline visits. Other builds come from
+// firmwares.json; "local" entries are listed only when this server has their
+// manifest, because they are prepared from the user's own IPSW and never
+// published. They run without browser saves: their root volume lives outside
+// the RAM a checkpoint captures, and they must never share the 1.0 profile.
+const DEFAULT_FIRMWARE = '1A543a';
+const requestedFirmware = new URLSearchParams(location.search).get('firmware') || DEFAULT_FIRMWARE;
+async function chooseFirmware() {
+  const fallback = {id:DEFAULT_FIRMWARE, name:'iPhone OS 1.0 (1A543a)', manifest:'manifest.json'};
+  let entries = [fallback];
+  try {
+    const listed = await (await fetch('firmwares.json', {cache:'no-cache'})).json();
+    if (Array.isArray(listed) && listed.some(f => f.id === DEFAULT_FIRMWARE)) entries = listed;
+  } catch {}
+  const available = [];
+  for (const entry of entries) {
+    if (!entry.local) { available.push(entry); continue; }
+    try {
+      const head = await fetch(entry.manifest, {method:'HEAD', cache:'no-cache'});
+      if (head.ok || entry.id === requestedFirmware) available.push(entry);
+    } catch { if (entry.id === requestedFirmware) available.push(entry); }
+  }
+  const chosen = available.find(f => f.id === requestedFirmware) || fallback;
+  if (available.length > 1) {
+    const select = $('firmware');
+    for (const entry of available) select.add(new Option(entry.name, entry.id, false, entry.id === chosen.id));
+    select.addEventListener('change', () => {
+      const url = new URL(location.href);
+      if (select.value === DEFAULT_FIRMWARE) url.searchParams.delete('firmware');
+      else url.searchParams.set('firmware', select.value);
+      location.assign(url);
+    });
+    $('firmware-picker').hidden = false;
+  }
+  $('firmware-name').textContent = chosen.name.replace(/\s*\(.*\)$/, '');
+  return chosen;
+}
+const firmware = await chooseFirmware();
+const ephemeral = firmware.id !== DEFAULT_FIRMWARE;
+
 function call(type, fields = {}, transfer = []) {
   if (!worker) return Promise.reject(new Error('iPhone is not running'));
   const id = ++sequence;
@@ -42,11 +83,11 @@ function controls() {
   $('pause').disabled = !ready || (saving && !liveSave);
   $('pause').textContent = paused ? 'Resume' : 'Pause';
   $('save').disabled = !ready || saving || !profileOwned;
-  $('export').disabled = saving || (!ready && !savedRecord);
+  $('export').disabled = saving || ephemeral || (!ready && !savedRecord);
   $('import').disabled = !ready || saving || !profileOwned;
   $('reset').disabled = saving || !profileOwned;
   $('recover').disabled = saving || !profileOwned;
-  $('offline').disabled = !ready || preparingOffline || !('serviceWorker' in navigator);
+  $('offline').disabled = !ready || preparingOffline || ephemeral || !('serviceWorker' in navigator);
   canvas.style.pointerEvents = ready && !paused ? '' : 'none';
 }
 function fail(error) {
@@ -67,6 +108,7 @@ function fail(error) {
 }
 function showRunning() {
   if (paused) setStatus('Paused. Your iPhone will wait here.');
+  else if (ephemeral) setStatus(`Ready · ${firmware.name} runs without browser saves for now.`);
   else if (!profileOwned) setStatus('Ready · browser saving is unavailable in this tab. Export keeps a backup.');
   else if (lastSave) setStatus(`Saved at ${new Date(lastSave).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}`);
   else setStatus('Ready. Your iPhone, just as you left it.');
@@ -92,7 +134,8 @@ async function start(recovery = null) {
   controls(); $('progress').hidden = false; $('retry').hidden = true; $('recover').hidden = true;
   setProgress(0);
   setStatus('Downloading iPhone OS…');
-  try {
+  if (ephemeral) setStatus(`Loading ${firmware.name}…`);
+  else try {
     savedRecord = recovery || await readCheckpoint();
     if (savedRecord && savedRecord.version !== PROFILE_VERSION)
       throw new Error('This save needs a different emulator version. Export it before resetting.');
@@ -105,6 +148,8 @@ async function start(recovery = null) {
   // A diagnostic opt-out compares the same build's literal interpreter loop.
   if (new URLSearchParams(location.search).get('jit') === '0')
     workerURL.searchParams.set('jit', '0');
+  // A non-default firmware accelerates only with its own recorded seed.
+  if (ephemeral && firmware.seed) workerURL.searchParams.set('seed', new URL(firmware.seed, location.href).pathname);
   worker = new Worker(workerURL);
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
@@ -146,7 +191,8 @@ async function start(recovery = null) {
   };
   startTime = performance.now();
   const checkpoint = savedRecord ? await checkpointBytes(savedRecord) : null;
-  worker.postMessage({type:'start', cpi, checkpoint}, checkpoint ? [checkpoint] : []);
+  worker.postMessage({type:'start', cpi, checkpoint,
+    ...(ephemeral ? {manifest:firmware.manifest} : {})}, checkpoint ? [checkpoint] : []);
 }
 
 // Browsers start audio only from a user gesture; the guest keeps running silently until then.
@@ -422,5 +468,6 @@ document.addEventListener('visibilitychange', () => {
 window.iphone = {get ready() { return ready; }, get paused() { return paused; },
   get metrics() { return {...metrics, captureMs, captureChunkMs, finalizeMs}; }, get profileOwned() { return profileOwned; },
   get savedAt() { return lastSave; }};
-try { profileOwned = await acquireProfile(); } catch { profileOwned = false; }
+// Another firmware never takes the 1.0 profile, so a 1.0 tab keeps saving.
+if (!ephemeral) try { profileOwned = await acquireProfile(); } catch { profileOwned = false; }
 start().catch(fail);

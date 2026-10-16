@@ -34,19 +34,18 @@ int main(int argc, char **argv) {
     printf("adler32 check: 0x%08x %s\n", a, a == h.adler32 ? "MATCHES" : "MISMATCH");
 
     /*
-     * KNOWN ISSUE, stated rather than hidden: on this kernelcache the LZSS
-     * stream encodes 42 bytes fewer than the header's uncompressed_size and
-     * stops with one source byte left over. An independent implementation of
-     * the same algorithm produces byte-identical output, so this is a property
-     * of the stream (or of how we read compressed_size), not a divergence in
-     * our decompressor. The shortfall lands in __PRELINK_INFO — kext metadata
-     * at the very end of the image. Zero-fill to the declared size so every
-     * Mach-O segment is addressable, and say so loudly.
+     * A short stream means a damaged input. The 7E18 kernelcache used to come
+     * out 42 bytes short with an Adler-32 mismatch because the IMG3 decryptor
+     * passed the final partial AES block through as ciphertext; img3.c now
+     * decrypts it, and the stream expands to the declared size. Zero-fill to
+     * the declared size anyway so every Mach-O segment stays addressable, and
+     * say so loudly.
      */
     if (got < h.uncompressed_size) {
         printf("NOTE         : %u bytes short of the declared size; zero-filling\n"
-               "               so every Mach-O segment is addressable. This is a\n"
-               "               known, unresolved discrepancy.\n",
+               "               so every Mach-O segment is addressable. Check the\n"
+               "               input: an IMG3 decrypted without its final block\n"
+               "               ends short like this.\n",
                h.uncompressed_size - (uint32_t)got);
         memset(out + got, 0, h.uncompressed_size - got);
         got = h.uncompressed_size;

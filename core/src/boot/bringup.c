@@ -689,18 +689,22 @@ s5l_bringup_status_t s5l_bringup(s5l8900_t *machine,
     }
 
     if (want_fb && !request->no_lcd_panel_id) {
-        if (!s5l_dt_compatible_exact(tree_ram, tree_len, S5L_BRINGUP_LCD_NODE,
+        const char *lcd_node = request->lcd_node ? request->lcd_node
+                                                 : S5L_BRINGUP_LCD_NODE;
+        uint32_t panel_id = request->lcd_panel_id ? request->lcd_panel_id
+                                                  : S5L_BRINGUP_LCD_PANEL_ID;
+        if (!s5l_dt_compatible_exact(tree_ram, tree_len, lcd_node,
                                  S5L_BRINGUP_LCD_COMPAT))
             return result_fail(result, S5L_BRINGUP_DEVICETREE_PATCH_FAILED,
                                S5L_BRINGUP_STAGE_DEVICETREE_PATCH,
                                "/%s is not exactly \"%s\"; refusing a "
                                "panel-specific patch on the wrong node",
-                               S5L_BRINGUP_LCD_NODE, S5L_BRINGUP_LCD_COMPAT);
-        if (!s5l_dt_set_u32(tree_ram, tree_len, S5L_BRINGUP_LCD_NODE,
-                        "lcd-panel-id", S5L_BRINGUP_LCD_PANEL_ID))
+                               lcd_node, S5L_BRINGUP_LCD_COMPAT);
+        if (!s5l_dt_set_u32(tree_ram, tree_len, lcd_node,
+                        "lcd-panel-id", panel_id))
             return result_fail(result, S5L_BRINGUP_DEVICETREE_PATCH_FAILED,
                                S5L_BRINGUP_STAGE_DEVICETREE_PATCH,
-                               "cannot patch the N82 lcd-panel-id; refusing a "
+                               "cannot patch the lcd-panel-id; refusing a "
                                "half-configured display");
         result->devicetree_patches++;
     }

@@ -1,6 +1,16 @@
 /* Optional guarded seed: guest startup never waits for this accelerator. */
 // HTTP origins use the interpreter when native hash verification is unavailable.
 const seedEnabled = Boolean(globalThis.crypto?.subtle) && new URL(location.href).searchParams.get('jit') !== '0';
+// ?seed=DIR/ selects another firmware's seed (same origin, e.g. a locally
+// prepared firmware/7E18/jit/). Its abi.json binds the module and regions by
+// SHA-256 exactly like the default jit/ seed, and every region still admits
+// only matching raw guest code.
+const seedBase = (() => {
+  const requested = new URL(location.href).searchParams.get('seed');
+  if (!requested) return 'jit/';
+  const url = new URL(requested, location.href);
+  return url.origin === location.origin && url.pathname.endsWith('/') ? url.href : null;
+})();
 const SEED_MAX_BYTES = 32 * 1024 * 1024;
 const SEED_MAX_REGIONS = 512;
 const SEED_PREPARE_TIMEOUT_MS = 8000;
@@ -61,7 +71,7 @@ async function readSeed(path, limit) {
   return readSeedResponse(await fetchSeed(path, limit), limit);
 }
 async function readSeedModule() {
-  const response = await fetchSeed('jit/seed.wasm', SEED_MAX_BYTES);
+  const response = await fetchSeed(seedBase + 'seed.wasm', SEED_MAX_BYTES);
   const mime = response.headers?.get('Content-Type')?.split(';')[0].trim().toLowerCase();
   if (typeof WebAssembly.compileStreaming === 'function' &&
       typeof response.clone === 'function' && mime === 'application/wasm') {
@@ -102,7 +112,7 @@ async function prepareSeed() {
     return await Promise.race([
       (async () => {
         const [{binary, response}, definitions, abiBytes] = await Promise.all([
-          readSeedModule(), readSeed('jit/regions.json', 512 * 1024), readSeed('jit/abi.json', 16384)
+          readSeedModule(), readSeed(seedBase + 'regions.json', 512 * 1024), readSeed(seedBase + 'abi.json', 16384)
         ]);
         const abi = JSON.parse(new TextDecoder().decode(abiBytes));
         const hash = async bytes => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)),
@@ -125,7 +135,7 @@ async function prepareSeed() {
     return {error};
   } finally { clearTimeout(timer); }
 }
-const seedPromise = seedEnabled ? prepareSeed() : null;
+const seedPromise = seedEnabled && seedBase ? prepareSeed() : null;
 class SeedJIT {
   constructor(module) {
     this.module = module; this.enabled = false; this.supported = false;
@@ -135,7 +145,7 @@ class SeedJIT {
       '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_retired',
       '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_span', '_malloc', '_free', 'addFunction', 'removeFunction'];
     this.supported = required.every(name => typeof module[name] === 'function');
-    if (!this.supported || !seedEnabled) return;
+    if (!this.supported || !seedEnabled || !seedPromise) return;
     try {
       module._emu_jit_enable(0);
       if (!module.jitMemory?.buffer) throw Error('Seed shared memory is unavailable');

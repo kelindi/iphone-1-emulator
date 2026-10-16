@@ -38,3 +38,29 @@ Settings and Home input. It reads the shipped multipart snapshot by default;
 `INSTRUCTIONS=100000000 npm run test:jit-replay` is the bounded CI variant.
 The check also requires positive generated retirement, so a broken enable path
 cannot pass by comparing two interpreter runs.
+
+## Seeds for other firmware (iPhone OS 3.1.3)
+
+A prepared firmware can carry its own seed, recorded from its own code:
+
+1. `tools/iphone1 --record-ops FILE --record-from STEP` single-steps from STEP
+   and keeps every executed instruction position with its mode and code word
+   (Thumb halfwords individually). It writes the hottest 512 1 KiB regions in
+   `seed-input.json` form. A 2.6 G-instruction 7E18 app workload recorded
+   599,640 positions, and the top regions covered 96% of what ran.
+2. `SEED_INPUT=FILE JIT_OUTPUT=DIR node tools/jit/generate-seed.mjs` compiles
+   it. For a recording, regions with no supported instruction are skipped,
+   and so is any region whose 16-slot probe window in
+   `web/jit-runtime.c` is full. Export indices stay dense.
+3. `tools/firmware/prepare_ios3_web.py --seed` does both into
+   `web/firmware/7E18/jit/`. The page passes `?seed=` to the worker only for
+   that firmware (`web/firmwares.json` "seed"). `seed-jit.js` then loads it
+   with the same `abi.json` SHA-256 binding.
+
+These seeds are compiled from Apple code, so like the firmware they stay
+local and git-ignored. `FW_DIR=web/firmware/7E18 node tools/jit/replay-ios3.mjs`
+compares interpreter and seed runs from the shipped snapshot. It covers the
+machine snapshot and the root volume, restores the volume before each run,
+and ignores only the TLB measurement counters and the stream checksum.
+`REPEAT=3` reports steady-state timings and `CONTROL=1` compares two
+interpreter runs.

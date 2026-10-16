@@ -187,3 +187,6 @@ kbd { display: inline-block; padding: 0 4px; min-width: 18px; border: 1px solid 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+.firmware-picker { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 10px auto 0; color: #77736c; font-size: 11px; }
+.firmware-picker select { font: inherit; color: #68665f; background: transparent; border: 1px solid #dedbd3; border-radius: 6px; padding: 4px 6px; cursor: pointer; }
+.firmware-picker select:focus-visible { outline: 2px solid #5186c0; outline-offset: 2px; }

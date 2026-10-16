@@ -30,7 +30,10 @@ if(IPHONE1_WEB)
     # independent of the repository's package.json module type.
     file(GENERATE OUTPUT "${IPHONE1_WEB_DIST}/package.json"
          CONTENT "{\"type\":\"commonjs\"}\n")
-    add_executable(emu web/emu_api.c)
+    add_executable(emu web/emu_api.c
+        tools/ios3/ios3_bringup_gate.c tools/ios3/ios3_kernel_patch.c
+        tools/ios3/guest_patch.c tools/ios3/sha256.c)
+    target_include_directories(emu PRIVATE tools/ios3)
     target_link_libraries(emu PRIVATE emucore)
     if(IPHONE1_WASM_JIT)
         target_sources(emu PRIVATE web/jit-runtime.c)
@@ -47,7 +50,7 @@ if(IPHONE1_WEB)
         -sMODULARIZE=1
         -sEXPORT_ES6=0
         -sEXPORT_NAME=createEmu
-        "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_emu_audio_read','_emu_audio_rate','_malloc','_free']"
+        "-sEXPORTED_FUNCTIONS=['_emu_init','_emu_init_ios3','_emu_error','_emu_load_snapshot','_emu_host_clock','_emu_clock_delay','_emu_run','_emu_status','_emu_frame','_emu_touch','_emu_touch_contacts','_emu_release_inputs','_emu_inputs_idle','_emu_button_state','_emu_save_snapshot','_emu_snapshot_size','_emu_free_snapshot','_emu_snapshot_begin','_emu_snapshot_advance','_emu_snapshot_data','_emu_ticks','_emu_button','_emu_set_cpi','_emu_cycles','_emu_serial_read','_emu_audio_read','_emu_audio_rate','_malloc','_free']"
         "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap','HEAPU8','HEAPU32','addFunction','removeFunction']"
     )
     set_target_properties(emu PROPERTIES

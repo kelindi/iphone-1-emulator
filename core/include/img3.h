@@ -71,6 +71,7 @@ typedef struct {
 
     const uint8_t *data;    /* DATA tag payload (points into the input) */
     uint32_t       data_len;
+    uint32_t       data_span; /* DATA tag body including its padding (>= data_len) */
 
     img3_kbag_t kbag;
     bool        has_shsh;

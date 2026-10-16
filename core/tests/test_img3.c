@@ -227,6 +227,60 @@ static void test_decrypt_data_roundtrip(void) {
     CHECK(memcmp(out, plain, sizeof plain) == 0, "decrypted payload mismatch");
 }
 
+/* Apple's real layout: the DATA tag is padded to a whole block and the final
+ * partial block is encrypted with the padding. The decrypted tail must be
+ * the plaintext, not the ciphertext passed through. */
+static void test_decrypt_padded_final_block(void) {
+    static const uint8_t key[16] = {
+        0x0f,0x1e,0x2d,0x3c,0x4b,0x5a,0x69,0x78,
+        0x87,0x96,0xa5,0xb4,0xc3,0xd2,0xe1,0xf0
+    };
+    uint8_t iv[16];
+    for (unsigned i = 0; i < 16; i++) iv[i] = (uint8_t)(0x10 + i);
+
+    uint8_t plain[48] = {0};                       /* 37 payload bytes + padding */
+    for (unsigned i = 0; i < 37; i++) plain[i] = (uint8_t)(i * 3 + 1);
+    uint8_t cipher[48];
+    aes_ctx_t ctx;
+    aes_init(&ctx, key, 128);
+    aes_cbc_encrypt(&ctx, iv, plain, cipher, sizeof cipher);
+
+    uint8_t kbag[24 + 16];
+    memset(kbag, 0, sizeof kbag);
+    kbag[0] = 1; kbag[4] = 128;
+    memcpy(&kbag[8], iv, 16);
+
+    img_begin(0x6b726e6cu);                       /* 'krnl' */
+    img_tag(IMG3_TAG_KBAG, kbag, sizeof kbag);
+    uint32_t off = img_tag(IMG3_TAG_DATA, cipher, (uint32_t)sizeof cipher);
+    put32(off + 8, 37);                           /* dataLen excludes the padding */
+    img_finish();
+
+    img3_t img;
+    CHECK(img3_parse(g_buf, g_len, &img) == IMG3_OK, "parse failed");
+    CHECK(img.data_len == 37 && img.data_span == 48,
+          "data_len=%u data_span=%u expect 37/48", img.data_len, img.data_span);
+
+    uint8_t out[37];
+    uint32_t out_len = 0;
+    CHECK(img3_decrypt_data_iv(&img, key, 128, iv, out, sizeof out, &out_len),
+          "decrypt failed");
+    CHECK(out_len == 37, "out_len=%u expect 37", out_len);
+    CHECK(memcmp(out, plain, 32) == 0, "aligned prefix mismatch");
+    CHECK(memcmp(out + 32, plain + 32, 5) == 0, "padded final block not decrypted");
+
+    /* A payload shorter than one block is all tail and chains from the IV. */
+    img_begin(0x6b726e6cu);
+    img_tag(IMG3_TAG_KBAG, kbag, sizeof kbag);
+    off = img_tag(IMG3_TAG_DATA, cipher, 16);
+    put32(off + 8, 5);
+    img_finish();
+    CHECK(img3_parse(g_buf, g_len, &img) == IMG3_OK, "short parse failed");
+    CHECK(img3_decrypt_data_iv(&img, key, 128, iv, out, 5, &out_len) && out_len == 5,
+          "short decrypt failed");
+    CHECK(memcmp(out, plain, 5) == 0, "sub-block payload not decrypted");
+}
+
 static void test_decrypt_requires_kbag(void) {
     static const uint8_t key[16] = {0};
     img_begin(0x69626f74u);
@@ -389,6 +443,7 @@ int main(void) {
     test_reject_partial_trailing_tag();
     test_truncated_kbag_ignored();
     test_decrypt_data_roundtrip();
+    test_decrypt_padded_final_block();
     test_decrypt_requires_kbag();
     test_decrypt_checks_output_capacity();
     test_null_output_struct_is_refused();
