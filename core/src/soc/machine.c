@@ -839,8 +839,10 @@ static uint8_t  r8 (void *c, uint32_t a) { return (uint8_t) bus_read(c, a, 1); }
  * registers, devices with no FIFO -- is always ready, which is both true of the
  * hardware and the behaviour every existing test was written against.
  */
-static bool dma_dst_ready(void *ctx, uint32_t dst, unsigned width) {
+static bool dma_dst_ready(void *ctx, uint32_t src, uint32_t dst,
+                          unsigned width) {
     const s5l8900_t *m = ctx;
+    if (src == S5L8900_FMC_BASE + FMC_FIFO) return s5l_fmc_rx_ready(&m->fmc);
     for (unsigned i = 0; i < S5L8900_SPI_COUNT; i++) {
         static const uint32_t base[] = {
             S5L8900_SPI0_BASE, S5L8900_SPI1_BASE, S5L8900_SPI2_BASE
@@ -1646,6 +1648,7 @@ void s5l8900_free(s5l8900_t *m) {
     free(m->audio_ring);
     m->audio_ring = NULL;
     s5l_nor_free(&m->nor);
+    s5l_fmc_free(&m->fmc);
 }
 
 bool s5l8900_set_cycles_per_insn(s5l8900_t *m, unsigned cpi) {

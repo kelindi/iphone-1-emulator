@@ -19,6 +19,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "arm.h"
+#include "nand.h"
 
 /* ------------------------------------------------------------ memory map
  *
@@ -2384,17 +2385,29 @@ bool s5l_camin_irq(const s5l_camin_t *c);
 #define FMC_ST_DATA_READY   0x008u
 #define FMC_ST_BANK_READY(b) (0x10u << (b))
 /* Samsung 2 KiB-page MLC listed in AppleS5L8900XFMC's device-info-list. */
+#define S5L_FMC_PAGE_BYTES  2112u          /* 2048 data + 64 spare */
+#define S5L_FMC_PAGES_PER_BANK (0x2000u * 64u)
 #define FMC_DEFAULT_CHIP_ID 0x9551d3ecu
 typedef struct {
     uint32_t regs[S5L_FMC_SIZE / 4u];
     uint32_t status, fifo, chip_id, bank_mask, last_cmd;
     uint32_t reserved[7];
     uint64_t reads, writes, commands, resets, id_reads;
+    /* Page register: rbuf is filled by READ (0x30) and drained through the
+     * FIFO; wbuf is filled through the FIFO by DMA before PROGRAM (0x80) and
+     * committed by 0x10. Addresses latch when the address phase starts. */
+    uint8_t  rbuf[S5L_FMC_PAGE_BYTES], wbuf[S5L_FMC_PAGE_BYTES];
+    uint32_t rpos, wpos, row, col, op_bank, nand_status;
+    uint64_t programs, erases, prog_fails;
+    nand_t  *nand;                  /* host-only backing; not snapshotted */
 } s5l_fmc_t;
 void s5l_fmc_reset(s5l_fmc_t *f);
 uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
 void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
 bool s5l_fmc_irq(const s5l_fmc_t *f);
+void s5l_fmc_free(s5l_fmc_t *f);
+/* DMA request for the FIFO as a source: a page is loaded and not drained. */
+bool s5l_fmc_rx_ready(const s5l_fmc_t *f);
 
 /* /arm-io/rsecc: reg 0x38f00000, interrupts {0x2b}. The FMC driver's ECC
  * engine (c041f8f4): data/ECC buffer physical pointers, setup = sectors-1 |
@@ -4036,7 +4049,8 @@ bool     s5l_pl080_irq(const s5l_pl080_t *d);
  * where it stopped. That is also what the driver's own progress reporting
  * expects to see.
  */
-typedef bool (*s5l_pl080_ready_fn)(void *ctx, uint32_t dst, unsigned width);
+typedef bool (*s5l_pl080_ready_fn)(void *ctx, uint32_t src, uint32_t dst,
+                                   unsigned width);
 
 bool     s5l_pl080_run(s5l_pl080_t *d, const arm_bus_t *bus,
                        s5l_pl080_ready_fn ready, void *ready_ctx);
