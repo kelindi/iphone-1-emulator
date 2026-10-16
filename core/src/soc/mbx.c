@@ -3322,6 +3322,28 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             return false;
         }
     } else if (affine_sprite) {
+        /* Camera's post-capture review draws its 400x300 landscape frame
+         * (512x512 allocation) a quarter turn onto the portrait screen as a
+         * direct filtered compact copy, magnified by 320/300 with the long
+         * edge rounded to whole destination pixels (u=(0,427), v=(-320,0)).
+         * Admit exactly that: zero shear, quarter turn, magnification in
+         * both axes, and axis scales that differ only by the rounding of
+         * one destination pixel. */
+        float review_u_x = affine.u_x < 0.0f ? -affine.u_x : affine.u_x;
+        float review_v_y = affine.v_y < 0.0f ? -affine.v_y : affine.v_y;
+        float review_scale = source_height ? -affine.v_x / (float)source_height : 0.0f;
+        float review_rounding = affine.u_y - review_scale * (float)source_width;
+        if (review_rounding < 0.0f) review_rounding = -review_rounding;
+        bool camera_review_turn = compact_copy && direct_sampler &&
+            half_texel_layout && !quarter_turn &&
+            header_texture_width == 512u && header_texture_height == 512u &&
+            source_width && source_height &&
+            source_width <= header_texture_width &&
+            source_height <= header_texture_height &&
+            review_u_x <= epsilon && review_v_y <= epsilon &&
+            affine.u_y > 0.0f && affine.v_x < 0.0f &&
+            review_scale >= 1.0f && review_rounding <= 1.0f &&
+            affine.u_y / (float)source_width >= 1.0f;
         float expected_u2 = (float)source_width * (float)source_width;
         float expected_v2 = (float)source_height * (float)source_height;
         float expected_det = (float)source_width * (float)source_height;
@@ -3329,8 +3351,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float v2 = affine.v_x * affine.v_x + affine.v_y * affine.v_y;
         float dot = affine.u_x * affine.v_x + affine.u_y * affine.v_y;
         if (dot < 0.0f) dot = -dot;
-        if (!source_width || !source_height ||
-            source_width > MBX_3D_WIDTH || source_height > 480u) {
+        if (!camera_review_turn &&
+            (!source_width || !source_height ||
+             source_width > MBX_3D_WIDTH || source_height > 480u)) {
             if (why) *why = "affine sprite source is outside measured bounds";
             return false;
         }
@@ -3369,7 +3392,7 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             affine.v_x >= -320.0f - epsilon &&
             affine.v_x <= -320.0f + epsilon &&
             affine.v_y >= -epsilon && affine.v_y <= epsilon;
-        if (compact_copy && !compact_rotated_column) {
+        if (compact_copy && !compact_rotated_column && !camera_review_turn) {
             if (why) *why = "compact affine sprite is not the captured rotated column";
             return false;
         }
@@ -3377,7 +3400,7 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             if (why) *why = "reversed axis sprite is not the captured Clock column";
             return false;
         }
-        if (os1_clock_column || compact_rotated_column) {
+        if (os1_clock_column || compact_rotated_column || camera_review_turn) {
             /* All common clipping, tile, parameter and GART checks still run. */
         } else if (direct_sampler) {
             float u_error = u2 - expected_u2;
