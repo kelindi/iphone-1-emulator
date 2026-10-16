@@ -269,6 +269,15 @@ storage_status_t storage_load_nand_sparse(nand_t *n, const char *path) {
     if (!n || !n->blocks || !n->bad || !path) return STORAGE_ERR_IO;
     FILE *f = fopen(path, "rb");
     if (!f) return STORAGE_ERR_IO;
+    return storage_load_nand_sparse_file(n, f, NULL);
+}
+
+storage_status_t storage_load_nand_sparse_file(nand_t *n, FILE *f,
+                                               uint64_t *image_hash) {
+    if (!n || !n->blocks || !n->bad || !f) {
+        if (f) fclose(f);
+        return STORAGE_ERR_IO;
+    }
     uint32_t hdr[HEADER_WORDS];
     for (unsigned i = 0; i < HEADER_WORDS; i++) {
         if (!rd32(f, &hdr[i])) { fclose(f); return STORAGE_ERR_TRUNCATED; }
@@ -322,6 +331,7 @@ storage_status_t storage_load_nand_sparse(nand_t *n, const char *path) {
     if (st != STORAGE_OK) { nand_free(&t); return st; }
     nand_free(n);
     *n = t;
+    if (image_hash) *image_hash = recorded;
     return STORAGE_OK;
 }
 

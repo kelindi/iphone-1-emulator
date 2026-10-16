@@ -401,8 +401,40 @@ static void test_sparse_backing(void) {
     nand_free(&n);
 }
 
+static void test_change_tracking(void) {
+    nand_t n, back;
+    uint8_t d[2048], sp[64];
+    memset(d, 0xff, sizeof d); memset(sp, 0xff, sizeof sp);
+    d[0] = 0x12;
+    CHECK(nand_init(&n, 2048, 64, 64, 64), "tracking init failed");
+    CHECK(nand_program_page(&n, 3, d, sp) == NAND_OK, "base program");
+    CHECK(nand_track_changes(&n, 0x1234u) && n.base_hash == 0x1234u &&
+          !nand_page_changed(&n, 3), "tracking started dirty");
+    CHECK(nand_program_page(&n, 70, d, sp) == NAND_OK &&
+          nand_page_changed(&n, 70) && !nand_page_changed(&n, 71),
+          "program was not tracked");
+    CHECK(nand_erase_block(&n, 0) == NAND_OK && nand_page_changed(&n, 3) &&
+          nand_page_changed(&n, 63) && !nand_page_changed(&n, 64),
+          "erase was not tracked");
+    memset(d, 0xff, sizeof d);
+    CHECK(nand_store_page(&n, 130, d, sp) == NAND_OK &&
+          nand_page_changed(&n, 130), "store was not tracked");
+    const char *path = "ios3vm_nand_track.img";
+    uint64_t hash = 0;
+    CHECK(storage_save_nand_sparse(&n, path) == STORAGE_OK, "tracked save");
+    CHECK(nand_init(&back, 2048, 64, 64, 64), "init failed");
+    FILE *f = fopen(path, "rb");
+    CHECK(f && storage_load_nand_sparse_file(&back, f, &hash) == STORAGE_OK &&
+          hash != 0 && back.live_pages == 1 && !back.changed,
+          "stream load failed");
+    nand_free(&back);
+    remove(path);
+    nand_free(&n);
+}
+
 int main(void) {
     test_sparse_backing();
+    test_change_tracking();
     printf("S5LBox NAND device tests\n");
     test_erased_reads_all_ones();
     test_program_and_read_back();

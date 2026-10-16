@@ -1,3 +1,4 @@
+#include "storage.h"
 #include "board.h"
 #include "bringup_os1.h"
 #include "snapshot.h"
@@ -303,6 +304,35 @@ int emu_init(const uint8_t *kernel, size_t kernel_size,
     if (!s5l8900_set_uart0_host(&machine, serial_tx, NULL)) {
         set_error("UART0 host tap setup failed");
         release_machine();
+        return -5;
+    }
+    return 0;
+}
+
+EMSCRIPTEN_KEEPALIVE
+int emu_attach_nand(const uint8_t *buf, size_t len) {
+    if (!machine_ready) {
+        set_error("machine is not initialized");
+        return -1;
+    }
+    if (!buf || !len) {
+        set_error("NAND image is empty");
+        return -2;
+    }
+    nand_t *n = s5l_fmc_backing(&machine.fmc);
+    FILE *f = n ? fmemopen((void *)(uintptr_t)buf, len, "rb") : NULL;
+    if (!f) {
+        set_error("NAND allocation failed");
+        return -3;
+    }
+    uint64_t hash = 0;
+    storage_status_t st = storage_load_nand_sparse_file(n, f, &hash);
+    if (st != STORAGE_OK) {
+        set_error(storage_strerror(st));
+        return -4;
+    }
+    if (!nand_track_changes(n, hash)) {
+        set_error("NAND change tracking failed");
         return -5;
     }
     return 0;

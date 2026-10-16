@@ -241,6 +241,7 @@ SNAP_SIZE_GUARD(s5l8900_t,         134608, "snap_mach");
 #define TAG_RAM  TAG('R','A','M',' ')
 #define TAG_NOR  TAG('N','O','R',' ')
 #define TAG_STUB TAG('S','T','U','B')
+#define TAG_NAND TAG('N','A','N','D')
 #define TAG_END  TAG('E','N','D',' ')
 
 #define SNAP_HEADER_LEN 40u
@@ -1404,6 +1405,71 @@ static void snap_section(sn_io_t *io, uint32_t tag, snap_fn_t fn, s5l8900_t *m) 
     if (io->pos - start != len) io->err = SNAP_ERR_CORRUPT;
 }
 
+/* v44: pages changed since an immutable base NAND image. The browser keeps
+ * the base image as a verified download, so a checkpoint carries only the
+ * pages the guest has programmed or erased, plus the bad-block map. Both
+ * travel in one checkpoint, so CPU state and disk contents cannot be paired
+ * with the wrong generation; the base is identified by its image hash. */
+static void snap_nand(sn_io_t *io, s5l8900_t *m) {
+    nand_t *n = m->fmc.nand;
+    uint32_t present = !sn_reading(io) && n && n->changed ? 1u : 0u;
+    F32(present);
+    if (io->err != SNAP_OK || !present) return;
+    if (present != 1u) { io->err = SNAP_ERR_CORRUPT; return; }
+    uint64_t base = 0;
+    uint32_t blocks = 0, count = 0;
+    if (!sn_reading(io)) {
+        base = n->base_hash;
+        blocks = n->block_count;
+        for (uint32_t p = 0; p < nand_total_pages(n); p++)
+            count += nand_page_changed(n, p);
+    }
+    F64(base); F32(blocks); F32(count);
+    if (io->err != SNAP_OK) return;
+    if (sn_reading(io) && (!n || !n->changed || n->base_hash != base ||
+                           n->block_count != blocks)) {
+        io->err = SNAP_ERR_GEOMETRY;
+        return;
+    }
+    size_t plen = (size_t)n->page_size + n->spare_size;
+    uint8_t *buf = malloc(plen > blocks ? plen : blocks);
+    if (!buf) { io->err = SNAP_ERR_NOMEM; return; }
+    uint32_t total = nand_total_pages(n), next = 0, prev = 0;
+    for (uint32_t i = 0; i < count && io->err == SNAP_OK; i++) {
+        uint32_t idx = 0;
+        uint8_t cls = 0;
+        if (!sn_reading(io)) {
+            while (!nand_page_changed(n, next)) next++;
+            idx = next++;
+            (void)nand_read_page(n, idx, buf, buf + n->page_size);
+            for (size_t k = 0; k < plen && !cls; k++) if (buf[k] != 0xffu) cls = 2;
+        }
+        F32(idx);
+        sn_u8(io, &cls);
+        if (io->err != SNAP_OK) break;
+        if (sn_reading(io) && (idx >= total || (i && idx <= prev) ||
+                               (cls != 0 && cls != 2))) {
+            io->err = SNAP_ERR_CORRUPT;
+            break;
+        }
+        prev = idx;
+        if (cls == 2 && io->mode == SN_VALIDATE) sn_discard(io, plen);
+        else if (cls == 2) sn_raw(io, buf, plen);
+        else if (sn_reading(io)) memset(buf, 0xff, plen);
+        if (io->mode == SN_LOAD && io->err == SNAP_OK &&
+            nand_store_page(n, idx, buf, buf + n->page_size) != NAND_OK)
+            io->err = SNAP_ERR_NOMEM;
+    }
+    if (io->mode == SN_VALIDATE) sn_discard(io, blocks);
+    else if (io->mode == SN_LOAD) {
+        sn_raw(io, buf, blocks);
+        for (uint32_t b = 0; io->err == SNAP_OK && b < blocks; b++)
+            if (buf[b] > 1u) io->err = SNAP_ERR_CORRUPT;
+        if (io->err == SNAP_OK) memcpy(n->bad, buf, blocks);
+    } else sn_raw(io, n->bad, blocks);
+    free(buf);
+}
+
 static void snap_end(sn_io_t *io, s5l8900_t *m) { (void)io; (void)m; }
 
 static void snap_payload(sn_io_t *io, s5l8900_t *m) {
@@ -1413,6 +1479,7 @@ static void snap_payload(sn_io_t *io, s5l8900_t *m) {
     snap_section(io, TAG_RAM,  snap_ram,     m);
     snap_section(io, TAG_NOR,  snap_nor_sec, m);
     snap_section(io, TAG_STUB, snap_stubs,   m);
+    snap_section(io, TAG_NAND, snap_nand,    m);
     snap_section(io, TAG_END,  snap_end,     m);
 }
 

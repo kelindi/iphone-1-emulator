@@ -195,7 +195,9 @@
  *      so it cannot be defaulted on restore. */
 /* v43: /arm-io/jpeg (AppleJPEGDriver's encoder) and the physical edram at
  *      0x18000000 it writes the encoded still into, appended to MACH. */
-#define SNAPSHOT_VERSION   43u
+/* v44: a NAND section before END with the pages changed since a tracked
+ *      base image (browser checkpoints); absent when tracking is off. */
+#define SNAPSHOT_VERSION   44u
 
 typedef enum {
     SNAP_OK = 0,

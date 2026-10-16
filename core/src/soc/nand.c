@@ -60,8 +60,26 @@ void nand_free(nand_t *n) {
         for (uint32_t b = 0; b < n->block_count; b++) free_block(n, b);
     free(n->blocks); n->blocks = NULL;
     free(n->bad);    n->bad = NULL;
+    free(n->changed); n->changed = NULL;
     n->block_count = 0;
     n->live_pages = 0;
+}
+
+static void note_change(nand_t *n, uint32_t page) {
+    if (n->changed) n->changed[page >> 3] |= (uint8_t)(1u << (page & 7u));
+}
+
+bool nand_track_changes(nand_t *n, uint64_t base_hash) {
+    if (!n || !n->blocks) return false;
+    free(n->changed);
+    n->changed = calloc(((size_t)nand_total_pages(n) + 7u) / 8u, 1);
+    n->base_hash = base_hash;
+    return n->changed != NULL;
+}
+
+bool nand_page_changed(const nand_t *n, uint32_t page) {
+    return n && n->changed && page < nand_total_pages(n) &&
+           (n->changed[page >> 3] >> (page & 7u)) & 1u;
 }
 
 static const uint8_t *page_ptr(const nand_t *n, uint32_t page) {
@@ -142,6 +160,7 @@ nand_status_t nand_program_page(nand_t *n, uint32_t page,
         uint8_t *s = d + n->page_size;
         for (uint32_t i = 0; i < n->spare_size; i++) s[i] &= spare[i];
     }
+    note_change(n, page);
     return NAND_OK;
 }
 
@@ -157,12 +176,14 @@ nand_status_t nand_store_page(nand_t *n, uint32_t page,
             n->blocks[block][p] = NULL;
             n->live_pages--;
         }
+        note_change(n, page);
         return NAND_OK;
     }
     uint8_t *d = page_mut(n, page);
     if (!d) return NAND_ERR_NOMEM;
     memcpy(d, data, n->page_size);
     if (n->spare_size) memcpy(d + n->page_size, spare, n->spare_size);
+    note_change(n, page);
     return NAND_OK;
 }
 
@@ -170,6 +191,9 @@ nand_status_t nand_erase_block(nand_t *n, uint32_t block) {
     if (!n || !n->blocks || !n->bad || block >= n->block_count)
         return NAND_ERR_RANGE;
     if (n->bad[block]) return NAND_ERR_BAD_BLOCK;
+    if (n->blocks[block])
+        for (uint32_t p = 0; p < n->pages_per_block; p++)
+            note_change(n, block * n->pages_per_block + p);
     free_block(n, block);
     return NAND_OK;
 }
