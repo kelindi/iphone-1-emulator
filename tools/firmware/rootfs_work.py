@@ -12,7 +12,9 @@ Usage:
       [--replace NAME=HOSTFILE]...     replace file NAME (catalog leaf name)
       [--launchd-env NAME=K=V,...]     add EnvironmentVariables to a launchd
                                        plist NAME (binary plist rewritten)
-      [--no-autolock]                 set SpringBoard auto-lock and dim to Never
+      [--no-autolock]                 set SpringBoard auto-lock and dim to Never and
+                                      disable SpringBoard idle sleep
+      [--no-bluetooth]                disable the BTServer launch daemon
       [--activate]                    seed a locally verified activation record
       [--add GUEST_PATH=HOSTFILE]...  add a new file, creating directories
 """
@@ -635,6 +637,7 @@ def main():
     w = Work(dst)
     i = 2
     no_autolock = False
+    no_bluetooth = False
     activate = False
     while i < len(a):
         if a[i] == "--fstab":
@@ -656,6 +659,9 @@ def main():
             i += 2
         elif a[i] == "--no-autolock":
             no_autolock = True
+            i += 1
+        elif a[i] == "--no-bluetooth":
+            no_bluetooth = True
             i += 1
         elif a[i] == "--activate":
             activate = True
@@ -682,6 +688,18 @@ def main():
             w.replace_file_path(path, data)
         else:
             w.add_file_data(path, data)
+    if no_bluetooth:
+        # No Bluetooth chip is emulated. With BTServer running, every display
+        # sleep runs BlueTool's deepsleep script against the absent chip and
+        # holds off the next wake for ~45 s of retries.
+        path = "/System/Library/LaunchDaemons/com.apple.BTServer.plist"
+        existing = w.find_file_path(path)
+        if not existing:
+            raise SystemExit("%s: file not found" % path)
+        fork, _, _, _ = existing
+        pl = plistlib.loads(w.vol.read_fork(fork))
+        pl["Disabled"] = True
+        w.replace_file_path(path, plistlib.dumps(pl, fmt=plistlib.FMT_XML))
     if activate:
         activation_pem, ca_pem, record = _local_activation_data()
         for path, data in (
