@@ -2362,6 +2362,40 @@ uint32_t s5l_camin_read(s5l_camin_t *c, uint32_t off);
 void s5l_camin_write(s5l_camin_t *c, uint32_t off, uint32_t val);
 bool s5l_camin_irq(const s5l_camin_t *c);
 
+/* /arm-io/fmc: reg {0x00a00000, 0x1000}, interrupts {0x14}; child "disk"
+ * (device_type nand) reg 0x0f = banks 0-3. See fmc.c. */
+#define S5L8900_FMC_BASE    0x38a00000u
+#define S5L8900_IRQ_FMC     20u
+#define S5L_FMC_SIZE        0x100u
+#define S5L_FMC_BANKS       8u
+#define FMC_CTRL            0x00u
+#define FMC_CMD_CTRL        0x04u
+#define FMC_NAND_CMD        0x08u
+#define FMC_ADDR            0x0cu
+#define FMC_ADDR_COUNT      0x2cu
+#define FMC_DATA_COUNT      0x30u
+#define FMC_INT_EN          0x44u
+#define FMC_STATUS          0x48u
+#define FMC_FIFO            0x80u
+#define FMC_CC_RESET        0x800u
+#define FMC_CC_ADDR         0x001u
+#define FMC_CC_READ         0x002u
+#define FMC_ST_ADDR_DONE    0x004u
+#define FMC_ST_DATA_READY   0x008u
+#define FMC_ST_BANK_READY(b) (0x10u << (b))
+/* Samsung 2 KiB-page MLC listed in AppleS5L8900XFMC's device-info-list. */
+#define FMC_DEFAULT_CHIP_ID 0x9551d3ecu
+typedef struct {
+    uint32_t regs[S5L_FMC_SIZE / 4u];
+    uint32_t status, fifo, chip_id, bank_mask, last_cmd;
+    uint32_t reserved[7];
+    uint64_t reads, writes, commands, resets, id_reads;
+} s5l_fmc_t;
+void s5l_fmc_reset(s5l_fmc_t *f);
+uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
+void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
+bool s5l_fmc_irq(const s5l_fmc_t *f);
+
 void s5l_mt9d112_reset(s5l_mt9d112_t *s);
 void s5l_mt9d112_bind(s5l_mt9d112_t *s, s5l_i2c_slave_t *slave);
 uint16_t s5l_mt9d112_var(const s5l_mt9d112_t *s, uint16_t addr);
@@ -4110,6 +4144,7 @@ typedef struct {
     /* M68 camera sensor on i2c1 (unused, all-zero, on N82). */
     s5l_mt9d112_t camsensor;
     s5l_camin_t   camin;
+    s5l_fmc_t     fmc;
     s5l_i2s_t   i2s[S5L8900_I2S_COUNT];
     /* spi[0] is spi0, spi[1] is spi1 and spi[2] is spi2. M68 attaches its Z1
      * touch controller on spi2; the baseband transport also uses that bus. */

@@ -22,6 +22,7 @@ add_library(emucore STATIC
     src/soc/wm8758.c
     src/soc/mt9d112.c
     src/soc/camin.c
+    src/soc/fmc.c
     src/soc/i2s.c
     src/soc/spi.c
     src/soc/gpioic.c

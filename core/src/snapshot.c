@@ -134,6 +134,7 @@ SNAP_SIZE_GUARD(s5l_pcf50635_t,    600,   "snap_pmu");
 SNAP_SIZE_GUARD(s5l_wm8991_t,      496,   "snap_codec");
 SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
 SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
+SNAP_SIZE_GUARD(s5l_fmc_t,         344,   "snap_fmc");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
 /* Four register banks, plus what the board is driving and which lines it
@@ -223,8 +224,8 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-/* 129424 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40. */
-SNAP_SIZE_GUARD(s5l8900_t,         129424, "snap_mach");
+/* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344), v41. */
+SNAP_SIZE_GUARD(s5l8900_t,         129768, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -859,6 +860,15 @@ static void snap_camin(sn_io_t *io, s5l_camin_t *c) {
     FA32(c->reserved, 6u);
 }
 
+static void snap_fmc(sn_io_t *io, s5l_fmc_t *f) {
+    FA32(f->regs, S5L_FMC_SIZE / 4u);
+    F32(f->status); F32(f->fifo); F32(f->chip_id); F32(f->bank_mask);
+    F32(f->last_cmd);
+    FA32(f->reserved, 7u);
+    F64(f->reads); F64(f->writes); F64(f->commands); F64(f->resets);
+    F64(f->id_reads);
+}
+
 static bool codec_state_valid(const s5l_wm8991_t *c, bool wm8758) {
     if (!c || c->ptr >= WM8991_NREG ||
         c->wlen > WM8991_MAX_WRITE ||
@@ -1181,6 +1191,7 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
     /* Appended for the same positional reason; see the v40 note. */
     snap_camsensor(io, &m->camsensor);
     snap_camin(io, &m->camin);
+    snap_fmc(io, &m->fmc);
 
     F64(m->unmapped_reads);
     F64(m->unmapped_writes);

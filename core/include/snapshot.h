@@ -193,7 +193,7 @@
  *      the end of MACH.
  *      Its MCU sequencer state is what AppleMicron2020 polls before preview,
  *      so it cannot be defaulted on restore. */
-#define SNAPSHOT_VERSION   40u
+#define SNAPSHOT_VERSION   41u
 
 typedef enum {
     SNAP_OK = 0,
