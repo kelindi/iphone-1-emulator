@@ -3808,6 +3808,34 @@ static void test_timer_interrupt_reaches_handler(void) {
     s5l8900_free(&m);
 }
 
+static void mt9d112_test_write(s5l_i2c_slave_t *sl, uint16_t reg, uint16_t v) {
+    sl->start(sl->ctx, false);
+    sl->write(sl->ctx, (uint8_t)(reg >> 8)); sl->write(sl->ctx, (uint8_t)reg);
+    sl->write(sl->ctx, (uint8_t)(v >> 8)); sl->write(sl->ctx, (uint8_t)v);
+    sl->stop(sl->ctx);
+}
+
+/* AppleMicron2020's mode switch (c03bca60) waits for both seq.state and
+ * mode.context; without the context flip a still capture times out after
+ * 1000 polls and Camera holds the iris shut for seconds. */
+static void test_mt9d112_capture_context(void) {
+    static s5l_mt9d112_t cam;
+    s5l_i2c_slave_t sl;
+    s5l_mt9d112_reset(&cam);
+    s5l_mt9d112_bind(&cam, &sl);
+    mt9d112_test_write(&sl, 0x338c, 0xa103);
+    mt9d112_test_write(&sl, 0x3390, 2);
+    CHECK(s5l_mt9d112_var(&cam, 0xa104) == 7, "capture state=%u expect 7",
+          s5l_mt9d112_var(&cam, 0xa104));
+    CHECK(s5l_mt9d112_var(&cam, 0xa702) == 1, "capture context=%u expect 1 (B)",
+          s5l_mt9d112_var(&cam, 0xa702));
+    CHECK(s5l_mt9d112_var(&cam, 0xa103) == 0, "capture command not acknowledged");
+    mt9d112_test_write(&sl, 0x3390, 1);
+    CHECK(s5l_mt9d112_var(&cam, 0xa104) == 3 && s5l_mt9d112_var(&cam, 0xa702) == 0,
+          "preview state=%u context=%u expect 3/0", s5l_mt9d112_var(&cam, 0xa104),
+          s5l_mt9d112_var(&cam, 0xa702));
+}
+
 static uint32_t camin_test_len;
 static uint8_t *camin_test_ram(void *ctx, uint32_t pa, uint32_t len) {
     static uint8_t buffer[2400u * 1600u];
@@ -3923,6 +3951,7 @@ int main(void) {
     test_wfi_wake_source_order_does_not_matter();
     test_timer_interrupt_reaches_handler();
     test_camin_frame_geometry();
+    test_mt9d112_capture_context();
     printf("\n%d passed, %d failed\n", g_pass, g_fail);
     return g_fail == 0 ? 0 : 1;
 }

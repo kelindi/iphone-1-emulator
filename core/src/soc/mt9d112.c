@@ -25,6 +25,7 @@ static bool tracing(void) {
 /* Sequencer driver (id 1) variables, 8-bit logical access cleared of bit 15. */
 #define VAR_SEQ_CMD    0x2103u
 #define VAR_SEQ_STATE  0x2104u
+#define VAR_MODE_CTX   0x2702u
 
 void s5l_mt9d112_reset(s5l_mt9d112_t *s) {
     if (s) memset(s, 0, sizeof *s);
@@ -53,12 +54,18 @@ static void var_set(s5l_mt9d112_t *s, uint16_t addr, uint16_t value) {
     uint16_t key = var_key(addr);
     if (key == VAR_SEQ_CMD) {
         /* The sequencer acts on a command immediately and acknowledges it by
-         * clearing the command byte: 1 = preview (state 3), 2 = capture
-         * (state 7); 5/6 are refresh requests that leave the state alone. */
+         * clearing the command byte: 1 = preview (state 3, context A), 2 =
+         * capture (state 7, context B); 5/6 are refresh requests that leave
+         * the state alone. The driver's mode switch at c03bca60 polls both
+         * the state and mode.context (0xa702) for up to 1000 1 ms sleeps. */
         uint16_t *st = slot(s->var_addr, s->var_val, &s->var_count,
                             MT9D112_VARS, VAR_SEQ_STATE, true);
+        uint16_t *ctx = slot(s->var_addr, s->var_val, &s->var_count,
+                             MT9D112_VARS, VAR_MODE_CTX, true);
         if (st && value == 1u) *st = 3u;
         else if (st && value == 2u) *st = 7u;
+        if (ctx && value == 1u) *ctx = 0u;
+        else if (ctx && value == 2u) *ctx = 1u;
         s->seq_commands++;
         value = 0u;
     }
