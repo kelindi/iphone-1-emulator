@@ -473,15 +473,11 @@ static void snap_cpu(sn_io_t *io, arm_cpu_t *c) {
         /* And generation 1, for the same reason arm_reset does: an entry at
          * generation 0 in a table whose counter is also 0 is a false hit. */
         c->tlb_gen = 1u;
-        /* The emptied TLB is valid under the restored registers. A stamp left
-         * from before the restore would make the next walk's flush count
-         * depend on what ran before it. */
-        c->tlb_stamp.sctlr      = c->cp15.sctlr;
-        c->tlb_stamp.ttbr0      = c->cp15.ttbr0;
-        c->tlb_stamp.ttbr1      = c->cp15.ttbr1;
-        c->tlb_stamp.ttbcr      = c->cp15.ttbcr;
-        c->tlb_stamp.dacr       = c->cp15.dacr;
-        c->tlb_stamp.context_id = c->cp15.context_id;
+        /* No real register set matches an all-ones stamp (TTBCR has only
+         * five defined bits), so the first walk after any restore flushes.
+         * A stamp left from before the restore would make that flush, and
+         * the tlb_flushes counter, depend on what ran before it. */
+        memset(&c->tlb_stamp, 0xff, sizeof c->tlb_stamp);
     }
     F64(c->tlb_hits); F64(c->tlb_misses); F64(c->tlb_flushes);
     /*
