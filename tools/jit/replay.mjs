@@ -13,12 +13,26 @@ const kernel=await readFile(path('web/firmware/kernel_1A543a.macho')),tree=await
 const k=alloc(kernel),d=alloc(tree);
 if(m._emu_init(k,kernel.length,d,tree.length,0,0,256))throw Error('init');m._free(k);m._free(d);
 const manifest=JSON.parse(await readFile(path('web/manifest.json'),'utf8'));
+// Hosted assets are read from web/firmware when present, else downloaded and checked.
+const fetchPart=async p=>{
+ if(!/^https?:/.test(p)) return readFile(path('web/'+p));
+ try{return await readFile(path('web/firmware/'+basename(new URL(p).pathname)));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const r=await fetch(p);if(!r.ok)throw Error(`${p}: HTTP ${r.status}`);
+ const b=Buffer.from(await r.arrayBuffer()),want=manifest.assetSha256?.[p];
+ if(want&&createHash('sha256').update(b).digest('hex')!==want)throw Error(`${p}: SHA-256 mismatch`);
+ return b;
+};
+const asset=async parts=>{const b=Buffer.concat(await Promise.all([parts].flat().map(fetchPart)));return b[0]===0x1f&&b[1]===0x8b?gunzipSync(b):b;};
+if(manifest.nand&&!process.env.FIXTURE_SNAPSHOT){
+ const nand=await asset(manifest.nand),n=alloc(nand);
+ if(m._emu_attach_nand(n,nand.length))throw Error('NAND');m._free(n);
+}
 let fixture;
 if(process.env.FIXTURE_SNAPSHOT) fixture=await readFile(resolve(process.env.FIXTURE_SNAPSHOT));
 else {
  const parts=Array.isArray(manifest.snapshot)?manifest.snapshot:[manifest.snapshot];
  if(!parts[0]) throw Error('A home snapshot is required');
- fixture=Buffer.concat(await Promise.all(parts.map(p=>readFile(/^https?:/.test(p)?path('web/firmware/'+basename(new URL(p).pathname)):path('web/'+p)))));
+ fixture=await asset(parts);
 }
 if(fixture[0]===0x1f && fixture[1]===0x8b) fixture=gunzipSync(fixture);
 const s=alloc(fixture);
