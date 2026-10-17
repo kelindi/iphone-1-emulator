@@ -1,3 +1,4 @@
+#include "storage.h"
 #include "board.h"
 #include "bringup_os1.h"
 #include "snapshot.h"
@@ -309,6 +310,39 @@ int emu_init(const uint8_t *kernel, size_t kernel_size,
 }
 
 EMSCRIPTEN_KEEPALIVE
+int emu_attach_nand(const uint8_t *buf, size_t len) {
+    if (!machine_ready) {
+        set_error("machine is not initialized");
+        return -1;
+    }
+    if (!buf || !len) {
+        set_error("NAND image is empty");
+        return -2;
+    }
+    nand_t *n = s5l_fmc_backing(&machine.fmc);
+    if (!n) {
+        set_error("NAND allocation failed");
+        return -3;
+    }
+    FILE *f = fmemopen((void *)(uintptr_t)buf, len, "rb");
+    if (!f) {
+        set_error("NAND image could not be opened");
+        return -3;
+    }
+    uint64_t hash = 0;
+    storage_status_t st = storage_load_nand_sparse_file(n, f, &hash);
+    if (st != STORAGE_OK) {
+        set_error(storage_strerror(st));
+        return -4;
+    }
+    if (!nand_track_changes(n, hash)) {
+        set_error("NAND change tracking failed");
+        return -5;
+    }
+    return 0;
+}
+
+EMSCRIPTEN_KEEPALIVE
 int emu_load_snapshot(const uint8_t *buf, size_t len) {
     snapshot_status_t status;
     if (!machine_ready) {
@@ -389,6 +423,37 @@ int emu_frame(uint8_t *rgba_out, unsigned *width, unsigned *height) {
     *width = w;
     *height = h;
     return 1;
+}
+
+/* The host camera's latest RGBA frame, at most 640x480; NULL/0 returns the
+ * camera input to its built-in test scene. The core samples it per frame. */
+EMSCRIPTEN_KEEPALIVE
+int emu_camera_frame(const uint8_t *rgba, unsigned w, unsigned h) {
+    static uint32_t pixels[640u * 480u];
+    if (!machine_ready)
+        return -1;
+    if (!rgba || !w || !h) {
+        machine.camin.host_frame = NULL;
+        machine.camin.host_w = machine.camin.host_h = 0u;
+        return 1;
+    }
+    if (w > 640u || h > 480u)
+        return -2;
+    for (unsigned i = 0u; i < w * h; i++)
+        pixels[i] = 0xff000000u | (uint32_t)rgba[4u * i] << 16 |
+                    (uint32_t)rgba[4u * i + 1u] << 8 | rgba[4u * i + 2u];
+    machine.camin.host_frame = pixels;
+    machine.camin.host_w = w;
+    machine.camin.host_h = h;
+    return 1;
+}
+
+/* Whether the guest is streaming from the camera input block, so the page
+ * opens the device camera only while the Camera app wants frames. */
+EMSCRIPTEN_KEEPALIVE
+int emu_camera_active(void) {
+    return machine_ready &&
+           (machine.camin.regs[CAMIN_CTRL / 4u] & CAMIN_CTRL_EN) ? 1 : 0;
 }
 
 /* Six uint32_t words per active contact: id,x,y,pressure,major,minor.

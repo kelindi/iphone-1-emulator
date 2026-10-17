@@ -19,6 +19,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "arm.h"
+#include "nand.h"
 
 /* ------------------------------------------------------------ memory map
  *
@@ -41,7 +42,7 @@
  * The resulting physical map, with what is and is not modelled:
  *
  *   0x08000000  DRAM base. 128 MB fitted on an iPhone1,2 (ends 0x10000000).
- *   0x18000000  edram, 0x140000                    NOT MODELLED
+ *   0x18000000  edram, 0x140000                    plain memory (JPEG output)
  *   0x20000000  vrom (boot ROM), 0x10000           NOT MODELLED
  *   0x22000000  SRAM / AMC window, 0x2c000         NOT MODELLED
  *   0x28000000  <- first physical byte the device tree assigns to NOTHING
@@ -2110,6 +2111,11 @@ bool     s5l_i2c_irq(const s5l_i2c_t *bus);
 #define PCF50635_OOCSHDWN 0x0cu
 #define PCF50635_INT2_ONKEYR 0x01u
 #define PCF50635_OOCSHDWN_GO_STANDBY 0x01u
+/* Written by the sleep path that logs "pmu go hib". Like standby, the AP
+ * loses power and ONKEY restarts it through XNU's retained reset trampoline. */
+#define PCF50635_OOCSHDWN_GO_HIBERNATE 0x02u
+#define PCF50635_OOCSHDWN_POWER_DOWN \
+    (PCF50635_OOCSHDWN_GO_STANDBY | PCF50635_OOCSHDWN_GO_HIBERNATE)
 #define PCF50635_RTCSC    0x59u
 #define PCF50635_RTCWD    0x5cu
 #define PCF50635_RTCYR    0x5fu
@@ -2311,6 +2317,171 @@ void s5l_wm8758_reset(s5l_wm8758_t *codec);
 void s5l_wm8758_bind(s5l_wm8758_t *codec, s5l_i2c_slave_t *slave);
 bool s5l_wm8758_register_valid(unsigned reg);
 uint16_t s5l_wm8758_peek(const s5l_wm8758_t *codec, unsigned reg);
+
+/* M68 rear camera sensor control plane, /arm-io/i2c1/camera0. See mt9d112.c.
+ * Registers and MCU variables are sparse key/value tables: the driver touches
+ * a few dozen of each, and an unwritten entry reads back as zero. */
+#define MT9D112_I2C_ADDR  0x3cu
+#define MT9D112_MODEL_ID  0x1580u
+#define MT9D112_REGS      64u
+#define MT9D112_VARS      192u
+typedef struct {
+    uint16_t reg_addr[MT9D112_REGS], reg_val[MT9D112_REGS];
+    uint16_t var_addr[MT9D112_VARS], var_val[MT9D112_VARS];
+    uint32_t reg_count, var_count;
+    uint16_t mcu_addr, ptr;
+    uint8_t  wbuf[4];
+    uint8_t  wlen, rpos;
+    bool     reading;
+    uint8_t  pad;
+    uint64_t reg_reads, reg_writes, unknown_reads, refused, seq_commands;
+} s5l_mt9d112_t;
+/* /arm-io/camin: reg {0x01700000, 0x1000}, interrupts {0x0f}. See camin.c. */
+#define S5L8900_CAMIN_BASE  0x39700000u
+#define S5L8900_IRQ_CAMIN   15u
+#define S5L_CAMIN_SIZE      0x200u   /* highest register the driver touches is 0x15c */
+#define CAMIN_ACK           0x08u
+#define CAMIN_STAT_A        0x64u
+#define CAMIN_STAT_B        0xb8u
+#define CAMIN_CTRL          0xc0u
+#define CAMIN_STAT_RESET    0x1000u
+#define CAMIN_STAT_DONE     0x2000u
+typedef struct {
+    uint32_t regs[S5L_CAMIN_SIZE / 4u];
+    uint32_t frame_ticks, frame_accum, frame_index, scene_seq;
+    uint64_t frames, reads, writes, dropped;
+    uint32_t reserved[6];
+    /* Host-only: optional XRGB8888 input frame (webcam); NULL = test scene. */
+    const uint32_t *host_frame;
+    uint32_t host_w, host_h;
+    bool     trace;
+    uint8_t  pad[7];
+} s5l_camin_t;
+#define CAMIN_CTRL_EN       0x80000000u
+#define S5L_CAMIN_FPS       15u
+typedef uint8_t *(*s5l_camin_ram_fn)(void *ctx, uint32_t pa, uint32_t len);
+bool s5l_camin_tick(s5l_camin_t *c, uint32_t tb, s5l_camin_ram_fn ram, void *ctx);
+void s5l_camin_fill(s5l_camin_t *c, uint8_t *dst, uint32_t w, uint32_t h,
+                    uint32_t stride);
+void s5l_camin_reset(s5l_camin_t *c);
+uint32_t s5l_camin_read(s5l_camin_t *c, uint32_t off);
+void s5l_camin_write(s5l_camin_t *c, uint32_t off, uint32_t val);
+bool s5l_camin_irq(const s5l_camin_t *c);
+
+/* /arm-io/jpeg: reg {0x01000000, 0x1000}, interrupts {0x32}. See jpeg.c. */
+#define S5L8900_JPEG_BASE   0x39000000u
+#define S5L8900_IRQ_JPEG    50u
+#define S5L_JPEG_SIZE       0x100u
+typedef struct {
+    uint32_t regs[S5L_JPEG_SIZE / 4u];
+    uint32_t busy_ticks;
+    uint32_t reserved[3];
+    uint64_t encodes, reads, writes;
+    bool     trace;
+    uint8_t  pad[7];
+} s5l_jpeg_t;
+void s5l_jpeg_reset(s5l_jpeg_t *j);
+uint32_t s5l_jpeg_read(s5l_jpeg_t *j, uint32_t off);
+void s5l_jpeg_write(s5l_jpeg_t *j, uint32_t off, uint32_t val, uint32_t tb_hz);
+bool s5l_jpeg_tick(s5l_jpeg_t *j, uint32_t tb, s5l_camin_ram_fn ram, void *ctx);
+bool s5l_jpeg_irq(const s5l_jpeg_t *j);
+uint32_t s5l_jpeg_ticks_to_event(const s5l_jpeg_t *j);
+size_t s5l_jpeg_encode_422(const uint8_t *src, uint32_t w, uint32_t h,
+                           uint32_t stride, int quality, uint32_t sampling,
+                           uint8_t *out, size_t cap);
+
+/* /arm-io/fmc: reg {0x00a00000, 0x1000}, interrupts {0x14}; child "disk"
+ * (device_type nand) reg 0x0f = banks 0-3. See fmc.c. */
+#define S5L8900_FMC_BASE    0x38a00000u
+#define S5L8900_IRQ_FMC     20u
+#define S5L_FMC_SIZE        0x100u
+#define S5L_FMC_BANKS       8u
+#define FMC_CTRL            0x00u
+#define FMC_CMD_CTRL        0x04u
+#define FMC_NAND_CMD        0x08u
+#define FMC_ADDR            0x0cu
+#define FMC_ADDR_COUNT      0x2cu
+#define FMC_DATA_COUNT      0x30u
+#define FMC_INT_EN          0x44u
+#define FMC_STATUS          0x48u
+#define FMC_FIFO            0x80u
+#define FMC_CC_RESET        0x800u
+#define FMC_CC_ADDR         0x001u
+#define FMC_CC_READ         0x002u
+#define FMC_ST_ADDR_DONE    0x004u
+#define FMC_ST_DATA_READY   0x008u
+#define FMC_ST_BANK_READY(b) (0x10u << (b))
+/* Samsung 2 KiB-page MLC listed in AppleS5L8900XFMC's device-info-list. */
+#define S5L_FMC_PAGE_BYTES  2112u          /* 2048 data + 64 spare */
+#define S5L_FMC_PAGES_PER_BANK (0x2000u * 64u)
+#define FMC_DEFAULT_CHIP_ID 0x9551d3ecu
+typedef struct {
+    uint32_t regs[S5L_FMC_SIZE / 4u];
+    uint32_t status, fifo, chip_id, bank_mask, last_cmd;
+    uint32_t reserved[7];
+    uint64_t reads, writes, commands, resets, id_reads;
+    /* Page register: rbuf is filled by READ (0x30) and drained through the
+     * FIFO; wbuf is filled through the FIFO by DMA before PROGRAM (0x80) and
+     * committed by 0x10. Addresses latch when the address phase starts. */
+    uint8_t  rbuf[S5L_FMC_PAGE_BYTES], wbuf[S5L_FMC_PAGE_BYTES];
+    uint32_t rpos, wpos, row, col, op_bank, nand_status;
+    /* Row each bank's own page register last loaded (READ 0x30 may be
+     * broadcast; data is then drained from whichever bank is selected). */
+    uint32_t bank_row[S5L_FMC_BANKS];
+    /* Array busy time: READ/PROGRAM/ERASE ready bits land ready_us after
+     * the command, so the completion interrupt follows the driver's sleep
+     * the way tR/tPROG/tBERS do on the part. */
+    uint32_t ready_pending, ready_us, ready_tb, ready_armed;
+    uint32_t rend;  /* end of the programmed read transfer (DATA_COUNT) */
+    uint32_t xfer_state, xfer_tb, xfer_rsvd;  /* transfer-done delay */
+    uint64_t programs, erases, prog_fails;
+    nand_t  *nand;                  /* host-only backing; not snapshotted */
+} s5l_fmc_t;
+void s5l_fmc_reset(s5l_fmc_t *f);
+uint32_t s5l_fmc_read(s5l_fmc_t *f, uint32_t off);
+void s5l_fmc_write(s5l_fmc_t *f, uint32_t off, uint32_t val);
+bool s5l_fmc_irq(const s5l_fmc_t *f);
+void s5l_fmc_tick(s5l_fmc_t *f, uint32_t elapsed, uint64_t tb_hz);
+/* Timebase ticks until the next delayed status edge, 0 when none is due. */
+uint32_t s5l_fmc_ticks_to_event(const s5l_fmc_t *f);
+void s5l_fmc_free(s5l_fmc_t *f);
+/* The NAND array behind the controller, allocated (erased) on first use. */
+nand_t *s5l_fmc_backing(s5l_fmc_t *f);
+/* DMA request for the FIFO as a source: a page is loaded and not drained. */
+bool s5l_fmc_rx_ready(const s5l_fmc_t *f);
+
+/* /arm-io/rsecc: reg 0x38f00000, interrupts {0x2b}. The FMC driver's ECC
+ * engine (c041f8f4): data/ECC buffer physical pointers, setup = sectors-1 |
+ * strength, start 1 = check, 2 = generate; completion on IRQ 43, cleared by
+ * a store to +0x40; status bit 0 = uncorrectable. See fmc.c. */
+#define S5L8900_RSECC_BASE  0x38f00000u
+#define S5L8900_IRQ_RSECC   43u
+#define S5L_RSECC_SIZE      0x80u
+#define RSECC_DATA          0x04u
+#define RSECC_ECC           0x08u
+#define RSECC_START         0x0cu
+#define RSECC_STATUS        0x10u
+#define RSECC_SETUP         0x14u
+#define RSECC_CLEARINT      0x40u
+#define RSECC_START_CHECK   1u
+#define RSECC_START_GEN     2u
+#define RSECC_ST_UNCORRECTABLE 1u
+#define RSECC_SECTOR        512u
+typedef struct {
+    uint32_t regs[S5L_RSECC_SIZE / 4u];
+    uint32_t pending, irq, status;
+    uint32_t reserved[5];
+    uint64_t checks, gens, failures;
+} s5l_rsecc_t;
+void s5l_rsecc_reset(s5l_rsecc_t *e);
+uint32_t s5l_rsecc_read(s5l_rsecc_t *e, uint32_t off);
+void s5l_rsecc_write(s5l_rsecc_t *e, uint32_t off, uint32_t val);
+/* Runs a started operation against guest memory; returns the IRQ level. */
+bool s5l_rsecc_run(s5l_rsecc_t *e, const arm_bus_t *bus);
+
+void s5l_mt9d112_reset(s5l_mt9d112_t *s);
+void s5l_mt9d112_bind(s5l_mt9d112_t *s, s5l_i2c_slave_t *slave);
+uint16_t s5l_mt9d112_var(const s5l_mt9d112_t *s, uint16_t addr);
 
 /* ----------------------------------------------------------------- I2S ---
  * The two S5L8900 I2S controllers. Their windows are derived at the top of this
@@ -3919,7 +4090,8 @@ bool     s5l_pl080_irq(const s5l_pl080_t *d);
  * where it stopped. That is also what the driver's own progress reporting
  * expects to see.
  */
-typedef bool (*s5l_pl080_ready_fn)(void *ctx, uint32_t dst, unsigned width);
+typedef bool (*s5l_pl080_ready_fn)(void *ctx, uint32_t src, uint32_t dst,
+                                   unsigned width);
 
 bool     s5l_pl080_run(s5l_pl080_t *d, const arm_bus_t *bus,
                        s5l_pl080_ready_fn ready, void *ready_ctx);
@@ -4053,6 +4225,15 @@ typedef struct {
      * audio stack whose transport is undeclared. i2s[0] is i2s0 (the codec's),
      * i2s[1] is i2s1 (the baseband voice path). */
     s5l_wm8991_t codec;
+    /* M68 camera sensor on i2c1 (unused, all-zero, on N82). */
+    s5l_mt9d112_t camsensor;
+    s5l_camin_t   camin;
+    s5l_jpeg_t    jpeg;
+    /* Physical edram (S5L8900_EDRAM_BASE): plain memory the JPEG encoder
+     * writes its output into. Owned like RAM; streamed by the snapshot. */
+    uint8_t      *edram;
+    s5l_fmc_t     fmc;
+    s5l_rsecc_t   rsecc;
     s5l_i2s_t   i2s[S5L8900_I2S_COUNT];
     /* spi[0] is spi0, spi[1] is spi1 and spi[2] is spi2. M68 attaches its Z1
      * touch controller on spi2; the baseband transport also uses that bus. */

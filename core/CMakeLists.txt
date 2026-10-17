@@ -20,6 +20,10 @@ add_library(emucore STATIC
     src/soc/pcf50635.c
     src/soc/wm8991.c
     src/soc/wm8758.c
+    src/soc/mt9d112.c
+    src/soc/camin.c
+    src/soc/jpeg.c
+    src/soc/fmc.c
     src/soc/i2s.c
     src/soc/spi.c
     src/soc/gpioic.c

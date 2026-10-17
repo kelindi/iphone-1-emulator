@@ -2,8 +2,9 @@
 importScripts('dist/emu.js', 'seed-jit.js');
 let jit;
 let module, api, paused = true, started = false, scheduled = false;
-let framePointer, widthPointer, heightPointer, serialPointer, contactsPointer, audioPointer;
-const AUDIO_FRAMES = 4096;
+let framePointer, widthPointer, heightPointer, serialPointer, contactsPointer, audioPointer, cameraPointer;
+const AUDIO_FRAMES = 4096, CAMERA_MAX_PIXELS = 640 * 480;
+let cameraActive = false;
 let frameBuffer = new ArrayBuffer(320 * 480 * 4);
 let lastPixels = new Uint32Array(320 * 480);
 const darkPixels = new Uint32Array(320 * 480).fill(0xff000000);
@@ -87,7 +88,11 @@ function tick() {
     jit?.pump();
     drainAudio();
     const now = performance.now();
-    if (now - lastFrame >= 1000 / 60) { present(); lastFrame = now; }
+    if (now - lastFrame >= 1000 / 60) {
+      present(); lastFrame = now;
+      const active = Boolean(api.cameraActive());
+      if (active !== cameraActive) { cameraActive = active; send('camera', {active}); }
+    }
     if (now - lastStats >= 1000) {
       const elapsed = (now - lastStats) / 1000;
       const ticks = api.ticks();
@@ -156,6 +161,7 @@ async function start(message) {
   if (!response.ok) throw new Error(`Could not load phone manifest (${response.status})`);
   const manifest = await response.json();
   const downloads = [manifest.kernel, manifest.devicetree,
+    ...(manifest.nand ? [manifest.nand] : []),
     ...(!message.checkpoint ? [manifest.snapshot || manifest.rootfs] : [])].flat();
   const sizes = downloads.map(path => manifest.assetBytes?.[path]);
   const total = sizes.every(size => Number.isFinite(size) && size > 0)
@@ -175,6 +181,9 @@ async function start(message) {
   };
   const kernel = await load(manifest.kernel, 'iPhone OS');
   const tree = await load(manifest.devicetree, 'hardware profile');
+  // The flash image is the immutable base disk; checkpoints carry only the
+  // pages changed since it, so it loads on every start.
+  let nand = manifest.nand ? await load(manifest.nand, 'storage') : null;
   let snapshot = message.checkpoint ? new Uint8Array(message.checkpoint) : null;
   let rootfs = null;
   if (!snapshot && manifest.snapshot) snapshot = await load(manifest.snapshot, 'your iPhone');
@@ -187,6 +196,12 @@ async function start(message) {
     check(module.ccall('emu_init', 'number', Array(7).fill('number'),
       [k, kernel.length, d, tree.length, r, rootfs?.length || 0, 256]));
   } finally { module._free(k); module._free(d); if (r) module._free(r); }
+  if (nand) {
+    const n = alloc(nand), length = nand.length;
+    nand = null;
+    try { check(module.ccall('emu_attach_nand', 'number', ['number','number'], [n, length])); }
+    finally { module._free(n); }
+  }
   if (snapshot) {
     const s = alloc(snapshot);
     try { check(module.ccall('emu_load_snapshot', 'number', ['number','number'], [s, snapshot.length])); }
@@ -206,13 +221,15 @@ async function start(message) {
     ['buttonState','emu_button_state',['number']], ['save','emu_save_snapshot',[]],
     ['beginCapture','emu_snapshot_begin',[]], ['advanceCapture','emu_snapshot_advance',['number']],
     ['captureData','emu_snapshot_data',[]],
+    ['cameraFrame','emu_camera_frame',['number','number','number']], ['cameraActive','emu_camera_active',[]],
     ['size','emu_snapshot_size',[]], ['freeSave','emu_free_snapshot',[]]
   ].map(([key,name,args]) => [key, module.cwrap(name, 'number', args)]));
   framePointer = module._malloc(320 * 480 * 4);
   widthPointer = module._malloc(4); heightPointer = module._malloc(4);
   serialPointer = module._malloc(8192); contactsPointer = module._malloc(5 * 6 * 4);
   audioPointer = module._malloc(AUDIO_FRAMES * 4);
-  if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer,audioPointer].every(Boolean))
+  cameraPointer = module._malloc(CAMERA_MAX_PIXELS * 4);
+  if (![framePointer,widthPointer,heightPointer,serialPointer,contactsPointer,audioPointer,cameraPointer].every(Boolean))
     throw new Error('Not enough memory for display buffers');
   check(api.release());
   if (snapshot) await openLocked();
@@ -237,6 +254,15 @@ onmessage = async ({data:message}) => {
         break;
       }
       case 'button': check(api.button(message.which, Number(message.pressed))); break;
+      case 'camera-frame': {
+        const {width, height, buffer} = message;
+        if (!buffer) { check(api.cameraFrame(0, 0, 0)); break; }
+        if (!(width > 0 && height > 0 && width * height <= CAMERA_MAX_PIXELS) || buffer.byteLength !== width * height * 4)
+          throw new Error('Invalid camera frame');
+        module.HEAPU8.set(new Uint8Array(buffer), cameraPointer);
+        check(api.cameraFrame(cameraPointer, width, height));
+        return;
+      }
       case 'release': check(api.release()); break;
       case 'pause': check(api.release()); setPaused(Boolean(message.value)); present(true); break;
       case 'idle': send('reply', {id:message.id, idle:Boolean(api.idle())}); return;

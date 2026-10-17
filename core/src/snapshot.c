@@ -132,6 +132,11 @@ SNAP_SIZE_GUARD(s5l_tvout_t,       12304, "snap_tvout");
 SNAP_SIZE_GUARD(s5l_i2c_t,         320,   "snap_i2c");
 SNAP_SIZE_GUARD(s5l_pcf50635_t,    600,   "snap_pmu");
 SNAP_SIZE_GUARD(s5l_wm8991_t,      496,   "snap_codec");
+SNAP_SIZE_GUARD(s5l_mt9d112_t,     1088,  "snap_camsensor");
+SNAP_SIZE_GUARD(s5l_camin_t,       608,   "snap_camin");
+SNAP_SIZE_GUARD(s5l_fmc_t,         4688,  "snap_fmc");
+SNAP_SIZE_GUARD(s5l_rsecc_t,       184,   "snap_rsecc");
+SNAP_SIZE_GUARD(s5l_jpeg_t,        304,   "snap_jpeg");
 SNAP_SIZE_GUARD(s5l_i2s_t,         104,   "snap_i2s");
 SNAP_SIZE_GUARD(s5l_spi_t,         240,   "snap_spi");
 /* Four register banks, plus what the board is driving and which lines it
@@ -221,7 +226,9 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-SNAP_SIZE_GUARD(s5l8900_t,         127728, "snap_mach");
+/* 129768 = 127728 + the M68 camera sensor (1088) + camin (608; 16 host-only), v40, + fmc (344) + rsecc (184), v41. */
+/* +312: jpeg (304) and the edram pointer, v43. */
+SNAP_SIZE_GUARD(s5l8900_t,         134608, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */
@@ -234,6 +241,7 @@ SNAP_SIZE_GUARD(s5l8900_t,         127728, "snap_mach");
 #define TAG_RAM  TAG('R','A','M',' ')
 #define TAG_NOR  TAG('N','O','R',' ')
 #define TAG_STUB TAG('S','T','U','B')
+#define TAG_NAND TAG('N','A','N','D')
 #define TAG_END  TAG('E','N','D',' ')
 
 #define SNAP_HEADER_LEN 40u
@@ -465,6 +473,11 @@ static void snap_cpu(sn_io_t *io, arm_cpu_t *c) {
         /* And generation 1, for the same reason arm_reset does: an entry at
          * generation 0 in a table whose counter is also 0 is a false hit. */
         c->tlb_gen = 1u;
+        /* No real register set matches an all-ones stamp (TTBCR has only
+         * five defined bits), so the first walk after any restore flushes.
+         * A stamp left from before the restore would make that flush, and
+         * the tlb_flushes counter, depend on what ran before it. */
+        memset(&c->tlb_stamp, 0xff, sizeof c->tlb_stamp);
     }
     F64(c->tlb_hits); F64(c->tlb_misses); F64(c->tlb_flushes);
     /*
@@ -828,6 +841,63 @@ static void snap_pmu(sn_io_t *io, s5l_pcf50635_t *p) {
         io->err = SNAP_ERR_CORRUPT;
 }
 
+static bool camsensor_state_valid(const s5l_mt9d112_t *s) {
+    return s && s->reg_count <= MT9D112_REGS && s->var_count <= MT9D112_VARS &&
+           s->wlen <= sizeof s->wbuf && s->rpos <= 1u;
+}
+
+static void snap_camsensor(sn_io_t *io, s5l_mt9d112_t *s) {
+    FBYTES(s->reg_addr, sizeof s->reg_addr);
+    FBYTES(s->reg_val, sizeof s->reg_val);
+    FBYTES(s->var_addr, sizeof s->var_addr);
+    FBYTES(s->var_val, sizeof s->var_val);
+    F32(s->reg_count); F32(s->var_count);
+    F16(s->mcu_addr); F16(s->ptr);
+    FBYTES(s->wbuf, sizeof s->wbuf);
+    F8(s->wlen); F8(s->rpos); FB(s->reading);
+    F64(s->reg_reads); F64(s->reg_writes); F64(s->unknown_reads);
+    F64(s->refused); F64(s->seq_commands);
+    if (sn_reading(io) && io->err == SNAP_OK && !camsensor_state_valid(s))
+        io->err = SNAP_ERR_CORRUPT;
+}
+
+static void snap_camin(sn_io_t *io, s5l_camin_t *c) {
+    FA32(c->regs, S5L_CAMIN_SIZE / 4u);
+    F32(c->frame_ticks); F32(c->frame_accum);
+    F32(c->frame_index); F32(c->scene_seq);
+    F64(c->frames); F64(c->reads); F64(c->writes); F64(c->dropped);
+    FA32(c->reserved, 6u);
+}
+
+static void snap_jpeg(sn_io_t *io, s5l_jpeg_t *j) {
+    FA32(j->regs, S5L_JPEG_SIZE / 4u);
+    F32(j->busy_ticks);
+    FA32(j->reserved, 3u);
+    F64(j->encodes); F64(j->reads); F64(j->writes);
+}
+
+static void snap_fmc(sn_io_t *io, s5l_fmc_t *f) {
+    FA32(f->regs, S5L_FMC_SIZE / 4u);
+    F32(f->status); F32(f->fifo); F32(f->chip_id); F32(f->bank_mask);
+    F32(f->last_cmd);
+    FA32(f->reserved, 7u);
+    F64(f->reads); F64(f->writes); F64(f->commands); F64(f->resets);
+    F64(f->id_reads);
+    FBYTES(f->rbuf, sizeof f->rbuf); FBYTES(f->wbuf, sizeof f->wbuf);
+    F32(f->rpos); F32(f->wpos); F32(f->row); F32(f->col); F32(f->op_bank);
+    for (unsigned b = 0; b < S5L_FMC_BANKS; b++) F32(f->bank_row[b]);
+    F32(f->ready_pending); F32(f->ready_us); F32(f->ready_tb); F32(f->ready_armed); F32(f->rend); F32(f->xfer_state); F32(f->xfer_tb); F32(f->xfer_rsvd);
+    F32(f->nand_status);
+    F64(f->programs); F64(f->erases); F64(f->prog_fails);
+}
+
+static void snap_rsecc(sn_io_t *io, s5l_rsecc_t *e) {
+    FA32(e->regs, S5L_RSECC_SIZE / 4u);
+    F32(e->pending); F32(e->irq); F32(e->status);
+    FA32(e->reserved, 5u);
+    F64(e->checks); F64(e->gens); F64(e->failures);
+}
+
 static bool codec_state_valid(const s5l_wm8991_t *c, bool wm8758) {
     if (!c || c->ptr >= WM8991_NREG ||
         c->wlen > WM8991_MAX_WRITE ||
@@ -1147,6 +1217,14 @@ static void snap_mach(sn_io_t *io, s5l8900_t *m) {
      * SNAPSHOT_VERSION's v14 note. */
     for (unsigned i = 0; i < S5L8900_DMAC_COUNT; i++)
         snap_pl080(io, &m->dmac[i]);
+    /* Appended for the same positional reason; see the v40 note. */
+    snap_camsensor(io, &m->camsensor);
+    snap_camin(io, &m->camin);
+    snap_fmc(io, &m->fmc);
+    snap_rsecc(io, &m->rsecc);
+    /* v43: JPEG encoder and the physical edram it writes into. */
+    snap_jpeg(io, &m->jpeg);
+    FBYTES(m->edram, S5L8900_EDRAM_SIZE);
 
     F64(m->unmapped_reads);
     F64(m->unmapped_writes);
@@ -1332,6 +1410,71 @@ static void snap_section(sn_io_t *io, uint32_t tag, snap_fn_t fn, s5l8900_t *m) 
     if (io->pos - start != len) io->err = SNAP_ERR_CORRUPT;
 }
 
+/* v44: pages changed since an immutable base NAND image. The browser keeps
+ * the base image as a verified download, so a checkpoint carries only the
+ * pages the guest has programmed or erased, plus the bad-block map. Both
+ * travel in one checkpoint, so CPU state and disk contents cannot be paired
+ * with the wrong generation; the base is identified by its image hash. */
+static void snap_nand(sn_io_t *io, s5l8900_t *m) {
+    nand_t *n = m->fmc.nand;
+    uint32_t present = !sn_reading(io) && n && n->changed ? 1u : 0u;
+    F32(present);
+    if (io->err != SNAP_OK || !present) return;
+    if (present != 1u) { io->err = SNAP_ERR_CORRUPT; return; }
+    uint64_t base = 0;
+    uint32_t blocks = 0, count = 0;
+    if (!sn_reading(io)) {
+        base = n->base_hash;
+        blocks = n->block_count;
+        for (uint32_t p = 0; p < nand_total_pages(n); p++)
+            count += nand_page_changed(n, p);
+    }
+    F64(base); F32(blocks); F32(count);
+    if (io->err != SNAP_OK) return;
+    if (sn_reading(io) && (!n || !n->changed || n->base_hash != base ||
+                           n->block_count != blocks)) {
+        io->err = SNAP_ERR_GEOMETRY;
+        return;
+    }
+    size_t plen = (size_t)n->page_size + n->spare_size;
+    uint8_t *buf = malloc(plen > blocks ? plen : blocks);
+    if (!buf) { io->err = SNAP_ERR_NOMEM; return; }
+    uint32_t total = nand_total_pages(n), next = 0, prev = 0;
+    for (uint32_t i = 0; i < count && io->err == SNAP_OK; i++) {
+        uint32_t idx = 0;
+        uint8_t cls = 0;
+        if (!sn_reading(io)) {
+            while (!nand_page_changed(n, next)) next++;
+            idx = next++;
+            (void)nand_read_page(n, idx, buf, buf + n->page_size);
+            for (size_t k = 0; k < plen && !cls; k++) if (buf[k] != 0xffu) cls = 2;
+        }
+        F32(idx);
+        sn_u8(io, &cls);
+        if (io->err != SNAP_OK) break;
+        if (sn_reading(io) && (idx >= total || (i && idx <= prev) ||
+                               (cls != 0 && cls != 2))) {
+            io->err = SNAP_ERR_CORRUPT;
+            break;
+        }
+        prev = idx;
+        if (cls == 2 && io->mode == SN_VALIDATE) sn_discard(io, plen);
+        else if (cls == 2) sn_raw(io, buf, plen);
+        else if (sn_reading(io)) memset(buf, 0xff, plen);
+        if (io->mode == SN_LOAD && io->err == SNAP_OK &&
+            nand_store_page(n, idx, buf, buf + n->page_size) != NAND_OK)
+            io->err = SNAP_ERR_NOMEM;
+    }
+    if (io->mode == SN_VALIDATE) sn_discard(io, blocks);
+    else if (io->mode == SN_LOAD) {
+        sn_raw(io, buf, blocks);
+        for (uint32_t b = 0; io->err == SNAP_OK && b < blocks; b++)
+            if (buf[b] > 1u) io->err = SNAP_ERR_CORRUPT;
+        if (io->err == SNAP_OK) memcpy(n->bad, buf, blocks);
+    } else sn_raw(io, n->bad, blocks);
+    free(buf);
+}
+
 static void snap_end(sn_io_t *io, s5l8900_t *m) { (void)io; (void)m; }
 
 static void snap_payload(sn_io_t *io, s5l8900_t *m) {
@@ -1341,6 +1484,7 @@ static void snap_payload(sn_io_t *io, s5l8900_t *m) {
     snap_section(io, TAG_RAM,  snap_ram,     m);
     snap_section(io, TAG_NOR,  snap_nor_sec, m);
     snap_section(io, TAG_STUB, snap_stubs,   m);
+    snap_section(io, TAG_NAND, snap_nand,    m);
     snap_section(io, TAG_END,  snap_end,     m);
 }
 
@@ -1419,6 +1563,7 @@ static bool snap_machine_valid(const s5l8900_t *m) {
     for (unsigned i = 0; i < S5L8900_I2C_COUNT; i++)
         if (!i2c_state_valid(&m->i2c[i])) return false;
     if (!pmu_state_valid(&m->pmu)) return false;
+    if (!camsensor_state_valid(&m->camsensor)) return false;
     if (!codec_state_valid(&m->codec, m->i2c[0].slave_count == 2u &&
                                     m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR)) return false;
     for (unsigned i = 0; i < S5L8900_I2S_COUNT; i++)
@@ -1441,8 +1586,12 @@ static bool snap_machine_valid(const s5l8900_t *m) {
         m->i2c[0].slaves[0].ctx == &m->pmu &&
         m->i2c[0].slaves[1].addr == WM8758_I2C_ADDR &&
         m->i2c[0].slaves[1].ctx == &m->codec;
-    if ((!n82_wiring && !m68_wiring) ||
-        m->i2c[1].slave_count != 0u ||
+    bool i2c1_ok = m68_wiring ?
+        m->i2c[1].slave_count == 1u &&
+        m->i2c[1].slaves[0].addr == MT9D112_I2C_ADDR &&
+        m->i2c[1].slaves[0].ctx == &m->camsensor :
+        m->i2c[1].slave_count == 0u;
+    if ((!n82_wiring && !m68_wiring) || !i2c1_ok ||
         m->pmu.tick_hz != m->tb_hz)
         return false;
     /* The SPI board wiring, for the same reason. N82 has the transport-only

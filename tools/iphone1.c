@@ -3,6 +3,7 @@
 #include "bringup.h"
 #include "lzss.h"
 #include "snapshot.h"
+#include "storage.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -255,6 +256,8 @@ int main(int argc,char **argv) {
     uint32_t dump[8]; unsigned dump_n=0;
     const char *unmatch[16]; unsigned unmatch_n=0; uint64_t shot_every=0; uint32_t mmio_watch=0;
     const char *load_path = NULL, *save_path = NULL, *dump_ram = NULL;
+    const char *nand_path = NULL;
+    bool nand_base = false;
     const char *audio_wav = NULL; FILE *wav = NULL; uint64_t wav_frames = 0;
     uint64_t save_step = UINT64_MAX;
     input_event_t events[128]; unsigned event_n = 0;
@@ -280,6 +283,8 @@ int main(int argc,char **argv) {
             save_path = argv[++i];
         }
         else if (!strcmp(argv[i],"--load")&&i+1<argc) load_path=argv[++i];
+        else if (!strcmp(argv[i],"--nand")&&i+1<argc) nand_path=argv[++i];
+        else if (!strcmp(argv[i],"--nand-base")) nand_base=true;
         else if (!strcmp(argv[i],"--audio-wav")&&i+1<argc) audio_wav=argv[++i];
         else if (!strcmp(argv[i],"--at")&&i+2<argc) {
             input_event_t e = { .step = strtoull(argv[++i], NULL, 0) };
@@ -390,6 +395,28 @@ int main(int argc,char **argv) {
            r.boot_args_pa,r.ramdisk_pa,r.ramdisk_va,r.ramdisk_size);
     printf("framebuffer_pa=0x%08x vram_bytes=0x%08x top_of_kernel_data_pa=0x%08x cmdline=\"%s\"\n",
            r.framebuffer_pa,r.vram_bytes,r.top_of_kernel_data_pa,r.cmdline);
+    if (nand_path) {
+        nand_t *nd = s5l_fmc_backing(&m.fmc);
+        FILE *probe = fopen(nand_path, "rb");
+        if (probe) {
+            fclose(probe);
+            uint64_t base_hash = 0;
+            storage_status_t ns = nd ? storage_load_nand_sparse_file(
+                                           nd, fopen(nand_path, "rb"), &base_hash)
+                                     : STORAGE_ERR_NOMEM;
+            if (ns == STORAGE_OK && nand_base &&
+                !nand_track_changes(nd, base_hash))
+                ns = STORAGE_ERR_NOMEM;
+            if (ns != STORAGE_OK) {
+                fprintf(stderr, "nand: cannot load %s: %s\n", nand_path,
+                        storage_strerror(ns));
+                s5l8900_free(&m); free(k.p); free(d.p); free(rd.p);
+                return 2;
+            }
+            fprintf(stderr, "nand: loaded %llu pages from %s\n",
+                    (unsigned long long)nd->live_pages, nand_path);
+        }
+    }
     if (load_path) {
         snapshot_status_t ss = snapshot_load(&m, load_path);
         if (ss != SNAP_OK) {
@@ -426,6 +453,12 @@ int main(int argc,char **argv) {
                                        snapshot_strerror(ss));
             else fprintf(stderr, "saved snapshot %s at step %llu\n", save_path,
                          (unsigned long long)total);
+            if (ss == SNAP_OK && m.fmc.nand) {
+                char np[1024];
+                snprintf(np, sizeof np, "%s.nand", save_path);
+                storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, np);
+                fprintf(stderr, "nand: save %s: %s\n", np, storage_strerror(ns));
+            }
             saved = true;
         }
         if (tap_pending &&
@@ -500,6 +533,12 @@ int main(int argc,char **argv) {
                                        snapshot_strerror(ss));
             else fprintf(stderr, "saved snapshot %s at step %llu\n", save_path,
                          (unsigned long long)total);
+            if (ss == SNAP_OK && m.fmc.nand) {
+                char np[1024];
+                snprintf(np, sizeof np, "%s.nand", save_path);
+                storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, np);
+                fprintf(stderr, "nand: save %s: %s\n", np, storage_strerror(ns));
+            }
             saved = true;
         }
         if (shot&&shot_every&&total/shot_every!=(total-n)/shot_every) {
@@ -510,8 +549,24 @@ int main(int argc,char **argv) {
         uint32_t win=m.cpu.r[15]&~63u;
         if (win==last_window) same++; else same=0; last_window=win;
         if (st!=ARM_OK) { reason=status_name(st); break; }
-        if (same>=20 && slice>1) { reason="spin"; break; }
+        /* A powered-down AP spins by design until a queued Power press. */
+        if (same>=20 && slice>1 && !s5l_pcf50635_in_standby(&m.pmu)) { reason="spin"; break; }
         if (!n) break;
+    }
+    if (m.fmc.commands)
+        printf("fmc: commands=%llu programs=%llu erases=%llu fails=%llu live_pages=%llu\n",
+               (unsigned long long)m.fmc.commands,
+               (unsigned long long)m.fmc.programs,
+               (unsigned long long)m.fmc.erases,
+               (unsigned long long)m.fmc.prog_fails,
+               (unsigned long long)(m.fmc.nand ? m.fmc.nand->live_pages : 0u));
+    if (m.fmc.commands)
+        printf("fmc: status=%08x ready_pending=%x xfer_state=%u rpos=%u rend=%u\n",
+               m.fmc.status, m.fmc.ready_pending, m.fmc.xfer_state,
+               m.fmc.rpos, m.fmc.rend);
+    if (nand_path && m.fmc.nand && !nand_base) {
+        storage_status_t ns = storage_save_nand_sparse(m.fmc.nand, nand_path);
+        printf("nand: save %s: %s\n", nand_path, storage_strerror(ns));
     }
     printf("\nreason=%s instructions=%llu pc=0x%08x cpsr=0x%08x\n",reason,
            (unsigned long long)total,m.cpu.r[15],m.cpu.cpsr);

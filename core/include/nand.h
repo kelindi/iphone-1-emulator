@@ -39,16 +39,26 @@ typedef struct {
     uint32_t pages_per_block;
     uint32_t block_count;
 
-    uint8_t *data;             /* page_size  * total_pages       */
-    uint8_t *spare;            /* spare_size * total_pages       */
+    /* Sparse backing: erased pages are implicit. blocks[b] is NULL until a
+     * page in block b is programmed; blocks[b][p] holds page_size data bytes
+     * followed by spare_size spare bytes. Erase frees the block. */
+    uint8_t ***blocks;
     uint8_t *bad;              /* one byte per block: nonzero = bad */
+    uint64_t live_pages;       /* materialised (non-erased) pages */
+
+    /* Optional change tracking over an immutable base image: one bit per
+     * page, set when the page is programmed, stored or erased. NULL when
+     * tracking is off. base_hash identifies the image tracking began on. */
+    uint8_t *changed;
+    uint64_t base_hash;
 } nand_t;
 
 typedef enum {
     NAND_OK = 0,
     NAND_ERR_RANGE,            /* page or block out of range      */
     NAND_ERR_BAD_BLOCK,        /* block marked bad                */
-    NAND_ERR_NOT_ERASED        /* NAND can only clear bits: erase first */
+    NAND_ERR_NOT_ERASED,       /* NAND can only clear bits: erase first */
+    NAND_ERR_NOMEM             /* host could not materialise a page */
 } nand_status_t;
 
 bool nand_init(nand_t *n, uint32_t page_size, uint32_t spare_size,
@@ -69,11 +79,21 @@ nand_status_t nand_read_page(const nand_t *n, uint32_t page,
 nand_status_t nand_program_page(nand_t *n, uint32_t page,
                                 const uint8_t *data, const uint8_t *spare);
 
+/* Replace a page's exact contents (used by checkpoint load). Pages that are
+ * entirely 0xff are stored as erased. */
+nand_status_t nand_store_page(nand_t *n, uint32_t page,
+                              const uint8_t *data, const uint8_t *spare);
+
 /* Erase a block back to all-ones. */
 nand_status_t nand_erase_block(nand_t *n, uint32_t block);
 
 /* Bad-block marking, as a factory or the FTL would. */
 void nand_mark_bad(nand_t *n, uint32_t block);
 bool nand_is_bad(const nand_t *n, uint32_t block);
+
+/* Start recording which pages differ from the current contents, identified
+ * by base_hash. Clears any earlier record. */
+bool nand_track_changes(nand_t *n, uint64_t base_hash);
+bool nand_page_changed(const nand_t *n, uint32_t page);
 
 #endif /* S5LBOX_NAND_H */

@@ -1555,10 +1555,13 @@ static void test_wfi_wake_source_order_does_not_matter(void) {
      * is the only source in the table whose producer is OUTSIDE the machine.
      * The two DMA controllers joined with the PL080 model; both answer NEVER
      * today for the reason the SPI pair does, and both are declared anyway
-     * because this table is the machine's definition of what can interrupt it. */
-    CHECK(real != NULL && nreal == 8u + S5L_GPIOIC_GROUPS,
+     * because this table is the machine's definition of what can interrupt it.
+     * camin joined with the camera input block's frame clock, fmc with the
+     * flash controller's delayed ready and transfer-done edges, jpeg with
+     * the encoder's completion. */
+    CHECK(real != NULL && nreal == 11u + S5L_GPIOIC_GROUPS,
           "the machine declares %u wake sources, expected %u",
-          nreal, 8u + S5L_GPIOIC_GROUPS);
+          nreal, 11u + S5L_GPIOIC_GROUPS);
     for (unsigned i = 0; i < nreal; i++)
         CHECK(real[i].name && real[i].next_edge &&
               real[i].line < 32u * S5L8900_VIC_COUNT,
@@ -3008,9 +3011,11 @@ static void test_tvout_machine_routing_and_irq30(void) {
      * when the two I2S controllers landed with the WM8991 codec, and from 20 to
      * 22 with the two PL080 DMA controllers that feed those I2S FIFOs,
      * and from 22 to 23 when the PowerVR MBX block was modelled so its
-     * kext could get past its reset handshake. */
-    CHECK(nw == m.stub_count + 24u,
-          "fixed device-window count=%u expect 24 (+%u stubs)",
+     * kext could get past its reset handshake, and from 23 to 24 with the
+     * camera input block, and from 24 to 25 with the NAND flash controller,
+     * and from 25 to 26 with the JPEG encoder. */
+    CHECK(nw == m.stub_count + 28u,
+          "fixed device-window count=%u expect 28 (+%u stubs)",
           nw - m.stub_count, m.stub_count);
     bool have_ctrl = false, have_mixer = false, have_sdo = false;
     for (unsigned i = 0; i < nw && i < S5L_WINDOW_MAX; i++) {
@@ -3803,6 +3808,77 @@ static void test_timer_interrupt_reaches_handler(void) {
     s5l8900_free(&m);
 }
 
+static void mt9d112_test_write(s5l_i2c_slave_t *sl, uint16_t reg, uint16_t v) {
+    sl->start(sl->ctx, false);
+    sl->write(sl->ctx, (uint8_t)(reg >> 8)); sl->write(sl->ctx, (uint8_t)reg);
+    sl->write(sl->ctx, (uint8_t)(v >> 8)); sl->write(sl->ctx, (uint8_t)v);
+    sl->stop(sl->ctx);
+}
+
+/* AppleMicron2020's mode switch (c03bca60) waits for both seq.state and
+ * mode.context; without the context flip a still capture times out after
+ * 1000 polls and Camera holds the iris shut for seconds. */
+static void test_mt9d112_capture_context(void) {
+    static s5l_mt9d112_t cam;
+    s5l_i2c_slave_t sl;
+    s5l_mt9d112_reset(&cam);
+    s5l_mt9d112_bind(&cam, &sl);
+    mt9d112_test_write(&sl, 0x338c, 0xa103);
+    mt9d112_test_write(&sl, 0x3390, 2);
+    CHECK(s5l_mt9d112_var(&cam, 0xa104) == 7, "capture state=%u expect 7",
+          s5l_mt9d112_var(&cam, 0xa104));
+    CHECK(s5l_mt9d112_var(&cam, 0xa702) == 1, "capture context=%u expect 1 (B)",
+          s5l_mt9d112_var(&cam, 0xa702));
+    CHECK(s5l_mt9d112_var(&cam, 0xa103) == 0, "capture command not acknowledged");
+    mt9d112_test_write(&sl, 0x3390, 1);
+    CHECK(s5l_mt9d112_var(&cam, 0xa104) == 3 && s5l_mt9d112_var(&cam, 0xa702) == 0,
+          "preview state=%u context=%u expect 3/0", s5l_mt9d112_var(&cam, 0xa104),
+          s5l_mt9d112_var(&cam, 0xa702));
+}
+
+static uint32_t camin_test_len;
+static uint8_t *camin_test_ram(void *ctx, uint32_t pa, uint32_t len) {
+    static uint8_t buffer[2400u * 1600u];
+    (void)ctx; (void)pa;
+    camin_test_len = len;
+    return len <= sizeof buffer ? buffer : NULL;
+}
+
+/* AppleH1CamIn's three captured frame modes: the portrait live preview,
+ * the 16 bpp still, and the post-capture review that keeps 0x00 at the
+ * 480x640 sensor window but scales to a landscape 400x300 through 0x54. */
+static void test_camin_frame_geometry(void) {
+    static const struct {
+        const char *name;
+        uint32_t geom, out, scaler, fmt, pixels, bytes;
+    } modes[] = {
+        {"preview", 0x81908130u, 0x01900130u, 0x61902130u, 0x6100d100u,
+         0x0001db00u, 304u * 4u * 400u},
+        {"still", 0x864084b0u, 0x064004b0u, 0x464004b0u, 0x6100c100u,
+         0x001d4c00u, 1200u * 2u * 1600u},
+        {"review", 0x828081e0u, 0x0190012cu, 0x6190012cu, 0x01009100u,
+         0x0001d4c0u, 400u * 4u * 300u},
+    };
+    for (unsigned i = 0; i < sizeof modes / sizeof modes[0]; i++) {
+        s5l_camin_t c;
+        memset(&c, 0, sizeof c);
+        c.frame_ticks = 1u;
+        s5l_camin_reset(&c);
+        s5l_camin_write(&c, 0x18u, 0x08800000u);
+        s5l_camin_write(&c, 0x00u, modes[i].geom);
+        s5l_camin_write(&c, 0x48u, modes[i].scaler);
+        s5l_camin_write(&c, 0x54u, modes[i].out);
+        s5l_camin_write(&c, 0x58u, modes[i].fmt);
+        s5l_camin_write(&c, 0x5cu, modes[i].pixels);
+        s5l_camin_write(&c, 0xc0u, 0xc2000400u);
+        camin_test_len = 0u;
+        CHECK(s5l_camin_tick(&c, 1u, camin_test_ram, NULL) &&
+              camin_test_len == modes[i].bytes && c.dropped == 0u,
+              "camin %s frame wrote %u bytes, expected %u",
+              modes[i].name, camin_test_len, modes[i].bytes);
+    }
+}
+
 int main(void) {
     printf("S5LBox S5L8900 machine tests\n");
     test_ram_readback();
@@ -3874,6 +3950,8 @@ int main(void) {
     test_wfi_unpredictable_source_stops_the_fast_forward();
     test_wfi_wake_source_order_does_not_matter();
     test_timer_interrupt_reaches_handler();
+    test_camin_frame_geometry();
+    test_mt9d112_capture_context();
     printf("\n%d passed, %d failed\n", g_pass, g_fail);
     return g_fail == 0 ? 0 : 1;
 }

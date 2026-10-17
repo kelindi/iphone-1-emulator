@@ -36,6 +36,10 @@
 static const s5l_window_t DEVICE_WINDOWS[] = {
     { S5L8900_NOR_BASE,   S5L8900_NOR_SIZE,   "nor"   },
     { S5L8900_CLCD_BASE,  S5L8900_DEV_SIZE,   "clcd"  },
+    { S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE,   "camin" },
+    { S5L8900_JPEG_BASE,  S5L8900_DEV_SIZE,   "jpeg"  },
+    { S5L8900_FMC_BASE,   S5L8900_DEV_SIZE,   "fmc"   },
+    { S5L8900_RSECC_BASE, S5L8900_DEV_SIZE,   "rsecc" },
     { S5L8900_TVOUT_CTRL_BASE,  S5L_TVOUT_BANK_SIZE, "tvout-control" },
     { S5L8900_TVOUT_MIXER_BASE, S5L_TVOUT_BANK_SIZE, "tvout-mixer"   },
     { S5L8900_TVOUT_SDO_BASE,   S5L_TVOUT_BANK_SIZE, "tvout-sdo"     },
@@ -481,8 +485,18 @@ static void note_device(s5l8900_t *m, uint32_t addr, uint32_t val, bool is_write
 static uint8_t *machine_host_ram(void *ctx, uint32_t pa, uint32_t len) {
     s5l8900_t *m = ctx;
     if (!m || !m->ram || !len) return NULL;
+    if (m->edram && pa >= S5L8900_EDRAM_BASE &&
+        (uint64_t)pa - S5L8900_EDRAM_BASE + len <= S5L8900_EDRAM_SIZE)
+        return m->edram + (pa - S5L8900_EDRAM_BASE);
     if (!in_ram(m, pa, len)) return NULL;
     return m->ram + (pa - m->ram_base);
+}
+
+/* The flash controller exists only once a NAND array has been attached
+ * (s5l_fmc_backing); without one the window stays unmapped, so the stock
+ * driver does not find a blank chip and panic on the RAM-disk boot. */
+static inline bool fmc_present(const s5l8900_t *m) {
+    return m->fmc.nand != NULL;
 }
 
 static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
@@ -491,6 +505,11 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
     if (in_ram(m, addr, bytes)) {
         uint32_t v = 0;
         memcpy(&v, &m->ram[addr - m->ram_base], bytes);   /* little-endian host */
+        return v;
+    }
+    if (m->edram && in_window(addr, bytes, S5L8900_EDRAM_BASE, S5L8900_EDRAM_SIZE)) {
+        uint32_t v = 0;
+        memcpy(&v, &m->edram[addr - S5L8900_EDRAM_BASE], bytes);
         return v;
     }
     /*
@@ -531,6 +550,16 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
         else                     v = s5l_vic_read(&m->vic[1], off);
     } else if (mmio_word(addr, bytes, S5L8900_CLCD_BASE, S5L8900_DEV_SIZE)) {
         v = s5l_clcd_read(&m->clcd, addr - S5L8900_CLCD_BASE);
+    } else if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_camin_read(&m->camin, addr - S5L8900_CAMIN_BASE);
+    } else if (mmio_word(addr, bytes, S5L8900_JPEG_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_jpeg_read(&m->jpeg, addr - S5L8900_JPEG_BASE);
+    } else if (fmc_present(m) &&
+               mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_fmc_read(&m->fmc, addr - S5L8900_FMC_BASE);
+    } else if (fmc_present(m) &&
+               mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+        v = s5l_rsecc_read(&m->rsecc, addr - S5L8900_RSECC_BASE);
     } else if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
                in_window(addr, bytes, S5L8900_TVOUT_CTRL_BASE,
                          S5L_TVOUT_BANK_SIZE)) {
@@ -609,6 +638,11 @@ static uint32_t bus_read(void *ctx, uint32_t addr, unsigned bytes) {
 
 static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     s5l8900_t *m = ctx;
+    if (m->edram && !in_ram(m, addr, bytes) &&
+        in_window(addr, bytes, S5L8900_EDRAM_BASE, S5L8900_EDRAM_SIZE)) {
+        memcpy(&m->edram[addr - S5L8900_EDRAM_BASE], &val, bytes);
+        return;
+    }
 
     if (in_ram(m, addr, bytes)) {
         memcpy(&m->ram[addr - m->ram_base], &val, bytes);
@@ -645,6 +679,32 @@ static void bus_write(void *ctx, uint32_t addr, uint32_t val, unsigned bytes) {
     if (mmio_word(addr, bytes, S5L8900_CLCD_BASE, S5L8900_DEV_SIZE)) {
         note_device(m, addr, val, true);
         s5l_clcd_write(&m->clcd, addr - S5L8900_CLCD_BASE, val);
+        return;
+    }
+    if (fmc_present(m) &&
+        mmio_word(addr, bytes, S5L8900_FMC_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_fmc_write(&m->fmc, addr - S5L8900_FMC_BASE, val);
+        m->level_dirty = true;
+        return;
+    }
+    if (fmc_present(m) &&
+        mmio_word(addr, bytes, S5L8900_RSECC_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_rsecc_write(&m->rsecc, addr - S5L8900_RSECC_BASE, val);
+        m->level_dirty = true;
+        return;
+    }
+    if (mmio_word(addr, bytes, S5L8900_JPEG_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_jpeg_write(&m->jpeg, addr - S5L8900_JPEG_BASE, val, m->tb_hz);
+        m->level_dirty = true;
+        return;
+    }
+    if (mmio_word(addr, bytes, S5L8900_CAMIN_BASE, S5L8900_DEV_SIZE)) {
+        note_device(m, addr, val, true);
+        s5l_camin_write(&m->camin, addr - S5L8900_CAMIN_BASE, val);
+        m->level_dirty = true;
         return;
     }
     if ((bytes == 1u || bytes == 2u || bytes == 4u) &&
@@ -812,8 +872,10 @@ static uint8_t  r8 (void *c, uint32_t a) { return (uint8_t) bus_read(c, a, 1); }
  * registers, devices with no FIFO -- is always ready, which is both true of the
  * hardware and the behaviour every existing test was written against.
  */
-static bool dma_dst_ready(void *ctx, uint32_t dst, unsigned width) {
+static bool dma_dst_ready(void *ctx, uint32_t src, uint32_t dst,
+                          unsigned width) {
     const s5l8900_t *m = ctx;
+    if (src == S5L8900_FMC_BASE + FMC_FIFO) return s5l_fmc_rx_ready(&m->fmc);
     for (unsigned i = 0; i < S5L8900_SPI_COUNT; i++) {
         static const uint32_t base[] = {
             S5L8900_SPI0_BASE, S5L8900_SPI1_BASE, S5L8900_SPI2_BASE
@@ -1069,6 +1131,29 @@ static s5l_wake_kind_t wake_edge_clcd(const s5l8900_t *m, uint32_t *ticks) {
     return S5L_WAKE_AT;
 }
 
+static s5l_wake_kind_t wake_edge_camin(const s5l8900_t *m, uint32_t *ticks) {
+    const s5l_camin_t *c = &m->camin;
+    if (!c->frame_ticks || !(c->regs[CAMIN_CTRL / 4u] & CAMIN_CTRL_EN))
+        return S5L_WAKE_NEVER;
+    *ticks = c->frame_accum < c->frame_ticks ? c->frame_ticks - c->frame_accum : 1u;
+    return S5L_WAKE_AT;
+}
+
+static s5l_wake_kind_t wake_edge_jpeg(const s5l8900_t *m, uint32_t *ticks) {
+    uint32_t until = s5l_jpeg_ticks_to_event(&m->jpeg);
+    if (until == 0u) return S5L_WAKE_NEVER;
+    *ticks = until;
+    return S5L_WAKE_AT;
+}
+
+/* Delayed FMC array-ready and transfer-done edges. */
+static s5l_wake_kind_t wake_edge_fmc(const s5l8900_t *m, uint32_t *ticks) {
+    uint32_t until = s5l_fmc_ticks_to_event(&m->fmc);
+    if (until == 0u) return S5L_WAKE_NEVER;
+    *ticks = until;
+    return S5L_WAKE_AT;
+}
+
 /* TV-out SDO VSYNC.  The device answers "no deliverable VSYNC" with zero,
  * which is a statement about its state (stopped, masked, already pending) and
  * therefore S5L_WAKE_NEVER rather than an unknown. */
@@ -1239,6 +1324,9 @@ static s5l_wake_kind_t wake_edge_dmac(const s5l8900_t *m, uint32_t *ticks) {
 static const s5l_wake_source_t WAKE_SOURCES[] = {
     { "timer", S5L8900_IRQ_TIMER, wake_edge_timer },
     { "clcd",  S5L8900_IRQ_CLCD,  wake_edge_clcd  },
+    { "camin", S5L8900_IRQ_CAMIN, wake_edge_camin },
+    { "fmc", S5L8900_IRQ_FMC, wake_edge_fmc },
+    { "jpeg", S5L8900_IRQ_JPEG, wake_edge_jpeg },
     { "tvout", S5L8900_IRQ_TVOUT, wake_edge_tvout },
     { "spi0",  S5L8900_IRQ_SPI0,  wake_edge_spi0  },
     { "spi1",  S5L8900_IRQ_SPI1,  wake_edge_spi1  },
@@ -1462,14 +1550,17 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     /* The MBX aperture's edram, owned here like RAM. See S5L_MBX_APERTURE.
      * A failure is handled below with the RAM failure, not ignored. */
     m->mbx.edram = calloc(S5L_MBX_EDRAM_SIZE, 1);
+    m->edram = calloc(S5L8900_EDRAM_SIZE, 1);
     /* Optional: without it shifted-out samples are counted and dropped. */
     m->audio_ring = calloc(S5L_AUDIO_RING_BYTES, 1);
-    if (!m->ram || !m->mbx.edram) {
+    if (!m->ram || !m->mbx.edram || !m->edram) {
         free(m->audio_ring);
         m->audio_ring = NULL;
         free(m->ram);
         m->ram = NULL;
         free(m->mbx.edram);
+        free(m->edram);
+        m->edram = NULL;
         m->mbx.edram = NULL;
         return false;
     }
@@ -1485,6 +1576,18 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
     s5l_power_reset(&m->power);
     s5l_mbx_reset(&m->mbx);
     s5l_clcd_reset(&m->clcd);
+    s5l_camin_reset(&m->camin);
+    s5l_jpeg_reset(&m->jpeg);
+    {
+        const char *t = getenv("S5LBOX_JPEG_TRACE");
+        m->jpeg.trace = t && *t && *t != '0';
+    }
+    s5l_fmc_reset(&m->fmc);
+    s5l_rsecc_reset(&m->rsecc);
+    {
+        const char *t = getenv("S5LBOX_CAMIN_TRACE");
+        m->camin.trace = t && *t && *t != '0';
+    }
     s5l_tvout_reset(&m->tvout, m->tb_hz);
     for (unsigned i = 0; i < S5L8900_I2C_COUNT; i++)
         s5l_i2c_reset(&m->i2c[i]);
@@ -1517,6 +1620,8 @@ bool s5l8900_init_soc(s5l8900_t *m, uint32_t ram_base, uint32_t ram_size) {
         free(m->ram);
         m->ram = NULL;
         free(m->mbx.edram);
+        free(m->edram);
+        m->edram = NULL;
         m->mbx.edram = NULL;
         return false;
     }
@@ -1599,10 +1704,13 @@ void s5l8900_free(s5l8900_t *m) {
     free(m->ram);
     m->ram = NULL;
     free(m->mbx.edram);
+    free(m->edram);
+    m->edram = NULL;
     m->mbx.edram = NULL;
     free(m->audio_ring);
     m->audio_ring = NULL;
     s5l_nor_free(&m->nor);
+    s5l_fmc_free(&m->fmc);
 }
 
 bool s5l8900_set_cycles_per_insn(s5l8900_t *m, unsigned cpi) {
@@ -1815,6 +1923,16 @@ static void s5l8900_refresh(s5l8900_t *m, uint32_t tb) {
 
     bool clcd_irq = s5l_clcd_tick(&m->clcd, tb);
     s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CLCD, clcd_irq);
+    if (!m->camin.frame_ticks && m->tb_hz)
+        m->camin.frame_ticks = m->tb_hz / S5L_CAMIN_FPS;
+    s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_CAMIN,
+                     s5l_camin_tick(&m->camin, tb, machine_host_ram, m));
+    s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_JPEG - 32u,
+                     s5l_jpeg_tick(&m->jpeg, tb, machine_host_ram, m));
+    s5l_fmc_tick(&m->fmc, tb, m->tb_hz);
+    s5l_vic_set_line(&m->vic[0], S5L8900_IRQ_FMC, s5l_fmc_irq(&m->fmc));
+    s5l_vic_set_line(&m->vic[1], S5L8900_IRQ_RSECC - 32u,
+                     s5l_rsecc_run(&m->rsecc, &m->bus));
 
     /*
      * The MBX completion line. Like i2c and spi below, the device completes
