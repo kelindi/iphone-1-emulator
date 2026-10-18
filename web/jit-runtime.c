@@ -31,6 +31,11 @@ _Static_assert(CACHE_FIELD_OFFSET(dread, host) == 0u &&
 _Static_assert(sizeof ((arm_cpu_t *)0)->dread[0] ==
                sizeof ((arm_cpu_t *)0)->dwrite[0], "Seed cache strides differ");
 #undef CACHE_FIELD_OFFSET
+/* Generated CPSIE reads the interrupt lines at bus + 16 and bus + 17. */
+_Static_assert(offsetof(arm_cpu_t, irq_line) == offsetof(arm_cpu_t, bus) + 16u &&
+               offsetof(arm_cpu_t, fiq_line) == offsetof(arm_cpu_t, irq_line) + 1u &&
+               sizeof ((arm_cpu_t *)0)->irq_line == 1u,
+               "Update generated interrupt-line accesses");
 
 /* One exported seed runner enters region `index`; regions then continue
  * into each other inside the seed through the link table below. */

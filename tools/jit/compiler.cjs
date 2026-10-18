@@ -140,7 +140,20 @@ else if(type===1){x=amount?shr(v,amount):C(0);cy=and(shr(v,amount?amount-1:31),C
 else if(type===2){x=op('i32.shr_s',v,C(amount||31));cy=and(shr(v,amount?amount-1:31),C(1));}
 else if(amount){x=op('i32.rotr',v,C(amount));cy=and(shr(v,amount-1),C(1));}
 else{x=op('i32.or',shl(carry(),31),shr(v,1));cy=and(v,C(1));}return[x,cy];}
+// CPS without a mode change. A no-op in User mode; clearing I or F can make a
+// pending interrupt deliverable, so the call ends right after the op when the
+// interpreter would take one before the next instruction.
+function cps(disable,aif,next){
+ const mask=(aif&4?0x100:0)|(aif&2?0x80:0)|(aif&1?0x40:0);
+ let body=mask?`(if ${L('priv')}(then ${set('f',disable?op('i32.or',L('f'),C(mask)):and(L('f'),C(~mask)))}))`:'';
+ let exit='';
+ if(!disable&&(aif&3)){const line=o=>`(i32.load8_u offset=${OFF[9]+16+o} ${L('c')})`,clear=b=>op('i32.eqz',and(L('f'),C(b)));
+  exit=`(if(i32.or(i32.and ${line(0)}${clear(0x80)})(i32.and ${line(1)}${clear(0x40)}))(then(local.set $why(i32.const 8))(br $done)))`;}
+ return {body:body+put(15,next),stop:false,exit};
+}
 function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
+ if(thumb&&(insn&0xffe0)===0xb660)return cps(!!(insn&16),insn&7,next);
+ if(!thumb&&((insn&0xfff1fe20)>>>0)===0xf1000000&&!(insn&0x20000)){const imod=insn>>>18&3;return imod&2?cps(!!(imod&1),insn>>>6&7,next):{body:put(15,next),stop:false,exit:''};}
  if(!thumb){const cond=insn>>>28,rn=insn>>>16&15,rd=insn>>>12&15,rm=insn&15,rr=r=>r===15?C(pc+8):reg(r);if(cond===15)return emitBase(insn,pc,thumb,n);
   if((insn&0x0f200e00)===0x0d000a00){const D=!!(insn&0x400000),dbl=!!(insn&0x100),load=!!(insn&0x100000),U=!!(insn&0x800000),first=(rd*2)+(dbl?0:+D);if(dbl&&D)return null;
    const get=off=>`(i32.load offset=${off} ${L('c')})`,cp=get(OFF[14]),cp10=and(shr(cp,20),C(3)),cp11=and(shr(cp,22),C(3)),acc=op('select',cp10,cp11,op('i32.lt_u',cp10,cp11));
@@ -205,7 +218,7 @@ function compileRegion(e){
    body+=`(local.set ${vg}(i64.or(local.get ${vg})${vb}))))`;
    body+=`(loop $L${bi}(block $tail_bad${bi} `;for(let i=b.ops.length-1;i>=0;i--)body+=`(block $tail${bi}_${i} `;
    body+=`(br_if $tail${bi}_0(i32.eq ${reg(15)}${C(b.head)}))(br_table ${b.ops.map((_,i)=>'$tail'+bi+'_'+i).join(' ')} $tail_bad${bi}(i32.shr_u(i32.sub ${reg(15)}${C(b.head)})${C(e.thumb?1:2)}))`;
-   for(const c of b.ops)body+=`) (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))`+put(15,C(c.pc))+c.body+set('n',add(L('n'),C(1)));
+   for(const c of b.ops)body+=`) (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))`+put(15,C(c.pc))+c.body+set('n',add(L('n'),C(1)))+(c.exit||'');
    // Statically known successors in this group skip the region dispatch.
    const last=b.ops[b.ops.length-1],seen=new Set();
    for(const m of last.body.matchAll(/\(local.set \$r15 \(i32.const (-?\d+)\)\)/g)){const t=(+m[1])>>>0;if(seen.has(t))continue;seen.add(t);

@@ -714,3 +714,7 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### Compiled CPSID/CPSIE (2026-10-18)
+
+ARM and Thumb CPS without a mode change now compile. In privileged modes the op sets or clears the A/I/F bits in `f`; in User mode it only advances the PC, as the interpreter does. A CPSIE that clears I or F checks `irq_line`/`fiq_line` after the op retires. If a newly unmasked line is high, the call ends (`why = 8`) with the PC on the next instruction, so `arm_step()` takes the interrupt before that instruction runs, as the interpreter would. CPSID can only mask, so it never exits. The runtime asserts the `irq_line`/`fiq_line` offsets that generated code reads; `web/dist` is byte-identical. The 100M and 300M replays match the interpreter's snapshot byte for byte; unit (124) and native (42) tests pass. C returns per 100M drop from 3.82M to 3.73M (-2.5%). Two interleaved warm runs: interpreter 63.6 / 62.4, base 115.5 / 116.1, CPS 117.3 / 116.3 M/s, so +1.6% and +0.2%. That is within run-to-run noise: exact, but no clear speedup.
