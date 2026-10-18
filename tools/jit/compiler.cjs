@@ -158,12 +158,17 @@ function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
    const P=!!(insn&0x1000000),U=!!(insn&0x800000),B=!!(insn&0x400000),W=!!(insn&0x200000),load=!!(insn&0x100000),wb=!P||W;
    if((!P&&W)||(wb&&(rn===15||rn===rd))||rm===15)return null;
    const off=shift(rr(rm),insn>>>5&3,insn>>>7&31)[0];body=set('a',U?add(rr(rn),off):op('i32.sub',rr(rn),off))+transfer(P?L('a'):rr(rn),B?1:4,load,rd,n);if(wb)body+=put(rn,L('a'));
-  }else if((insn&0x0fff03f0)===0x06af0070&&rd!==15&&rm!==15){body=put(rd,op('i32.extend8_s',op('i32.rotr',reg(rm),C((insn>>>10&3)*8))));}
+  }else if((insn&0x0f8003f0)===0x06800070&&rd!==15&&rm!==15&&[0xa,0xb,0xc,0xe,0xf].includes(insn>>>20&15)&&!((insn>>>20&15)===0xc&&rn!==15)){
+   // SXTB/SXTH/UXTB16/UXTB/UXTH and the Rn-accumulating SXTA*/UXTA* forms.
+   const kind=insn>>>20&15,rot=(insn>>>10&3)*8,v=rot?op('i32.rotr',reg(rm),C(rot)):reg(rm);
+   let x=kind===0xa?op('i32.extend8_s',v):kind===0xb?op('i32.extend16_s',v):and(v,C(kind===0xc?0x00ff00ff:kind===0xe?0xff:0xffff));
+   if(rn!==15)x=add(reg(rn),x);body=put(rd,x);}
   else if((insn&0x0fff0fff)===0x010f0000&&rd!==15){body=put(rd,packed());}
   else if((insn&0x0fff0fff)===0x0e070f5a){body='';}
   else return emitBase(insn,pc,thumb,n);
   body=cond===14?body+put(15,next):`(if ${condition(cond)}(then ${body}${put(15,next)})(else ${put(15,C(pc+4))}))`;
  }else if((insn&0xf800)===0xe800){body=set('a',add(reg(14),C((insn&2047)*2)))+put(14,C((pc+2)|1))+set('f',and(L('f'),C(~32)))+put(15,and(L('a'),C(~3)));stop=true;}
+ else if((insn&0xff00)===0xb200){const kind=insn>>>6&3,v=reg(insn>>>3&7);body=put(insn&7,kind===0?op('i32.extend16_s',v):kind===1?op('i32.extend8_s',v):and(v,C(kind===2?0xffff:0xff)))+put(15,next);}
  else if((insn&0xf000)===0x5000){const code=insn>>>9&7,rd=insn&7,addr=add(reg(insn>>>3&7),reg(insn>>>6&7));let bytes=[4,2,1,1,4,2,1,2][code],load=code>=3;body=span(addr,bytes,load,1,n);if(load)body+=put(rd,`(i32.load${bytes===4?'':bytes===2?(code===7?'16_s':'16_u'):(code===3?'8_s':'8_u')} ${L('p')})`);else body+=`(i32.store${bytes===4?'':bytes===2?'16':'8'} ${L('p')}${reg(rd)})`;body+=put(15,next);}
  else return emitBase(insn,pc,thumb,n);
  return {body,stop};
