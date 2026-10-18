@@ -79,8 +79,12 @@ function emitBase(insn,pc,thumb,n){
    if((insn&0x0e000000)===0x0a000000){const off=(insn<<8)>>6;next=C(pc+8+off);if(insn&0x1000000)body+=put(14,C(pc+4));stop=true;}
    else if((insn&0x0ffffff0)===0x012fff10){body=set('r',rr(insn&15))+`(if(i32.eq(i32.and ${L('r')} ${C(3)})${C(2)})(then(return ${K(n)})))`;
      body+=set('f',op('i32.or',and(L('f'),C(~32)),shl(and(L('r'),C(1)),5)))+`(i32.store offset=${F} ${L('c')} ${L('f')})`;next=and(L('r'),C(~1));stop=true;}
-   else if((insn&0x0f700000)===0x05100000&&rd===15){const addr=(insn&0x800000)?add(rr(rn),C(insn&4095)):op('i32.sub',rr(rn),C(insn&4095));
-     body=span(addr,4,true,1,n)+set('r','(i32.load '+L('p')+')')+badpc(1)+interwork();next=and(L('r'),C(~1));stop=true;}
+   else if((insn&0x0ffffff0)===0x012fff30&&(insn&15)!==15){body=set('r',reg(insn&15))+badpc(0)+put(14,C(pc+4))+interwork();next=and(L('r'),C(~1));stop=true;}
+   else if((insn&0x0c500000)===0x04100000&&rd===15){const I=!!(insn&0x2000000),P=!!(insn&0x1000000),U=!!(insn&0x800000),W=!!(insn&0x200000),wb=!P||W;
+     if((!P&&W)||(wb&&rn===15)||(I&&((insn&15)===15||(insn&16))))return null;
+     const off=I?shift(rr(insn&15),insn>>>5&3,insn>>>7&31)[0]:C(insn&4095);
+     body=set('a',U?add(rr(rn),off):op('i32.sub',rr(rn),off))+span(P?L('a'):rr(rn),4,true,1,n)+set('r','(i32.load '+L('p')+')')+badpc(1)+interwork();
+     if(wb)body+=put(rn,L('a'));next=and(L('r'),C(~1));stop=true;}
    else if((insn&0x0f200000)===0x05000000&&rd!==15){const addr=(insn&0x800000)?add(rr(rn),C(insn&4095)):op('i32.sub',rr(rn),C(insn&4095));body=transfer(addr,(insn&0x400000)?1:4,!!(insn&0x100000),rd,n);}
    else if((insn&0x0e400000)===0x08000000 && rn!==15 && (insn&0xffff)!==0 && (!(insn&0x8000)||(insn&0x100000)) && !((insn&0x200000)&&(insn&(1<<rn)))){
      const withPc=!!(insn&0x8000),regs=Array.from({length:15},(_,i)=>i).filter(i=>insn&(1<<i)),count=regs.length+(withPc?1:0),load=!!(insn&0x100000),U=!!(insn&0x800000),P=!!(insn&0x1000000);
@@ -91,11 +95,12 @@ function emitBase(insn,pc,thumb,n){
      if(insn&0x200000)body+=put(rn,add(L('a'),C(U?4*count:-4*count)));
      if(withPc){body+=interwork();next=and(L('r'),C(~1));stop=true;}
    }
-   else if((insn&0x0c000000)===0 && (insn&0x01900000)!==0x01000000 && !((insn&0x0e000000)===0&&(insn&0x10)) && rd!==15){
+   else if((insn&0x0c000000)===0 && (insn&0x01900000)!==0x01000000 && !((insn&0x0e000000)===0&&(insn&0x10)) && (rd!==15||(!S&&!(code>=8&&code<=11)))){
      let b,cy=carry();
      if(insn&0x2000000){let rot=(insn>>>8&15)*2,imm=insn&255;imm=rot?((imm>>>rot)|(imm<<(32-rot))):imm;b=C(imm);if(rot)cy=C(imm>>>31);}
      else {let amount=insn>>>7&31,type=insn>>>5&3,v=rr(insn&15);[b,cy]=shift(v,type,amount);}
      body=alu(code,rr(rn),b,S,rd,cy);
+     if(rd===15){next=and(L('r'),C(~3));stop=true;}
    }else return null;
    if(cond!==14)body=`(if ${condition(cond)}(then ${body}${put(15,next)})(else ${put(15,C(pc+4))}))`;
    else body+=put(15,next);
@@ -114,7 +119,8 @@ function emitBase(insn,pc,thumb,n){
      else if(code in mapping)body=alu(mapping[code],reg(rd),reg(rs),true,rd);else return null;
    }else if((insn&0xfc00)===0x4400){let target=rd|(insn>>>4&8),source=rs|(insn>>>3&8),code=insn>>>8&3;
      if(code===3){if(source===15||(insn&7))return null;body=set('r',reg(source))+badpc(0);if(insn&0x80)body+=put(14,C((pc+2)|1));body+=interwork();next=and(L('r'),C(~1));stop=true;}
-     else{if(target===15)return null;
+     else if(target===15){if(code===1)return null;body=set('r',code===0?add(C(pc+4),rr(source)):rr(source));next=and(L('r'),C(~1));stop=true;}
+     else{
      body=alu(code===0?4:code===1?10:13,rr(target),rr(source),code===1,target);}
    }else if((insn&0xf800)===0x4800){body=transfer(C(((pc+4)&~3)+((insn&255)<<2)),4,true,insn>>>8&7,n);}
    else if(group===6||group===7||group===8||group===9){let bytes=group===8?2:group===7?1:4;let target=group===9?insn>>>8&7:rd,addr=group===9?add(reg(13),C((insn&255)*4)):add(reg(rs),C((insn>>>6&31)*bytes));body=transfer(addr,bytes,!!(insn&0x800),target,n);}

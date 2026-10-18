@@ -714,3 +714,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### Returns stay compiled (pop-pc, 2026-10-18)
+
+Audit: Thumb `POP {..,pc}`, ARM `LDM` with pc, `LDR pc, [Rn, #imm]` and ARM/Thumb `BX` were already compiled and continue through the link table. Added, each matching `arm_interp.c` exactly: ARM `BLX Rm` (Rm != pc), `LDR pc` with register/shifted offsets and pre/post-indexed writeback (LDRT pc, R15 base writeback and R15 offset stay in C), ARM data-processing writes to pc with S clear (`ADDLS pc, pc, r3, LSL #2` jump tables, `MOV pc, Rm`; mask `~3`, no interworking), and Thumb hi-register `ADD/MOV pc` (mask `~1`, no interworking). `MOVS pc, lr`/`SUBS pc` (SPSR restore) stay in C. 100M and 300M replay pass and unit tests pass; no C changes.
+
+Effect: C returns 3.82M -> 3.80M per 100M. BLX register and pc jump tables no longer exit; the remaining return exits are mostly link-table misses or targets outside the retained regions. Interleaved warm medians (interpreter / base / candidate): 60.2 / 107.8 / 108.3 M/s (+0.46%); repeat run 62.7 / 115.1 / 115.2 (+0.09%). This is within noise, so it is not a speed gain on its own. The extra coverage is exact and costs nothing.
