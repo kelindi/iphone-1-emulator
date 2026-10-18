@@ -716,3 +716,22 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 
 **Extend ops (perf/extend-ops).** The seed now compiles ARM SXTB/SXTH/UXTB/UXTH with any rotation, their Rn-accumulating SXTAB/SXTAH/UXTAB/UXTAH forms, plain UXTB16 (87 retained positions, more than any single extend kind), and Thumb SXTH/SXTB/UXTH/UXTB. That covers 467 of the retained seed-input positions (SXTB16 and UXTAB16 stay on the interpreter). Rd or Rm == PC still exits, as in `exec_media`. Full-snapshot replay passes at 100M and 300M. Seed C returns per 100M bench pass fall from 3.82M to 3.55M (-7%). Three interleaved `bench:jit` runs on one VM gave warm medians of base 106.7 / 110.0 / 111.8 against candidate 116.4 / 113.1 / 113.6 M/s (interpreter 59–63), so +9.1%, +2.8% and +1.6%. The real gain is about +2–3%; the first run's +9% is VM drift. First (cold) passes did not change in a way the noise can resolve: 55.3/51.1, 53.6/49.9 and 52.8/52.8.
+
+### Broader execution census for the seed (2026-10-18)
+
+**What changed.** `tools/jit/seed-input.json.gz` now comes from an interpreter census over 18 scripted workloads, all starting from the shipped Home snapshot with browser-style active batches: Settings (as in replay/bench), and opening/scrolling/tapping Text, Calendar, Photos, YouTube, Stocks, Maps, Weather, Clock, Phone, Mail, Safari and iPod. The census also types on the Calculator and the Notes keyboard, and runs lock/wake/slide-to-unlock (360–600M instructions each). `tools/jit/census/` contains the counting runtime: a separate build whose `arm_wasm_jit_try()` only records `(pc, ISA, opcode)` and returns 0, so the interpreter runs everything. It also has the workload scripts and the region selector, which ranks 1 KB regions by summed compilable executions across workloads. The caps stay the same: 1,024 regions, a 26.3 MB seed (was 24.6 MB), and no runtime or compiler change.
+
+**Coverage.** The share of instructions retired in generated code rises 0.4–1.9 points per workload, for example Settings 97.0 -> 97.5%, Settings scroll 95.0 -> 95.9%, Notes typing 92.3 -> 94.1%, lock/unlock 95.9 -> 97.1%. In the 100M replay it rises from about 92.0 to 92.7M instructions (`regions` 1,018).
+
+**Gate.** 100M and 300M replays: full machine snapshot equivalence passed. Unit tests (124) and native ctest (42/42) pass.
+
+**Speed.** Four runs of `PASSES=0,1,2,0,1,2,0,1,2,0,1,2,1,2`, warm medians in M/s:
+
+| run | interpreter | base | candidate | gain |
+|---|---|---|---|---|
+| 1 | 60.8 | 113.1 | 114.8 | +1.5% |
+| 2 | 59.8 | 108.6 | 106.8 | −1.7% |
+| 3 | 60.1 | 108.6 | 113.8 | +4.8% |
+| 4 | 59.8 | 107.2 | 112.0 | +4.5% |
+
+The median of all 16 warm passes per seed is 107.9 for base and 110.0 for the candidate, about +2%, which is inside the VM's noise. The first cold pass is slightly slower (46.5–50.1 vs 51.9–55.6 M/s), probably because there is 1.6 MB more to compile. This is a small gain: the base seed already covered about 95% of retired instructions in these workloads. The remaining exits are dominated by unsupported opcodes and memory misses (see the census above), not by missing regions.
