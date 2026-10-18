@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     arm_wasm_def *defs = calloc(n ? n : 1, sizeof *defs);
     uint8_t *wasm;
     size_t len, nd;
-    if (arm_wasm_compile_pages(r, n, &wasm, &len, defs, &nd)) { fprintf(stderr, "compile failed\n"); return 1; }
+    if (arm_wasm_compile_pages(r, n, 0, &wasm, &len, defs, &nd)) { fprintf(stderr, "compile failed\n"); return 1; }
     FILE *f = fopen(argv[1], "wb");
     fwrite(wasm, 1, len, f);
     fclose(f);

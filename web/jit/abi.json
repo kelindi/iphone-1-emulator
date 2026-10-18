@@ -1,5 +1,5 @@
 {
-  "revision": 2,
+  "revision": 3,
   "offsets": [
     0,
     68,
@@ -18,6 +18,6 @@
     80,
     284
   ],
-  "moduleSha256": "657e3e6132e7c1bef74ed2e4530bd5c2d7a4e24732540db1344e4d852021c139",
+  "moduleSha256": "e0edc8a38a437fca168b6e73adcb0e50e8f4f6ec62fc77c53b51f07ff096f9d1",
   "regionsSha256": "5b2c2f066b7ab76da50404833b7ebb34e04f5dc9302add2f3a04aa0a609e0f13"
 }

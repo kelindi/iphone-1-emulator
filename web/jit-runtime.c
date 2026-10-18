@@ -14,7 +14,13 @@
 #define LINK_SLOTS 4096u
 #define REGION_BYTES 1024u
 #define MASK_WORDS 16u
-#define JIT_ABI_REVISION 2u
+#define JIT_ABI_REVISION 3u
+#define INSTALL_CAP 2048u
+#define TABLE_CAP 65536u
+#define HOT_SLOTS_LOG2 8u
+#define HOT_SLOTS (1u << HOT_SLOTS_LOG2)
+#define HOT_THRESHOLD 4096u
+#define HOT_QUEUE 64u
 
 /* These details are embedded by compiler.cjs rather than represented by an
  * exported offset. Fail the build if a future cache-layout edit would leave a
@@ -54,6 +60,42 @@ static uint32_t link_table[LINK_SLOTS * 2u];
 static uint64_t generated_retired, generated_calls;
 unsigned arm_wasm_jit_enabled;
 
+/* Regions without generated code that the interpreter keeps executing. Each
+ * records the instruction words it actually ran (as the offline census does)
+ * so they can be compiled while the guest runs. Nothing here is guest state. */
+typedef struct {
+    uint32_t key, count;
+    bool queued;
+    uint32_t seen[MASK_WORDS];
+    uint32_t words[REGION_BYTES / 2u];
+} hot_t;
+static hot_t hot[HOT_SLOTS];
+static uint16_t hot_queue[HOT_QUEUE];
+static unsigned hot_queued, hot_enabled;
+
+static void hot_note(const arm_cpu_t *c, uint32_t pc, unsigned thumb, unsigned bit) {
+    uint32_t key = (pc & ~(REGION_BYTES - 1u)) | thumb << 1 | 1u;
+    hot_t *h = &hot[(key * 0x9e3779b1u) >> (32u - HOT_SLOTS_LOG2)];
+    if (h->key != key) {
+        /* A contested slot decays, so a persistently hotter region takes it. */
+        if (h->queued) return;
+        if (h->count >= 64u) { h->count -= 64u; return; }
+        memset(h, 0, sizeof *h);
+        h->key = key;
+    }
+    if (h->queued) return;
+    if (c->fetch_host && c->fetch_gen == c->tlb_gen && c->fetch_blk == (pc & ~(REGION_BYTES - 1u))) {
+        const uint8_t *p = c->fetch_host + (pc & (REGION_BYTES - 1u));
+        h->words[bit] = thumb ? (uint32_t)(p[0] | p[1] << 8)
+                              : (uint32_t)(p[0] | p[1] << 8 | p[2] << 16 | (uint32_t)p[3] << 24);
+        h->seen[bit >> 5] |= 1u << (bit & 31u);
+    }
+    if (++h->count >= HOT_THRESHOLD && hot_queued < HOT_QUEUE) {
+        h->queued = true;
+        hot_queue[hot_queued++] = (uint16_t)(h - hot);
+    }
+}
+
 EM_JS(void, expose_jit_memory, (), { Module.jitMemory = wasmMemory; });
 
 static region_t *region_find(uint32_t pc, unsigned thumb, bool create) {
@@ -89,7 +131,11 @@ EMSCRIPTEN_KEEPALIVE void emu_jit_reset(void) {
     runner = NULL;
     region_count = 0;
     generated_retired = generated_calls = 0;
+    memset(hot, 0, sizeof hot);
+    hot_queued = hot_enabled = 0;
 }
+
+EMSCRIPTEN_KEEPALIVE void emu_jit_hot(unsigned enabled) { hot_enabled = enabled != 0; }
 
 void web_jit_bind(s5l8900_t *machine) {
     emu_jit_reset();
@@ -111,11 +157,11 @@ EMSCRIPTEN_KEEPALIVE uintptr_t emu_jit_link(void) { return (uintptr_t)link_table
 
 EMSCRIPTEN_KEEPALIVE unsigned emu_jit_install(uint32_t pc, unsigned thumb,
                                               unsigned index, const uint32_t *mask) {
-    if (!bound_machine || !mask || index >= REGION_CAP ||
+    if (!bound_machine || !mask || index >= TABLE_CAP ||
         (pc & (REGION_BYTES - 1u)) || thumb > 1u)
         return 0;
     region_t *r = region_find(pc, thumb, false);
-    if ((!r || !r->fn) && region_count >= REGION_CAP) return 0;
+    if ((!r || !r->fn) && region_count >= INSTALL_CAP) return 0;
     if (!r) r = region_find(pc, thumb, true);
     if (!r) return 0;
     if (r->fn) link_update(r, false);
@@ -141,7 +187,7 @@ EMSCRIPTEN_KEEPALIVE void emu_jit_stale(uint32_t pc, unsigned thumb) {
 }
 
 unsigned arm_wasm_jit_try(arm_cpu_t *c, unsigned limit) {
-    if (!arm_wasm_jit_enabled || !bound_machine || !runner ||
+    if (!arm_wasm_jit_enabled || !bound_machine ||
         c != &bound_machine->cpu || !limit)
         return 0;
     unsigned total = 0;
@@ -150,7 +196,11 @@ unsigned arm_wasm_jit_try(arm_cpu_t *c, unsigned limit) {
         uint32_t pc = c->r[15];
         region_t *r = region_find(pc, thumb, false);
         unsigned bit = (pc & (REGION_BYTES - 1u)) >> (thumb ? 1 : 2);
-        if (!r || !(r->supported[bit >> 5] & (1u << (bit & 31u)))) break;
+        if (!r) {
+            if (hot_enabled && !(pc & (thumb ? 1u : 3u))) hot_note(c, pc, thumb, bit);
+            break;
+        }
+        if (!runner || !(r->supported[bit >> 5] & (1u << (bit & 31u)))) break;
         /* Generated data-cache probes rely on tlb_gen != 0: a zeroed entry
          * then never matches, so they skip the NULL host-pointer check. */
         if (c->abort_pending || !c->tlb_gen || !arm_mode_is_valid(c->cpsr) ||
@@ -227,23 +277,14 @@ EMSCRIPTEN_KEEPALIVE void emu_jit_compiled_free(void) {
     compiled_wasm = NULL;
     compiled_len = compiled_count = 0;
 }
-EMSCRIPTEN_KEEPALIVE unsigned emu_jit_compile(const uint32_t *in, unsigned words) {
-    static arm_wasm_region regions[REGION_CAP];
+static unsigned compile_into(const arm_wasm_region *regions, size_t n, uint32_t table_base) {
     static arm_wasm_def defs[REGION_CAP];
-    emu_jit_compiled_free();
-    if (!words || in[0] > REGION_CAP) return 0;
-    size_t n = in[0], at = 1;
-    for (size_t i = 0; i < n; i++) {
-        if (words - at < 4 || in[at + 3] > (words - at - 4) / 2) return 0;
-        regions[i] = (arm_wasm_region){in[at], in[at + 2], in[at + 1] != 0,
-                                       (const arm_wasm_op *)(in + at + 4), in[at + 3]};
-        at += 4 + 2u * in[at + 3];
-    }
     uint32_t offsets[16];
     for (unsigned i = 0; i < 16; i++) offsets[i] = emu_jit_offset(i);
     arm_wasm_configure(offsets);
     size_t nd;
-    if (arm_wasm_compile_pages(regions, n, &compiled_wasm, &compiled_len, defs, &nd)) return 0;
+    if (arm_wasm_compile_pages(regions, n, table_base, &compiled_wasm, &compiled_len, defs, &nd))
+        return 0;
     for (size_t i = 0; i < nd; i++) {
         uint32_t *d = compiled_defs + i * (3u + MASK_WORDS);
         d[0] = defs[i].pc;
@@ -253,6 +294,47 @@ EMSCRIPTEN_KEEPALIVE unsigned emu_jit_compile(const uint32_t *in, unsigned words
     }
     compiled_count = nd;
     return 1;
+}
+EMSCRIPTEN_KEEPALIVE unsigned emu_jit_compile(const uint32_t *in, unsigned words) {
+    static arm_wasm_region regions[REGION_CAP];
+    emu_jit_compiled_free();
+    if (!words || in[0] > REGION_CAP) return 0;
+    size_t n = in[0], at = 1;
+    for (size_t i = 0; i < n; i++) {
+        if (words - at < 4 || in[at + 3] > (words - at - 4) / 2) return 0;
+        regions[i] = (arm_wasm_region){in[at], in[at + 2], in[at + 1] != 0,
+                                       (const arm_wasm_op *)(in + at + 4), in[at + 3]};
+        at += 4 + 2u * in[at + 3];
+    }
+    return compile_into(regions, n, 0);
+}
+/* Compiles up to `max` queued hot regions into one module whose functions
+ * start at table slot `table_base`. Returns the number of regions consumed. */
+EMSCRIPTEN_KEEPALIVE unsigned emu_jit_compile_hot(unsigned max, uint32_t table_base) {
+    static arm_wasm_region regions[HOT_QUEUE];
+    static arm_wasm_op ops[HOT_QUEUE][REGION_BYTES / 2u];
+    emu_jit_compiled_free();
+    if (max > HOT_QUEUE) max = HOT_QUEUE;
+    unsigned taken = 0, n = 0;
+    while (taken < hot_queued && taken < max) {
+        hot_t *h = &hot[hot_queue[taken++]];
+        uint32_t base = h->key & ~(REGION_BYTES - 1u);
+        unsigned thumb = (h->key >> 1) & 1u, nops = 0;
+        if (!region_find(base, thumb, false))
+            for (unsigned bit = 0; bit < (thumb ? REGION_BYTES / 2u : REGION_BYTES / 4u); bit++)
+                if (h->seen[bit >> 5] & (1u << (bit & 31u)))
+                    ops[n][nops++] = (arm_wasm_op){base + bit * (thumb ? 2u : 4u), h->words[bit]};
+        if (nops) {
+            regions[n] = (arm_wasm_region){base, n, thumb != 0, ops[n], nops};
+            n++;
+        }
+        memset(h, 0, sizeof *h);
+    }
+    memmove(hot_queue, hot_queue + taken, (hot_queued - taken) * sizeof hot_queue[0]);
+    hot_queued -= taken;
+    if (!n || table_base > TABLE_CAP - n) return taken;
+    if (!compile_into(regions, n, table_base)) emu_jit_compiled_free();
+    return taken;
 }
 /* 0: module bytes, 1: module length, 2: definitions (pc, thumb, index, masks[16]), 3: count */
 EMSCRIPTEN_KEEPALIVE uintptr_t emu_jit_compiled(unsigned what) {

@@ -19,9 +19,10 @@ typedef struct {
 
 /* offsets: the 16 values of emu_jit_offset(0..15). */
 void arm_wasm_configure(const uint32_t offsets[16]);
-/* Compiles regions into one module. On success returns 0, sets *wasm and *len
- * (malloc'd) and fills defs[0..*ndefs) (defs needs room for n entries). */
-int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n,
+/* Compiles regions into one module whose functions occupy env.table from
+ * table_base. On success returns 0, sets *wasm and *len (malloc'd) and fills
+ * defs[0..*ndefs) (defs needs room for n entries; index is the table slot). */
+int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n, uint32_t table_base,
                            uint8_t **wasm, size_t *len,
                            arm_wasm_def *defs, size_t *ndefs);
 #endif

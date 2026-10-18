@@ -796,3 +796,13 @@ Follow-up: each data-cache probe now checks the tag and generation with one unal
 - `web/tests/region-compiler.test.mjs` compiles a sample of ARM and Thumb regions with both compilers and requires identical bytes and region definitions.
 
 This is the base for compiling hot regions in the browser while the phone runs, instead of only shipping a precompiled seed.
+
+### Compiling hot regions while the guest runs
+
+The seed only covers code seen in the iPhone OS 1.0 census. The runtime now also compiles regions as they become hot, using the C region compiler inside the browser runtime:
+
+- `arm_wasm_jit_try` notes each interpreted instruction in a region without generated code (256-slot table, decaying on collisions) and records the instruction word it ran, as the census does. After 4,096 interpreted instructions a region is queued. None of this is guest or snapshot state.
+- `emu_jit_compile_hot(max, table_base)` compiles up to `max` queued regions into one module. Every module, the seed included, imports one shared `env.table` and fills its own slice of it, so the runtime link table's function indices stay valid across modules. This changed the seed (ABI revision 3); both compilers changed identically and still match byte for byte.
+- `SeedJIT.pump()` (between guest batches) compiles 16 queued regions at a time, instantiates them asynchronously, calls each once with a zero budget to compile it, then installs it. If the seed is missing or rejected, the runtime starts with an empty table and compiles everything itself. `?jit=seed` keeps the seed alone.
+- Replays: `PASSES=0,1,2,3` (interpreter, seed, compiled while running, both) all match the interpreter's full machine snapshot at 100M, 200M and 300M instructions. Without a seed, 627 regions get compiled over 300M instructions and 63% of instructions run in generated code.
+- `bench:jit` accepts `SEEDS=web/jit,web/jit+rt,rt`. One noisy interleaved run (M instructions/s): interpreter 40–57, seed 108–116 warm, seed plus runtime 106–121, runtime only 73–74 (it recompiles every pass, so each pass includes V8 tier-up; the compile work itself was 120–250 ms of C per 100M instructions).

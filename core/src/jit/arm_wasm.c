@@ -893,8 +893,8 @@ static void section(wbuf *out, uint8_t id, wbuf *s) {
     wbuf_free(s);
 }
 
-int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n, uint8_t **wasm,
-                           size_t *len, arm_wasm_def *defs, size_t *ndefs) {
+int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n, uint32_t table_base,
+                           uint8_t **wasm, size_t *len, arm_wasm_def *defs, size_t *ndefs) {
     warena arena;
     warena_init(&arena, (size_t)16 << 20); /* largest region needs ~4 MiB */
     A = &arena;
@@ -909,7 +909,7 @@ int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n, uint8_t **w
             arm_wasm_def *d = &defs[count++];
             d->pc = regions[i].pc;
             d->thumb = regions[i].thumb;
-            d->index = count - 1;
+            d->index = table_base + count - 1;
             memcpy(d->masks, masks, sizeof masks);
         }
     }
@@ -925,21 +925,23 @@ int arm_wasm_compile_pages(const arm_wasm_region *regions, size_t n, uint8_t **w
     wbuf_bytes(&out, magic, sizeof magic);
     wbuf_bytes(&s, types, sizeof types);
     section(&out, 1, &s);
-    wbuf_u32(&s, 4);
+    wbuf_u32(&s, 5);
     put_name(&s, "env"); put_name(&s, "memory"); wbuf_byte(&s, 2); wbuf_byte(&s, 0); wbuf_u32(&s, 8192);
     put_name(&s, "env"); put_name(&s, "stale"); wbuf_byte(&s, 0); wbuf_u32(&s, 1);
     put_name(&s, "env"); put_name(&s, "refill"); wbuf_byte(&s, 0); wbuf_u32(&s, 2);
     put_name(&s, "env"); put_name(&s, "link"); wbuf_byte(&s, 3); wbuf_byte(&s, 0x7f); wbuf_byte(&s, 0);
+    /* Every module fills its own slice of one shared runtime table, so the
+     * link table's function indices are valid across modules. */
+    put_name(&s, "env"); put_name(&s, "table"); wbuf_byte(&s, 1); wbuf_byte(&s, 0x70);
+    wbuf_byte(&s, 0); wbuf_u32(&s, table_base + count);
     section(&out, 2, &s);
     wbuf_u32(&s, count + 1);
     for (uint32_t i = 0; i <= count; i++) wbuf_u32(&s, 0);
     section(&out, 3, &s);
-    wbuf_byte(&s, 1); wbuf_byte(&s, 0x70); wbuf_byte(&s, 0); wbuf_u32(&s, count);
-    section(&out, 4, &s);
     wbuf_u32(&s, 1); put_name(&s, "run"); wbuf_byte(&s, 0); wbuf_u32(&s, 2 + count);
     section(&out, 7, &s);
-    static const uint8_t elem_head[] = {1, 0, 0x41, 0, 0x0b};
-    wbuf_bytes(&s, elem_head, sizeof elem_head);
+    wbuf_byte(&s, 1); wbuf_byte(&s, 0); wbuf_byte(&s, 0x41);
+    wbuf_s64(&s, (int32_t)table_base); wbuf_byte(&s, 0x0b);
     wbuf_u32(&s, count);
     for (uint32_t i = 0; i < count; i++) wbuf_u32(&s, 2 + i);
     section(&out, 9, &s);

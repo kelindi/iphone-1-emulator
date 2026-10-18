@@ -76,7 +76,7 @@ function setup(options={}) {
       if(options.missing)return {ok:false,status:404};
       return {ok:true,headers:{get(){return null;}},arrayBuffer:async()=>payloads[path]};
     },
-    WebAssembly:{async compile(){events.push(['compile']);return {};},instantiate(){events.push(['instantiate']);if(options.delayed)return new Promise(resolve=>waiting.push(()=>resolve({exports:exportsFor()})));return Promise.resolve({exports:exportsFor()});}}
+    WebAssembly:{Table:class{constructor(d){this.length=d.initial;}grow(n){this.length+=n;}},async compile(){events.push(['compile']);return {};},instantiate(){events.push(['instantiate']);if(options.delayed)return new Promise(resolve=>waiting.push(()=>resolve({exports:exportsFor()})));return Promise.resolve({exports:exportsFor()});}}
   };
   vm.createContext(sandbox);
   // Keep the controller's lexical bindings private so the worker can receive

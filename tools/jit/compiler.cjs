@@ -331,7 +331,7 @@ function compilePages(regions){
   wat=`(func $p${i}(type $pg)(param $c i32)(param $budget i32)(param $n i32)(result i32)`+wat.slice(sig.length,-tail.length).replace('(local $n i32)','')+LINK+tail;
   funcs.push(wat);defs.push({pc:e.pc,thumb:e.thumb,index:i,masks:built.masks.map(v=>v>>>0)});
  }
- const wat=`(module(type $pg(func(param i32 i32 i32)(result i32)))(import "env" "memory"(memory 8192))(import "env" "stale"(func $stale(param i32 i32)))(import "env" "refill"(func $refill(param i32 i32)(result i32)))(import "env" "link"(global $link i32))(table ${funcs.length} funcref)(elem(i32.const 0) func ${funcs.map((_,i)=>'$p'+i).join(' ')})${funcs.join('')}(func(export "run")(param $c i32)(param $budget i32)(param $i i32)(result i32)(call_indirect(type $pg)(local.get $c)(local.get $budget)(i32.const 0)(local.get $i))))`;
+ const wat=`(module(type $pg(func(param i32 i32 i32)(result i32)))(import "env" "memory"(memory 8192))(import "env" "stale"(func $stale(param i32 i32)))(import "env" "refill"(func $refill(param i32 i32)(result i32)))(import "env" "link"(global $link i32))(import "env" "table"(table ${funcs.length} funcref))(elem(i32.const 0) func ${funcs.map((_,i)=>'$p'+i).join(' ')})${funcs.join('')}(func(export "run")(param $c i32)(param $budget i32)(param $i i32)(result i32)(call_indirect(type $pg)(local.get $c)(local.get $budget)(i32.const 0)(local.get $i))))`;
  return {wat,regions:defs};
 }
 
