@@ -127,7 +127,10 @@ async function prepareSeed() {
 }
 const seedPromise = seedEnabled ? prepareSeed() : null;
 class SeedJIT {
-  constructor(module) {
+  // A deferred engine prepares its code but stays off until activate(), so the
+  // guest's own startup never runs cold generated code.
+  constructor(module, {deferred = false} = {}) {
+    this.activated = deferred ? new Promise(resolve => { this.activate = resolve; }) : Promise.resolve();
     this.module = module; this.enabled = false; this.supported = false;
     this.generation = 0; this.functions = new Set(); this.bytes = 0;
     this.mask = this.scratch = this.regions = 0; this.ready = Promise.resolve();
@@ -208,11 +211,14 @@ class SeedJIT {
         await new Promise(resolve => setTimeout(resolve, 0));
         if (generation !== this.generation) return;
       }
+      await this.activated;
+      if (generation !== this.generation) return;
       this.regions = defs.length;
       this.bytes = bytes;
       this.module._emu_jit_enable(1);
     } catch (error) { if (generation === this.generation) this.disable(error); }
   }
+  activate() {}
   pump() {}
   stats() {
     return {enabled: this.enabled, error: this.error, generation: this.generation,
