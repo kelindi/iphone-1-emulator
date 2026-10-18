@@ -6,8 +6,12 @@ const op=(name,...args)=>`(${name} ${args.join(' ')})`;
 const add=(a,b)=>op('i32.add',a,b),and=(a,b)=>op('i32.and',a,b),xor=(a,b)=>op('i32.xor',a,b);
 const shl=(a,n)=>op('i32.shl',a,C(n)),shr=(a,n)=>op('i32.shr_u',a,C(n));
 let R,F,FETCH,OFF;
-const reg=n=>L("r"+n);
-const put=(n,x)=>`(local.set $r${n} ${x})`;
+// r0-r14 live in the CPU struct; V8 cannot keep all guest state in host
+// registers, and memory operands spill less than locals across region exits.
+const reg=n=>n===15?L('r15'):`(i32.load offset=${R+n*4} ${L('c')})`;
+const put=(n,x)=>n===15?`(local.set $r15 ${x})`:`(i32.store offset=${R+n*4} ${L('c')} ${x})`;
+// Loop-invariant CPU fields are reloaded at use rather than held live.
+const FE=()=>`(i32.load offset=${FETCH} ${L('c')})`,TG=()=>`(i32.load offset=${OFF[6]} ${L('c')})`,HW=()=>`(i32.load offset=${OFF[10]}(i32.load offset=${OFF[9]} ${L('c')}))`;
 const set=(n,x)=>`(local.set $${n} ${x})`;
 // NZCV live in locals inside a call: N=sign(fN), Z=(fZ==0), C=fC, V=sign(fV).
 const carry=()=>L('fC');
@@ -54,11 +58,11 @@ function span(addr,bytes,load,transactions,n){
  s+=set('entry',add(add(L('c'),C(OFF[load?4:5])),op('i32.mul',slot,C(OFF[11]))));
  s+=set('p',`(i32.load ${L('entry')})`);
  s+=`(if(i32.ne(i32.load offset=4 ${L('entry')})(i32.or(i32.and ${L('addr')}${C(~1023)})${priv}))(then ${fail(6)}))`;
- s+=`(if(i32.ne(i32.load offset=8 ${L('entry')})${L('tg')})(then ${fail(6)}))`;
+ s+=`(if(i32.ne(i32.load offset=8 ${L('entry')})${TG()})(then ${fail(6)}))`;
  s+=`(if(i32.eqz ${L('p')})(then ${fail(6)}))`;
- if(!load)s+=`(if(i32.eqz ${L('hw')})(then ${fail(6)}))`;
+ if(!load)s+=`(if(i32.eqz ${HW()})(then ${fail(6)}))`;
  s+=set('p',add(L('p'),and(L('addr'),C(1023))));
- if(!load)s+=`(if(i32.and(i32.lt_u ${L('p')}(i32.add ${L('fetch')}${C(1024)}))(i32.gt_u(i32.add ${L('p')}${C(bytes)})${L('fetch')}))(then ${fail(7)}))`;
+ if(!load)s+=`(if(i32.and(i32.lt_u ${L('p')}(i32.add ${FE()}${C(1024)}))(i32.gt_u(i32.add ${L('p')}${C(bytes)})${FE()}))(then ${fail(7)}))`;
  s+=set(load?'rh':'wh',`(i64.add ${L(load?'rh':'wh')}(i64.const ${transactions}))`);
  return s;
 }
@@ -259,8 +263,8 @@ function compileRegion(e){
  let blocks=[];for(const head of [...heads].sort((a,b)=>a-b)){let ops=[],pc=head;while(code.has(pc)){ops.push(code.get(pc));if(code.get(pc).stop||ops.length===16)break;pc+=width;if(heads.has(pc))break;}if(ops.length)blocks.push({head,ops});}
  if(!blocks.length)return null;
  const labels=new Map();blocks.forEach((b,i)=>b.ops.forEach(c=>labels.set((c.pc-e.pc)/width,'$case'+i))); let body='';
- for(let n=0;n<16;n++)body+=put(n,`(i32.load offset=${R+n*4} ${L('c')})`);
- body+=set('f',`(i32.load offset=${F} ${L('c')})`)+unpack()+set('priv',op('i32.ne',and(L('f'),C(31)),C(16)))+set('pofs',op('i32.mul',L('priv'),C(DREAD_ENTRIES/2)))+set('fetch',`(i32.load offset=${FETCH} ${L('c')})`)+set('tg',`(i32.load offset=${OFF[6]} ${L('c')})`)+set('hw',`(i32.load offset=${OFF[10]}(i32.load offset=${OFF[9]} ${L('c')}))`);
+ body+=put(15,`(i32.load offset=${R+60} ${L('c')})`);
+ body+=set('f',`(i32.load offset=${F} ${L('c')})`)+unpack()+set('priv',op('i32.ne',and(L('f'),C(31)),C(16)))+set('pofs',op('i32.mul',L('priv'),C(DREAD_ENTRIES/2)));
  body+=`(block $done(loop $run
  (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))
  (if(i32.ne(i32.and ${reg(15)}${C(~1023)})${C(e.pc)})(then(local.set $why(i32.const 2))(br $done)))
@@ -283,7 +287,7 @@ function compileRegion(e){
    const width=e.thumb?2:4,bytes=[];for(const c of b.ops)for(let k=0;k<width;k++)bytes.push(c.w>>>(8*k)&255);
    for(let i=0;i<bytes.length;){const size=bytes.length-i>=8?8:bytes.length-i>=4?4:2,at=(b.ops[0].pc&1023)+i;let v=0n;for(let k=size-1;k>=0;k--)v=v<<8n|BigInt(bytes[i+k]);
     const want=size===8?`(i64.const ${BigInt.asIntN(64,v)})`:C(Number(v)),load=size===8?'i64.load':size===4?'i32.load':'i32.load16_u';
-    body+=`(if(${size===8?'i64':'i32'}.ne(${load} offset=${at} ${L('fetch')})${want})(then(local.set $why(i32.const 5))(br $done)))`;i+=size;}
+    body+=`(if(${size===8?'i64':'i32'}.ne(${load} offset=${at} ${FE()})${want})(then(local.set $why(i32.const 5))(br $done)))`;i+=size;}
    body+=`(local.set ${vg}(i64.or(local.get ${vg})${vb}))))`;
    body+=`(loop $L${bi}(block $tail_bad${bi} `;for(let i=b.ops.length-1;i>=0;i--)body+=`(block $tail${bi}_${i} `;
    body+=`(br_if $tail${bi}_0(i32.eq ${reg(15)}${C(b.head)}))(br_table ${b.ops.map((_,i)=>'$tail'+bi+'_'+i).join(' ')} $tail_bad${bi}(i32.shr_u(i32.sub ${reg(15)}${C(b.head)})${C(e.thumb?1:2)}))`;
@@ -301,10 +305,10 @@ function compileRegion(e){
  }
  body+=')(local.set $why(i32.const 4))(br $done)))';
  for(const [o,v] of [[OFF[7],'rh'],[OFF[8],'wh']])body+=`(i64.store offset=${o} ${L('c')}(i64.add(i64.load offset=${o} ${L('c')})${L(v)}))`;
- for(let n=0;n<16;n++)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
+ body+=`(i32.store offset=${R+60} ${L('c')}${reg(15)})`;
  body+=`(i32.store offset=${F} ${L('c')}${packed()})`;body+=`(if(i32.eq ${L('why')}${C(5)})(then(call $stale ${C(e.pc)}${C(e.thumb?1:0)})))`+L('n');
  let masks=Array(16).fill(0);for(const head of code.keys()){let bit=(head-e.pc)/width;masks[bit>>>5]|=1<<(bit&31);}
- return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)(local $fs i32)(local $e i32)(local $sa f32)(local $sb f32)(local $sz f32)(local $da f64)(local $db f64)(local $dz f64)(local $ua i64)(local $ub i64)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
+ return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) (local $r15 i32)(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)(local $fs i32)(local $e i32)(local $sa f32)(local $sb f32)(local $sz f32)(local $da f64)(local $db f64)(local $dz f64)(local $ua i64)(local $ub i64)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
 }
 
 /* Linked regions: every region is one function in a shared seed table. When

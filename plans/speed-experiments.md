@@ -765,3 +765,21 @@ Final seed (extend-ops + coverage + vfp-subset, 27.4 MB). Three interleaved `ben
 | 3 | 58.2 | 100.9 | 108.3 | +7.3% |
 
 The median gain is +7.3%. No C runtime change: `web/dist` is byte-identical to the base.
+
+## Guest registers in memory instead of locals (2026-10-18)
+
+Before translating whole guest functions, region-edge overhead was measured. 100M instructions make about 6.2M region entries (3.4M from C, 2.7M tail links). A diagnostic seed that doubled every entry/exit register load and store was only 2–6% slower, so keeping registers live across functions could gain about 5% at most.
+
+V8 profiling (`--profiling-funcs` build) put about 65% of run time in the seed and 35% in C, spread thin: the hottest region was 3.4% of seed time. TurboFan code for one hot region had 6,490 instructions, 1,930 of them touching stack spill slots. Sixteen guest registers, NZCV, the budget and the cached fetch/generation/write-gate values exceed the x86-64 register file, so each guest operation cost roughly 68 host instructions.
+
+The seed now reads and writes r0–r14 straight from `arm_cpu_t` (r15 stays a local for dispatch). The fetch-block pointer, `tlb_gen` and the `host_ram_write` gate are reloaded at use instead of being held in locals. Privilege stays hoisted: recomputing it from a spilled CPSR was no faster. Region entry and exit now move only r15.
+
+Warm medians on `bench:jit` (M instructions/s):
+
+| Run | interpreter | previous seed | memory registers | + reload invariants | gain |
+|---|---|---|---|---|---|
+| 1 | 59.4 | 120.7 | 123.2 | 132.3 | +9.6% |
+| 2 | 59.8 | 117.9 | – | 132.2 | +12.1% |
+| 3 (final seed) | 60.7 | 116.4 | – | 131.7 | +13.1% |
+
+The final seed is about 2.17× the interpreter once warm. Spill-slot references in the sampled hot region fell from 1,930 to 1,201. Keeping the read/write hit counters in memory as well made no difference, so they stay in locals. The 100M and 300M replays match the interpreter's full machine snapshot byte for byte, with the same 5.78M and 21.9M generated calls. There is no C change.
