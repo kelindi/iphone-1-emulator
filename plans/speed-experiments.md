@@ -714,3 +714,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+**Block shape (rejected, 2026-10-18).** `compileRegion` variants, each measured with interleaved `bench:jit` passes (100M instructions) on one VM:
+- max ops per block 8 / 32 / 64 instead of 16;
+- 128 blocks per `br_table` group instead of 64 (no region has more than 128 blocks, so 128 and 256 give the same seed);
+- linking constant successors that lie before the current block (a `loop` around each group's dispatch, so a backward edge reruns only that group's `br_table`) and successors in other groups (`br $groupK` forward, a `loop` around the top-level dispatch for earlier groups).
+
+All warm medians stayed within the VM's run-to-run noise (about ±3%) and none beat the baseline. Final interleaved runs: base 114.5, backward+cross-group links 113.5, 64 ops 109.7 M/s (interpreter 61.2), and base 109.1 vs links 108.5 M/s (interpreter 49.1), so about -0.5 to -1%. The linked variant passes the 100M and 300M snapshot-equivalence replays. Why it doesn't help, from counters added to a test seed (100M, base): block ends are 17.2M self-loops (already a direct `br`), 6.2M linked forward edges and 6.9M redispatches through `$run`. Backward and cross-group links turn only 1.76M of those redispatches into direct branches, saving a few instructions each. A CPU profile puts about 57% of warm time in the C runtime (`emu.wasm`) and about 30% in the seed. The block layout inside the seed is not the bottleneck; the remaining cost is per-op code and C round trips (3.82M calls per 100M).
