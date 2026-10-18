@@ -177,8 +177,11 @@ function compileRegion(e){
  let blocks=[];for(const head of [...heads].sort((a,b)=>a-b)){let ops=[],pc=head;while(code.has(pc)){ops.push(code.get(pc));if(code.get(pc).stop||ops.length===16)break;pc+=width;if(heads.has(pc))break;}if(ops.length)blocks.push({head,ops});}
  if(!blocks.length)return null;
  const labels=new Map();blocks.forEach((b,i)=>b.ops.forEach(c=>labels.set((c.pc-e.pc)/width,'$case'+i))); let body='';
- for(let n=0;n<16;n++)body+=put(n,`(i32.load offset=${R+n*4} ${L('c')})`);
- body+=set('f',`(i32.load offset=${F} ${L('c')})`)+unpack()+set('priv',op('i32.ne',and(L('f'),C(31)),C(16)))+set('pofs',op('i32.mul',L('priv'),C(DREAD_ENTRIES/2)))+set('fetch',`(i32.load offset=${FETCH} ${L('c')})`)+set('tg',`(i32.load offset=${OFF[6]} ${L('c')})`)+set('hw',`(i32.load offset=${OFF[10]}(i32.load offset=${OFF[9]} ${L('c')}))`);
+ // Only registers the region touches cross the CPU struct; r15 always does.
+ const touched=new Set([15]),written=new Set([15]);
+ for(const c of code.values())for(const m of c.body.matchAll(/\(local\.(get|set) \$r(\d+)[ )]/g)){touched.add(+m[2]);if(m[1]==='set')written.add(+m[2]);}
+ const regs=[...touched].sort((a,b)=>a-b),stores=[...written].sort((a,b)=>a-b);
+ body=regs.map(n=>put(n,`(i32.load offset=${R+n*4} ${L('c')})`)).join('')+set('f',`(i32.load offset=${F} ${L('c')})`)+unpack()+set('priv',op('i32.ne',and(L('f'),C(31)),C(16)))+set('pofs',op('i32.mul',L('priv'),C(DREAD_ENTRIES/2)))+set('fetch',`(i32.load offset=${FETCH} ${L('c')})`)+set('tg',`(i32.load offset=${OFF[6]} ${L('c')})`)+set('hw',`(i32.load offset=${OFF[10]}(i32.load offset=${OFF[9]} ${L('c')}))`);
  body+=`(block $done(loop $run
  (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))
  (if(i32.ne(i32.and ${reg(15)}${C(~1023)})${C(e.pc)})(then(local.set $why(i32.const 2))(br $done)))
@@ -219,7 +222,7 @@ function compileRegion(e){
  }
  body+=')(local.set $why(i32.const 4))(br $done)))';
  for(const [o,v] of [[OFF[7],'rh'],[OFF[8],'wh']])body+=`(i64.store offset=${o} ${L('c')}(i64.add(i64.load offset=${o} ${L('c')})${L(v)}))`;
- for(let n=0;n<16;n++)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
+ for(const n of stores)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
  body+=`(i32.store offset=${F} ${L('c')}${packed()})`;body+=`(if(i32.eq ${L('why')}${C(5)})(then(call $stale ${C(e.pc)}${C(e.thumb?1:0)})))`+L('n');
  let masks=Array(16).fill(0);for(const head of code.keys()){let bit=(head-e.pc)/width;masks[bit>>>5]|=1<<(bit&31);}
  return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};

@@ -714,3 +714,23 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### Register liveness per region (2026-10-18)
+
+**Idea.** Every region call loaded all 16 guest registers in its prologue and stored all 16 in its epilogue. Calls average about 25 instructions (3.82M calls per 95M compiled instructions), so the compiler now loads only the registers the region's ops read or write and stores only the ones they write. r15 and the packed CPSR are always loaded and stored. Registers that are only written still get loaded, so an early exit stores their unchanged value. CPU-struct offsets are already `offset=` immediates on the `$c` parameter, so there was nothing more to cache there.
+
+**Effect on the seed.** Per call, the average drops from 16 loads and 16 stores to 13.1 loads and 12.6 stores. The seed shrinks by 45 KB (24.61 MB to 24.56 MB). Most 1 KB regions touch nearly every register.
+
+**Correctness.** 100M and 300M full machine snapshot replays match the interpreter. Unit tests pass.
+
+**Speed.** Six interleaved `bench:jit` runs (`PASSES=0,1,2,0,1,2,0,1,2,0,1,2,1,2`), one of them with the seed order swapped. Per-run warm-median gains were -2.3, +0.4, +7.1, -7.7, +5.9 and -0.9%. Pooled over all 24 warm passes:
+
+| Configuration | Warm median |
+| --- | --- |
+| Interpreter | 61.3 M/s |
+| Baseline seed | 109.4 M/s |
+| Liveness seed | 110.2 M/s |
+
+That is +0.7%, well inside run-to-run noise. Cold first passes depend on run order: whichever seed runs first is about 54 M/s, and the second is 44–51 M/s. So there is no cold effect either.
+
+**Verdict.** Exact, but no measurable gain. Saving about 6.5 memory ops per call is about 0.25 ops per guest instruction, which is small next to the per-op cost (budget check, r15 store, counter increment, guarded memory access).
