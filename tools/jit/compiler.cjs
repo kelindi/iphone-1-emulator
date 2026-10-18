@@ -46,17 +46,18 @@ const DREAD_ENTRIES=1024; // ARM_DREAD_ENTRIES; jit-runtime.c asserts it.
 function span(addr,bytes,load,transactions,n){
  let fail=reason=>`(local.set $why ${C(reason)})(br $done)`;
  let s=set('addr',addr);
- // Aligned accesses of at most a word cannot leave their 1 KiB block.
- if(bytes>1)s+=`(if(i32.and ${L('addr')}${C(bytes>=4?3:1)})(then ${fail(6)}))`;
- if(bytes>4)s+=`(if(i32.gt_u(i32.add(i32.and ${L('addr')}${C(1023)})${C(bytes)})${C(1024)})(then ${fail(6)}))`;
- // The mode bits are invariant within a call, so privilege is hoisted to entry.
+ // One combined guard keeps a single exit edge per access; every failing
+ // condition takes the same exit, and the guard has no side effects.
  const priv=L('priv'),slot=and(add(shr(L('addr'),10),L('pofs')),C(DREAD_ENTRIES-1));
  s+=set('entry',add(add(L('c'),C(OFF[load?4:5])),op('i32.mul',slot,C(OFF[11]))));
  s+=set('p',`(i32.load ${L('entry')})`);
- s+=`(if(i32.ne(i32.load offset=4 ${L('entry')})(i32.or(i32.and ${L('addr')}${C(~1023)})${priv}))(then ${fail(6)}))`;
- s+=`(if(i32.ne(i32.load offset=8 ${L('entry')})${L('tg')})(then ${fail(6)}))`;
- s+=`(if(i32.eqz ${L('p')})(then ${fail(6)}))`;
- if(!load)s+=`(if(i32.eqz ${L('hw')})(then ${fail(6)}))`;
+ let bad=op('i32.or',op('i32.ne',`(i32.load offset=4 ${L('entry')})`,op('i32.or',and(L('addr'),C(~1023)),priv)),op('i32.ne',`(i32.load offset=8 ${L('entry')})`,L('tg')));
+ bad=op('i32.or',bad,op('i32.eqz',L('p')));
+ // Aligned accesses of at most a word cannot leave their 1 KiB block.
+ if(bytes>1)bad=op('i32.or',bad,and(L('addr'),C(bytes>=4?3:1)));
+ if(bytes>4)bad=op('i32.or',bad,op('i32.gt_u',add(and(L('addr'),C(1023)),C(bytes)),C(1024)));
+ if(!load)bad=op('i32.or',bad,op('i32.eqz',L('hw')));
+ s+=`(if ${bad}(then ${fail(6)}))`;
  s+=set('p',add(L('p'),and(L('addr'),C(1023))));
  if(!load)s+=`(if(i32.and(i32.lt_u ${L('p')}(i32.add ${L('fetch')}${C(1024)}))(i32.gt_u(i32.add ${L('p')}${C(bytes)})${L('fetch')}))(then ${fail(7)}))`;
  s+=set(load?'rh':'wh',`(i64.add ${L(load?'rh':'wh')}(i64.const ${transactions}))`);
@@ -168,6 +169,11 @@ function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
  else return emitBase(insn,pc,thumb,n);
  return {body,stop};
 }
+function exact(prev,pc){
+ const at=put(15,C(pc)),sets=prev.body.split('(local.set $r15 ').length-1;
+ if(prev.stop||!sets||prev.body.split(at).length-1!==sets)return false;
+ return prev.body.endsWith(at)||(sets===2&&prev.body.endsWith(`${at})(else ${at}))`));
+}
 function compileRegion(e){
  const code=new Map();for(const [pc,w] of e.ops){let c=emit(w,pc,e.thumb,'n');if(c){c.body=c.body.replaceAll(`(i32.store offset=${F} ${L('c')} ${L('f')})`,'').replaceAll('(return (local.get $n))','(br $done)');code.set(pc,{...c,pc,w});}}
  const width=e.thumb?2:4,heads=new Set();
@@ -205,7 +211,9 @@ function compileRegion(e){
    body+=`(local.set ${vg}(i64.or(local.get ${vg})${vb}))))`;
    body+=`(loop $L${bi}(block $tail_bad${bi} `;for(let i=b.ops.length-1;i>=0;i--)body+=`(block $tail${bi}_${i} `;
    body+=`(br_if $tail${bi}_0(i32.eq ${reg(15)}${C(b.head)}))(br_table ${b.ops.map((_,i)=>'$tail'+bi+'_'+i).join(' ')} $tail_bad${bi}(i32.shr_u(i32.sub ${reg(15)}${C(b.head)})${C(e.thumb?1:2)}))`;
-   for(const c of b.ops)body+=`) (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))`+put(15,C(c.pc))+c.body+set('n',add(L('n'),C(1)));
+   // r15 already holds an op's pc when it is dispatched or falls through
+   // from a predecessor whose every r15 write is that pc.
+   b.ops.forEach((c,i)=>{body+=`) (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))`;if(!i||!exact(b.ops[i-1],c.pc))body+=put(15,C(c.pc));body+=c.body+set('n',add(L('n'),C(1)));});
    // Statically known successors in this group skip the region dispatch.
    const last=b.ops[b.ops.length-1],seen=new Set();
    for(const m of last.body.matchAll(/\(local.set \$r15 \(i32.const (-?\d+)\)\)/g)){const t=(+m[1])>>>0;if(seen.has(t))continue;seen.add(t);
