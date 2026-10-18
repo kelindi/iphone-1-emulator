@@ -130,7 +130,7 @@ class SeedJIT {
   constructor(module) {
     this.module = module; this.enabled = false; this.supported = false;
     this.generation = 0; this.functions = new Set(); this.bytes = 0;
-    this.mask = this.regions = 0; this.ready = Promise.resolve();
+    this.mask = this.scratch = this.regions = 0; this.ready = Promise.resolve();
     const required = ['_emu_jit_enable', '_emu_jit_reset',
       '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_runner',
       '_emu_jit_link', '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_refill', '_malloc', '_free', 'addFunction', 'removeFunction'];
@@ -155,7 +155,8 @@ class SeedJIT {
     this.error = String(error.stack || error); this.enabled = false;
     this.reset();
     if (this.mask) this.module._free(this.mask);
-    this.mask = 0;
+    if (this.scratch) this.module._free(this.scratch);
+    this.mask = this.scratch = 0;
     console.error('Seed disabled:', this.error);
   }
   async install(generation) {
@@ -191,6 +192,21 @@ class SeedJIT {
         new Uint32Array(this.module.jitMemory.buffer, this.mask, 16).set(r.masks);
         if (!this.module._emu_jit_install(r.pc, r.thumb ? 1 : 0, r.index, this.mask))
           throw Error('Seed table admission');
+      }
+      // V8 compiles each seed function on its first call. Calling every region with
+      // a zero budget on a zeroed scratch CPU compiles it without guest effects, in
+      // short slices, so the guest never stalls on compilation once enabled.
+      const run = instance.exports.run, size = Math.max(...abi.offsets) + 64;
+      if (!this.scratch) {
+        this.scratch = this.module._malloc(size);
+        if (!this.scratch) throw Error('Seed scratch allocation failed');
+        new Uint8Array(this.module.jitMemory.buffer, this.scratch, size).fill(0);
+      }
+      for (let i = 0; i < defs.length;) {
+        const began = performance.now();
+        do run(this.scratch, 0, i++); while (i < defs.length && performance.now() - began < 4);
+        await new Promise(resolve => setTimeout(resolve, 0));
+        if (generation !== this.generation) return;
       }
       this.regions = defs.length;
       this.bytes = bytes;
