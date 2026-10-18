@@ -735,3 +735,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 | 4 | 59.8 | 107.2 | 112.0 | +4.5% |
 
 The median of all 16 warm passes per seed is 107.9 for base and 110.0 for the candidate, about +2%, which is inside the VM's noise. The first cold pass is slightly slower (46.5–50.1 vs 51.9–55.6 M/s), probably because there is 1.6 MB more to compile. This is a small gain: the base seed already covered about 95% of retired instructions in these workloads. The remaining exits are dominated by unsupported opcodes and memory misses (see the census above), not by missing regions.
+
+### VFP subset in linked regions (2026-10-18)
+
+`tools/jit/compiler.cjs` now compiles VMOV core<->single/double (and register pairs), VMRS/VMSR FPSCR (incl. `APSR_nzcv`), VMOV/VABS/VNEG register, VCVT f32<->f64, VADD/VSUB/VMUL/VNMUL/VDIV and VMLA/VMLS/VNMLA/VNMLS (two roundings, no fusion), and VCMP/VCMPE, mirroring `core/src/arm/vfp.c` as built for wasm (no host exception flags; FZ input/output flushing sets IDC/UFC; VCMP IOC from signalling/quiet NaN). The instruction exits to the interpreter before writing anything when VFP is unavailable (CPACR/privilege/FPEXC.EN), when FPSCR has RMode, trap enables, LEN or STRIDE set, or when a result is NaN (payload/DN handled by the interpreter). Retained positions 167,889 -> 170,167; bench generated instructions +0.75%, seed calls -8%.
+
+Gate: 100M and 300M replays pass full machine snapshot equivalence; unit tests pass (no C changes). Two interleaved `bench:jit` runs: interpreter 62.6 / 61.1, base 105.1 / 103.5, candidate 106.6 / 104.6 warm MIPS -> +1.4% / +1.1%, within pass-to-pass noise (passes span ~90-116). Small, consistent but not decisive win.
