@@ -57,9 +57,10 @@ function span(addr,bytes,load,transactions,n){
  const priv=L('priv'),slot=and(add(shr(L('addr'),10),L('pofs')),C(DREAD_ENTRIES-1));
  s+=set('entry',add(add(L('c'),C(OFF[load?4:5])),op('i32.mul',slot,C(OFF[11]))));
  s+=set('p',`(i32.load ${L('entry')})`);
- s+=`(if(i32.ne(i32.load offset=4 ${L('entry')})(i32.or(i32.and ${L('addr')}${C(~1023)})${priv}))(then ${fail(6)}))`;
- s+=`(if(i32.ne(i32.load offset=8 ${L('entry')})${TG()})(then ${fail(6)}))`;
- s+=`(if(i32.eqz ${L('p')})(then ${fail(6)}))`;
+ // Tag and generation are adjacent, so one 64-bit compare checks both. A filled
+ // entry always has a host pointer, and a zeroed one has generation 0, which
+ // the runtime never runs regions under.
+ s+=`(if(i64.ne(i64.load offset=4 align=4 ${L('entry')})(i64.or(i64.extend_i32_u(i32.or(i32.and ${L('addr')}${C(~1023)})${priv}))(i64.shl(i64.extend_i32_u ${TG()})(i64.const 32))))(then ${fail(6)}))`;
  if(!load)s+=`(if(i32.eqz ${HW()})(then ${fail(6)}))`;
  s+=set('p',add(L('p'),and(L('addr'),C(1023))));
  if(!load)s+=`(if(i32.and(i32.lt_u ${L('p')}(i32.add ${FE()}${C(1024)}))(i32.gt_u(i32.add ${L('p')}${C(bytes)})${FE()}))(then ${fail(7)}))`;

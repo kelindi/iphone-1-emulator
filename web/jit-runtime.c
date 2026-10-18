@@ -149,7 +149,9 @@ unsigned arm_wasm_jit_try(arm_cpu_t *c, unsigned limit) {
         region_t *r = region_find(pc, thumb, false);
         unsigned bit = (pc & (REGION_BYTES - 1u)) >> (thumb ? 1 : 2);
         if (!r || !(r->supported[bit >> 5] & (1u << (bit & 31u)))) break;
-        if (c->abort_pending || !arm_mode_is_valid(c->cpsr) ||
+        /* Generated data-cache probes rely on tlb_gen != 0: a zeroed entry
+         * then never matches, so they skip the NULL host-pointer check. */
+        if (c->abort_pending || !c->tlb_gen || !arm_mode_is_valid(c->cpsr) ||
             (c->fiq_line && !(c->cpsr & ARM_CPSR_F)) ||
             (c->irq_line && !(c->cpsr & ARM_CPSR_I)) ||
             (pc & (thumb ? 1u : 3u)) ||

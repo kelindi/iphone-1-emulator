@@ -783,3 +783,5 @@ Warm medians on `bench:jit` (M instructions/s):
 | 3 (final seed) | 60.7 | 116.4 | – | 131.7 | +13.1% |
 
 The final seed is about 2.17× the interpreter once warm. Spill-slot references in the sampled hot region fell from 1,930 to 1,201. Keeping the read/write hit counters in memory as well made no difference, so they stay in locals. The 100M and 300M replays match the interpreter's full machine snapshot byte for byte, with the same 5.78M and 21.9M generated calls. There is no C change.
+
+Follow-up: each data-cache probe now checks the tag and generation with one unaligned 64-bit compare and drops the NULL host-pointer test. A filled entry always has a host pointer, a zeroed entry has generation 0, and the runtime now refuses to enter regions while `tlb_gen` is 0. Interleaved warm medians were 136.5 → 139.5 M/s (+2.2%, 2.27× the interpreter's 61.4), and the 300M replay stays exact.
