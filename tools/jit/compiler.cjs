@@ -91,11 +91,12 @@ function emitBase(insn,pc,thumb,n){
      if(insn&0x200000)body+=put(rn,add(L('a'),C(U?4*count:-4*count)));
      if(withPc){body+=interwork();next=and(L('r'),C(~1));stop=true;}
    }
-   else if((insn&0x0c000000)===0 && (insn&0x01900000)!==0x01000000 && !((insn&0x0e000000)===0&&(insn&0x10)) && rd!==15){
+   else if((insn&0x0c000000)===0 && (insn&0x01900000)!==0x01000000 && (!((insn&0x0e000000)===0&&(insn&0x10))||((insn&0x90)===0x10&&rn!==15&&(insn&15)!==15&&(insn>>>8&15)!==15)) && rd!==15){
      let b,cy=carry();
-     if(insn&0x2000000){let rot=(insn>>>8&15)*2,imm=insn&255;imm=rot?((imm>>>rot)|(imm<<(32-rot))):imm;b=C(imm);if(rot)cy=C(imm>>>31);}
+     if(!(insn&0x2000000)&&(insn&0x10)){[b,cy]=regShift(reg(insn&15),insn>>>5&3,reg(insn>>>8&15));body=set('sv',b[0])+set('s',b[1]);b=b[2];}
+     else if(insn&0x2000000){let rot=(insn>>>8&15)*2,imm=insn&255;imm=rot?((imm>>>rot)|(imm<<(32-rot))):imm;b=C(imm);if(rot)cy=C(imm>>>31);}
      else {let amount=insn>>>7&31,type=insn>>>5&3,v=rr(insn&15);[b,cy]=shift(v,type,amount);}
-     body=alu(code,rr(rn),b,S,rd,cy);
+     body+=alu(code,rr(rn),b,S,rd,cy);
    }else return null;
    if(cond!==14)body=`(if ${condition(cond)}(then ${body}${put(15,next)})(else ${put(15,C(pc+4))}))`;
    else body+=put(15,next);
@@ -109,7 +110,8 @@ function emitBase(insn,pc,thumb,n){
    }else if(insn<0x2000){let b=(insn&0x400)?C(insn>>>6&7):reg(insn>>>6&7);body=alu((insn&0x200)?2:4,reg(rs),b,true,rd);}
    else if(insn<0x4000){const target=insn>>>8&7,code=[13,10,4,2][insn>>>11&3];body=alu(code,reg(target),C(insn&255),true,target);}
    else if((insn&0xfc00)===0x4000){const code=insn>>>6&15,mapping={0:0,1:1,5:5,6:6,8:8,10:10,11:11,12:12,14:14,15:15};
-     if(code===9)body=alu(2,C(0),reg(rs),true,rd);
+     if(code===2||code===3||code===4||code===7){const [v,cy]=regShift(reg(rd),[0,0,0,1,2,0,0,3][code],reg(rs));body=set('sv',v[0])+set('s',v[1])+alu(13,C(0),v[2],true,rd,cy);}
+     else if(code===9)body=alu(2,C(0),reg(rs),true,rd);
      else if(code===13)body=set('r',op('i32.mul',reg(rd),reg(rs)))+set('fN',L('r'))+set('fZ',L('r'))+put(rd,L('r'));
      else if(code in mapping)body=alu(mapping[code],reg(rd),reg(rs),true,rd);else return null;
    }else if((insn&0xfc00)===0x4400){let target=rd|(insn>>>4&8),source=rs|(insn>>>3&8),code=insn>>>8&3;
@@ -140,6 +142,18 @@ else if(type===1){x=amount?shr(v,amount):C(0);cy=and(shr(v,amount?amount-1:31),C
 else if(type===2){x=op('i32.shr_s',v,C(amount||31));cy=and(shr(v,amount?amount-1:31),C(1));}
 else if(amount){x=op('i32.rotr',v,C(amount));cy=and(shr(v,amount-1),C(1));}
 else{x=op('i32.or',shl(carry(),31),shr(v,1));cy=and(v,C(1));}return[x,cy];}
+// Register-specified shift (amount = Rs[7:0]); Rm goes to $sv and the amount to $s.
+// Returns [[Rm, amount, shifted value], carry-out]. Amount 0 leaves value and C unchanged.
+function regShift(v,type,amt){
+ const sv=L('sv'),s=L('s'),lt32=op('i32.lt_u',s,C(32)),bit=k=>and(op('i32.shr_u',sv,k),C(1));
+ const zero=x=>op('select',carry(),x,op('i32.eqz',s));
+ let x,cy;
+ if(type===0){x=op('select',op('i32.shl',sv,s),C(0),lt32);cy=zero(op('select',bit(op('i32.sub',C(32),s)),C(0),op('i32.le_u',s,C(32))));}
+ else if(type===1){x=op('select',op('i32.shr_u',sv,s),C(0),lt32);cy=zero(op('select',bit(op('i32.sub',s,C(1))),C(0),op('i32.le_u',s,C(32))));}
+ else if(type===2){x=op('i32.shr_s',sv,op('select',s,C(31),lt32));cy=zero(bit(op('i32.sub',op('select',s,C(32),lt32),C(1))));}
+ else{x=op('i32.rotr',sv,s);cy=zero(bit(op('i32.sub',s,C(1))));}
+ return [[v,and(amt,C(255)),x],cy];
+}
 function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
  if(!thumb){const cond=insn>>>28,rn=insn>>>16&15,rd=insn>>>12&15,rm=insn&15,rr=r=>r===15?C(pc+8):reg(r);if(cond===15)return emitBase(insn,pc,thumb,n);
   if((insn&0x0f200e00)===0x0d000a00){const D=!!(insn&0x400000),dbl=!!(insn&0x100),load=!!(insn&0x100000),U=!!(insn&0x800000),first=(rd*2)+(dbl?0:+D);if(dbl&&D)return null;
@@ -222,7 +236,7 @@ function compileRegion(e){
  for(let n=0;n<16;n++)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
  body+=`(i32.store offset=${F} ${L('c')}${packed()})`;body+=`(if(i32.eq ${L('why')}${C(5)})(then(call $stale ${C(e.pc)}${C(e.thumb?1:0)})))`+L('n');
  let masks=Array(16).fill(0);for(const head of code.keys()){let bit=(head-e.pc)/width;masks[bit>>>5]|=1<<(bit&31);}
- return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
+ return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)(local $s i32)(local $sv i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
 }
 
 /* Linked regions: every region is one function in a shared seed table. When

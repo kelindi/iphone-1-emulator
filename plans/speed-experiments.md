@@ -714,3 +714,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### Register-specified shifts (2026-10-18)
+
+ARM data-processing with a register shift amount (`op Rd, Rn, Rm, LSL/LSR/ASR/ROR Rs`) and the Thumb register shifts (`LSLS/LSRS/ASRS/RORS Rd, Rs`) are now compiled instead of exiting. `regShift` in `tools/jit/compiler.cjs` copies Rm and `Rs & 255` into locals and builds the value and carry-out from `select`s, matching `barrel_shift(..., reg_amount=true)`: amount 0 leaves value and C unchanged; LSL/LSR give `0` with carry bit `32-s`/`s-1` up to 32 and carry 0 above; ASR saturates at 31 with carry = sign for 32 and above; ROR uses `rotr` (masked to 5 bits) with carry bit `(s-1)&31`. Any R15 operand stays unsupported (the interpreter treats those as UNDEFINED). A wasm-vs-reference fuzz over all four types, amounts 0–299 (with high bits set in Rs), 209 values and both C inputs found no mismatches; 100M and 300M replay snapshot equivalence pass.
+
+**Result: neutral.** The seed input holds 193 ARM and 281 Thumb such positions; generated instructions go from 95.28M to 95.45M per 100M (+0.18%) and seed calls from 3.82M to 3.69M (-3.6%). Interleaved warm medians (100M, `HOST_CLOCK` bench): base 78.2 vs candidate 78.2 M/s (interpreter 45.8), +0.0%; an earlier run gave 77.2 vs 79.1 (+2.4%). Both are within the VM's noise. Kept because it is exact and removes an exit kind, but it does not move throughput.
