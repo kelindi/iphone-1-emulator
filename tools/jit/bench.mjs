@@ -38,7 +38,7 @@ for (const config of (process.env.PASSES || '0,1,0,1,0,1,0,1').split(',').map(Nu
   if (config) {
     const {compiled, defs} = seeds[config - 1];
     const instance = await WebAssembly.instantiate(compiled, {env: {memory: m.jitMemory,
-      stale: m._emu_jit_stale, refill: m._emu_jit_refill, link: m._emu_jit_link()}});
+      stale: m._emu_jit_stale, refill: m._emu_jit_refill, excl: m._emu_jit_excl, link: m._emu_jit_link()}});
     const fn = m.addFunction(instance.exports.run, 'iiii'); ids.push(fn);
     if (!m._emu_jit_runner(fn)) throw Error('runner');
     for (const r of defs) {

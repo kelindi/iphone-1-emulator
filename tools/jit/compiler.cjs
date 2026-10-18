@@ -161,6 +161,16 @@ function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
   }else if((insn&0x0fff03f0)===0x06af0070&&rd!==15&&rm!==15){body=put(rd,op('i32.extend8_s',op('i32.rotr',reg(rm),C((insn>>>10&3)*8))));}
   else if((insn&0x0fff0fff)===0x010f0000&&rd!==15){body=put(rd,packed());}
   else if((insn&0x0fff0fff)===0x0e070f5a){body='';}
+  else if((insn&0x0ff00ff0)===0x01900f90){if(rn===15||rd===15)return null;
+   // LDREX: an ordinary cached word load that also tags the monitor.
+   body=span(reg(rn),4,true,1,n)+put(rd,`(i32.load ${L('p')})`)+`(i32.store8 offset=${OFF[16]} ${L('c')}${C(1)})(i32.store offset=${OFF[17]} ${L('c')}${L('addr')})`;}
+  else if((insn&0x0ff00ff0)===0x01800f90){if(rn===15||rd===15||rm===15||rd===rn||rd===rm)return null;
+   // STREX translates for write before consulting the monitor; only a certain
+   // TLB hit (accounted by $excl) stays here, anything else exits first.
+   const miss=`(local.set $why ${C(6)})(br $done)`,xl=`(i32.eqz(call $excl ${L('c')}${L('a')}${L('priv')}))`;
+   body=set('a',reg(rn))+`(if(i32.and ${L('a')}${C(3)})(then ${miss}))`;
+   body+=`(if(i32.and(i32.load8_u offset=${OFF[16]} ${L('c')})(i32.eq(i32.load offset=${OFF[17]} ${L('c')})${L('a')}))(then ${span(L('a'),4,false,1,n)}(if ${xl}(then(local.set $wh(i64.sub ${L('wh')}(i64.const 1)))${miss}))(i32.store ${L('p')}${reg(rm)})${put(rd,C(0))})(else(if ${xl}(then ${miss}))${put(rd,C(1))}))`;
+   body+=`(i32.store8 offset=${OFF[16]} ${L('c')}${C(0)})`;}
   else return emitBase(insn,pc,thumb,n);
   body=cond===14?body+put(15,next):`(if ${condition(cond)}(then ${body}${put(15,next)})(else ${put(15,C(pc+4))}))`;
  }else if((insn&0xf800)===0xe800){body=set('a',add(reg(14),C((insn&2047)*2)))+put(14,C((pc+2)|1))+set('f',and(L('f'),C(~32)))+put(15,and(L('a'),C(~3)));stop=true;}
@@ -244,7 +254,7 @@ function compilePages(regions){
   wat=`(func $p${i}(type $pg)(param $c i32)(param $budget i32)(param $n i32)(result i32)`+wat.slice(sig.length,-tail.length).replace('(local $n i32)','')+LINK+tail;
   funcs.push(wat);defs.push({pc:e.pc,thumb:e.thumb,index:i,masks:built.masks.map(v=>v>>>0)});
  }
- const wat=`(module(type $pg(func(param i32 i32 i32)(result i32)))(import "env" "memory"(memory 8192))(import "env" "stale"(func $stale(param i32 i32)))(import "env" "refill"(func $refill(param i32 i32)(result i32)))(import "env" "link"(global $link i32))(table ${funcs.length} funcref)(elem(i32.const 0) func ${funcs.map((_,i)=>'$p'+i).join(' ')})${funcs.join('')}(func(export "run")(param $c i32)(param $budget i32)(param $i i32)(result i32)(call_indirect(type $pg)(local.get $c)(local.get $budget)(i32.const 0)(local.get $i))))`;
+ const wat=`(module(type $pg(func(param i32 i32 i32)(result i32)))(import "env" "memory"(memory 8192))(import "env" "stale"(func $stale(param i32 i32)))(import "env" "refill"(func $refill(param i32 i32)(result i32)))(import "env" "excl"(func $excl(param i32 i32 i32)(result i32)))(import "env" "link"(global $link i32))(table ${funcs.length} funcref)(elem(i32.const 0) func ${funcs.map((_,i)=>'$p'+i).join(' ')})${funcs.join('')}(func(export "run")(param $c i32)(param $budget i32)(param $i i32)(result i32)(call_indirect(type $pg)(local.get $c)(local.get $budget)(i32.const 0)(local.get $i))))`;
  return {wat,regions:defs};
 }
 

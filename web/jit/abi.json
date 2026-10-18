@@ -1,5 +1,5 @@
 {
-  "revision": 2,
+  "revision": 3,
   "offsets": [
     0,
     68,
@@ -16,8 +16,10 @@
     288,
     280,
     80,
-    284
+    284,
+    274,
+    276
   ],
-  "moduleSha256": "d2f556b579ed492676510cc156f0c7f481ed6d00b6e4a2d0a4bfb1795e458b4b",
-  "regionsSha256": "4f30941218b20418e2ec1386d19c5ffa0bfb256a3855df66cb7d8348a77a5c69"
+  "moduleSha256": "ca0c5d51fd717e20306ddd4515e5718ffb8343a771cbc122bd1001b133e4d9a3",
+  "regionsSha256": "b814dc588955beb3a77100690ec8dc37e11116e276bbc1005f66100e7a69594f"
 }

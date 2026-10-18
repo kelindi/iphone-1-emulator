@@ -9,7 +9,7 @@ const sha=b=>createHash('sha256').update(b).digest('hex');
 function setup(options={}) {
  const events=[], responses=[], pending=[];let timerMs;
  const defs=Buffer.from(options.defsText??'[]');
- const abi={revision:1,offsets:Array.from({length:16},(_,i)=>i),moduleSha256:options.badBinaryHash?'0'.repeat(64):sha(binary),regionsSha256:options.badDefsHash?'0'.repeat(64):sha(defs)};
+ const abi={revision:1,offsets:Array.from({length:18},(_,i)=>i),moduleSha256:options.badBinaryHash?'0'.repeat(64):sha(binary),regionsSha256:options.badDefsHash?'0'.repeat(64):sha(defs)};
  const sandbox={URL,Uint8Array,Uint32Array,ArrayBuffer,TextDecoder,TextEncoder,AbortController,TypeError,console,
   location:{href:'http://phone.test/emu-worker.js'+(options.disabled?'?jit=0':'')},
   crypto:options.noCrypto ? {} : {subtle:{async digest(type,bytes){events.push('hash');if(options.stalledHash)return new Promise(resolve=>pending.push(()=>resolve(webcrypto.subtle.digest(type,bytes))));return webcrypto.subtle.digest(type,bytes);}}},

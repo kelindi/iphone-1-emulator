@@ -35,7 +35,7 @@ function setup(options={}) {
   const defs=options.defs || [region()];
   const binary=bytes('bounded fake seed');
   const definitions=bytes(JSON.stringify(defs));
-  const abi={revision:1,offsets:Array.from({length:16},(_,i)=>i),moduleSha256:hash(Buffer.from(binary)),regionsSha256:hash(Buffer.from(definitions)),...options.abi};
+  const abi={revision:1,offsets:Array.from({length:18},(_,i)=>i),moduleSha256:hash(Buffer.from(binary)),regionsSha256:hash(Buffer.from(definitions)),...options.abi};
   const payloads={'seed.wasm':binary,'regions.json':definitions,'abi.json':bytes(JSON.stringify(abi))};
   const api={jitMemory:memory,HEAPU8:new Uint8Array(memory.buffer),HEAPU32:new Uint32Array(memory.buffer),
     _malloc(n){mallocs++;if(options.mallocFail===mallocs)return 0;const p=ptr;ptr=(ptr+n+7)&~7;allocated.add(p);events.push(['malloc',p,n]);return p;},
@@ -46,7 +46,7 @@ function setup(options={}) {
     addFunction(fn){assert.equal(typeof fn,'function');if(fnIds.has(fn))return fnIds.get(fn);const id=nextId++;active.set(id,fn);fnIds.set(fn,id);events.push(['add',id]);return id;},
     removeFunction(id){assert(active.has(id),`double/unknown remove ${id}`);fnIds.delete(active.get(id));active.delete(id);events.push(['remove',id]);},
     _emu_jit_install(pc,thumb,id){events.push(['install',pc,thumb,id]);admissions++;if(options.installThrow===admissions)throw Error('admission exception');return options.installFail===admissions?0:1;},
-    _emu_jit_runner(fn){events.push(['runner',fn]);return 1;},_emu_jit_link(){return 0;},_emu_jit_refill(){return 1;},_emu_jit_stat(){return 0;},_emu_jit_stale(){},
+    _emu_jit_runner(fn){events.push(['runner',fn]);return 1;},_emu_jit_link(){return 0;},_emu_jit_refill(){return 1;},_emu_jit_excl(){return 0;},_emu_jit_stat(){return 0;},_emu_jit_stale(){},
     ccall(name){if(name==='emu_init')api.jitMemory=memory;events.push(['ccall',name]);return name==='emu_error'?'bad snapshot':0;},
     cwrap(name){return (...args)=>{
       events.push(['api',name,...args]);
@@ -96,7 +96,7 @@ test('module hash mismatch disables optional engine',()=>rejected({abi:{moduleSh
 test('missing module hash disables optional engine',()=>rejected({abi:{moduleSha256:undefined}}));
 test('region hash mismatch disables optional engine',()=>rejected({abi:{regionsSha256:'wrong'}}));
 test('ABI revision mismatch disables optional engine',()=>rejected({abi:{revision:2}}));
-test('ABI offset mismatch disables optional engine',()=>rejected({abi:{offsets:Array(16).fill(0)}}));
+test('ABI offset mismatch disables optional engine',()=>rejected({abi:{offsets:Array(18).fill(0)}}));
 test('false admission reclaims partial table installation',()=>rejected({defs:[region(),region(1024,2)],installFail:2}));
 test('throwing admission reclaims the just-created table slot',()=>rejected({defs:[region(),region(1024,2)],installThrow:2}));
 test('duplicate region key is rejected',()=>rejected({defs:[region(),region(0,2)]}));

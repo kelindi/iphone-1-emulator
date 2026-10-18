@@ -12,12 +12,13 @@
 #define LINK_SLOTS 4096u
 #define REGION_BYTES 1024u
 #define MASK_WORDS 16u
-#define JIT_ABI_REVISION 2u
+#define JIT_ABI_REVISION 3u
 
 /* These details are embedded by compiler.cjs rather than represented by an
  * exported offset. Fail the build if a future cache-layout edit would leave a
  * same-size but incompatible seed looking ABI-compatible. */
 _Static_assert(sizeof(void *) == 4u, "The seed requires wasm32 pointers");
+_Static_assert(sizeof ((arm_cpu_t *)0)->excl_valid == 1u, "The seed stores excl_valid as one byte");
 _Static_assert(ARM_DREAD_ENTRIES == 1024u, "Update seed cache slot calculation");
 #define CACHE_FIELD_OFFSET(cache, field) \
     (offsetof(arm_cpu_t, cache[0].field) - offsetof(arm_cpu_t, cache[0]))
@@ -130,6 +131,11 @@ EMSCRIPTEN_KEEPALIVE unsigned emu_jit_refill(arm_cpu_t *c, uint32_t va) {
     return arm_fetch_cache_try_refill(c, va, (c->cpsr & 31u) != ARM_MODE_USR);
 }
 
+/* STREX's write translation, for a generated STREX that needs no walk. */
+EMSCRIPTEN_KEEPALIVE unsigned emu_jit_excl(arm_cpu_t *c, uint32_t va, unsigned priv) {
+    return arm_mmu_write_hit(c, va, priv != 0u);
+}
+
 EMSCRIPTEN_KEEPALIVE void emu_jit_stale(uint32_t pc, unsigned thumb) {
     region_t *r = region_find(pc, thumb, false);
     if (!r || !r->fn) return;
@@ -206,6 +212,8 @@ EMSCRIPTEN_KEEPALIVE unsigned emu_jit_offset(unsigned n) {
     case 13: return offsetof(arm_cpu_t, vfp_fpexc);
     case 14: return offsetof(arm_cpu_t, cp15.cpacr);
     case 15: return offsetof(arm_cpu_t, vfp_fpscr);
+    case 16: return offsetof(arm_cpu_t, excl_valid);
+    case 17: return offsetof(arm_cpu_t, excl_addr);
     default: return 0;
     }
 }

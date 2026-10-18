@@ -15,7 +15,7 @@ const createEmu = (await import(pathToFileURL(runtimePath))).default;
 const runtime = await createEmu({locateFile: path => join(dirname(runtimePath), path)});
 if (typeof runtime._emu_jit_abi !== 'function' || typeof runtime._emu_jit_offset !== 'function')
   throw Error('Build the browser runtime with S5LBOX_WASM_JIT before generating its seed');
-const offsets = Array.from({length: 16}, (_, i) => runtime._emu_jit_offset(i));
+const offsets = Array.from({length: 18}, (_, i) => runtime._emu_jit_offset(i));
 compiler.configure(offsets);
 const input = JSON.parse(gunzipSync(await readFile(process.env.SEED_INPUT || join(repo, 'tools/jit/seed-input.json.gz'))));
 if (input.version !== 1 || !Array.isArray(input.regions) || input.regions.length > 1024)

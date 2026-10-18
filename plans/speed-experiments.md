@@ -714,3 +714,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### LDREX/STREX in the linked-region compiler (2026-10-18)
+
+**Change.** ARM LDREX/STREX (word) are compiled; ARMv6 Thumb has no exclusives. LDREX is a cached word load that also sets `excl_valid`/`excl_addr` (ABI offsets 16 and 17). STREX keeps the interpreter's order: misaligned exits, then on a monitor match the dwrite span check (including the fetch-page guard) and the write translation; on a mismatch only the translation, then `Rd=1`. The translation goes through a new seed import `excl` (`emu_jit_excl` -> `arm_mmu_write_hit`), which succeeds only for a current, non-faulting TLB write hit (or MMU off) and then accounts the same `tlb_hits++` as `arm_mmu_translate`; any walk, stamp flush or fault exits before effects. The monitor is cleared either way. JIT ABI revision 3.
+
+**Result.** Gate passed (100M and 300M full snapshot equivalence, unit tests, ctest). Only 38 exclusive positions are in the seed input, so generated retirement rises by 0.14% (95.28M -> 95.41M per 100M) and C returns fall 3% (3.82M -> 3.71M). Throughput did not change measurably: interleaved warm medians interpreter 54.5, base 98.4, candidate 98.5 M/s (+0.1%); two more interleaved runs gave -6.2% (one 58 M/s outlier pass) and +0.8%. The baseline seed runs equally fast on the old runtime (98.3 M/s), so the runtime change costs nothing. Not worth it on its own; it only removes one item from the exit census.

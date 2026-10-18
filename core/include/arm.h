@@ -612,6 +612,10 @@ uint32_t arm_mmu_translate(arm_cpu_t *cpu, uint32_t va, arm_access_t acc,
  * would have recorded. Every refusal leaves the fetch cache and counters
  * untouched, so the caller can fall back to arm_step() for faults or MMIO. */
 bool arm_fetch_cache_try_refill(arm_cpu_t *cpu, uint32_t va, bool priv);
+/* Exactly the effects of an ARM_ACCESS_WRITE arm_mmu_translate() that hits a
+ * current, non-faulting TLB entry (or runs with the MMU off); false, with no
+ * effects, whenever that translation could walk, flush or fault. */
+bool arm_mmu_write_hit(arm_cpu_t *cpu, uint32_t va, bool priv);
 /* Observe the current cached executable mapping without walks or mutations. */
 /* Warm plain-RAM read only: no table walk, MMIO, fault or miss accounting.
  * On success increments exactly one reference dread hit. Refused accesses

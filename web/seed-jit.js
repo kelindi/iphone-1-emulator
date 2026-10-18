@@ -169,7 +169,7 @@ class SeedJIT {
       if (seed.error) throw seed.error;
       const [{module, bytes}, defs, abi] = seed;
       if (abi.revision !== this.module._emu_jit_abi() || !Array.isArray(abi.offsets) ||
-          abi.offsets.length !== 16 || abi.offsets.some((offset, i) => offset !== this.module._emu_jit_offset(i)))
+          abi.offsets.length !== 18 || abi.offsets.some((offset, i) => offset !== this.module._emu_jit_offset(i)))
         throw Error('Seed runtime ABI mismatch');
       if (!Array.isArray(defs) || defs.length > SEED_MAX_REGIONS) throw Error('Seed function cap');
       const uint32 = value => Number.isInteger(value) && value >= 0 && value <= 0xffffffff;
@@ -183,7 +183,7 @@ class SeedJIT {
         keys.add(key); indices.add(r.index);
       }
       const instance = await WebAssembly.instantiate(module, {env: {
-        memory: this.module.jitMemory, stale: this.module._emu_jit_stale, refill: this.module._emu_jit_refill,
+        memory: this.module.jitMemory, stale: this.module._emu_jit_stale, refill: this.module._emu_jit_refill, excl: this.module._emu_jit_excl,
         link: this.module._emu_jit_link()
       }});
       if (generation !== this.generation) return;

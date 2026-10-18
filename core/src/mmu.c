@@ -312,6 +312,20 @@ uint32_t arm_mmu_translate(arm_cpu_t *c, uint32_t va, arm_access_t acc,
     return fsr;
 }
 
+/* Account the cached translation a STREX's write check would perform, when
+ * that check is certain to be a non-faulting TLB hit. Otherwise returns false
+ * without effects, and the caller must run arm_mmu_translate() itself. */
+bool arm_mmu_write_hit(arm_cpu_t *c, uint32_t va, bool priv) {
+    if (!(c->cp15.sctlr & ARM_SCTLR_M)) return true;
+    if (!c->tlb_gen || !mmu_stamp_matches(c)) return false;
+    const unsigned slot = mmu_tlb_slot(va, ARM_ACCESS_WRITE);
+    if (c->tlb[slot].gen != c->tlb_gen ||
+        c->tlb[slot].tag != mmu_tlb_tag(va, ARM_ACCESS_WRITE, priv) ||
+        c->tlb[slot].fsr) return false;
+    c->tlb_hits++;
+    return true;
+}
+
 /* Permission-safe, nonwalking observation of the CURRENT cached mapping.
  * host_ram is a mapping query, never a device read. No cache/counter writes. */
 const uint8_t *arm_fetch_cache_peek(const arm_cpu_t *c, uint32_t va, bool priv) {
