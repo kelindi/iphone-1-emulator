@@ -160,7 +160,9 @@ function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
    const off=shift(rr(rm),insn>>>5&3,insn>>>7&31)[0];body=set('a',U?add(rr(rn),off):op('i32.sub',rr(rn),off))+transfer(P?L('a'):rr(rn),B?1:4,load,rd,n);if(wb)body+=put(rn,L('a'));
   }else if((insn&0x0fff03f0)===0x06af0070&&rd!==15&&rm!==15){body=put(rd,op('i32.extend8_s',op('i32.rotr',reg(rm),C((insn>>>10&3)*8))));}
   else if((insn&0x0fff0fff)===0x010f0000&&rd!==15){body=put(rd,packed());}
-  else if((insn&0x0fff0fff)===0x0e070f5a){body='';}
+  // CP15 c7 data-cache and barrier MCRs (CRm 6, 10, 11, 14) are no-ops in the
+  // interpreter at every privilege level. I-side ops, WFI and TLB ops stay in C.
+  else if((insn&0x0f1f0f10)===0x0e070f10&&[6,10,11,14].includes(insn&15)){body='';}
   else return emitBase(insn,pc,thumb,n);
   body=cond===14?body+put(15,next):`(if ${condition(cond)}(then ${body}${put(15,next)})(else ${put(15,C(pc+4))}))`;
  }else if((insn&0xf800)===0xe800){body=set('a',add(reg(14),C((insn&2047)*2)))+put(14,C((pc+2)|1))+set('f',and(L('f'),C(~32)))+put(15,and(L('a'),C(~3)));stop=true;}
