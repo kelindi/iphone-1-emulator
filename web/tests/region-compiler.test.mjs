@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile, access} from 'node:fs/promises';
 import {gunzipSync} from 'node:zlib';
 import {dirname, join, resolve} from 'node:path';
-import {fileURLToPath, pathToFileURL} from 'node:url';
+import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -13,7 +13,12 @@ const built = await access(runtimePath).then(() => true, () => false);
 // The C region compiler must emit exactly what the reference JavaScript
 // compiler emits through WABT, region by region.
 test('C region compiler matches the JavaScript reference byte for byte', {skip: !built && 'web runtime not built'}, async () => {
-  const createEmu = (await import(pathToFileURL(runtimePath))).default;
+  // emu.js is CommonJS, but web/dist/package.json (which says so) is a build
+  // output, so load it explicitly as CommonJS.
+  const runtimeModule = {exports: {}};
+  new Function('module', 'exports', 'require', '__filename', '__dirname', await readFile(runtimePath, 'utf8'))(
+    runtimeModule, runtimeModule.exports, createRequire(runtimePath), runtimePath, dirname(runtimePath));
+  const createEmu = runtimeModule.exports;
   const runtime = await createEmu({locateFile: p => join(dirname(runtimePath), p)});
   const require = createRequire(import.meta.url);
   const compiler = require('../../tools/jit/compiler.cjs');
