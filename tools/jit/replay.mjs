@@ -23,20 +23,20 @@ else {
 if(fixture[0]===0x1f && fixture[1]===0x8b) fixture=gunzipSync(fixture);
 const s=alloc(fixture);
 const compiled=await WebAssembly.compile(await readFile(path('web/jit/seed.wasm'))),defs=JSON.parse(await readFile(path('web/jit/regions.json'),'utf8'));
-const expected=[],ids=[],mask=m._malloc(64),total=Number(process.env.INSTRUCTIONS||600e6);
+const mask=m._malloc(64),expected=[],ids=[],total=Number(process.env.INSTRUCTIONS||600e6);
 if(!Number.isSafeInteger(total)||total<1||total>0xffffffff) throw Error('INSTRUCTIONS must be an integer in 1..4294967295');
 console.log(JSON.stringify({fixtureSha256:createHash('sha256').update(fixture).digest('hex'),instructions:total,regions:defs.length}));
-for(const enabled of [0,1]){
+for(const enabled of (process.env.PASSES||'0,1').split(',').map(Number)){
  m._emu_jit_reset();for(const fn of ids.splice(0))m.removeFunction(fn);
  if(m._emu_load_snapshot(s,fixture.length))throw Error('restore');
- if(enabled){const instance=await WebAssembly.instantiate(compiled,{env:{memory:m.jitMemory,stale:m._emu_jit_stale,span:m._emu_jit_span}});for(const r of defs){const fn=m.addFunction(instance.exports['b'+r.index],'iii');ids.push(fn);new Uint32Array(m.jitMemory.buffer,mask,16).set(r.masks);if(!m._emu_jit_install(r.pc,r.thumb?1:0,fn,mask))throw Error('install');}}
- m._emu_jit_enable(enabled);m._emu_touch(1,275,250);const start=performance.now();
- for(let done=0;done<total;){const count=Math.min(1e6,total-done);if(m._emu_run(count)!==count)throw Error('run');done+=count;if(done===5e6)m._emu_touch(0,275,250);if(done===300e6)m._emu_button(1,1);if(done===305e6)m._emu_button(1,0);
- if(done%100e6===0||done===total){const p=m._emu_save_snapshot(),length=m._emu_snapshot_size();if(!p||!length)throw Error('snapshot');const hash=createHash('sha256').update(m.HEAPU8.subarray(p,p+length)).digest('hex');m._emu_free_snapshot();console.log(JSON.stringify({enabled,done,hash,generated:m._emu_jit_stat(0),calls:m._emu_jit_stat(1),regions:m._emu_jit_stat(2),ms:performance.now()-start}));if(!enabled)expected.push(hash);else if(hash!==expected[Math.ceil(done/100e6)-1])throw Error('Full snapshot mismatch');}
+ if(enabled){const instance=await WebAssembly.instantiate(compiled,{env:{memory:m.jitMemory,stale:m._emu_jit_stale,refill:m._emu_jit_refill,link:m._emu_jit_link()}});const fn=m.addFunction(instance.exports.run,'iiii');ids.push(fn);if(!m._emu_jit_runner(fn))throw Error('runner');for(const r of defs){new Uint32Array(m.jitMemory.buffer,mask,16).set(r.masks);if(!m._emu_jit_install(r.pc,r.thumb?1:0,r.index,mask))throw Error('install '+r.index+' '+r.pc.toString(16)+' '+r.thumb);}}
+ m._emu_jit_enable(enabled);m._emu_touch(1,275,250);const start=performance.now();let runMs=0;
+ for(let done=0;done<total;){const count=Math.min(1e6,total-done),t0=performance.now();if(m._emu_run(count)!==count)throw Error('run');runMs+=performance.now()-t0;done+=count;if(done===5e6)m._emu_touch(0,275,250);if(done===300e6)m._emu_button(1,1);if(done===305e6)m._emu_button(1,0);
+ if(done%100e6===0||done===total){const p=m._emu_save_snapshot(),length=m._emu_snapshot_size();if(!p||!length)throw Error('snapshot');const hash=createHash('sha256').update(m.HEAPU8.subarray(p,p+length)).digest('hex');m._emu_free_snapshot();console.log(JSON.stringify({enabled,done,hash,generated:m._emu_jit_stat(0),calls:m._emu_jit_stat(1),regions:m._emu_jit_stat(2),ms:performance.now()-start,runMs}));if(!enabled)expected.push(hash);else if(hash!==expected[Math.ceil(done/100e6)-1])throw Error('Full snapshot mismatch');}
  }
  if(enabled && m._emu_jit_stat(0)<=0) throw Error('Generated code never retired an instruction');
  if(!enabled && m._emu_jit_stat(0)!==0) throw Error('Interpreter control retired generated instructions');
 }
 
-m._emu_jit_reset();for(const fn of ids)m.removeFunction(fn);m._free(mask);m._free(s);
+m._emu_jit_reset();for(const fn of ids)m.removeFunction(fn);m._free(s);
 console.log('Full machine snapshot equivalence passed');

@@ -688,3 +688,29 @@ The isolated original512 observer adds per-generated-retirement counters while r
 ### Executed-work100M correctness and retained ranking (2026-09-06)
 
 The single count-only observer trajectory passes all four complete raw snapshots, original JIT policy counters and final frame. Independent saved-byte audit reconciles73,093,840 generated and26,906,160 interpreted steps with zero count loss; all nine observed process identities closed. This is no timing or warm-browser result. Retained first100M work identifies a3,883,986-step byte-hash-shaped range that is already99.734% generated. Routine/physical identities remain unbound; no optimization follows from count share alone. [Evidence and limits](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/jit-executed-work/README.md` in the traces archive), [next measurement hypothesis](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/jit-executed-work/hotspot-note.md` in the traces archive). Production unchanged.
+
+## Linked-region compiler (2026-10-18)
+
+**Design.** `tools/jit/compiler.cjs` emits one function per retained 1 KB region into one table. The C runtime (`web/jit-runtime.c`) owns region lookup, the supported-position masks and a 4,096-slot link table (`tag = base | thumb << 1 | 1`). `arm_wasm_jit_try()` enters the exported `run` runner. A region that leaves its page for another installed region refills the fetch cache (`emu_jit_refill`) and tail-calls it. Registers, packed CPSR and cache counters are flushed at every exit, so C sees exact state at each edge. JIT ABI revision 2.
+
+**Generated-code changes, in order of effect:**
+- linked regions (one function per region, tail calls between regions);
+- direct `br` to statically known successor blocks in the same group; the T-bit check is kept only when the last op writes `f`;
+- one-time-per-call block word verification, now compared as i64/i32/i16 chunks;
+- privilege and slot offset hoisted to entry, because no compiled op writes the mode bits;
+- separate branchy hit checks, plus the crossing check only for accesses wider than a word;
+- NZCV in four locals (`fN`, `fZ`, `fC`, `fV`), so a CMP shrinks from about 25 to about 10 x64 instructions;
+- 32-bit adds when flags are not needed;
+- `ARM_DREAD_ENTRIES` 64 -> 1,024.
+
+**Measurement.** Use `HOST_CLOCK=1` with a simulated host clock (`performance.now` advanced a fixed 10 µs per call). This makes the browser's 256-instruction active batches deterministic, so every configuration retires identical work. Replay mode exits every ~68 instructions (`cpu_hz / tb_hz`) and understates the browser gain. Alternating warm passes, 100M instructions: interpreter 56–61 M/s, linked seed 91–107 M/s (about 1.8x). The VM's speed varies by up to 2x between phases, so only interleaved ratios are meaningful.
+
+**Rejected:**
+- tiny per-block functions (about 38,000 functions; V8 never optimises most of them; slower than the interpreter);
+- a per-entry budget charge with refunds (more early exits; slower);
+- an `emu_jit_step` import that runs unsupported or cache-missing instructions through `arm_step()` inside the seed with the batch's exact `batch_pending` and break rules. It preserved snapshots and cut C returns 3.82M -> 1.41M, but was not faster, either reloading in the loop or re-entering through `return_call`.
+
+**Cold start.** The first warm-up pass runs at about 38–45 M/s for both the 12 MB (512-region) and 26 MB (1,024-region) seeds. With `--no-liftoff --no-wasm-lazy-compilation`, the first pass reaches warm speed but compiling takes 5 s longer. So the cold cost is Liftoff plus tier-up latency, not seed size. Chrome's compiled-module cache covers return visits.
+
+**Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
+

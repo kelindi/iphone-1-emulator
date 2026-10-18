@@ -2,7 +2,7 @@
 // HTTP origins use the interpreter when native hash verification is unavailable.
 const seedEnabled = Boolean(globalThis.crypto?.subtle) && new URL(location.href).searchParams.get('jit') !== '0';
 const SEED_MAX_BYTES = 32 * 1024 * 1024;
-const SEED_MAX_REGIONS = 512;
+const SEED_MAX_REGIONS = 1024;
 const SEED_PREPARE_TIMEOUT_MS = 8000;
 const seedAbort = new AbortController();
 const seedResponses = new Set();
@@ -130,17 +130,15 @@ class SeedJIT {
   constructor(module) {
     this.module = module; this.enabled = false; this.supported = false;
     this.generation = 0; this.functions = new Set(); this.bytes = 0;
-    this.retired = this.mask = 0; this.ready = Promise.resolve();
+    this.mask = this.regions = 0; this.ready = Promise.resolve();
     const required = ['_emu_jit_enable', '_emu_jit_reset',
-      '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_retired',
-      '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_span', '_malloc', '_free', 'addFunction', 'removeFunction'];
+      '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_runner',
+      '_emu_jit_link', '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_refill', '_malloc', '_free', 'addFunction', 'removeFunction'];
     this.supported = required.every(name => typeof module[name] === 'function');
     if (!this.supported || !seedEnabled) return;
     try {
       module._emu_jit_enable(0);
       if (!module.jitMemory?.buffer) throw Error('Seed shared memory is unavailable');
-      this.retired = module._malloc(4096 * 4);
-      if (!this.retired) throw Error('Seed retirement buffer allocation failed');
       this.mask = module._malloc(64);
       if (!this.mask) throw Error('Seed mask allocation failed');
       this.enabled = true; this.ready = this.reset();
@@ -150,15 +148,14 @@ class SeedJIT {
     const generation = ++this.generation, m = this.module;
     if (this.supported) { m._emu_jit_enable(0); m._emu_jit_reset(); }
     for (const fn of this.functions) m.removeFunction(fn);
-    this.functions.clear(); this.bytes = 0;
+    this.functions.clear(); this.bytes = this.regions = 0;
     return this.enabled ? this.install(generation) : Promise.resolve();
   }
   disable(error) {
     this.error = String(error.stack || error); this.enabled = false;
     this.reset();
-    if (this.retired) this.module._free(this.retired);
     if (this.mask) this.module._free(this.mask);
-    this.retired = this.mask = 0;
+    this.mask = 0;
     console.error('Seed disabled:', this.error);
   }
   async install(generation) {
@@ -182,32 +179,28 @@ class SeedJIT {
         keys.add(key); indices.add(r.index);
       }
       const instance = await WebAssembly.instantiate(module, {env: {
-        memory: this.module.jitMemory, stale: this.module._emu_jit_stale, span: this.module._emu_jit_span
+        memory: this.module.jitMemory, stale: this.module._emu_jit_stale, refill: this.module._emu_jit_refill,
+        link: this.module._emu_jit_link()
       }});
       if (generation !== this.generation) return;
+      if (typeof instance.exports.run !== 'function') throw Error('Missing seed runner export');
+      const fn = this.module.addFunction(instance.exports.run, 'iiii');
+      this.functions.add(fn); // Own the slot even when native admission throws.
+      if (!this.module._emu_jit_runner(fn)) throw Error('Seed runner admission');
       for (const r of defs) {
-        const generated = instance.exports['b' + r.index];
-        if (typeof generated !== 'function') throw Error('Missing seed function export');
-        const fn = this.module.addFunction(generated, 'iii');
-        this.functions.add(fn); // Own the slot even when native admission throws.
         new Uint32Array(this.module.jitMemory.buffer, this.mask, 16).set(r.masks);
-        if (!this.module._emu_jit_install(r.pc, r.thumb ? 1 : 0, fn, this.mask))
+        if (!this.module._emu_jit_install(r.pc, r.thumb ? 1 : 0, r.index, this.mask))
           throw Error('Seed table admission');
       }
+      this.regions = defs.length;
       this.bytes = bytes;
       this.module._emu_jit_enable(1);
     } catch (error) { if (generation === this.generation) this.disable(error); }
   }
-  pump() {
-    if (!this.enabled) return;
-    const n = this.module._emu_jit_retired(this.retired);
-    for (const fn of new Uint32Array(this.module.jitMemory.buffer, this.retired, n))
-      if (this.functions.delete(fn)) this.module.removeFunction(fn);
-    if (!this.functions.size) this.bytes = 0;
-  }
+  pump() {}
   stats() {
     return {enabled: this.enabled, error: this.error, generation: this.generation,
-      regions: this.functions.size, bytes: this.bytes,
+      regions: this.regions, bytes: this.bytes,
       retired: this.supported ? this.module._emu_jit_stat(0) : 0,
       calls: this.supported ? this.module._emu_jit_stat(1) : 0};
   }

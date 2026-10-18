@@ -46,7 +46,7 @@ function setup(options={}) {
     addFunction(fn){assert.equal(typeof fn,'function');if(fnIds.has(fn))return fnIds.get(fn);const id=nextId++;active.set(id,fn);fnIds.set(fn,id);events.push(['add',id]);return id;},
     removeFunction(id){assert(active.has(id),`double/unknown remove ${id}`);fnIds.delete(active.get(id));active.delete(id);events.push(['remove',id]);},
     _emu_jit_install(pc,thumb,id){events.push(['install',pc,thumb,id]);admissions++;if(options.installThrow===admissions)throw Error('admission exception');return options.installFail===admissions?0:1;},
-    _emu_jit_retired(){return 0;},_emu_jit_stat(){return 0;},_emu_jit_stale(){},_emu_jit_span(){return 0;},
+    _emu_jit_runner(fn){events.push(['runner',fn]);return 1;},_emu_jit_link(){return 0;},_emu_jit_refill(){return 1;},_emu_jit_stat(){return 0;},_emu_jit_stale(){},
     ccall(name){if(name==='emu_init')api.jitMemory=memory;events.push(['ccall',name]);return name==='emu_error'?'bad snapshot':0;},
     cwrap(name){return (...args)=>{
       events.push(['api',name,...args]);
@@ -64,7 +64,7 @@ function setup(options={}) {
   };
   if(options.lateMemory)delete api.jitMemory;
   if(options.missingExports)for(const key of Object.keys(api))if(key.startsWith('_emu_jit_'))delete api[key];
-  const exportsFor = () => Object.fromEntries(defs.map(r=>['b'+r.index,options.badExport?7:function generated(){}]));
+  const exportsFor = () => ({run:options.badExport?7:function run(){}});
   const sandbox={URL,URLSearchParams,Uint8Array,Uint32Array,ArrayBuffer,TextDecoder,TextEncoder,
     AbortController,AbortSignal,DOMException,performance,setTimeout:options.fastTimers?((fn,ms)=>setTimeout(fn,Math.min(ms,10))):setTimeout,clearTimeout,queueMicrotask,
     location:{search:options.disabled?'?jit=0':'?jit=1',href:`http://localhost/emu-worker.js?jit=${options.disabled?0:1}`},
@@ -106,7 +106,7 @@ test('invalid mask value is rejected',()=>rejected({defs:[{...region(),masks:[nu
 test('non-boolean instruction state is rejected',()=>rejected({defs:[{...region(),thumb:'false'}]}));
 test('non-function export disables optional engine',()=>rejected({badExport:true}));
 test('first buffer allocation failure falls back without throwing',()=>rejected({mallocFail:1}));
-test('second buffer allocation failure reclaims first buffer',async()=>{const x=await rejected({mallocFail:2});assert.equal(x.allocated.size,0);});
+test('the mask is the only buffer and disable reclaims it',async()=>{const x=await rejected({abi:{moduleSha256:'wrong'}});assert.equal(x.events.filter(e=>e[0]==='malloc').length,1);assert.equal(x.allocated.size,0);});
 test('older asynchronous installation cannot survive two resets',async()=>{
   const x=setup({delayed:true}),c=x.create();await tick();assert.equal(x.waiting.length,1);
   const first=c.reset();await tick();const second=c.reset();await tick();assert.equal(x.waiting.length,3);
