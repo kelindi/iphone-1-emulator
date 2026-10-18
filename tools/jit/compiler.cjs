@@ -147,7 +147,7 @@ function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
    const allowed=op('i32.or',op('i32.eq',acc,C(3)),op('i32.and',op('i32.eq',acc,C(1)),op('i32.ne',and(L('f'),C(31)),C(16))));
    body=`(if(i32.or(i32.eqz ${allowed})(i32.or(i32.eqz(i32.and ${get(OFF[13])}${C(1<<30)}))(i32.ne(i32.and ${get(OFF[15])}${C(0xc00000)})${C(0)})))(then(br $done)))`;
    const addr=U?add(rr(rn),C((insn&255)*4)):op('i32.sub',rr(rn),C((insn&255)*4)),offset=OFF[12]+first*4,kind=dbl?'i64':'i32';body+=span(addr,dbl?8:4,load,dbl?2:1,n);body+=load?`(${kind}.store offset=${offset} ${L('c')}(${kind}.load ${L('p')}))`:`(${kind}.store ${L('p')}(${kind}.load offset=${offset} ${L('c')}))`;
-  }else if((insn&0x0fc000f0)===0x00000090){const dest=insn>>>16&15,acc=insn>>>12&15,rs=insn>>>8&15,A=!!(insn&0x200000),S=!!(insn&0x100000);if(dest===15||rs===15||rm===15||(A&&acc===15))return null;let v=op('i32.mul',reg(rm),reg(rs));if(A)v=add(v,reg(acc));body=set('r',v)+put(dest,L('r'));if(S)body+=set('f',op('i32.or',and(L('f'),C(0x3fffffff)),op('i32.or',and(L('r'),C(0x80000000)),shl(op('i32.eqz',L('r')),30))));}
+  }else if((insn&0x0fc000f0)===0x00000090){const dest=insn>>>16&15,acc=insn>>>12&15,rs=insn>>>8&15,A=!!(insn&0x200000),S=!!(insn&0x100000);if(dest===15||rs===15||rm===15||(A&&acc===15))return null;let v=op('i32.mul',reg(rm),reg(rs));if(A)v=add(v,reg(acc));body=set('r',v)+put(dest,L('r'));if(S)body+=set('fN',L('r'))+set('fZ',L('r'));}
   else if((insn&0x0e000090)===0x00000090&&(insn&0x60)!==0){const P=!!(insn&0x1000000),U=!!(insn&0x800000),I=!!(insn&0x400000),W=!!(insn&0x200000),load=!!(insn&0x100000),sh=insn>>>5&3,wb=!P||W;if(rd===15||(!P&&W)||(wb&&(rn===15||rn===rd))||(!I&&((insn&0xf00)||rm===15))||(!load&&sh!==1))return null;const off=I?C(((insn>>>8&15)<<4)|(insn&15)):rr(rm),bytes=sh===2?1:2;body=set('a',U?add(rr(rn),off):op('i32.sub',rr(rn),off))+span(P?L('a'):rr(rn),bytes,load,1,n);body+=load?put(rd,`(i32.load${sh===1?'16_u':sh===2?'8_s':'16_s'} ${L('p')})`):`(i32.store16 ${L('p')}${reg(rd)})`;if(wb)body+=put(rn,L('a'));}
   else if((insn&0x0c000000)===0x04000000&&!(insn&0x02000000)&&rd!==15){
    const I=!!(insn&0x2000000),P=!!(insn&0x1000000),U=!!(insn&0x800000),B=!!(insn&0x400000),W=!!(insn&0x200000),load=!!(insn&0x100000),wb=!P||W;
@@ -204,14 +204,27 @@ function compileRegion(e){
     body+=`(if(${size===8?'i64':'i32'}.ne(${load} offset=${at} ${L('fetch')})${want})(then(local.set $why(i32.const 5))(br $done)))`;i+=size;}
    body+=`(local.set ${vg}(i64.or(local.get ${vg})${vb}))))`;
    body+=`(loop $L${bi}(block $tail_bad${bi} `;for(let i=b.ops.length-1;i>=0;i--)body+=`(block $tail${bi}_${i} `;
-   body+=`(br_if $tail${bi}_0(i32.eq ${reg(15)}${C(b.head)}))(br_table ${b.ops.map((_,i)=>'$tail'+bi+'_'+i).join(' ')} $tail_bad${bi}(i32.shr_u(i32.sub ${reg(15)}${C(b.head)})${C(e.thumb?1:2)}))`;
-   for(const c of b.ops)body+=`) (if(i32.ge_u ${L('n')}${L('budget')})(then(local.set $why(i32.const 1))(br $done)))`+put(15,C(c.pc))+c.body+set('n',add(L('n'),C(1)));
+   // Within a block n holds the count at its head (minus k when entered at op
+   // k), so op i retires at n+i: its budget check compares i with budget-n
+   // and exits add i back, with no per-op increment.
+   const len=b.ops.length,upto=i=>set('n',add(L('n'),C(i)));
+   body+=`(if(i32.eq ${reg(15)}${C(b.head)})(then ${set('lim',`(i32.sub ${L('budget')}${L('n')})`)}(br $tail${bi}_0)))`;
+   body+=set('k',`(i32.shr_u(i32.sub ${reg(15)}${C(b.head)})${C(e.thumb?1:2)})`)+`(br_if $tail_bad${bi}(i32.ge_u ${L('k')}${C(len)}))`;
+   body+=set('n',`(i32.sub ${L('n')}${L('k')})`)+set('lim',`(i32.sub ${L('budget')}${L('n')})`)+`(br_table ${b.ops.map((_,i)=>'$tail'+bi+'_'+i).join(' ')} $tail_bad${bi}${L('k')})`;
    // Statically known successors in this group skip the region dispatch.
-   const last=b.ops[b.ops.length-1],seen=new Set();
+   const last=b.ops[b.ops.length-1],seen=new Set(),tset=last.body.includes('(local.set $f ');
+   const succ=t=>{t>>>=0;const j=t===b.head?bi:blocks.findIndex((x,k)=>k>bi&&k<hi&&x.head===t);return j<0?null:j===bi?'$L'+bi:'$case'+j;};
+   // A constant pc written last on a path jumps straight to its successor.
+   const direct=(body,re)=>tset?body:body.replace(re,(m,head,t,rest)=>{const to=succ(+t);return to?`${head}${put(15,C(+t))}${upto(len)}(br ${to})${rest}`:m;});
+   const pcset=String.raw`\(local.set \$r15 \(i32.const (-?\d+)\)\)`;
+   let tail=direct(last.body,new RegExp(String.raw`^([\s\S]*)${pcset}(\)\(else [\s\S]*)$`));
+   tail=direct(tail,new RegExp(String.raw`^([\s\S]*)${pcset}(\)*)$`));
+   b.ops.forEach((c,i)=>body+=`) (if(i32.le_u ${L('lim')}${C(i)})(then ${upto(i)}(local.set $why(i32.const 1))(br $done)))`+put(15,C(c.pc))+(i===len-1?tail:c.body).replaceAll('(br $done)',`${upto(i)}(br $done)`));
+   body+=upto(len);
    for(const m of last.body.matchAll(/\(local.set \$r15 \(i32.const (-?\d+)\)\)/g)){const t=(+m[1])>>>0;if(seen.has(t))continue;seen.add(t);
     const j=t===b.head?bi:blocks.findIndex((x,k)=>k>bi&&k<hi&&x.head===t);if(j<0)continue;
     // Only an op that writes f can leave the region's instruction set.
-    const hit=`(i32.eq ${reg(15)}${C(t)})`,tset=last.body.includes('(local.set $f ');
+    const hit=`(i32.eq ${reg(15)}${C(t)})`;
     body+=`(br_if ${j===bi?'$L'+bi:'$case'+j}${tset?`(i32.and${hit}(i32.eq(i32.and ${L('f')}${C(32)})${C(e.thumb?32:0)}))`:hit})`;}
    body+=`(br $run))(local.set $why(i32.const 4))(br $done))`;
   }
@@ -222,7 +235,7 @@ function compileRegion(e){
  for(let n=0;n<16;n++)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
  body+=`(i32.store offset=${F} ${L('c')}${packed()})`;body+=`(if(i32.eq ${L('why')}${C(5)})(then(call $stale ${C(e.pc)}${C(e.thumb?1:0)})))`+L('n');
  let masks=Array(16).fill(0);for(const head of code.keys()){let bit=(head-e.pc)/width;masks[bit>>>5]|=1<<(bit&31);}
- return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
+ return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $k i32)(local $lim i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
 }
 
 /* Linked regions: every region is one function in a shared seed table. When
