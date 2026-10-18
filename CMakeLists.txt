@@ -22,6 +22,11 @@ endif()
 
 enable_testing()
 add_subdirectory(core)
+if(NOT IPHONE1_WEB)
+    # Native seed builder for the C region compiler (reads a text region dump).
+    add_executable(jit-wasmgen tools/jit/wasmgen.c)
+    target_link_libraries(jit-wasmgen PRIVATE emucore)
+endif()
 if(IPHONE1_WEB)
     set(IPHONE1_WEB_DIST "${CMAKE_SOURCE_DIR}/web/dist" CACHE PATH
         "WebAssembly output directory (isolated comparisons can build target emu here)")
