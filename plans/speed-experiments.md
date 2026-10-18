@@ -714,3 +714,9 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### VFP subset in linked regions (2026-10-18)
+
+`tools/jit/compiler.cjs` now compiles VMOV core<->single/double (and register pairs), VMRS/VMSR FPSCR (incl. `APSR_nzcv`), VMOV/VABS/VNEG register, VCVT f32<->f64, VADD/VSUB/VMUL/VNMUL/VDIV and VMLA/VMLS/VNMLA/VNMLS (two roundings, no fusion), and VCMP/VCMPE, mirroring `core/src/arm/vfp.c` as built for wasm (no host exception flags; FZ input/output flushing sets IDC/UFC; VCMP IOC from signalling/quiet NaN). The instruction exits to the interpreter before writing anything when VFP is unavailable (CPACR/privilege/FPEXC.EN), when FPSCR has RMode, trap enables, LEN or STRIDE set, or when a result is NaN (payload/DN handled by the interpreter). Retained positions 167,889 -> 170,167; bench generated instructions +0.75%, seed calls -8%.
+
+Gate: 100M and 300M replays pass full machine snapshot equivalence; unit tests pass (no C changes). Two interleaved `bench:jit` runs: interpreter 62.6 / 61.1, base 105.1 / 103.5, candidate 106.6 / 104.6 warm MIPS -> +1.4% / +1.1%, within pass-to-pass noise (passes span ~90-116). Small, consistent but not decisive win.

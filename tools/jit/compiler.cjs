@@ -140,9 +140,86 @@ else if(type===1){x=amount?shr(v,amount):C(0);cy=and(shr(v,amount?amount-1:31),C
 else if(type===2){x=op('i32.shr_s',v,C(amount||31));cy=and(shr(v,amount?amount-1:31),C(1));}
 else if(amount){x=op('i32.rotr',v,C(amount));cy=and(shr(v,amount-1),C(1));}
 else{x=op('i32.or',shl(carry(),31),shr(v,1));cy=and(v,C(1));}return[x,cy];}
+
+/* VFP11 subset, bit-exact with core/src/arm/vfp.c as built for the browser
+ * (no host exception flags). Anything that could differ exits before writing:
+ * VFP unavailable, RMode, trap enables or short vectors in FPSCR, and NaN
+ * results, whose payload depends on host operand order. */
+const isVfp=insn=>{const cp=insn>>>8&15;return (cp===10||cp===11)&&((insn&0x0f000e00)===0x0e000a00||(insn&0x0fe00e00)===0x0c400a00);};
+function vfpGate(){
+ const get=off=>`(i32.load offset=${off} ${L('c')})`,cp=get(OFF[14]),cp10=and(shr(cp,20),C(3)),cp11=and(shr(cp,22),C(3)),acc=op('select',cp10,cp11,op('i32.lt_u',cp10,cp11));
+ const allowed=op('i32.or',op('i32.eq',acc,C(3)),op('i32.and',op('i32.eq',acc,C(1)),op('i32.ne',and(L('f'),C(31)),C(16))));
+ return set('fs',get(OFF[15]))+set('e',C(0))+`(if(i32.or(i32.eqz ${allowed})(i32.or(i32.eqz(i32.and ${get(OFF[13])}${C(1<<30)}))(i32.and ${L('fs')}${C(0x00f79f00)})))(then(br $done)))`;
+}
+const SV=k=>OFF[12]+4*k,FZ=()=>and(L('fs'),C(0x1000000));
+const ldS=k=>`(f32.load offset=${SV(k)} ${L('c')})`,ldD=k=>`(f64.load offset=${SV(2*k)} ${L('c')})`;
+const stF=(dbl,k,x)=>`(${dbl?'f64':'f32'}.store offset=${SV(dbl?2*k:k)} ${L('c')} ${x})`;
+// FZ: a nonzero magnitude below the smallest normal becomes a signed zero (IDC on input, UFC on output).
+function flush(dbl,v,bit){const t=dbl?'f64':'f32',i=dbl?'i64':'i32',k=x=>`(${i}.const ${x})`;
+ const tiny=`(${i}.lt_u(${i}.sub(${i}.and(${i}.reinterpret_${t} ${L(v)})${k(dbl?'0x7fffffffffffffff':'0x7fffffff')})${k(1)})${k(dbl?'0x000fffffffffffff':'0x7fffff')})`;
+ return `(if ${FZ()}(then(if ${tiny}(then ${set('e',op('i32.or',L('e'),C(bit)))}${set(v,`(${t}.copysign(${t}.const 0)${L(v)})`)}))))`;}
+const IDC=0x80,UFC=0x8,IOC=0x1;
+const nanExit=(dbl,v)=>`(if(${dbl?'f64':'f32'}.ne ${L(v)}${L(v)})(then(br $done)))`;
+const commit=()=>`(if ${L('e')}(then(i32.store offset=${OFF[15]} ${L('c')}(i32.or ${L('fs')}${L('e')}))))`;
+function fop(dbl,o,a,b){const t=dbl?'f64':'f32',A=dbl?'da':'sa',B=dbl?'db':'sb',Z=dbl?'dz':'sz';
+ return set(A,a)+set(B,b)+flush(dbl,A,IDC)+flush(dbl,B,IDC)+set(Z,`(${t}.${o} ${L(A)}${L(B)})`)+nanExit(dbl,Z)+flush(dbl,Z,UFC);}
+function emitVfp(insn){
+ const b=i=>insn>>>i&1,vn=insn>>>16&15,vd=insn>>>12&15,vm=insn&15,dbl=!!b(8);
+ if((insn&0x0fe00e00)===0x0c400a00){const rt=vd,rt2=vn,Ld=b(20);
+  if((insn&0xc0)||rt===15||rt2===15)return null;
+  let lo,hi;if(dbl){if(b(5))return null;lo=2*vm;hi=lo+1;}else{lo=vm*2+b(5);if(lo===31)return null;hi=lo+1;}
+  const g=k=>`(i32.load offset=${SV(k)} ${L('c')})`;
+  return vfpGate()+(Ld?put(rt,g(lo))+put(rt2,g(hi)):`(i32.store offset=${SV(lo)} ${L('c')}${reg(rt)})(i32.store offset=${SV(hi)} ${L('c')}${reg(rt2)})`);}
+ if(insn&0x10){const opc1=insn>>>21&7,Ld=b(20),rt=vd;
+  if((!dbl&&opc1===0)||(dbl&&opc1<=1)){if((insn&0x6f)||rt===15||(dbl&&b(7)))return null;const k=dbl?vn*2+opc1:vn*2+b(7);
+   return vfpGate()+(Ld?put(rt,`(i32.load offset=${SV(k)} ${L('c')})`):`(i32.store offset=${SV(k)} ${L('c')}${reg(rt)})`);}
+  if(dbl||opc1!==7||(insn&0xef)||vn!==1)return null;
+  if(Ld){const v=L('fs');if(rt!==15)return vfpGate()+put(rt,v);
+   return vfpGate()+set('fN',v)+set('fZ',op('i32.eqz',and(v,C(0x40000000))))+set('fC',and(shr(v,29),C(1)))+set('fV',shl(v,3));}
+  if(rt===15)return null;
+  return vfpGate()+`(i32.store offset=${OFF[15]} ${L('c')}${and(reg(rt),C(0xf3f79f9f))})`;}
+ const opc=b(23)<<2|b(21)<<1|b(20),alt=b(6),t=dbl?'f64':'f32';
+ const sreg=(f,lo)=>f*2+lo;
+ if(opc!==7){if(opc>4||(opc===4&&alt))return null;
+  if(dbl&&(b(22)||b(7)||b(5)))return null;
+  const rd=dbl?vd:sreg(vd,b(22)),rn=dbl?vn:sreg(vn,b(7)),rm=dbl?vm:sreg(vm,b(5)),ld=dbl?ldD:ldS,Z=dbl?'dz':'sz',neg=x=>`(${t}.neg ${x})`;
+  let s=vfpGate();
+  if(opc===4)s+=fop(dbl,'div',ld(rn),ld(rm));
+  else if(opc===3)s+=fop(dbl,alt?'sub':'add',ld(rn),ld(rm));
+  else if(opc===2){s+=fop(dbl,'mul',ld(rn),ld(rm));if(alt)s+=set(Z,neg(L(Z)));}
+  else{const kind=opc===0?(alt?'VMLS':'VMLA'):(alt?'VNMLA':'VNMLS');
+   s+=fop(dbl,'mul',ld(rn),ld(rm));const p=kind==='VMLS'||kind==='VNMLA'?neg(L(Z)):L(Z),d=kind==='VNMLA'||kind==='VNMLS'?neg(ld(rd)):ld(rd);
+   s+=fop(dbl,'add',d,p);}
+  return s+stF(dbl,rd,L(Z))+commit();}
+ if(!alt)return null;
+ const opc2=vn,top=b(7),D=b(22),M=b(5);
+ if(opc2===0||(opc2===1&&!top)){if(dbl&&(D||M))return null;
+  if(dbl){const g=`(i64.load offset=${SV(2*vm)} ${L('c')})`,x=opc2===1?`(i64.xor ${g}(i64.const 0x8000000000000000))`:top?`(i64.and ${g}(i64.const 0x7fffffffffffffff))`:g;
+   return vfpGate()+`(i64.store offset=${SV(2*vd)} ${L('c')}${x})`;}
+  const g=`(i32.load offset=${SV(sreg(vm,M))} ${L('c')})`,x=opc2===1?xor(g,C(0x80000000)):top?and(g,C(0x7fffffff)):g;
+  return vfpGate()+`(i32.store offset=${SV(sreg(vd,D))} ${L('c')}${x})`;}
+ if(opc2===4||opc2===5){const zero=opc2===5;if(zero&&(vm||M))return null;if(dbl&&(D||M))return null;
+  const i=dbl?'i64':'i32',A=dbl?'da':'sa',B=dbl?'db':'sb',UA=dbl?'ua':'a',UB=dbl?'ub':'b';
+  const raw=k=>dbl?`(i64.load offset=${SV(2*k)} ${L('c')})`:`(i32.load offset=${SV(k)} ${L('c')})`;
+  const ra=dbl?vd:sreg(vd,D),rb=dbl?vm:sreg(vm,M);
+  const snan=u=>dbl?`(i32.and(i64.eq(i64.and ${L(u)}(i64.const 0x7ff8000000000000))(i64.const 0x7ff0000000000000))(i64.ne(i64.and ${L(u)}(i64.const 0x0007ffffffffffff))(i64.const 0)))`
+   :`(i32.and(i32.eq(i32.and ${L(u)}${C(0x7fc00000)})${C(0x7f800000)})(i32.ne(i32.and ${L(u)}${C(0x3fffff)})${C(0)}))`;
+  let s=vfpGate()+set(UA,raw(ra))+set(UB,zero?`(${i}.const 0)`:raw(rb))+set(A,`(${t}.reinterpret_${i} ${L(UA)})`)+set(B,`(${t}.reinterpret_${i} ${L(UB)})`)+flush(dbl,A,IDC)+flush(dbl,B,IDC);
+  const nan=op('i32.or',`(${t}.ne ${L(A)}${L(A)})`,`(${t}.ne ${L(B)}${L(B)})`);
+  s+=set('r',nan);
+  let sig=zero?snan(UA):op('i32.or',snan(UA),snan(UB));if(top)sig=op('i32.or',sig,L('r'));
+  s+=`(if ${sig}(then ${set('e',op('i32.or',L('e'),C(IOC)))}))`;
+  const flags=op('select',C(0x30000000),op('select',C(0x60000000),op('select',C(0x80000000),C(0x20000000),`(${t}.lt ${L(A)}${L(B)})`),`(${t}.eq ${L(A)}${L(B)})`),L('r'));
+  return s+`(i32.store offset=${OFF[15]} ${L('c')}(i32.or(i32.or(i32.and ${L('fs')}${C(0x0fffffff)})${flags})${L('e')}))`;}
+ if(opc2===7&&top){
+  if(dbl){if(M)return null;return vfpGate()+set('da',ldD(vm))+flush(true,'da',IDC)+set('sz',`(f32.demote_f64 ${L('da')})`)+nanExit(false,'sz')+flush(false,'sz',UFC)+stF(false,sreg(vd,D),L('sz'))+commit();}
+  if(D)return null;return vfpGate()+set('sa',ldS(sreg(vm,M)))+flush(false,'sa',IDC)+set('dz',`(f64.promote_f32 ${L('sa')})`)+nanExit(true,'dz')+stF(true,vd,L('dz'))+commit();}
+ return null;
+}
 function emit(insn,pc,thumb,n){let body='',next=C(pc+(thumb?2:4)),stop=false;
  if(!thumb){const cond=insn>>>28,rn=insn>>>16&15,rd=insn>>>12&15,rm=insn&15,rr=r=>r===15?C(pc+8):reg(r);if(cond===15)return emitBase(insn,pc,thumb,n);
-  if((insn&0x0f200e00)===0x0d000a00){const D=!!(insn&0x400000),dbl=!!(insn&0x100),load=!!(insn&0x100000),U=!!(insn&0x800000),first=(rd*2)+(dbl?0:+D);if(dbl&&D)return null;
+  if(isVfp(insn)){body=emitVfp(insn);if(body===null)return null;}
+  else if((insn&0x0f200e00)===0x0d000a00){const D=!!(insn&0x400000),dbl=!!(insn&0x100),load=!!(insn&0x100000),U=!!(insn&0x800000),first=(rd*2)+(dbl?0:+D);if(dbl&&D)return null;
    const get=off=>`(i32.load offset=${off} ${L('c')})`,cp=get(OFF[14]),cp10=and(shr(cp,20),C(3)),cp11=and(shr(cp,22),C(3)),acc=op('select',cp10,cp11,op('i32.lt_u',cp10,cp11));
    const allowed=op('i32.or',op('i32.eq',acc,C(3)),op('i32.and',op('i32.eq',acc,C(1)),op('i32.ne',and(L('f'),C(31)),C(16))));
    body=`(if(i32.or(i32.eqz ${allowed})(i32.or(i32.eqz(i32.and ${get(OFF[13])}${C(1<<30)}))(i32.ne(i32.and ${get(OFF[15])}${C(0xc00000)})${C(0)})))(then(br $done)))`;
@@ -222,7 +299,7 @@ function compileRegion(e){
  for(let n=0;n<16;n++)body+=`(i32.store offset=${R+n*4} ${L('c')}${reg(n)})`;
  body+=`(i32.store offset=${F} ${L('c')}${packed()})`;body+=`(if(i32.eq ${L('why')}${C(5)})(then(call $stale ${C(e.pc)}${C(e.thumb?1:0)})))`+L('n');
  let masks=Array(16).fill(0);for(const head of code.keys()){let bit=(head-e.pc)/width;masks[bit>>>5]|=1<<(bit&31);}
- return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
+ return {masks,count:code.size,heads:blocks.length,wat:`(func(export "b${e.index}")(param $c i32)(param $budget i32)(result i32) ${Array.from({length:16},(_,i)=>`(local $r${i} i32)`).join(' ')}(local $a i32)(local $b i32)(local $r i32)(local $f i32)(local $p i32)(local $fetch i32)(local $entry i32)(local $addr i32)(local $why i32)(local $n i32)(local $wide i64)(local $tg i32)(local $hw i32)(local $rh i64)(local $wh i64)(local $priv i32)(local $pofs i32)(local $fN i32)(local $fZ i32)(local $fC i32)(local $fV i32)(local $fs i32)(local $e i32)(local $sa f32)(local $sb f32)(local $sz f32)(local $da f64)(local $db f64)(local $dz f64)(local $ua i64)(local $ub i64)${Array.from({length:Math.ceil(blocks.length/64)},(_,g)=>`(local $v${g} i64)`).join('')}${body})`};
 }
 
 /* Linked regions: every region is one function in a shared seed table. When
