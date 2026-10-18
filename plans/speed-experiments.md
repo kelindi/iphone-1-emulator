@@ -785,3 +785,14 @@ Warm medians on `bench:jit` (M instructions/s):
 The final seed is about 2.17× the interpreter once warm. Spill-slot references in the sampled hot region fell from 1,930 to 1,201. Keeping the read/write hit counters in memory as well made no difference, so they stay in locals. The 100M and 300M replays match the interpreter's full machine snapshot byte for byte, with the same 5.78M and 21.9M generated calls. There is no C change.
 
 Follow-up: each data-cache probe now checks the tag and generation with one unaligned 64-bit compare and drops the NULL host-pointer test. A filled entry always has a host pointer, a zeroed entry has generation 0, and the runtime now refuses to enter regions while `tlb_gen` is 0. Interleaved warm medians were 136.5 → 139.5 M/s (+2.2%, 2.27× the interpreter's 61.4), and the 300M replay stays exact.
+
+### Region compiler in C
+
+`core/src/jit/arm_wasm.c` (with the small expression tree and binary encoder in `core/src/jit/wasm_ir.c`) is a port of `tools/jit/compiler.cjs` that writes the WebAssembly binary directly instead of WAT text. The facts the JavaScript compiler recovered with regexes over generated text (constant r15 successors, whether an op writes `f`) are recorded while each op is built. The encoder follows the byte layout WABT produces for the folded text, so the two compilers are checked against each other byte for byte.
+
+- On the shipped seed input it produces the identical module (`657e3e61…`, 1,024 regions, 27.9 MB) and `regions.json`.
+- Natively it takes 0.49 s for all 1,024 regions; the JavaScript compiler plus WABT took 8.8 s and 1.7 GB of memory. Peak per-region arena use is about 4 MiB, so the compiler reserves 16 MiB.
+- It is built into `emucore` (portable C, no Emscripten dependency) and exported from the browser runtime as `emu_jit_compile` / `emu_jit_compiled` / `emu_jit_compiled_free`. `tools/jit/generate-seed.mjs` uses it by default; `JIT_COMPILER=js` runs the reference JavaScript compiler through WABT.
+- `web/tests/region-compiler.test.mjs` compiles a sample of ARM and Thumb regions with both compilers and requires identical bytes and region definitions.
+
+This is the base for compiling hot regions in the browser while the phone runs, instead of only shipping a precompiled seed.

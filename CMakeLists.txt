@@ -67,7 +67,7 @@ if(IPHONE1_WEB)
             COMMAND "${CMAKE_COMMAND}" -E env "JIT_RUNTIME=${IPHONE1_WEB_DIST}/emu.js"
                     "${IPHONE1_NODE_EXECUTABLE}" tools/jit/generate-seed.mjs
             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-            DEPENDS emu tools/jit/generate-seed.mjs tools/jit/compiler.cjs
+            DEPENDS emu tools/jit/generate-seed.mjs core/src/jit/arm_wasm.c core/src/jit/wasm_ir.c
                     tools/jit/seed-input.json.gz package-lock.json
             COMMENT "Generating the guarded browser instruction seed"
             VERBATIM)

@@ -1,9 +1,11 @@
 /* Derived execution cache only: no guest state or snapshot schema is changed. */
 #include "jit-runtime.h"
 #include "arm_wasm_jit.h"
+#include "arm_wasm.h"
 #include <emscripten.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define REGION_SLOTS_LOG2 12u
@@ -213,4 +215,52 @@ EMSCRIPTEN_KEEPALIVE unsigned emu_jit_offset(unsigned n) {
 }
 EMSCRIPTEN_KEEPALIVE double emu_jit_stat(unsigned n) {
     return n == 0 ? (double)generated_retired : n == 1 ? (double)generated_calls : region_count;
+}
+
+/* Region compiler: in = [count, {pc, thumb, index, nops, {pc, word} x nops} x count]. */
+static uint8_t *compiled_wasm;
+static size_t compiled_len, compiled_count;
+static uint32_t compiled_defs[REGION_CAP * (3u + MASK_WORDS)];
+
+EMSCRIPTEN_KEEPALIVE void emu_jit_compiled_free(void) {
+    free(compiled_wasm);
+    compiled_wasm = NULL;
+    compiled_len = compiled_count = 0;
+}
+EMSCRIPTEN_KEEPALIVE unsigned emu_jit_compile(const uint32_t *in, unsigned words) {
+    static arm_wasm_region regions[REGION_CAP];
+    static arm_wasm_def defs[REGION_CAP];
+    emu_jit_compiled_free();
+    if (!words || in[0] > REGION_CAP) return 0;
+    size_t n = in[0], at = 1;
+    for (size_t i = 0; i < n; i++) {
+        if (words - at < 4 || in[at + 3] > (words - at - 4) / 2) return 0;
+        regions[i] = (arm_wasm_region){in[at], in[at + 2], in[at + 1] != 0,
+                                       (const arm_wasm_op *)(in + at + 4), in[at + 3]};
+        at += 4 + 2u * in[at + 3];
+    }
+    uint32_t offsets[16];
+    for (unsigned i = 0; i < 16; i++) offsets[i] = emu_jit_offset(i);
+    arm_wasm_configure(offsets);
+    size_t nd;
+    if (arm_wasm_compile_pages(regions, n, &compiled_wasm, &compiled_len, defs, &nd)) return 0;
+    for (size_t i = 0; i < nd; i++) {
+        uint32_t *d = compiled_defs + i * (3u + MASK_WORDS);
+        d[0] = defs[i].pc;
+        d[1] = defs[i].thumb;
+        d[2] = defs[i].index;
+        memcpy(d + 3, defs[i].masks, sizeof defs[i].masks);
+    }
+    compiled_count = nd;
+    return 1;
+}
+/* 0: module bytes, 1: module length, 2: definitions (pc, thumb, index, masks[16]), 3: count */
+EMSCRIPTEN_KEEPALIVE uintptr_t emu_jit_compiled(unsigned what) {
+    switch (what) {
+    case 0: return (uintptr_t)compiled_wasm;
+    case 1: return compiled_len;
+    case 2: return (uintptr_t)compiled_defs;
+    case 3: return compiled_count;
+    default: return 0;
+    }
 }
