@@ -375,12 +375,16 @@ typedef enum {
 #define ARM_TLB_ENTRIES 4096u
 
 /*
- * Data-read block cache entries, half per privilege; each maps one 1 KB block
- * of plain RAM (unlike the 4096-entry TLB). 1024 entries cover 512 KB per
- * privilege, so the generated code's inline hit path misses about half as
- * often as it did with 64. Derived state: never serialised, cleared on restore.
+ * Data block cache entries; each maps one 1 KB block of plain RAM (unlike the
+ * 4096-entry TLB). They form ARM_DREAD_SETS two-way sets, entries 2s and 2s+1,
+ * half of the sets offset per privilege. A fill moves way 0 to way 1 and
+ * installs the new block in way 0; hits change nothing. On the home-screen
+ * benchmark two ways remove about a quarter of the read misses that the
+ * direct-mapped layout of the same size took. Derived state: never
+ * serialised, cleared on restore.
  */
 #define ARM_DREAD_ENTRIES 1024u
+#define ARM_DREAD_SETS (ARM_DREAD_ENTRIES / 2u)
 
 typedef struct arm_cpu {
     uint32_t r[16];      /* r0–r15; r15 is PC (address of current instruction) */
@@ -510,8 +514,8 @@ typedef struct arm_cpu {
      * silently under-report exactly the traffic it exists to measure. A store
      * path needs the frontend's consent, which is a separate change.
      *
-     * DIRECT-MAPPED, AND SPLIT BY PRIVILEGE THE WAY THE TAG IS. The TLB above
-     * was once indexed on the page alone while its tag also carried the access
+     * TWO-WAY (see ARM_DREAD_SETS), AND SPLIT BY PRIVILEGE THE WAY THE TAG
+     * IS. The TLB above was once indexed on the page alone while its tag also carried the access
      * kind, so four tags competed for one slot and 11.1 M of 11.2 M lookups
      * missed. Privilege is folded into the index here for that reason, not for
      * symmetry: the tag distinguishes it, so the index must too.

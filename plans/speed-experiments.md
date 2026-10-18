@@ -714,3 +714,11 @@ The single count-only observer trajectory passes all four complete raw snapshots
 
 **Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
 
+
+### Two-way data block caches (2026-10-18)
+
+**Change.** The read and write data block caches keep 1,024 entries but become 512 two-way sets (entries `2s`, `2s+1`; half the sets offset per privilege). A fill moves way 0 to way 1 and installs the new block in way 0; lookups try way 0, then way 1. The interpreter, `emu_jit_span()` and the generated `span()` probe use the same order, so hit/miss counters stay identical. JIT ABI revision 3 (old seeds probe the wrong slots).
+
+**Correctness.** 100M and 300M replays match the interpreter's full machine snapshot; unit and native tests pass.
+
+**Result: no measurable gain.** A shadow-cache census of a 100M interpreter run estimated misses falling from about 446k (direct-mapped) to about 329k (two-way). Seed returns to C fell from 3.82M to 3.60M per 100M instructions (-5.9%). Six interleaved process pairs (original runtime + base seed vs new runtime + candidate seed, 100M instructions per pass) gave warm/interpreter ratios with a median of 1.70 (base) vs 1.72 (candidate), and median warm speeds of 55.3 vs 54.7 M/s. Both differences are inside the VM's 2x drift. This matches the earlier `emu_jit_step` result: about 0.2M fewer C round trips is too small to show, and the second-way probe adds work to every hit that misses way 0.

@@ -211,9 +211,10 @@ static void mem_write_crossing(arm_cpu_t *c, uint32_t va, unsigned n, uint32_t v
  */
 #define ARM_DREAD_BLK_MASK 0x3ffu
 
+/* First entry of va's two-way set; way 1 follows it. */
 static inline unsigned dread_slot(uint32_t va, bool priv) {
-    return (unsigned)(((va >> 10) + (priv ? ARM_DREAD_ENTRIES / 2u : 0u))
-                      & (ARM_DREAD_ENTRIES - 1u));
+    return 2u * (unsigned)(((va >> 10) + (priv ? ARM_DREAD_SETS / 2u : 0u))
+                           & (ARM_DREAD_SETS - 1u));
 }
 static inline uint32_t dread_tag(uint32_t va, bool priv) {
     return (va & ~ARM_DREAD_BLK_MASK) | (priv ? 1u : 0u);
@@ -240,9 +241,12 @@ static inline const uint8_t *dread_peek(const arm_cpu_t *c, uint32_t va,
     if (((va & ARM_DREAD_BLK_MASK) + n) > (ARM_DREAD_BLK_MASK + 1u))
         return NULL;
     const unsigned slot = dread_slot(va, priv);
-    if (!c->dread[slot].host || c->dread[slot].tag != dread_tag(va, priv) ||
-        c->dread[slot].gen != c->tlb_gen) return NULL;
-    return c->dread[slot].host + (va & ARM_DREAD_BLK_MASK);
+    const uint32_t tag = dread_tag(va, priv);
+    for (unsigned way = 0u; way < 2u; way++)
+        if (c->dread[slot + way].tag == tag && c->dread[slot + way].gen == c->tlb_gen)
+            return c->dread[slot + way].host
+                ? c->dread[slot + way].host + (va & ARM_DREAD_BLK_MASK) : NULL;
+    return NULL;
 #endif
 }
 static inline const uint8_t *dread_hit(arm_cpu_t *c, uint32_t va, unsigned n,
@@ -282,6 +286,7 @@ static inline void dread_fill(arm_cpu_t *c, uint32_t va, uint32_t pa,
                                     ARM_DREAD_BLK_MASK + 1u);
     if (!blk) return;
     const unsigned slot = dread_slot(va, priv);
+    c->dread[slot + 1u] = c->dread[slot];
     c->dread[slot].host = blk;
     c->dread[slot].tag  = dread_tag(va, priv);
     c->dread[slot].gen  = c->tlb_gen;
@@ -296,9 +301,12 @@ static inline uint8_t *dwrite_peek(const arm_cpu_t *c, uint32_t va,
     if (!c->bus->host_ram_write ||
         ((va & ARM_DREAD_BLK_MASK) + n) > (ARM_DREAD_BLK_MASK + 1u)) return NULL;
     const unsigned slot = dread_slot(va, priv);
-    if (!c->dwrite[slot].host || c->dwrite[slot].tag != dread_tag(va, priv) ||
-        c->dwrite[slot].gen != c->tlb_gen) return NULL;
-    return c->dwrite[slot].host + (va & ARM_DREAD_BLK_MASK);
+    const uint32_t tag = dread_tag(va, priv);
+    for (unsigned way = 0u; way < 2u; way++)
+        if (c->dwrite[slot + way].tag == tag && c->dwrite[slot + way].gen == c->tlb_gen)
+            return c->dwrite[slot + way].host
+                ? c->dwrite[slot + way].host + (va & ARM_DREAD_BLK_MASK) : NULL;
+    return NULL;
 }
 static inline uint8_t *dwrite_hit(arm_cpu_t *c, uint32_t va, unsigned n,
                                   bool priv) {
@@ -331,6 +339,7 @@ static inline void dwrite_fill(arm_cpu_t *c, uint32_t va, uint32_t pa,
         c->bus->ctx, pa & ~ARM_DREAD_BLK_MASK, ARM_DREAD_BLK_MASK + 1u);
     if (!blk) return;
     const unsigned slot = dread_slot(va, priv);
+    c->dwrite[slot + 1u] = c->dwrite[slot];
     c->dwrite[slot].host = blk;
     c->dwrite[slot].tag = dread_tag(va, priv);
     c->dwrite[slot].gen = c->tlb_gen;

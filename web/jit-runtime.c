@@ -12,13 +12,14 @@
 #define LINK_SLOTS 4096u
 #define REGION_BYTES 1024u
 #define MASK_WORDS 16u
-#define JIT_ABI_REVISION 2u
+#define JIT_ABI_REVISION 3u
 
 /* These details are embedded by compiler.cjs rather than represented by an
  * exported offset. Fail the build if a future cache-layout edit would leave a
  * same-size but incompatible seed looking ABI-compatible. */
 _Static_assert(sizeof(void *) == 4u, "The seed requires wasm32 pointers");
-_Static_assert(ARM_DREAD_ENTRIES == 1024u, "Update seed cache slot calculation");
+_Static_assert(ARM_DREAD_ENTRIES == 1024u && ARM_DREAD_SETS == 512u,
+               "Update seed cache set calculation");
 #define CACHE_FIELD_OFFSET(cache, field) \
     (offsetof(arm_cpu_t, cache[0].field) - offsetof(arm_cpu_t, cache[0]))
 _Static_assert(CACHE_FIELD_OFFSET(dread, host) == 0u &&
@@ -173,14 +174,17 @@ EMSCRIPTEN_KEEPALIVE uintptr_t emu_jit_span(arm_cpu_t *c, uint32_t va,
     if (!bytes || (bytes >= 4 && (va & 3u)) || (bytes == 2 && (va & 1u)) ||
         (va & 1023u) + bytes > 1024u) return 0;
     bool priv = (c->cpsr & 31u) != ARM_MODE_USR;
-    unsigned slot = ((va >> 10) + (priv ? ARM_DREAD_ENTRIES / 2u : 0u)) & (ARM_DREAD_ENTRIES - 1u);
+    unsigned slot = 2u * (((va >> 10) + (priv ? ARM_DREAD_SETS / 2u : 0u)) & (ARM_DREAD_SETS - 1u));
     uint32_t tag = (va & ~1023u) | (priv ? 1u : 0u);
     if (write) {
-        if (!c->bus->host_ram_write || !c->dwrite[slot].host ||
+        if (!c->bus->host_ram_write) return 0;
+        if (c->dwrite[slot].tag != tag || c->dwrite[slot].gen != c->tlb_gen) slot++;
+        if (!c->dwrite[slot].host ||
             c->dwrite[slot].tag != tag || c->dwrite[slot].gen != c->tlb_gen) return 0;
         c->dwrite_hits += transactions;
         return (uintptr_t)(c->dwrite[slot].host + (va & 1023u));
     }
+    if (c->dread[slot].tag != tag || c->dread[slot].gen != c->tlb_gen) slot++;
     if (!c->dread[slot].host || c->dread[slot].tag != tag || c->dread[slot].gen != c->tlb_gen)
         return 0;
     c->dread_hits += transactions;
