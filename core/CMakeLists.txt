@@ -43,6 +43,8 @@ add_library(emucore STATIC
     src/firmware/lzss.c
     src/firmware/macho.c
     src/firmware/ksyms.c
+    src/jit/wasm_ir.c
+    src/jit/arm_wasm.c
     src/boot/bringup.c
     src/boot/dt_patch.c
     src/boot/bringup_os1.c

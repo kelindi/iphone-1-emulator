@@ -2,8 +2,9 @@
 // HTTP origins use the interpreter when native hash verification is unavailable.
 const seedEnabled = Boolean(globalThis.crypto?.subtle) && new URL(location.href).searchParams.get('jit') !== '0';
 const SEED_MAX_BYTES = 32 * 1024 * 1024;
-const SEED_MAX_REGIONS = 512;
+const SEED_MAX_REGIONS = 1024;
 const SEED_PREPARE_TIMEOUT_MS = 8000;
+const RUNTIME_TABLE_CAP = 65536;
 const seedAbort = new AbortController();
 const seedResponses = new Set();
 function checkSeedActive() {
@@ -127,20 +128,26 @@ async function prepareSeed() {
 }
 const seedPromise = seedEnabled ? prepareSeed() : null;
 class SeedJIT {
-  constructor(module) {
+  // A deferred engine prepares its code but stays off until activate(), so the
+  // guest's own startup never runs cold generated code.
+  constructor(module, {deferred = false} = {}) {
+    this.activated = deferred ? new Promise(resolve => { this.activate = resolve; }) : Promise.resolve();
     this.module = module; this.enabled = false; this.supported = false;
     this.generation = 0; this.functions = new Set(); this.bytes = 0;
-    this.retired = this.mask = 0; this.ready = Promise.resolve();
+    this.mask = this.scratch = this.regions = 0; this.ready = Promise.resolve();
     const required = ['_emu_jit_enable', '_emu_jit_reset',
-      '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_retired',
-      '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_span', '_malloc', '_free', 'addFunction', 'removeFunction'];
+      '_emu_jit_abi', '_emu_jit_offset', '_emu_jit_install', '_emu_jit_runner',
+      '_emu_jit_link', '_emu_jit_stat', '_emu_jit_stale', '_emu_jit_refill', '_malloc', '_free', 'addFunction', 'removeFunction'];
     this.supported = required.every(name => typeof module[name] === 'function');
+    // Hot regions without seed code are compiled while the guest runs (?jit=seed keeps only the seed).
+    this.runtime = new URL(location.href).searchParams.get('jit') !== 'seed' &&
+      ['_emu_jit_compile_hot', '_emu_jit_hot', '_emu_jit_compiled', '_emu_jit_compiled_free']
+        .every(name => typeof module[name] === 'function');
+    this.live = this.compiling = this.hasRunner = false; this.compiled = this.compiledBytes = 0;
     if (!this.supported || !seedEnabled) return;
     try {
       module._emu_jit_enable(0);
       if (!module.jitMemory?.buffer) throw Error('Seed shared memory is unavailable');
-      this.retired = module._malloc(4096 * 4);
-      if (!this.retired) throw Error('Seed retirement buffer allocation failed');
       this.mask = module._malloc(64);
       if (!this.mask) throw Error('Seed mask allocation failed');
       this.enabled = true; this.ready = this.reset();
@@ -150,64 +157,121 @@ class SeedJIT {
     const generation = ++this.generation, m = this.module;
     if (this.supported) { m._emu_jit_enable(0); m._emu_jit_reset(); }
     for (const fn of this.functions) m.removeFunction(fn);
-    this.functions.clear(); this.bytes = 0;
+    this.functions.clear(); this.bytes = this.regions = 0;
+    this.live = this.compiling = this.hasRunner = false; this.compiled = this.compiledBytes = 0;
     return this.enabled ? this.install(generation) : Promise.resolve();
   }
   disable(error) {
     this.error = String(error.stack || error); this.enabled = false;
     this.reset();
-    if (this.retired) this.module._free(this.retired);
     if (this.mask) this.module._free(this.mask);
-    this.retired = this.mask = 0;
+    if (this.scratch) this.module._free(this.scratch);
+    this.mask = this.scratch = 0;
     console.error('Seed disabled:', this.error);
   }
   async install(generation) {
     try {
       const seed = await seedPromise;
       if (generation !== this.generation) return;
-      if (seed.error) throw seed.error;
-      const [{module, bytes}, defs, abi] = seed;
-      if (abi.revision !== this.module._emu_jit_abi() || !Array.isArray(abi.offsets) ||
-          abi.offsets.length !== 16 || abi.offsets.some((offset, i) => offset !== this.module._emu_jit_offset(i)))
-        throw Error('Seed runtime ABI mismatch');
-      if (!Array.isArray(defs) || defs.length > SEED_MAX_REGIONS) throw Error('Seed function cap');
-      const uint32 = value => Number.isInteger(value) && value >= 0 && value <= 0xffffffff;
-      const keys = new Set(), indices = new Set();
-      for (const r of defs) {
-        if (!r || !uint32(r.pc) || (r.pc & 1023) || !uint32(r.index) || typeof r.thumb !== 'boolean' ||
-            !Array.isArray(r.masks) || r.masks.length !== 16 || !r.masks.every(uint32))
-          throw Error('Invalid seed region');
-        const key = `${r.pc}/${r.thumb}`;
-        if (keys.has(key) || indices.has(r.index)) throw Error('Duplicate seed region or export');
-        keys.add(key); indices.add(r.index);
+      const m = this.module, useSeed = !seed.error;
+      if (!useSeed && !this.runtime) throw seed.error;
+      const [{module, bytes}, defs, abi] = useSeed ? seed : [{module: null, bytes: 0}, [], null];
+      if (useSeed) {
+        if (abi.revision !== m._emu_jit_abi() || !Array.isArray(abi.offsets) ||
+            abi.offsets.length !== 16 || abi.offsets.some((offset, i) => offset !== m._emu_jit_offset(i)))
+          throw Error('Seed runtime ABI mismatch');
+        if (!Array.isArray(defs) || defs.length > SEED_MAX_REGIONS) throw Error('Seed function cap');
+        const uint32 = value => Number.isInteger(value) && value >= 0 && value <= 0xffffffff;
+        const keys = new Set(), indices = new Set();
+        for (const r of defs) {
+          if (!r || !uint32(r.pc) || (r.pc & 1023) || !uint32(r.index) || typeof r.thumb !== 'boolean' ||
+              !Array.isArray(r.masks) || r.masks.length !== 16 || !r.masks.every(uint32))
+            throw Error('Invalid seed region');
+          const key = `${r.pc}/${r.thumb}`;
+          if (keys.has(key) || indices.has(r.index)) throw Error('Duplicate seed region or export');
+          keys.add(key); indices.add(r.index);
+        }
+      } else console.warn('Seed unavailable; compiling while running:', String(seed.error));
+      this.table = new WebAssembly.Table({element: 'anyfunc', initial: defs.length});
+      const size = Math.max(...Array.from({length: 16}, (_, i) => m._emu_jit_offset(i))) + 64;
+      if (!this.scratch) {
+        this.scratch = m._malloc(size);
+        if (!this.scratch) throw Error('Seed scratch allocation failed');
+        new Uint8Array(m.jitMemory.buffer, this.scratch, size).fill(0);
       }
-      const instance = await WebAssembly.instantiate(module, {env: {
-        memory: this.module.jitMemory, stale: this.module._emu_jit_stale, span: this.module._emu_jit_span
-      }});
+      if (useSeed) {
+        const instance = await WebAssembly.instantiate(module, {env: this.imports()});
+        if (generation !== this.generation) return;
+        if (typeof instance.exports.run !== 'function') throw Error('Missing seed runner export');
+        this.admitRunner(instance.exports.run);
+        for (const r of defs) {
+          new Uint32Array(m.jitMemory.buffer, this.mask, 16).set(r.masks);
+          if (!m._emu_jit_install(r.pc, r.thumb ? 1 : 0, r.index, this.mask))
+            throw Error('Seed table admission');
+        }
+        // V8 compiles each seed function on its first call. Calling every region with
+        // a zero budget on a zeroed scratch CPU compiles it without guest effects, in
+        // short slices, so the guest never stalls on compilation once enabled.
+        const run = instance.exports.run;
+        for (let i = 0; i < defs.length;) {
+          const began = performance.now();
+          do run(this.scratch, 0, i++); while (i < defs.length && performance.now() - began < 4);
+          await new Promise(resolve => setTimeout(resolve, 0));
+          if (generation !== this.generation) return;
+        }
+      }
+      await this.activated;
       if (generation !== this.generation) return;
-      for (const r of defs) {
-        const generated = instance.exports['b' + r.index];
-        if (typeof generated !== 'function') throw Error('Missing seed function export');
-        const fn = this.module.addFunction(generated, 'iii');
-        this.functions.add(fn); // Own the slot even when native admission throws.
-        new Uint32Array(this.module.jitMemory.buffer, this.mask, 16).set(r.masks);
-        if (!this.module._emu_jit_install(r.pc, r.thumb ? 1 : 0, fn, this.mask))
-          throw Error('Seed table admission');
-      }
+      this.regions = defs.length;
       this.bytes = bytes;
-      this.module._emu_jit_enable(1);
+      if (this.runtime) { m._emu_jit_hot(1); this.live = true; }
+      m._emu_jit_enable(1);
     } catch (error) { if (generation === this.generation) this.disable(error); }
   }
+  imports() {
+    const m = this.module;
+    return {memory: m.jitMemory, stale: m._emu_jit_stale, refill: m._emu_jit_refill,
+      link: m._emu_jit_link(), table: this.table};
+  }
+  admitRunner(run) {
+    const fn = this.module.addFunction(run, 'iiii');
+    this.functions.add(fn); // Own the slot even when native admission throws.
+    if (!this.module._emu_jit_runner(fn)) throw Error('Seed runner admission');
+    this.hasRunner = true;
+  }
+  activate() {}
+  // Called between guest batches: compiles queued hot regions in C, then
+  // instantiates them off the guest's path and installs them when ready.
   pump() {
-    if (!this.enabled) return;
-    const n = this.module._emu_jit_retired(this.retired);
-    for (const fn of new Uint32Array(this.module.jitMemory.buffer, this.retired, n))
-      if (this.functions.delete(fn)) this.module.removeFunction(fn);
-    if (!this.functions.size) this.bytes = 0;
+    if (!this.live || this.compiling) return;
+    const m = this.module, base = this.table.length;
+    if (base > RUNTIME_TABLE_CAP - 64) { m._emu_jit_hot(0); this.live = false; return; }
+    if (!m._emu_jit_compile_hot(16, base)) return;
+    const length = m._emu_jit_compiled(1) >>> 0;
+    if (!length) { m._emu_jit_compiled_free(); return; }
+    const heap = m.jitMemory.buffer, at = m._emu_jit_compiled(0) >>> 0;
+    const count = m._emu_jit_compiled(3) >>> 0, d = m._emu_jit_compiled(2) >>> 2;
+    const bytes = new Uint8Array(heap).slice(at, at + length);
+    const defs = Array.from({length: count}, (_, i) => new Uint32Array(heap).slice(d + i * 19, d + i * 19 + 19));
+    m._emu_jit_compiled_free();
+    this.table.grow(count);
+    const generation = this.generation;
+    this.compiling = true;
+    WebAssembly.instantiate(bytes, {env: this.imports()}).then(({instance}) => {
+      if (generation !== this.generation) return;
+      if (!this.hasRunner) this.admitRunner(instance.exports.run);
+      for (const r of defs) instance.exports.run(this.scratch, 0, r[2]);
+      for (const r of defs) {
+        new Uint32Array(m.jitMemory.buffer, this.mask, 16).set(r.subarray(3));
+        m._emu_jit_install(r[0], r[1], r[2], this.mask);
+      }
+      this.compiled += count; this.compiledBytes += length;
+    }).catch(error => { if (generation === this.generation) this.disable(error); })
+      .finally(() => { if (generation === this.generation) this.compiling = false; });
   }
   stats() {
     return {enabled: this.enabled, error: this.error, generation: this.generation,
-      regions: this.functions.size, bytes: this.bytes,
+      regions: this.regions, bytes: this.bytes, compiled: this.compiled, compiledBytes: this.compiledBytes,
       retired: this.supported ? this.module._emu_jit_stat(0) : 0,
       calls: this.supported ? this.module._emu_jit_stat(1) : 0};
   }

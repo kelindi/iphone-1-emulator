@@ -118,7 +118,7 @@ SNAP_SIZE_GUARD(arm_cp15_t,        64,    "snap_cpu");
  * below, and justified the same way. Measured with the compiler's failed size
  * guard and confirmed by the successful guard below, not assumed from source
  * arithmetic; the padding is exactly why. */
-SNAP_SIZE_GUARD(arm_cpu_t,         68112,   "snap_cpu");
+SNAP_SIZE_GUARD(arm_cpu_t,         98832,   "snap_cpu");
 SNAP_SIZE_GUARD(s5l_uart_t,        8280,  "snap_uart");
 SNAP_SIZE_GUARD(s5l_vic_t,         16,    "snap_vic");
 SNAP_SIZE_GUARD(s5l_timer_t,       40,    "snap_timer");
@@ -221,7 +221,7 @@ SNAP_SIZE_GUARD(s5l_mtz1_t,        1512,   "snap_mtz1");
 /* +232 bytes add the two host-only I2S transmit streams and the heap-owned PCM
  * ring's pointer and counters (232). Never serialised: snap_apply() resets the
  * streams, the ring belongs to the live frontend. Byte format unchanged. */
-SNAP_SIZE_GUARD(s5l8900_t,         127728, "snap_mach");
+SNAP_SIZE_GUARD(s5l8900_t,         158448, "snap_mach");
 #endif
 
 /* ---------------------------------------------------------------- the IO --- */

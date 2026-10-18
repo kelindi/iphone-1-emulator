@@ -688,3 +688,122 @@ The isolated original512 observer adds per-generated-retirement counters while r
 ### Executed-work100M correctness and retained ranking (2026-09-06)
 
 The single count-only observer trajectory passes all four complete raw snapshots, original JIT policy counters and final frame. Independent saved-byte audit reconciles73,093,840 generated and26,906,160 interpreted steps with zero count loss; all nine observed process identities closed. This is no timing or warm-browser result. Retained first100M work identifies a3,883,986-step byte-hash-shaped range that is already99.734% generated. Routine/physical identities remain unbound; no optimization follows from count share alone. [Evidence and limits](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/jit-executed-work/README.md` in the traces archive), [next measurement hypothesis](https://github.com/kelindi/iphone-1/releases/tag/traces-archive) (`docs/traces/jit-executed-work/hotspot-note.md` in the traces archive). Production unchanged.
+
+## Linked-region compiler (2026-10-18)
+
+**Design.** `tools/jit/compiler.cjs` emits one function per retained 1 KB region into one table. The C runtime (`web/jit-runtime.c`) owns region lookup, the supported-position masks and a 4,096-slot link table (`tag = base | thumb << 1 | 1`). `arm_wasm_jit_try()` enters the exported `run` runner. A region that leaves its page for another installed region refills the fetch cache (`emu_jit_refill`) and tail-calls it. Registers, packed CPSR and cache counters are flushed at every exit, so C sees exact state at each edge. JIT ABI revision 2.
+
+**Generated-code changes, in order of effect:**
+- linked regions (one function per region, tail calls between regions);
+- direct `br` to statically known successor blocks in the same group; the T-bit check is kept only when the last op writes `f`;
+- one-time-per-call block word verification, now compared as i64/i32/i16 chunks;
+- privilege and slot offset hoisted to entry, because no compiled op writes the mode bits;
+- separate branchy hit checks, plus the crossing check only for accesses wider than a word;
+- NZCV in four locals (`fN`, `fZ`, `fC`, `fV`), so a CMP shrinks from about 25 to about 10 x64 instructions;
+- 32-bit adds when flags are not needed;
+- `ARM_DREAD_ENTRIES` 64 -> 1,024.
+
+**Measurement.** Use `HOST_CLOCK=1` with a simulated host clock (`performance.now` advanced a fixed 10 µs per call). This makes the browser's 256-instruction active batches deterministic, so every configuration retires identical work. Replay mode exits every ~68 instructions (`cpu_hz / tb_hz`) and understates the browser gain. Alternating warm passes, 100M instructions: interpreter 56–61 M/s, linked seed 91–107 M/s (about 1.8x). The VM's speed varies by up to 2x between phases, so only interleaved ratios are meaningful.
+
+**Rejected:**
+- tiny per-block functions (about 38,000 functions; V8 never optimises most of them; slower than the interpreter);
+- a per-entry budget charge with refunds (more early exits; slower);
+- an `emu_jit_step` import that runs unsupported or cache-missing instructions through `arm_step()` inside the seed with the batch's exact `batch_pending` and break rules. It preserved snapshots and cut C returns 3.82M -> 1.41M, but was not faster, either reloading in the loop or re-entering through `return_call`.
+
+**Cold start.** The first warm-up pass runs at about 38–45 M/s for both the 12 MB (512-region) and 26 MB (1,024-region) seeds. With `--no-liftoff --no-wasm-lazy-compilation`, the first pass reaches warm speed but compiling takes 5 s longer. So the cold cost is Liftoff plus tier-up latency, not seed size. Chrome's compiled-module cache covers return visits. Most of the first-pass penalty is lazy compilation: each function compiles synchronously on its first call. Running all 1,024 regions once with a zero budget on a zeroed scratch CPU compiles them in about 0.5 s without guest effects; afterwards the first 20M instructions run at 54 M/s instead of 25 (interpreter 44). `web/seed-jit.js` now does this in 4 ms slices before it enables the seed, so the guest uses the interpreter until compilation is finished.
+
+**Remaining exits (census, 100M).** About 1.7M unsupported positions, spread over many kinds (MCR, UXTB/UXTH, LDREX/STREX, VFP, BLX, CPSID/CPSIE, Thumb POP {pc}). About 1.4M memory misses; 21% come from one non-RAM streaming load in user space, and kernel MMIO polls account for more.
+
+
+**Extend ops (perf/extend-ops).** The seed now compiles ARM SXTB/SXTH/UXTB/UXTH with any rotation, their Rn-accumulating SXTAB/SXTAH/UXTAB/UXTAH forms, plain UXTB16 (87 retained positions, more than any single extend kind), and Thumb SXTH/SXTB/UXTH/UXTB. That covers 467 of the retained seed-input positions (SXTB16 and UXTAB16 stay on the interpreter). Rd or Rm == PC still exits, as in `exec_media`. Full-snapshot replay passes at 100M and 300M. Seed C returns per 100M bench pass fall from 3.82M to 3.55M (-7%). Three interleaved `bench:jit` runs on one VM gave warm medians of base 106.7 / 110.0 / 111.8 against candidate 116.4 / 113.1 / 113.6 M/s (interpreter 59–63), so +9.1%, +2.8% and +1.6%. The real gain is about +2–3%; the first run's +9% is VM drift. First (cold) passes did not change in a way the noise can resolve: 55.3/51.1, 53.6/49.9 and 52.8/52.8.
+
+### Broader execution census for the seed (2026-10-18)
+
+**What changed.** `tools/jit/seed-input.json.gz` now comes from an interpreter census over 18 scripted workloads, all starting from the shipped Home snapshot with browser-style active batches: Settings (as in replay/bench), and opening/scrolling/tapping Text, Calendar, Photos, YouTube, Stocks, Maps, Weather, Clock, Phone, Mail, Safari and iPod. The census also types on the Calculator and the Notes keyboard, and runs lock/wake/slide-to-unlock (360–600M instructions each). `tools/jit/census/` contains the counting runtime: a separate build whose `arm_wasm_jit_try()` only records `(pc, ISA, opcode)` and returns 0, so the interpreter runs everything. It also has the workload scripts and the region selector, which ranks 1 KB regions by summed compilable executions across workloads. The caps stay the same: 1,024 regions, a 26.3 MB seed (was 24.6 MB), and no runtime or compiler change.
+
+**Coverage.** The share of instructions retired in generated code rises 0.4–1.9 points per workload, for example Settings 97.0 -> 97.5%, Settings scroll 95.0 -> 95.9%, Notes typing 92.3 -> 94.1%, lock/unlock 95.9 -> 97.1%. In the 100M replay it rises from about 92.0 to 92.7M instructions (`regions` 1,018).
+
+**Gate.** 100M and 300M replays: full machine snapshot equivalence passed. Unit tests (124) and native ctest (42/42) pass.
+
+**Speed.** Four runs of `PASSES=0,1,2,0,1,2,0,1,2,0,1,2,1,2`, warm medians in M/s:
+
+| run | interpreter | base | candidate | gain |
+|---|---|---|---|---|
+| 1 | 60.8 | 113.1 | 114.8 | +1.5% |
+| 2 | 59.8 | 108.6 | 106.8 | −1.7% |
+| 3 | 60.1 | 108.6 | 113.8 | +4.8% |
+| 4 | 59.8 | 107.2 | 112.0 | +4.5% |
+
+The median of all 16 warm passes per seed is 107.9 for base and 110.0 for the candidate, about +2%, which is inside the VM's noise. The first cold pass is slightly slower (46.5–50.1 vs 51.9–55.6 M/s), probably because there is 1.6 MB more to compile. This is a small gain: the base seed already covered about 95% of retired instructions in these workloads. The remaining exits are dominated by unsupported opcodes and memory misses (see the census above), not by missing regions.
+
+### VFP subset in linked regions (2026-10-18)
+
+`tools/jit/compiler.cjs` now compiles VMOV core<->single/double (and register pairs), VMRS/VMSR FPSCR (incl. `APSR_nzcv`), VMOV/VABS/VNEG register, VCVT f32<->f64, VADD/VSUB/VMUL/VNMUL/VDIV and VMLA/VMLS/VNMLA/VNMLS (two roundings, no fusion), and VCMP/VCMPE, mirroring `core/src/arm/vfp.c` as built for wasm (no host exception flags; FZ input/output flushing sets IDC/UFC; VCMP IOC from signalling/quiet NaN). The instruction exits to the interpreter before writing anything when VFP is unavailable (CPACR/privilege/FPEXC.EN), when FPSCR has RMode, trap enables, LEN or STRIDE set, or when a result is NaN (payload/DN handled by the interpreter). Retained positions 167,889 -> 170,167; bench generated instructions +0.75%, seed calls -8%.
+
+Gate: 100M and 300M replays pass full machine snapshot equivalence; unit tests pass (no C changes). Two interleaved `bench:jit` runs: interpreter 62.6 / 61.1, base 105.1 / 103.5, candidate 106.6 / 104.6 warm MIPS -> +1.4% / +1.1%, within pass-to-pass noise (passes span ~90-116). Small, consistent but not decisive win.
+
+### Combined seed experiments (perf/combined, 2026-10-18)
+
+The five gated experiment branches were merged onto `devin/1792277532-jit-coverage` one at a time, best first. After each merge the seed was regenerated and the full gate was run again (100M and 300M full-snapshot replay, 124 unit tests, and native ctest 42/42 where needed). Each branch was then benchmarked against the original base seed and head-to-head against the previous accepted seed, with alternating seed order. Warm medians swing ±5–8% between runs, so the pooled median of every warm pass decided each step (the threshold was +0.5%).
+
+| Step | Gate | Head-to-head vs previous (pooled warm) | Result |
+|---|---|---|---|
+| extend-ops | pass | vs base: +0.4 / +7.2 / +2.0% (median +2.0%) | kept |
+| cps | pass | 7 runs vs extend-ops: pooled 99.4 vs 101.8 M/s (-2.3%) | dropped |
+| coverage | pass | 3 runs vs extend-ops: 112.7 vs 104.0 M/s (+8.4%) | kept |
+| vfp-subset | pass | 3 runs vs coverage: 117.2 vs 113.6 M/s (+3.2%) | kept |
+| cold-start | pass | 6 runs vs vfp-subset: 110.0 vs 111.2 M/s (-1.1%) | dropped |
+
+Cold-start was dropped on warm speed, but in all six runs it still had the best first (cold) pass: +2% to +25%, from smaller Liftoff code. If cold start matters more than warm speed, add it back; it merges cleanly and passes the gate.
+
+Final seed (extend-ops + coverage + vfp-subset, 27.4 MB). Three interleaved `bench:jit` runs gave warm medians in M/s:
+
+| Run | interpreter | base | combined | gain |
+|---|---|---|---|---|
+| 1 | 61.5 | 112.7 | 116.2 | +3.1% |
+| 2 (reversed order) | 57.3 | 101.9 | 109.3 | +7.3% |
+| 3 | 58.2 | 100.9 | 108.3 | +7.3% |
+
+The median gain is +7.3%. No C runtime change: `web/dist` is byte-identical to the base.
+
+## Guest registers in memory instead of locals (2026-10-18)
+
+Before translating whole guest functions, region-edge overhead was measured. 100M instructions make about 6.2M region entries (3.4M from C, 2.7M tail links). A diagnostic seed that doubled every entry/exit register load and store was only 2–6% slower, so keeping registers live across functions could gain about 5% at most.
+
+V8 profiling (`--profiling-funcs` build) put about 65% of run time in the seed and 35% in C, spread thin: the hottest region was 3.4% of seed time. TurboFan code for one hot region had 6,490 instructions, 1,930 of them touching stack spill slots. Sixteen guest registers, NZCV, the budget and the cached fetch/generation/write-gate values exceed the x86-64 register file, so each guest operation cost roughly 68 host instructions.
+
+The seed now reads and writes r0–r14 straight from `arm_cpu_t` (r15 stays a local for dispatch). The fetch-block pointer, `tlb_gen` and the `host_ram_write` gate are reloaded at use instead of being held in locals. Privilege stays hoisted: recomputing it from a spilled CPSR was no faster. Region entry and exit now move only r15.
+
+Warm medians on `bench:jit` (M instructions/s):
+
+| Run | interpreter | previous seed | memory registers | + reload invariants | gain |
+|---|---|---|---|---|---|
+| 1 | 59.4 | 120.7 | 123.2 | 132.3 | +9.6% |
+| 2 | 59.8 | 117.9 | – | 132.2 | +12.1% |
+| 3 (final seed) | 60.7 | 116.4 | – | 131.7 | +13.1% |
+
+The final seed is about 2.17× the interpreter once warm. Spill-slot references in the sampled hot region fell from 1,930 to 1,201. Keeping the read/write hit counters in memory as well made no difference, so they stay in locals. The 100M and 300M replays match the interpreter's full machine snapshot byte for byte, with the same 5.78M and 21.9M generated calls. There is no C change.
+
+Follow-up: each data-cache probe now checks the tag and generation with one unaligned 64-bit compare and drops the NULL host-pointer test. A filled entry always has a host pointer, a zeroed entry has generation 0, and the runtime now refuses to enter regions while `tlb_gen` is 0. Interleaved warm medians were 136.5 → 139.5 M/s (+2.2%, 2.27× the interpreter's 61.4), and the 300M replay stays exact.
+
+### Region compiler in C
+
+`core/src/jit/arm_wasm.c` (with the small expression tree and binary encoder in `core/src/jit/wasm_ir.c`) is a port of `tools/jit/compiler.cjs` that writes the WebAssembly binary directly instead of WAT text. The facts the JavaScript compiler recovered with regexes over generated text (constant r15 successors, whether an op writes `f`) are recorded while each op is built. The encoder follows the byte layout WABT produces for the folded text, so the two compilers are checked against each other byte for byte.
+
+- On the shipped seed input it produces the identical module (`657e3e61…`, 1,024 regions, 27.9 MB) and `regions.json`.
+- Natively it takes 0.49 s for all 1,024 regions; the JavaScript compiler plus WABT took 8.8 s and 1.7 GB of memory. Peak per-region arena use is about 4 MiB, so the compiler reserves 16 MiB.
+- It is built into `emucore` (portable C, no Emscripten dependency) and exported from the browser runtime as `emu_jit_compile` / `emu_jit_compiled` / `emu_jit_compiled_free`. `tools/jit/generate-seed.mjs` uses it by default; `JIT_COMPILER=js` runs the reference JavaScript compiler through WABT.
+- `web/tests/region-compiler.test.mjs` compiles a sample of ARM and Thumb regions with both compilers and requires identical bytes and region definitions.
+
+This is the base for compiling hot regions in the browser while the phone runs, instead of only shipping a precompiled seed.
+
+### Compiling hot regions while the guest runs
+
+The seed only covers code seen in the iPhone OS 1.0 census. The runtime now also compiles regions as they become hot, using the C region compiler inside the browser runtime:
+
+- `arm_wasm_jit_try` notes each interpreted instruction in a region without generated code (256-slot table, decaying on collisions) and records the instruction word it ran, as the census does. After 4,096 interpreted instructions a region is queued. None of this is guest or snapshot state.
+- `emu_jit_compile_hot(max, table_base)` compiles up to `max` queued regions into one module. Every module, the seed included, imports one shared `env.table` and fills its own slice of it, so the runtime link table's function indices stay valid across modules. This changed the seed (ABI revision 3); both compilers changed identically and still match byte for byte.
+- `SeedJIT.pump()` (between guest batches) compiles 16 queued regions at a time, instantiates them asynchronously, calls each once with a zero budget to compile it, then installs it. If the seed is missing or rejected, the runtime starts with an empty table and compiles everything itself. `?jit=seed` keeps the seed alone.
+- Replays: `PASSES=0,1,2,3` (interpreter, seed, compiled while running, both) all match the interpreter's full machine snapshot at 100M, 200M and 300M instructions. Without a seed, 627 regions get compiled over 300M instructions and 63% of instructions run in generated code.
+- `bench:jit` accepts `SEEDS=web/jit,web/jit+rt,rt`. One noisy interleaved run (M instructions/s): interpreter 40–57, seed 108–116 warm, seed plus runtime 106–121, runtime only 73–74 (it recompiles every pass, so each pass includes V8 tier-up; the compile work itself was 120–250 ms of C per 100M instructions).
+- Chrome check (fresh profile, unlock, open the genuine Calculator, 12×34=): the default page, `?jit=0`, and the default page with `jit/seed.wasm` blocked all show 408 with no page errors. With the seed blocked, the page compiled 650 regions (10.4 MB of generated code) itself; with the seed it compiled 156 more on top of the seed's 1,024. `web/tests/calculator.mjs` currently fails the same way in every mode, including `?jit=0`, because it taps the Calculator icon without unlocking first.

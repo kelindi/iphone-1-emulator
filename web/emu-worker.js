@@ -194,7 +194,7 @@ async function start(message) {
   }
   check(module.ccall('emu_set_cpi', 'number', ['number'], [message.cpi || 1]));
   // Optional code preparation runs alongside the genuine guest startup.
-  jit = new SeedJIT(module);
+  jit = new SeedJIT(module, {deferred: true});
   api = Object.fromEntries([
     ['hostClock','emu_host_clock',['number']], ['clockDelay','emu_clock_delay',[]],
     ['run','emu_run',['number']], ['status','emu_status',[]],
@@ -219,6 +219,7 @@ async function start(message) {
   drainAudio(false); // The wake sequence's own clicks happen before the page is shown.
   present(true);
   send('ready', {id:message.id, restored:Boolean(message.checkpoint), silent:Boolean(api.buttonState(4))});
+  jit?.activate?.();
   setPaused(false);
 }
 onmessage = async ({data:message}) => {

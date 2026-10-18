@@ -375,11 +375,12 @@ typedef enum {
 #define ARM_TLB_ENTRIES 4096u
 
 /*
- * Data-read block cache entries: 64 x 16 bytes = 1 KB, half per privilege.
- * Small on purpose -- it wants to stay in L1 alongside the guest's working
- * set, and unlike the 4096-entry TLB it caches only plain RAM.
+ * Data-read block cache entries, half per privilege; each maps one 1 KB block
+ * of plain RAM (unlike the 4096-entry TLB). 1024 entries cover 512 KB per
+ * privilege, so the generated code's inline hit path misses about half as
+ * often as it did with 64. Derived state: never serialised, cleared on restore.
  */
-#define ARM_DREAD_ENTRIES 64u
+#define ARM_DREAD_ENTRIES 1024u
 
 typedef struct arm_cpu {
     uint32_t r[16];      /* r0–r15; r15 is PC (address of current instruction) */

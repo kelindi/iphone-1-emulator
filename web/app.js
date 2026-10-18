@@ -103,8 +103,9 @@ async function start(recovery = null) {
   }
   const workerURL = new URL('./emu-worker.js', import.meta.url);
   // A diagnostic opt-out compares the same build's literal interpreter loop.
-  if (new URLSearchParams(location.search).get('jit') === '0')
-    workerURL.searchParams.set('jit', '0');
+  const jitMode = new URLSearchParams(location.search).get('jit');
+  if (jitMode === '0' || jitMode === 'seed')
+    workerURL.searchParams.set('jit', jitMode);
   worker = new Worker(workerURL);
   worker.onerror = event => fail(new Error(event.message || 'Emulator worker failed'));
   worker.onmessage = ({data:message}) => {
