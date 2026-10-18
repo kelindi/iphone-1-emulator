@@ -741,3 +741,27 @@ The median of all 16 warm passes per seed is 107.9 for base and 110.0 for the ca
 `tools/jit/compiler.cjs` now compiles VMOV core<->single/double (and register pairs), VMRS/VMSR FPSCR (incl. `APSR_nzcv`), VMOV/VABS/VNEG register, VCVT f32<->f64, VADD/VSUB/VMUL/VNMUL/VDIV and VMLA/VMLS/VNMLA/VNMLS (two roundings, no fusion), and VCMP/VCMPE, mirroring `core/src/arm/vfp.c` as built for wasm (no host exception flags; FZ input/output flushing sets IDC/UFC; VCMP IOC from signalling/quiet NaN). The instruction exits to the interpreter before writing anything when VFP is unavailable (CPACR/privilege/FPEXC.EN), when FPSCR has RMode, trap enables, LEN or STRIDE set, or when a result is NaN (payload/DN handled by the interpreter). Retained positions 167,889 -> 170,167; bench generated instructions +0.75%, seed calls -8%.
 
 Gate: 100M and 300M replays pass full machine snapshot equivalence; unit tests pass (no C changes). Two interleaved `bench:jit` runs: interpreter 62.6 / 61.1, base 105.1 / 103.5, candidate 106.6 / 104.6 warm MIPS -> +1.4% / +1.1%, within pass-to-pass noise (passes span ~90-116). Small, consistent but not decisive win.
+
+### Combined seed experiments (perf/combined, 2026-10-18)
+
+The five gated experiment branches were merged onto `devin/1792277532-jit-coverage` one at a time, best first. After each merge the seed was regenerated and the full gate was run again (100M and 300M full-snapshot replay, 124 unit tests, and native ctest 42/42 where needed). Each branch was then benchmarked against the original base seed and head-to-head against the previous accepted seed, with alternating seed order. Warm medians swing ±5–8% between runs, so the pooled median of every warm pass decided each step (the threshold was +0.5%).
+
+| Step | Gate | Head-to-head vs previous (pooled warm) | Result |
+|---|---|---|---|
+| extend-ops | pass | vs base: +0.4 / +7.2 / +2.0% (median +2.0%) | kept |
+| cps | pass | 7 runs vs extend-ops: pooled 99.4 vs 101.8 M/s (-2.3%) | dropped |
+| coverage | pass | 3 runs vs extend-ops: 112.7 vs 104.0 M/s (+8.4%) | kept |
+| vfp-subset | pass | 3 runs vs coverage: 117.2 vs 113.6 M/s (+3.2%) | kept |
+| cold-start | pass | 6 runs vs vfp-subset: 110.0 vs 111.2 M/s (-1.1%) | dropped |
+
+Cold-start was dropped on warm speed, but in all six runs it still had the best first (cold) pass: +2% to +25%, from smaller Liftoff code. If cold start matters more than warm speed, add it back; it merges cleanly and passes the gate.
+
+Final seed (extend-ops + coverage + vfp-subset, 27.4 MB). Three interleaved `bench:jit` runs gave warm medians in M/s:
+
+| Run | interpreter | base | combined | gain |
+|---|---|---|---|---|
+| 1 | 61.5 | 112.7 | 116.2 | +3.1% |
+| 2 (reversed order) | 57.3 | 101.9 | 109.3 | +7.3% |
+| 3 | 58.2 | 100.9 | 108.3 | +7.3% |
+
+The median gain is +7.3%. No C runtime change: `web/dist` is byte-identical to the base.
