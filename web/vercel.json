@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'Static CDN build: no install needed'",
+  "buildCommand": "node ../tools/build-vercel-cdn.mjs",
+  "outputDirectory": ".cdn-site",
+  "headers": [
+    {"source": "/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=0, must-revalidate"}]},
+    {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+  ]
+}

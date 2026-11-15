@@ -20,3 +20,6 @@ node_modules/
 # Generated publishing and browser-recording artifacts
 /tweets/
 /docs/traces/
+
+# Split-CDN Vercel site shell
+/web/.cdn-site/
