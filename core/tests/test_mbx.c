@@ -3284,6 +3284,55 @@ static void test_compact_integer_quarter_turn(void) {
     }
     s5l8900_free(&m);
 }
+/* Camera's post-capture review: a 400x300 landscape frame (512x512
+ * allocation, 416-texel pitch) drawn a quarter turn onto the portrait
+ * screen as a filtered compact copy magnified to 320x427. Captured record;
+ * word 2 carries the source address. Quadrant colours check orientation:
+ * U runs down the screen and V runs right to left. */
+static void test_compact_camera_review_turn(void) {
+    const uint32_t table0=0x08003000u, table2=0x08004000u;
+    const uint32_t region=0x1000u, object=0x14000u;
+    const uint32_t source=0x00b74000u, target=0x00a3d000u, record=0xe8u;
+    s5l8900_t m;
+    CHECK(s5l8900_init(&m,RAM_BASE,RAM_SIZE), "camera review init");
+    if (!m.ram) return;
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART0,table0);
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_GART2,table2);
+    for (unsigned i=0;i<3;i++)
+        test_map_gpu_page(&m,table0,region+i*4096u,0x08010000u+i*4096u);
+    test_map_gpu_page(&m,table0,object,0x08014000u);
+    for (unsigned i=0;i<123;i++)
+        test_map_gpu_page(&m,table2,source+i*4096u,0x08020000u+i*4096u);
+    for (unsigned i=0;i<150;i++)
+        test_map_gpu_page(&m,table2,target+i*4096u,0x080c0000u+i*4096u);
+    const uint32_t a=0xff2040c0u, b=0xffc04020u, c=0xff20c040u, d=0xff808080u;
+    for (unsigned v=0;v<300;v++) for (unsigned u=0;u<416;u++)
+        test_gpu_write32(&m,source+v*1664u+u*4u,
+            v<150 ? (u<200 ? a : b) : (u<200 ? c : d));
+    const uint32_t captured[33] = {0xe0000000u,0xa6618000u,0x8e6b57e1u,0xa6887610u,0x22220e80u,0x43a04000u,0xbf000000u,0x43a03fffu,0x43d54000u,0x3efffc00u,0xbf0000ebu,0x3efff800u,0x43d54000u,0x00000000u,0x00000000u,0x00000000u,0x00000000u,0x3f800000u,0x3f800000u,0x3f800000u,0x3f800000u,0xff000000u,0x3a800000u,0x3a800000u,0xff000000u,0x3f47c000u,0x3a800000u,0xff000000u,0x3a800000u,0x3f15c000u,0xff000000u,0x3f47c000u,0x3f15c000u};
+    test_write_compact_blit_copy(&m,region,object,source,target,record,
+        0,0,320,427,400,300,1664,0xff000000u);
+    for (unsigned i=0;i<33;i++)
+        test_gpu_write32(&m,object+record+i*4u,
+            i==2 ? (captured[2] & ~0x3ffffu) | (source>>7) : captured[i]);
+    for (unsigned y=0;y<480;y++) for (unsigned x=0;x<320;x++)
+        test_gpu_write32(&m,target+y*1280u+x*4u,0x713257a9u);
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_ACK,0x4cu);
+    m.bus.write32(m.bus.ctx,MBX_BASE+REG_RENDER,1);
+    CHECK(m.bus.read32(m.bus.ctx,MBX_BASE+REG_STATUS)==0x4cu,
+        "camera review turn was not committed");
+    static const struct { unsigned x, y; uint32_t expected; } probe[] = {
+        {300,100,0xff2040c0u}, {300,400,0xffc04020u},
+        {20,100,0xff20c040u}, {20,400,0xff808080u},
+        {160,460,0x713257a9u},
+    };
+    for (unsigned i=0;i<sizeof probe/sizeof probe[0];i++) {
+        uint32_t got=test_gpu_read32(&m,target+probe[i].y*1280u+probe[i].x*4u);
+        CHECK(got==probe[i].expected,"camera review pixel (%u,%u)=%08x, expected %08x",
+            probe[i].x,probe[i].y,got,probe[i].expected);
+    }
+    s5l8900_free(&m);
+}
 /* Unlocking into Safari's retained error alert produced these two exact
  * compact-copy records.  Unlike the older compact fixtures, their texture
  * control uses the 0x0e layout while their UV endpoints remain half a texel
@@ -7967,6 +8016,7 @@ int main(void) {
     test_compact_column_resample();
     test_compact_rotated_column();
     test_compact_integer_quarter_turn();
+    test_compact_camera_review_turn();
     test_compact_full_extent_uniform_minification();
     test_compact_clipped_zero_coverage();
     test_pointer_selected_solid_quad();

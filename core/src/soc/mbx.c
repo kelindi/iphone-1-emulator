@@ -3028,6 +3028,14 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         quad[26] == quad[31] && quad[36] == quad[41];
     bool row_major_corners = (half_texel_layout || direct_sampler) &&
                              !compact_quarter_order;
+    /* Camera Roll's toolbar button fade copies a 31x36 texel crop of a
+     * 32x64 texture mirrored left-to-right: an unfiltered modulated
+     * perspective copy whose row-major corners are axis-aligned but whose
+     * first vertex is the right edge (u grows as x falls). */
+    bool mirrored_copy = perspective_copy && modulated_sampler &&
+        !half_texel_layout && !row_major_corners &&
+        quad[8] == quad[12] && quad[10] == quad[14] &&
+        quad[9] == quad[11] && quad[13] == quad[15] && quad[8] != quad[10];
     const float epsilon = 0.0009765625f;
     float destination_x[4], destination_y[4];
     for (unsigned i = 0; i < 4u; i++) {
@@ -3039,15 +3047,18 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             return false;
         }
     }
+    if (mirrored_copy && destination_x[0] <= destination_x[1])
+        mirrored_copy = false;
+    if (mirrored_copy) row_major_corners = true;
     bool axis_aligned = row_major_corners
         ? quad[8] == quad[12] && quad[10] == quad[14] &&
           quad[9] == quad[11] && quad[13] == quad[15]
         : quad[8] == quad[10] && quad[12] == quad[14] &&
           quad[9] == quad[13] && quad[11] == quad[15];
-    unsigned p00 = row_major_corners ? 0u : 1u;
-    unsigned p10 = row_major_corners ? 1u : 3u;
-    unsigned p01 = row_major_corners ? 2u : 0u;
-    unsigned p11 = row_major_corners ? 3u : 2u;
+    unsigned p00 = mirrored_copy ? 1u : row_major_corners ? 0u : 1u;
+    unsigned p10 = mirrored_copy ? 0u : row_major_corners ? 1u : 3u;
+    unsigned p01 = mirrored_copy ? 3u : row_major_corners ? 2u : 0u;
+    unsigned p11 = mirrored_copy ? 2u : row_major_corners ? 3u : 2u;
     float x0 = destination_x[p00], y0 = destination_y[p00];
     float x1 = destination_x[p11], y1 = destination_y[p11];
     /* Clock's captured column is turned through 180 degrees. Its genuine
@@ -3080,7 +3091,8 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float closure_y = destination_y[p00] + destination_y[p11] -
                           destination_y[p10] - destination_y[p01];
         if (!half_texel_layout ||
-            (!direct_sampler && !modulated_sampler) ||
+            (!direct_sampler && !modulated_sampler &&
+             !(scaled_sampler && perspective_copy)) ||
             closure_x < -epsilon || closure_x > epsilon ||
             closure_y < -epsilon || closure_y > epsilon) {
             if (why) *why =
@@ -3293,7 +3305,14 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
     uint32_t expected_source_control =
         (half_texel_layout ? 0x8e000000u : 0x0e000000u) |
         ((pitch_units & ~3u) << 16);
-    if (quad[1] != expected_header ||
+    /* Camera Roll's toolbar slide sends a compact direct copy whose header
+     * omits bits 15..16 (0xa6400000: 512x128). Its texture is the same
+     * linear, decoded-pitch layout as the 0xa0018000 form, so those bits do
+     * not change sampling for this clamped half-texel copy. */
+    bool header_matches = quad[1] == expected_header ||
+        (compact_copy && direct_sampler && half_texel_layout &&
+         quad[1] == (expected_header & ~0x00018000u));
+    if (!header_matches ||
         (quad[2] & ~MBX_3D_ADDRESS_MASK) != expected_source_control) {
         if (why) *why =
             "sprite texture allocation or split pitch is inconsistent";
@@ -3322,6 +3341,39 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             return false;
         }
     } else if (affine_sprite) {
+        /* Camera's post-capture review draws its 400x300 landscape frame
+         * (512x512 allocation) a quarter turn onto the portrait screen as a
+         * direct filtered compact copy, magnified by 320/300 with the long
+         * edge rounded to whole destination pixels (u=(0,427), v=(-320,0)).
+         * Admit exactly that: zero shear, quarter turn, magnification in
+         * both axes, and axis scales that differ only by the rounding of
+         * one destination pixel. */
+        float review_u_x = affine.u_x < 0.0f ? -affine.u_x : affine.u_x;
+        float review_v_y = affine.v_y < 0.0f ? -affine.v_y : affine.v_y;
+        float review_scale = source_height ? -affine.v_x / (float)source_height : 0.0f;
+        float review_rounding = affine.u_y - review_scale * (float)source_width;
+        if (review_rounding < 0.0f) review_rounding = -review_rounding;
+        /* The same frame then shrinks toward its Camera Roll thumbnail as a
+         * scaled-sampler perspective copy (vertex alpha). It interpolates
+         * toward the thumbnail's aspect, so its two axes minify
+         * independently; it is still a shear-free quarter turn. */
+        bool review_shrink = perspective_copy && scaled_sampler;
+        bool camera_review_turn =
+            ((compact_copy && direct_sampler) || review_shrink) &&
+            half_texel_layout && !quarter_turn &&
+            header_texture_width == 512u && header_texture_height == 512u &&
+            source_width && source_height &&
+            source_width <= header_texture_width &&
+            source_height <= header_texture_height &&
+            review_u_x <= epsilon && review_v_y <= epsilon &&
+            affine.u_y > 0.0f && affine.v_x < 0.0f &&
+            review_scale > 0.0f &&
+            (review_shrink
+                ? review_scale <= 1.0f &&
+                  affine.u_y <= (float)source_width
+                : review_rounding <= 1.0f) &&
+            (review_shrink || (review_scale >= 1.0f &&
+                               affine.u_y / (float)source_width >= 1.0f));
         float expected_u2 = (float)source_width * (float)source_width;
         float expected_v2 = (float)source_height * (float)source_height;
         float expected_det = (float)source_width * (float)source_height;
@@ -3329,8 +3381,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
         float v2 = affine.v_x * affine.v_x + affine.v_y * affine.v_y;
         float dot = affine.u_x * affine.v_x + affine.u_y * affine.v_y;
         if (dot < 0.0f) dot = -dot;
-        if (!source_width || !source_height ||
-            source_width > MBX_3D_WIDTH || source_height > 480u) {
+        if (!camera_review_turn &&
+            (!source_width || !source_height ||
+             source_width > MBX_3D_WIDTH || source_height > 480u)) {
             if (why) *why = "affine sprite source is outside measured bounds";
             return false;
         }
@@ -3369,7 +3422,7 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             affine.v_x >= -320.0f - epsilon &&
             affine.v_x <= -320.0f + epsilon &&
             affine.v_y >= -epsilon && affine.v_y <= epsilon;
-        if (compact_copy && !compact_rotated_column) {
+        if (compact_copy && !compact_rotated_column && !camera_review_turn) {
             if (why) *why = "compact affine sprite is not the captured rotated column";
             return false;
         }
@@ -3377,7 +3430,7 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             if (why) *why = "reversed axis sprite is not the captured Clock column";
             return false;
         }
-        if (os1_clock_column || compact_rotated_column) {
+        if (os1_clock_column || compact_rotated_column || camera_review_turn) {
             /* All common clipping, tile, parameter and GART checks still run. */
         } else if (direct_sampler) {
             float u_error = u2 - expected_u2;
@@ -4060,6 +4113,9 @@ static bool mbx_execute_textured_sprite(s5l_mbx_t *m,
             } else if (quarter_turn) {
                 src = mbx_load_le32(source_pixels +
                     (width - 1u - x) * source_row_bytes + y * 4u);
+            } else if (mirrored_copy) {
+                src = mbx_load_le32(source_pixels + y * source_row_bytes +
+                                    (width - 1u - x) * 4u);
             } else {
                 src = mbx_load_le32(source_pixels + y * source_row_bytes +
                                     x * 4u);

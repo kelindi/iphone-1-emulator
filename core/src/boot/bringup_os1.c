@@ -142,6 +142,9 @@ bool s5l_os1_boot(s5l8900_t *m, const s5l_os1_request_t *req,
         !s5l_dt_set_reg(tree, req->devicetree_size, "vram", "reg",
                         fb_pa, S5L_BRINGUP_VRAM_BYTES))
         return fail(r, "missing vram reg");
+    /* AppleH1CamIn refuses EVT0 silicon ("EVT0 no longer supported"); the
+     * template ships 0. Trees without the property are left alone. */
+    (void)s5l_dt_set_u32(tree, req->devicetree_size, "arm-io", "chip-revision", 1u);
     if (req->debug_enabled &&
         !s5l_dt_set_u32(tree, req->devicetree_size, "chosen",
                         "debug-enabled", 1u))

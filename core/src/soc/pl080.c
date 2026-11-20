@@ -11,7 +11,15 @@
  * Copyright (c) 2026 j0shua-SYSON. MIT licensed.
  */
 #include "soc.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+static int dmac_trace = -1;
+static bool dmac_tracing(void) {
+    if (dmac_trace < 0) dmac_trace = getenv("S5LBOX_DMAC_TRACE") != NULL;
+    return dmac_trace != 0;
+}
 
 /*
  * The one design decision worth arguing about is that transfers happen in
@@ -151,6 +159,7 @@ uint32_t s5l_pl080_read(s5l_pl080_t *d, uint32_t off) {
 }
 
 void s5l_pl080_write(s5l_pl080_t *d, uint32_t off, uint32_t val) {
+    if (dmac_tracing()) fprintf(stderr, "dmac%p w %03x = %08x\n", (void *)d, off, val);
     if (!d) return;
     d->writes++;
 
@@ -317,7 +326,7 @@ static bool run_item(s5l_pl080_t *d, unsigned c, const arm_bus_t *bus,
          * The enable bit is left set and Control[11:0] already carries the
          * remaining count, so the next tick resumes precisely here.
          */
-        if (pend_bytes == 0u && ready && !ready(ready_ctx, ch->dst, dwidth)) {
+        if (pend_bytes == 0u && ready && !ready(ready_ctx, ch->src, ch->dst, dwidth)) {
             if (stalled) *stalled = true;
             return false;
         }

@@ -30,6 +30,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include "nand.h"
 #include "soc.h"
 
@@ -54,6 +55,20 @@ storage_status_t storage_save_nand(const nand_t *n, const char *path);
  * the device is left untouched.
  */
 storage_status_t storage_load_nand(nand_t *n, const char *path);
+
+/*
+ * Sparse NAND image: header, then one record per programmed page (index,
+ * data, spare), then the bad-block map and an FNV-1a hash. Erased pages are
+ * not stored, so a multi-gigabyte device costs only what has been written.
+ * Save is atomic (sibling file + rename); load is transactional.
+ */
+storage_status_t storage_save_nand_sparse(const nand_t *n, const char *path);
+storage_status_t storage_load_nand_sparse(nand_t *n, const char *path);
+/* Load a sparse image from an open stream, which is always closed. On success
+ * *image_hash (if given) receives the image's recorded integrity hash, which
+ * identifies it as a base for nand_track_changes. */
+storage_status_t storage_load_nand_sparse_file(nand_t *n, FILE *f,
+                                               uint64_t *image_hash);
 
 /*
  * NOR persistence. An untethered jailbreak on this SoC (24kpwn) persists its

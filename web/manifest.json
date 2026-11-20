@@ -6,23 +6,28 @@
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1"
   ],
   "snapshot": [
-    "https://iphone.files.garden/home_1A543a.snap.gz.part0",
-    "https://iphone.files.garden/home_1A543a.snap.gz.part1"
+    "https://iphone.files.garden/home_nand_1A543a.snap.gz"
+  ],
+  "nand": [
+    "https://iphone.files.garden/nand_1A543a.img.gz.part0",
+    "https://iphone.files.garden/nand_1A543a.img.gz.part1"
   ],
   "assetSha256": {
     "https://iphone.files.garden/kernel_1A543a.macho": "42e9f3c18d4a4d5c956acdcded0c3f8f247fe3e7fc96d14cfa3aedcd77c292c9",
     "https://iphone.files.garden/devicetree_m68ap.bin": "94cbef8175df0d84afbbd3885f7fe7267b9e6f4ba3b80f8d83328800cff93e10",
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part0": "59a755eec434d82b5cdec90a4eb332c142c09a2dd71d43918f66c86ea9d49cfd",
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1": "e4dcd96fd78453c6982f738a8afce459a1171de62ad4143ea9ee0c07cfca8c2f",
-    "https://iphone.files.garden/home_1A543a.snap.gz.part0": "4909d8a11bd3c9075cd94e68245423f107cd9ba104b000af9e48694ea2157a2e",
-    "https://iphone.files.garden/home_1A543a.snap.gz.part1": "177a9a0c521a1f4f926a9aa683c49189f9cd327e1de869060fa7501bed9095b6"
+    "https://iphone.files.garden/home_nand_1A543a.snap.gz": "c2c10bfcb49939ac9eeabacb148c19e0113e120f799492daf45d7e236a9b8587",
+    "https://iphone.files.garden/nand_1A543a.img.gz.part0": "5b3e4af5642d1f70d17efc5a952146b9e94ca50a084528a704d939dafba912ac",
+    "https://iphone.files.garden/nand_1A543a.img.gz.part1": "c8adfacb7145f83d2ca99f6a807cdfc5e7ea227a7a4d1022ceceef38eeec51c9"
   },
   "assetBytes": {
     "https://iphone.files.garden/kernel_1A543a.macho": 5888896,
     "https://iphone.files.garden/devicetree_m68ap.bin": 36864,
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part0": 40606822,
     "https://iphone.files.garden/rootfs_1A543a_act.img.gz.part1": 40606821,
-    "https://iphone.files.garden/home_1A543a.snap.gz.part0": 50201156,
-    "https://iphone.files.garden/home_1A543a.snap.gz.part1": 50201155
+    "https://iphone.files.garden/home_nand_1A543a.snap.gz": 17930705,
+    "https://iphone.files.garden/nand_1A543a.img.gz.part0": 43683729,
+    "https://iphone.files.garden/nand_1A543a.img.gz.part1": 43683728
   }
 }

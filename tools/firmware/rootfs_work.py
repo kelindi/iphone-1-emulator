@@ -12,7 +12,9 @@ Usage:
       [--replace NAME=HOSTFILE]...     replace file NAME (catalog leaf name)
       [--launchd-env NAME=K=V,...]     add EnvironmentVariables to a launchd
                                        plist NAME (binary plist rewritten)
-      [--no-autolock]                 set SpringBoard auto-lock and dim to Never
+      [--no-autolock]                 set SpringBoard auto-lock and dim to Never and
+                                      disable SpringBoard idle sleep
+      [--no-bluetooth]                make BlueTool's deep-sleep script a no-op
       [--activate]                    seed a locally verified activation record
       [--add GUEST_PATH=HOSTFILE]...  add a new file, creating directories
 """
@@ -635,6 +637,7 @@ def main():
     w = Work(dst)
     i = 2
     no_autolock = False
+    no_bluetooth = False
     activate = False
     while i < len(a):
         if a[i] == "--fstab":
@@ -657,6 +660,9 @@ def main():
         elif a[i] == "--no-autolock":
             no_autolock = True
             i += 1
+        elif a[i] == "--no-bluetooth":
+            no_bluetooth = True
+            i += 1
         elif a[i] == "--activate":
             activate = True
             i += 1
@@ -676,11 +682,21 @@ def main():
             pl = {}
         pl["SBAutoLockTime"] = -1
         pl["SBAutoDimTime"] = -1
+        pl["SBDisableIdleSleep"] = True
         data = plistlib.dumps(pl, fmt=plistlib.FMT_XML)
         if existing:
             w.replace_file_path(path, data)
         else:
             w.add_file_data(path, data)
+    if no_bluetooth:
+        # No Bluetooth chip is emulated. Stock BTServer runs BlueTool's
+        # deepsleep script on every display sleep; against the absent CSR chip
+        # it retries resets for ~45 s and holds off the next wake. Disabling
+        # BTServer instead leaves the display unable to relight after a lock.
+        path = "/etc/bluetool/deepsleep.script"
+        if not w.find_file_path(path):
+            raise SystemExit("%s: file not found" % path)
+        w.replace_file_path(path, b"#\n# No Bluetooth chip is emulated; nothing to put to sleep.\n#\nquit\n")
     if activate:
         activation_pem, ca_pem, record = _local_activation_data()
         for path, data in (
